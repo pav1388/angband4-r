@@ -1,91 +1,91 @@
-Symbols On Your Map
+Символы на вашей карте
 ===================
 
-Symbols on your map can be broken down into three categories: Features of
-the dungeon such as walls, floor, doors, and traps; Objects which can be
-picked up such as treasure, weapons, magical devices, etc; and creatures
-which may or may not move about the dungeon, but are mostly harmful to your
-character's well being.
+Символы на вашей карте можно разделить на три категории: Особенности
+подземелья, такие как стены, пол, двери и ловушки; Предметы, которые 
+можно поднять сокровища, оружие, магические устройства и т.д.; и Существа,
+которые могут перемещаться по подземелью, а могут и не перемещаться, но 
+в основном вредят благополучию вашего персонажа.
 
-Some symbols are used to represent more than one type of entity, and some
-symbols are used to represent entities in more than one category. The "@"
-symbol (by default) is used to represent the character.
+Некоторые символы используются для обозначения более чем одного типа 
+существ, а некоторые символы используются для обозначения сущностей из 
+более чем одной категории. Символ "@" (по умолчанию) используется для 
+обозначения персонажа.
 
-It will not be necessary to remember all of the symbols and their meanings.
-The "slash" command ('/') will identify any character appearing on your
-map (see 'commands.txt').
+Нет необходимости запоминать все символы и их значения.
+Команда "слэш" ('/') идентифицирует любой символ, появляющийся на вашей
+карте (см. 'commands.txt').
 
-Note that you can use a "user pref file" to change any of these symbols to
-something you are more comfortable with.
+Обратите внимание, что вы можете использовать "user pref file", чтобы 
+изменить любые из этих символов на более удобные для вас.
 
 
-
-Features that do not block line of sight
+Элементы, которые не блокируют прямую видимость
 ----------------------------------------
 
-.  A floor space                 1  Entrance to General Store
-.  A trap (hidden)               2  Entrance to Armoury
-^  A trap (known)                3  Entrance to Weapon Smith
-;  A glyph of warding            4  Entrance to Bookseller
-'  An open door                  5  Entrance to Alchemy Shop
-'  A broken door                 6  Entrance to Magic Shop
-<  A staircase up                7  Entrance to the Black Market
->  A staircase down              8  Entrance to your Home
-#  A pool of lava
+.  Пол                          1  Вход в Универсальный магазин
+.  Ловушка (скрытая)            2  Вход в Оружейную мастерскую
+^  Ловушка (известная)          3  Вход к Кузнецу Оружия
+;  Глиф защиты                  4  Вход к Книготорговцу
+'  Открытая дверь               5  Вход в Алхимическую лавку
+'  Сломанная дверь              6  Вход в Магическую лавку
+<  Лестница вверх               7  Вход на Черный рынок
+>  Лестница вниз                8  Вход в ваш Дом
+#  Бассейн лавы
 
 
-Features that block line of sight
+Элементы, блокирующие прямую видимость
 ---------------------------------
 
-#  A secret door                 #  A wall
-+  A closed door                 %  A mineral vein
-+  A locked door                 *  A mineral vein with treasure
-:  A pile of rubble              :  A pile of passable rubble
+#  Потайная дверь               #  Стена
++  Закрытая дверь               %  Минеральная жила
++  Запертая дверь               *  Минеральная жила с сокровищами
+:  Груда обломков               :  Груда проходимых обломков
 
 
-Objects
+Объекты
 -------
 
-!  A potion (or flask)           /  A pole-arm
-?  A scroll (or book)            |  An edged weapon
-,  A mushroom (or food)          \  A hafted weapon
--  A wand or rod                 }  A sling, bow, or x-bow
-_  A staff                       {  A shot, arrow, or bolt
-=  A ring                        (  Soft armour
-"  An amulet                     [  Hard armour
-$  Gold or gems                  ]  Misc. armour
-~  Lights, Tools, Chests, etc    )  A shield
-&  Multiple items
+!  Зелье (или фляга)              /  Оружие с шестом
+?  Свиток (или книга)             |  Оружие с острым концом
+,  Гриб (или еда)                 \  Ножевое оружие
+-  Палочка или жезл               }  Праща, лук или арбалет
+_  Посох                          {  Выстрел, стрела или болт
+=  Кольцо                         (  Лёгкая броня
+"  Амулет                         [  Тяжёлая броня
+$  Золото или драг. камни         ]  Различная броня
+~  Свет., инстр., сундуки и т.д.  )  Щит
+&  Несколько предметов
 
 
-Monsters
+Монстры
 --------
 
-$  Creeping Coins             ,  Mushroom Patch
-a  Giant Ant                  A  Ainu
-b  Giant Bat                  B  Bird
-c  Giant Centipede            C  Canine (Dog)
-d  Dragon                     D  Ancient Dragon
-e  Floating Eye               E  Elemental
-f  Feline (Cat)               F  Dragon Fly
-g  Golem                      G  Ghost
-h  Humanoid                   H  Hybrid
-i  Icky-Thing                 I  Insect
-j  Jelly                      J  Snake
-k  Kobold                     K  Killer Beetle
-l  Tree/Ent                   L  Lich
-m  Mold                       M  Multi-Headed Hydra
-n  Naga                       N  -
-o  Orc                        O  Ogre
-p  Human "person"             P  Giant "person"
-q  Quadruped                  Q  Quylthulg (Pulsing Flesh Mound)
-r  Rodent                     R  Reptile/Amphibian
-s  Skeleton                   S  Spider/Scorpion/Tick
-t  Townsperson                T  Troll
-u  Minor Demon                U  Major Demon
-v  Vortex                     V  Vampire
-w  Worm or Worm Mass          W  Wight/Wraith
-x  -                          X  Xorn/Xaren
-y  Yeek                       Y  Yeti
-z  Zombie/Mummy               Z  Zephyr Hound
+$  Ползучие монеты             ,  Грибной участок
+a  Гигантский муравей          A  Айну
+b  Гигантская летучая мышь     B  Птица
+c  Гигантская сороконожка      C  Клык (собака)
+d  Дракон                      D  Древний дракон
+e  Плавающий глаз              E  Элементаль
+f  Кошачьи (кошки)             F  Муха-дракон
+g  Голем                       G  Призрак
+h  Гуманоид                    H  Гибрид
+i  Скользкое существо          I  Насекомое
+j  Желе                        J  Змея
+k  Кобольд                     K  Жук-убийца
+l  Дерево/Энт                  L  Лич
+m  Плесень                     M  Многоголовая гидра
+n  Нага                        N  -
+o  Орк                         O  Огр
+p  Человек "особь"             P  Гигант "особь"
+q  Четвероногий                Q  Квилтулг (Курган Пульсирующей Плоти)
+r  Грызун                      R  Рептилия/Амфибия
+s  Скелет                      S  Паук/скорпион/клещ
+t  Горожанин                   T  Тролль
+u  Малый демон                 U  Большой демон
+v  Вихрь                       V  Вампир
+w  Червь или масса Червей      W  Умертвие/Призрак
+x  -                           X  Хорн/Харен
+y  Йик                         Y  Йети
+z  Зомби/Мумия                 Z  Гончая Зефира
 
