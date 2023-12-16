@@ -41,15 +41,17 @@ const char *buildver = VERSION_STRING;
  * Hack -- Link a copyright message into the executable
  */
 const char *copyright =
-	"Copyright (c) 1987-2022 Angband contributors.\n"
+	"Авторское право (c) 1987-2022 Участники проекта Ангбанд.\n"
 	"\n"
-	"This work is free software; you can redistribute it and/or modify it\n"
-	"under the terms of either:\n"
+	"Эта работа является свободным программным обеспечением; вы можете\n"
+	"распространять ее и/или изменять в соответствии с условиями либо:\n"
 	"\n"
-	"a) the GNU General Public License as published by the Free Software\n"
-	"   Foundation, version 2, or\n"
+	"a) GNU General Public License опубликованная организацией Free Software\n"
+	"   Foundation, версия 2, или\n"
 	"\n"
-	"b) the Angband licence:\n"
-	"   This software may be copied and distributed for educational, research,\n"
-	"   and not for profit purposes provided that this copyright and statement\n"
-	"   are included in all such copies.  Other copyrights may also apply.\n";
+	"b) лицензия Angband:\n"
+	"   Данное ПО можно копировать и распространять для образовательных, \n"
+	"   исследовательских целях и не в целях получения прибыли при условии, \n"
+	"   что данное авторское право и заявление будут включены во все такие копии. \n"
+	"   Могут применяться другие авторские права.\n";
+	
