@@ -103,13 +103,15 @@ bool arg_force_name;
 static enum birth_stage textui_birth_quickstart(void)
 //phantom name change changes
 {
-	const char *prompt = "['Y': use as is; 'N': redo; 'C': change name/history; '=': set birth options]";
+	// const char *prompt = "['Y': use as is; 'N': redo; 'C': change name/history; '=': set birth options]";
+	const char *prompt = "['Y' как есть, 'N' переделать, 'C' изменить имя/историю, '=' настройки]";
 
 	enum birth_stage next = BIRTH_QUICKSTART;
 
 	/* Prompt for it */
-	prt("New character based on previous one:", 0, 0);
-	prt(prompt, Term->hgt - 1, Term->wid / 2 - strlen(prompt) / 2);
+	// prt("New character based on previous one:", 0, 0);
+	prt("Новый персонаж основан на предыдущем:", 0, 0);
+	prt(prompt, Term->hgt - 1, Term->wid / 2 - utf8_strlen(prompt) / 2);
 
 	do {
 		/* Get a key */
@@ -124,7 +126,8 @@ static enum birth_stage textui_birth_quickstart(void)
 			next = BIRTH_NAME_CHOICE;
 		} else if (ke.code == '=') {
 			do_cmd_options_birth();
-		} else if (ke.code == 'Y' || ke.code == 'y') {
+		// } else if (ke.code == 'Y' || ke.code == 'y')
+		} else if (ke.code == 'Y' || ke.code == 'y' || ke.code == KC_ENTER) { // y=enter
 			cmdq_push(CMD_ACCEPT_CHARACTER);
 			next = BIRTH_COMPLETE;
 		}
@@ -222,17 +225,24 @@ static void skill_help(const int r_skills[], const int c_skills[], int mhp, int 
 	for (i = 0; i < SKILL_MAX ; ++i)
 		skills[i] = (r_skills ? r_skills[i] : 0 ) + (c_skills ? c_skills[i] : 0);
 
-	text_out_e("Hit/Shoot/Throw: %+d/%+d/%+d\n", skills[SKILL_TO_HIT_MELEE],
+	// text_out_e("Hit/Shoot/Throw: %+d/%+d/%+d\n", skills[SKILL_TO_HIT_MELEE],
+	text_out_e("Удар/Стрельба/Бросок: %+d/%+d/%+d\n", skills[SKILL_TO_HIT_MELEE],
 			   skills[SKILL_TO_HIT_BOW], skills[SKILL_TO_HIT_THROW]);
-	text_out_e("Hit die: %2d   XP mod: %d%%\n", mhp, exp);
-	text_out_e("Disarm: %+3d/%+3d   Devices: %+3d\n", skills[SKILL_DISARM_PHYS],
+	// text_out_e("Hit die: %2d   XP mod: %d%%\n", mhp, exp);
+	text_out_e("Смерт.удар:   %2d   Мод Опыта: %d%%\n", mhp, exp);
+	// text_out_e("Disarm: %+3d/%+3d   Devices: %+3d\n", skills[SKILL_DISARM_PHYS],
+	text_out_e("Обезвреж.: %+3d/%+3d  Механизмы: %+3d\n", skills[SKILL_DISARM_PHYS],
 			   skills[SKILL_DISARM_MAGIC], skills[SKILL_DEVICE]);
-	text_out_e("Save:   %+3d   Stealth: %+3d\n", skills[SKILL_SAVE],
+	// text_out_e("Save:   %+3d   Stealth: %+3d\n", skills[SKILL_SAVE],
+	text_out_e("Спасение:    %+3d   Скрытность: %+3d\n", skills[SKILL_SAVE],
 			   skills[SKILL_STEALTH]);
 	if (infra >= 0)
-		text_out_e("Infravision:  %d ft\n", infra * 10);
-	text_out_e("Digging:      %+d\n", skills[SKILL_DIGGING]);
-	text_out_e("Search:       %+d", skills[SKILL_SEARCH]);
+		// text_out_e("Infravision:  %d ft\n", infra * 10);
+		text_out_e("Инфравидение:   %d м\n", infra * 10);
+	// text_out_e("Digging:      %+d\n", skills[SKILL_DIGGING]);
+	text_out_e("Копание:     %+d\n", skills[SKILL_DIGGING]);
+	// text_out_e("Search:       %+d", skills[SKILL_SEARCH]);
+	text_out_e("Поиск:       %+d", skills[SKILL_SEARCH]);
 	if (infra < 0)
 		text_out_e("\n");
 }
@@ -363,7 +373,8 @@ static void class_help(int i, void *db, const region *l)
 				realm = realm_next;
 			}
 		}
-		text_out_e("\nLearns %s magic", buf);
+		// text_out_e("\nLearns %s magic", buf);
+		text_out_e("\nИзучает %s магию", buf);
 	}
 
 	for (ability = player_abilities; ability; ability = ability->next) {
@@ -430,16 +441,21 @@ static bool use_context_menu_birth(struct menu *current_menu,
 	m = menu_dynamic_new();
 
 	m->selections = labels;
-	menu_dynamic_add_label(m, "Show birth options", '=',
+	// menu_dynamic_add_label(m, "Show birth options", '=',
+	menu_dynamic_add_label(m, "Показать настройки рождения", '=',
 		ACT_CTX_BIRTH_OPT, labels);
 	if (menu_data->allow_random) {
-		menu_dynamic_add_label(m, "Select one at random", '*',
+		// menu_dynamic_add_label(m, "Select one at random", '*',
+		menu_dynamic_add_label(m, "Выбрать случайно", '*',
 			ACT_CTX_BIRTH_RAND, labels);
 	}
-	menu_dynamic_add_label(m, "Finish with random choices", '@',
+	// menu_dynamic_add_label(m, "Finish with random choices", '@',
+	menu_dynamic_add_label(m, "Закончить со случайным выбором", '@',
 		ACT_CTX_BIRTH_FINISH_RAND, labels);
-	menu_dynamic_add_label(m, "Quit", 'q', ACT_CTX_BIRTH_QUIT, labels);
-	menu_dynamic_add_label(m, "Help", '?', ACT_CTX_BIRTH_HELP, labels);
+	// menu_dynamic_add_label(m, "Quit", 'q', ACT_CTX_BIRTH_QUIT, labels);
+	menu_dynamic_add_label(m, "Выход", 'q', ACT_CTX_BIRTH_QUIT, labels);
+	// menu_dynamic_add_label(m, "Help", '?', ACT_CTX_BIRTH_HELP, labels);
+	menu_dynamic_add_label(m, "Справка", '?', ACT_CTX_BIRTH_HELP, labels);
 
 	screen_save();
 
@@ -544,8 +560,10 @@ static void setup_menus(void)
 	struct player_race *r;
 
 	const char *roller_choices[MAX_BIRTH_ROLLERS] = { 
-		"Point-based", 
-		"Standard roller" 
+		// "Point-based", 
+		"По основным точкам (рекомендуется)", 
+		// "Standard roller" 
+		"Стандартный бросок" 
 	};
 
 	struct birthmenu_data *mdata;
@@ -561,7 +579,8 @@ static void setup_menus(void)
 
 	for (i = 0, r = races; r; r = r->next, i++)
 		mdata->items[r->ridx] = r->name;
-	mdata->hint = "Race affects stats and skills, and may confer resistances and abilities.";
+	// mdata->hint = "Race affects stats and skills, and may confer resistances and abilities.";
+	mdata->hint = "Раса влияет на показатели, навыки, сопротивление и способности.";
 
 	/* Count the classes */
 	n = 0;
@@ -574,7 +593,8 @@ static void setup_menus(void)
 
 	for (i = 0, c = classes; c; c = c->next, i++)
 		mdata->items[c->cidx] = c->name;
-	mdata->hint = "Class affects stats, skills, and other character traits.";
+	// mdata->hint = "Class affects stats, skills, and other character traits.";
+	mdata->hint = "Класс влияет на показатели, навыки и другие характеристики персонажа.";
 		
 	/* Roller menu straightforward */
 	init_birth_menu(&roller_menu, MAX_BIRTH_ROLLERS, 0, &roller_region, false,
@@ -582,7 +602,8 @@ static void setup_menus(void)
 	mdata = roller_menu.menu_data;
 	for (i = 0; i < MAX_BIRTH_ROLLERS; i++)
 		mdata->items[i] = roller_choices[i];
-	mdata->hint = "Choose how to generate your intrinsic stats. Point-based is recommended.";
+	// mdata->hint = "Choose how to generate your intrinsic stats. Point-based is recommended.";
+	mdata->hint = "Выберите способ получения показателей.";
 }
 
 /**
@@ -619,14 +640,22 @@ static void clear_question(void)
 }
 
 
-#define BIRTH_MENU_HELPTEXT \
+/* #define BIRTH_MENU_HELPTEXT \
 	"{light blue}Please select your character traits from the menus below:{/}\n\n" \
 	"Use the {light green}movement keys{/} to scroll the menu, " \
 	"{light green}Enter{/} to select the current menu item, '{light green}*{/}' " \
 	"for a random menu item, '{light green}@{/}' to finish the character with random selections, " \
 	"'{light green}ESC{/}' to step back through the birth process, " \
 	"'{light green}={/}' for the birth options, '{light green}?{/}' " \
-	"for help, or '{light green}Ctrl-X{/}' to quit."
+	"for help, or '{light green}Ctrl-X{/}' to quit."*/
+#define BIRTH_MENU_HELPTEXT \
+	"{light blue}Пожалуйста, выберите черты своего персонажа из меню ниже:{/}\n\n" \
+	"Используйте {light green}клавиши перемещения{/} для прокрутки по меню, " \
+	"'{light green}Enter{/}' для выбора текущего пункта меню, '{light green}*{/}' " \
+	"для случайного выбора, '{light green}@{/}' для создания случайного персонажа, " \
+	"'{light green}ESC{/}' для возврата к процессу рождения, " \
+	"'{light green}={/}' для настроек рождения, '{light green}?{/}' " \
+	"для справки, или '{light green}Ctrl-X{/}' для выхода."
 
 /**
  * Show the birth instructions on an otherwise blank screen
@@ -893,10 +922,13 @@ static enum birth_stage roller_command(bool first_call)
 		prev_roll = false;
 
 	/* Prepare a prompt (must squeeze everything in) */
-	strnfcat(prompt, sizeof (prompt), &promptlen, "['r' to reroll");
+	// strnfcat(prompt, sizeof (prompt), &promptlen, "['r' to reroll");
+	strnfcat(prompt, sizeof (prompt), &promptlen, "['r' бросок");
 	if (prev_roll) 
-		strnfcat(prompt, sizeof(prompt), &promptlen, ", 'p' for previous roll");
-	strnfcat(prompt, sizeof (prompt), &promptlen, " or 'Enter' to accept]");
+		// strnfcat(prompt, sizeof(prompt), &promptlen, ", 'p' for previous roll");
+		strnfcat(prompt, sizeof(prompt), &promptlen, ", 'p' пред. бросок");
+	// strnfcat(prompt, sizeof (prompt), &promptlen, " or 'Enter' to accept]");
+	strnfcat(prompt, sizeof (prompt), &promptlen, ", 'Enter' принять]");
 
 	/* Prompt for it */
 	prt(prompt, Term->hgt - 1, Term->wid / 2 - promptlen / 2);
@@ -1063,7 +1095,8 @@ static void point_based_points(game_event_type type, game_event_data *data,
 	int remaining = data->birthpoints.remaining;
 
 	/* Display the costs header */
-	put_str("Cost", COSTS_ROW - 1, COSTS_COL);
+	// put_str("Cost", COSTS_ROW - 1, COSTS_COL);
+	put_str("Цена", COSTS_ROW - 1, COSTS_COL);
 	
 	for (i = 0; i < STAT_MAX; i++) {
 		/* Remember what's allowed. */
@@ -1079,13 +1112,16 @@ static void point_based_points(game_event_type type, game_event_data *data,
 		sum += spent[i];
 	}
 	
-	put_str(format("Total Cost: %2d/%2d", sum, remaining + sum),
-		COSTS_ROW + STAT_MAX, TOTAL_COL);
+	// put_str(format("Total Cost: %2d/%2d", sum, remaining + sum),
+	put_str(format("Всего: %2d/%2d", sum, remaining + sum),
+		// COSTS_ROW + STAT_MAX, TOTAL_COL);
+		COSTS_ROW + STAT_MAX, 62);
 }
 
 static void point_based_start(void)
 {
-	const char *prompt = "[up/down to move, left/right to modify, 'r' to reset, 'Enter' to accept]";
+	// const char *prompt = "[up/down to move, left/right to modify, 'r' to reset, 'Enter' to accept]";
+	const char *prompt = "[up/down перемещение, left/right изменение, 'r' сброс, 'Enter' принять]";
 	int i;
 
 	/* Clear */
@@ -1095,7 +1131,7 @@ static void point_based_start(void)
 	display_player_xtra_info();
 	display_player_stat_info();
 
-	prt(prompt, Term->hgt - 1, Term->wid / 2 - strlen(prompt) / 2);
+	prt(prompt, Term->hgt - 1, Term->wid / 2 - utf8_strlen(prompt) / 2);
 
 	for (i = 0; i < STAT_MAX; ++i) {
 		buysell[i] = 0;
@@ -1316,7 +1352,8 @@ static enum birth_stage get_name_command(void)
 	} else if (get_character_name(name, sizeof(name))
 			&& (savefile[0]
 			|| !savefile_name_already_used(name, true, true)
-			|| get_check("A savefile for that name exists.  Overwrite it? "))) {
+			// || get_check("A savefile for that name exists.  Overwrite it? "))) {
+			|| get_check("Файл сохранение уже существует.   Перезаписать? "))) {
 		cmdq_push(CMD_NAME_CHOICE);
 		cmd_set_arg_string(cmdq_peek(), "name", name);
 		next = BIRTH_HISTORY_CHOICE;
@@ -1350,7 +1387,7 @@ static void get_screen_loc(size_t cursor, int *x, int *y, size_t n_lines,
 }
 
 static int edit_text(char *buffer, int buflen) {
-	int len = strlen(buffer);
+	int len = utf8_strlen(buffer);
 	bool done = false;
 	int cursor = 0;
 
@@ -1532,7 +1569,8 @@ static enum birth_stage get_history_command(void)
 	my_strcpy(old_history, player->history, sizeof(old_history));
 
 	/* Ask for some history */
-	prt("Accept character history? [y/n]", 0, 0);
+	// prt("Accept character history? [y/n]", 0, 0);
+	prt("Принять историю персонажа? [y/n]", 0, 0);
 	ke = inkey();
 
 	/* Quit, go back, change history, or accept */
@@ -1566,13 +1604,14 @@ static enum birth_stage get_history_command(void)
  * ------------------------------------------------------------------------ */
 static enum birth_stage get_confirm_command(void)
 {
-	const char *prompt = "['ESC' to step back, 'S' to start over, or any other key to continue]";
+	// const char *prompt = "['ESC' to step back, 'S' to start over, or any other key to continue]";
+	const char *prompt = "['ESC' назад, 'S' заново, 'любая клавиша' продолжить]";
 	struct keypress ke;
 
 	enum birth_stage next = BIRTH_RESET;
 
 	/* Prompt for it */
-	prt(prompt, Term->hgt - 1, Term->wid / 2 - strlen(prompt) / 2);
+	prt(prompt, Term->hgt - 1, Term->wid / 2 - utf8_strlen(prompt) / 2);
 
 	/* Get a key */
 	ke = inkey();
