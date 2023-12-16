@@ -59,7 +59,14 @@ extern void (*quit_aux)(const char *);
 /**
  * Return "s" (or not) depending on whether n is singular.
  */
-#define PLURAL(n)		((n) == 1 ? "" : "s")
+#define PLURAL(n)				((n) == 1 ? "" : "s")
+#define PLURAL_RU_A_(n)			((n) == 1 ? "а" : "")
+#define PLURAL_RU_A_OV(n)		((n) == 1 ? "а" : "ов")
+#define PLURAL_RU_OGO_bIH(n)	((n) == 1 ? "ого" : "ых")
+#define PLURAL_RU__A_OV(n)		((n % 10 == 1) && (n !=11) ? "" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "а" : "ов")
+#define PLURAL_RU_O_A_OV(n)		((n % 10 == 1) && (n !=11) ? "о" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "а" : "ов")
+#define PLURAL_RU_A_bI_(n)		((n % 10 == 1) && (n !=11) ? "а" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "ы" : "") // монет
+#define PLURAL_RU_AYA_bIE_bIH(n)		((n % 10 == 1) && (n !=11) ? "ая" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "ые" : "ых") // золот
 
 /**
  * Return the verb form matching the given count
