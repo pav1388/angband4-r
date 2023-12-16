@@ -50,7 +50,7 @@ static void put_str_centred(int y, int x1, int x2, const char *fmt, ...)
 	va_end(vp);
 
 	/* Centre now */
-	len = strlen(tmp);
+	len = utf8_strlen(tmp);
 	x = x1 + ((x2-x1)/2 - len/2);
 
 	put_str(tmp, y, x);
@@ -85,31 +85,43 @@ static void display_exit_screen(void)
 
 	line = 7;
 
+	// put_str_centred(line++, 8, 8+31, "%s", player->full_name);
 	put_str_centred(line++, 8, 8+31, "%s", player->full_name);
-	put_str_centred(line++, 8, 8+31, "the");
+	// put_str_centred(line++, 8, 8+31, "the");
+	line++;
+	
 	if (player->total_winner)
-		put_str_centred(line++, 8, 8+31, "Magnificent");
+		// put_str_centred(line++, 8, 8+31, "Magnificent");
+		put_str_centred(line++, 8, 8+31, "Великолепно");
 	else
 		put_str_centred(line++, 8, 8+31, "%s", player->class->title[(player->lev - 1) / 5]);
 
 	line++;
 
 	put_str_centred(line++, 8, 8+31, "%s", player->class->name);
-	put_str_centred(line++, 8, 8+31, "Level: %d", (int)player->lev);
-	put_str_centred(line++, 8, 8+31, "Exp: %d", (int)player->exp);
-	put_str_centred(line++, 8, 8+31, "AU: %d", (int)player->au);
+	// put_str_centred(line++, 8, 8+31, "Level: %d", (int)player->lev);
+	put_str_centred(line++, 8, 8+31, "Уровень: %d", (int)player->lev);
+	// put_str_centred(line++, 8, 8+31, "Exp: %d", (int)player->exp);
+	put_str_centred(line++, 8, 8+31, "Опыт: %d", (int)player->exp);
+	// put_str_centred(line++, 8, 8+31, "AU: %d", (int)player->au);
+	put_str_centred(line++, 8, 8+31, "Золото: %d", (int)player->au);
 	if (retired) {
-		put_str_centred(line++, 8, 8+31, "Retired on Level %d",
+		// put_str_centred(line++, 8, 8+31, "Retired on Level %d",
+		put_str_centred(line++, 8, 8+31, "Отставка на этаже %d",
 			player->depth);
 	} else {
-		put_str_centred(line++, 8, 8+31, "Killed on Level %d",
-			player->depth);
-		put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
+		// put_str_centred(line++, 8, 8+31, "Killed on Level %d",
+		if (player->depth == 0){put_str_centred(line++, 8, 8+31, "Погиб в городе");}
+		else {put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже",
+		player->depth);}
+		// put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
+		put_str_centred(line++, 8, 8+31, "от %s.", player->died_from);
 	}
 
 	line++;
 
-	put_str_centred(line, 8, 8+31, "on %-.24s", ctime(&death_time));
+	// put_str_centred(line, 8, 8+31, "on %-.24s", ctime(&death_time));
+	put_str_centred(line, 8, 8+31, "%-.24s", ctime(&death_time));
 }
 
 
@@ -149,7 +161,8 @@ static void display_winner(void)
 		file_close(fp);
 	}
 
-	put_str_centred(i, 0, wid, "All Hail the Mighty Champion!");
+	// put_str_centred(i, 0, wid, "All Hail the Mighty Champion!");
+	put_str_centred(i, 0, wid, "Слава Могучему Чемпиону!");
 
 	event_signal(EVENT_INPUT_FLUSH);
 	pause_line(Term);
@@ -178,9 +191,11 @@ static void death_file(const char *title, int row)
 
 		/* Check result */
 		if (success)
-			msg("Character dump successful.");
+			// msg("Character dump successful.");
+			msg("Дамп персонажа выполнен успешно.");
 		else
-			msg("Character dump failed!");
+			// msg("Character dump failed!");
+			msg("Дамп персонажа завершился неудачей!");
 
 		/* Flush messages */
 		event_signal(EVENT_MESSAGE_FLUSH);
@@ -200,7 +215,8 @@ static void death_info(const char *title, int row)
 	display_player(0);
 
 	/* Prompt for inventory */
-	prt("Hit any key to see more information: ", 0, 0);
+	// prt("Hit any key to see more information: ", 0, 0);
+	prt("Нажмите любую клавишу для дополнительной информации: ", 0, 0);
 
 	/* Allow abort at this point */
 	(void)anykey();
@@ -212,7 +228,8 @@ static void death_info(const char *title, int row)
 	if (player->upkeep->equip_cnt) {
 		Term_clear();
 		show_equip(OLIST_WEIGHT | OLIST_SEMPTY | OLIST_DEATH, NULL);
-		prt("You are using: -more-", 0, 0);
+		// prt("You are using: -more-", 0, 0);
+		prt("Вы использовали:   -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -220,7 +237,8 @@ static void death_info(const char *title, int row)
 	if (player->upkeep->inven_cnt) {
 		Term_clear();
 		show_inven(OLIST_WEIGHT | OLIST_DEATH, NULL);
-		prt("You are carrying: -more-", 0, 0);
+		// prt("You are carrying: -more-", 0, 0);
+		prt("У вас с собой было: -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -228,7 +246,8 @@ static void death_info(const char *title, int row)
 	if (player->upkeep->quiver_cnt) {
 		Term_clear();
 		show_quiver(OLIST_WEIGHT | OLIST_DEATH, NULL);
-		prt("Your quiver holds: -more-", 0, 0);
+		// prt("Your quiver holds: -more-", 0, 0);
+		prt("В вашем колчане было: -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -267,7 +286,8 @@ static void death_info(const char *title, int row)
 			}
 
 			/* Caption */
-			prt(format("Your home contains (page %d): -more-", page), 0, 0);
+			// prt(format("Your home contains (page %d): -more-", page), 0, 0);
+			prt(format("В вашем доме было (стр. %d): -ещё-", page), 0, 0);
 
 			/* Wait for it */
 			(void)anykey();
@@ -306,8 +326,10 @@ static void death_examine(const char *title, int row)
 	const char *q, *s;
 
 	/* Get an item */
-	q = "Examine which item? ";
-	s = "You have nothing to examine.";
+	// q = "Examine which item? ";
+	q = "Какой предмет изучить? ";
+	// s = "You have nothing to examine.";
+	s = "Вам нечего изучать.";
 
 	while (get_item(&obj, q, s, 0, NULL, (USE_INVEN | USE_QUIVER | USE_EQUIP | IS_HARMLESS))) {
 		char header[120];
@@ -346,7 +368,8 @@ static void death_spoilers(const char *title, int row)
  */
 static void death_new_game(const char *title, int row)
 {
-    play_again = get_check("Start a new game? ");
+    // play_again = get_check("Start a new game? ");
+    play_again = get_check("Начать новую игру? ");
 }
 
 /**
@@ -355,15 +378,24 @@ static void death_new_game(const char *title, int row)
  */
 static menu_action death_actions[] =
 {
-	{ 0, 'i', "Information",   death_info      },
-	{ 0, 'm', "Messages",      death_messages  },
-	{ 0, 'f', "File dump",     death_file      },
-	{ 0, 'v', "View scores",   death_scores    },
-	{ 0, 'x', "Examine items", death_examine   },
-	{ 0, 'h', "History",       death_history   },
-	{ 0, 's', "Spoilers",      death_spoilers  },
-	{ 0, 'n', "New Game",      death_new_game  },
-	{ 0, 'q', "Quit",          NULL            },
+	// { 0, 'i', "Information",   death_info      },
+	// { 0, 'm', "Messages",      death_messages  },
+	// { 0, 'f', "File dump",     death_file      },
+	// { 0, 'v', "View scores",   death_scores    },
+	// { 0, 'x', "Examine items", death_examine   },
+	// { 0, 'h', "History",       death_history   },
+	// { 0, 's', "Spoilers",      death_spoilers  },
+	// { 0, 'n', "New Game",      death_new_game  },
+	// { 0, 'q', "Quit",          NULL            },
+	{ 0, 'i', "Информация",   death_info      },
+	{ 0, 'm', "Сообщения",      death_messages  },
+	{ 0, 'f', "Дамп в файл",     death_file      },
+	{ 0, 'v', "Смотреть счёт",   death_scores    },
+	{ 0, 'x', "Проверить предметы", death_examine   },
+	{ 0, 'h', "История",       death_history   },
+	{ 0, 's', "Спойлеры",      death_spoilers  },
+	{ 0, 'n', "Новая игра",      death_new_game  },
+	{ 0, 'q', "Выход",          NULL            },
 };
 
 
@@ -408,7 +440,8 @@ void death_screen(void)
 		}
 		else if (e.type == EVT_SELECT)
 		{
-			done = get_check("Do you want to quit? ");
+			// done = get_check("Do you want to quit? ");
+			done = get_check("Вы хотите выйти из игры? ");
 		}
 	}
 
