@@ -38,376 +38,376 @@
 
 
 chart:1:2:10
-phrase:You are the illegitimate and unacknowledged child 
+phrase:Вы внебрачный и непризнанный ребенок 
 chart:1:2:20
-phrase:You are the illegitimate but acknowledged child 
+phrase:Вы внебрачный, но признанный ребенок 
 chart:1:2:95
-phrase:You are one of several children 
+phrase:Вы один из нескольких детей 
 chart:1:2:100
-phrase:You are the first child 
+phrase:Вы первый ребенок 
 
 chart:2:3:40
-phrase:of a Serf.  
+phrase:Крепостного.  
 chart:2:3:65
-phrase:of a Yeoman.  
+phrase:Крестьянина.  
 chart:2:3:80
-phrase:of a Townsman.  
+phrase:Горожанина.  
 chart:2:3:90
-phrase:of a Guildsman.  
+phrase:Члена Гильдии.  
 chart:2:3:96
-phrase:of a Landed Knight.  
+phrase:Земледельца.  
 chart:2:3:99
-phrase:of a Titled Noble.  
+phrase:Знатного Дворянина.  
 chart:2:3:100
-phrase:of a Royal Blood Line.  
+phrase:из Королевского Рода.  
 
 chart:3:50:20
-phrase:You are the black sheep of the family.  
+phrase:Вы чёрная овца в семье.  
 chart:3:50:80
-phrase:You are a credit to the family.  
+phrase:Вы служите честью своей семье.  
 chart:3:50:100
-phrase:You are a well liked child.  
+phrase:Вы очень желанный ребенок.  
 
 chart:4:1:15
-phrase:Your mother was of the Avari. 
+phrase:Ваша мать была из Авари.  
 chart:4:1:30
-phrase:Your father was of the Avari. 
+phrase:Ваш отец был из Авари.  
 chart:4:1:50
-phrase:Your mother was of the Nandor. 
+phrase:Ваша мать была из Нандора. 
 chart:4:1:70
-phrase:Your father was of the Nandor.  
+phrase:Ваш отец был из Нандора.  
 chart:4:1:85
-phrase:Your mother was of the Sindar.  
+phrase:Ваша мать была из Синдара.  
 chart:4:1:95
-phrase:Your father was of the Sindar.  
+phrase:Ваш отец был из Синдара.  
 chart:4:1:98
-phrase:Your mother was of the Noldor.  
+phrase:Ваша мать была из Нолдора.  
 chart:4:1:100
-phrase:Your father was of the Noldor.  
+phrase:Ваш отец был из Нолдора.  
 
 chart:5:6:60
-phrase:You are one of several children 
+phrase:Вы один из нескольких детей 
 chart:5:6:100
-phrase:You are the only child 
+phrase:Вы единственный ребенок 
 
 chart:6:9:40
-phrase:of an Avarin 
+phrase:Аварина 
 chart:6:9:70
-phrase:of a Nandorin 
+phrase:Нандорина 
 chart:6:9:100
-phrase:of a Sindarin 
+phrase:Синдарина 
 
 chart:7:8:60
-phrase:You are one of several children 
+phrase:Вы один из нескольких детей 
 chart:7:8:100
-phrase:You are the only child 
+phrase:Вы единственный ребенок 
 
 chart:8:9:75
-phrase:of a Telerin 
+phrase:Тэлерина 
 chart:8:9:95
-phrase:of a Noldorin 
+phrase:Нолдора 
 chart:8:9:100
-phrase:of a Vanyarin 
+phrase:Ваньяра 
 
 chart:9:54:40
-phrase:Ranger.  
+phrase:Рэйнджера.  
 chart:9:54:70
-phrase:Archer.  
+phrase:Лучника.  
 chart:9:54:87
-phrase:Warrior.  
+phrase:Воина.  
 chart:9:54:95
-phrase:Mage.  
+phrase:Мага.  
 chart:9:54:99
-phrase:Prince.  
+phrase:Принца.  
 chart:9:54:100
-phrase:King.  
+phrase:Короля.  
 
 chart:10:11:85
-phrase:You are one of several children of a Hobbit 
+phrase:Вы один из нескольких детей Хоббита 
 chart:10:11:100
-phrase:You are the only child of a Hobbit 
+phrase:Вы единственный ребенок Хоббита 
 
 chart:11:3:20
-phrase:Burglar.  
+phrase:Взломщика.  
 chart:11:3:30
-phrase:Miller.  
+phrase:Мельника.  
 chart:11:3:40
-phrase:Tavern Owner.  
+phrase:Владельца Таверны.  
 chart:11:3:50
-phrase:Archer.  
+phrase:Лучника.  
 chart:11:3:80
-phrase:Warrior.  
+phrase:Воина.  
 chart:11:3:95
-phrase:Shirriff.  
+phrase:Ширрифа.  
 chart:11:3:99
-phrase:Mayor.  
+phrase:Мэра.  
 chart:11:3:100
-phrase:Clan Elder.  
+phrase:Старейшины Клана.  
 
 chart:13:14:85
-phrase:You are one of several children of a Gnome 
+phrase:Вы один из нескольких детей Гнома 
 chart:13:14:100
-phrase:You are the only child of a Gnome 
+phrase:Вы единственный ребенок Гнома 
 
 chart:14:3:20
-phrase:Beggar.  
+phrase:Нищего.  
 chart:14:3:50
-phrase:Braggart.  
+phrase:Хвастуна.  
 chart:14:3:75
-phrase:Prankster.  
+phrase:Проказника.  
 chart:14:3:95
-phrase:Warrior.  
+phrase:Воина.  
 chart:14:3:100
-phrase:Mage.  
+phrase:Мага.  
 
 chart:16:17:25
-phrase:You are one of two children of a Dwarven 
+phrase:Вы один из двух детей Дварфа 
 chart:16:17:100
-phrase:You are the only child of a Dwarven 
+phrase:Вы единственный ребенок Дварфа 
 
 chart:17:18:10
-phrase:Thief.  
+phrase:Вора.  
 chart:17:18:25
-phrase:Prison Guard.  
+phrase:Тюремного Надзирателя.  
 chart:17:18:75
-phrase:Miner.  
+phrase:Шахтёра.  
 chart:17:18:90
-phrase:Warrior.  
+phrase:Воина.  
 chart:17:18:99
-phrase:Priest.  
+phrase:Священника.  
 chart:17:18:100
-phrase:King.  
+phrase:Короля.  
 
 chart:18:57:15
-phrase:You are the black sheep of the family.  
+phrase:Вы чёрная овца в семье.  
 chart:18:57:85
-phrase:You are a credit to the family.  
+phrase:Вы служите честью своей семье.  
 chart:18:57:100
-phrase:You are a well liked child.  
+phrase:Вы очень желанный ребенок.  
 
 chart:19:20:25
-phrase:Your mother was an Orc, 
+phrase:Ваша мать была Орком, 
 chart:19:20:100
-phrase:Your father was an Orc, 
+phrase:Ваш отец был Орком, 
 
 chart:20:2:20
-phrase:and it is acknowledged. You are the adopted child 
+phrase:и это признаётся. Вы усыновлённый ребенок 
 chart:20:2:100
-phrase:but it is unacknowledged. You are the adopted child 
+phrase:но это не признаётся. Вы усыновлённый ребенок 
 
 chart:21:22:30
-phrase:Your mother was a Stone-Troll 
+phrase:Ваша мать была из Каменных-Троллей 
 chart:21:22:60
-phrase:Your father was a Stone-Troll 
+phrase:Ваш отец был из Каменных-Троллей 
 chart:21:22:75
-phrase:Your mother was a Cave-Troll 
+phrase:Ваша мать была из Пещерных-Троллей 
 chart:21:22:90
-phrase:Your father was a Cave-Troll 
+phrase:Ваш отец был Пещерных-Троллей 
 chart:21:22:95
-phrase:Your mother was a Water-Troll 
+phrase:Ваша мать была из Водных-Троллей 
 chart:21:22:100
-phrase:Your father was a Water-Troll 
+phrase:Ваш отец был Водных-Троллей 
 
 chart:22:62:5
-phrase:Cook.  
+phrase:Поваром.  
 chart:22:62:95
-phrase:Warrior.  
+phrase:Воином.  
 chart:22:62:99
-phrase:Shaman.  
+phrase:Шаманом.  
 chart:22:62:100
-phrase:Clan Chief.  
+phrase:Вождём Клана.  
 
 chart:23:24:20
-phrase:You are the runt of 
+phrase:Вы самый маленький из 
 chart:23:24:80
-phrase:You come from 
+phrase:Вы один из 
 chart:23:24:100
-phrase:You are the largest of 
+phrase:Вы самый большой из 
 
 chart:24:25:15
-phrase:a litter of 3 pups. 
+phrase:3-х щенков в помете. 
 chart:24:25:40
-phrase:a litter of 4 pups. 
+phrase:4-х щенков в помете. 
 chart:24:25:70
-phrase:a litter of 5 pups. 
+phrase:5-ти щенков в помете. 
 chart:24:25:85
-phrase:a litter of 6 pups. 
+phrase:6-ти щенков в помете. 
 chart:24:25:95
-phrase:a litter of 7 pups. 
+phrase:7-ми щенков в помете. 
 chart:24:25:100
-phrase:a litter of 8 pups. 
+phrase:8-ми щенков в помете. 
 
 chart:25:26:25
-phrase:Your father was a fungus farmer, 
+phrase:Ваш отец занимался выращиванием грибов, 
 chart:25:26:50
-phrase:Your father was a hunter, 
+phrase:Ваш отец был охотником, 
 chart:25:26:75
-phrase:Your father was a warrior, 
+phrase:Ваш отец был воином, 
 chart:25:26:95
-phrase:Your father was a shaman, 
+phrase:Ваш отец был шаманом, 
 chart:25:26:100
-phrase:Your father was the tribal chief, 
+phrase:Ваш отец был вождем племени, 
 
 chart:26:67:20
-phrase:and your mother was a prisoner of war. 
+phrase:а ваша мать была военнопленной. 
 chart:26:67:95
-phrase:and your mother was a cook. 
+phrase:а ваша мать была поваром. 
 chart:26:67:100
-phrase:and your mother was one of the Chief's harem. 
+phrase:а ваша мать была в гареме Вождя. 
 
 chart:50:51:20
-phrase:You have dark brown eyes, 
+phrase:У вас темно-карие глаза, 
 chart:50:51:60
-phrase:You have brown eyes, 
+phrase:У вас карие глаза, 
 chart:50:51:70
-phrase:You have hazel eyes, 
+phrase:У вас зелёно-карие глаза, 
 chart:50:51:80
-phrase:You have green eyes, 
+phrase:У вас зелёные глаза, 
 chart:50:51:90
-phrase:You have blue eyes, 
+phrase:У вас голубые глаза, 
 chart:50:51:100
-phrase:You have blue-gray eyes, 
+phrase:У вас голубовато-серые глаза, 
 
 chart:51:52:70
-phrase:straight 
+phrase:прямые 
 chart:51:52:90
-phrase:wavy 
+phrase:волнистые 
 chart:51:52:100
-phrase:curly 
+phrase:кудрявые 
 
 chart:52:53:30
-phrase:black hair, 
+phrase:черные волосы, 
 chart:52:53:70
-phrase:brown hair, 
+phrase:коричневые волосы, 
 chart:52:53:80
-phrase:auburn hair, 
+phrase:русые волосы, 
 chart:52:53:90
-phrase:red hair, 
+phrase:рыжие волосы, 
 chart:52:53:100
-phrase:blond hair, 
+phrase:светлые волосы, 
 
 chart:53:0:10
-phrase:and a very dark complexion.
+phrase:и очень тёмный цвет кожи.
 chart:53:0:30
-phrase:and a dark complexion.
+phrase:и тёмный цвет кожи.
 chart:53:0:80
-phrase:and an average complexion.
+phrase:и средний цвет кожи.
 chart:53:0:90
-phrase:and a fair complexion.
+phrase:и светлый цвет кожи.
 chart:53:0:100
-phrase:and a very fair complexion.
+phrase:и очень светлый цвет кожи.
 
 chart:54:55:85
-phrase:You have light grey eyes, 
+phrase:У вас светло-серые глаза, 
 chart:54:55:95
-phrase:You have light blue eyes, 
+phrase:У вас светло-голубые глаза, 
 chart:54:55:100
-phrase:You have light green eyes, 
+phrase:У вас светло-зелёные глаза, 
 
 chart:55:56:75
-phrase:straight 
+phrase:прямые 
 chart:55:56:100
-phrase:wavy 
+phrase:волнистые 
 
 chart:56:0:75
-phrase:black hair, and a fair complexion.
+phrase:чёрные волосы и светлый цвет кожи.
 chart:56:0:85
-phrase:brown hair, and a fair complexion.
+phrase:коричневые волосы и светлый цвет кожи.
 chart:56:0:95
-phrase:blond hair, and a fair complexion.
+phrase:светлые волосы и светлый цвет кожи.
 chart:56:0:100
-phrase:silver hair, and a fair complexion.
+phrase:серебристые волосы и светлый цвет кожи.
 
 chart:57:58:99
-phrase:You have dark brown eyes, 
+phrase:У вас темно-карие глаза, 
 chart:57:58:100
-phrase:You have glowing red eyes, 
+phrase:У вас светящиеся красные глаза, 
 
 chart:58:59:90
-phrase:straight 
+phrase:прямые 
 chart:58:59:100
-phrase:wavy 
+phrase:волнистые 
 
 chart:59:60:75
-phrase:black hair, 
+phrase:черные волосы, 
 chart:59:60:100
-phrase:brown hair, 
+phrase:коричневые волосы, 
 
 chart:60:61:25
-phrase:a one foot beard, 
+phrase:борода длиной меньше полуметра, 
 chart:60:61:60
-phrase:a two foot beard, 
+phrase:борода длиной в пол метра, 
 chart:60:61:90
-phrase:a three foot beard, 
+phrase:борода длиной почти метр, 
 chart:60:61:100
-phrase:a four foot beard, 
+phrase:борода длиной больше метра, 
 
 chart:61:0:100
-phrase:and a dark complexion.
+phrase:и тёмный цвет кожи.
 
 chart:62:63:60
-phrase:You have slime-green eyes, 
+phrase:У вас слизисто-зеленые глаза, 
 chart:62:63:85
-phrase:You have puke-yellow eyes, 
+phrase:У вас бледно-желтые глаза, 
 chart:62:63:99
-phrase:You have blue-bloodshot eyes, 
+phrase:У вас голубые налитые кровью глаза, 
 chart:62:63:100
-phrase:You have glowing red eyes, 
+phrase:У вас светящиеся красные глаза, 
 
 chart:63:64:33
-phrase:dirty 
+phrase:грязные 
 chart:63:64:66
-phrase:mangy 
+phrase:взъерошенные 
 chart:63:64:100
-phrase:oily 
+phrase:жирные 
 
 chart:64:65:33
-phrase:sea-weed green hair, 
+phrase:цвета морских водорослей волосы, 
 chart:64:65:66
-phrase:bright red hair, 
+phrase:ярко-рыжие волосы, 
 chart:64:65:100
-phrase:dark purple hair, 
+phrase:темно-фиолетовые волосы, 
 
 chart:65:66:25
-phrase:and green 
+phrase:и зелёная 
 chart:65:66:50
-phrase:and blue 
+phrase:и голубая 
 chart:65:66:75
-phrase:and white 
+phrase:и белёсая 
 chart:65:66:100
-phrase:and black 
+phrase:и чёрная 
 
 chart:66:0:33
-phrase:ulcerous skin.
+phrase:язвенная кожа.
 chart:66:0:66
-phrase:scabby skin.
+phrase:шершавая кожа.
 chart:66:0:100
-phrase:leprous skin.
+phrase:лишайная кожа.
 
 chart:67:68:10
-phrase:You have black eyes, 
+phrase:У вас чёрные глаза, 
 chart:67:68:40
-phrase:You have dark brown eyes, 
+phrase:У вас темно-карие глаза, 
 chart:67:68:80
-phrase:You have brown eyes, 
+phrase:У вас карие глаза, 
 chart:67:68:99
-phrase:You have light brown eyes, 
+phrase:У вас светло-карие глаза, 
 chart:67:68:100
-phrase:You have glowing red eyes, 
+phrase:У вас светящиеся красные глаза, 
 
 chart:68:69:40
-phrase:a dark brown hide, 
+phrase:темно-коричневая шкура, 
 chart:68:69:60
-phrase:a reddish-brown hide, 
+phrase:красновато-коричневая шкура, 
 chart:68:69:95
-phrase:an olive green hide, 
+phrase:оливково-зелёная шкура, 
 chart:68:69:100
-phrase:a deep blue hide, 
+phrase:тёмно-синяя шкура, 
 
 chart:69:0:10
-phrase:and large, flat teeth.
+phrase:и крупные ровные зубы.
 chart:69:0:90
-phrase:and small, sharp teeth.
+phrase:и маленькие острые зубы.
 chart:69:0:100
-phrase:and large, sharp teeth.
+phrase:и большими острыми зубами.
 
