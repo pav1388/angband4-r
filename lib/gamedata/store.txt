@@ -19,10 +19,10 @@
 
 # General store
 store:STORE_GENERAL
-owner:5000:Bilbo the Friendly (Hobbit)
-owner:10000:Rincewind the Chicken (Human)
-owner:20000:Snafu the Midget (Gnome)
-owner:30000:Lyar-el the Comely (Elf)
+owner:5000:Бильбо Дружелюбный (Хоббит)
+owner:10000:Ринсвинд Курица (Человек)
+owner:20000:Снафу Карлик (Гном)
+owner:30000:Лиар-Эль Прелестный (Эльф)
 slots:0:4
 turnover:2
 always:cloak:Cloak
@@ -52,10 +52,10 @@ buy:arrow
 
 # Armoury
 store:STORE_ARMOR
-owner:5000:Kon-Dar the Ugly (Half-Orc)
-owner:10000:Darg-Low the Grim (Human)
-owner:25000:Decado the Handsome (Dunadan)
-owner:30000:Mauglin the Grumpy (Dwarf)
+owner:5000:Кон-Дар Уродливый (Полу-Орк)
+owner:10000:Дарг-Лоу Мрачный (Человек)
+owner:25000:Декадо Красавчик (Дунадан)
+owner:30000:Мауглин Ворчун (Дварф)
 slots:6:18
 turnover:9
 normal:boots:Pair of Leather Sandals
@@ -88,10 +88,10 @@ buy:dragon armor
 
 # Weaponsmith
 store:STORE_WEAPON
-owner:5000:Ithyl-Mak the Beastly (Half-Troll)
-owner:10000:Arndal Beast-Slayer (Half-Elf)
-owner:25000:Tarl Beast-Master (Hobbit)
-owner:30000:Oglign Dragon-Slayer (Dwarf)
+owner:5000:Итиль-Мак Звериный (Полу-Тролль)
+owner:10000:Арндал Зверолов (Полу-Эльф)
+owner:25000:Тарл Повелитель-зверей (Хоббит)
+owner:30000:Оглигн Убийца-драконов (Дварф)
 slots:3:14
 turnover:9
 normal:shot:Iron Shot
@@ -134,10 +134,10 @@ buy:hafted
 
 # Bookseller
 store:STORE_BOOK
-owner:15000:Ludwig the Humble (Human)
-owner:20000:Gunnar the Paladin (Human)
-owner:25000:Delilah the Pure (Elf)
-owner:30000:Bosk the Wise (Dwarf)
+owner:15000:Людвиг Скромный (Человек)
+owner:20000:Гуннар Паладин (Человек)
+owner:25000:Делайла Чистая (Эльф)
+owner:30000:Боск Мудрый (Дварф)
 slots:0:2
 turnover:0
 always:prayer book
@@ -151,10 +151,10 @@ buy:shadow book
 
 # Alchemist
 store:STORE_ALCHEMY
-owner:10000:Mauser the Chemist (Half-Elf)
-owner:10000:Wizzle the Chaotic (Hobbit)
-owner:15000:Ga-nat the Greedy (Gnome)
-owner:15000:Vella the Slender (Human)
+owner:10000:Маузер Химик (Полу-Эльф)
+owner:10000:Виззл Хаотичный (Хоббит)
+owner:15000:Га-Нат Жадный (Гном)
+owner:15000:Велла Стройная (Человек)
 slots:6:10
 turnover:9
 always:scroll:Word of Recall
@@ -181,10 +181,10 @@ buy:potion
 
 # Magic-user's
 store:STORE_MAGIC
-owner:15000:Ariel the Sorceress (Half-Elf)
-owner:20000:Buggerby the Great (Gnome)
-owner:25000:Inglorian the Mage (Human)
-owner:30000:Luthien Starshine (High-Elf)
+owner:15000:Ариэль Колдунья (Полу-Эльф)
+owner:20000:Баггерби Великий (Гном)
+owner:25000:Инглориан Маг (Человек)
+owner:30000:Лютиэн Звездная (Высший Эльф)
 slots:4:14
 turnover:9
 normal:ring:Searching
@@ -213,10 +213,10 @@ buy:rod
 
 # Black Market - no stock given but we still need slot/turnover info
 store:STORE_BLACK
-owner:15000:Lo-Hak the Awful (Half-Troll)
-owner:20000:Histor the Goblin (Kobold)
-owner:25000:Durwin the Shifty (Half-Orc)
-owner:30000:Drago the Fair (Elf)
+owner:15000:Ло-Хак Ужасный (Полу-Тролль)
+owner:20000:Истор Гоблин (Кобольд)
+owner:25000:Дурвин Неповоротливый (Полу-Орк)
+owner:30000:Драго Справедливый (Эльф)
 slots:6:18
 turnover:9
 
