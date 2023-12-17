@@ -27,8 +27,10 @@
  */
 static void print_history_header(void)
 {
-	c_put_str(COLOUR_WHITE, "[Player history]", 0, 0);
-	c_put_str(COLOUR_L_BLUE, "      Turn   Depth  Note", 1, 0);
+	// c_put_str(COLOUR_WHITE, "[Player history]", 0, 0);
+	c_put_str(COLOUR_WHITE, "[История игрока]", 0, 0);
+	// c_put_str(COLOUR_L_BLUE, "      Turn   Depth  Note", 1, 0);
+	c_put_str(COLOUR_L_BLUE, "      Ходы   Глуб.  Примечание", 1, 0);
 }
 
 
@@ -76,7 +78,8 @@ void history_display(void)
 			prt(buf, row + 2, 0);
 			row++;
 		}
-		prt("[Arrow keys scroll, p/PgUp for previous page, n/PgDn for next page, ESC to exit.]", hgt - 1, 0);
+		// prt("[Arrow keys scroll, p/PgUp for previous page, n/PgDn for next page, ESC to exit.]", hgt - 1, 0);
+		prt("[<напр> прокрутка, 'p' пред.страница, 'n' след.страница, ESC - выход]", hgt - 1, 0);
 
 		ch = inkey();
 
