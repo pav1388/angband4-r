@@ -19,109 +19,109 @@
 # messages being displayed when a monster is near death.
 
 type:1
-message:shrug[s] off the attack.
-message:grunt[s] with pain.
-message:cr[ies|y] out in pain.
-message:scream[s] in pain.
-message:scream[s] in agony.
-message:writhe[s] in agony.
-message:cr[ies|y] out feebly.
+message:отбива[ется|ются] от атаки.
+message:хрип[ит|ят] от боли.
+message:плач[ет|ут] от боли.
+message:крич[ит|ат] от боли.
+message:крич[ит|ат] в агонии.
+message:корч[ится|атся] в агонии.
+message:жалобно плач[ет|ут].
 
 type:2
-message:barely notice[s].
-message:flinch[es].
-message:squelch[es].
-message:quiver[s] in pain.
-message:writhe[s] about.
-message:writhe[s] in agony.
-message:jerk[s] limply.
+message:едва замеча[ет|ют].
+message:дрож[ит|ат].
+message:вздрагива[ет|ют].
+message:вздрагива[ет|ют] от боли.
+message:корч[ится|атся] от боли.
+message:корч[ится|атся] в агонии.
+message:подёргива[ется|ются].
 
 type:3
-message:shrug[s] off the attack.
-message:snarl[s] with pain.
-message:yelp[s] in pain.
-message:howl[s] in pain.
-message:howl[s] in agony.
-message:writhe[s] in agony.
-message:yelp[s] feebly.
+message:отбива[ется|ются] от атаки.
+message:рыч[ит|ат] от боли.
+message:воп[ит|ят] от боли.
+message:завыва[ет|ют] от боли.
+message:во[ет|ют] в агонии.
+message:корч[ится|атся] в агонии.
+message:истошно рев[ёт|ут].
 
 type:4
-message:ignore[s] the attack.
-message:grunt[s] with pain.
-message:squeal[s] in pain.
-message:shriek[s] in pain.
-message:shriek[s] in agony.
-message:writhe[s] in agony.
-message:cr[ies|y] out feebly.
+message:игнориру[ет|ют] атаку.
+message:кряхт[ит|ят] от боли.
+message:визж[ит|ат] от боли.
+message:крич[ит|ат] от боли.
+message:крич[ит|ат] в агонии.
+message:корч[ится|атся] в агонии.
+message:слабо крич[ит|ат].
 
 type:5
-message:barely notice[s].
-message:hiss[es].
-message:rear[s] up in anger.
-message:hiss[es] furiously.
-message:writhe[s] about.
-message:writhe[s] in agony.
-message:jerk[s] limply.
+message:едва замеча[ет|ют].
+message:шип[ит|ят].
+message:задыха[ется|ются] от гнева.
+message:яростно шип[ит|ят].
+message:корч[ится|атся].
+message:корч[ится|атся] в агонии.
+message:подёргива[ется|ются].
 
 type:6
-message:shrug[s] off the attack.
-message:snarl[s].
-message:growl[s] angrily.
-message:hiss[es] in pain.
-message:mewl[s] in pain.
-message:hiss[es] in agony.
-message:mewl[s] pitifully.
+message:отбива[ется|ются] от атаки.
+message:рыч[ит|ат].
+message:злобно рыч[ит|ат].
+message:шип[ит|ят] от боли.
+message:кряхт[ит|ят] от боли.
+message:шип[ит|ят] в агонии.
+message:жалобно кряхт[ит|ят].
 
 type:7
-message:ignore[s] the attack.
-message:drone[s] angrily.
-message:scuttle[s] about.
-message:twitch[es] in pain.
-message:jerk[s] in pain.
-message:jerk[s] in agony.
-message:jerk[s] feebly.
+message:игнориру[ет|ют] атаку.
+message:сердито завыва[ет|ют].
+message:нос[ится|ятся] вокруг.
+message:подёргива[ется|ются] от боли.
+message:дёрга[ется|ются] от боли.
+message:дёрга[ется|ются] в агонии.
+message:слабо подёргива[ется|ются].
 
 type:8
-message:shrug[s] off the attack.
-message:flap[s] angrily.
-message:jeer[s] in pain.
-message:squawk[s] with pain.
-message:twitter[s] in agony.
-message:flutter[s] about.
-message:chirp[s] feebly.
+message:отбива[ется|ются] от атаки.
+message:сердито отмахива[ется|ются].
+message:вскрикива[ет|ют] от боли.
+message:крич[ит|ат] от боли.
+message:щебеч[ет|ат] в агонии.
+message:трепыха[ется|ются].
+message:слабо щебеч[ет|ат].
 
 type:9
-message:ignore[s] the attack.
-message:jerk[s].
-message:rattle[s].
-message:clatter[s].
-message:shake[s].
-message:stagger[s].
-message:crumple[s].
+message:игнориру[ет|ют] атаку.
+message:дерга[ется|ются].
+message:грем[ит|ят].
+message:грохоч[ет|ат].
+message:тряс[ётся|утся].
+message:шатат[ется|ются].
+message:сокруша[ется|ются].
 
 type:10
-message:ignore[s] the attack.
-message:grunt[s].
-message:jerk[s].
-message:moan[s].
-message:groan[s].
-message:hesitate[s].
-message:stagger[s].
+message:игнориру[ет|ют] атаку.
+message:ворч[ит|ат].
+message:дерга[ется|ются].
+message:стон[ет|ут].
+message:вздыха[ет|ют].
+message:колебл[ется|ются].
+message:шата[ется|ются].
 
 type:11
-message:ignore[s] the attack.
-message:spin[s] fiercely.
-message:swirl[s] about.
-message:twist[s] around.
-message:spin[s] slowly.
-message:swirl[s] weakly.
-message:twist[s] limply.
+message:игнориру[ет|ют] атаку.
+message:яростно круж[ится|атся].
+message:верт[ится|ятся].
+message:круж[ится|атся] вокруг.
+message:медленно круж[ится|атся].
+message:верт[ится|ятся] слабо.
+message:вяло поворачива[ется|ются].
 
 type:12
-message:laugh[s] off the attack.
-message:sneer[s].
-message:scowl[s].
-message:bellow[s] in rage.
-message:scream[s] in fury.
-message:grunt[s].
-message:wince[s].
+message:сме[ётся|ются] над атакой.
+message:усмеха[ется|ются].
+message:хмур[ится|ятся].
+message:рев[ёт|ут] в ярости.
+message:крич[ит|ат] в ярости.
+message:ворч[ит|ат].
+message:вздрагива[ет|ют].
