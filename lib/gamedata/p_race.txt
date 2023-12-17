@@ -64,7 +64,8 @@
 # innately.
 
 
-name:Human
+#name:Human
+name:Человек
 stats:0:0:0:0:0
 skill-disarm-phys:0
 skill-disarm-magic:0
@@ -84,7 +85,8 @@ age:14:6
 height:69:10
 weight:165:35
 
-name:Half-Elf
+#name:Half-Elf
+name:Полу-Эльф
 stats:0:1:-1:1:-1
 skill-disarm-phys:2
 skill-disarm-magic:2
@@ -105,7 +107,8 @@ height:71:8
 weight:115:25
 obj-flags:SUST_DEX
 
-name:Elf
+#name:Elf
+name:Эльф
 stats:-1:2:-1:1:-1
 skill-disarm-phys:5
 skill-disarm-magic:5
@@ -127,7 +130,8 @@ weight:90:10
 obj-flags:SUST_DEX
 values:RES_LIGHT[1]
 
-name:Hobbit
+#name:Hobbit
+name:Хоббит
 stats:-2:2:1:3:2
 skill-disarm-phys:15
 skill-disarm-magic:15
@@ -149,7 +153,8 @@ weight:55:5
 obj-flags:HOLD_LIFE
 player-flags:KNOW_MUSHROOM
 
-name:Gnome
+#name:Gnome
+name:Гном
 stats:-1:2:0:2:1
 skill-disarm-phys:10
 skill-disarm-magic:10
@@ -171,7 +176,8 @@ weight:80:5
 obj-flags:FREE_ACT
 player-flags:KNOW_ZAPPER
 
-name:Dwarf
+#name:Dwarf
+name:Дварф
 stats:2:-3:2:-2:2
 skill-disarm-phys:2
 skill-disarm-magic:2
@@ -193,7 +199,8 @@ weight:135:20
 obj-flags:PROT_BLIND
 player-flags:SEE_ORE
 
-name:Half-Orc
+#name:Half-Orc
+name:Полу-Орк
 stats:2:-1:0:0:1
 skill-disarm-phys:-3
 skill-disarm-magic:-3
@@ -214,7 +221,8 @@ height:64:2
 weight:135:15
 values:RES_DARK[1]
 
-name:Half-Troll
+#name:Half-Troll
+name:Полу-Тролль
 stats:4:-4:-2:-4:3
 skill-disarm-phys:-5
 skill-disarm-magic:-5
@@ -235,7 +243,8 @@ height:90:16
 weight:240:60
 obj-flags:SUST_STR | REGEN
 
-name:Dunadan
+#name:Dunadan
+name:Дунадан
 stats:1:2:2:2:3
 skill-disarm-phys:4
 skill-disarm-magic:4
@@ -256,7 +265,8 @@ height:80:6
 weight:190:20
 obj-flags:SUST_CON
 
-name:High-Elf
+#name:High-Elf
+name:Высш-Эльф
 stats:1:3:-1:3:1
 skill-disarm-phys:4
 skill-disarm-magic:4
@@ -278,7 +288,8 @@ weight:190:20
 obj-flags:SEE_INVIS
 values:RES_LIGHT[1]
 
-name:Kobold
+#name:Kobold
+name:Кобольд
 stats:-1:-1:0:2:2
 skill-disarm-phys:10
 skill-disarm-magic:10
