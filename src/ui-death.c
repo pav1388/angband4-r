@@ -229,7 +229,7 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_equip(OLIST_WEIGHT | OLIST_SEMPTY | OLIST_DEATH, NULL);
 		// prt("You are using: -more-", 0, 0);
-		prt("Вы использовали:   -ещё-", 0, 0);
+		prt("Вы использовали: -ещё-", 0, 0);
 		(void)anykey();
 	}
 

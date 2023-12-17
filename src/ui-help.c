@@ -138,7 +138,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 
 	/* Look in "help" */
 	if (!fff) {
-		strnfmt(caption, sizeof(caption), "Help file '%s'", name);
+		//strnfmt(caption, sizeof(caption), "Help file '%s'", name);
+		strnfmt(caption, sizeof(caption), "Файл справки '%s'", name);
 
 		path_build(path, sizeof(path), ANGBAND_DIR_HELP, name);
 		fff = file_open(path, MODE_READ, FTYPE_TEXT);
@@ -147,7 +148,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 	/* Oops */
 	if (!fff) {
 		/* Message */
-		msg("Cannot open '%s'.", name);
+		//msg("Cannot open '%s'.", name);
+		msg("Не удалось открыть '%s'.", name);
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Oops */
@@ -329,20 +331,24 @@ bool show_file(const char *name, const char *what, int line, int mode)
 
 
 		/* Show a general "title" */
-		prt(format("[%s, %s, Line %d-%d/%d]", buildid,
+		//prt(format("[%s, %s, Line %d-%d/%d]", buildid,
+		prt(format("[%s, %s, Строка %d-%d/%d]", buildid,
 		           caption, line, line + hgt - 4, size), 0, 0);
 
 
 		/* Prompt */
 		if (menu) {
 			/* Menu screen */
-			prt("[Press a Letter, or ESC to exit.]", hgt - 1, 0);
+			//prt("[Press a Letter, or ESC to exit.]", hgt - 1, 0);
+			prt("[Нажмите Букву или ESC для выхода.]", hgt - 1, 0);
 		} else if (size <= hgt - 4) {
 			/* Small files */
-			prt("[Press ESC to exit.]", hgt - 1, 0);
+			//prt("[Press ESC to exit.]", hgt - 1, 0);
+			prt("[Нажмите ESC для выхода.]", hgt - 1, 0);
 		} else {
 			/* Large files */
-			prt("[Press Space to advance, or ESC to exit.]", hgt - 1, 0);
+			//prt("[Press Space to advance, or ESC to exit.]", hgt - 1, 0);
+			prt("[Нажмите Space для прокрутки или ESC для выхода.]", hgt - 1, 0);
 		}
 
 		/* Get a keypress */
@@ -358,7 +364,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 		/* Try showing */
 		if (ch.code == '&') {
 			/* Get "shower" */
-			prt("Show: ", hgt - 1, 0);
+			//prt("Show: ", hgt - 1, 0);
+			prt("Показать: ", hgt - 1, 0);
 			(void)askfor_aux(shower, sizeof(shower), NULL);
 
 			/* Make the "shower" lowercase */
@@ -368,7 +375,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 		/* Try finding */
 		if (ch.code == '/') {
 			/* Get "finder" */
-			prt("Find: ", hgt - 1, 0);
+			//prt("Find: ", hgt - 1, 0);
+			prt("Найти: ", hgt - 1, 0);
 			if (askfor_aux(finder, sizeof(finder), NULL)) {
 				/* Find it */
 				find = finder;
@@ -387,7 +395,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 		if (ch.code == '#') {
 			char tmp[80] = "0";
 
-			prt("Goto Line: ", hgt - 1, 0);
+			//prt("Goto Line: ", hgt - 1, 0);
+			prt("Перейти к строке: ", hgt - 1, 0);
 			if (askfor_aux(tmp, sizeof(tmp), NULL))
 				line = atoi(tmp);
 		}
@@ -402,7 +411,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 				my_strcpy(ftmp, "index.txt", sizeof(ftmp));
 			}
 
-			prt("Goto File: ", hgt - 1, 0);
+			//prt("Goto File: ", hgt - 1, 0);
+			prt("Перейти к файлу: ", hgt - 1, 0);
 			if (askfor_aux(ftmp, sizeof(ftmp), NULL)) {
 				if (!show_file(ftmp, NULL, 0, mode))
 					ch.code = ESCAPE;
