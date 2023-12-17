@@ -133,7 +133,8 @@ void do_cmd_xxx_options(void)
  */
 void do_cmd_unknown(void)
 {
-	prt("Type '?' for help.", 0, 0);
+	// prt("Type '?' for help.", 0, 0);
+	prt("Нажмите '?' для справки.", 0, 0);
 }
 
 
@@ -148,7 +149,8 @@ void do_cmd_version(void)
 	region local_area = { 0, 0, 0, 0 };
 
 	my_strcpy(header_buf,
-			  format("You are playing %s.  Type '?' for more info.", buildver),
+			  // format("You are playing %s.  Type '?' for more info.", buildver),
+			  format("Вы играете в версию %s.  Нажмите '?' для справки.", buildver),
 			  sizeof(header_buf));
 	textblock_append(tb, "\n");
 	textblock_append(tb, "%s", copyright);
@@ -166,16 +168,19 @@ void textui_cmd_retire(void)
 
 	/* Verify */
 	if (player->total_winner) {
-		if (!get_check("Do you want to retire? "))
+		// if (!get_check("Do you want to retire? "))
+		if (!get_check("Вы хотите уйти в отставку? "))
 			return;
 	} else {
 		struct keypress ch;
 
-		if (!get_check("Do you really want to retire?"))
+		// if (!get_check("Do you really want to retire?"))
+		if (!get_check("Вы действительно хотите уйти в отставку?"))
 			return;
 
 		/* Special Verification for retirement */
-		prt("Please verify RETIRING THIS CHARACTER by typing the '@' sign: ", 0, 0);
+		// prt("Please verify RETIRING THIS CHARACTER by typing the '@' sign: ", 0, 0);
+		prt("Пожалуйста подтвердите отставку напечатав знак '@': ", 0, 0);
 		event_signal(EVENT_INPUT_FLUSH);
 		ch = inkey();
 		prt("", 0, 0);
@@ -190,7 +195,8 @@ void textui_cmd_retire(void)
  */
 void textui_cmd_rest(void)
 {
-	const char *p = "Rest (0-9999, '!' for HP or SP, '*' for HP and SP, '&' as needed): ";
+	// const char *p = "Rest (0-9999, '!' for HP or SP, '*' for HP and SP, '&' as needed): ";
+	const char *p = "Отдых (0-9999, '!' ОЗ или ОМ, '*' ОЗ и ОМ, '&' достаточно): ";
 
 	char out_val[5] = "& ";
 
@@ -321,7 +327,8 @@ void html_screenshot(const char *path, int mode, term *other_term)
 	/* Oops */
 	if (!fp) {
 		mem_free(mbbuf);
-		plog_fmt("Cannot write the '%s' file!", path);
+		// plog_fmt("Cannot write the '%s' file!", path);
+		plog_fmt("Невозможно записать файл '%s'!", path);
 		return;
 	}
 
@@ -539,7 +546,8 @@ static void do_cmd_save_screen_html(int mode, term *other_term)
  */
 void do_cmd_save_screen(void)
 {
-	char ch = get_char("Dump as (H)TML or (F)orum text? ", "hf", 2, ' ');
+	// char ch = get_char("Dump as (H)TML or (F)orum text? ", "hf", 2, ' ');
+	char ch = get_char("Дамп в формате (H)TML или (F)orum текст? ", "hf", 2, ' ');
 	int mode = 0;
 	term *ml_term;
 
@@ -555,7 +563,8 @@ void do_cmd_save_screen(void)
 	}
 	ml_term = find_first_subwindow(PW_MONLIST);
 	if (ml_term) {
-		if (!get_check("Include monster list? ")) ml_term = NULL;
+		// if (!get_check("Include monster list? ")) ml_term = NULL;
+		if (!get_check("Включить список монстров? ")) ml_term = NULL;
 	}
 	do_cmd_save_screen_html(mode, ml_term);
 }
