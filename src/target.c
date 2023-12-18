@@ -67,31 +67,44 @@ void look_mon_desc(char *buf, size_t max, int m_idx)
 	/* Assess health */
 	if (mon->hp >= mon->maxhp) {
 		/* No damage */
-		my_strcpy(buf, (living ? "unhurt" : "undamaged"), max);
+		// my_strcpy(buf, (living ? "unhurt" : "undamaged"), max);
+		my_strcpy(buf, (living ? "невредим" : "не повреждён"), max);
 	} else {
 		/* Calculate a health "percentage" */
 		int perc = 100L * mon->hp / mon->maxhp;
 
 		if (perc >= 60)
-			my_strcpy(buf, (living ? "somewhat wounded" : "somewhat damaged"),
+			// my_strcpy(buf, (living ? "somewhat wounded" : "somewhat damaged"),
+			my_strcpy(buf, (living ? "немного ранен" : "несколько повреждён"),
 					  max);
 		else if (perc >= 25)
-			my_strcpy(buf, (living ? "wounded" : "damaged"), max);
+			// my_strcpy(buf, (living ? "wounded" : "damaged"), max);
+			my_strcpy(buf, (living ? "ранен" : "повреждён"), max);
 		else if (perc >= 10)
-			my_strcpy(buf, (living ? "badly wounded" : "badly damaged"), max);
+			// my_strcpy(buf, (living ? "badly wounded" : "badly damaged"), max);
+			my_strcpy(buf, (living ? "тяжело ранен" : "сильно повреждён"), max);
 		else
-			my_strcpy(buf, (living ? "almost dead" : "almost destroyed"), max);
+			// my_strcpy(buf, (living ? "almost dead" : "almost destroyed"), max);
+			my_strcpy(buf, (living ? "почти мёртв" : "почти уничтожен"), max);
 	}
 
 	/* Effect status */
-	if (mon->m_timed[MON_TMD_SLEEP]) my_strcat(buf, ", asleep", max);
-	if (mon->m_timed[MON_TMD_HOLD]) my_strcat(buf, ", held", max);
-	if (mon->m_timed[MON_TMD_DISEN]) my_strcat(buf, ", disenchanted", max);
-	if (mon->m_timed[MON_TMD_CONF]) my_strcat(buf, ", confused", max);
-	if (mon->m_timed[MON_TMD_FEAR]) my_strcat(buf, ", afraid", max);
-	if (mon->m_timed[MON_TMD_STUN]) my_strcat(buf, ", stunned", max);
-	if (mon->m_timed[MON_TMD_SLOW]) my_strcat(buf, ", slowed", max);
-	if (mon->m_timed[MON_TMD_FAST]) my_strcat(buf, ", hasted", max);
+	// if (mon->m_timed[MON_TMD_SLEEP]) my_strcat(buf, ", asleep", max);
+	if (mon->m_timed[MON_TMD_SLEEP]) my_strcat(buf, ", спит", max);
+	// if (mon->m_timed[MON_TMD_HOLD]) my_strcat(buf, ", held", max);
+	if (mon->m_timed[MON_TMD_HOLD]) my_strcat(buf, ", захвачен", max);
+	// if (mon->m_timed[MON_TMD_DISEN]) my_strcat(buf, ", disenchanted", max);
+	if (mon->m_timed[MON_TMD_DISEN]) my_strcat(buf, ", разочарован", max);
+	// if (mon->m_timed[MON_TMD_CONF]) my_strcat(buf, ", confused", max);
+	if (mon->m_timed[MON_TMD_CONF]) my_strcat(buf, ", растерян", max);
+	// if (mon->m_timed[MON_TMD_FEAR]) my_strcat(buf, ", afraid", max);
+	if (mon->m_timed[MON_TMD_FEAR]) my_strcat(buf, ", боится", max);
+	// if (mon->m_timed[MON_TMD_STUN]) my_strcat(buf, ", stunned", max);
+	if (mon->m_timed[MON_TMD_STUN]) my_strcat(buf, ", ошеломлен", max);
+	// if (mon->m_timed[MON_TMD_SLOW]) my_strcat(buf, ", slowed", max);
+	if (mon->m_timed[MON_TMD_SLOW]) my_strcat(buf, ", замедлен", max);
+	// if (mon->m_timed[MON_TMD_FAST]) my_strcat(buf, ", hasted", max);
+	if (mon->m_timed[MON_TMD_FAST]) my_strcat(buf, ", ускорен", max);
 }
 
 
@@ -376,14 +389,18 @@ void coords_desc(char *buf, int size, int y, int x)
 	int px = player->grid.x;
 
 	if (y > py)
-		north_or_south = "S";
+		// north_or_south = "S";
+		north_or_south = "Ю";
 	else
-		north_or_south = "N";
+		// north_or_south = "N";
+		north_or_south = "С";
 
 	if (x < px)
-		east_or_west = "W";
+		// east_or_west = "W";
+		east_or_west = "З";
 	else
-		east_or_west = "E";
+		// east_or_west = "E";
+		east_or_west = "В";
 
 	strnfmt(buf, size, "%d %s, %d %s",
 		ABS(y - py), north_or_south, ABS(x-px), east_or_west);
@@ -503,7 +520,8 @@ bool target_set_closest(int mode, monster_predicate pred)
 
 	/* If nothing was prepared, then return */
 	if (point_set_size(targets) < 1) {
-		msg("No Available Target.");
+		// msg("No Available Target.");
+		msg("Нет доступной цели.");
 		point_set_dispose(targets);
 		return false;
 	}
@@ -513,7 +531,8 @@ bool target_set_closest(int mode, monster_predicate pred)
 	
 	/* Target the monster, if possible */
 	if (!target_able(mon)) {
-		msg("No Available Target.");
+		// msg("No Available Target.");
+		msg("Нет доступной цели.");
 		point_set_dispose(targets);
 		return false;
 	}
@@ -521,7 +540,8 @@ bool target_set_closest(int mode, monster_predicate pred)
 	/* Target the monster */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA);
 	if (!(mode & TARGET_QUIET))
-		msg("%s is targeted.", m_name);
+		// msg("%s is targeted.", m_name);
+		msg("%s выбран целью.", m_name);
 
 	/* Set up target information */
 	monster_race_track(player->upkeep, mon->race);
