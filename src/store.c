@@ -333,8 +333,10 @@ static struct file_parser store_parser = {
 
 void store_init(void)
 {
-	event_signal_message(EVENT_INITSTATUS, 0, "Initializing stores...");
-	if (run_parser(&store_parser)) quit("Can't initialize stores");
+	// event_signal_message(EVENT_INITSTATUS, 0, "Initializing stores...");
+	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация магазинов...");
+	// if (run_parser(&store_parser)) quit("Can't initialize stores");
+	if (run_parser(&store_parser)) quit("Невозможно инициализировать магазины");
 }
 
 void store_reset(void) {
@@ -434,48 +436,74 @@ static bool store_sale_should_reduce_stock(struct store *store,
  */
 static const char *comment_worthless[] =
 {
-	"Arrgghh!",
-	"You bastard!",
-	"You hear someone sobbing...",
-	"The shopkeeper howls in agony!",
-	"The shopkeeper wails in anguish!",
-	"The shopkeeper beats his head against the counter."
+	// "Arrgghh!",
+	// "You bastard!",
+	// "You hear someone sobbing...",
+	// "The shopkeeper howls in agony!",
+	// "The shopkeeper wails in anguish!",
+	// "The shopkeeper beats his head against the counter."
+	"Аррггхх!",
+	"Ты ублюдок!",
+	"Вы слышите чьи-то рыдания...",
+	"Лавочник воет в агонии!",
+	"Лавочник рыдает в муках!",
+	"Лавочник бьется головой о прилавок."
 };
 
 static const char *comment_bad[] =
 {
-	"Damn!",
-	"You fiend!",
-	"The shopkeeper curses at you.",
-	"The shopkeeper glares at you."
+	// "Damn!",
+	// "You fiend!",
+	// "The shopkeeper curses at you.",
+	// "The shopkeeper glares at you."
+	"Проклятье!",
+	"Ты изверг!",
+	"Лавочник проклинает вас.",
+	"Лавочник пялится на вас."
 };
 
 static const char *comment_accept[] =
 {
-	"Okay.",
-	"Fine.",
-	"Accepted!",
-	"Agreed!",
-	"Done!",
-	"Taken!"
+	// "Okay.",
+	// "Fine.",
+	// "Accepted!",
+	// "Agreed!",
+	// "Done!",
+	// "Taken!"
+	"Хорошо.",
+	"Отлично",
+	"Принято!",
+	"Согласен!",
+	"Готово!",
+	"Принято!"
 };
 
 static const char *comment_good[] =
 {
-	"Cool!",
-	"You've made my day!",
-	"The shopkeeper sniggers.",
-	"The shopkeeper giggles.",
-	"The shopkeeper laughs loudly."
+	// "Cool!",
+	// "You've made my day!",
+	// "The shopkeeper sniggers.",
+	// "The shopkeeper giggles.",
+	// "The shopkeeper laughs loudly."
+	"Круто!",
+	"Вы сделали мой день!",
+	"Лавочник хихикает.",
+	"Лавочник хохочет.",
+	"Лавочник громко смеется."
 };
 
 static const char *comment_great[] =
 {
-	"Yipee!",
-	"I think I'll retire!",
-	"The shopkeeper jumps for joy.",
-	"The shopkeeper smiles gleefully.",
-	"Wow.  I'm going to name my new villa in your honour."
+	// "Yipee!",
+	// "I think I'll retire!",
+	// "The shopkeeper jumps for joy.",
+	// "The shopkeeper smiles gleefully.",
+	// "Wow.  I'm going to name my new villa in your honour."
+	"Ура!",
+	"Думаю, я уйду на пенсию!",
+	"Лавочник прыгает от радости.",
+	"Владелец магазина радостно улыбается.",
+	"Ух ты! Я назову свою новую виллу в вашу честь."
 };
 
 
@@ -1421,7 +1449,8 @@ static void store_maint(struct store *s)
  */
 void store_update(void)
 {
-	if (OPT(player, cheat_xtra)) msg("Updating Shops...");
+	// if (OPT(player, cheat_xtra)) msg("Updating Shops...");
+	if (OPT(player, cheat_xtra)) msg("Обновление магазинов...");
 	while (daycount--) {
 		int n;
 
@@ -1441,7 +1470,8 @@ void store_update(void)
 			int n_without_home = 0;
 
 			/* Message */
-			if (OPT(player, cheat_xtra)) msg("Shuffling a Shopkeeper...");
+			// if (OPT(player, cheat_xtra)) msg("Shuffling a Shopkeeper...");
+			if (OPT(player, cheat_xtra)) msg("Перестановка продавца...");
 
 			/* Pick a random shop (except home) */
 			for (n = 0; n < z_info->store_max; n++) {
@@ -1459,7 +1489,8 @@ void store_update(void)
 		}
 	}
 	daycount = 0;
-	if (OPT(player, cheat_xtra)) msg("Done.");
+	// if (OPT(player, cheat_xtra)) msg("Done.");
+	if (OPT(player, cheat_xtra)) msg("Готово.");
 }
 
 /** Owner stuff **/
@@ -1659,7 +1690,8 @@ void do_cmd_buy(struct command *cmd)
 	struct store *store = store_at(cave, player->grid);
 
 	if (!store) {
-		msg("You cannot purchase items when not in a store.");
+		// msg("You cannot purchase items when not in a store.");
+		msg("Вы не можете покупать товары вне магазина.");
 		return;
 	}
 
@@ -1669,7 +1701,8 @@ void do_cmd_buy(struct command *cmd)
 		return;
 
 	if (!pile_contains(store->stock, obj)) {
-		msg("You cannot buy that item because it's not in the store.");
+		// msg("You cannot buy that item because it's not in the store.");
+		msg("Вы не можете купить этот товар, его нет в магазине.");
 		return;
 	}
 
@@ -1682,7 +1715,8 @@ void do_cmd_buy(struct command *cmd)
 
 	/* Ensure we have room */
 	if (bought->number > inven_carry_num(player, bought)) {
-		msg("You cannot carry that many items.");
+		// msg("You cannot carry that many items.");
+		msg("Вы не сможете унести столько предметов.");
 		object_delete(NULL, NULL, &bought);
 		return;
 	}
@@ -1695,7 +1729,8 @@ void do_cmd_buy(struct command *cmd)
 	price = price_item(store, bought, false, bought->number);
 
 	if (price > player->au) {
-		msg("You cannot afford that purchase.");
+		// msg("You cannot afford that purchase.");
+		msg("Вы не можете позволить себе такую покупку.");
 		object_delete(NULL, NULL, &bought);
 		return;
 	}
@@ -1715,7 +1750,8 @@ void do_cmd_buy(struct command *cmd)
 
 	/* Message */
 	if (one_in_(3)) msgt(MSG_STORE5, "%s", ONE_OF(comment_accept));
-	msg("You bought %s for %d gold.", o_name, price);
+	// msg("You bought %s for %d gold.", o_name, price);
+	msg("Вы купили %s за %d золот%s монет%s.", o_name, price, PLURAL_RU_UYU_bIE_bIH(price), PLURAL_RU_U_bI_(price));
 
 	/* Erase the inscription */
 	bought->note = 0;
@@ -1760,11 +1796,13 @@ void do_cmd_buy(struct command *cmd)
 			/* Sometimes shuffle the shopkeeper */
 			if (one_in_(z_info->store_shuffle)) {
 				/* Shuffle */
-				msg("The shopkeeper retires.");
+				// msg("The shopkeeper retires.");
+				msg("Лавочник уходит на пенсию.");
 				store_shuffle(store);
 			} else
 				/* Maintain */
-				msg("The shopkeeper brings out some new stock.");
+				// msg("The shopkeeper brings out some new stock.");
+				msg("Владелец магазина выставляет новые товары.");
 
 			/* New inventory */
 			for (i = 0; i < 10; ++i)
@@ -1790,7 +1828,8 @@ void do_cmd_retrieve(struct command *cmd)
 	if (!store) return;
 
 	if (store->feat != FEAT_HOME) {
-		msg("You are not currently at home.");
+		// msg("You are not currently at home.");
+		msg("В настоящее время вы находитесь вне дома.");
 		return;
 	}
 
@@ -1799,7 +1838,8 @@ void do_cmd_retrieve(struct command *cmd)
 		return;
 
 	if (!pile_contains(store->stock, obj)) {
-		msg("You cannot retrieve that item because it's not in the home.");
+		// msg("You cannot retrieve that item because it's not in the home.");
+		msg("Вы не можете получить этот предмет, его нет в доме.");
 		return;
 	}
 
@@ -1812,7 +1852,8 @@ void do_cmd_retrieve(struct command *cmd)
 
 	/* Ensure we have room */
 	if (picked_item->number > inven_carry_num(player, picked_item)) {
-		msg("You cannot carry that many items.");
+		// msg("You cannot carry that many items.");
+		msg("Вы не можете носить с собой много предметов.");
 		object_delete(NULL, NULL, &picked_item);
 		return;
 	}
@@ -1876,19 +1917,22 @@ void do_cmd_sell(struct command *cmd)
 
 	/* Cannot remove stickied objects */
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
-		msg("Hmmm, it seems to be stuck.");
+		// msg("Hmmm, it seems to be stuck.");
+		msg("Хммм, похоже он застрял.");
 		return;
 	}
 
 	/* Check we are somewhere we can sell the items. */
 	if (!store) {
-		msg("You cannot sell items when not in a store.");
+		// msg("You cannot sell items when not in a store.");
+		msg("Вы не можете продавать предметы вне магазина.");
 		return;
 	}
 
 	/* Check the store wants the items being sold */
 	if (!store_will_buy(store, obj)) {
-		msg("I do not wish to purchase this item.");
+		// msg("I do not wish to purchase this item.");
+		msg("Я не хочу покупать этот товар.");
 		return;
 	}
 
@@ -1898,7 +1942,8 @@ void do_cmd_sell(struct command *cmd)
 	/* Check if the store has space for the items */
 	if (!store_check_num(store, &dummy_item)) {
 		object_wipe(&dummy_item);
-		msg("I have not the room in my store to keep it.");
+		// msg("I have not the room in my store to keep it.");
+		msg("У меня нет места в магазине, чтобы взять это.");
 		return;
 	}
 
@@ -1952,9 +1997,11 @@ void do_cmd_sell(struct command *cmd)
 
 	/* Describe the result (in message buffer) */
 	if (OPT(player, birth_no_selling)) {
-		msg("You had %s (%c).", o_name, label);
+		// msg("You had %s (%c).", o_name, label);
+		msg("У вас было %s (%c).", o_name, label);
 	} else {
-		msg("You sold %s (%c) for %d gold.", o_name, label, price);
+		// msg("You sold %s (%c) for %d gold.", o_name, label, price);
+		msg("Вы продали %s (%c) за %d золота.", o_name, label, price);
 
 		/* Analyze the prices (and comment verbally) */
 		purchase_analyze(price, value, dummy);
@@ -2014,13 +2061,15 @@ void do_cmd_stash(struct command *cmd)
 
 	/* Check we are somewhere we can stash items. */
 	if (store->feat != FEAT_HOME) {
-		msg("You are not in your home.");
+		// msg("You are not in your home.");
+		msg("Вы не в своём доме.");
 		return;
 	}
 
 	/* Cannot remove stickied objects */
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
-		msg("Hmmm, it seems to be stuck.");
+		// msg("Hmmm, it seems to be stuck.");
+		msg("Хммм, похоже он застрял.");
 		return;
 	}	
 
@@ -2034,7 +2083,8 @@ void do_cmd_stash(struct command *cmd)
 	 */
 	object_wipe(&dummy);
 	if (no_room) {
-		msg("Your home is full.");
+		// msg("Your home is full.");
+		msg("В вашем доме нет места.");
 		return;
 	}
 
@@ -2049,7 +2099,8 @@ void do_cmd_stash(struct command *cmd)
 		ODESC_PREFIX | ODESC_FULL, player);
 
 	/* Message */
-	msg("You drop %s (%c).", o_name, label);
+	// msg("You drop %s (%c).", o_name, label);
+	msg("Вы выбросили %s (%c).", o_name, label);
 
 	/* Handle stuff */
 	handle_stuff(player);
