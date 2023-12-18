@@ -1611,6 +1611,7 @@ static enum birth_stage get_confirm_command(void)
 	enum birth_stage next = BIRTH_RESET;
 
 	/* Prompt for it */
+	// prt(prompt, Term->hgt - 1, Term->wid / 2 - strlen(prompt) / 2);
 	prt(prompt, Term->hgt - 1, Term->wid / 2 - utf8_strlen(prompt) / 2);
 
 	/* Get a key */
