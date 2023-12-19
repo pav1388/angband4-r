@@ -37,103 +37,136 @@
 
 type:player
 code:ROCK
-name:Rock
-desc:You are made of rock.
+# name:Rock
+name:Камень
+# desc:You are made of rock.
+desc:Вы сделаны из камня.
 
 ## Racial player flags
 
 type:player
 code:KNOW_MUSHROOM
-name:Mushroom Lore
-desc:You easily recognize mushrooms.
+# name:Mushroom Lore
+name:Грибные Знания
+# desc:You easily recognize mushrooms.
+desc:Вы легко узнаёте грибы.
 
 type:player
 code:KNOW_ZAPPER
-name:Device Lore
-desc:You easily recognize magic devices.
+# name:Device Lore
+name:Знания Механизмов
+# desc:You easily recognize magic devices.
+desc:Вы легко узнаёте магические механизмы.
 
 type:player
 code:SEE_ORE
-name:Miner
-desc:You can sense ore in the walls.
+# name:Miner
+name:Шахтёр
+# desc:You can sense ore in the walls.
+desc:Вы можете чувствовать руду в стенах.
 
 ## Class player flags
 
 type:player
 code:FAST_SHOT
 bindui:shots_ui_compact_0:0:special
-name:Extra Shots
-desc:Your shooting speed improves with tension bows every 10 levels.
+# name:Extra Shots
+name:Экстра Выстрелы
+# desc:Your shooting speed improves with tension bows every 10 levels.
+desc:Ваша скорость стрельбы из лука улучшается каждые 10 уровней.
 
 type:player
 code:BRAVERY_30
 bindui:pfear_ui_compact_0:0:special
-name:Relentless [30]
-desc:You become immune to fear at level 30.
+# name:Relentless [30]
+name:Безжалостный [30]
+# desc:You become immune to fear at level 30.
+desc:На 30-м уровне у вас появляется иммунитет к страху.
 
 type:player
 code:BLESS_WEAPON
-name:Blessed Fighter
-desc:You get improved melee with blessed or hafted weapons.
+# name:Blessed Fighter
+name:Благословенный Боец
+# desc:You get improved melee with blessed or hafted weapons.
+desc: Вы получаете улучшение ближнего боя со святым или кованым оружием.
 
 type:player
 code:ZERO_FAIL
-name:Full Spellcaster
-desc:You may obtain a perfect success rate with magic.
+# name:Full Spellcaster
+name:Совершенный Заклинатель
+# desc:You may obtain a perfect success rate with magic.
+desc:С помощью магии можно добиться идеального результата.
 
 type:player
 code:BEAM
-name:Extra Spell Beaming
-desc:Your bolt spells frequently turn into beams.
+# name:Extra Spell Beaming
+name:Экстра Луч-Заклинание
+# desc:Your bolt spells frequently turn into beams.
+desc:Ваши болты-заклинания часто превращаются в лучи.
 
 type:player
 code:CHOOSE_SPELLS
-name:Spell Choice
-desc:You may choose your own spells to study.
+# name:Spell Choice
+name:Выбор Заклинаний
+# desc:You may choose your own spells to study.
+desc:Вы можете сами выбирать заклинания для изучения.
 
 type:player
 code:NO_MANA
-name:No Magic
-desc:You cannot cast spells.
+# name:No Magic
+name:Нет Магии
+# desc:You cannot cast spells.
+desc:Вы не можете произносить заклинания.
 
 type:player
 code:CHARM
-name:Charms
-desc:You are extra persuasive to monsters.
+# name:Charms
+name:Чары
+# desc:You are extra persuasive to monsters.
+desc:Вы становитесь более убедительным для монстров.
 
 type:player
 code:UNLIGHT
 bindui:resist_ui_compact_0<DARK>:0:1
-name:Unlight
-desc:You gain stealth in, can see in, and resist the dark.
+# name:Unlight
+name:Неосвещенный
+# desc:You gain stealth in, can see in, and resist the dark.
+desc:Вы обретаете невидимость, можете сопротивляться и видеть в темноте.
 
 type:player
 code:STEAL
-name:Pickpocketing
-desc:You can steal from monsters.
+# name:Pickpocketing
+name:Карманная кража
+# desc:You can steal from monsters.
+desc:Вы можете обворовывать монстров.
 
 type:player
 code:SHIELD_BASH
-name:Shield Bash
-desc:You can bash monsters with a shield in melee.
+# name:Shield Bash
+name:Удар Щитом
+# desc:You can bash monsters with a shield in melee.
+desc:Вы можете бить монстров щитом в ближнем бою.
 
 type:player
 code:EVIL
 bindui:resist_ui_compact_0<NETHER>:0:1
-name:Evil
-desc:You resist nether, but are hurt by holy attacks.
+# name:Evil
+name:Зло
+# desc:You resist nether, but are hurt by holy attacks.
+desc:Вы сопротивляетесь преисподней, но получаете урон от святых атак.
 
 type:player
 code:COMBAT_REGEN
 bindui:imphp_ui_compact_0:0:1
-name:Combat Regeneration
-desc:You draw power from the thrill of combat, represented by
-desc: Spell Points (SP).  You gain SP when damaged by an enemy or
-desc: when you attack in melee.  As your blood cools your power fades;
-desc: you lose SP at half the rate other classes gain them.
-desc:  When you spend SP by casting a spell you regain some health, and
-desc: fading SP replenish your health more efficiently.  The more damaged
-desc: you are, the bigger these health gains will be.
+# name:Combat Regeneration
+name:Боевая Регенерация
+desc:Вы черпаете силу в острых ощущениях от боя, представленных в виде
+desc: очков магии (ОМ).  Вы получаете ОМ, когда получаете урон от врага 
+desc: или при атаке в ближнем бою.  Когда ваша кровь остывает, ваша 
+desc: сила угасает; вы теряете ОМ в два раза быстрее, чем другие классы.
+desc:  Когда вы тратите ОМ, вы восстанавливаете немного здоровья,
+desc: а угасающие ОМ восполняют ваше здоровье более эффективно.
+desc: Чем больше урон, тем больше будет прирост здоровья.
 
 
 # Object flags
@@ -141,162 +174,216 @@ desc: you are, the bigger these health gains will be.
 type:object
 code:SUST_STR
 bindui:stat_mod_ui_compact_0<STR>:1:1
-name:Sustain Strength
-desc:Your strength is sustained.
+# name:Sustain Strength
+name:Устойчивая сила
+# desc:Your strength is sustained.
+desc:Ваша сила неизменна.
 
 type:object
 code:SUST_INT
 bindui:stat_mod_ui_compact_0<INT>:1:1
-name:Sustain Intelligence
-desc:Your intelligence is sustained.
+# name:Sustain Intelligence
+name:Устойчивый интеллект
+# desc:Your intelligence is sustained.
+desc:Ваш интеллект неизменен.
 
 type:object
 code:SUST_WIS
 bindui:stat_mod_ui_compact_0<WIS>:1:1
+# name:Устойчивая Мудрость
 name:Sustain Wisdom
-desc:Your wisdom is sustained.
+# desc:Your wisdom is sustained.
+desc:Ваша мудрость неизменна.
 
 type:object
 code:SUST_DEX
 bindui:stat_mod_ui_compact_0<DEX>:1:1
-name:Sustain Dexterity
-desc:Your dexterity is sustained.
+# name:Sustain Dexterity
+name:Устойчивая Ловкость
+# desc:Your dexterity is sustained.
+desc:Ваша ловкость неизменна.
 
 type:object
 code:SUST_CON
 bindui:stat_mod_ui_compact_0<CON>:1:1
-name:Sustain Constitution
-desc:Your constitution is sustained.
+# name:Sustain Constitution
+name:Устойчивое Телосложение
+# desc:Your constitution is sustained.
+desc:Ваше телосложение неизменно.
 
 type:object
 code:PROT_FEAR
 bindui:pfear_ui_compact_0:0:1
-name:Fear Immunity
-desc:You are immune to fear.
+# name:Fear Immunity
+name:Иммунитет к Страху
+# desc:You are immune to fear.
+desc:Вы не поддаетесь страху.
 
 type:object
 code:PROT_BLIND
 bindui:pblind_ui_compact_0:0:1
+# name:Иммунитет к Слепоте
 name:Blindness Immunity
-desc:You cannot be blinded.
+# desc:You cannot be blinded.
+desc:Вас нельзя ослепить.
 
 type:object
 code:PROT_CONF
 bindui:pconf_ui_compact_0:0:1
+# name:Иммунитет к Замешательству
 name:Confusion Immunity
-desc:You cannot be confused.
+# desc:You cannot be confused.
+desc:Вас нельзя сбить с толку.
 
 type:object
 code:PROT_STUN
 bindui:pstun_ui_compact_0:0:1
+# name:Иммунитет к Оглушению
 name:Stun Immunity
-desc:You cannot be stunned.
+# desc:You cannot be stunned.
+desc:Вас нельзя оглушить.
 
 type:object
 code:SLOW_DIGEST
 bindui:slow_digestion_ui_compact_0:0:1
-name:Slow Digestion
-desc:You have slow metabolism.
+# name:Slow Digestion
+name:Медленное Пищеварение
+# desc:You have slow metabolism.
+desc:У вас медленный обмен веществ.
 
 type:object
 code:FEATHER
 bindui:feather_falling_ui_compact_0:0:1
-name:Feather Falling
-desc:You fall lightly.
+# name:Feather Falling
+name:Падение Пера
+# desc:You fall lightly.
+desc:Вы мягко приземляетесь.
 
 type:object
 code:REGEN
 bindui:regen_ui_compact_0:0:1
-name:Regeneration
+# name:Regeneration
+name:Регенерация
+# desc:You regenerate quickly.
 desc:You regenerate quickly.
 
 type:object
 code:TELEPATHY
 bindui:esp_ui_compact_0:0:1
-name:Telepathy
-desc:You have telepathy.
+# name:Telepathy
+name:Телепатия
+# desc:You have telepathy.
+desc:У вас есть телепатия.
 
 type:object
 code:SEE_INVIS
 bindui:see_invis_ui_compact_0:0:1
-name:See Invisible
-desc:You can see invisible creatures.
+# name:See Invisible
+name:Видеть Невидимое
+# desc:You can see invisible creatures.
+desc:Вы можете видеть незримых существ.
 
 type:object
 code:FREE_ACT
 bindui:free_action_ui_compact_0:0:1
+# name:Свобода Действия
 name:Free Action
-desc:You are immune to paralysis.
+# desc:You are immune to paralysis.
+desc:У вас есть иммунитет к параличу.
 
 type:object
 code:HOLD_LIFE
 bindui:holdlife_ui_compact_0:0:1
-name:Hold Life
-desc:Your life force is sustained.
+# name:Hold Life
+name:Удержание Жизни
+# desc:Your life force is sustained.
+desc:Ваша жизненная неизменна.
 
 type:object
 code:IMPACT
-name:Earthquakes
-desc:You sometimes create earthquakes on impact.
+# name:Earthquakes
+name:Землетрясения
+# desc:You sometimes create earthquakes on impact.
+desc:Иногда вы создаете землетрясения при ударе.
 
 type:object
 code:IMPAIR_HP
 bindui:imphp_ui_compact_0:0:1
+# name:Медленная Регенерация
 name:Slow Regeneration
-desc:Your hitpoint recovery is impaired.
+# desc:Your hitpoint recovery is impaired.
+desc:Восстановление ваших очков здоровья нарушено.
 
 type:object
 code:IMPAIR_MANA
 bindui:impsp_ui_compact_0:0:1
-name:Slow Mana Regeneration
-desc:Your mana recovery is impaired.
+# name:Slow Mana Regeneration
+name:Медленная Регенерация Маны
+# desc:Your mana recovery is impaired.
+desc:Ваше восстановление маны нарушено.
 
 type:object
 code:AFRAID
 bindui:fear_ui_compact_0:0:1
-name:Constant Fear
-desc:You are afraid of melee, and bad at shooting and casting spells.
+# name:Constant Fear
+name:Постоянный Страх
+# desc:You are afraid of melee, and bad at shooting and casting spells.
+desc:Вы боитесь ближнего боя, плохо стреляете и произносите заклинания.
 
 type:object
 code:NO_TELEPORT
 bindui:noteleport_ui_compact_0:0:1
-name:Teleport Ban
-desc:You cannot teleport.
+# name:Teleport Ban
+name:Запрет Телепортации
+# desc:You cannot teleport.
+desc:Вы не можете телепортироваться.
 
 type:object
 code:AGGRAVATE
 bindui:aggravate_ui_compact_0:0:1
-name:Aggravate
-desc:You aggravate creatures nearby.
+# name:Aggravate
+name:Усугубление
+# desc:You aggravate creatures nearby.
+desc:Вы ухудшаете состояние существ поблизости.
 
 type:object
 code:DRAIN_EXP
 bindui:drainxp_ui_compact_0:0:1
-name:Experience Drain
-desc:Your experience constantly drains away.
+# name:Experience Drain
+name:Истощение Опыта
+# desc:Your experience constantly drains away.
+desc:Ваш опыт постоянно иссякает.
 
 type:object
 code:TRAP_IMMUNE
 bindui:trap_immunity_ui_compact_0:0:1
-name:Trap Immune
-desc:You are immune to traps.
+# name:Trap Immune
+name:Иммунитет от Ловушек
+# desc:You are immune to traps.
+desc:Вы невосприимчивы к ловушкам.
 
 ## Element flags
 
 type:element
 bindui:resist_ui_compact_0:0:1
-name:Resistance
-desc:You resist
+# name:Resistance
+name:Сопротивление
+# desc:You resist
+desc:Вы сопротивляетесь
 value:1
 
 type:element
 bindui:resist_ui_compact_0:0:3
-name:Immunity
-desc:You are immune to
+# name:Immunity
+name:Иммунитет
+# desc:You are immune to
+desc:У вас иммунитет к
 value:3
 
 type:element
 bindui:resist_ui_compact_0:0:-1
-name:Vulnerability
-desc:You are vulnerable to
+# name:Vulnerability
+name:Уязвимость
+# desc:You are vulnerable to
+desc:Вы уязвимы для
 value:-1
