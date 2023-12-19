@@ -528,10 +528,25 @@ size_t my_strcat(char *buf, const char *src, size_t bufsize)
  */
 void my_strcap(char *buf)
 {
-	if (buf && buf[0])
+	// if (buf && buf[0])
+		// buf[0] = toupper((unsigned char) buf[0]);
+	if (buf[0] > 0xcf) { // unicode кириллица
+		if (buf[0] == 0xd0) {
+			if (buf[1] > 0xaf && buf[1] < 0xc0) {
+				buf[1] -= 0x20;
+			}
+		}		
+		if (buf[0] == 0xd1) {
+			if (buf[1] > 0x7f && buf[1] < 0x90) {
+				buf[0] = 0xd0;
+				buf[1] += 0x20;
+			}
+		}
+	}
+	if (buf && buf[0] && (buf[0] < 0x80)) {
 		buf[0] = toupper((unsigned char) buf[0]);
+	}
 }
-
 
 /**
  * Determine if string "a" is equal to string "b"
