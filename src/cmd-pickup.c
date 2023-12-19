@@ -94,14 +94,18 @@ static void player_pickup_gold(struct player *p)
 
 		/* Build a message */
 		(void)strnfmt(buf, sizeof(buf),
-			"You have found %ld gold pieces worth of ", (long)total_gold);
+			// "You have found %ld gold pieces worth of ", (long)total_gold);
+			"Стоимостью %ld золот%s монет%s вы нашли ", (long)total_gold, 
+			PLURAL_RU_UYU_bIE_bIH((long)total_gold), 
+			PLURAL_RU_U_bI_((long)total_gold));
 
 		/* One treasure type.. */
 		if (at_most_one)
 			my_strcat(buf, name, sizeof(buf));
 		/* ... or more */
 		else
-			my_strcat(buf, "treasures", sizeof(buf));
+			// my_strcat(buf, "treasures", sizeof(buf));
+			my_strcat(buf, "сокровища", sizeof(buf));
 		my_strcat(buf, ".", sizeof(buf));
 
 		/* Determine which sound to play */
@@ -240,7 +244,8 @@ static void player_pickup_aux(struct player *p, struct object *obj,
 
 	/* Confirm at least some of the object can be picked up */
 	if (max == 0)
-		quit_fmt("Failed pickup of %s", obj->kind->name);
+		// quit_fmt("Failed pickup of %s", obj->kind->name);
+		quit_fmt("Не удалось поднять %s", obj->kind->name);
 
 	/* Set ignore status */
 	p->upkeep->notice |= PN_IGNORE;
@@ -363,8 +368,10 @@ static uint8_t player_pickup_item(struct player *p, struct object *obj, bool men
 		struct object *obj_local = NULL;
 
 		/* Get an object or exit. */
-		q = "Get which item?";
-		s = "You see nothing there.";
+		// q = "Get which item?";
+		q = "Какой предмет поднять?";
+		// s = "You see nothing there.";
+		s = "Вы ничего здесь не видите.";
 		if (!get_item(&obj_local, q, s, CMD_PICKUP, inven_carry_okay, USE_FLOOR)) {
 			mem_free(floor_list);
 			return (objs_picked_up);
