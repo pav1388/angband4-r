@@ -387,7 +387,8 @@ static void msg_flush(int x)
 	uint8_t a = COLOUR_L_BLUE;
 
 	/* Pause for response */
-	Term_putstr(x, 0, -1, a, "-more-");
+	// Term_putstr(x, 0, -1, a, "-more-");
+	Term_putstr(x, 0, -1, a, "-ещё-");
 
 	if ((!OPT(player, auto_more)) && !keymap_auto_more)
 		anykey();
@@ -460,7 +461,7 @@ void display_message(game_event_type unused, game_event_data *data, void *user)
 	if (!msg_flag) message_column = 0;
 
 	/* Message Length */
-	n = (msg ? strlen(msg) : 0);
+	n = (msg ? utf8_strlen(msg) : 0);
 
 	/* Hack -- flush when requested or needed */
 	if (message_column && (!msg || ((message_column + n) > (w - 8)))) {
@@ -593,7 +594,7 @@ void clear_from(int row)
 bool askfor_aux_keypress(char *buf, size_t buflen, size_t *curs, size_t *len,
 						 struct keypress keypress, bool firsttime)
 {
-	size_t ulen = utf8_strlen(buf);
+	size_t ulen = strlen(buf);
 
 	switch (keypress.code)
 	{
@@ -1044,10 +1045,13 @@ static int handle_name_mouse(char *buf, size_t buflen, size_t *curs,
 	m = menu_dynamic_new();
 
 	m->selections = labels;
-	menu_dynamic_add_label(m, "Accept", 'a', ACT_CTX_NAME_ACCEPT, labels);
-	menu_dynamic_add_label(m, "Set to random name", 'r',
+	// menu_dynamic_add_label(m, "Accept", 'a', ACT_CTX_NAME_ACCEPT, labels);
+	menu_dynamic_add_label(m, "Принять", 'a', ACT_CTX_NAME_ACCEPT, labels);
+	// menu_dynamic_add_label(m, "Set to random name", 'r',
+	menu_dynamic_add_label(m, "Выбрать сличайное имя", 'r',
 		ACT_CTX_NAME_RANDOM, labels);
-	menu_dynamic_add_label(m, "Clear name", 'c', ACT_CTX_NAME_CLEAR,
+	// menu_dynamic_add_label(m, "Clear name", 'c', ACT_CTX_NAME_CLEAR,
+	menu_dynamic_add_label(m, "Очистить имя", 'c', ACT_CTX_NAME_CLEAR,
 		labels);
 
 	screen_save();
@@ -1099,7 +1103,8 @@ bool get_character_name(char *buf, size_t buflen)
 	event_signal(EVENT_MESSAGE_FLUSH);
 
 	/* Display prompt */
-	prt("Enter a name for your character (* for a random name): ", 0, 0);
+	// prt("Enter a name for your character (* for a random name): ", 0, 0);
+	prt("Введите имя для вашего персонажа (* случайное имя): ", 0, 0);
 
 	/* Save the player name */
 	my_strcpy(buf, player->full_name, buflen);
@@ -1164,7 +1169,8 @@ static int textui_get_quantity(const char *prompt, int max)
 		/* Build a prompt if needed */
 		if (!prompt) {
 			/* Build a prompt */
-			strnfmt(tmp, sizeof(tmp), "Quantity (0-%d, *=all): ", max);
+			// strnfmt(tmp, sizeof(tmp), "Quantity (0-%d, *=all): ", max);
+			strnfmt(tmp, sizeof(tmp), "Количество (0-%d, * все): ", max);
 
 			/* Use that prompt */
 			prompt = tmp;
@@ -1228,7 +1234,8 @@ static bool textui_get_check(const char *prompt)
 		if ((ke.mouse.button != 1) && (ke.mouse.y != 0))
 			return (false);
 	} else {
-		if ((ke.key.code != 'Y') && (ke.key.code != 'y'))
+		// if ((ke.key.code != 'Y') && (ke.key.code != 'y')))
+		if (((ke.key.code != 'Y') && (ke.key.code != 'y')) && (ke.key.code != KC_ENTER)) // y=enter
 			return (false);
 	}
 
@@ -1291,6 +1298,7 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 	if (!arg_force_name) {
 			
 			if (!get_string("File name: ", buf, sizeof buf)) return false;
+			// if (!get_string("Имя файла: ", buf, sizeof buf)) return false;
 
 			/* Make sure it's actually a filename */
 			if (buf[0] == '\0' || buf[0] == ' ') return false;
@@ -1311,7 +1319,8 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 		strftime(buf + old_len, sizeof(buf) - len, "-%Y-%m-%d-%H-%M.txt", today);
 
 		/* Prompt the user to confirm or cancel the file dump */
-		if (!get_check(format("Confirm writing to %s? ", buf))) return false;
+		// if (!get_check(format("Confirm writing to %s? ", buf))) return false;
+		if (!get_check(format("Подтвердить запись в %s? ", buf))) return false;
 
 
 	}
@@ -1320,11 +1329,13 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 	path_build(path, len, ANGBAND_DIR_USER, buf);
 
 	/* Check if it already exists */
-	if (file_exists(path) && !get_check("Replace existing file? "))
+	// if (file_exists(path) && !get_check("Replace existing file? "))
+	if (file_exists(path) && !get_check("Заменить существующий файл? "))
 		return false;
 
 	/* Tell the user where it's saved to. */
-	prt(format("Saving as %s.", path), 0, 0);
+	// prt(format("Saving as %s.", path), 0, 0);
+	prt(format("Сохранено как %s.", path), 0, 0);
 	anykey();
 	prt("", 0, 0);
 
@@ -1401,7 +1412,8 @@ bool get_com_ex(const char *prompt, ui_event *command)
 void pause_line(struct term *tm)
 {
 	prt("", tm->hgt - 1, 0);
-	put_str("[Press any key to continue]", tm->hgt - 1, (tm->wid - 27) / 2);
+	// put_str("[Press any key to continue]", tm->hgt - 1, (tm->wid - 27) / 2);
+	put_str("[Нажмите любую клавишу для продолжения]", tm->hgt - 1, (tm->wid - 37) / 2);
 	(void)anykey();
 	prt("", tm->hgt - 1, 0);
 }
@@ -1460,7 +1472,8 @@ static bool textui_get_rep_dir(int *dp, bool allow_5)
 		if (ke.type == EVT_NONE ||
 				(ke.type == EVT_KBRD
 				&& !target_dir_allow(ke.key, allow_5))) {
-			prt("Direction or <click> (Escape to cancel)? ", 0, 0);
+			// prt("Direction or <click> (Escape to cancel)? ", 0, 0);
+			prt("Направление (Escape для отмены)? ", 0, 0);
 			ke = inkey_ex();
 		}
 
@@ -1566,9 +1579,11 @@ static bool textui_get_aim_dir(int *dp)
 
 		/* Choose a prompt */
 		if (!target_okay())
-			p = "Direction ('*' or <click> to target, \"'\" for closest, Escape to cancel)? ";
+			// p = "Direction ('*' or <click> to target, \"'\" for closest, Escape to cancel)? ";
+			p = "<Напр> ('*' для цели, \"'\" ближ. цель, ESC для отмены)? ";
 		else
-			p = "Direction ('5' for target, '*' or <click> to re-target, Escape to cancel)? ";
+			// p = "Direction ('5' for target, '*' or <click> to re-target, Escape to cancel)? ";
+			p = "<Напр> ('5' для цели, '*' сменить цель, ESC для отмены)? ";
 
 		/* Get a command (or Cancel) */
 		if (!get_com_ex(p, &ke)) break;
@@ -1679,7 +1694,8 @@ static int textui_get_count(void)
 	while (1) {
 		struct keypress ke;
 
-		prt(format("Repeat: %d", count), 0, 0);
+		// prt(format("Repeat: %d", count), 0, 0);
+		prt(format("Повтор: %d", count), 0, 0);
 
 		ke = inkey();
 		if (ke.code == ESCAPE)
@@ -1771,7 +1787,8 @@ ui_event textui_get_command(int *count)
 
 					int c = textui_get_count();
 
-					if (c == -1 || !get_com_ex("Command: ", &ke))
+					// if (c == -1 || !get_com_ex("Command: ", &ke))
+					if (c == -1 || !get_com_ex("Действие: ", &ke))
 						continue;
 					else
 						*count = c;
@@ -1780,14 +1797,16 @@ ui_event textui_get_command(int *count)
 
 				case '\\': {
 					/* Allow keymaps to be bypassed */
-					(void)get_com_ex("Command: ", &ke);
+					// (void)get_com_ex("Command: ", &ke);
+					(void)get_com_ex("Действие: ", &ke);
 					keymap_ok = false;
 					break;
 				}
 
 				case '^': {
 					/* Allow "control chars" to be entered */
-					if (!get_com_ex("Control: ", &ke)
+					// if (!get_com_ex("Control: ", &ke)
+					if (!get_com_ex("Управление : ", &ke)
 							|| ke.type != EVT_KBRD) {
 						continue;
 					}
@@ -1862,7 +1881,8 @@ bool key_confirm_command(unsigned char c)
 		n = check_for_inscrip(obj, "^*") +
 				check_for_inscrip(obj, verify_inscrip);
 		while (n--) {
-			if (!get_check("Are you sure? "))
+			// if (!get_check("Are you sure? "))
+			if (!get_check("Вы уверены? "))
 				return false;
 		}
 	}
