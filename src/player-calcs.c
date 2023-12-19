@@ -1175,7 +1175,8 @@ void calc_inventory(struct player *p)
 	if (character_dungeon) {
 		for (i = 0; i < z_info->quiver_size; i++) {
 			if (old_quiver[i] && p->upkeep->quiver[i] != old_quiver[i]) {
-				msg("You re-arrange your quiver.");
+				// msg("You re-arrange your quiver.");
+				msg("Вы навели порядок в своём колчане.");
 				break;
 			}
 		}
@@ -1226,7 +1227,8 @@ void calc_inventory(struct player *p)
 		for (i = 0; i < z_info->pack_size; i++) {
 			if (old_pack[i] && p->upkeep->inven[i] != old_pack[i]
 					 && !object_is_equipped(p->body, old_pack[i])) {
-				msg("You re-arrange your pack.");
+				// msg("You re-arrange your pack.");
+				msg("Вы навели порядок в своём рюкзаке.");
 				break;
 			}
 		}
@@ -1333,7 +1335,8 @@ static void calc_spells(struct player *p)
 			p->spell_flags[j] &= ~PY_SPELL_LEARNED;
 
 			/* Message */
-			msg("You have forgotten the %s of %s.", spell->realm->spell_noun,
+			// msg("You have forgotten the %s of %s.", spell->realm->spell_noun,
+			msg("Вы забыли %s %s.", spell->realm->spell_noun,
 				spell->name);
 
 			/* One more can be learned */
@@ -1364,7 +1367,8 @@ static void calc_spells(struct player *p)
 			p->spell_flags[j] &= ~PY_SPELL_LEARNED;
 
 			/* Message */
-			msg("You have forgotten the %s of %s.", spell->realm->spell_noun,
+			// msg("You have forgotten the %s of %s.", spell->realm->spell_noun,
+			msg("Вы забыли %s %s.", spell->realm->spell_noun,
 				spell->name);
 
 			/* One more can be learned */
@@ -1398,7 +1402,8 @@ static void calc_spells(struct player *p)
 			p->spell_flags[j] |= PY_SPELL_LEARNED;
 
 			/* Message */
-			msg("You have remembered the %s of %s.", spell->realm->spell_noun,
+			// msg("You have remembered the %s of %s.", spell->realm->spell_noun,
+			msg("Вы запомнили %s %s.", spell->realm->spell_noun,
 				spell->name);
 
 			/* One less can be learned */
@@ -1450,7 +1455,8 @@ static void calc_spells(struct player *p)
 					if (count) {
 						my_strcat(buf, ", ", sizeof(buf));
 					} else {
-						my_strcat(buf, " or ", sizeof(buf));
+						// my_strcat(buf, " or ", sizeof(buf));
+						my_strcat(buf, " или ", sizeof(buf));
 					}
 					my_strcat(buf, r->spell_noun, sizeof(buf));
 					if (p->upkeep->new_spells > 1) {
@@ -1462,7 +1468,8 @@ static void calc_spells(struct player *p)
 				}
 			}
 			/* Message */
-			msg("You can learn %d more %s.", p->upkeep->new_spells, buf);
+			// msg("You can learn %d more %s.", p->upkeep->new_spells, buf);
+			msg("Вы можете выучить ещё %d %s.", p->upkeep->new_spells, buf);
 		}
 
 		/* Redraw Study Status */
@@ -2393,31 +2400,39 @@ static void update_bonuses(struct player *p)
 		if (p->state.heavy_shoot != state.heavy_shoot) {
 			/* Message */
 			if (state.heavy_shoot)
-				msg("You have trouble wielding such a heavy bow.");
+				// msg("You have trouble wielding such a heavy bow.");
+				msg("Вам трудно управляться с таким тяжелым луком.");
 			else if (equipped_item_by_slot_name(p, "shooting"))
-				msg("You have no trouble wielding your bow.");
+				// msg("You have no trouble wielding your bow.");
+				msg("Вы без труда управляетесь со своим луком.");
 			else
-				msg("You feel relieved to put down your heavy bow.");
+				// msg("You feel relieved to put down your heavy bow.");
+				msg("Вы чувствуете облегчение отложив свой тяжёлый лук.");
 		}
 
 		/* Take note when "heavy weapon" changes */
 		if (p->state.heavy_wield != state.heavy_wield) {
 			/* Message */
 			if (state.heavy_wield)
-				msg("You have trouble wielding such a heavy weapon.");
+				// msg("You have trouble wielding such a heavy weapon.");
+				msg("Вам трудно управляться с таким тяжелым оружием.");
 			else if (equipped_item_by_slot_name(p, "weapon"))
-				msg("You have no trouble wielding your weapon.");
+				// msg("You have no trouble wielding your weapon.");
+				msg("Вы без труда управляетесь со своим оружием.");
 			else
-				msg("You feel relieved to put down your heavy weapon.");	
+				// msg("You feel relieved to put down your heavy weapon.");	
+				msg("Вы чувствуете облегчение отложив своё тяжёлое оружие.");	
 		}
 
 		/* Take note when "illegal weapon" changes */
 		if (p->state.bless_wield != state.bless_wield) {
 			/* Message */
 			if (state.bless_wield) {
-				msg("You feel attuned to your weapon.");
+				// msg("You feel attuned to your weapon.");
+				msg("Текущее оружие вам под стать.");
 			} else if (equipped_item_by_slot_name(p, "weapon")) {
-				msg("You feel less attuned to your weapon.");
+				// msg("You feel less attuned to your weapon.");
+				msg("Текущее оружие вам не подходит.");
 			}
 		}
 
@@ -2425,9 +2440,11 @@ static void update_bonuses(struct player *p)
 		if (p->state.cumber_armor != state.cumber_armor) {
 			/* Message */
 			if (state.cumber_armor)
-				msg("The weight of your armor encumbers your movement.");
+				// msg("The weight of your armor encumbers your movement.");
+				msg("Вес доспехов сковывает ваши движения.");
 			else
-				msg("You feel able to move more freely.");
+				// msg("You feel able to move more freely.");
+				msg("Вы чувствуете свободу движения.");
 		}
 	}
 
