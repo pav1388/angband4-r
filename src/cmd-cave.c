@@ -1539,7 +1539,6 @@ static const char *obj_feeling_text[] =
 	// "Looks like any other level.",
 	"Выглядит как любой другой этаж.",
 	// "you sense an item of wondrous power!",
-	//"вы чувствуете предмет чудесной силы!",
 	"здесь есть предмет чудесной силы!",
 	// "there are superb treasures here.",
 	"здесь есть превосходные сокровища.",
@@ -1572,7 +1571,7 @@ static const char *mon_feeling_text[] =
 	 * maintain symmetry with obj_feeling.
 	 */
  	// "You are still uncertain about this place",
- 	"Вы всё еще не уверены в этом месте",
+ 	"Вы всё ещё не уверены в этом месте",
 	// "Omens of death haunt this place",
 	"Смерть преследует это место",
 	// "This place seems murderous",
@@ -1588,7 +1587,7 @@ static const char *mon_feeling_text[] =
 	// "This place seems reasonably safe",
 	"Это место кажется вполне безопасным",
 	// "This seems a tame, sheltered place",
-	"Это место кажется уютным, укромным",
+	"Это место кажется уютным, защищённым",
 	// "This seems a quiet, peaceful place"
 	"Это место кажется тихим, спокойным"
 };
@@ -1642,7 +1641,7 @@ void display_feeling(bool obj_only)
 		join = ", но";
 	else
 		//join = ", and";
-		join = ", и";
+		join = " и";
 
 	/* Display the feeling */
 	msg("%s%s %s", mon_feeling_text[mon_feeling], join,
