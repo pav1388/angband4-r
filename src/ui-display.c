@@ -1141,15 +1141,16 @@ static size_t prt_level_feeling(int row, int col)
 
 	/* Display it */
 	// c_put_str(COLOUR_WHITE, "LF:", row, col);
-	c_put_str(mon_feeling_color[mon_feeling], "Риск", row, col - 2);
-	c_put_str(COLOUR_WHITE, ":", row, col + 2);
-	new_col = col + 3;
+	c_put_str(mon_feeling_color[mon_feeling], "Риск", row, col);
+	c_put_str(COLOUR_WHITE, ":", row, col + 4);
+	// new_col = col + 3;
+	new_col = col + 5;
 	c_put_str(mon_feeling_color[mon_feeling], mon_feeling_str, row, new_col);
-	new_col += utf8_strlen( mon_feeling_str );
+	new_col += strlen( mon_feeling_str );
 	c_put_str(COLOUR_WHITE, "-", row, new_col);
 	++new_col;
 	c_put_str(obj_feeling_color_print, obj_feeling_str,	row, new_col);
-	new_col += utf8_strlen( obj_feeling_str ) + 1;
+	new_col += strlen( obj_feeling_str ) + 1;
 
 	return new_col - col;
 }
@@ -1163,10 +1164,10 @@ static size_t prt_light(int row, int col)
 
 	if (light > 0) {
 		// c_put_str(COLOUR_YELLOW, format("Light %d ", light), row, col);
-		c_put_str(COLOUR_YELLOW, format("Свет %d ", light), row, col);
+		c_put_str(COLOUR_YELLOW, format(" Свет %d ", light), row, col);
 	} else {
 		// c_put_str(COLOUR_PURPLE, format("Light %d ", light), row, col);
-		c_put_str(COLOUR_PURPLE, format("Свет %d ", light), row, col);
+		c_put_str(COLOUR_PURPLE, format(" Свет %d ", light), row, col);
 	}
 
 	return 8 + (ABS(light) > 9 ? 1 : 0) + (light < 0 ? 1 : 0);
@@ -1183,11 +1184,11 @@ static size_t prt_moves(int row, int col)
 	if (i > 0) {
 		/* Display the number of moves */
 		// c_put_str(COLOUR_L_TEAL, format("Moves +%d ", i), row, col);
-		c_put_str(COLOUR_L_TEAL, format("Движ +%d ", i), row, col);
+		c_put_str(COLOUR_L_TEAL, format(" Движ +%d ", i), row, col);
 	} else if (i < 0) {
 		/* Display the number of moves */
 		// c_put_str(COLOUR_L_TEAL, format("Moves -%d ", ABS(i)), row, col);
-		c_put_str(COLOUR_L_TEAL, format("Движ -%d ", ABS(i)), row, col);
+		c_put_str(COLOUR_L_TEAL, format(" Движ -%d ", ABS(i)), row, col);
 	}
 
 	/* Shouldn't be double digits, but be paranoid */
@@ -1220,7 +1221,8 @@ static size_t prt_terrain(int row, int col)
 {
 	struct feature *feat = square_feat(cave, player->grid);
 	struct trap *trap = square_trap(cave, player->grid);
-	char buf[30];
+	// char buf[30];
+	char buf[50];
 	uint8_t attr;
 
 	if (trap && !square_isinvis(cave, player->grid)) {
@@ -1246,12 +1248,13 @@ static size_t prt_dtrap(int row, int col)
 		/* The player is on the border */
 		if (square_dtrap_edge(cave, player->grid))
 			// c_put_str(COLOUR_YELLOW, "DTrap ", row, col);
-			c_put_str(COLOUR_YELLOW, "Ловушка ", row, col);
+			c_put_str(COLOUR_YELLOW, "Об.ловуш ", row, col);
 		else
 			// c_put_str(COLOUR_L_GREEN, "DTrap ", row, col);
-			c_put_str(COLOUR_L_GREEN, "Ловушка ", row, col);
+			c_put_str(COLOUR_L_GREEN, "Об.ловуш ", row, col);
 
-		return 6;
+		// return 6;
+		return 9;
 	}
 
 	return 0;
@@ -1274,7 +1277,7 @@ static size_t prt_study(int row, int col)
 
 		/* Print study message */
 		// text = format("Study (%d)", player->upkeep->new_spells);
-		text = format("Изучить (%d)", player->upkeep->new_spells);
+		text = format("Изучить(%d)", player->upkeep->new_spells);
 		c_put_str(attr, text, row, col);
 		return utf8_strlen(text) + 1;
 	}
@@ -1304,7 +1307,7 @@ static size_t prt_tmd(int row, int col)
 			if (i == TMD_FOOD) {
 				char *meter = format("%d %%", player->timed[i] / 100);
 				c_put_str(grade->color, meter, row, col + len);
-				len += utf8_strlen(meter) + 1;
+				len += strlen(meter) + 1;
 			}
 		}
 	}
@@ -1319,7 +1322,7 @@ static size_t prt_unignore(int row, int col)
 {
 	if (player->unignoring) {
 		// const char *str = "Unignoring";
-		const char *str = "Неигнорирование";
+		const char *str = "Неигнорир.";
 		put_str(str, row, col);
 		return utf8_strlen(str) + 1;
 	}
