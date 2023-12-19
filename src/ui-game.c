@@ -165,7 +165,7 @@ struct cmd_info cmd_action[] =
 	// { "Target closest monster", { '\'' }, CMD_NULL, textui_target_closest, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "  Цель на ближайшего монстра", { '\'' }, CMD_NULL, textui_target_closest, NULL, 0, NULL, NULL, NULL, 0 },
 	// { "Dig a tunnel", { 'T', KTRL('T') }, CMD_TUNNEL, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "  Копать туннель", { 'T', KTRL('T') }, CMD_TUNNEL, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "  Копать проход", { 'T', KTRL('T') }, CMD_TUNNEL, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	// { "Go up staircase", {'<' }, CMD_GO_UP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "  Идти вверх по лестнице", {'<' }, CMD_GO_UP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	// { "Go down staircase", { '>' }, CMD_GO_DOWN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
