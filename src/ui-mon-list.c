@@ -62,7 +62,8 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 	int total;
 	char line_buffer[200];
 	const char *punctuation = (lines_to_display == 0) ? "." : ":";
-	const char *others = (show_others) ? "other " : "";
+	// const char *others = (show_others) ? "other " : "";
+	const char *others = (show_others) ? "других " : "";
 	size_t max_line_length = 0;
 
 	if (list == NULL || list->entries == NULL)
@@ -72,7 +73,8 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 
 	if (list->total_monsters[section] == 0) {
 		max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
-								  "%s no monsters.\n", prefix);
+								  // "%s no monsters.\n", prefix);
+								  "%s, что никаких монстров нет.\n", prefix);
 
 		if (tb != NULL)
 			textblock_append(tb, "%s", line_buffer);
@@ -85,11 +87,12 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 	}
 
 	max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
-							  "%s %d %smonster%s%s\n",
+							  // "%s %d %smonster%s%s\n",
+							  "%s %d %sмонстр%s%s\n",
 							  prefix,
 							  list->total_monsters[section],
 							  others,
-							  PLURAL(list->total_monsters[section]),
+							  PLURAL_RU_A_OV(list->total_monsters[section]),
 							  punctuation);
 
 	if (tb != NULL)
@@ -112,9 +115,11 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 		/* Only display directions for the case of a single monster. */
 		if (list->entries[index].count[section] == 1) {
 			const char *direction1 =
-				(list->entries[index].dy[section] <= 0)	? "N" : "S";
+				// (list->entries[index].dy[section] <= 0)	? "N" : "S";
+				(list->entries[index].dy[section] <= 0)	? "С" : "Ю";
 			const char *direction2 =
-				(list->entries[index].dx[section] <= 0) ? "W" : "E";
+				// (list->entries[index].dx[section] <= 0) ? "W" : "E";
+				(list->entries[index].dx[section] <= 0) ? "З" : "В";
 			strnfmt(location, sizeof(location), " %d %s %d %s",
 					abs(list->entries[index].dy[section]), direction1,
 					abs(list->entries[index].dx[section]), direction2);
@@ -128,9 +133,11 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 		count_in_section = list->entries[index].count[section];
 
 		if (asleep_in_section > 0 && count_in_section > 1)
-			strnfmt(asleep, sizeof(asleep), " (%d asleep)", asleep_in_section);
+			// strnfmt(asleep, sizeof(asleep), " (%d asleep)", asleep_in_section);
+			strnfmt(asleep, sizeof(asleep), " (%d спит)", asleep_in_section);
 		else if (asleep_in_section == 1 && count_in_section == 1)
-			strnfmt(asleep, sizeof(asleep), " (asleep)");
+			// strnfmt(asleep, sizeof(asleep), " (asleep)");
+			strnfmt(asleep, sizeof(asleep), " (спит)");
 
 		/* Clip the monster name to fit, and append the sleep tag. */
 		name_width = MIN(full_width - utf8_strlen(asleep), sizeof(line_buffer));
@@ -185,7 +192,8 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 	}
 
 	if (tb != NULL)
-		textblock_append(tb, "%6s...and %d others.\n", " ",
+		// textblock_append(tb, "%6s...and %d others.\n", " ",
+		textblock_append(tb, "%6s...и %d других.\n", " ",
 						 remaining_monster_total);
 }
 
@@ -210,13 +218,14 @@ static bool monster_list_format_special(const monster_list_t *list, textblock *t
 {
 	if (player->timed[TMD_IMAGE] > 0) {
 		/* Hack - message needs newline to calculate width properly. */
-		const char *message = "Your hallucinations are too wild to see things clearly.\n";
+		// const char *message = "Your hallucinations are too wild to see things clearly.\n";
+		const char *message = "Ваши галлюцинации слишком дикие, чтобы видеть всё ясно.\n";
 
 		if (max_height_result != NULL)
 			*max_height_result = 1;
 
 		if (max_width_result != NULL)
-			*max_width_result = strlen(message);
+			*max_width_result = utf8_strlen(message);
 
 		if (tb != NULL)
 			textblock_append_c(tb, COLOUR_ORANGE, "%s", message);
@@ -293,7 +302,8 @@ static void monster_list_format_textblock(const monster_list_t *list, textblock 
 
 	monster_list_format_section(list, tb, MONSTER_LIST_SECTION_LOS,
 								los_lines_to_display, max_width,
-								"You can see", false, &max_los_line);
+								// "You can see", false, &max_los_line);
+								"Вы видите", false, &max_los_line);
 
 	if (list->total_entries[MONSTER_LIST_SECTION_ESP] > 0) {
 		bool show_others = list->total_monsters[MONSTER_LIST_SECTION_LOS] > 0;
@@ -303,7 +313,8 @@ static void monster_list_format_textblock(const monster_list_t *list, textblock 
 
 		monster_list_format_section(list, tb, MONSTER_LIST_SECTION_ESP,
 									esp_lines_to_display, max_width,
-									"You are aware of", show_others,
+									// "You are aware of", show_others,
+									"Вы знаете о", show_others,
 									&max_esp_line);
 	}
 
@@ -434,10 +445,12 @@ void monster_list_show_interactive(int height, int width)
 		char buf[300];
 
 		if (sort_exp) {
-			my_strcpy(buf, "Press 'x' to turn OFF 'sort by exp'", sizeof(buf));
+			// my_strcpy(buf, "Press 'x' to turn OFF 'sort by exp'", sizeof(buf));
+			my_strcpy(buf, "'x' выключ. сортировку по опыту", sizeof(buf));
 		}
 		else {
-			my_strcpy(buf, "Press 'x' to turn ON 'sort by exp'", sizeof(buf));
+			// my_strcpy(buf, "Press 'x' to turn ON 'sort by exp'", sizeof(buf));
+			my_strcpy(buf, "'x'  включ. сортировку по опыту", sizeof(buf));
 		}
 
 		ch = textui_textblock_show(tb, r, buf);

@@ -62,7 +62,8 @@ static void object_list_format_section(const object_list_t *list,
 	int total;
 	char line_buffer[200];
 	const char *punctuation = (lines_to_display == 0) ? "." : ":";
-	const char *others = (show_others) ? "other " : "";
+	// const char *others = (show_others) ? "other " : "";
+	const char *others = (show_others) ? "других " : "";
 	size_t max_line_length = 0;
 
 	if (list == NULL || list->entries == NULL)
@@ -72,7 +73,8 @@ static void object_list_format_section(const object_list_t *list,
 
 	if (list->total_entries[section] == 0) {
 		max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
-								  "%s no objects.\n", prefix);
+								  // "%s no objects.\n", prefix);
+								  "%s, что никаких предметов нет.\n", prefix);
 
 		if (tb != NULL)
 			textblock_append(tb, "%s", line_buffer);
@@ -85,9 +87,10 @@ static void object_list_format_section(const object_list_t *list,
 	}
 
 	max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
-							  "%s %d %sobject%s%s\n", prefix,
+							  // "%s %d %sobject%s%s\n", prefix,
+							  "%s %d %sпредмет%s%s\n", prefix,
 							  list->total_entries[section], others,
-							  PLURAL(list->total_entries[section]),
+							  PLURAL_RU__A_OV(list->total_entries[section]),
 							  punctuation);
 
 	if (tb != NULL)
@@ -98,8 +101,10 @@ static void object_list_format_section(const object_list_t *list,
 		char location[20] = { '\0' };
 		uint8_t line_attr;
 		size_t full_width;
-		const char *direction_y = (list->entries[entry_index].dy <= 0) ? "N" : "S";
-		const char *direction_x = (list->entries[entry_index].dx <= 0) ? "W" : "E";
+		// const char *direction_y = (list->entries[entry_index].dy <= 0) ? "N" : "S";
+		const char *direction_y = (list->entries[entry_index].dy <= 0) ? "С" : "Ю";
+		// const char *direction_x = (list->entries[entry_index].dx <= 0) ? "W" : "E";
+		const char *direction_x = (list->entries[entry_index].dx <= 0) ? "З" : "В";
 
 		line_buffer[0] = '\0';
 
@@ -174,7 +179,8 @@ static void object_list_format_section(const object_list_t *list,
 	remaining_object_total = total - entry_index;
 
 	if (tb != NULL)
-		textblock_append(tb, "%6s...and %d others.\n", " ", remaining_object_total);
+		// textblock_append(tb, "%6s...and %d others.\n", " ", remaining_object_total);
+		textblock_append(tb, "%6s...и %d других.\n", " ", remaining_object_total);
 }
 
 /**
@@ -272,7 +278,8 @@ static void object_list_format_textblock(const object_list_t *list,
         
 	object_list_format_section(list, tb, OBJECT_LIST_SECTION_LOS,
 							   los_lines_to_display, max_width,
-							   "You can see", false, &max_los_line);
+							   // "You can see", false, &max_los_line);
+							   "Вы видите", false, &max_los_line);
 
 	if (list->total_entries[OBJECT_LIST_SECTION_NO_LOS] > 0) {
          bool show_others = list->total_objects[OBJECT_LIST_SECTION_LOS] > 0;
@@ -282,7 +289,8 @@ static void object_list_format_textblock(const object_list_t *list,
 
          object_list_format_section(list, tb, OBJECT_LIST_SECTION_NO_LOS,
 									no_los_lines_to_display, max_width,
-									"You are aware of", show_others,
+									// "You are aware of", show_others,
+									"Вы знаете о", show_others,
 									&max_no_los_line);
 	}
 
