@@ -321,17 +321,23 @@ static enum parser_error parse_player_timed_grade(struct parser *p)
 	if (food_scl != 1) {
 		l->max *= food_scl;
 		if (l->name) {
-			if (streq(l->name, "Starving")) {
+			// if (streq(l->name, "Starving")) {
+			if (streq(l->name, "Голодание")) {
 				PY_FOOD_STARVE = l->max;
-			} else if (streq(l->name, "Faint")) {
+			// } else if (streq(l->name, "Faint")) {
+			} else if (streq(l->name, "Обморок")) {
 				PY_FOOD_FAINT = l->max;
-			} else if (streq(l->name, "Weak")) {
+			// } else if (streq(l->name, "Weak")) {
+			} else if (streq(l->name, "Слабый")) {
 				PY_FOOD_WEAK = l->max;
-			} else if (streq(l->name, "Hungry")) {
+			// } else if (streq(l->name, "Hungry")) {
+			} else if (streq(l->name, "Голодный")) {
 				PY_FOOD_HUNGRY = l->max;
-			} else if (streq(l->name, "Fed")) {
+			// } else if (streq(l->name, "Fed")) {
+			} else if (streq(l->name, "Сытый")) {
 				PY_FOOD_FULL = l->max;
-			} else if (streq(l->name, "Full")) {
+			// } else if (streq(l->name, "Full")) {
+			} else if (streq(l->name, "Переел")) {
 				PY_FOOD_MAX = l->max;
 			}
 		}
@@ -947,7 +953,8 @@ bool player_inc_check(struct player *p, int idx, bool lore)
 				}
 				if (player_of_has(p, f->idx)) {
 					if (mon) {
-						msg("You resist the effect!");
+						// msg("You resist the effect!");
+						msg("Вы сопротивляетесь эффекту!");
 					}
 					return false;
 				}
