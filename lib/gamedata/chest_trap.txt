@@ -27,55 +27,55 @@
 # Current disarming difficulty calculations depend on there being six types
 # of trap; if there are more than six, those calculations will need to change.
 
-name:locked
+name:заперто
 code:NO_TRAP
 level:1
 
-name:gas trap
+name:газовая ловушка
 code:POISON
 level:1
 effect:TIMED_INC:POISONED
 dice:10+d20
-msg:A puff of green gas surrounds you!
+msg:Вокруг вас клубится зеленый газ!
 
-name:poison needle
+name:ядовитая игла
 code:LOSE_STR
 level:2
 effect:DAMAGE
 dice:1d4
 effect:DRAIN_STAT:STR
-msg:A small needle has pricked you!
-msg-death:a poison needle
+msg:Вас уколола маленькая иголка!
+msg-death:игла с ядом
 
-name:poison needle
+name:ядовитая игла
 code:LOSE_CON
 level:3
 effect:DAMAGE
 dice:1d4
 effect:DRAIN_STAT:CON
-msg:A small needle has pricked you!
-msg-death:a poison needle
+msg:Вас уколола маленькая иголка!
+msg-death:игла с ядом
 
-name:summoning runes
+name:призывающие руны
 code:SUMMON
 level:15
 effect:SUMMON:ANY
 dice:2+1d3
 magic:1
-msg:You are enveloped in a cloud of smoke!
+msg:Вас окутывает облако дыма!
 
-name:gas trap
+name:газовая ловушка
 code:PARALYZE
 level:19
 effect:TIMED_INC:PARALYZED
 dice:10+d20
-msg:A puff of yellow gas surrounds you!
+msg:Вокруг вас клубится желтый газ!
 
-name:explosion device
+name:взрывное устройство
 code:EXPLODE
 level:25
 effect:DAMAGE
 dice:5d8
 destroy:1
-msg:There is a sudden explosion! Everything inside the chest is destroyed!
-msg-death:an exploding chest
+msg:Происходит внезапный взрыв! Все внутри сундука уничтожено!
+msg-death:взрывающийся сундук
