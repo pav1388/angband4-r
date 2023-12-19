@@ -243,11 +243,13 @@ static void adjust_level(struct player *p, bool verbose)
 
 		if (verbose) {
 			/* Log level updates */
-			strnfmt(buf, sizeof(buf), "Reached level %d", p->lev);
+			// strnfmt(buf, sizeof(buf), "Reached level %d", p->lev);
+			strnfmt(buf, sizeof(buf), "Достигнут уровень %d", p->lev);
 			history_add(p, buf, HIST_GAIN_LEVEL);
 
 			/* Message */
-			msgt(MSG_LEVEL, "Welcome to level %d.",	p->lev);
+			// msgt(MSG_LEVEL, "Welcome to level %d.",	p->lev);
+			msgt(MSG_LEVEL, "Добро пожаловать на %d-й уровень.",	p->lev);
 		}
 
 		effect_simple(EF_RESTORE_STAT, source_none(), "0", STAT_STR, 0, 0, 0, 0, NULL);
@@ -363,7 +365,8 @@ bool player_restore_mana(struct player *p, int amt) {
 	}
 	p->upkeep->redraw |= PR_MANA;
 
-	msg("You feel some of your energies returning.");
+	// msg("You feel some of your energies returning.");
+	msg("Вы чувствуете, что часть вашей энергии возвращается.");
 
 	return p->csp != old_csp;
 }
