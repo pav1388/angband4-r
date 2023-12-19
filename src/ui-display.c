@@ -98,7 +98,8 @@ static game_event_type statusline_events[] =
  */
 const char *stat_names[STAT_MAX] =
 {
-	"STR: ", "INT: ", "WIS: ", "DEX: ", "CON: "
+	// "STR: ", "INT: ", "WIS: ", "DEX: ", "CON: "
+	"СИЛ: ", "ИНТ: ", "МУД: ", "ЛОВ: ", "ТЕЛ: "
 };
 
 /**
@@ -106,7 +107,8 @@ const char *stat_names[STAT_MAX] =
  */
 const char *stat_names_reduced[STAT_MAX] =
 {
-	"Str: ", "Int: ", "Wis: ", "Dex: ", "Con: "
+	// "Str: ", "Int: ", "Wis: ", "Dex: ", "Con: "
+	"Сил: ", "Инт: ", "Муд: ", "Лов: ", "Тел: "
 };
 
 /**
@@ -178,7 +180,8 @@ static int fmt_title(char buf[], int max, bool short_mode)
 	if (player->wizard) {
 		my_strcpy(buf, "[=-WIZARD-=]", max);
 	} else if (player->total_winner || (player->lev > PY_MAX_LEVEL)) {
-		my_strcpy(buf, "***WINNER***", max);
+		// my_strcpy(buf, "***WINNER***", max);
+		my_strcpy(buf, "*ПОБЕДИТЕЛЬ*", max);
 	} else if (player_is_shapechanged(player)) {		
 		my_strcpy(buf, player->shape->name, max);
 		my_strcap(buf);		
@@ -186,7 +189,7 @@ static int fmt_title(char buf[], int max, bool short_mode)
 		my_strcpy(buf, player->class->title[(player->lev - 1) / 5], max);
 	}
 
-	return strlen(buf);
+	return utf8_strlen(buf);
 }
 
 /**
@@ -211,10 +214,12 @@ static void prt_level(int row, int col)
 	strnfmt(tmp, sizeof(tmp), "%6d", player->lev);
 
 	if (player->lev >= player->max_lev) {
-		put_str("LEVEL ", row, col);
+		// put_str("LEVEL ", row, col);
+		put_str("УРВ ", row, col);
 		c_put_str(COLOUR_L_GREEN, tmp, row, col + 6);
 	} else {
-		put_str("Level ", row, col);
+		// put_str("Level ", row, col);
+		put_str("Урв ", row, col);
 		c_put_str(COLOUR_YELLOW, tmp, row, col + 6);
 	}
 }
@@ -241,10 +246,12 @@ static void prt_exp(int row, int col)
 
 
 	if (player->exp >= player->max_exp) {
-		put_str((lev50 ? "EXP" : "NXT"), row, col);
+		// put_str((lev50 ? "EXP" : "NXT"), row, col);
+		put_str((lev50 ? "ОПТ" : "СЛД"), row, col);
 		c_put_str(COLOUR_L_GREEN, out_val, row, col + 4);
 	} else {
-		put_str((lev50 ? "Exp" : "Nxt"), row, col);
+		// put_str((lev50 ? "Exp" : "Nxt"), row, col);
+		put_str((lev50 ? "Опт" : "Слд"), row, col);
 		c_put_str(COLOUR_YELLOW, out_val, row, col + 4);
 	}
 }
@@ -257,7 +264,8 @@ static void prt_gold(int row, int col)
 {
 	char tmp[32];
 
-	put_str("AU ", row, col);
+	// put_str("AU ", row, col);
+	put_str("ЗОЛ", row, col);
 	strnfmt(tmp, sizeof(tmp), "%9ld", (long)player->au);
 	c_put_str(COLOUR_L_GREEN, tmp, row, col + 3);
 }
@@ -302,7 +310,8 @@ static void prt_ac(int row, int col)
 {
 	char tmp[32];
 
-	put_str("Cur AC ", row, col);
+	// put_str("Cur AC ", row, col);
+	put_str("Броня ", row, col);
 	strnfmt(tmp, sizeof(tmp), "%5d", 
 			player->known_state.ac + player->known_state.to_a);
 	c_put_str(COLOUR_L_GREEN, tmp, row, col + 7);
@@ -316,7 +325,8 @@ static void prt_hp(int row, int col)
 	char cur_hp[32], max_hp[32];
 	uint8_t color = player_hp_attr(player);
 
-	put_str("HP ", row, col);
+	// put_str("HP ", row, col);
+	put_str("ОЗ ", row, col);
 
 	strnfmt(max_hp, sizeof(max_hp), "%4d", player->mhp);
 	strnfmt(cur_hp, sizeof(cur_hp), "%4d", player->chp);
@@ -348,7 +358,8 @@ static void prt_sp(int row, int col)
 		return;
 	}
 
-	put_str("SP ", row, col);
+	// put_str("SP ", row, col);
+	put_str("ОМ ", row, col);
 
 	strnfmt(max_sp, sizeof(max_sp), "%4d", player->msp);
 	strnfmt(cur_sp, sizeof(cur_sp), "%4d", player->csp);
@@ -483,10 +494,12 @@ static int prt_speed_aux(char buf[], int max, uint8_t *attr)
 	/* 110 is normal speed, and requires no display */
 	if (i > 110) {
 		*attr = COLOUR_L_GREEN;
-		type = "Fast";
+		// type = "Fast";
+		type = "Быстр";
 	} else if (i < 110) {
 		*attr = COLOUR_L_UMBER;
-		type = "Slow";
+		// type = "Slow";
+		type = "Медл";
 	}
 
 	if (type && !OPT(player, effective_speed))
@@ -499,7 +512,7 @@ static int prt_speed_aux(char buf[], int max, uint8_t *attr)
 		strnfmt(buf, max, "%s (%d.%dx)", type, int_mul, dec_mul);
 	}
 
-	return strlen(buf);
+	return utf8_strlen(buf);
 }
 
 /**
@@ -519,11 +532,13 @@ static void prt_speed(int row, int col)
 static int fmt_depth(char buf[], int max)
 {
 	if (!player->depth)
-		my_strcpy(buf, "Town", max);
+		// my_strcpy(buf, "Town", max);
+		my_strcpy(buf, "Город", max);
 	else
-		strnfmt(buf, max, "%d' (L%d)",
+		// strnfmt(buf, max, "%d' (L%d)",
+		strnfmt(buf, max, "%dм (Эт%d)",
 		        player->depth * 50, player->depth);
-	return strlen(buf);
+	return utf8_strlen(buf);
 }
 
 /**
@@ -570,7 +585,7 @@ static int prt_race_class_short(int row, int col)
 
 	c_put_str(COLOUR_L_GREEN, buf, row, col);
 
-	return strlen(buf)+1;
+	return utf8_strlen(buf)+1;
 }
 
 static void prt_class(int row, int col) {
@@ -591,10 +606,12 @@ static int prt_level_short(int row, int col)
 	strnfmt(tmp, sizeof(tmp), "%d", player->lev);
 
 	if (player->lev >= player->max_lev) {
-		put_str("L:", row, col);
+		// put_str("L:", row, col);
+		put_str("Э:", row, col);
 		c_put_str(COLOUR_L_GREEN, tmp, row, col + 2);
 	} else {
-		put_str("l:", row, col);
+		// put_str("l:", row, col);
+		put_str("э:", row, col);
 		c_put_str(COLOUR_YELLOW, tmp, row, col + 2);
 	}
 
@@ -644,10 +661,12 @@ static int prt_exp_short(int row, int col)
 	strnfmt(out_val, sizeof(out_val), "%ld", xp);
 
 	if (player->exp >= player->max_exp) {
-		put_str((lev50 ? "EXP:" : "NXT:"), row, col);
+		// put_str((lev50 ? "EXP:" : "NXT:"), row, col);
+		put_str((lev50 ? "ОПТ:" : "СЛД:"), row, col);
 		c_put_str(COLOUR_L_GREEN, out_val, row, col + 4);
 	} else {
-		put_str((lev50 ? "exp:" : "nxt:"), row, col);
+		// put_str((lev50 ? "exp:" : "nxt:"), row, col);
+		put_str((lev50 ? "опт:" : "слд:"), row, col);
 		c_put_str(COLOUR_YELLOW, out_val, row, col + 4);
 	}
 
@@ -669,7 +688,8 @@ static int prt_gold_short(int row, int col)
 {
 	char tmp[32];
 
-	put_str("AU:", row, col);
+	// put_str("AU:", row, col);
+	put_str("ЗЛ:", row, col);
 	strnfmt(tmp, sizeof(tmp), "%ld", (long)player->au);
 	c_put_str(COLOUR_L_GREEN, tmp, row, col + 3);
 	return 4+strlen(tmp);
@@ -680,7 +700,8 @@ static int prt_hp_short(int row, int col)
 	char cur_hp[32], max_hp[32];
 	uint8_t color = player_hp_attr(player);
 
-	put_str("HP:", row, col);
+	// put_str("HP:", row, col);
+	put_str("ОЗ:", row, col);
 	col += 3;
 
 	strnfmt(max_hp, sizeof(max_hp), "%d", player->mhp);
@@ -704,7 +725,8 @@ static int prt_sp_short(int row, int col)
 			|| (player->lev < player->class->magic.spell_first))
 		return 0;
 
-	put_str("SP:", row, col);
+	// put_str("SP:", row, col);
+	put_str("ОМ:", row, col);
 	col += 3;
 
 	strnfmt(max_sp, sizeof(max_sp), "%d", player->msp);
@@ -925,8 +947,10 @@ struct state_info
 static size_t prt_recall(int row, int col)
 {
 	if (player->word_recall) {
-		c_put_str(COLOUR_WHITE, "Recall", row, col);
-		return sizeof "Recall";
+		// c_put_str(COLOUR_WHITE, "Recall", row, col);
+		c_put_str(COLOUR_WHITE, "Возвращение", row, col);
+		// return sizeof "Recall";
+		return sizeof "Возвращение";
 	}
 
 	return 0;
@@ -939,8 +963,10 @@ static size_t prt_recall(int row, int col)
 static size_t prt_descent(int row, int col)
 {
 	if (player->deep_descent) {
-		c_put_str(COLOUR_WHITE, "Descent", row, col);
-		return sizeof "Descent";
+		// c_put_str(COLOUR_WHITE, "Descent", row, col);
+		c_put_str(COLOUR_WHITE, "Спуск", row, col);
+		// return sizeof "Descent";
+		return sizeof "Спуск";
 	}
 
 	return 0;
@@ -967,7 +993,8 @@ static size_t prt_state(int row, int col)
 		int n = player_resting_count(player);
 
 		/* Start with "Rest" */
-		my_strcpy(text, "Rest      ", sizeof(text));
+		// my_strcpy(text, "Rest      ", sizeof(text));
+		my_strcpy(text, "Отдых     ", sizeof(text));
 
 		/* Display according to length or intent of rest */
 		if (n >= 1000) {
@@ -1005,15 +1032,17 @@ static size_t prt_state(int row, int col)
 		int nrepeats = cmd_get_nrepeats();
 
 		if (nrepeats > 999)
-			strnfmt(text, sizeof(text), "Rep. %3d00", nrepeats / 100);
+			// strnfmt(text, sizeof(text), "Rep. %3d00", nrepeats / 100);
+			strnfmt(text, sizeof(text), "Пов. %3d00", nrepeats / 100);
 		else
-			strnfmt(text, sizeof(text), "Repeat %3d", nrepeats);
+			// strnfmt(text, sizeof(text), "Repeat %3d", nrepeats);
+			strnfmt(text, sizeof(text), "Повтор %3d", nrepeats);
 	}
 
 	/* Display the info (or blanks) */
 	c_put_str(attr, text, row, col);
 
-	return strlen(text) + 1;
+	return utf8_strlen(text) + 1;
 }
 
 static const uint8_t obj_feeling_color[] =
@@ -1111,14 +1140,16 @@ static size_t prt_level_feeling(int row, int col)
 		strnfmt(mon_feeling_str, 5, "%d", (unsigned int) ( 10-mon_feeling ));
 
 	/* Display it */
-	c_put_str(COLOUR_WHITE, "LF:", row, col);
+	// c_put_str(COLOUR_WHITE, "LF:", row, col);
+	c_put_str(mon_feeling_color[mon_feeling], "Риск", row, col - 2);
+	c_put_str(COLOUR_WHITE, ":", row, col + 2);
 	new_col = col + 3;
 	c_put_str(mon_feeling_color[mon_feeling], mon_feeling_str, row, new_col);
-	new_col += strlen( mon_feeling_str );
+	new_col += utf8_strlen( mon_feeling_str );
 	c_put_str(COLOUR_WHITE, "-", row, new_col);
 	++new_col;
 	c_put_str(obj_feeling_color_print, obj_feeling_str,	row, new_col);
-	new_col += strlen( obj_feeling_str ) + 1;
+	new_col += utf8_strlen( obj_feeling_str ) + 1;
 
 	return new_col - col;
 }
@@ -1131,9 +1162,11 @@ static size_t prt_light(int row, int col)
 	int light = square_light(cave, player->grid);
 
 	if (light > 0) {
-		c_put_str(COLOUR_YELLOW, format("Light %d ", light), row, col);
+		// c_put_str(COLOUR_YELLOW, format("Light %d ", light), row, col);
+		c_put_str(COLOUR_YELLOW, format("Свет %d ", light), row, col);
 	} else {
-		c_put_str(COLOUR_PURPLE, format("Light %d ", light), row, col);
+		// c_put_str(COLOUR_PURPLE, format("Light %d ", light), row, col);
+		c_put_str(COLOUR_PURPLE, format("Свет %d ", light), row, col);
 	}
 
 	return 8 + (ABS(light) > 9 ? 1 : 0) + (light < 0 ? 1 : 0);
@@ -1149,10 +1182,12 @@ static size_t prt_moves(int row, int col)
 	/* 1 move is normal and requires no display */
 	if (i > 0) {
 		/* Display the number of moves */
-		c_put_str(COLOUR_L_TEAL, format("Moves +%d ", i), row, col);
+		// c_put_str(COLOUR_L_TEAL, format("Moves +%d ", i), row, col);
+		c_put_str(COLOUR_L_TEAL, format("Движ +%d ", i), row, col);
 	} else if (i < 0) {
 		/* Display the number of moves */
-		c_put_str(COLOUR_L_TEAL, format("Moves -%d ", ABS(i)), row, col);
+		// c_put_str(COLOUR_L_TEAL, format("Moves -%d ", ABS(i)), row, col);
+		c_put_str(COLOUR_L_TEAL, format("Движ -%d ", ABS(i)), row, col);
 	}
 
 	/* Shouldn't be double digits, but be paranoid */
@@ -1166,13 +1201,13 @@ static int longest_terrain_name(void)
 {
 	size_t i, max = 0;
 	for (i = 0; i < z_info->trap_max; i++) {
-		if (strlen(trap_info[i].name) > max) {
-			max = strlen(trap_info[i].name);
+		if (utf8_strlen(trap_info[i].name) > max) {
+			max = utf8_strlen(trap_info[i].name);
 		}
 	}
 	for (i = 0; i < FEAT_MAX; i++) {
-		if (strlen(f_info[i].name) > max) {
-			max = strlen(f_info[i].name);
+		if (utf8_strlen(f_info[i].name) > max) {
+			max = utf8_strlen(f_info[i].name);
 		}
 	}
 	return max;
@@ -1210,9 +1245,11 @@ static size_t prt_dtrap(int row, int col)
 	if (square_isdtrap(cave, player->grid)) {
 		/* The player is on the border */
 		if (square_dtrap_edge(cave, player->grid))
-			c_put_str(COLOUR_YELLOW, "DTrap ", row, col);
+			// c_put_str(COLOUR_YELLOW, "DTrap ", row, col);
+			c_put_str(COLOUR_YELLOW, "Ловушка ", row, col);
 		else
-			c_put_str(COLOUR_L_GREEN, "DTrap ", row, col);
+			// c_put_str(COLOUR_L_GREEN, "DTrap ", row, col);
+			c_put_str(COLOUR_L_GREEN, "Ловушка ", row, col);
 
 		return 6;
 	}
@@ -1236,9 +1273,10 @@ static size_t prt_study(int row, int col)
 			attr = COLOUR_L_DARK;
 
 		/* Print study message */
-		text = format("Study (%d)", player->upkeep->new_spells);
+		// text = format("Study (%d)", player->upkeep->new_spells);
+		text = format("Изучить (%d)", player->upkeep->new_spells);
 		c_put_str(attr, text, row, col);
-		return strlen(text) + 1;
+		return utf8_strlen(text) + 1;
 	}
 
 	return 0;
@@ -1260,13 +1298,13 @@ static size_t prt_tmd(int row, int col)
 			}
 			if (!grade->name) continue;
 			c_put_str(grade->color, grade->name, row, col + len);
-			len += strlen(grade->name) + 1;
+			len += utf8_strlen(grade->name) + 1;
 
 			/* Food meter */
 			if (i == TMD_FOOD) {
 				char *meter = format("%d %%", player->timed[i] / 100);
 				c_put_str(grade->color, meter, row, col + len);
-				len += strlen(meter) + 1;
+				len += utf8_strlen(meter) + 1;
 			}
 		}
 	}
@@ -1280,9 +1318,10 @@ static size_t prt_tmd(int row, int col)
 static size_t prt_unignore(int row, int col)
 {
 	if (player->unignoring) {
-		const char *str = "Unignoring";
+		// const char *str = "Unignoring";
+		const char *str = "Неигнорирование";
 		put_str(str, row, col);
-		return strlen(str) + 1;
+		return utf8_strlen(str) + 1;
 	}
 
 	return 0;
@@ -2404,7 +2443,7 @@ static void splashscreen_note(game_event_type type, game_event_data *data,
 	} else {
 		char *s = format("[%s]", data->message.msg);
 		Term_erase(0, (Term->hgt - 23) / 5 + 23, 255);
-		Term_putstr((Term->wid - strlen(s)) / 2, (Term->hgt - 23) / 5 + 23, -1,
+		Term_putstr((Term->wid - utf8_strlen(s)) / 2, (Term->hgt - 23) / 5 + 23, -1,
 					COLOUR_WHITE, s);
 	}
 
@@ -2575,7 +2614,8 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 	int floor_num = 0;
 	bool blind = ((player->timed[TMD_BLIND]) || (no_light(player)));
 
-	const char *p = "see";
+	// const char *p = "see";
+	const char *p = "видите";
 	bool can_pickup = false;
 	int i;
 
@@ -2599,9 +2639,11 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 		char o_name[80];
 
 		if (!can_pickup)
-			p = "have no room for";
+			// p = "have no room for";
+			p = "нет места для";
 		else if (blind)
-			p = "feel";
+			// p = "feel";
+			p = "ощущаете";
 
 		/* Describe the object.  Less detail if blind. */
 		if (blind) {
@@ -2614,19 +2656,23 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 
 		/* Message */
 		event_signal(EVENT_MESSAGE_FLUSH);
-		msg("You %s %s.", p, o_name);
+		// msg("You %s %s.", p, o_name);
+		msg("Вы %s %s.", p, o_name);
 	} else {
 		ui_event e;
 
 		if (!can_pickup)
-			p = "have no room for the following objects";
+			// p = "have no room for the following objects";
+			p = "нет места для следующих объектов";
 		else if (blind)
-			p = "feel something on the floor";
+			// p = "feel something on the floor";
+			p = "почувствовали что-то на полу";
 
 		/* Display objects on the floor */
 		screen_save();
 		show_floor(floor_list, floor_num, OLIST_WEIGHT, NULL);
-		prt(format("You %s: ", p), 0, 0);
+		// prt(format("You %s: ", p), 0, 0);
+		prt(format("Вы %s: ", p), 0, 0);
 
 		/* Wait for it.  Use key as next command. */
 		e = inkey_ex();
@@ -2698,7 +2744,8 @@ static void ui_leave_init(game_event_type type, game_event_data *data,
 	event_remove_handler(EVENT_INITSTATUS, splashscreen_note, NULL);
 
 	/* Flash a message */
-	prt("Please wait...", 0, 0);
+	// prt("Please wait...", 0, 0);
+	prt("Пожалуйста подождите...", 0, 0);
 
 	/* Flush the message */
 	Term_fresh();
