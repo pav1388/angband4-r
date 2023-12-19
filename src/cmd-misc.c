@@ -74,7 +74,8 @@ void do_cmd_retire(struct command *cmd)
 {
 	/* Treat retired character as dead to satisfy end of game logic. */
 	player->is_dead = true;
-	my_strcpy(player->died_from, "Retiring", sizeof(player->died_from));
+	// my_strcpy(player->died_from, "Retiring", sizeof(player->died_from));
+	my_strcpy(player->died_from, "Отставка", sizeof(player->died_from));
 }
 
 /**
@@ -94,7 +95,8 @@ void do_cmd_note(void)
 	my_strcpy(note, "", sizeof(note));
 
 	/* Read a line of input from the user */
-	if (!get_string("Note: ", tmp, sizeof(tmp))) return;
+	// if (!get_string("Note: ", tmp, sizeof(tmp))) return;
+	if (!get_string("Заметка: ", tmp, sizeof(tmp))) return;
 
 	/* Ignore empty notes */
 	if (!tmp[0] || (tmp[0] == ' ')) return;
@@ -106,7 +108,8 @@ void do_cmd_note(void)
 	else if (strncmp(tmp, "/me", 3) == 0)
 		strnfmt(note, sizeof(note), "-- %s%s", player->full_name, &tmp[3]);
 	else
-		strnfmt(note, sizeof(note), "-- Note: %s", tmp);
+		// strnfmt(note, sizeof(note), "-- Note: %s", tmp);
+		strnfmt(note, sizeof(note), "-- Заметка: %s", tmp);
 
 	/* Display the note (omitting the "-- " prefix) */
 	msg("%s", &note[3]);
