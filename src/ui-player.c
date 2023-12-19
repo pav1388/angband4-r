@@ -277,7 +277,9 @@ static const char *likert(int x, int y, uint8_t *attr)
 	/* Negative value */
 	if (x < 0) {
 		*attr = COLOUR_RED;
-		return ("Very Bad");
+		// return ("Very Bad");
+		return ("Скверно");
+		// return (" 1 /10");
 	}
 
 	/* Analyze the value */
@@ -287,34 +289,46 @@ static const char *likert(int x, int y, uint8_t *attr)
 		case 1:
 		{
 			*attr = COLOUR_RED;
-			return ("Bad");
+			// return ("Bad");
+			return ("Плохо");
+			// return (" 2 /10");
 		}
 		case 2:
 		{
 			*attr = COLOUR_RED;
-			return ("Poor");
+			// return ("Poor");
+			return ("Слабо");
+			// return (" 3 /10");
 		}
 		case 3:
 		case 4:
 		{
 			*attr = COLOUR_YELLOW;
-			return ("Fair");
+			// return ("Fair");
+			return ("Честно");
+			// return (" 4 /10");
 		}
 		case 5:
 		{
 			*attr = COLOUR_YELLOW;
-			return ("Good");
+			// return ("Good");
+			return ("Хорошо");
+			// return (" 5 /10");
 		}
 		case 6:
 		{
 			*attr = COLOUR_YELLOW;
-			return ("Very Good");
+			// return ("Very Good");
+			return ("Похвально");
+			// return (" 6 /10");
 		}
 		case 7:
 		case 8:
 		{
 			*attr = COLOUR_L_GREEN;
-			return ("Excellent");
+			// return ("Excellent");
+			return ("Отлично");
+			// return (" 7 /10");
 		}
 		case 9:
 		case 10:
@@ -323,7 +337,9 @@ static const char *likert(int x, int y, uint8_t *attr)
 		case 13:
 		{
 			*attr = COLOUR_L_GREEN;
-			return ("Superb");
+			// return ("Superb");
+			return ("Лучший");
+			// return (" 8 /10");
 		}
 		case 14:
 		case 15:
@@ -331,12 +347,16 @@ static const char *likert(int x, int y, uint8_t *attr)
 		case 17:
 		{
 			*attr = COLOUR_L_GREEN;
-			return ("Heroic");
+			// return ("Heroic");
+			return ("Герой");
+			// return (" 9 /10");
 		}
 		default:
 		{
 			*attr = COLOUR_L_GREEN;
-			return ("Legendary");
+			// return ("Legendary");
+			return ("Легенда");
+			// return ("10 /10");
 		}
 	}
 }
@@ -458,11 +478,13 @@ void display_player_stat_info(void)
 	col = 42;
 
 	/* Print out the labels for the columns */
-	c_put_str(COLOUR_WHITE, "  Self", row-1, col+5);
+	// c_put_str(COLOUR_WHITE, "  Self", row-1, col+5);
+	c_put_str(COLOUR_WHITE, "  Свои", row-1, col+5);
 	c_put_str(COLOUR_WHITE, " RB", row-1, col+12);
 	c_put_str(COLOUR_WHITE, " CB", row-1, col+16);
 	c_put_str(COLOUR_WHITE, " EB", row-1, col+20);
-	c_put_str(COLOUR_WHITE, "  Best", row-1, col+24);
+	// c_put_str(COLOUR_WHITE, "  Best", row-1, col+24);
+	c_put_str(COLOUR_WHITE, "Лучший", row-1, col+24);
 
 	/* Display the stats */
 	for (i = 0; i < STAT_MAX; i++) {
@@ -596,7 +618,7 @@ static void display_panel(const struct panel *p, bool left_adj,
 		for (i = 0; i < p->len; i++) {
 			struct panel_line *pl = &p->lines[i];
 
-			int len = pl->label ? strlen(pl->label) : 0;
+			int len = pl->label ? utf8_strlen(pl->label) : 0;
 			if (offset < len) offset = len;
 		}
 		offset += 2;
@@ -609,9 +631,9 @@ static void display_panel(const struct panel *p, bool left_adj,
 		if (!pl->label)
 			continue;
 
-		Term_putstr(col, row, strlen(pl->label), COLOUR_WHITE, pl->label);
+		Term_putstr(col, row, utf8_strlen(pl->label), COLOUR_WHITE, pl->label);
 
-		len = strlen(pl->value);
+		len = utf8_strlen(pl->value);
 		len = len < w - offset ? len : w - offset - 1;
 
 		if (left_adj)
@@ -626,7 +648,8 @@ static const char *show_title(void)
 	if (player->wizard)
 		return "[=-WIZARD-=]";
 	else if (player->total_winner || player->lev > PY_MAX_LEVEL)
-		return "***WINNER***";
+		// return "***WINNER***";
+		return "*ПОБЕДИТЕЛЬ*";
 	else
 		return player->class->title[(player->lev - 1) / 5];
 }
@@ -647,11 +670,14 @@ static const char *show_adv_exp(void)
 
 static const char *show_depth(void)
 {
-	static char buffer[13];
+	// static char buffer[13];
+	static char buffer[18];
 
-	if (player->max_depth == 0) return "Town";
+	// if (player->max_depth == 0) return "Town";
+	if (player->max_depth == 0) return "Город";
 
-	strnfmt(buffer, sizeof(buffer), "%d' (L%d)",
+	// strnfmt(buffer, sizeof(buffer), "%d' (L%d)",
+	strnfmt(buffer, sizeof(buffer), "%dм (Эт%d)",
 	        player->max_depth * 50, player->max_depth);
 	return buffer;
 }
@@ -662,7 +688,8 @@ static const char *show_speed(void)
 	int tmp = player->state.speed;
 	if (player->timed[TMD_FAST]) tmp -= 10;
 	if (player->timed[TMD_SLOW]) tmp += 10;
-	if (tmp == 110) return "Normal";
+	// if (tmp == 110) return "Normal";
+	if (tmp == 110) return "Норма";
 	int multiplier = 10 * extract_energy[tmp] / extract_energy[110];
 	int int_mul = multiplier / 10;
 	int dec_mul = multiplier % 10;
@@ -692,12 +719,18 @@ static const uint8_t colour_table[] =
 static struct panel *get_panel_topleft(void) {
 	struct panel *p = panel_allocate(6);
 
-	panel_line(p, COLOUR_L_BLUE, "Name", "%s", player->full_name);
-	panel_line(p, COLOUR_L_BLUE, "Race",	"%s", player->race->name);
-	panel_line(p, COLOUR_L_BLUE, "Class", "%s", player->class->name);
-	panel_line(p, COLOUR_L_BLUE, "Title", "%s", show_title());
-	panel_line(p, COLOUR_L_BLUE, "HP", "%d/%d", player->chp, player->mhp);
-	panel_line(p, COLOUR_L_BLUE, "SP", "%d/%d", player->csp, player->msp);
+	// panel_line(p, COLOUR_L_BLUE, "Name", "%s", player->full_name);
+	panel_line(p, COLOUR_L_BLUE, "Имя", "%s", player->full_name);
+	// panel_line(p, COLOUR_L_BLUE, "Race",	"%s", player->race->name);
+	panel_line(p, COLOUR_L_BLUE, "Раса", "%s", player->race->name);
+	// panel_line(p, COLOUR_L_BLUE, "Class", "%s", player->class->name);
+	panel_line(p, COLOUR_L_BLUE, "Класс", "%s", player->class->name);
+	// panel_line(p, COLOUR_L_BLUE, "Title", "%s", show_title());
+	panel_line(p, COLOUR_L_BLUE, "Звание", "%s", show_title());
+	// panel_line(p, COLOUR_L_BLUE, "HP", "%d/%d", player->chp, player->mhp);
+	panel_line(p, COLOUR_L_BLUE, "ОЗ", "%d/%d", player->chp, player->mhp);
+	// panel_line(p, COLOUR_L_BLUE, "SP", "%d/%d", player->csp, player->msp);
+	panel_line(p, COLOUR_L_BLUE, "ОМ", "%d/%d", player->csp, player->msp);
 
 	return p;
 }
@@ -708,17 +741,25 @@ static struct panel *get_panel_midleft(void) {
 	uint8_t attr = diff < 0 ? COLOUR_L_RED : COLOUR_L_GREEN;
 
 	panel_line(p, max_color(player->lev, player->max_lev),
-			"Level", "%d", player->lev);
+			// "Level", "%d", player->lev);
+			"Уровень", "%d", player->lev);
 	panel_line(p, max_color(player->exp, player->max_exp),
-			"Cur Exp", "%d", player->exp);
-	panel_line(p, COLOUR_L_GREEN, "Max Exp", "%d", player->max_exp);
-	panel_line(p, COLOUR_L_GREEN, "Adv Exp", "%s", show_adv_exp());
+			// "Cur Exp", "%d", player->exp);
+			"Опыт тек.", "%d", player->exp);
+	// panel_line(p, COLOUR_L_GREEN, "Max Exp", "%d", player->max_exp);
+	panel_line(p, COLOUR_L_GREEN, "Опыт макс.", "%d", player->max_exp);
+	// panel_line(p, COLOUR_L_GREEN, "Adv Exp", "%s", show_adv_exp());
+	panel_line(p, COLOUR_L_GREEN, "Опыт расш.", "%s", show_adv_exp());
 	panel_space(p);
-	panel_line(p, COLOUR_L_GREEN, "Gold", "%d", player->au);
-	panel_line(p, attr, "Burden", "%.1f lb",
+	// panel_line(p, COLOUR_L_GREEN, "Gold", "%d", player->au);
+	panel_line(p, COLOUR_L_GREEN, "Золото", "%d", player->au);
+	// panel_line(p, attr, "Burden", "%.1f lb",
+	panel_line(p, attr, "Ноша", "%.1f кг",
 			   player->upkeep->total_weight / 10.0F);
-	panel_line(p, attr, "Overweight", "%d.%d lb", -diff / 10, abs(diff) % 10);
-	panel_line(p, COLOUR_L_GREEN, "Max Depth", "%s", show_depth());
+	// panel_line(p, attr, "Overweight", "%d.%d lb", -diff / 10, abs(diff) % 10);
+	panel_line(p, attr, "Перегруз", "%d.%d кг", -diff / 10, abs(diff) % 10);
+	// panel_line(p, COLOUR_L_GREEN, "Max Depth", "%s", show_depth());
+	panel_line(p, COLOUR_L_GREEN, "Макс.глубина", "%s", show_depth());
 
 	return p;
 }
@@ -730,7 +771,8 @@ static struct panel *get_panel_combat(void) {
 	int melee_dice = 1, melee_sides = 1;
 
 	/* AC */
-	panel_line(p, COLOUR_L_BLUE, "Armor", "[%d,%+d]",
+	// panel_line(p, COLOUR_L_BLUE, "Armor", "[%d,%+d]",
+	panel_line(p, COLOUR_L_BLUE, "Броня", "[%d,%+d]",
 			player->known_state.ac, player->known_state.to_a);
 
 	/* Melee */
@@ -746,9 +788,12 @@ static struct panel *get_panel_combat(void) {
 		melee_sides = obj->ds;
 	}
 
-	panel_line(p, COLOUR_L_BLUE, "Melee", "%dd%d,%+d", melee_dice, melee_sides, dam);
-	panel_line(p, COLOUR_L_BLUE, "To-hit", "%d,%+d", bth / 10, hit);
-	panel_line(p, COLOUR_L_BLUE, "Blows", "%d.%d/turn",
+	// panel_line(p, COLOUR_L_BLUE, "Melee", "%dd%d,%+d", melee_dice, melee_sides, dam);
+	panel_line(p, COLOUR_L_BLUE, "Ближний бой", "%dd%d,%+d", melee_dice, melee_sides, dam);
+	// panel_line(p, COLOUR_L_BLUE, "To-hit", "%d,%+d", bth / 10, hit);
+	panel_line(p, COLOUR_L_BLUE, "Попадание", "%d,%+d", bth / 10, hit);
+	// panel_line(p, COLOUR_L_BLUE, "Blows", "%d.%d/turn",
+	panel_line(p, COLOUR_L_BLUE, "Ударов", "%d.%d/ход",
 			player->state.num_blows / 100, (player->state.num_blows / 10 % 10));
 
 	/* Ranged */
@@ -758,9 +803,12 @@ static struct panel *get_panel_combat(void) {
 	dam = obj ? obj->known->to_d : 0;
 
 	panel_space(p);
-	panel_line(p, COLOUR_L_BLUE, "Shoot to-dam", "%+d", dam);
-	panel_line(p, COLOUR_L_BLUE, "To-hit", "%d,%+d", bth / 10, hit);
-	panel_line(p, COLOUR_L_BLUE, "Shots", "%d.%d/turn",
+	// panel_line(p, COLOUR_L_BLUE, "Shoot to-dam", "%+d", dam);
+	panel_line(p, COLOUR_L_BLUE, "Дальный бой", "%+d", dam);
+	// panel_line(p, COLOUR_L_BLUE, "To-hit", "%d,%+d", bth / 10, hit);
+	panel_line(p, COLOUR_L_BLUE, "Меткость", "%d,%+d", bth / 10, hit);
+	// panel_line(p, COLOUR_L_BLUE, "Shots", "%d.%d/turn",
+	panel_line(p, COLOUR_L_BLUE, "Залпов", "%d.%d/ход",
 			   player->state.num_shots / 10, player->state.num_shots % 10);
 
 	return p;
@@ -778,30 +826,37 @@ static struct panel *get_panel_skills(void) {
 
 	/* Saving throw */
 	skill = BOUND(player->state.skills[SKILL_SAVE], 0, 100);
-	panel_line(p, colour_table[skill / 10], "Saving Throw", "%d%%", skill);
+	// panel_line(p, colour_table[skill / 10], "Saving Throw", "%d%%", skill);
+	panel_line(p, colour_table[skill / 10], "Спас Бросок", "%d%%", skill);
 
 	/* Stealth */
 	desc = likert(player->state.skills[SKILL_STEALTH], 1, &attr);
-	panel_line(p, attr, "Stealth", "%s", desc);
+	// panel_line(p, attr, "Stealth", "%s", desc);
+	panel_line(p, attr, "Скрытность", "%s", desc);
 
 	/* Physical disarming: assume we're disarming a dungeon trap */
 	skill = BOUND(player->state.skills[SKILL_DISARM_PHYS] - depth / 5, 2, 100);
-	panel_line(p, colour_table[skill / 10], "Disarm - phys.", "%d%%", skill);
+	// panel_line(p, colour_table[skill / 10], "Disarm - phys.", "%d%%", skill);
+	panel_line(p, colour_table[skill / 10], "Обезвр. - физ.", "%d%%", skill);
 
 	/* Magical disarming */
 	skill = BOUND(player->state.skills[SKILL_DISARM_MAGIC] - depth / 5, 2, 100);
-	panel_line(p, colour_table[skill / 10], "Disarm - magic", "%d%%", skill);
+	// panel_line(p, colour_table[skill / 10], "Disarm - magic", "%d%%", skill);
+	panel_line(p, colour_table[skill / 10], "Обезвр. - маг.", "%d%%", skill);
 
 	/* Magic devices */
 	skill = player->state.skills[SKILL_DEVICE];
-	panel_line(p, colour_table[skill / 13], "Magic Devices", "%d", skill);
+	// panel_line(p, colour_table[skill / 13], "Magic Devices", "%d", skill);
+	panel_line(p, colour_table[skill / 13], "Маг. Механизмы", "%d", skill);
 
 	/* Searching ability */
 	skill = BOUND(player->state.skills[SKILL_SEARCH], 0, 100);
-	panel_line(p, colour_table[skill / 10], "Searching", "%d%%", skill);
+	// panel_line(p, colour_table[skill / 10], "Searching", "%d%%", skill);
+	panel_line(p, colour_table[skill / 10], "Поиск", "%d%%", skill);
 
 	/* Infravision */
-	panel_line(p, COLOUR_L_GREEN, "Infravision", "%d ft",
+	// panel_line(p, COLOUR_L_GREEN, "Infravision", "%d ft",
+	panel_line(p, COLOUR_L_GREEN, "Инфравидение", "%d м",
 			player->state.see_infra * 10);
 
 	/* Speed */
@@ -809,7 +864,8 @@ static struct panel *get_panel_skills(void) {
 	if (player->timed[TMD_FAST]) skill -= 10;
 	if (player->timed[TMD_SLOW]) skill += 10;
 	attr = skill < 110 ? COLOUR_L_UMBER : COLOUR_L_GREEN;
-	panel_line(p, attr, "Speed", "%s", show_speed());
+	// panel_line(p, attr, "Speed", "%s", show_speed());
+	panel_line(p, attr, "Скорость", "%s", show_speed());
 
 	return p;
 }
@@ -818,13 +874,20 @@ static struct panel *get_panel_misc(void) {
 	struct panel *p = panel_allocate(7);
 	uint8_t attr = COLOUR_L_BLUE;
 
-	panel_line(p, attr, "Age", "%d", player->age);
-	panel_line(p, attr, "Height", "%d'%d\"", player->ht / 12, player->ht % 12);
-	panel_line(p, attr, "Weight", "%dst %dlb", player->wt / 14, player->wt % 14);
-	panel_line(p, attr, "Turns used:", "");
-	panel_line(p, attr, "Game", "%d", turn);
-	panel_line(p, attr, "Standard", "%d", player->total_energy / 100);
-	panel_line(p, attr, "Resting", "%d", player->resting_turn);
+	// panel_line(p, attr, "Age", "%d", player->age);
+	// panel_line(p, attr, "Height", "%d'%d\"", player->ht / 12, player->ht % 12);
+	// panel_line(p, attr, "Weight", "%dst %dlb", player->wt / 14, player->wt % 14);
+	// panel_line(p, attr, "Turns used:", "");
+	// panel_line(p, attr, "Game", "%d", turn);
+	// panel_line(p, attr, "Standard", "%d", player->total_energy / 100);
+	// panel_line(p, attr, "Resting", "%d", player->resting_turn);
+	panel_line(p, attr, "Возраст", "%d", player->age);
+	panel_line(p, attr, "Рост", "%d см", ((player->ht / 12) * 31)); // примерные "сантиметры"
+	panel_line(p, attr, "Вес", "%d кг", ((player->wt * 65) / 140)); // примерные "килограммы"
+	panel_line(p, attr, "Ходов:", "");
+	panel_line(p, attr, "Сыграно", "%d", turn);
+	panel_line(p, attr, "Стандарт", "%d", player->total_energy / 100);
+	panel_line(p, attr, "Отдых", "%d", player->resting_turn);
 
 	return p;
 }
@@ -1208,7 +1271,8 @@ void do_cmd_change_name(void)
 	bool more = true;
 
 	/* Prompt */
-	p = "['c' to change name, 'f' to file, 'h' to change mode, or ESC]";
+	// p = "['c' to change name, 'f' to file, 'h' to change mode, or ESC]";
+	p = "['c' изменить имя, 'f' в файл, 'h' изменеть режим или ESC]";
 
 	/* Save screen */
 	screen_save();
