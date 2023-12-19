@@ -282,27 +282,32 @@ void enter_score(const struct player *p, const time_t *death_time)
 		if (!p->opts.opt[j])
 			continue;
 
-		msg("Score not registered for cheaters.");
+		// msg("Score not registered for cheaters.");
+		msg("Очки не регистрируются для читеров.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 		return;
 	}
 
 	/* Add a new entry, if allowed */
 	if (p->noscore & (NOSCORE_WIZARD | NOSCORE_DEBUG)) {
-		msg("Score not registered for wizards.");
+		// msg("Score not registered for wizards.");
+		msg("Очки не регистрируются для волшебников.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 #ifdef ALLOW_BORG
 #ifndef SCORE_BORGS
 	}	else if (p->noscore & (NOSCORE_BORG)) {
-		msg("Score not registered for borgs.");
+		// msg("Score not registered for borgs.");
+		msg("Очки не регистрируются для borgs.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 #endif
 #endif
 	} else if (!p->total_winner && streq(p->died_from, "Interrupting")) {
-		msg("Score not registered due to interruption.");
+		// msg("Score not registered due to interruption.");
+		msg("Очки не регистрируются для прервавших.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 	} else if (!p->total_winner && streq(p->died_from, "Retiring")) {
-		msg("Score not registered due to retiring.");
+		// msg("Score not registered due to retiring.");
+		msg("Очки не регистрируются для ушедших в отставку.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 	} else {
 		struct high_score entry;
