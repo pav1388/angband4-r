@@ -60,15 +60,24 @@
 static const char *comment_welcome[] =
 {
 	"",
-	"%s nods to you.",
-	"%s says hello.",
-	"%s: \"See anything you like, adventurer?\"",
-	"%s: \"How may I help you, %s?\"",
-	"%s: \"Welcome back, %s.\"",
-	"%s: \"A pleasure to see you again, %s.\"",
-	"%s: \"How may I be of assistance, good %s?\"",
-	"%s: \"You do honour to my humble store, noble %s.\"",
-	"%s: \"I and my family are entirely at your service, %s.\""
+	// "%s nods to you.",
+	"%s кивает вам.",
+	// "%s says hello.",
+	"%s поздоровался.",
+	// "%s: \"See anything you like, adventurer?\"",
+	"%s: \"Видишь что-нибудь интересное, путешественник?\"",
+	// "%s: \"How may I help you, %s?\"",
+	"%s: \"Чем я могу вам помочь, %s?\"",
+	// "%s: \"Welcome back, %s.\"",
+	"%s: \"С возвращением, %s.\"",
+	// "%s: \"A pleasure to see you again, %s.\"",
+	"%s: \"Рад видеть вас снова, %s.\"",
+	// "%s: \"How may I be of assistance, good %s?\"",
+	"%s: \"Чем могу быть полезен, добрый %s?\"",
+	// "%s: \"You do honour to my humble store, noble %s.\"",
+	"%s: \"Вы оказываете честь моему магазину, благородный %s.\"",
+	// "%s: \"I and my family are entirely at your service, %s.\""
+	"%s: \"Я и моя семья к вашим услугам, %s.\""
 };
 
 static const char *comment_hint[] =
@@ -294,7 +303,8 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 
 	/* Show weights */
 	colour = curs_attrs[CURS_KNOWN][(int)cursor];
-	strnfmt(out_val, sizeof out_val, "%3d.%d lb", obj->weight / 10,
+	// strnfmt(out_val, sizeof out_val, "%3d.%d lb", obj->weight / 10,
+	strnfmt(out_val, sizeof out_val, "%3d.%d кг", obj->weight / 10,
 			obj->weight % 10);
 	c_put_str(colour, out_val, row, ctx->scr_places_x[LOC_WEIGHT]);
 
@@ -333,13 +343,16 @@ static void store_display_frame(struct store_context *ctx)
 	/* The "Home" is special */
 	if (store->feat == FEAT_HOME) {
 		/* Put the owner name */
-		put_str("Your Home", ctx->scr_places_y[LOC_OWNER], 1);
+		// put_str("Your Home", ctx->scr_places_y[LOC_OWNER], 1);
+		put_str("Ваш Дом", ctx->scr_places_y[LOC_OWNER], 1);
 
 		/* Label the object descriptions */
-		put_str("Home Inventory", ctx->scr_places_y[LOC_HEADER], 1);
+		// put_str("Home Inventory", ctx->scr_places_y[LOC_HEADER], 1);
+		put_str("Дом. Инвентарь", ctx->scr_places_y[LOC_HEADER], 1);
 
 		/* Show weight header */
-		put_str("Weight", ctx->scr_places_y[LOC_HEADER],
+		// put_str("Weight", ctx->scr_places_y[LOC_HEADER],
+		put_str("Вес", ctx->scr_places_y[LOC_HEADER],
 				ctx->scr_places_x[LOC_WEIGHT] + 2);
 	} else {
 		/* Normal stores */
@@ -353,17 +366,20 @@ static void store_display_frame(struct store_context *ctx)
 		strnfmt(buf, sizeof(buf), "%s (%ld)", store_name,
 				(long)proprietor->max_cost);
 		prt(buf, ctx->scr_places_y[LOC_OWNER],
-			ctx->scr_places_x[LOC_OWNER] - strlen(buf));
+			ctx->scr_places_x[LOC_OWNER] - utf8_strlen(buf));
 
 		/* Label the object descriptions */
-		put_str("Store Inventory", ctx->scr_places_y[LOC_HEADER], 1);
+		// put_str("Store Inventory", ctx->scr_places_y[LOC_HEADER], 1);
+		put_str("Ассортимент магазина:", ctx->scr_places_y[LOC_HEADER], 1);
 
 		/* Showing weight label */
-		put_str("Weight", ctx->scr_places_y[LOC_HEADER],
+		// put_str("Weight", ctx->scr_places_y[LOC_HEADER],
+		put_str("Вес", ctx->scr_places_y[LOC_HEADER],
 				ctx->scr_places_x[LOC_WEIGHT] + 2);
 
 		/* Label the asking price (in stores) */
-		put_str("Price", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 4);
+		// put_str("Price", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 4);
+		put_str(" Цена", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 4);
 	}
 }
 
@@ -390,44 +406,59 @@ static void store_display_help(struct store_context *ctx)
 	else
 		text_out_c(COLOUR_L_GREEN, "l");
 
-	text_out(" examines");
+	// text_out(" examines");
+	text_out(" осмотреть предмет, ");
 	if (!ctx->inspect_only) {
-		text_out(" and ");
-		text_out_c(COLOUR_L_GREEN, "p");
-		text_out(" (or ");
-		text_out_c(COLOUR_L_GREEN, "g");
-		text_out(")");
+		// text_out(" and ");
+		//text_out(" и ");
+		//text_out_c(COLOUR_L_GREEN, "p");
+		// text_out(" (or ");
+		//text_out(" ( или ");
+		text_out_c(COLOUR_L_GREEN, "p/g");
+		//text_out(")");
 
-		if (is_home) text_out(" picks up");
-		else text_out(" purchases");
+		// if (is_home) text_out(" picks up");
+		if (is_home) text_out(" взять");
+		// else text_out(" purchases");
+		else text_out(" купить");
 	}
-	text_out(" an item. ");
+	// text_out(" an item. ");
+	text_out(" предмет. ");
 
 	if (!ctx->inspect_only) {
 		if (OPT(player, birth_no_selling) && !is_home) {
-			text_out_c(COLOUR_L_GREEN, "d");
-			text_out(" (or ");
-			text_out_c(COLOUR_L_GREEN, "s");
-			text_out(")");
-			text_out(" gives an item to the store in return for its identification. Some wands and staves will also be recharged. ");
+			text_out_c(COLOUR_L_GREEN, "d/s");
+			// text_out(" (or ");
+			//text_out(" (или ");
+			//text_out_c(COLOUR_L_GREEN, "s");
+			//text_out(")");
+			// text_out(" gives an item to the store in return for its identification. Some wands and staves will also be recharged. ");
+			text_out(" отдать предмет в обмен на его идентификацию. Некоторые жезлы и посохи так можно перезарядить. ");
 		} else {
-			text_out_c(COLOUR_L_GREEN, "d");
-			text_out(" (or ");
-			text_out_c(COLOUR_L_GREEN, "s");
-			text_out(")");
-			if (is_home) text_out(" drops");
-			else text_out(" sells");
-			text_out(" an item from your inventory. ");
+			text_out_c(COLOUR_L_GREEN, "d/s");
+			// text_out(" (or ");
+			//text_out(" (или ");
+			//text_out_c(COLOUR_L_GREEN, "s");
+			//text_out(")");
+			// if (is_home) text_out(" drops");
+			if (is_home) text_out(" положить");
+			// else text_out(" sells");
+			else text_out(" продать");
+			// text_out(" an item from your inventory. ");
+			text_out(" предмет из вашего инвентаря. ");
 		}
 	}
 	text_out_c(COLOUR_L_GREEN, "I");
-	text_out(" inspects an item from your inventory. ");
+	// text_out(" inspects an item from your inventory. ");
+	text_out(" осмотреть предмет в инвентаре. ");
 
 	text_out_c(COLOUR_L_GREEN, "ESC");
 	if (!ctx->inspect_only)
-		text_out(" exits the building.");
+		// text_out(" exits the building.");
+		text_out(" выход из здания.");
 	else
-		text_out(" exits this screen.");
+		// text_out(" exits this screen.");
+		text_out(" на пред. экран.");
 
 	text_out_indent = 0;
 }
@@ -444,13 +475,15 @@ static void store_redraw(struct store_context *ctx)
 		if (ctx->flags & STORE_SHOW_HELP)
 			store_display_help(ctx);
 		else
-			prt("Press '?' for help.", ctx->scr_places_y[LOC_HELP_PROMPT], 1);
+			// prt("Press '?' for help.", ctx->scr_places_y[LOC_HELP_PROMPT], 1);
+			prt("Нажмите '?' для справки.", ctx->scr_places_y[LOC_HELP_PROMPT], 1);
 
 		ctx->flags &= ~(STORE_FRAME_CHANGE);
 	}
 
 	if (ctx->flags & (STORE_GOLD_CHANGE)) {
-		prt(format("Gold Remaining: %9ld", (long)player->au),
+		// prt(format("Gold Remaining: %9ld", (long)player->au),
+		prt(format("Осталось золота: %9ld", (long)player->au),
 				ctx->scr_places_y[LOC_AU], ctx->scr_places_x[LOC_AU]);
 		ctx->flags &= ~(STORE_GOLD_CHANGE);
 	}
@@ -494,8 +527,10 @@ static bool store_sell(struct store_context *ctx)
 
 	item_tester tester = NULL;
 
-	const char *reject = "You have nothing that I want. ";
-	const char *prompt = OPT(player, birth_no_selling) ? "Give which item? " : "Sell which item? ";
+	// const char *reject = "You have nothing that I want. ";
+	const char *reject = "У тебя нет того, что мне нужно. ";
+	// const char *prompt = OPT(player, birth_no_selling) ? "Give which item? " : "Sell which item? ";
+	const char *prompt = OPT(player, birth_no_selling) ? "Какой предмет отдать? " : "Какой предмет продать? ";
 
 	assert(store);
 
@@ -504,7 +539,8 @@ static bool store_sell(struct store_context *ctx)
 	prt("", 0, 0);
 
 	if (store->feat == FEAT_HOME) {
-		prompt = "Drop which item? ";
+		// prompt = "Drop which item? ";
+		prompt = "Какой предмет положить? ";
 	} else {
 		tester = store_will_buy_tester;
 		get_mode |= SHOW_PRICES;
@@ -519,7 +555,8 @@ static bool store_sell(struct store_context *ctx)
 	/* Cannot remove stickied objects */
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
 		/* Oops */
-		msg("Hmmm, it seems to be stuck.");
+		// msg("Hmmm, it seems to be stuck.");
+		msg("Хммм, кажется застрял.");
 
 		/* Nope */
 		return false;
@@ -537,9 +574,11 @@ static bool store_sell(struct store_context *ctx)
 	if (!store_check_num(store, temp_obj)) {
 		object_wipe(temp_obj);
 		if (store->feat == FEAT_HOME)
-			msg("Your home is full.");
+			// msg("Your home is full.");
+			msg("Твой дом полон.");
 		else
-			msg("I have not the room in my store to keep it.");
+			// msg("I have not the room in my store to keep it.");
+			msg("У меня больше нет места в магазине для этого.");
 
 		return false;
 	}
@@ -558,11 +597,14 @@ static bool store_sell(struct store_context *ctx)
 
 		/* Show price */
 		if (!OPT(player, birth_no_selling))
-			prt(format("Price: %ld", (long)price), 1, 0);
+			// prt(format("Price: %ld", (long)price), 1, 0);
+			prt(format("Цена: %ld", (long)price), 1, 0);
 
 		/* Confirm sale */
-		if (!store_get_check(format("%s %s? [ESC, any other key to accept]",
-				OPT(player, birth_no_selling) ? "Give" : "Sell", o_name))) {
+		// if (!store_get_check(format("%s %s? [ESC, any other key to accept]",
+		if (!store_get_check(format("%s %s? [ESC, любая кнопка для подтверждения]",
+				// OPT(player, birth_no_selling) ? "Give" : "Sell", o_name))) {
+				OPT(player, birth_no_selling) ? "Дать" : "Продать", o_name))) {
 			screen_load();
 			return false;
 		}
@@ -570,13 +612,17 @@ static bool store_sell(struct store_context *ctx)
 		screen_load();
 
 		cmdq_push(CMD_SELL);
-		cmd_set_arg_item(cmdq_peek(), "item", obj);
-		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+		// cmd_set_arg_item(cmdq_peek(), "item", obj);
+		cmd_set_arg_item(cmdq_peek(), "предмет", obj);
+		// cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+		cmd_set_arg_number(cmdq_peek(), "кол-во", amt);
 	} else { /* Player is at home */
 		object_wipe(temp_obj);
 		cmdq_push(CMD_STASH);
-		cmd_set_arg_item(cmdq_peek(), "item", obj);
-		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+		// cmd_set_arg_item(cmdq_peek(), "item", obj);
+		cmd_set_arg_item(cmdq_peek(), "предмет", obj);
+		// cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+		cmd_set_arg_number(cmdq_peek(), "кол-во", amt);
 	}
 
 	/* Update the display */
@@ -617,7 +663,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 		/* Check if the player can afford any at all */
 		if (store->feat != FEAT_HOME &&
 				player->au < price_item(store, obj, false, 1)) {
-			msg("You do not have enough gold for this item.");
+			// msg("You do not have enough gold for this item.");
+			msg("У вас не хватает золота на этот предмет.");
 			return false;
 		}
 	} else {
@@ -631,7 +678,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 
 			/* Check if the player can afford any at all */
 			if ((uint32_t)player->au < (uint32_t)price) {
-				msg("You do not have enough gold for this item.");
+				// msg("You do not have enough gold for this item.");
+				msg("У вас не хватает золота на этот предмет.");
 				return false;
 			}
 
@@ -658,7 +706,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 		flavor_aware = object_flavor_is_aware(obj);
 		if (amt <= 0 || (!flavor_aware && store->feat != FEAT_HOME &&
 				pack_is_full())) {
-			msg("You cannot carry that many items.");
+			// msg("You cannot carry that many items.");
+			msg("Вы не можете нести так много предметов.");
 			return false;
 		}
 
@@ -669,9 +718,12 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 		else
 			num = find_inven(obj);
 
-		strnfmt(o_name, sizeof o_name, "%s how many%s? (max %d) ",
-				(store->feat == FEAT_HOME) ? "Take" : "Buy",
-				num ? format(" (you have %d)", num) : "", amt);
+		// strnfmt(o_name, sizeof o_name, "%s how many%s? (max %d) ",
+		strnfmt(o_name, sizeof o_name, "%s сколько%s? (макс. %d) ",
+				// (store->feat == FEAT_HOME) ? "Take" : "Buy",
+				(store->feat == FEAT_HOME) ? "Взять" : "Купить",
+				// num ? format(" (you have %d)", num) : "", amt);
+				num ? format(" (у вас есть %d)", num) : "", amt);
 
 		/* Get a quantity */
 		amt = get_quantity(o_name, amt);
@@ -686,7 +738,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 
 	/* Ensure we have room */
 	if (!inven_carry_okay(dummy)) {
-		msg("You cannot carry that many items.");
+		// msg("You cannot carry that many items.");
+		msg("Вы не можете нести так много предметов.");
 		object_delete(NULL, NULL, &dummy);
 		return false;
 	}
@@ -708,13 +761,17 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 		screen_save();
 
 		/* Show price */
-		prt(format("Price: %ld", (long)price), 1, 0);
+		// prt(format("Price: %ld", (long)price), 1, 0);
+		prt(format("Цена: %ld", (long)price), 1, 0);
 
 		/* Confirm purchase */
-		response = store_get_check(format("Buy %s?%s %s",
+		// response = store_get_check(format("Buy %s?%s %s",
+		response = store_get_check(format("Купить %s?%s %s",
 					o_name,
-					obj_can_use ? "" : " (Can't use!)",
-					"[ESC, any other key to accept]"));
+					// obj_can_use ? "" : " (Can't use!)",
+					obj_can_use ? "" : " (Нельзя использовать!)",
+					// "[ESC, any other key to accept]"));
+					"[ESC, любая кнопка для подтверждения]"));
 
 		screen_load();
 
@@ -723,7 +780,7 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 
 		cmdq_push(CMD_BUY);
 		cmd_set_arg_item(cmdq_peek(), "item", obj);
-		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+				cmd_set_arg_number(cmdq_peek(), "quantity", amt);
 	} else {
 		/* Home is much easier */
 		cmdq_push(CMD_RETRIEVE);
@@ -908,12 +965,15 @@ static int context_menu_store(struct store_context *ctx, const int oid, int mx, 
 	char *labels = string_make(lower_case);
 	m->selections = labels;
 
-	menu_dynamic_add_label(m, "Inspect inventory", 'I', ACT_INSPECT_INVEN, labels);
+	// menu_dynamic_add_label(m, "Inspect inventory", 'I', ACT_INSPECT_INVEN, labels);
+	menu_dynamic_add_label(m, "Проверьте инвентарь", 'I', ACT_INSPECT_INVEN, labels);
 	if (!ctx->inspect_only) {
-		menu_dynamic_add_label(m, home ? "Stash" : "Sell", 'd',
+		// menu_dynamic_add_label(m, home ? "Stash" : "Sell", 'd',
+		menu_dynamic_add_label(m, home ? "Копить" : "Продать", 'd',
 			ACT_SELL, labels);
 	}
-	menu_dynamic_add_label(m, "Exit", '`', ACT_EXIT, labels);
+	// menu_dynamic_add_label(m, "Exit", '`', ACT_EXIT, labels);
+	menu_dynamic_add_label(m, "Выход", '`', ACT_EXIT, labels);
 
 	/* Hack -- no flush needed */
 	msg_flag = false;
@@ -922,7 +982,8 @@ static int context_menu_store(struct store_context *ctx, const int oid, int mx, 
 	menu_dynamic_calc_location(m, mx, my);
 	region_erase_bordered(&m->boundary);
 
-	prt("(Enter to select, ESC) Command:", 0, 0);
+	// prt("(Enter to select, ESC) Command:", 0, 0);
+	prt("('Enter' выбор, ESC) Действие:", 0, 0);
 	selected = menu_dynamic_select(m);
 
 	menu_dynamic_free(m);
@@ -977,13 +1038,16 @@ static bool context_menu_store_item(struct store_context *ctx, const int oid, in
 	labels = string_make(lower_case);
 	m->selections = labels;
 
-	menu_dynamic_add_label(m, "Examine", (OPT(player, rogue_like_commands))
+	// menu_dynamic_add_label(m, "Examine", (OPT(player, rogue_like_commands))
+	menu_dynamic_add_label(m, "Изучить", (OPT(player, rogue_like_commands))
 		? 'x' : 'l', ACT_EXAMINE, labels);
 	if (!ctx->inspect_only) {
-		menu_dynamic_add_label(m, home ? "Take" : "Buy", 'p',
+		// menu_dynamic_add_label(m, home ? "Take" : "Buy", 'p',
+		menu_dynamic_add_label(m, home ? "Взять" : "Купить", 'p',
 			ACT_BUY, labels);
 		if (obj->number > 1) {
-			menu_dynamic_add_label(m, home ? "Take one" : "Buy one",
+			// menu_dynamic_add_label(m, home ? "Take one" : "Buy one",
+			menu_dynamic_add_label(m, home ? "Взять один" : "Купить один",
 				'o', ACT_BUY_ONE, labels);
 		}
 		/*
@@ -1004,7 +1068,8 @@ static bool context_menu_store_item(struct store_context *ctx, const int oid, in
 	menu_dynamic_calc_location(m, mx, my);
 	region_erase_bordered(&m->boundary);
 
-	prt(format("(Enter to select, ESC) Command for %s:", header), 0, 0);
+	// prt(format("(Enter to select, ESC) Command for %s:", header), 0, 0);
+	prt(format("('Enter' выбор, ESC) Действие для %s:", header), 0, 0);
 	selected = menu_dynamic_select(m);
 
 	menu_dynamic_free(m);
@@ -1102,10 +1167,12 @@ static bool store_menu_handle(struct menu *m, const ui_event *event, int oid)
 				/* use the old way of purchasing items */
 				msg_flag = false;
 				if (store->feat != FEAT_HOME) {
-					prt("Purchase which item? (ESC to cancel, Enter to select)",
+					// prt("Purchase which item? (ESC to cancel, Enter to select)",
+					prt("Какой предмет купить? ('ESC' отмена, 'Enter' выбор)",
 						0, 0);
 				} else {
-					prt("Get which item? (Esc to cancel, Enter to select)",
+					// prt("Get which item? (Esc to cancel, Enter to select)",
+					prt("Какой предмет взять? ('ESC' отмена, 'Enter' выбор)",
 						0, 0);
 				}
 				oid = store_get_stock(m, oid);
@@ -1118,7 +1185,8 @@ static bool store_menu_handle(struct menu *m, const ui_event *event, int oid)
 			case 'x':
 				/* use the old way of examining items */
 				msg_flag = false;
-				prt("Examine which item? (ESC to cancel, Enter to select)",
+				// prt("Examine which item? (ESC to cancel, Enter to select)",
+				prt("Какой пердмет узучить? ('ESC' отмена, 'Enter' выбор)",
 					0, 0);
 				oid = store_get_stock(m, oid);
 				prt("", 0, 0);
@@ -1256,7 +1324,8 @@ void enter_store(game_event_type type, game_event_data *data, void *user)
 
 	/* Check that we're on a store */
 	if (!store) {
-		msg("You see no store here.");
+		// msg("You see no store here.");
+		msg("Вы не видите здесь никакого магазина.");
 		return;
 	}
 
