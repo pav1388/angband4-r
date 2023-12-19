@@ -895,7 +895,8 @@ void do_cmd_view_map(void)
 {
 	int cy, cx;
 	uint8_t w, h;
-	const char *prompt = "Hit any key to continue";
+	// const char *prompt = "Hit any key to continue";
+	const char *prompt = " Нажмите любую клавишу для продолжения ";
 	if (Term->view_map_hook) {
 		(*(Term->view_map_hook))(Term);
 		return;
@@ -904,7 +905,7 @@ void do_cmd_view_map(void)
 	screen_save();
 
 	/* Note */
-	prt("Please wait...", 0, 0);
+	prt("Пожалуйста подождите...", 0, 0);
 
 	/* Flush */
 	Term_fresh();
@@ -922,7 +923,7 @@ void do_cmd_view_map(void)
 	display_map(&cy, &cx);
 
 	/* Show the prompt */
-	put_str(prompt, Term->hgt - 1, Term->wid / 2 - strlen(prompt) / 2);
+	put_str(prompt, Term->hgt - 1, Term->wid / 2 - utf8_strlen(prompt) / 2);
 
 	/* Highlight the player */
 	Term_gotoxy(cx, cy);
