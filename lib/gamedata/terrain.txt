@@ -108,248 +108,252 @@
 # together.
 
 code:NONE
-name:unknown grid
+name:неизвестно
 graphics: :w
 priority:2
 
 
 code:FLOOR
-name:open floor
+name:пустой пол
 graphics:.:w
 priority:5
 flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TRAP | TORCH
-desc:An open floor or bare ground.  Can be walked across by anything, and can
-desc: hold traps or items.  Does not break line of sight.
+desc:Открытый пол или голая земля.  По нему может пройти что угодно,
+desc: и на нём можно разместить ловушки или предметы.
 
 code:CLOSED
-name:closed door
+name:закрытая дверь
 graphics:+:U
 priority:17
 flags:DOOR_ANY | DOOR_CLOSED | INTERESTING
 digging:5
-confused-msg:bangs into a door
-desc:Doors may be locked; getting through them may not be easy.  Your
-desc: disarming skill makes all the difference to your ability to handle locks,
-desc: but you can also take a pickaxe to them, or blast them open
-desc: with magic.  Monsters are also slowed down by doors; you can earn yourself
-desc: valuable time by locking them.
+confused-msg:ударяетесь о дверь
+desc:Двери могут быть заперты, а пройти через них может быть непросто.
+desc: С замками поможет справиться навык обезвреживания, но вы также
+desc: можете взять кирку или открыть их с помощью магии. Двери также
+desc: замедляют передвижение монстров; вы можете выиграть время,
+desc: заперев их.
 
 code:OPEN
-name:open door
+name:открытая дверь
 graphics:':U
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
-look-in-preposition:in
-desc:A door that is already open.  Player, monster, spell and missile can pass
-desc: through as long as it stays open.
+look-in-preposition:в
+desc:Дверь, которая уже открыта.  Игрок, монстр, заклинание и снаряд
+desc: могут пройти через неё, пока она остаётся открытой.
 
 code:BROKEN
-name:broken door
+name:сломанная дверь
 graphics:':u
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
-look-in-preposition:in
-desc:A door so broken that it cannot be shut.
+look-in-preposition:в
+desc:Дверь настолько сломана, что ее невозможно закрыть.
 
 code:LESS
-name:up staircase
+name:лестница вверх
 graphics:<:w
 priority:25
 flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | UPSTAIR
 flags:EASY | TORCH
-desc:A staircase up to a shallower part of the dungeon.
+desc:Лестница вверх, в менее глубокую часть подземелья.
 
 code:MORE
-name:down staircase
+name:лестница вниз
 graphics:>:w
 priority:25
 flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | DOWNSTAIR
 flags:EASY | TORCH
-desc:A staircase down to a deeper part of the dungeon.
+desc:Лестница вниз, в более глубокую часть подземелья.
 
 code:STORE_GENERAL
-name:General Store
+name:Главный Магазин
 graphics:1:U
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:The General Store sells food, ammunition and lighting supplies.
+look-prefix:вход
+look-in-preposition:в
+desc:В Главном Магазине продаются продукты питания, снаряды
+desc: и осветительные приборы.
 
 code:STORE_ARMOR
-name:Armoury
+name:Арсенал
 graphics:2:s
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:The armour sold here will give you some protection against the blows of
-desc: your enemies.
+look-prefix:вход
+look-in-preposition:в
+desc:Доспехи, продающиеся здесь, обеспечат вам защиту от ударов врагов.
 
 code:STORE_WEAPON
-name:Weapon Smiths
+name:Оружейная Кузня
 graphics:3:w
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:Weapons for hitting and shooting your enemies are forged in the hot, acrid
-desc: backroom of this enticing shop.
+look-prefix:вход
+look-in-preposition:в
+desc:Оружие для ударов и стрельбы по врагам выковывается в жарком, едком
+desc: подсобном помещении этой заманчивой мастерской.
 
 code:STORE_BOOK
-name:Bookseller
+name:Магазин Книг
 graphics:4:g
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:A quiet, reflective place of refuge, lined with shelves of
-desc: mystical tomes.
+look-prefix:вход
+look-in-preposition:в
+desc:Тихое место для размышлений, уставленное полками с мистическими
+desc: книгами.
 
 code:STORE_ALCHEMY
-name:Alchemy Shop
+name:Алхимическая Лавка
 graphics:5:b
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:A dim, scented room where potions and scrolls are traded.
+look-prefix:вход
+look-in-preposition:в
+desc:Тусклая, ароматная комната, где торгуют зельями и свитками.
 
 code:STORE_MAGIC
-name:Magic Shop
+name:Магический Магазин
 graphics:6:r
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:A shop for devices and adornments with magic trapped within.
+look-prefix:вход
+look-in-preposition:в
+desc:Магазин устройств и украшений, в которых заключена магия.
 
 code:STORE_BLACK
-name:Black Market
+name:Чёрный Рынок
 graphics:7:D
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:Watch your back and hold onto your purse as you enter this disreputable
-desc: haunt - and do not expect friendly service or good bargains.
+look-prefix:вход
+look-in-preposition:в
+desc:Заходя в это неприглядное заведение, будьте бдительны и держите
+desc: кошелек в руках - не ждите дружелюбного обслуживания или 
+desc: выгодных покупок.
 
 code:HOME
-name:Home
+name:Дом
 graphics:8:y
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:the entrance to the
-look-in-preposition:at
-desc:Your safe piece of Middle Earth, and the only place you can store goods
-desc: apart from on your person.
+look-prefix:вход
+look-in-preposition:в
+desc:Ваш безопасный уголок в Средиземье и единственное место, где вы
+desc: можете хранить предметы, кроме ношения с собой.
 
 code:SECRET
-name:secret door
+name:тайная дверь
 graphics:#:w
 priority:10
 mimic:GRANITE
 flags:WALL | ROCK | DOOR_ANY | GRANITE | TORCH
 digging:5
-confused-msg:bashes into a wall
-desc:A door that appears like a granite wall to untrained eyes.
+confused-msg:ударяетесь о стену
+desc:Дверь, которая для неподготовленных глаз кажется гранитной стеной.
 
 code:RUBBLE
-name:pile of rubble
+name:завалы
 graphics:::W
 priority:13
 flags:ROCK | NO_SCENT | NO_FLOW | INTERESTING | TORCH
 digging:1
-confused-msg:bumps into some rocks
-desc:Ends LOS, stops missiles, bolts, and beams.  May dissolve or be tunnelled
-desc: to normal floor.
+confused-msg:натыкаетесь на какие-то камни
+desc:Прекращает LOS, останавливает снаряды, болты и лучи. Можно
+desc: растворить или прокопать туннель к обычному полу.
 
 code:MAGMA
-name:magma vein
+name:магмовая жила
 graphics:%:D
 priority:12
 flags:WALL | ROCK | NO_SCENT | NO_FLOW | MAGMA | TORCH
 digging:2
-confused-msg:bashes into a wall
-desc:A seam of soft rock.  It can be removed by digging or magic, and passed
-desc: through by immaterial monsters.  It stops any spells, missiles or line of
-desc: sight.
+confused-msg:ударяетесь о стену
+desc:Пласт мягкой породы.  Его можно удалить с помощью подкопа или магии,
+desc: нетелесные монстры могут проходить сквозь.
+desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 
 code:QUARTZ
-name:quartz vein
+name:кварцевая жила
 graphics:%:s
 priority:11
 flags:WALL | ROCK | NO_SCENT | NO_FLOW | QUARTZ | TORCH
 digging:3
-confused-msg:bashes into a wall
-desc:A seam of hardish rock.  It can be removed by digging or magic, and passed
-desc: through by immaterial monsters.  It stops any spells, missiles or line of
-desc: sight.
+confused-msg:ударяетесь о стену
+desc:Пласт твердой породы. Его можно удалить с помощью копания или магии,
+desc: нетелесные монстры могут проходить сквозь.
+desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 
 code:MAGMA_K
-name:magma vein with treasure
+name:магм.жила с сокровищем
 graphics:*:o
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | MAGMA
 digging:2
-confused-msg:bashes into a wall
-desc:A seam of soft rock.  It can be removed by digging or magic, and passed
-desc: through by immaterial monsters.  It stops any spells, missiles or line of
-desc: sight.  It contains visible treasure.
+confused-msg:ударяетесь о стену
+desc:Пласт мягкой породы.  Его можно удалить с помощью подкопа или магии,
+desc: нетелесные монстры могут проходить сквозь.
+desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
+desc: Внутри очевидно находятся сокровища.
 
 code:QUARTZ_K
-name:quartz vein with treasure
+name:кварц.жила с сокровищем
 graphics:*:y
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | QUARTZ
 digging:3
-confused-msg:bashes into a wall
-desc:A seam of hardish rock.  It can be removed by digging or magic, and passed
-desc: through by immaterial monsters.  It stops any spells, missiles or line of
-desc: sight.  It contains visible treasure.
+confused-msg:ударяетесь о стену
+desc:Пласт твердой породы. Его можно удалить с помощью подкопа или магии,
+desc: нетелесные монстры могут проходить сквозь.
+desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
+desc: Внутри очевидно находятся сокровища.
 
 code:GRANITE
-name:granite wall
+name:гранитная стена
 graphics:#:W
 priority:10
 flags:WALL | ROCK | GRANITE | NO_SCENT | NO_FLOW | TORCH
 digging:4
-confused-msg:bashes into a wall
-desc:A seam of hard rock.  It can be removed by digging or magic, and passed
-desc: through by immaterial monsters.  It stops any spells, missiles or line of
-desc: sight.
+confused-msg:ударяетесь о стену
+desc:Пласт твердой породы. Его можно удалить с помощью подкопа или магии,
+desc: нетелесные монстры могут проходить сквозь.
+desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 
 code:PERM
-name:permanent wall
+name:вечный камень
 graphics:#:z
 priority:10
 flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW
-confused-msg:bashes into a wall
-desc:You can dig through most walls but these are impenetrable.  The dungeon is
-desc: surrounded by these kinds of walls and some special rooms are made of them.
+confused-msg:ударяетесь о стену
+desc:Большинство стен можно копать, но эти непробиваемы.  
+desc: Подземельеокружено такими стенами, а некоторые из ни
+desc: сделаны специальные комнаты.
 
 ## New terrain
 
 code:LAVA
-name:lava
+name:лава
 graphics:#:r
 priority:10
 flags:LOS | PROJECT | FIERY | PASSABLE | NO_SCENT | BRIGHT
-look-prefix:some
-desc:A fiery pool of glowing lava.  Step in it at your peril!
-walk-msg:The lava will scald you!  Really step in? 
-run-msg:Lava blocks your path.  Step into it? 
-hurt-msg:The lava burns you!
-die-msg:burning to a cinder in lava
+look-prefix:немного
+desc:Огненный бассейн с раскаленной лавой. Ходить рядом рисковано!
+walk-msg:Лава может обжечь вас!    Сделать шаг? 
+run-msg:Лава преграждает вам путь.    Шагнуть в неё? 
+hurt-msg:Лава обжигает вас!
+die-msg:сгорания в лаве дотла
 resist-flag:IM_FIRE
 
 code:PASS_RUBBLE
-name:pile of passable rubble
+name:проходимые завалы
 graphics:::u
 priority:13
 flags:ROCK | PASSABLE | INTERESTING | TORCH
 digging:1
-desc:Ends LOS, stops missiles, bolts, and beams, and reduces the radius of ball
-desc: spells.  May dissolve or be tunnelled to normal floor, and can be walked
-desc: through by the player and monsters.
+desc:Прекращает LOS, останавливает снаряды, болты и лучи, а также
+desc: уменьшает радиус шаров заклинаний. Можно раствориться или прокопать
+desc: туннель к обычному полу, по нему могут ходить игрок и монстры.
 
