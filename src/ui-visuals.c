@@ -1104,7 +1104,8 @@ static struct file_parser visuals_file_parser = {
  */
 static void ui_visuals_module_init(void)
 {
-	event_signal_message(EVENT_INITSTATUS, 0, "Initializing visuals");
+	// event_signal_message(EVENT_INITSTATUS, 0, "Initializing visuals");
+	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация визуальных эффектов");
 
 	/* Use the same values as the legacy flicker table. */
 	visuals_flicker_table = visuals_flicker_new(MAX_COLORS, 3);
