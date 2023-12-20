@@ -416,9 +416,11 @@ bool minus_ac(struct player *p)
 
 		/* Object resists */
 		if (obj->el_info[ELEM_ACID].flags & EL_INFO_IGNORE) {
-			msg("Your %s is unaffected!", o_name);
+			// msg("Your %s is unaffected!", o_name);
+			msg("Ваш %s не пострадал!", o_name);
 		} else {
-			msg("Your %s is damaged!", o_name);
+			// msg("Your %s is damaged!", o_name);
+			msg("Ваш %s поврежден!", o_name);
 
 			/* Damage the item */
 			obj->to_a--;
@@ -620,12 +622,15 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 	/* Print a message if desired */
 	if (message) {
 		if (artifact) {
-			msg("You no longer have the %s (%c).", name, label);
+			// msg("You no longer have the %s (%c).", name, label);
+			msg("У вас больше нет %s (%c).", name, label);
 		} else if (first_remainder) {
 			label = gear_to_label(p, first_remainder);
-			msg("You have %s (1st %c).", name, label);
+			// msg("You have %s (1st %c).", name, label);
+			msg("У вас есть %s (1-ый %c).", name, label);
 		} else {
-			msg("You have %s (%c).", name, label);
+			// msg("You have %s (%c).", name, label);
+			msg("У вас есть %s (%c).", name, label);
 		}
 	}
 
@@ -793,9 +798,12 @@ void inven_item_charges(struct object *obj)
 {
 	/* Require staff/wand */
 	if (tval_can_have_charges(obj) && object_flavor_is_aware(obj)) {
-		msg("You have %d charge%s remaining.",
-				obj->pval,
-				PLURAL(obj->pval));
+		// msg("You have %d charge%s remaining.",
+		msg("У вас остал%s %d заряд%s.", (obj->pval) == 1 ? "ся" : "ось", obj->pval, PLURAL_RU__A_OV(obj->pval));
+				// obj->pval,
+				
+				// PLURAL(obj->pval));
+				
 	}
 }
 
@@ -878,7 +886,8 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 		if (!object_flavor_is_aware(obj)) {
 			if (player_has(p, PF_KNOW_MUSHROOM) && tval_is_mushroom(obj)) {
 				object_flavor_aware(p, obj);
-				msg("Mushrooms for breakfast!");
+				// msg("Mushrooms for breakfast!");
+				msg("Грибы на завтрак!");
 			} else if (player_has(p, PF_KNOW_ZAPPER) && tval_is_zapper(obj))
 				object_flavor_aware(p, obj);
 		}
@@ -911,10 +920,12 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 			(total << 16), p);
 		label = gear_to_label(p, first);
 		if (total > first->number) {
-			msg("You have %s (1st %c).", o_name, label);
+			// msg("You have %s (1st %c).", o_name, label);
+			msg("У вас есть %s (1-ый %c).", o_name, label);
 		} else {
 			assert(first == obj);
-			msg("You have %s (%c).", o_name, label);
+			// msg("You have %s (%c).", o_name, label);
+			msg("У вас есть %s (%c).", o_name, label);
 		}
 	}
 
@@ -1350,7 +1361,8 @@ void pack_overflow(struct object *obj)
 	disturb(player);
 
 	/* Warning */
-	msg("Your pack overflows!");
+	// msg("Your pack overflows!");
+	msg("Ваш рюкзак переполнен!");
 
 	/* Get the last proper item */
 	for (i = 1; i <= z_info->pack_size; i++)
