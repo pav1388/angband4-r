@@ -1114,7 +1114,8 @@ static void monster_display_confused_move_msg(struct monster *mon,
 	if (monster_is_visible(mon) && monster_is_in_view(mon)) {
 		const char *m = square_feat(cave, new)->confused_msg;
 
-		msg("%s %s.", m_name, (m) ? m : "stumbles");
+		// msg("%s %s.", m_name, (m) ? m : "stumbles");
+		msg("%s %s.", m_name, (m) ? m : "спотыкается");
 	}
 }
 
@@ -1241,9 +1242,12 @@ static bool monster_turn_can_move(struct monster *mon, const char *m_name,
 			int k = square_door_power(cave, new);
 			if (randint0(mon->hp / 10) > k) {
 				if (will_bash) {
-					msg("%s slams against the door.", m_name);
+					// msg("%s slams against the door.", m_name);
+					msg("%s хлопнул дверью.", m_name);
+					
 				} else {
-					msg("%s fiddles with the lock.", m_name);
+					// msg("%s fiddles with the lock.", m_name);
+					msg("%s возится с замком.", m_name);
 				}
 
 				/* Reduce the power of the door by one */
@@ -1265,7 +1269,8 @@ static bool monster_turn_can_move(struct monster *mon, const char *m_name,
 			if (will_bash) {
 				square_smash_door(cave, new);
 
-				msg("You hear a door burst open!");
+				// msg("You hear a door burst open!");
+				msg("Вы слышите как открывается дверь!");
 				disturb(player);
 
 				if (confused) {
@@ -1303,7 +1308,8 @@ static bool monster_turn_attack_glyph(struct monster *mon, struct loc new)
 	if (randint1(z_info->glyph_hardness) < mon->race->level) {
 		/* Describe observable breakage */
 		if (square_isseen(cave, new)) {
-			msg("The rune of protection is broken!");
+			// msg("The rune of protection is broken!");
+			msg("Руна защиты разрушена!");
 
 			/* Forget the rune */
 			square_forget(cave, new);
@@ -1353,7 +1359,8 @@ static bool monster_turn_try_push(struct monster *mon, const char *m_name,
 
 		/* Note if visible */
 		if (monster_is_visible(mon) && monster_is_in_view(mon))
-			msg("%s %s %s.", m_name, kill_ok ? "tramples over" : "pushes past",
+			// msg("%s %s %s.", m_name, kill_ok ? "tramples over" : "pushes past",
+			msg("%s %s %s.", m_name, kill_ok ? "сносит" : "отталкивает",
 				n_name);
 
 		/* Monster ate another monster */
@@ -1427,7 +1434,8 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 					&& square_isview(cave, new)
 					&& !ignore_item_ok(player, obj)) {
 				/* Dump a message */
-				msg("%s tries to pick up %s, but fails.", m_name, o_name);
+				// msg("%s tries to pick up %s, but fails.", m_name, o_name);
+				msg("%s пытается поднять %s, но не удается.", m_name, o_name);
 			}
 		} else if (rf_has(mon->race->flags, RF_TAKE_ITEM)) {
 			/*
@@ -1450,7 +1458,8 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 			if (monster_carry(cave, mon, taken)) {
 				/* Describe observable situations */
 				if (square_isseen(cave, new) && !ignore_item_ok(player, obj)) {
-					msg("%s picks up %s.", m_name, o_name);
+					// msg("%s picks up %s.", m_name, o_name);
+					msg("%s поднимает %s.", m_name, o_name);
 				}
 
 				/* Delete the object */
@@ -1464,7 +1473,8 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 		} else {
 			/* Describe observable situations */
 			if (square_isseen(cave, new) && !ignore_item_ok(player, obj)) {
-				msgt(MSG_DESTROY, "%s crushes %s.", m_name, o_name);
+				// msgt(MSG_DESTROY, "%s crushes %s.", m_name, o_name);
+				msgt(MSG_DESTROY, "%s разрушает %s.", m_name, o_name);
 			}
 
 			/* Delete the object */
@@ -1737,7 +1747,8 @@ static void monster_reduce_sleep(struct monster *mon)
 
 		/* Notify the player if aware */
 		if (monster_is_obvious(mon)) {
-			msg("%s wakes up.", m_name);
+			// msg("%s wakes up.", m_name);
+			msg("%s проснулся.", m_name);
 			equip_learn_flag(player, OF_AGGRAVATE);
 		}
 	} else if ((notice * notice * notice) <= player_noise) {
