@@ -132,35 +132,49 @@ void target_display_help(bool monster, bool object, bool free)
 	Term_gotoxy(1, help_loc);
 
 	/* Display help */
-	text_out_c(COLOUR_L_GREEN, "<dir>");
-	text_out(" and ");
-	text_out_c(COLOUR_L_GREEN, "<click>");
-	text_out(" look around. '");
+	// text_out_c(COLOUR_L_GREEN, "<dir>");
+	text_out_c(COLOUR_L_GREEN, "<напр>");
+	// text_out(" and ");
+	// text_out(" и ");
+	// text_out_c(COLOUR_L_GREEN, "<click>");
+	// text_out_c(COLOUR_L_GREEN, "<клик>");
+	// text_out(" look around. '");
+	text_out(" осмотреться. '");
 	text_out_c(COLOUR_L_GREEN, "g");
-	text_out("' moves to selection. '");
+	// text_out("' moves to selection. '");
+	text_out("' идти к цели. '");
 	text_out_c(COLOUR_L_GREEN, "p");
-	text_out("' selects player. '");
+	// text_out("' selects player. '");
+	text_out("' выбрать игрока. '");
 	text_out_c(COLOUR_L_GREEN, "q");
-	text_out("' exits. '");
-	text_out_c(COLOUR_L_GREEN, "r");
-	text_out("' displays details. '");
+	// text_out("' exits. '");
+	text_out("' выход. '");
+	text_out_c(COLOUR_L_GREEN, "r/Enter");
+	// text_out("' displays details. '");
+	text_out("' показать детали. '");
 
 	if (free) {
 		text_out_c(COLOUR_L_GREEN, "m");
-		text_out("' restricts to interesting places.");
+		// text_out("' restricts to interesting places.");
+		text_out("' только точки интереса.");
 	} else {
-		text_out_c(COLOUR_L_GREEN, "+");
-		text_out("' and '");
-		text_out_c(COLOUR_L_GREEN, "-");
-		text_out("' cycle through places. '");
+		// text_out_c(COLOUR_L_GREEN, "+");
+		text_out_c(COLOUR_L_GREEN, "+/-/*");
+		// text_out("' and '");
+		//text_out("' и '");
+		//text_out_c(COLOUR_L_GREEN, "-");
+		// text_out("' cycle through places. '");
+		text_out("' след. цель. '");
 		text_out_c(COLOUR_L_GREEN, "o");
-		text_out("' allows free selection.");
+		// text_out("' allows free selection.");
+		text_out("' свободный выбор.");
 	}
 	
 	if (monster || free) {
 		text_out(" '");
 		text_out_c(COLOUR_L_GREEN, "t");
-		text_out("' targets selection.");
+		// text_out("' targets selection.");
+		text_out("' выбрать целью.");
 	}
 
 	if (object) {
@@ -179,7 +193,8 @@ void target_display_help(bool monster, bool object, bool free)
 		}
 		text_out(" '");
 		text_out_c(COLOUR_L_GREEN, "%s", label);
-		text_out("' ignores selection.");
+		// text_out("' ignores selection.");
+		text_out("' игнорирует выбор.");
 	}
 
 	/* Reset */
@@ -357,19 +372,24 @@ static bool aux_reinit(struct chunk *c, struct player *p,
 
 	if (square(c, auxst->grid)->mon < 0) {
 		/* Looking at the player's grid */
-		auxst->phrase1 = "You are ";
-		auxst->phrase2 = "on ";
+		// auxst->phrase1 = "You are ";
+		auxst->phrase1 = "Вы ";
+		// auxst->phrase2 = "on ";
+		auxst->phrase2 = "на ";
 	} else {
 		/* Default */
 		if (square_isseen(c, auxst->grid)) {
-			auxst->phrase1 = "You see ";
+			// auxst->phrase1 = "You see ";
+			auxst->phrase1 = "Вы видите ";
 		} else {
 			mon = square_monster(c, auxst->grid);
 			if (mon && monster_is_obvious(mon)) {
 				/* Monster is visible because of detection or telepathy */
-				auxst->phrase1 = "You sense ";
+				// auxst->phrase1 = "You sense ";
+				auxst->phrase1 = "Вы чувствуете ";
 			} else {
-				auxst->phrase1 = "You recall ";
+				// auxst->phrase1 = "You  recall ";
+				auxst->phrase1 = "Вы предполагаете, что это ";
 			}
 		}
 		auxst->phrase2 = "";
@@ -384,7 +404,8 @@ static bool aux_reinit(struct chunk *c, struct player *p,
 static bool aux_hallucinate(struct chunk *c, struct player *p,
 		struct target_aux_state *auxst)
 {
-	const char *name_strange = "something strange";
+	// const char *name_strange = "something strange";
+	const char *name_strange = "что-то странное";
 	char out_val[TARGET_OUT_VAL_SIZE];
 
 	if (!p->timed[TMD_IMAGE]) return false;
@@ -505,7 +526,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 				&& KEY_GRID_Y(auxst->press) == auxst->grid.y) {
 			recall = !recall;
 		} else if (auxst->press.type == EVT_KBRD
-				&& auxst->press.key.code == 'r') {
+				// && auxst->press.key.code == 'r') {
+				&& (auxst->press.key.code == 'r' || auxst->press.key.code == KC_ENTER)) { // r=enter
 			recall = !recall;
 		} else {
 			break;
@@ -537,11 +559,14 @@ static bool aux_monster(struct chunk *c, struct player *p,
 
 		/* Take account of gender */
 		if (rf_has(mon->race->flags, RF_FEMALE)) {
-			lphrase1 = "She is ";
+			// lphrase1 = "She is ";
+			lphrase1 = "Она ";
 		} else if (rf_has(mon->race->flags, RF_MALE)) {
-			lphrase1 = "He is ";
+			// lphrase1 = "He is ";
+			lphrase1 = "Он ";
 		} else {
-			lphrase1 = "It is ";
+			// lphrase1 = "It is ";
+			lphrase1 = "Это ";
 		}
 
 		/* Use a verb */
@@ -620,7 +645,7 @@ static bool aux_trap(struct chunk *c, struct player *p,
 	auxst->boring = false;
 
 	/* Pick proper indefinite article */
-	lphrase3 = (is_a_vowel(trap->kind->desc[0])) ? "an " : "a ";
+	// lphrase3 = (is_a_vowel(trap->kind->desc[0])) ? "an " : "a ";
 
 	/* Interact */
 	while (1) {
@@ -711,7 +736,8 @@ static bool aux_object(struct chunk *c, struct player *p,
 					(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
 			} else {
 				strnfmt(out_val, sizeof(out_val),
-					"%s%sa pile of %d objects, %s.",
+					// "%s%sa pile of %d objects, %s.",
+					"%s%s куча %d объектов, %s.",
 					auxst->phrase1,
 					auxst->phrase2,
 					floor_num,
@@ -934,9 +960,11 @@ static ui_event target_set_interactive_aux(int y, int x, int mode)
 void textui_target(void)
 {
 	if (target_set_interactive(TARGET_KILL, -1, -1))
-		msg("Target Selected.");
+		// msg("Target Selected.");
+		msg("Цель выбрана.");
 	else
-		msg("Target Aborted.");
+		// msg("Target Aborted.");
+		msg("Отмена цели.");
 }
 
 /**
@@ -1202,7 +1230,8 @@ bool target_set_interactive(int mode, int x, int y)
 	help_prompt_loc = hgt - 1;
 	
 	/* Display the help prompt */
-	prt("Press '?' for help.", help_prompt_loc, 0);
+	// prt("Press '?' for help.", help_prompt_loc, 0);
+	prt("Нажмите '?' для справки.", help_prompt_loc, 0);
 
 	/* Prepare the target set */
 	struct point_set *targets = target_get_monsters(mode, NULL, true);
