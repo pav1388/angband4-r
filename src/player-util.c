@@ -983,7 +983,7 @@ bool player_get_resume_normal_shape(struct player *p, struct command *cmd)
 {
 	if (player_is_shapechanged(p)) {
 		// msg("You cannot do this while in %s form.", p->shape->name);
-		msg("Вы не можете сделать это, находясь в форме %s.", p->shape->name);
+		msg("Вы не можете сделать это, находясь в облике %s.", p->shape->name);
 		char prompt[100];
 		strnfmt(prompt, sizeof(prompt),
 		        // "Change back and %s (y/n) or (r)eturn to normal? ",
@@ -1011,7 +1011,7 @@ void player_resume_normal_shape(struct player *p)
 {
 	p->shape = lookup_player_shape("normal");
 	// msg("You resume your usual shape.");
-	msg("Вы возвращаетесь к своей обычной форме.");
+	msg("Вы возвращаетесь к своему обычному облику.");
 
 	/* Kill vampire attack */
 	(void) player_clear_timed(p, TMD_ATT_VAMP, true, false);
