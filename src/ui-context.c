@@ -390,7 +390,8 @@ int context_menu_player(int mx, int my)
 
 		case MENU_VALUE_LOOK:
 			if (target_set_interactive(TARGET_LOOK, player->grid.x, player->grid.y))
-				msg("Target Selected.");
+				// msg("Target Selected.");
+				msg("Цель выбрана.");
 			break;
 
 		case MENU_VALUE_CHARACTER:
@@ -458,51 +459,66 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		if (obj && !ignore_item_ok(player, obj)) {
 			if (obj->known->pval) {
 				if (is_locked_chest(obj)) {
-					ADD_LABEL("Disarm Chest", CMD_DISARM, MN_ROW_VALID);
-					ADD_LABEL("Open Chest", CMD_OPEN, MN_ROW_VALID);
+					// ADD_LABEL("Disarm Chest", CMD_DISARM, MN_ROW_VALID);
+					ADD_LABEL("Обезвредить Сундук", CMD_DISARM, MN_ROW_VALID);
+					// ADD_LABEL("Open Chest", CMD_OPEN, MN_ROW_VALID);
+					ADD_LABEL("Открыть Сундук", CMD_OPEN, MN_ROW_VALID);
 				} else {
-					ADD_LABEL("Open Disarmed Chest", CMD_OPEN, MN_ROW_VALID);
+					// ADD_LABEL("Open Disarmed Chest", CMD_OPEN, MN_ROW_VALID);
+					ADD_LABEL("Открыть Безопасн. Сундук", CMD_OPEN, MN_ROW_VALID);
 				}
 			} else {
-				ADD_LABEL("Open Chest", CMD_OPEN, MN_ROW_VALID);
+				// ADD_LABEL("Open Chest", CMD_OPEN, MN_ROW_VALID);
+				ADD_LABEL("Открыть Сундук", CMD_OPEN, MN_ROW_VALID);
 			}
 		}
 
 		if ((square(c, grid)->mon > 0) && player_has(player, PF_STEAL)) {
-			ADD_LABEL("Steal", CMD_STEAL, MN_ROW_VALID);
+			// ADD_LABEL("Steal", CMD_STEAL, MN_ROW_VALID);
+			ADD_LABEL("Украсть", CMD_STEAL, MN_ROW_VALID);
 		}
 
 		if (square_isdisarmabletrap(c, grid)) {
-			ADD_LABEL("Disarm", CMD_DISARM, MN_ROW_VALID);
+			// ADD_LABEL("Disarm", CMD_DISARM, MN_ROW_VALID);
+			ADD_LABEL("Обезвредить", CMD_DISARM, MN_ROW_VALID);
 			ADD_LABEL("Jump Onto", CMD_JUMP, MN_ROW_VALID);
 		}
 
 		if (square_isopendoor(c, grid)) {
-			ADD_LABEL("Close", CMD_CLOSE, MN_ROW_VALID);
+			// ADD_LABEL("Close", CMD_CLOSE, MN_ROW_VALID);
+			ADD_LABEL("Закрыть", CMD_CLOSE, MN_ROW_VALID);
 		}
 		else if (square_iscloseddoor(c, grid)) {
-			ADD_LABEL("Open", CMD_OPEN, MN_ROW_VALID);
-			ADD_LABEL("Lock", CMD_DISARM, MN_ROW_VALID);
+			// ADD_LABEL("Open", CMD_OPEN, MN_ROW_VALID);
+			ADD_LABEL("Открыть", CMD_OPEN, MN_ROW_VALID);
+			// ADD_LABEL("Lock", CMD_DISARM, MN_ROW_VALID);
+			ADD_LABEL("Запереть", CMD_DISARM, MN_ROW_VALID);
 		}
 		else if (square_isdiggable(c, grid)) {
-			ADD_LABEL("Tunnel", CMD_TUNNEL, MN_ROW_VALID);
+			// ADD_LABEL("Tunnel", CMD_TUNNEL, MN_ROW_VALID);
+			ADD_LABEL("Копать", CMD_TUNNEL, MN_ROW_VALID);
 		}
 
-		ADD_LABEL("Walk Towards", CMD_WALK, MN_ROW_VALID);
+		// ADD_LABEL("Walk Towards", CMD_WALK, MN_ROW_VALID);
+		ADD_LABEL("Идти Навстречу", CMD_WALK, MN_ROW_VALID);
 	} else {
 		/* ',' is used for ignore in rogue keymap, so we'll just swap letters */
 		cmdkey = (mode == KEYMAP_MODE_ORIG) ? ',' : '.';
 		menu_dynamic_add_label(m, "Pathfind To", cmdkey, CMD_PATHFIND, labels);
 
-		ADD_LABEL("Walk Towards", CMD_WALK, MN_ROW_VALID);
-		ADD_LABEL("Run Towards", CMD_RUN, MN_ROW_VALID);
+		// ADD_LABEL("Walk Towards", CMD_WALK, MN_ROW_VALID);
+		ADD_LABEL("Идти Навстречу", CMD_WALK, MN_ROW_VALID);
+		// ADD_LABEL("Run Towards", CMD_RUN, MN_ROW_VALID);
+		ADD_LABEL("Бежать Навстречу", CMD_RUN, MN_ROW_VALID);
 	}
 
 	if (player_can_fire(player, false)) {
-		ADD_LABEL("Fire On", CMD_FIRE, MN_ROW_VALID);
+		// ADD_LABEL("Fire On", CMD_FIRE, MN_ROW_VALID);
+		ADD_LABEL("Стрелять в", CMD_FIRE, MN_ROW_VALID);
 	}
 
-	ADD_LABEL("Throw To", CMD_THROW, MN_ROW_VALID);
+	// ADD_LABEL("Throw To", CMD_THROW, MN_ROW_VALID);
+	ADD_LABEL("Бросить в", CMD_THROW, MN_ROW_VALID);
 
 	/* Hack -- no flush needed */
 	msg_flag = false;
@@ -512,7 +528,8 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 	region_erase_bordered(&m->boundary);
 
 	if (player->timed[TMD_IMAGE]) {
-		prt("(Enter to select command, ESC to cancel) You see something strange:", 0, 0);
+		// prt("(Enter to select command, ESC to cancel) You see something strange:", 0, 0);
+		prt("(Enter выбор действия, ESC отмена) Вы видите нечто странное:", 0, 0);
 	} else if (square(c, grid)->mon) {
 		char m_name[80];
 		struct monster *mon = square_monster(c, grid);
@@ -520,7 +537,8 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		/* Get the monster name ("a kobold") */
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS);
 
-		prt(format("(Enter to select command, ESC to cancel) You see %s:",
+		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
+		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s:",
 				   m_name), 0, 0);
 	} else if (square_obj && !ignore_item_ok(player, square_obj)) {
 		char o_name[80];
@@ -529,14 +547,15 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		object_desc(o_name, sizeof (o_name), square_obj,
 			ODESC_PREFIX | ODESC_FULL, player);
 
-		prt(format("(Enter to select command, ESC to cancel) You see %s:",
+		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
+		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s:",
 				   o_name), 0, 0);
 	} else {
 		/* Feature (apply mimic) */
 		const char *name = square_apparent_name(player->cave, grid);
 		const char *prefix = square_apparent_look_prefix(player->cave, grid);
 
-		prt(format("(Enter to select command, ESC to cancel) You see %s%s:", prefix, name), 0, 0);
+		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s%s:", prefix, name), 0, 0);
 	}
 
 	selected = menu_dynamic_select(m);
@@ -593,7 +612,8 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		case MENU_VALUE_LOOK:
 			/* Look at the spot */
 			if (target_set_interactive(TARGET_LOOK, x, y)) {
-				msg("Target Selected.");
+				// msg("Target Selected.");
+				msg("Цель выбрана.");
 			}
 			break;
 
@@ -670,97 +690,123 @@ int context_menu_object(struct object *obj)
 	m->selections = labels;
 
 	/* 'I' is used for inspect in both keymaps. */
-	menu_dynamic_add_label(m, "Inspect", 'I', MENU_VALUE_INSPECT, labels);
+	// menu_dynamic_add_label(m, "Inspect", 'I', MENU_VALUE_INSPECT, labels);
+	menu_dynamic_add_label(m, "Осмотреть", 'I', MENU_VALUE_INSPECT, labels);
 
 	if (obj_can_browse(obj)) {
 		if (obj_can_cast_from(obj) && player_can_cast(player, false))
-			ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+			// ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+			ADD_LABEL("Произнести", CMD_CAST, MN_ROW_VALID);
 
 		if (obj_can_study(obj) && player_can_study(player, false))
-			ADD_LABEL("Study", CMD_STUDY, MN_ROW_VALID);
+			// ADD_LABEL("Study", CMD_STUDY, MN_ROW_VALID);
+			ADD_LABEL("Изучить", CMD_STUDY, MN_ROW_VALID);
 
 		if (player_can_read(player, false))
-			ADD_LABEL("Browse", CMD_BROWSE_SPELL, MN_ROW_VALID);
+			// ADD_LABEL("Browse", CMD_BROWSE_SPELL, MN_ROW_VALID);
+			ADD_LABEL("Обзор", CMD_BROWSE_SPELL, MN_ROW_VALID);
 	} else if (obj_is_useable(obj)) {
 		if (tval_is_wand(obj)) {
 			menu_row_validity_t valid = (obj_has_charges(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Aim", CMD_USE_WAND, valid);
+			// ADD_LABEL("Aim", CMD_USE_WAND, valid);
+			ADD_LABEL("Взмахнуть", CMD_USE_WAND, valid);
 		} else if (tval_is_rod(obj)) {
 			menu_row_validity_t valid = (obj_can_zap(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Zap", CMD_USE_ROD, valid);
+			// ADD_LABEL("Zap", CMD_USE_ROD, valid);
+			ADD_LABEL("Забить", CMD_USE_ROD, valid);
 		} else if (tval_is_staff(obj)) {
 			menu_row_validity_t valid = (obj_has_charges(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Use", CMD_USE_STAFF, valid);
+			// ADD_LABEL("Use", CMD_USE_STAFF, valid);
+			ADD_LABEL("Использовать", CMD_USE_STAFF, valid);
 		} else if (tval_is_scroll(obj)) {
 			menu_row_validity_t valid = (player_can_read(player, false)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Read", CMD_READ_SCROLL, valid);
+			// ADD_LABEL("Read", CMD_READ_SCROLL, valid);
+			ADD_LABEL("Прочесть", CMD_READ_SCROLL, valid);
 		} else if (tval_is_potion(obj)) {
-			ADD_LABEL("Quaff", CMD_QUAFF, MN_ROW_VALID);
+			// ADD_LABEL("Quaff", CMD_QUAFF, MN_ROW_VALID);
+			ADD_LABEL("Выпить", CMD_QUAFF, MN_ROW_VALID);
 		} else if (tval_is_edible(obj)) {
-			ADD_LABEL("Eat", CMD_EAT, MN_ROW_VALID);
+			// ADD_LABEL("Eat", CMD_EAT, MN_ROW_VALID);
+			ADD_LABEL("Съесть", CMD_EAT, MN_ROW_VALID);
 		} else if (obj_is_activatable(obj)) {
 			menu_row_validity_t valid = (object_is_equipped(player->body, obj)
 										 && obj_can_activate(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Activate", CMD_ACTIVATE, valid);
+			// ADD_LABEL("Activate", CMD_ACTIVATE, valid);
+			ADD_LABEL("Активировать", CMD_ACTIVATE, valid);
 		} else if (obj_can_fire(obj)) {
-			ADD_LABEL("Fire", CMD_FIRE, MN_ROW_VALID);
+			// ADD_LABEL("Fire", CMD_FIRE, MN_ROW_VALID);
+			ADD_LABEL("Выстрелить", CMD_FIRE, MN_ROW_VALID);
 		} else {
-			ADD_LABEL("Use", CMD_USE, MN_ROW_VALID);
+			// ADD_LABEL("Use", CMD_USE, MN_ROW_VALID);
+			ADD_LABEL("Использовать", CMD_USE, MN_ROW_VALID);
 		}
 	}
 
 	if (obj_can_refill(obj))
-		ADD_LABEL("Refill", CMD_REFILL, MN_ROW_VALID);
+		// ADD_LABEL("Refill", CMD_REFILL, MN_ROW_VALID);
+		ADD_LABEL("Заправить", CMD_REFILL, MN_ROW_VALID);
 
 	if (object_is_equipped(player->body, obj) && obj_can_takeoff(obj)) {
-		ADD_LABEL("Take off", CMD_TAKEOFF, MN_ROW_VALID);
+		// ADD_LABEL("Take off", CMD_TAKEOFF, MN_ROW_VALID);
+		ADD_LABEL("Снять", CMD_TAKEOFF, MN_ROW_VALID);
 	} else if (!object_is_equipped(player->body, obj) && obj_can_wear(obj)) {
-		ADD_LABEL("Equip", CMD_WIELD, MN_ROW_VALID);
+		// ADD_LABEL("Equip", CMD_WIELD, MN_ROW_VALID);
+		ADD_LABEL("Экипировать", CMD_WIELD, MN_ROW_VALID);
 	}
 
 	if (object_is_carried(player, obj)) {
 		if (!square_isshop(cave, player->grid)) {
-			ADD_LABEL("Drop", CMD_DROP, MN_ROW_VALID);
+			// ADD_LABEL("Drop", CMD_DROP, MN_ROW_VALID);
+			ADD_LABEL("Выбросить", CMD_DROP, MN_ROW_VALID);
 
 			if (obj->number > 1) {
 				/* 'D' is used for ignore in rogue keymap, so swap letters. */
 				cmdkey = (mode == KEYMAP_MODE_ORIG) ? 'D' : 'A';
-				menu_dynamic_add_label(m, "Drop All", cmdkey,
+				// menu_dynamic_add_label(m, "Drop All", cmdkey,
+				menu_dynamic_add_label(m, "Выбросить Все", cmdkey,
 									   MENU_VALUE_DROP_ALL, labels);
 			}
 		} else if (square(cave, player->grid)->feat == FEAT_HOME) {
-			ADD_LABEL("Drop", CMD_DROP, MN_ROW_VALID);
+			// ADD_LABEL("Drop", CMD_DROP, MN_ROW_VALID);
+			ADD_LABEL("Выбросить", CMD_DROP, MN_ROW_VALID);
 
 			if (obj->number > 1) {
 				/* 'D' is used for ignore in rogue keymap, so swap letters. */
 				cmdkey = (mode == KEYMAP_MODE_ORIG) ? 'D' : 'A';
-				menu_dynamic_add_label(m, "Drop All", cmdkey,
+				// menu_dynamic_add_label(m, "Drop All", cmdkey,
+				menu_dynamic_add_label(m, "Выбросить Все", cmdkey,
 									   MENU_VALUE_DROP_ALL, labels);
 			}
 		} else if (store_will_buy_tester(obj)) {
-			ADD_LABEL("Sell", CMD_DROP, MN_ROW_VALID);
+			// ADD_LABEL("Sell", CMD_DROP, MN_ROW_VALID);
+			ADD_LABEL("Продать", CMD_DROP, MN_ROW_VALID);
 		}
 	} else {
 		menu_row_validity_t valid = (inven_carry_okay(obj)) ?
 			MN_ROW_VALID : MN_ROW_INVALID;
-		ADD_LABEL("Pick up", CMD_PICKUP, valid);
+		// ADD_LABEL("Pick up", CMD_PICKUP, valid);
+		ADD_LABEL("Поднять", CMD_PICKUP, valid);
 	}
 
 	if (obj_can_throw(obj)) {
-		ADD_LABEL("Throw", CMD_THROW, MN_ROW_VALID);
+		// ADD_LABEL("Throw", CMD_THROW, MN_ROW_VALID);
+		ADD_LABEL("Бросить", CMD_THROW, MN_ROW_VALID);
 	}
 
-	ADD_LABEL("Inscribe", CMD_INSCRIBE, MN_ROW_VALID);
+	// ADD_LABEL("Inscribe", CMD_INSCRIBE, MN_ROW_VALID);
+	ADD_LABEL("Подписать", CMD_INSCRIBE, MN_ROW_VALID);
 
 	if (obj_has_inscrip(obj))
-		ADD_LABEL("Uninscribe", CMD_UNINSCRIBE, MN_ROW_VALID);
+		// ADD_LABEL("Uninscribe", CMD_UNINSCRIBE, MN_ROW_VALID);
+		ADD_LABEL("Отписать", CMD_UNINSCRIBE, MN_ROW_VALID);
 
-	ADD_LABEL( (object_is_ignored(obj) ? "Unignore" : "Ignore"), CMD_IGNORE,
+	// ADD_LABEL( (object_is_ignored(obj) ? "Unignore" : "Ignore"), CMD_IGNORE,
+	ADD_LABEL( (object_is_ignored(obj) ? "Не игнорировать" : "Игнорировать"), CMD_IGNORE,
 			   MN_ROW_VALID);
 
 	/* work out display region */
@@ -787,7 +833,8 @@ int context_menu_object(struct object *obj)
 	menu_layout(m, &r);
 	region_erase_bordered(&r);
 
-	prt(format("(Enter to select, ESC) Command for %s:", header), 0, 0);
+	// prt(format("(Enter to select, ESC) Command for %s:", header), 0, 0);
+	prt(format("(Enter выбор, ESC) Действие для %s:", header), 0, 0);
 	selected = menu_dynamic_select(m);
 
 	menu_dynamic_free(m);
@@ -929,7 +976,8 @@ static int show_command_list(struct cmd_info cmd_list[], int size, int mx,
 	screen_save();
 	region_erase_bordered(&m->boundary);
 
-	prt("(Enter to select, ESC) Command:", 0, 0);
+	// prt("(Enter to select, ESC) Command:", 0, 0);
+	prt("(Enter выбор, ESC) Действие:", 0, 0);
 	selected = menu_dynamic_select(m);
 	menu_dynamic_free(m);
 
@@ -966,7 +1014,8 @@ int context_menu_command(int mx, int my)
 	screen_save();
 	region_erase_bordered(&m->boundary);
 
-	prt("(Enter to select, ESC) Command:", 0, 0);
+	// prt("(Enter to select, ESC) Command:", 0, 0);
+	prt("(Enter выбор, ESC) Действие:", 0, 0);
 	selected = menu_dynamic_select(m);
 	menu_dynamic_free(m);
 
@@ -1055,7 +1104,8 @@ void textui_process_click(ui_event e)
 			} else if (e.mouse.mods & KC_MOD_ALT) {
 				/* alt-click - look */
 				if (target_set_interactive(TARGET_LOOK, x, y)) {
-					msg("Target Selected.");
+					// msg("Target Selected.");
+					msg("Цель выбрана.");
 				}
 			} else {
 				/* Pathfind does not work well on trap detection borders,
