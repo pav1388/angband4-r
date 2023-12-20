@@ -216,7 +216,8 @@ struct keypress textui_textblock_show(textblock *tb, region orig_area, const cha
 
 		Term_erase(area.col, area.row + n_lines, area.width);
 		Term_erase(area.col, area.row + n_lines + 1, area.width);
-		c_put_str(COLOUR_L_BLUE, "(Press any key to continue.)",
+		// c_put_str(COLOUR_L_BLUE, "(Press any key to continue.)",
+		c_put_str(COLOUR_L_BLUE, "(Нажмите любую клавишу для продолжения.)",
 				area.row + n_lines + 1, area.col);
 		ch = inkey();
 	}
