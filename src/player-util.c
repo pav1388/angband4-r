@@ -103,7 +103,8 @@ bool player_get_recall_depth(struct player *p)
 
 	while (!level_ok) {
 		const char *prompt =
-			"Which level do you wish to return to (0 to cancel)? ";
+			// "Which level do you wish to return to (0 to cancel)? ";
+			"На какой этаж вы хотите вернуться (0 - отмена)? ";
 		int i;
 
 		/* Choose the level */
@@ -120,7 +121,8 @@ bool player_get_recall_depth(struct player *p)
 			}
 		}
 		if (!level_ok) {
-			msg("You must choose a level you have previously visited.");
+			// msg("You must choose a level you have previously visited.");
+			msg("Вы должны выбрать этаж, который уже посещали.");
 		}
 	}
 	p->recall_depth = new;
@@ -201,16 +203,21 @@ void take_hit(struct player *p, int dam, const char *kb_str)
 		if (p->timed[TMD_BLOODLUST]
 			&& (p->chp + p->timed[TMD_BLOODLUST] + p->lev >= 0)) {
 			if (randint0(10)) {
-				msg("Your lust for blood keeps you alive!");
+				// msg("Your lust for blood keeps you alive!");
+				msg("Ваша жажда крови сохраняет вам жизнь!");
 			} else {
-				msg("So great was his prowess and skill in warfare, the Elves said: ");
-				msg("'The Mormegil cannot be slain, save by mischance.'");
+				// msg("So great was his prowess and skill in warfare, the Elves said: ");
+				msg("Велика была его доблесть и мастерство в военном деле, что Эльфы сказали: ");
+				// msg("'The Mormegil cannot be slain, save by mischance.'");
+				msg("'Мормегиля нельзя убить, разве что по счастливой случайности.'");
 			}
-		} else if ((p->wizard || OPT(p, cheat_live)) && !get_check("Die? ")) {
+		// } else if ((p->wizard || OPT(p, cheat_live)) && !get_check("Die? ")) {
+		} else if ((p->wizard || OPT(p, cheat_live)) && !get_check("Умереть? ")) {
 			event_signal(EVENT_CHEAT_DEATH);
 		} else {
 			/* Hack -- Note death */
-			msgt(MSG_DEATH, "You die.");
+			// msgt(MSG_DEATH, "You die.");
+			msgt(MSG_DEATH, "Вы погибли.");
 			event_signal(EVENT_MESSAGE_FLUSH);
 
 			/* Note cause of death */
@@ -234,7 +241,8 @@ void take_hit(struct player *p, int dam, const char *kb_str)
 			bell();
 
 		/* Message */
-		msgt(MSG_HITPOINT_WARN, "*** LOW HITPOINT WARNING! ***");
+		// msgt(MSG_HITPOINT_WARN, "*** LOW HITPOINT WARNING! ***");
+		msgt(MSG_HITPOINT_WARN, "*** ПРЕДУПРЕЖДЕНИЕ О НИЗКОМ ЗДОРОВЬЕ! ***");
 		event_signal(EVENT_MESSAGE_FLUSH);
 	}
 }
@@ -677,7 +685,8 @@ void player_update_light(struct player *p)
 			} else if (obj->timeout == 0) {
 				/* The light is now out */
 				disturb(p);
-				msg("Your light has gone out!");
+				// msg("Your light has gone out!");
+				msg("Ваш свет погас!");
 
 				/* If it's a torch, now is the time to delete it */
 				if (of_has(obj->flags, OF_BURNS_OUT)) {
@@ -692,7 +701,8 @@ void player_update_light(struct player *p)
 			} else if ((obj->timeout < 50) && (!(obj->timeout % 20))) {
 				/* The light is getting dim */
 				disturb(p);
-				msg("Your light is growing faint.");
+				// msg("Your light is growing faint.");
+				msg("Ваш свет тускнеет.");
 			}
 		}
 	}
@@ -768,7 +778,8 @@ bool player_attack_random_monster(struct player *p)
 		const struct monster *mon = square_monster(cave, grid);
 		if (mon && !monster_is_camouflaged(mon)) {
 			p->upkeep->energy_use = z_info->move_energy;
-			msg("You angrily lash out at a nearby foe!");
+			// msg("You angrily lash out at a nearby foe!");
+			msg("Вы гневно бросаетесь на ближайшего врага!");
 			py_attack(p, grid);
 			return true;
 		}
@@ -790,7 +801,8 @@ void player_over_exert(struct player *p, int flag, int chance, int amount)
 		if (randint0(100) < chance) {
 			/* Hack - only permanent with high chance (no-mana casting) */
 			bool perm = (randint0(100) < chance / 2) && (chance >= 50);
-			msg("You have damaged your health!");
+			// msg("You have damaged your health!");
+			msg("Вы нанесли ущерб своему здоровью!");
 			player_stat_dec(p, STAT_CON, perm);
 		}
 	}
@@ -798,7 +810,8 @@ void player_over_exert(struct player *p, int flag, int chance, int amount)
 	/* Fainting */
 	if (flag & PY_EXERT_FAINT) {
 		if (randint0(100) < chance) {
-			msg("You faint from the effort!");
+			// msg("You faint from the effort!");
+			msg("Вы теряете сознание от усилий!");
 
 			/* Bypass free action */
 			(void)player_inc_timed(p, TMD_PARALYZED,
@@ -817,7 +830,8 @@ void player_over_exert(struct player *p, int flag, int chance, int amount)
 	/* Cut damage */
 	if (flag & PY_EXERT_CUT) {
 		if (randint0(100) < chance) {
-			msg("Wounds appear on your body!");
+			// msg("Wounds appear on your body!");
+			msg("На вашем теле появились раны!");
 			(void)player_inc_timed(p, TMD_CUT, randint1(amount),
 				true, true, false);
 		}
@@ -842,7 +856,8 @@ void player_over_exert(struct player *p, int flag, int chance, int amount)
 	/* Slowing */
 	if (flag & PY_EXERT_SLOW) {
 		if (randint0(100) < chance) {
-			msg("You feel suddenly lethargic.");
+			// msg("You feel suddenly lethargic.");
+			msg("Вы чувствуете внезапную вялость.");
 			(void)player_inc_timed(p, TMD_SLOW, randint1(amount),
 				true, true, false);
 		}
@@ -851,7 +866,8 @@ void player_over_exert(struct player *p, int flag, int chance, int amount)
 	/* HP */
 	if (flag & PY_EXERT_HP) {
 		if (randint0(100) < chance) {
-			msg("You cry out in sudden pain!");
+			// msg("You cry out in sudden pain!");
+			msg("Вы вскрикнули от внезапной боли!");
 			take_hit(p, randint1(amount), "over-exertion");
 		}
 	}
@@ -966,10 +982,12 @@ struct player_shape *player_shape_by_idx(int index)
 bool player_get_resume_normal_shape(struct player *p, struct command *cmd)
 {
 	if (player_is_shapechanged(p)) {
-		msg("You cannot do this while in %s form.", p->shape->name);
+		// msg("You cannot do this while in %s form.", p->shape->name);
+		msg("Вы не можете сделать это, находясь в форме %s.", p->shape->name);
 		char prompt[100];
 		strnfmt(prompt, sizeof(prompt),
-		        "Change back and %s (y/n) or (r)eturn to normal? ",
+		        // "Change back and %s (y/n) or (r)eturn to normal? ",
+		        "Измениться обратно и %s (y/n) или (r)вернуться к нормальному состоянию? ",
 		        cmd_verb(cmd->code));
 		char answer = get_char(prompt, "yrn", 3, 'n');
 
@@ -992,7 +1010,8 @@ bool player_get_resume_normal_shape(struct player *p, struct command *cmd)
 void player_resume_normal_shape(struct player *p)
 {
 	p->shape = lookup_player_shape("normal");
-	msg("You resume your usual shape.");
+	// msg("You resume your usual shape.");
+	msg("Вы возвращаетесь к своей обычной форме.");
 
 	/* Kill vampire attack */
 	(void) player_clear_timed(p, TMD_ATT_VAMP, true, false);
@@ -1032,21 +1051,24 @@ bool player_can_cast(const struct player *p, bool show_msg)
 {
 	if (!p->class->magic.total_spells) {
 		if (show_msg) {
-			msg("You cannot pray or produce magics.");
+			// msg("You cannot pray or produce magics.");
+			msg("Вы не можете молиться или вызывать магию.");
 		}
 		return false;
 	}
 
 	if (p->timed[TMD_BLIND] || no_light(p)) {
 		if (show_msg) {
-			msg("You cannot see!");
+			// msg("You cannot see!");
+			msg("Вы не можете видеть!");
 		}
 		return false;
 	}
 
 	if (p->timed[TMD_CONFUSED]) {
 		if (show_msg) {
-			msg("You are too confused!");
+			// msg("You are too confused!");
+			msg("Вы слишком растеряны!");
 		}
 		return false;
 	}
@@ -1092,7 +1114,8 @@ bool player_can_study(const struct player *p, bool show_msg)
 					r = r1;
 				}
 			}
-			msg("You cannot learn any new %s!", buf);
+			// msg("You cannot learn any new %s!", buf);
+			msg("Вы не можете выучить новые %s!", buf);
 		}
 		return false;
 	}
@@ -1111,28 +1134,32 @@ bool player_can_read(const struct player *p, bool show_msg)
 {
 	if (p->timed[TMD_BLIND]) {
 		if (show_msg)
-			msg("You can't see anything.");
+			// msg("You can't see anything.");
+			msg("Вы ничего не видите.");
 
 		return false;
 	}
 
 	if (no_light(p)) {
 		if (show_msg)
-			msg("You have no light to read by.");
+			// msg("You have no light to read by.");
+			msg("У вас нет света, чтобы читать.");
 
 		return false;
 	}
 
 	if (p->timed[TMD_CONFUSED]) {
 		if (show_msg)
-			msg("You are too confused to read!");
+			// msg("You are too confused to read!");
+			msg("Вы слишком растеряны, чтобы читать!");
 
 		return false;
 	}
 
 	if (p->timed[TMD_AMNESIA]) {
 		if (show_msg)
-			msg("You can't remember how to read!");
+			// msg("You can't remember how to read!");
+			msg("Вы не помните как читать!");
 
 		return false;
 	}
@@ -1154,7 +1181,8 @@ bool player_can_fire(struct player *p, bool show_msg)
 	/* Require a usable launcher */
 	if (!obj || !p->state.ammo_tval) {
 		if (show_msg)
-			msg("You have nothing to fire with.");
+			// msg("You have nothing to fire with.");
+			msg("Вам нечем стрелять.");
 		return false;
 	}
 
@@ -1177,7 +1205,8 @@ bool player_can_refuel(struct player *p, bool show_msg)
 	}
 
 	if (show_msg) {
-		msg("Your light cannot be refuelled.");
+		// msg("Your light cannot be refuelled.");
+		msg("Ваш источник света не может быть заправлен.");
 	}
 
 	return false;
@@ -1306,12 +1335,14 @@ bool player_confuse_dir(struct player *p, int *dp, bool too)
 
 	/* Running attempts always fail */
 	if (too) {
-		msg("You are too confused.");
+		// msg("You are too confused.");
+		msg("Вы слишком растеряны.");
 		return true;
 	}
 
 	if (*dp != dir) {
-		msg("You are confused.");
+		// msg("You are confused.");
+		msg("Вы растеряны.");
 		*dp = dir;
 		return true;
 	}
@@ -1544,7 +1575,8 @@ void player_handle_post_move(struct player *p, bool eval_trap,
 	if (square_isshop(cave, p->grid)) {
 		if (player_is_shapechanged(p)) {
 			if (square(cave, p->grid)->feat != FEAT_HOME) {
-				msg("There is a scream and the door slams shut!");
+				// msg("There is a scream and the door slams shut!");
+				msg("Раздается крик, и дверь захлопывается!");
 			}
 			return;
 		}
@@ -1633,7 +1665,8 @@ void search(struct player *p)
 
 			/* Secret doors */
 			if (square_issecretdoor(cave, grid)) {
-				msg("You have found a secret door.");
+				// msg("You have found a secret door.");
+				msg("Вы нашли потайную дверь.");
 				place_closed_door(cave, grid);
 				disturb(p);
 			}
@@ -1646,7 +1679,8 @@ void search(struct player *p)
 				}
 
 				if (obj->known->pval != obj->pval) {
-					msg("You have discovered a trap on the chest!");
+					// msg("You have discovered a trap on the chest!");
+					msg("Вы обнаружили ловушку на сундуке!");
 					obj->known->pval = obj->pval;
 					disturb(p);
 				}
