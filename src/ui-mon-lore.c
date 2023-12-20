@@ -51,12 +51,13 @@ void lore_title(textblock *tb, const struct monster_race *race)
 	optional_attr = monster_x_attr[race->ridx];
 
 	/* A title (use "The" for non-uniques) */
-	if (!rf_has(race->flags, RF_UNIQUE))
-		textblock_append(tb, "The ");
-	else if (OPT(player, purple_uniques)) {
+	if (!rf_has(race->flags, RF_UNIQUE)){
+		//textblock_append(tb, "The ");
+	} else { if (OPT(player, purple_uniques)) {
 		standard_attr = COLOUR_VIOLET;
 		if (!(optional_attr & 0x80))
 			optional_attr = COLOUR_VIOLET;
+		}
 	}
 
 	/* Dump the name and then append standard attr/char info */
@@ -141,11 +142,13 @@ void lore_description(textblock *tb, const struct monster_race *race,
 
 	/* Do we know everything */
 	if (lore_is_fully_known(race))
-		textblock_append(tb, "You know everything about this monster.");
+		// textblock_append(tb, "You know everything about this monster.");
+		textblock_append(tb, "Вы всё знаете об этом монстре.");
 
 	/* Notice "Quest" monsters */
 	if (rf_has(race->flags, RF_QUESTOR))
-		textblock_append(tb, "You feel an intense desire to kill this monster...  ");
+		// textblock_append(tb, "You feel an intense desire to kill this monster...  ");
+		textblock_append(tb, "Вы испытываете острое желание убить этого монстра...  ");
 
 	textblock_append(tb, "\n");
 }
