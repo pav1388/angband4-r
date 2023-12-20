@@ -1040,7 +1040,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 
 	/* Death message */
 	if (note) {
-		if (strlen(note) <= 1) {
+		if (utf8_strlen(note) <= 1) {
 			/* Death by Spell attack - messages handled by project_m() */
 		} else {
 			/* Make sure to flush any monster messages first */
@@ -1056,13 +1056,16 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 
 		if (!monster_is_visible(mon))
 			/* Death by physical attack -- invisible monster */
-			msgt(soundfx, "You have killed %s.", m_name);
+			// msgt(soundfx, "You have killed %s.", m_name);
+			msgt(soundfx, "Вы убили %s.", m_name);
 		else if (monster_is_destroyed(mon))
 			/* Death by Physical attack -- non-living monster */
-			msgt(soundfx, "You have destroyed %s.", m_name);
+			// msgt(soundfx, "You have destroyed %s.", m_name);
+			msgt(soundfx, "Вы уничтожили %s.", m_name);
 		else
 			/* Death by Physical attack -- living monster */
-			msgt(soundfx, "You have slain %s.", m_name);
+			// msgt(soundfx, "You have slain %s.", m_name);
+			msgt(soundfx, "Вы убили %s.", m_name);
 	}
 
 	/* Player level */
@@ -1097,7 +1100,8 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 					 MDESC_DIED_FROM);
 
 		/* Log the slaying of a unique */
-		strnfmt(buf, sizeof(buf), "Killed %s", unique_name);
+		// strnfmt(buf, sizeof(buf), "Killed %s", unique_name);
+		strnfmt(buf, sizeof(buf), "Убит %s", unique_name);
 		history_add(p, buf, HIST_SLAY_UNIQUE);
 	}
 
@@ -1441,7 +1445,8 @@ void steal_monster_item(struct monster *mon, int midx)
 
 		/* No object */
 		if (!obj) {
-			msg("You can find nothing to steal from %s.", m_name);
+			// msg("You can find nothing to steal from %s.", m_name);
+			msg("Вы ничего не нашли, что можно было бы украсть у %s.", m_name);
 			if (one_in_(3)) {
 				/* Monster notices */
 				monster_wake(mon, false, 100);
@@ -1470,7 +1475,8 @@ void steal_monster_item(struct monster *mon, int midx)
 			obj->held_m_idx = 0;
 			pile_excise(&mon->held_obj, obj);
 			if (tval_is_money(obj)) {
-				msg("You steal %d gold pieces worth of treasure.", obj->pval);
+				// msg("You steal %d gold pieces worth of treasure.", obj->pval);
+				msg("Вы украли сокровище стоимостью %d золот%s монет%s.", obj->pval, PLURAL_RU_AYA_bIE_bIH(obj->pval), PLURAL_RU_A_bI_(obj->pval));
 				player->au += obj->pval;
 				player->upkeep->redraw |= (PR_GOLD);
 				delist_object(cave, obj);
@@ -1487,7 +1493,8 @@ void steal_monster_item(struct monster *mon, int midx)
 						ODESC_PREFIX | ODESC_FULL,
 						player);
 					drop_near(cave, &obj, 0, player->grid, true, true);
-					msg("You drop %s.", o_name);
+					// msg("You drop %s.", o_name);
+					msg("Вы выбросили %s.", o_name);
 				} else {
 					inven_carry(player, obj, true, true);
 				}
@@ -1509,14 +1516,16 @@ void steal_monster_item(struct monster *mon, int midx)
 				object_desc(o_name, sizeof(o_name), obj,
 					ODESC_PREFIX | ODESC_FULL, player);
 			}
-			msg("You fail to steal %s from %s.", o_name, m_name);
+			// msg("You fail to steal %s from %s.", o_name, m_name);
+			msg("Вам не удалось украсть %s у %s.", o_name, m_name);
 			/* Monster wakes, may notice */
 			monster_wake(mon, true, 50);
 		} else {
 			/* Bungled it */
 			monster_wake(mon, true, 100);
 			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
-			msg("%s cries out in anger!", m_name);
+			// msg("%s cries out in anger!", m_name);
+			msg("%s кричит в гневе!", m_name);
 			effect_simple(EF_WAKE, source_monster(mon->midx), "", 0, 0, 0, 0, 0,
 						  NULL);
 		}
@@ -1524,7 +1533,8 @@ void steal_monster_item(struct monster *mon, int midx)
 		/* Player hit and run */
 		if (player->timed[TMD_ATT_RUN]) {
 			const char *near = "20";
-			msg("You vanish into the shadows!");
+			// msg("You vanish into the shadows!");
+			msg("Вы исчезаете в тени!");
 			effect_simple(EF_TELEPORT, source_player(), near, 0, 0, 0, 0, 0,
 						  NULL);
 			(void) player_clear_timed(player, TMD_ATT_RUN, false,
@@ -1540,10 +1550,12 @@ void steal_monster_item(struct monster *mon, int midx)
 		/* Try to steal */
 		if (!obj || react_to_slay(obj, thief)) {
 			/* Fail to steal */
-			msg("%s tries to steal something from %s, but fails.", t_name,
+			// msg("%s tries to steal something from %s, but fails.", t_name,
+			msg("%s пытается украсть что-то у %s, но терпит неудачу.", t_name,
 				m_name);
 		} else {
-			msg("%s steals something from %s!", t_name, m_name);
+			// msg("%s steals something from %s!", t_name, m_name);
+			msg("%s украл что-то у %s!", t_name, m_name);
 
 			/* Steal and carry */
 			obj->held_m_idx = 0;
@@ -1648,7 +1660,8 @@ bool monster_change_shape(struct monster *mon)
 	if (monster_is_obvious(mon)) {
 		char m_name[80];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
-		msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
+		// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
+		msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
 		if (player->upkeep->health_who == mon)
 			player->upkeep->redraw |= (PR_HEALTH);
 
@@ -1682,7 +1695,8 @@ bool monster_revert_shape(struct monster *mon)
 		if (monster_is_obvious(mon)) {
 			char m_name[80];
 			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
-			msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
+			// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
+			msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
 			if (player->upkeep->health_who == mon)
 				player->upkeep->redraw |= (PR_HEALTH);
 
