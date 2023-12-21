@@ -475,10 +475,8 @@ static errr Term_wipe_nds(int x, int y, int n)
  */
 static errr Term_text_nds(int x, int y, int n, int a, const wchar_t *s)
 {
-	for (int i = 0; i < n; i++) { 
-		// nds_draw_char(x + i, y, s[i], color_data[a & (MAX_COLORS - 1)], color_data[COLOUR_DARK]);
-		nds_draw_char(x + i, y, s[i], color_data[a & (MAX_COLORS - 1)], 
-			color_data[a & MULT_BG ? a & (MAX_COLORS - 1) : a & (MULT_BG * 2) ? COLOUR_SHADE : COLOUR_DARK]);
+	for (int i = 0; i < n; i++) {
+		nds_draw_char(x + i, y, s[i], color_data[a & (MAX_COLORS - 1)], color_data[COLOUR_DARK]);
 	}
 
 	return (0);
