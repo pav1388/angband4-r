@@ -75,24 +75,28 @@ static void display_exit_screen(void)
 	path_build(buf, sizeof(buf), ANGBAND_DIR_SCREENS,
 		(retired) ? "retire.txt" : "dead.txt");
 	fp = file_open(buf, MODE_READ, FTYPE_TEXT);
-
+	
 	if (fp) {
-		while (file_getl(fp, buf, sizeof(buf)))
-			put_str(buf, line++, 0);
-
+		text_out_indent = (Term->wid - 80) / 2;
+		Term_gotoxy(0, (Term->hgt - 23) / 5);
+		
+		while (file_getl(fp, buf, sizeof(buf))) {
+			// put_str(buf, line++, 0);
+			text_out_e("%s", buf);
+			text_out("\n");
+		}
 		file_close(fp);
 	}
 
 	line = 7;
 
-	// put_str_centred(line++, 8, 8+31, "%s", player->full_name);
 	put_str_centred(line++, 8, 8+31, "%s", player->full_name);
 	// put_str_centred(line++, 8, 8+31, "the");
 	line++;
 	
 	if (player->total_winner)
 		// put_str_centred(line++, 8, 8+31, "Magnificent");
-		put_str_centred(line++, 8, 8+31, "Великолепно");
+		put_str_centred(line++, 8, 8+31, "Великолепный");
 	else
 		put_str_centred(line++, 8, 8+31, "%s", player->class->title[(player->lev - 1) / 5]);
 

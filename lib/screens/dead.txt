@@ -1,21 +1,20 @@
-
                                                                               
-            _______________________                                         
-           /                       \         ___                            
-          /                         \ ___   /   \                    
-         /            RIP            \   \  :   :                  
-        /                             \  : _;,,,;_                
-       /                               \,;_         
-      |                                 |   ___                             
-      |                                 |  /   \                            
-      |                                 |  :   :                            
-      |                                 | _;,,,;_   ____                    
-      |                                 |          /    \                   
-      |                                 |          :    :                   
-      |                                 |          :    :                   
-      |                                 |         _;,,,,;_                  
-      |                                 |                                   
-      |                                 |                                   
-      |                                 |                                   
-     *|   *     *     *    *   *     *  | *                                 
-_____)/\\_)_/___(\/___(//_\)/_\//__\\(/_|_)__________________________
+            {light dark}_______________________{/}                                         
+           {light dark}/{/}                       {light dark}\{/}         {light dark}___{/}                            
+          {light dark}/{/}                         {light dark}\{/} {light dark}___{/}   {light dark}/{/}   {light dark}\{/}                    
+         {light dark}/{/}            RIP            {light dark}\{/}   {light dark}\{/}  {light dark}:{/}   {light dark}:{/}                  
+        {light dark}/{/}                             {light dark}\{/}  {light dark}:{/} {mud}_{/}{light dark};{/}{mud},,,{/}{light dark};{/}{mud}_{/}                
+       {light dark}/{/}                               {light dark}\{/}{mud},{/}{light dark};{/}{mud}_{/}         
+      {light dark}|{/}                                 {light dark}|{/}   {light dark}___{/}                             
+      {light dark}|{/}                                 {light dark}|{/}  {light dark}/{/}   {light dark}\{/}                            
+      {light dark}|{/}                                 {light dark}|{/}  {light dark}:{/}   {light dark}:{/}                            
+      {light dark}|{/}                                 {light dark}|{/} {mud}_{/}{light dark};{/}{mud},,,{/}{light dark};{/}{mud}_{/}   {light dark}____{/}                    
+      {light dark}|{/}                                 {light dark}|{/}          {light dark}/{/}    {light dark}\{/}                   
+      {light dark}|{/}                                 {light dark}|{/}          {light dark}:{/}    {light dark}:{/}                   
+      {light dark}|{/}                                 {light dark}|{/}          {light dark}:{/}    {light dark}:{/}                   
+      {light dark}|{/}                                 {light dark}|{/}         {mud}_{/}{light dark};{/}{mud},,,,{/}{light dark};{/}{mud}_{/}                  
+      {light dark}|{/}                                 {light dark}|{/}                                   
+      {light dark}|{/}                                 {light dark}|{/}                                   
+      {light dark}|{/}                                 {light dark}|{/}                                   
+     {red}*{/}{light dark}|{/}   {yellow}*{/}     {yellow}*{/}     {blue}*{/}    {violet}*{/}   {red}*{/}     {teal}*{/}  {light dark}|{/} {yellow}*{/}                                 
+{mud}_____{/}{green})/\\{/}{mud}_{/}{green}){/}{mud}_{/}{green}/{/}{mud}___{/}{green}(\/{/}{mud}___{/}{green}(//{/}{mud}_{/}{green}\)/{/}{mud}_{/}{green}\//{/}{mud}__{/}{green}\\(/{/}{mud}_{/}{light dark}|{/}{mud}_{/}{green}){/}{mud}__________________________{/}
