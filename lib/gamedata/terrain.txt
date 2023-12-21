@@ -139,7 +139,7 @@ name:открытая дверь
 graphics:':U
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
-look-in-preposition:в
+look-in-preposition: 
 desc:Дверь, которая уже открыта.  Игрок, монстр, заклинание и снаряд
 desc: могут пройти через неё, пока она остаётся открытой.
 
@@ -148,7 +148,7 @@ name:сломанная дверь
 graphics:':u
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
-look-in-preposition:в
+look-in-preposition: 
 desc:Дверь настолько сломана, что ее невозможно закрыть.
 
 code:LESS
@@ -172,8 +172,8 @@ name:Главный Магазин
 graphics:1:U
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:В Главном Магазине продаются продукты питания, снаряды
 desc: и осветительные приборы.
 
@@ -182,8 +182,8 @@ name:Арсенал
 graphics:2:s
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Доспехи, продающиеся здесь, обеспечат вам защиту от ударов врагов.
 
 code:STORE_WEAPON
@@ -191,8 +191,8 @@ name:Оружейная Кузня
 graphics:3:w
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Оружие для ударов и стрельбы по врагам выковывается в жарком, едком
 desc: подсобном помещении этой заманчивой мастерской.
 
@@ -201,8 +201,8 @@ name:Магазин Книг
 graphics:4:g
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Тихое место для размышлений, уставленное полками с мистическими
 desc: книгами.
 
@@ -211,8 +211,8 @@ name:Алхимическая Лавка
 graphics:5:b
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Тусклая, ароматная комната, где торгуют зельями и свитками.
 
 code:STORE_MAGIC
@@ -220,8 +220,8 @@ name:Магический Магазин
 graphics:6:r
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Магазин устройств и украшений, в которых заключена магия.
 
 code:STORE_BLACK
@@ -229,8 +229,8 @@ name:Чёрный Рынок
 graphics:7:D
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Заходя в это неприглядное заведение, будьте бдительны и держите
 desc: кошелек в руках - не ждите дружелюбного обслуживания или 
 desc: выгодных покупок.
@@ -240,8 +240,8 @@ name:Дом
 graphics:8:y
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход
-look-in-preposition:в
+look-prefix:вход в
+look-in-preposition: 
 desc:Ваш безопасный уголок в Средиземье и единственное место, где вы
 desc: можете хранить предметы, кроме ношения с собой.
 
