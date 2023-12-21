@@ -1175,7 +1175,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 				if (!visible) {
 					/* Invisible monster */
 					// msgt(MSG_SHOOT_HIT, "The %s finds a mark.", o_name);
-					msgt(MSG_SHOOT_HIT, " %s находит метку.", o_name);
+					msgt(MSG_SHOOT_HIT, "%s обретает цель.", o_name);
 				} else {
 					for (j = 0; j < num_types; j++) {
 						char m_name[80];
