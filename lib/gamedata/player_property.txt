@@ -309,8 +309,8 @@ desc:Иногда вы создаете землетрясения при уда
 type:object
 code:IMPAIR_HP
 bindui:imphp_ui_compact_0:0:1
-# name:Медленная Регенерация
-name:Slow Regeneration
+# name:Slow Regeneration
+name:Медленная Регенерация
 # desc:Your hitpoint recovery is impaired.
 desc:Восстановление ваших очков здоровья нарушено.
 

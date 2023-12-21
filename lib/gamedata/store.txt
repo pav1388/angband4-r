@@ -157,7 +157,7 @@ owner:15000:Га-Нат Жадный (Гном)
 owner:15000:Велла Стройная (Человек)
 slots:6:10
 turnover:9
-always:scroll:Word of Recall
+always:scroll:Слово Возвращения
 always:scroll:Phase Door
 always:scroll:Remove Curse
 always:potion:Cure Light Wounds

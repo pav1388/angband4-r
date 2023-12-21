@@ -14,5 +14,5 @@ number:1
 
 name:Morgoth
 level:100
-race:Morgoth, Lord of Darkness
+race:Моргот, Владыка Тьмы
 number:1

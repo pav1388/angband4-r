@@ -2815,7 +2815,7 @@ effect:LIGHT_AREA
 effect:SPOT:LIGHT_WEAK:2
 dice:2d8
 
-name:Word of Recall
+name:Слово Возвращения
 type:scroll
 graphics:?:w
 level:5

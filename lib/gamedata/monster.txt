@@ -239,7 +239,9 @@ color:w
 
 ### Dungeon level 0 ###
 
-name:filthy street urchin
+#name:filthy street urchin
+name:грязный уличный оборванец
+plural:грязные уличные оборванецы
 base:townsfolk
 color:D
 speed:110
@@ -254,12 +256,16 @@ blow:BEG
 blow:TOUCH:EAT_GOLD
 flags:MALE
 flags:RAND_25 | OPEN_DOOR | TAKE_ITEM
-friends:50:2d1:Scrawny cat
-friends:50:2d1:Scruffy little dog
+#friends:50:2d1:Scrawny cat
+friends:50:2d1:тощая кошка
+#friends:50:2d1:Scruffy little dog
+friends:50:2d1:маленькая облезлая собака
 friends:100:3d4:Same
-desc:He looks squalid and thoroughly revolting.
+desc:Он выглядит убого и совершенно отвратительно.
 
-name:scrawny cat
+#name:scrawny cat
+name:тощая кошка
+plural:тощие кошки
 base:feline
 color:U
 speed:110
@@ -273,9 +279,12 @@ rarity:3
 experience:0
 blow:CLAW:HURT:1d1
 flags:RAND_25
-desc:A skinny little furball with sharp claws and a menacing look.
+#desc:A skinny little furball with sharp claws and a menacing look.
+desc:Маленький тощий пушистик с острыми когтями и грозным взглядом.
 
-name:scruffy little dog
+#name:scruffy little dog
+name:маленькая облезлая собака
+plural:маленькие облезлые собаки
 base:canine
 color:U
 speed:110
@@ -289,9 +298,10 @@ rarity:3
 experience:0
 blow:BITE:HURT:1d1
 flags:RAND_25
-desc:A thin flea-ridden mutt, growling as you get close.
+desc:Худая блохастая шавка, которая рычит, когда вы приближаетесь.
 
-name:Farmer Maggot
+#name:Farmer Maggot
+name:Фермер Маггот
 base:humanoid
 color:w
 speed:110
@@ -309,10 +319,12 @@ flags:UNIQUE | MALE
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 flags:NO_CONF | NO_SLEEP
 drop-base:mushroom:100:1:2
-desc:He's lost his dogs.  He's had his mushrooms stolen.  He's not a happy
-desc: hobbit!
+desc:Он потерял своих собак.  У него украли грибы.
+desc: Он не счастливый хоббит!
 
-name:blubbering idiot
+#name:blubbering idiot
+name:болтливый идиот
+plural:болтливые идиоты
 base:townsfolk
 color:W
 speed:110
@@ -326,10 +338,11 @@ experience:0
 blow:DROOL
 flags:MALE
 flags:RAND_25 | TAKE_ITEM
-desc:He tends to blubber a lot.
+desc:Он имеет склонность много рыдать.
 
-name:boil-covered wretch
-plural:boil-covered wretches
+#name:boil-covered wretch
+name:покрытый язвами несчастный
+plural:покрытые язвами несчастные
 base:townsfolk
 color:g
 speed:110
@@ -343,9 +356,11 @@ experience:0
 blow:DROOL
 flags:MALE
 flags:RAND_25 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:Ugly doesn't begin to describe him.
+desc:Уродливый - самое простое, что можно сказать о нём.
 
-name:village idiot
+#name:village idiot
+name:деревенский идиот
+plural:деревенские идиоты
 base:townsfolk
 color:G
 speed:120
@@ -359,9 +374,11 @@ experience:0
 blow:DROOL
 flags:MALE
 flags:RAND_25 | TAKE_ITEM
-desc:Drooling and comical, but then, what do you expect?
+desc:Слюнявый и комичный, но чего вы ещё ожидали?
 
-name:pitiful-looking beggar
+#name:pitiful-looking beggar
+name:жалкого вида нищий
+plural:жалкого вида нищие
 base:townsfolk
 color:U
 speed:110
@@ -375,9 +392,11 @@ experience:0
 blow:BEG
 flags:MALE
 flags:RAND_25 | OPEN_DOOR | TAKE_ITEM
-desc:You just can't help feeling sorry for him.
+desc:Вы просто не можете не пожалеть его.
 
-name:mangy-looking leper
+#name:mangy-looking leper
+name:прокажённый
+plural:прокажённые
 base:townsfolk
 color:u
 speed:110
@@ -391,9 +410,11 @@ experience:0
 blow:BEG
 flags:MALE
 flags:RAND_25 | OPEN_DOOR | TAKE_ITEM
-desc:You feel it isn't safe to touch him.
+desc:Вы чувствуете, что прикасаться к нему опасно.
 
-name:squint-eyed rogue
+#name:squint-eyed rogue
+name:косоглазый плут
+plural:косоглазые плуты
 base:townsfolk
 color:b
 speed:110
@@ -409,9 +430,12 @@ blow:TOUCH:EAT_ITEM
 blow:INSULT
 flags:MALE | EVIL
 flags:OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:A hardy, street-wise crook that knows an easy catch when it sees one.
+desc:Выносливый, уличный мошенник, который знает, что его легко
+desc: поймать, когда его видно.
 
-name:singing, happy drunk
+#name:singing, happy drunk
+name:поющий счастливый пьяница
+plural:поющие счастливые пьяницы
 base:townsfolk
 color:y
 speed:110
@@ -427,9 +451,11 @@ blow:BEG
 flags:MALE
 flags:DROP_40 | ONLY_GOLD
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:He makes you glad to be sober.
+desc:Он заставляет вас радоваться тому, что вы трезвы.
 
-name:aimless-looking merchant
+#name:aimless-looking merchant
+name:бесцельный торговец
+plural:бесцельные торговецы
 base:townsfolk
 color:o
 speed:110
@@ -445,12 +471,14 @@ blow:HIT:HURT:1d3
 flags:MALE
 flags:DROP_40 | ONLY_GOLD
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-friends:30:2d2:Filthy street urchin
-desc:The typical ponce around town, with purse jingling, and looking for more
-desc: amulets of adornment to buy.
+#friends:30:2d2:Filthy street urchin
+friends:30:2d2:грязный уличный оборванец
+desc:Типичный пройдоха, который носится по городу со звенящим кошельком
+desc: и ищет, где бы купить побольше амулетов и украшений.
 
-name:mean-looking mercenary
-plural:mean-looking mercenaries
+#name:mean-looking mercenary
+name:подлый наемник
+plural:подлые наемники
 base:townsfolk
 color:r
 speed:110
@@ -466,9 +494,11 @@ blow:HIT:HURT:1d10
 flags:MALE | EVIL
 flags:DROP_40
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:No job is too low for him.
+desc:Никакая работа для него не может быть слишком "низкой". 
 
-name:battle-scarred veteran
+#name:battle-scarred veteran
+name:закаленный боями ветеран
+plural:закаленные боями ветераны
 base:townsfolk
 color:B
 speed:110
@@ -484,10 +514,11 @@ blow:HIT:HURT:2d6
 flags:MALE
 flags:DROP_40
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:He doesn't take to strangers kindly.
+desc:Он не очень-то жалует незнакомцев.
 
-name:red-hatted elf
-plural:red-hatted elves
+#name:red-hatted elf
+name:рыжеволосый эльф
+plural:рыжеволосые эльфы
 base:humanoid
 color:r
 speed:110
@@ -502,9 +533,10 @@ experience:0
 blow:HIT:HURT:1d1
 flags:SEASONAL
 friends:30:1d5:Same
-desc:It's Yuletide and this elf has had a few too many.
+desc:Наступил праздник Юлетида и этот эльф перебрал. 
 
-name:Father Christmas
+#name:Father Christmas
+name:Дед Мороз
 base:humanoid
 color:G
 speed:100
@@ -522,11 +554,13 @@ flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 flags:NO_CONF | NO_SLEEP
 spell-freq:4
 spells:BLINK | HEAL
-desc:It's Saint Nick, out delivering presents to the town urchins.
+desc:Это Святой Николай, развозящий подарки городским сорванцам. 
 
 ### Dungeon level 1 ###
 
-name:grey mold
+#name:grey mold
+name:серая плесень
+plural:серые плесени
 base:mold
 color:s
 speed:110
@@ -540,10 +574,11 @@ experience:3
 blow:SPORE:HURT:1d4
 blow:SPORE:HURT:1d4
 flags:EMPTY_MIND | STUPID
-desc:A small strange grey growth.
+desc:Небольшое странное серое образование.
 
-name:grey mushroom patch
-plural:grey mushroom patches
+#name:grey mushroom patch
+name:серая грибница
+plural:серые грибницы
 base:mushroom
 color:s
 speed:110
@@ -556,9 +591,11 @@ rarity:1
 experience:1
 blow:SPORE:CONFUSE:1d4
 flags:IM_POIS | NEVER_MOVE
-desc:Yum!  It looks quite tasty.
+desc:Вкуснятина!  Выглядит очень аппетитно.
 
-name:giant yellow centipede
+#name:giant yellow centipede
+name:гигантская жёлтая сороконожка
+plural:гигантские жёлтые сороконожки
 base:centipede
 color:y
 speed:110
@@ -572,9 +609,10 @@ rarity:1
 experience:2
 blow:BITE:HURT:1d3
 blow:STING:HURT:1d3
-desc:It is about four feet long and carnivorous.
+desc:Она в длину больше метра и является плотоядной.
 
-name:giant white centipede
+#name:giant white centipede
+name:гигантская белая сороконожка
 base:centipede
 color:w
 speed:110
@@ -589,9 +627,10 @@ experience:2
 blow:CRAWL:HURT:1d2
 blow:STING:COLD:1d2
 flags:RAND_50 | BASH_DOOR
-desc:It is about four feet long and carnivorous.
+desc:Она в длину около двух метров и является плотоядной.
 
-name:white icky thing
+#name:white icky thing
+name:белая мерзкая вещь
 base:icky thing
 color:w
 speed:110
@@ -605,9 +644,10 @@ experience:1
 blow:TOUCH:HURT:1d2
 flags:EMPTY_MIND
 flags:RAND_25
-desc:It is a smallish, slimy, icky creature.
+desc:Это маленькое, склизкое, мерзкое существо.
 
-name:clear icky thing
+#name:clear icky thing
+name:прозрачная мерзкая вещь
 base:icky thing
 color:w
 speed:110
@@ -622,10 +662,11 @@ blow:TOUCH:HURT:1d2
 flags:INVISIBLE | EMPTY_MIND
 flags:RAND_25
 flags:ATTR_CLEAR
-desc:It is a smallish, slimy, icky, blobby creature.
+desc:Это маленькое, склизкое, липкое, пузатое существо.
 
-name:giant white mouse
-plural:giant white mice
+#name:giant white mouse
+name:гигантская белая мышь
+plural:гигантские белые мыши
 base:rodent
 color:w
 speed:110
@@ -640,9 +681,10 @@ experience:1
 blow:BITE:HURT:1d2
 flags:MULTIPLY
 flags:RAND_50
-desc:It is about three feet long with large teeth.
+desc:Она больше метра в длину и с большими зубами.
 
-name:large white snake
+#name:large white snake
+name:большая белая змея
 base:snake
 color:w
 speed:100
@@ -656,9 +698,10 @@ experience:2
 blow:BITE:HURT:1d1
 blow:CRUSH:HURT:1d1
 flags:RAND_50
-desc:It is about eight feet long.
+desc:Её длина составляет около двух с половиной метров.
 
-name:small kobold
+#name:small kobold
+name:маленький кобольд
 base:kobold
 color:y
 speed:110
@@ -672,9 +715,9 @@ rarity:1
 experience:5
 blow:HIT:HURT:1d5
 flags:DROP_60
-desc:It is a squat and ugly humanoid figure with a canine face.
+desc:Это приземистая и уродливая гуманоидная фигура с клыкастой мордой.
 
-name:white worm mass
+name:белая червивая масса
 base:worm
 color:w
 speed:100
@@ -689,9 +732,9 @@ blow:CRAWL:POISON:1d2
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_POIS | NO_FEAR
-desc:It is a large slimy mass of worms.
+desc:Это большая слизистая масса червей.
 
-name:floating eye
+name:парящий глаз
 base:eye
 color:o
 speed:110
@@ -705,9 +748,9 @@ experience:1
 blow:GAZE:PARALYZE
 flags:NEVER_MOVE
 flags:HURT_LIGHT | NO_FEAR
-desc:A disembodied eye, floating a few feet above the ground.
+desc:Бесплотный глаз, парящий в метре над землей.
 
-name:rock lizard
+name:каменная ящерица
 base:reptile
 color:U
 speed:110
@@ -720,9 +763,9 @@ depth:1
 rarity:1
 experience:2
 blow:BITE:HURT:1d1
-desc:It is a small lizard with a hardened hide.
+desc:Это небольшая ящерица с жесткой шкурой.
 
-name:wild dog
+name:дикая собака
 base:canine
 color:U
 speed:110
@@ -737,9 +780,9 @@ experience:1
 blow:BITE:HURT:1d1
 flags:GROUP_AI
 friends:100:2d7:Same
-desc:It is a yapping snarling dog, dangerous when in a pack.
+desc:Это рычащая собака, опасна, если их целая стая.
 
-name:soldier ant
+name:муравей-солдат
 base:ant
 color:W
 speed:110
@@ -752,9 +795,9 @@ depth:1
 rarity:1
 experience:3
 blow:BITE:HURT:1d2
-desc:A large ant with powerful mandibles.
+desc:Крупный муравей с мощными мандибулами.
 
-name:fruit bat
+name:фруктовая летучая мышь
 base:bat
 color:o
 speed:120
@@ -767,11 +810,11 @@ rarity:1
 experience:1
 blow:BITE:HURT:1d1
 flags:RAND_25
-desc:A fast-moving pest.
+desc:Быстро передвигающийся вредитель.
 
 ### Dungeon level 2 ###
 
-name:kobold
+name:кобольд
 base:kobold
 color:G
 speed:110
@@ -785,10 +828,10 @@ rarity:1
 experience:5
 blow:HIT:HURT:1d8
 flags:DROP_60
-desc:It is a small, dog-headed humanoid.
+desc:Это маленький гуманоид с собачьей головой.
 
-name:shrieker mushroom patch
-plural:shrieker mushroom patches
+name:вопящая грибница
+plural:вопящие грибницы
 base:mushroom
 color:R
 speed:110
@@ -804,9 +847,9 @@ flags:IM_POIS
 flags:FORCE_SLEEP
 innate-freq:4
 spells:SHRIEK
-desc:Yum!  It looks quite tasty.  It doesn't sound so nice, though...
+desc:Вкуснятина!  Выглядит очень аппетитно.  Но звучит не очень приятно...
 
-name:blubbering icky thing
+name:слюнявая мерзкая вещь
 base:icky thing
 color:W
 speed:110
@@ -822,9 +865,9 @@ blow:CRAWL:EAT_FOOD
 flags:EMPTY_MIND
 flags:KILL_BODY | TAKE_ITEM
 flags:IM_POIS
-desc:It is a smallish, slimy, icky, hungry creature.
+desc:Это маленькое, склизкое, мерзкое, голодное существо.
 
-name:metallic green centipede
+name:металлическая зелёная сороконожка
 base:centipede
 color:g
 speed:120
@@ -839,9 +882,9 @@ experience:3
 blow:CRAWL:HURT:1d1
 blow:STING:ACID:1d1
 flags:RAND_50 | BASH_DOOR
-desc:It is about four feet long and carnivorous.
+desc:Она имеет длину около полутора метров и является плотоядной.
 
-name:soldier
+name:солдат
 base:person
 color:u
 speed:110
@@ -862,9 +905,9 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:An inexperienced but tough warrior.
+desc:Неопытный, но крепкий воин.
 
-name:cutpurse
+name:карманник
 base:person
 color:b
 speed:110
@@ -885,9 +928,9 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:A rather shifty individual.
+desc:Довольно подозрительная личность.
 
-name:acolyte
+name:послушник
 base:person
 color:g
 speed:110
@@ -911,9 +954,9 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:He is tripping over his priestly robes.
+desc:Он спотыкается о свои священные одежды.
 
-name:apprentice
+name:ученик
 base:person
 color:r
 speed:110
@@ -937,7 +980,7 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:He is leaving behind a trail of dropped spell components.
+desc:Он оставляет за собой след из выпавших ингредиентов для заклинаний.
 
 name:yellow mushroom patch
 plural:yellow mushroom patches
@@ -1447,7 +1490,7 @@ spell-freq:11
 spells:DRAIN_MANA
 desc:A disembodied eye, crackling with energy.
 
-name:kobold shaman
+name:кобольд шаман
 base:kobold
 color:r
 speed:110
@@ -1467,7 +1510,7 @@ drop-base:magic book:5:1:1
 drop-base:prayer book:5:1:1
 friends-base:30:1d2:kobold
 friends-base:70:1d2:kobold
-desc:It is a kobold dressed in skins and gesturing wildly.
+desc:Это кобольд, одетый в шкуры и дико размахивающий руками.
 
 ### Dungeon level 4 ###
 
@@ -1652,7 +1695,7 @@ blow:CRUSH:HURT:1d8
 flags:RAND_25
 desc:It is about ten feet long.
 
-name:kobold archer
+name:кобольд лучник
 base:kobold
 color:W
 speed:110
@@ -1782,7 +1825,7 @@ flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_ACID | HURT_COLD | NO_CONF | NO_SLEEP
 desc:It is a large pile of pulsing green flesh.
 
-name:large kobold
+name:крупный кобольд
 base:kobold
 color:b
 speed:110
@@ -1800,7 +1843,7 @@ friends-base:50:1d2:kobold
 friends-base:30:1d2:kobold
 desc:It is a man-sized figure with the all too recognizable face of a kobold.
 
-name:skeleton kobold
+name:кобольд-скелет
 base:skeleton
 color:w
 speed:110
@@ -2230,7 +2273,7 @@ flags:EMPTY_MIND
 flags:IM_ACID
 desc:It is a smallish, slimy, icky, acidic creature.
 
-name:zombified kobold
+name:кобольд-зомби
 base:zombie
 color:s
 speed:110
@@ -2246,8 +2289,8 @@ blow:HIT:HURT:1d2
 blow:HIT:HURT:1d2
 flags:EMPTY_MIND
 flags:NO_FEAR
-desc:It is an animated kobold corpse.  Flesh falls off in large chunks as it
-desc: shambles forward.
+desc:Это оживший труп кобольда.  Плоть отваливается большими кусками, когда
+desc: он ковыляет по земле.
 
 name:lost soul
 base:ghost
@@ -2290,7 +2333,7 @@ spells:CONF | DARKNESS
 desc:A dwarf of one of the eastern kindreds who has fallen under the sway of
 desc: Morgoth.
 
-name:night lizard
+name:ночная ящерица
 base:reptile
 color:b
 speed:110
@@ -2304,9 +2347,9 @@ rarity:2
 experience:35
 blow:BITE:HURT:1d6
 blow:BITE:HURT:1d6
-desc:It is a black lizard with overlapping scales and a powerful jaw.
+desc:Это черная ящерица с переливающейся чешуей и мощной челюстью.
 
-name:Mughash the Kobold Lord
+name:Мугаш Повелитель Кобольдов
 base:kobold
 color:v
 speed:110
@@ -2323,16 +2366,16 @@ blow:HIT:HURT:1d10
 blow:HIT:HURT:1d10
 flags:UNIQUE | MALE | MOVE_BODY
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
-friends:100:1d10:Small kobold:servant
-friends:100:1d10:Kobold:servant
-friends:100:1d3:Kobold shaman:servant
-friends:100:1d5:Kobold archer:servant
-friends:100:1d5:Large kobold:bodyguard
-desc:Strong and powerful, for a kobold.
+friends:100:1d10:маленький кобольд:servant
+friends:100:1d10:кобольд:servant
+friends:100:1d3:кобольд шаман:servant
+friends:100:1d5:кобольд лучник:servant
+friends:100:1d5:крупный кобольд:bodyguard
+desc:Сильный и могущественный, как для кобольда.
 
 ### Dungeon level 8 ###
 
-name:Wormtongue, Agent of Saruman
+name:Вурмтонг, Слуга Сарумана
 base:person
 color:B
 speed:110
@@ -7287,7 +7330,7 @@ flags:DROP_40
 flags:HURT_LIGHT
 spell-freq:7
 spells:HOLD | SCARE
-friends:20:1d3:Zombified kobold
+friends:20:1d3:кобольд-зомби
 friends:20:1d3:Zombified orc
 friends:20:1d3:Zombified human
 friends:40:1d3:Mummified orc
@@ -8163,8 +8206,8 @@ desc:A short and swarthy Easterling dressed in black.  He and his three sons
 desc: once openly swore allegiance to the High Elves, but were secretly in the
 desc: pay of Morgoth.
 
-name:lich
-plural:liches
+name:лич
+plural:личи
 base:lich
 color:o
 speed:110
@@ -8185,7 +8228,7 @@ spell-freq:4
 spells:BLIND | BLINK | WOUND | DRAIN_MANA | HOLD | BRAIN_SMASH
 spells:SCARE | SLOW | TELE_AWAY | TELE_TO
 friends-base:70:1d3:skeleton
-desc:It is a skeletal form dressed in robes.  It radiates vastly evil power.
+desc:Это подобие скелета, облачённое в мантию.  Он излучает огромную злую силу.
 
 name:earth elemental
 base:elemental
@@ -10092,7 +10135,7 @@ spell-freq:7
 spells:HASTE | TELE_TO | DARKNESS | SCARE | BLIND
 desc:A huorn with a bad heart.
 
-name:The Queen Ant
+name:Королева Муравьёв
 base:ant
 color:v
 speed:120
@@ -10115,13 +10158,13 @@ flags:NO_CONF | NO_SLEEP
 flags:FORCE_SLEEP | GROUP_AI
 spell-freq:2
 spells:S_KIN
-friends:100:2d6:Soldier ant:servant
+friends:100:2d6:муравей-солдат:servant
 friends:60:2d3:Giant silver ant:servant
 friends:60:2d3:Giant grey ant:servant
 friends:60:2d3:Giant blue ant:servant
 friends:60:2d3:Giant fire ant:servant
 friends:100:3d3:Giant army ant:bodyguard
-desc:She's upset because you hurt her children.
+desc:Она расстроена, потому что вы обидели ее детей.
 
 name:Rogrog the Black Troll
 base:troll
@@ -12217,7 +12260,7 @@ spells:SCARE | TELE_AWAY | TPORT | TRAPS
 spells:BA_ACID | BA_COLD | BA_FIRE | BA_WATE
 spells:BO_ICE
 spells:S_ANIMAL | S_DEMON | S_HI_DRAGON | S_MONSTERS | S_UNDEAD
-friends:100:1d1:Wormtongue, Agent of Saruman:servant
+friends:100:1d1:Вурмтонг, Слуга Сарумана:servant
 desc:Originally known as the White, Saruman fell prey to Sauron's wiles.  He
 desc: seeks to emulate him and breeds orcs and trolls to fight for him.  He
 desc: searches forever for the One Ring, to become a mighty Sorcerer-King of
@@ -13674,7 +13717,7 @@ spells:S_KIN | S_MONSTERS | S_UNDEAD
 friends:100:2d4:Dread:servant
 friends:40:1d2:Dreadmaster:servant
 friends:10:1d2:Dreadlord:servant
-friends:100:1d4:Lich:servant
+friends:100:1d4:лич:servant
 friends:40:1d2:Master lich:servant
 friends:10:1d2:Archlich:servant
 desc:A stench of corruption and decay surrounds this sorcerer, who has clearly
@@ -14759,7 +14802,7 @@ desc:Sauron's form as a vampire, great as a dark cloud across the moon.
 
 ### Dungeon level 100 ###
 
-name:Morgoth, Lord of Darkness
+name:Моргот, Владыка Тьмы
 base:Morgoth
 color:D
 speed:140
@@ -14785,14 +14828,12 @@ spells:BRAIN_SMASH
 spells:BA_MANA | BA_NETH
 spells:BO_MANA
 spells:S_HI_DEMON | S_HI_DRAGON | S_HI_UNDEAD | S_MONSTERS | S_UNIQUE
-desc:He is the Master of the Pits of Angband.  His figure is like a black
-desc: mountain crowned with lightning.  He rages with everlasting anger, his
-desc: body scarred by Fingolfin's eight mighty wounds.  He can never rest from
-desc: his pain, but seeks forever to dominate all that is light and good in the
-desc: world.  He is the origin of man's fear of darkness and created many foul
-desc: creatures with his evil powers.  Orcs, Dragons, and Trolls are his most
-desc: foul corruptions, causing much pain and suffering in the world to please
-desc: him.  His disgusting visage, twisted with evil, is crowned with iron, the
-desc: two remaining Silmarils forever burning him.  Grond, the mighty Hammer of
-desc: the Underworld, cries defiance as he strides towards you to crush you to
-desc: a pulp!
+desc:Он - Повелитель Ям Ангбада. Его облик похож на чёрную гору, увенчанную молниями.
+desc:  Он бушует бесконечным гневом, его тело изранено восемью могущественными ранами
+desc: Фингольфина. Он не может успокоиться из-за своей боли и стремится навсегда
+desc: подчинить всё светлое и доброе в мире. Он породил страх людей перед тьмой и создал
+desc: множество гнусных существ с помощью своей злой силы. Орки, Драконы и Тролли - это
+desc: его самые отвратительные порождения, причиняющие миру много боли и страданий,
+desc: чтобы угодить ему. Его отвратительный, искаженный злом лик увенчан железом, а
+desc: два оставшихся Сильмарилла вечно обжигают его. Гронд, могучий Молот Подземного
+desc: мира, бросает вызов, направляясь к вам, чтобы сокрушить вас в прах!
