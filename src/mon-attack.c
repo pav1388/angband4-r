@@ -457,7 +457,8 @@ bool make_ranged_attack(struct monster *mon)
 	/* Check for spell failure (innate attacks never fail) */
 	failrate = monster_spell_failrate(mon);
 	if (!mon_spell_is_innate(thrown_spell) && (randint0(100) < failrate)) {
-		msg("%s tries to cast a spell, but fails.", m_name);
+		// msg("%s tries to cast a spell, but fails.", m_name);
+		msg("%s безуспешно произносит заклинание.", m_name);
 		return true;
 	}
 
@@ -605,7 +606,8 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 				if (monster_is_evil(mon) && p->lev >= rlev &&
 				    randint0(100) + p->lev > 50) {
 					/* Message */
-					msg("%s is repelled.", m_name);
+					// msg("%s is repelled.", m_name);
+					msg("%s отражен.", m_name);
 
 					/* Hack -- Next attack */
 					continue;
@@ -741,7 +743,8 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 			if (monster_is_visible(mon) &&	method->miss) {
 				/* Disturbing */
 				disturb(p);
-				msg("%s misses you.", m_name);
+				// msg("%s misses you.", m_name);
+				msg("%s промахивается по вам.", m_name);
 			}
 		}
 
@@ -904,7 +907,8 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 		} else {
 			/* Visible monster missed monster, so notify if appropriate. */
 			if (monster_is_visible(mon) && method->miss) {
-				msg("%s misses %s.", m_name, t_name);
+				// msg("%s misses %s.", m_name, t_name);
+				msg("%s промахивается %s.", m_name, t_name);
 			}
 		}
 
