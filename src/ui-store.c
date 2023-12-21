@@ -178,7 +178,8 @@ static void prt_welcome(const struct owner *proprietor)
 		else if (randint0(2))
 			player_name = player->full_name;
 		else
-			player_name = "valued customer";
+			// player_name = "valued customer";
+			player_name = "уважаемый покупатель";
 
 		/* Balthazar says "Welcome" */
 		prt(format(comment_welcome[i], short_name, player_name), 0, 0);
