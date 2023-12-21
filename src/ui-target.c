@@ -634,7 +634,7 @@ static bool aux_trap(struct chunk *c, struct player *p,
 {
 	struct trap *trap;
 	char out_val[TARGET_OUT_VAL_SIZE];
-	const char *lphrase3;
+	// const char *lphrase3;
 
 	if (!square_isvisibletrap(p->cave, auxst->grid)) return false;
 
@@ -652,10 +652,11 @@ static bool aux_trap(struct chunk *c, struct player *p,
 		/* Describe, and prompt for recall */
 		if (p->wizard) {
 			strnfmt(out_val, sizeof(out_val),
-				"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
 				auxst->phrase1,
 				auxst->phrase2,
-				lphrase3,
+				// lphrase3,
 				trap->kind->name,
 				auxst->coord_desc,
 				auxst->grid.y,
@@ -663,10 +664,11 @@ static bool aux_trap(struct chunk *c, struct player *p,
 				(int)c->noise.grids[auxst->grid.y][auxst->grid.x],
 				(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
 		} else {
-			strnfmt(out_val, sizeof(out_val), "%s%s%s%s, %s.",
+			// strnfmt(out_val, sizeof(out_val), "%s%s%s%s, %s.",
+			strnfmt(out_val, sizeof(out_val), "%s%s%s, %s.",
 				auxst->phrase1,
 				auxst->phrase2,
-				lphrase3,
+				// lphrase3,
 				trap->kind->desc,
 				auxst->coord_desc);
 		}
