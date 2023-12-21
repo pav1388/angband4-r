@@ -204,7 +204,8 @@ static void build_quest_stairs(struct player *p, struct loc grid)
 	push_object(grid);
 
 	/* Explain the staircase */
-	msg("A magical staircase appears...");
+	// msg("A magical staircase appears...");
+	msg("Появилась волшебная лестница...");
 
 	/* Create stairs down */
 	square_set_feat(cave, grid, FEAT_MORE);
@@ -242,9 +243,12 @@ bool quest_check(struct player *p, const struct monster *m)
 	if (total == 0) {
 		p->total_winner = true;
 		p->upkeep->redraw |= (PR_TITLE);
-		msg("*** CONGRATULATIONS ***");
-		msg("You have won the game!");
-		msg("You may retire (commit suicide) when you are ready.");
+		// msg("*** CONGRATULATIONS ***");
+		msg("***  ПОЗДРАВЛЕНИЯ  ***");
+		// msg("You have won the game!");
+		msg("Вы прошли игру!");
+		// msg("You may retire (commit suicide) when you are ready.");
+		msg("Вы можете уйти в отставку, когда будете готовы.");
 	}
 
 	return true;
