@@ -101,7 +101,8 @@ static void project_feature_handler_KILL_WALL(project_feature_handler_context_t 
 	if (square_isrubble(cave, grid)) {
 		/* Message */
 		if (square_isseen(cave, grid)) {
-			msg("The rubble turns into mud!");
+			// msg("The rubble turns into mud!");
+			msg("Завал превратился в грязь!");
 			context->obvious = true;
 
 			/* Forget the wall */
@@ -119,14 +120,16 @@ static void project_feature_handler_KILL_WALL(project_feature_handler_context_t 
 					&& !ignore_item_ok(player,
 					square_object(cave, grid))
 					&& square_isseen(cave, grid)) {
-				msg("There was something buried in the rubble!");
+				// msg("There was something buried in the rubble!");
+				msg("Под камнями что-то погребено!");
 				context->obvious = true;
 			}
 		}
 	} else if (square_isdoor(cave, grid)) {
 		/* Hack -- special message */
 		if (square_isseen(cave, grid)) {
-			msg("The door turns into mud!");
+			// msg("The door turns into mud!");
+			msg("Дверь превращается в грязь!");
 			context->obvious = true;
 
 			/* Forget the wall */
@@ -138,8 +141,10 @@ static void project_feature_handler_KILL_WALL(project_feature_handler_context_t 
 	} else if (square_hasgoldvein(cave, grid)) {
 		/* Message */
 		if (square_isseen(cave, grid)) {
-			msg("The vein turns into mud!");
-			msg("You have found something!");
+			// msg("The vein turns into mud!");
+			msg("Жила превращается в грязь!");
+			// msg("You have found something!");
+			msg("Вы что-то нашли!");
 			context->obvious = true;
 
 			/* Forget the wall */
@@ -154,7 +159,8 @@ static void project_feature_handler_KILL_WALL(project_feature_handler_context_t 
 	} else if (square_ismagma(cave, grid) || square_isquartz(cave, grid)) {
 		/* Message */
 		if (square_isseen(cave, grid)) {
-			msg("The vein turns into mud!");
+			// msg("The vein turns into mud!");
+			msg("Жила превращается в грязь!");
 			context->obvious = true;
 
 			/* Forget the wall */
@@ -166,7 +172,8 @@ static void project_feature_handler_KILL_WALL(project_feature_handler_context_t 
 	} else if (square_isgranite(cave, grid)) {
 		/* Message */
 		if (square_isseen(cave, grid)) {
-			msg("The wall turns into mud!");
+			// msg("The wall turns into mud!");
+			msg("Стена превращается в грязь!");
 			context->obvious = true;
 
 			/* Forget the wall */
@@ -194,7 +201,8 @@ static void project_feature_handler_KILL_DOOR(project_feature_handler_context_t 
 		/* Check line of sight */
 		if (square_isview(cave, grid)) {
 			/* Message */
-			msg("There is a bright flash of light!");
+			// msg("There is a bright flash of light!");
+			msg("Яркая вспышка света!");
 			context->obvious = true;
 
 			/* Visibility change */
@@ -230,7 +238,8 @@ static void project_feature_handler_KILL_TRAP(project_feature_handler_context_t 
 	if (square_isdisarmabletrap(cave, grid)) {
 		/* Check line of sight */
 		if (square_isview(cave, grid)) {
-			msg("The trap seizes up.");
+			// msg("The trap seizes up.");
+			msg("Ловушка заедает.");
 			context->obvious = true;
 		}
 
@@ -242,7 +251,8 @@ static void project_feature_handler_KILL_TRAP(project_feature_handler_context_t 
 
 		/* Check line of sound */
 		if (square_isview(cave, grid)) {
-			msg("Click!");
+			// msg("Click!");
+			msg("Клац!");
 			context->obvious = true;
 		}
 	}
