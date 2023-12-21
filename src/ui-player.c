@@ -752,7 +752,7 @@ static struct panel *get_panel_midleft(void) {
 	panel_line(p, COLOUR_L_GREEN, "Опыт расш.", "%s", show_adv_exp());
 	panel_space(p);
 	// panel_line(p, COLOUR_L_GREEN, "Gold", "%d", player->au);
-	panel_line(p, COLOUR_L_GREEN, "Золото", "%d", player->au);
+	panel_line(p, COLOUR_L_GREEN, "Золото", "%d монет%s", player->au, PLURAL_RU_A_bI_(player->au));
 	// panel_line(p, attr, "Burden", "%.1f lb",
 	panel_line(p, attr, "Ноша", "%.1f кг",
 			   player->upkeep->total_weight / 10.0F);
@@ -881,7 +881,7 @@ static struct panel *get_panel_misc(void) {
 	// panel_line(p, attr, "Game", "%d", turn);
 	// panel_line(p, attr, "Standard", "%d", player->total_energy / 100);
 	// panel_line(p, attr, "Resting", "%d", player->resting_turn);
-	panel_line(p, attr, "Возраст", "%d", player->age);
+	panel_line(p, attr, "Возраст", "%d %s", player->age, PLURAL_RU_YEAR(player->age));
 	panel_line(p, attr, "Рост", "%d см", ((player->ht / 12) * 31)); // примерные "сантиметры"
 	panel_line(p, attr, "Вес", "%d кг", ((player->wt * 65) / 140)); // примерные "килограммы"
 	panel_line(p, attr, "Ходов:", "");
