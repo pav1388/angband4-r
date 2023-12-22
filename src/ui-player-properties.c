@@ -46,7 +46,8 @@ static void view_ability_display(struct menu *menu, int oid, bool cursor,
 	switch (choices[oid].group) {
 	case PLAYER_FLAG_SPECIAL:
 		{
-			strnfmt(buf, sizeof(buf), "Specialty Ability: %s",
+			// strnfmt(buf, sizeof(buf), "Specialty Ability: %s",
+			strnfmt(buf, sizeof(buf), "Особая Способность: %s",
 				choices[oid].name);
 			color = COLOUR_GREEN;
 			break;
