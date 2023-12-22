@@ -53,21 +53,24 @@ static void view_ability_display(struct menu *menu, int oid, bool cursor,
 		}
 	case PLAYER_FLAG_CLASS:
 		{
-			strnfmt(buf, sizeof(buf), "Class: %s",
+			// strnfmt(buf, sizeof(buf), "Class: %s",
+			strnfmt(buf, sizeof(buf), "Классовая: %s",
 				choices[oid].name);
 			color = COLOUR_UMBER;
 			break;
 		}
 	case PLAYER_FLAG_RACE:
 		{
-			strnfmt(buf, sizeof(buf), "Racial: %s",
+			// strnfmt(buf, sizeof(buf), "Racial: %s",
+			strnfmt(buf, sizeof(buf), "Расовая: %s",
 				choices[oid].name);
 			color = COLOUR_ORANGE;
 			break;
 		}
 	default:
 		{
-			my_strcpy(buf, "Mysterious", sizeof(buf));
+			// my_strcpy(buf, "Mysterious", sizeof(buf));
+			my_strcpy(buf, "Таинственная", sizeof(buf));
 			color = COLOUR_PURPLE;
 		}
 	}
@@ -117,7 +120,8 @@ void textui_view_ability_menu(struct player_ability *ability_list,
 
 	/* Prompt choices */
 	strnfmt(buf, sizeof(buf),
-		"Race and class abilities (%c-%c, ESC=exit): ",
+		// "Race and class abilities (%c-%c, ESC=exit): ",
+		"Способности расы и класса (%c-%c, ESC выход): ",
 		all_letters_nohjkl[0], all_letters_nohjkl[num_abilities - 1]);
 
 	/* Set up the menu */
