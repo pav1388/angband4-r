@@ -429,9 +429,11 @@ bool square_reveal_trap(struct chunk *c, struct loc grid, bool always,
 		/* We want to talk about it */
 		if (domsg) {
 			if (found_trap == 1)
-				msg("You have found a trap.");
+				// msg("You have found a trap.");
+				msg("Вы нашли ловушку.");
 			else
-				msg("You have found %d traps.", found_trap);
+				// msg("You have found %d traps.", found_trap);
+				msg("Вы нашли %d ловушки.", found_trap);
 		}
 
 		/* Memorize */
@@ -635,7 +637,8 @@ bool square_set_trap_timeout(struct chunk *c, struct loc grid, bool domsg,
 		current_trap->timeout = time;
 
 		/* Message if requested */
-		msg("You have disabled the %s.", current_trap->kind->name);
+		// msg("You have disabled the %s.", current_trap->kind->name);
+		msg("Вы обезвредили %s.", current_trap->kind->name);
 
 		/* Replace with the next trap */
 		current_trap = next_trap;
