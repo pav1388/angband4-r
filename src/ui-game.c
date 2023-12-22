@@ -1026,7 +1026,7 @@ void play_game(enum game_mode_type mode)
 		case GAME_NEW:
 			if (!start_game(mode == GAME_NEW)) {
 				// quit("Broken savefile");
-				quit("Файл сохранения сломан");
+				quit("Файл сохранения повреждён");
 			}
 			break;
 
