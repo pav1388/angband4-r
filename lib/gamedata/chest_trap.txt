@@ -45,7 +45,7 @@ effect:DAMAGE
 dice:1d4
 effect:DRAIN_STAT:STR
 msg:Вас уколола маленькая иголка!
-msg-death:игла с ядом
+msg-death:иглы с ядом
 
 name:ядовитая игла
 code:LOSE_CON
@@ -54,7 +54,7 @@ effect:DAMAGE
 dice:1d4
 effect:DRAIN_STAT:CON
 msg:Вас уколола маленькая иголка!
-msg-death:игла с ядом
+msg-death:иглы с ядом
 
 name:призывающие руны
 code:SUMMON
@@ -69,7 +69,7 @@ code:PARALYZE
 level:19
 effect:TIMED_INC:PARALYZED
 dice:10+d20
-msg:Вокруг вас клубится желтый газ!
+msg:Вокруг вас клубится желтый дым!
 
 name:взрывное устройство
 code:EXPLODE
@@ -77,5 +77,5 @@ level:25
 effect:DAMAGE
 dice:5d8
 destroy:1
-msg:Происходит внезапный взрыв! Все внутри сундука уничтожено!
-msg-death:взрывающийся сундук
+msg:Происходит внезапный взрыв! Всё внутри сундука уничтожено!
+msg-death:взорвавщегося сундука

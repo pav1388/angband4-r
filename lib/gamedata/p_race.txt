@@ -266,7 +266,7 @@ weight:190:20
 obj-flags:SUST_CON
 
 #name:High-Elf
-name:Высш-Эльф
+name:Высокий Эльф
 stats:1:3:-1:3:1
 skill-disarm-phys:4
 skill-disarm-magic:4

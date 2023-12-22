@@ -47,7 +47,7 @@ desc:Вы сделаны из камня.
 type:player
 code:KNOW_MUSHROOM
 # name:Mushroom Lore
-name:Грибные Знания
+name:Знания о Грибах
 # desc:You easily recognize mushrooms.
 desc:Вы легко узнаёте грибы.
 
@@ -222,8 +222,8 @@ desc:Вы не поддаетесь страху.
 type:object
 code:PROT_BLIND
 bindui:pblind_ui_compact_0:0:1
-# name:Иммунитет к Слепоте
-name:Blindness Immunity
+# name:Blindness Immunity
+name:Иммунитет к Ослеплению
 # desc:You cannot be blinded.
 desc:Вас нельзя ослепить.
 
@@ -286,8 +286,8 @@ desc:Вы можете видеть незримых существ.
 type:object
 code:FREE_ACT
 bindui:free_action_ui_compact_0:0:1
-# name:Свобода Действия
-name:Free Action
+# name:Free Action
+name:Свобода Действия
 # desc:You are immune to paralysis.
 desc:У вас есть иммунитет к параличу.
 
@@ -385,5 +385,5 @@ bindui:resist_ui_compact_0:0:-1
 # name:Vulnerability
 name:Уязвимость
 # desc:You are vulnerable to
-desc:Вы уязвимы для
+desc:Вы уязвимы к
 value:-1
