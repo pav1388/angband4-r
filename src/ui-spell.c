@@ -78,10 +78,12 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	if (!spell) return;
 
 	if (spell->slevel >= 99) {
-		illegible = "(illegible)";
+		// illegible = "(illegible)";
+		illegible = "(неразборчиво)";
 		attr = COLOUR_L_DARK;
 	} else if (player->spell_flags[spell_index] & PY_SPELL_FORGOTTEN) {
-		comment = " forgotten";
+		// comment = " forgotten";
+		comment = " забыто";
 		attr = COLOUR_YELLOW;
 	} else if (player->spell_flags[spell_index] & PY_SPELL_LEARNED) {
 		if (player->spell_flags[spell_index] & PY_SPELL_WORKED) {
@@ -90,14 +92,17 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 			comment = help;
 			attr = COLOUR_WHITE;
 		} else {
-			comment = " untried";
+			// comment = " untried";
+			comment = " неопробовано";
 			attr = COLOUR_L_GREEN;
 		}
 	} else if (spell->slevel <= player->lev) {
-		comment = " unknown";
+		// comment = " unknown";
+		comment = " неизвестно";
 		attr = COLOUR_L_BLUE;
 	} else {
-		comment = " difficult";
+		// comment = " difficult";
+		comment = " недоступно";
 		attr = COLOUR_RED;
 	}
 
@@ -161,7 +166,8 @@ static void spell_menu_browser(int oid, void *data, const region *loc)
 			dice_t *shared_dice = NULL;
 			int i = 0;
 
-			text_out("  Inflicts an average of");
+			// text_out("  Inflicts an average of");
+			text_out("  Наносит в среднем");
 			for (struct effect *e = spell->effect; e != NULL; e = effect_next(e)) {
 				if (e->index == EF_SET_VALUE) {
 					shared_dice = e->dice;
@@ -173,7 +179,8 @@ static void spell_menu_browser(int oid, void *data, const region *loc)
 						text_out(",");
 					}
 					if (num_damaging > 1 && i == num_damaging - 1) {
-						text_out(" and");
+						// text_out(" and");
+						text_out(" и");
 					}
 					text_out_c(COLOUR_L_GREEN, " %d", effect_avg_damage(e, shared_dice));
 					const char *projection = effect_projection(e);
@@ -183,7 +190,8 @@ static void spell_menu_browser(int oid, void *data, const region *loc)
 					i++;
 				}
 			}
-			text_out(" damage.");
+			// text_out(" damage.");
+			text_out(" урона.");
 		}
 		text_out("\n\n");
 
@@ -232,7 +240,8 @@ static struct menu *spell_menu_new(const struct object *obj,
 	menu_setpriv(m, d->n_spells, d);
 
 	/* Set flags */
-	m->header = "Name                             Lv Mana Fail Info";
+	// m->header = "Name                             Lv Mana Fail Info";
+	m->header = "Имя                              Ур Мана Крах Инфо";
 	m->flags = MN_CASELESS_TAGS;
 	m->selections = all_letters_nohjkl;
 	m->browse_hook = spell_menu_browser;
@@ -268,7 +277,8 @@ static int spell_menu_select(struct menu *m, const char *noun, const char *verb)
 	region_erase_bordered(&m->active);
 
 	/* Format, capitalise and display */
-	strnfmt(buf, sizeof buf, "%s which %s? ('?' to toggle description)",
+	// strnfmt(buf, sizeof buf, "%s which %s? ('?' to toggle description)",
+	strnfmt(buf, sizeof buf, "%s какой %s? ('?' переключ. описание)",
 			verb, noun);
 	my_strcap(buf);
 	prt(buf, 0, 0);
@@ -289,7 +299,8 @@ static void spell_menu_browse(struct menu *m, const char *noun)
 	screen_save();
 
 	region_erase_bordered(&m->active);
-	prt(format("Browsing %ss. ('?' to toggle description)", noun), 0, 0);
+	// prt(format("Browsing %ss. ('?' to toggle description)", noun), 0, 0);
+	prt(format("Просмотр %ss. ('?' переключ. описание)", noun), 0, 0);
 
 	d->browse = true;
 	menu_select(m, 0, true);
@@ -310,7 +321,8 @@ void textui_book_browse(const struct object *obj)
 		spell_menu_browse(m, noun);
 		spell_menu_destroy(m);
 	} else {
-		msg("You cannot browse that.");
+		// msg("You cannot browse that.");
+		msg("Вы не можете просмотреть это.");
 	}
 }
 
@@ -321,8 +333,10 @@ void textui_spell_browse(void)
 {
 	struct object *obj;
 
-	if (!get_item(&obj, "Browse which book? ",
-				  "You have no books that you can read.",
+	// if (!get_item(&obj, "Browse which book? ",
+	if (!get_item(&obj, "Какую книгу просмотреть? ",
+				  // "You have no books that you can read.",
+				  "У вас нет книг для изучения.",
 				  CMD_BROWSE_SPELL, obj_can_browse,
 				  (USE_INVEN | USE_FLOOR | IS_HARMLESS)))
 		return;
@@ -371,7 +385,8 @@ int textui_get_spell(struct player *p, const char *verb,
 	struct object *book;
 
 	/* Create prompt */
-	strnfmt(prompt, sizeof prompt, "%s which book?", verb);
+	// strnfmt(prompt, sizeof prompt, "%s which book?", verb);
+	strnfmt(prompt, sizeof prompt, "%s какую книгу?", verb);
 	my_strcap(prompt);
 
 	if (!get_item(&book, prompt, book_error,
