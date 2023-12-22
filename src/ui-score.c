@@ -82,11 +82,13 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* Died where? */
 		if (!cdun)
-			strnfmt(out_val, sizeof(out_val), "Killed by %s in the town",
+			// strnfmt(out_val, sizeof(out_val), "Killed by %s in the town",
+			strnfmt(out_val, sizeof(out_val), "Убит %s в городе",
 					score->how);
 		else
 			strnfmt(out_val, sizeof(out_val),
-					"Killed by %s on dungeon level %d", score->how, cdun);
+					// "Killed by %s on dungeon level %d", score->how, cdun);
+					"Убит %s на %d этаже подземелья", score->how, cdun);
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)
@@ -144,19 +146,23 @@ static void display_scores_aux(const struct high_score scores[], int from,
 
 		/* Title */
 		if (k > 0) {
-			put_str(format("%s Hall of Fame (from position %d)",
+			// put_str(format("%s Hall of Fame (from position %d)",
+			put_str(format("Зал Славы %s (с позиции %d)",
 				VERSION_NAME, k + 1), 0, 21);
 		} else {
-			put_str(format("%s Hall of Fame", VERSION_NAME), 0, 30);
+			// put_str(format("%s Hall of Fame", VERSION_NAME), 0, 30);
+			put_str(format("Зал Славы %s", VERSION_NAME), 0, 30);
 		}
 
 		display_score_page(scores, k, count, highlight);
 
 		/* Wait for response; prompt centered on 80 character line */
 		if (allow_scrolling) {
-			prt("[Press ESC to exit, up for prior page, any other key for next page.]", 23, 6);
+			// prt("[Press ESC to exit, up for prior page, any other key for next page.]", 23, 6);
+			prt("['ESC' выход, 'вверх' предыдущая, 'любая клавиша' следующая.]", 23, 6); 
 		} else {
-			prt("[Press ESC to exit, any other key to page forward till done.]", 23, 9);
+			// prt("[Press ESC to exit, any other key to page forward till done.]", 23, 9);
+			prt("['ESC' выход, 'любая клавиша' на страницу вперед до конца.]", 23, 9); 
 		}
 		ch = inkey();
 		prt("", 23, 0);
@@ -199,7 +205,8 @@ void predict_score(bool allow_scrolling)
 
 	/* Read scores, place current score */
 	highscore_read(scores, N_ELEMENTS(scores));
-	build_score(&the_score, player, "nobody (yet!)", NULL);
+	// build_score(&the_score, player, "nobody (yet!)", NULL);
+	build_score(&the_score, player, "никем (пока!)", NULL);
 
 	if (player->is_dead)
 		j = highscore_where(&the_score, scores, N_ELEMENTS(scores));
