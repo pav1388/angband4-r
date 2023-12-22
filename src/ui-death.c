@@ -85,6 +85,7 @@ static void display_exit_screen(void)
 			text_out_e("%s", buf);
 			text_out("\n");
 		}
+		text_out_indent = 0;
 		file_close(fp);
 	}
 
