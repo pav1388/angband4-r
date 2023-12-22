@@ -881,9 +881,9 @@ static struct panel *get_panel_misc(void) {
 	// panel_line(p, attr, "Game", "%d", turn);
 	// panel_line(p, attr, "Standard", "%d", player->total_energy / 100);
 	// panel_line(p, attr, "Resting", "%d", player->resting_turn);
-	panel_line(p, attr, "Возраст", "%d %s", player->age, PLURAL_RU_YEAR(player->age));
-	panel_line(p, attr, "Рост", "%d см", ((player->ht / 12) * 31)); // примерные "сантиметры"
-	panel_line(p, attr, "Вес", "%d кг", ((player->wt * 65) / 140)); // примерные "килограммы"
+	panel_line(p, attr, "Возраст", "%d %s", player->age, PLURAL_RU_YEAR(player->age)); // год,года,лет
+	panel_line(p, attr, "Рост", "%d  см", ((player->ht / 12) * 31)); // примерные "сантиметры"
+	panel_line(p, attr, "Вес", "%d  кг", ((player->wt * 65) / 140)); // примерные "килограммы"
 	panel_line(p, attr, "Ходов:", "");
 	panel_line(p, attr, "Сыграно", "%d", turn);
 	panel_line(p, attr, "Стандарт", "%d", player->total_energy / 100);
@@ -1293,7 +1293,8 @@ void do_cmd_change_name(void)
 				case ESCAPE: more = false; break;
 				case 'c': {
 					if(arg_force_name)
-						msg("You are not allowed to change your name!");
+						// msg("You are not allowed to change your name!");
+						msg("Вам не разрешается изменять своё имя!");
 					else {
 					char namebuf[32] = "";
 
