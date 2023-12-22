@@ -44,7 +44,8 @@ static void get_curse_display(struct menu *menu, int oid, bool cursor, int row,
 	int power = choice[oid].power;
 	char *name = curses[choice[oid].index].name;
 
-	strnfmt(buf, sizeof(buf), "  %s (curse strength %d)", name, power);
+	// strnfmt(buf, sizeof(buf), "  %s (curse strength %d)", name, power);
+	strnfmt(buf, sizeof(buf), "  %s (сила проклятия %d)", name, power);
 	c_put_str(attr, buf, row, col);
 }
 
@@ -119,7 +120,8 @@ static int curse_menu(struct object *obj, char *dice_string)
 	/* Set up the menu */
 	menu_setpriv(m, count, available);
 	my_strcpy(header,
-			  format(" Remove which curse (spell strength %s)?", dice_string),
+			  // format(" Remove which curse (spell strength %s)?", dice_string),
+			  format(" Какое проклятие снять (сила заклинания %s)?", dice_string),
 			  sizeof(header));
 	m->header = header;
 	m->selections = all_letters_nohjkl;
