@@ -104,7 +104,7 @@ static enum birth_stage textui_birth_quickstart(void)
 //phantom name change changes
 {
 	// const char *prompt = "['Y': use as is; 'N': redo; 'C': change name/history; '=': set birth options]";
-	const char *prompt = "['Y' как есть, 'N' переделать, 'C' изменить имя/историю, '=' настройки]";
+	const char *prompt = "['Y' принять, 'N' заново, 'C' изменить имя/историю, '=' настройки]";
 
 	enum birth_stage next = BIRTH_QUICKSTART;
 
@@ -172,7 +172,8 @@ static struct menu race_menu, class_menu, roller_menu;
  */
 static region race_region = {RACE_COL, TABLE_ROW, 17, MENU_ROWS};
 static region class_region = {CLASS_COL, TABLE_ROW, 17, MENU_ROWS};
-static region roller_region = {ROLLER_COL, TABLE_ROW, 34, MENU_ROWS};
+// static region roller_region = {ROLLER_COL, TABLE_ROW, 34, MENU_ROWS};
+static region roller_region = {ROLLER_COL, TABLE_ROW, 38, MENU_ROWS};
 
 /**
  * We use different menu "browse functions" to display the help text
@@ -226,23 +227,23 @@ static void skill_help(const int r_skills[], const int c_skills[], int mhp, int 
 		skills[i] = (r_skills ? r_skills[i] : 0 ) + (c_skills ? c_skills[i] : 0);
 
 	// text_out_e("Hit/Shoot/Throw: %+d/%+d/%+d\n", skills[SKILL_TO_HIT_MELEE],
-	text_out_e("Удар/Стрельба/Бросок: %+d/%+d/%+d\n", skills[SKILL_TO_HIT_MELEE],
+	text_out_e("Удар/Стрельба/Бросок: {Orange}%+3d{/}/{Orange}%+3d{/}/{Orange}%+3d{/}\n", skills[SKILL_TO_HIT_MELEE],
 			   skills[SKILL_TO_HIT_BOW], skills[SKILL_TO_HIT_THROW]);
 	// text_out_e("Hit die: %2d   XP mod: %d%%\n", mhp, exp);
-	text_out_e("Смерт.удар:   %2d   Мод Опыта: %d%%\n", mhp, exp);
+	text_out_e("  Смерт.удар:  {Orange}%+3d{/}     Мод Опыта: {Orange}%d%%{/}\n", mhp, exp);
 	// text_out_e("Disarm: %+3d/%+3d   Devices: %+3d\n", skills[SKILL_DISARM_PHYS],
-	text_out_e("Обезвреж.: %+3d/%+3d  Механизмы: %+3d\n", skills[SKILL_DISARM_PHYS],
+	text_out_e("   Обезвреж.: {Orange}%+3d{/}/{Orange}%+3d{/}  Механизмы: {Orange}%+3d{/}\n", skills[SKILL_DISARM_PHYS],
 			   skills[SKILL_DISARM_MAGIC], skills[SKILL_DEVICE]);
 	// text_out_e("Save:   %+3d   Stealth: %+3d\n", skills[SKILL_SAVE],
-	text_out_e("Спасение:    %+3d   Скрытность: %+3d\n", skills[SKILL_SAVE],
+	text_out_e("    Спасение:  {Orange}%+3d{/}    Скрытность: {Orange}%+3d{/}\n", skills[SKILL_SAVE],
 			   skills[SKILL_STEALTH]);
+	// text_out_e("Digging:      %+d\n", skills[SKILL_DIGGING]);
+	text_out_e("     Копание:  {Orange}%+3d{/}\n", skills[SKILL_DIGGING]);
+	// text_out_e("Search:       %+d", skills[SKILL_SEARCH]);
+	text_out_e("       Поиск:  {Orange}%+d{/}\n", skills[SKILL_SEARCH]);
 	if (infra >= 0)
 		// text_out_e("Infravision:  %d ft\n", infra * 10);
-		text_out_e("Инфравидение:   %d м\n", infra * 10);
-	// text_out_e("Digging:      %+d\n", skills[SKILL_DIGGING]);
-	text_out_e("Копание:     %+d\n", skills[SKILL_DIGGING]);
-	// text_out_e("Search:       %+d", skills[SKILL_SEARCH]);
-	text_out_e("Поиск:       %+d", skills[SKILL_SEARCH]);
+		text_out_e("Инфравидение:  {Orange}%2d м{/}", infra * 10);
 	if (infra < 0)
 		text_out_e("\n");
 }
@@ -270,12 +271,12 @@ static void race_help(int i, void *db, const region *l)
 		const char *name = stat_names_reduced[j];
 		int adj = r->r_adj[j];
 
-		text_out_e("%s%+3d", name, adj);
+		text_out_e("%s{orange}%+3d{/}", name, adj);
 
 		if (j * 2 + 1 < STAT_MAX) {
 			name = stat_names_reduced[j + len];
 			adj = r->r_adj[j + len];
-			text_out_e("  %s%+3d", name, adj);
+			text_out_e("  %s{orange}%+3d{/}", name, adj);
 		}
 
 		text_out("\n");
@@ -297,7 +298,7 @@ static void race_help(int i, void *db, const region *l)
 				   (r->el_info[ability->index].res_level != ability->value)) {
 			continue;
 		}
-		text_out_e("\n%s", ability->name);
+		text_out_e("\n{light umber}%s{/}", ability->name);
 		n_flags++;
 	}
 
@@ -334,12 +335,12 @@ static void class_help(int i, void *db, const region *l)
 		const char *name = stat_names_reduced[j];
 		int adj = c->c_adj[j] + r->r_adj[j];
 
-		text_out_e("%s%+3d", name, adj);
+		text_out_e("%s{orange}%+3d{/}", name, adj);
 
 		if (j*2 + 1 < STAT_MAX) {
 			name = stat_names_reduced[j + len];
 			adj = c->c_adj[j + len] + r->r_adj[j + len];
-			text_out_e("  %s%+3d", name, adj);
+			text_out_e("  %s{orange}%+3d{/}", name, adj);
 		}
 
 		text_out("\n");
@@ -374,7 +375,7 @@ static void class_help(int i, void *db, const region *l)
 			}
 		}
 		// text_out_e("\nLearns %s magic", buf);
-		text_out_e("\nИзучает %s магию", buf);
+		text_out_e("\n{light umber}Изучает{/} {orange}%s{/} {light umber}магию{/}", buf);
 	}
 
 	for (ability = player_abilities; ability; ability = ability->next) {
@@ -389,7 +390,7 @@ static void class_help(int i, void *db, const region *l)
 			continue;
 		}
 
-		text_out_e("\n%s", ability->name);
+		text_out_e("\n{light umber}%s{/}", ability->name);
 		n_flags++;
 	}
 
@@ -580,7 +581,7 @@ static void setup_menus(void)
 	for (i = 0, r = races; r; r = r->next, i++)
 		mdata->items[r->ridx] = r->name;
 	// mdata->hint = "Race affects stats and skills, and may confer resistances and abilities.";
-	mdata->hint = "Раса влияет на показатели, навыки, сопротивление и способности.";
+	mdata->hint = "Раса влияет на показатели, навыки, сопротивление и способности персонажа.";
 
 	/* Count the classes */
 	n = 0;
@@ -981,17 +982,22 @@ static enum birth_stage roller_command(bool first_call)
 			struct menu *m = menu_dynamic_new();
 
 			m->selections = labels;
-			menu_dynamic_add_label(m, "Reroll", 'r',
+			// menu_dynamic_add_label(m, "Reroll", 'r',
+			menu_dynamic_add_label(m, "Новый бросок", 'r',
 				ACT_CTX_BIRTH_ROLL_REROLL, labels);
 			if (prev_roll) {
-				menu_dynamic_add_label(m, "Retrieve previous",
+				// menu_dynamic_add_label(m, "Retrieve previous",
+				menu_dynamic_add_label(m, "Вернуть предыдущие",
 					'p', ACT_CTX_BIRTH_ROLL_PREV, labels);
 			}
-			menu_dynamic_add_label(m, "Accept", 'a',
+			// menu_dynamic_add_label(m, "Accept", 'a',
+			menu_dynamic_add_label(m, "Принять", 'a',
 				ACT_CTX_BIRTH_ROLL_ACCEPT, labels);
-			menu_dynamic_add_label(m, "Quit", 'q',
+			// menu_dynamic_add_label(m, "Quit", 'q',
+			menu_dynamic_add_label(m, "Выход", 'q',
 				ACT_CTX_BIRTH_ROLL_QUIT, labels);
-			menu_dynamic_add_label(m, "Help", '?',
+			// menu_dynamic_add_label(m, "Help", '?',
+			menu_dynamic_add_label(m, "Справка", '?',
 				ACT_CTX_BIRTH_ROLL_HELP, labels);
 
 			screen_save();
@@ -1096,7 +1102,7 @@ static void point_based_points(game_event_type type, game_event_data *data,
 
 	/* Display the costs header */
 	// put_str("Cost", COSTS_ROW - 1, COSTS_COL);
-	put_str("Цена", COSTS_ROW - 1, COSTS_COL);
+	put_str("Доля", COSTS_ROW - 1, COSTS_COL);
 	
 	for (i = 0; i < STAT_MAX; i++) {
 		/* Remember what's allowed. */
@@ -1113,9 +1119,9 @@ static void point_based_points(game_event_type type, game_event_data *data,
 	}
 	
 	// put_str(format("Total Cost: %2d/%2d", sum, remaining + sum),
-	put_str(format("Всего: %2d/%2d", sum, remaining + sum),
+	put_str(format("     Всего: %2d/%2d", sum, remaining + sum),
 		// COSTS_ROW + STAT_MAX, TOTAL_COL);
-		COSTS_ROW + STAT_MAX, 62);
+		COSTS_ROW + STAT_MAX, TOTAL_COL);
 }
 
 static void point_based_start(void)
@@ -1353,7 +1359,7 @@ static enum birth_stage get_name_command(void)
 			&& (savefile[0]
 			|| !savefile_name_already_used(name, true, true)
 			// || get_check("A savefile for that name exists.  Overwrite it? "))) {
-			|| get_check("Файл сохранение уже существует.   Перезаписать? "))) {
+			|| get_check("Файл сохранение уже существует.  Перезаписать? "))) {
 		cmdq_push(CMD_NAME_CHOICE);
 		cmd_set_arg_string(cmdq_peek(), "name", name);
 		next = BIRTH_HISTORY_CHOICE;
