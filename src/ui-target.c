@@ -389,7 +389,7 @@ static bool aux_reinit(struct chunk *c, struct player *p,
 				auxst->phrase1 = "Вы чувствуете ";
 			} else {
 				// auxst->phrase1 = "You  recall ";
-				auxst->phrase1 = "Вы предполагаете, что это ";
+				auxst->phrase1 = "Вы вспоминаете, что это ";
 			}
 		}
 		auxst->phrase2 = "";

@@ -1489,7 +1489,8 @@ const char *square_apparent_look_prefix(struct chunk *c, struct loc grid) {
 	const struct feature *fp = f_info[actual].mimic ?
 		f_info[actual].mimic : &f_info[actual];
 	return (fp->look_prefix) ? fp->look_prefix :
-		(is_a_vowel(fp->name[0]) ? "an " : "a ");
+		// (is_a_vowel(fp->name[0]) ? "an " : "a ");
+		(is_a_vowel(fp->name[0]) ? "" : "");
 }
 
 /*

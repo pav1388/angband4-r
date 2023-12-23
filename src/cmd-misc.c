@@ -89,8 +89,10 @@ void do_cmd_retire(struct command *cmd)
 void do_cmd_note(void)
 {
 	/* Allocate/Initialize strings to get and format user input. */
-	char tmp[70];
-	char note[90];
+	// char tmp[70];
+	char tmp[130];
+	// char note[90];
+	char note[150];
 	my_strcpy(tmp, "", sizeof(tmp));
 	my_strcpy(note, "", sizeof(note));
 
@@ -103,7 +105,8 @@ void do_cmd_note(void)
 
 	/* Format the note correctly, supporting some cute /me commands */
 	if (strncmp(tmp, "/say ", 5) == 0)
-		strnfmt(note, sizeof(note), "-- %s says: \"%s\"", player->full_name,
+		// strnfmt(note, sizeof(note), "-- %s says: \"%s\"", player->full_name,
+		strnfmt(note, sizeof(note), "-- %s сказал: \"%s\"", player->full_name,
 				&tmp[5]);
 	else if (strncmp(tmp, "/me", 3) == 0)
 		strnfmt(note, sizeof(note), "-- %s%s", player->full_name, &tmp[3]);
