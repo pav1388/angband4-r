@@ -127,7 +127,8 @@ char *monster_blow_method_action(struct blow_method *method, int midx)
 						strnfcat(buf, sizeof(buf),
 							&end, "%s", m_name);
 					} else {
-						strnfcat(buf, sizeof(buf), &end, "you");
+						// strnfcat(buf, sizeof(buf), &end, "you");
+						strnfcat(buf, sizeof(buf), &end, "вас");
 					}
 					break;
 				}
@@ -139,7 +140,8 @@ char *monster_blow_method_action(struct blow_method *method, int midx)
 							MDESC_TARG | MDESC_POSS);
 						strnfcat(buf, sizeof(buf), &end, "%s", m_name);
 					} else {
-						strnfcat(buf, sizeof(buf), &end, "your");
+						// strnfcat(buf, sizeof(buf), &end, "your");
+						strnfcat(buf, sizeof(buf), &end, "вашу");
 					}
 					break;
 				}
@@ -225,12 +227,16 @@ static void steal_player_item(melee_effect_handler_context_t *context)
 			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD);
 
 			/* Fail to steal */
-			msg("%s tries to steal %s %s, but fails.", m_name,
-				(split ? "one of your" : "your"), o_name);
+			// msg("%s tries to steal %s %s, but fails.", m_name,
+			msg("%s пытается украсть %s %s, но терпит неудачу.", m_name,
+				// (split ? "one of your" : "your"), o_name);
+				(split ? "один из ваших" : "ваш"), o_name);
 		} else {
 			/* Message */
-			msg("%s %s (%c) was stolen!",
-				(split ? "One of your" : "Your"), o_name,
+			// msg("%s %s (%c) was stolen!",
+			msg("%s %s (%c) был украден!",
+				// (split ? "One of your" : "Your"), o_name,
+				(split ? "Один из ваших" : "Ваш"), o_name,
 				gear_to_label(context->p, obj));
 
 			/* Steal and carry */
@@ -360,13 +366,17 @@ static void melee_effect_elemental(melee_effect_handler_context_t *context,
 
 	if (context->p) {
 		switch (type) {
-			case PROJ_ACID: msg("You are covered in acid!");
+			// case PROJ_ACID: msg("You are covered in acid!");
+			case PROJ_ACID: msg("Вы покрыты кислотой!");
 				break;
-			case PROJ_ELEC: msg("You are struck by electricity!");
+			// case PROJ_ELEC: msg("You are struck by electricity!");
+			case PROJ_ELEC: msg("Вас поразило электричество!");
 				break;
-			case PROJ_FIRE: msg("You are enveloped in flames!");
+			// case PROJ_FIRE: msg("You are enveloped in flames!");
+			case PROJ_FIRE: msg("Вас охватывает пламя!");
 				break;
-			case PROJ_COLD: msg("You are covered with frost!");
+			// case PROJ_COLD: msg("You are covered with frost!");
+			case PROJ_COLD: msg("Вы покрыты инеем!");
 				break;
 		}
 	}
@@ -524,15 +534,18 @@ static void melee_effect_experience(melee_effect_handler_context_t *context,
 	}
 
 	if (player_of_has(context->p, OF_HOLD_LIFE) && (randint0(100) < chance)) {
-		msg("You keep hold of your life force!");
+		// msg("You keep hold of your life force!");
+		msg("Вы сохраняете свою жизненную силу!");
 	} else {
 		int32_t d = drain_amount +
 			(context->p->exp/100) * z_info->life_drain_percent;
 		if (player_of_has(context->p, OF_HOLD_LIFE)) {
-			msg("You feel your life slipping away!");
+			// msg("You feel your life slipping away!");
+			msg("Вы чувствуете, что ваша жизнь ускользает!");
 			player_exp_lose(context->p, d / 10, false);
 		} else {
-			msg("You feel your life draining away!");
+			// msg("You feel your life draining away!");
+			msg("Вы чувствуете, что ваша жизнь утекает!");
 			player_exp_lose(context->p, d, false);
 		}
 	}
@@ -647,7 +660,8 @@ static void melee_effect_handler_DRAIN_CHARGES(melee_effect_handler_context_t *c
 		if (unpower) {
 			int heal = context->rlev * unpower;
 
-			msg("Energy drains from your pack!");
+			// msg("Energy drains from your pack!");
+			msg("Энергия утекает из вашего рюкзака!");
 
 			context->obvious = true;
 
@@ -691,7 +705,8 @@ static void melee_effect_handler_EAT_GOLD(melee_effect_handler_context_t *contex
         (randint0(100) < (adj_dex_safe[current_player->state.stat_ind[STAT_DEX]]
 						  + current_player->lev))) {
         /* Saving throw message */
-        msg("You quickly protect your money pouch!");
+        // msg("You quickly protect your money pouch!");
+        msg("Вы быстро защитили свой мешочек с золотом!");
 
         /* Occasional blink anyway */
         if (randint0(3)) context->blinked = true;
@@ -702,16 +717,20 @@ static void melee_effect_handler_EAT_GOLD(melee_effect_handler_context_t *contex
         if (gold > current_player->au) gold = current_player->au;
         current_player->au -= gold;
         if (gold <= 0) {
-            msg("Nothing was stolen.");
+            // msg("Nothing was stolen.");
+            msg("Ничего не украдено.");
             return;
         }
 
         /* Let the player know they were robbed */
-        msg("Your purse feels lighter.");
+        // msg("Your purse feels lighter.");
+        msg("Ваш кошелёк стал легче.");
         if (current_player->au)
-            msg("%d coins were stolen!", gold);
+            // msg("%d coins were stolen!", gold);
+            msg("У вас украли %d монет%s!", gold, PLURAL_RU_U_bI_(gold));
         else
-            msg("All of your coins were stolen!");
+            // msg("All of your coins were stolen!");
+            msg("Все ваши монеты были украдены!");
 
         /* While we have gold, put it in objects */
         while (gold > 0) {
@@ -759,7 +778,8 @@ static void melee_effect_handler_EAT_ITEM(melee_effect_handler_context_t *contex
 		/* Saving throw (unless paralyzed) based on dex and level */
 		if (!context->p->timed[TMD_PARALYZED] && (randint0(100) < chance)) {
 			/* Saving throw message */
-			msg("You grab hold of your backpack!");
+			// msg("You grab hold of your backpack!");
+			msg("Вы хватаетесь за свой рюкзак!");
 
 			/* Occasional "blink" anyway */
 			context->blinked = true;
@@ -810,12 +830,14 @@ static void melee_effect_handler_EAT_FOOD(melee_effect_handler_context_t *contex
 		if (obj->number == 1) {
 			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE,
 				context->p);
-			msg("Your %s (%c) was eaten!", o_name,
+			// msg("Your %s (%c) was eaten!", o_name,
+			msg("Ваш %s (%c) был съеден!", o_name,
 				gear_to_label(context->p, obj));
 		} else {
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_BASE, context->p);
-			msg("One of your %s (%c) was eaten!", o_name,
+			// msg("One of your %s (%c) was eaten!", o_name,
+			msg("Один из ваших %s (%c) был съеден!", o_name,
 				gear_to_label(context->p, obj));
 		}
 
@@ -910,7 +932,8 @@ static void melee_effect_handler_CONFUSE(melee_effect_handler_context_t *context
 static void melee_effect_handler_TERRIFY(melee_effect_handler_context_t *context)
 {
 	melee_effect_timed(context, TMD_AFRAID, 3 + randint1(context->rlev),
-					   OF_PROT_FEAR, true, "You stand your ground!");
+					   // OF_PROT_FEAR, true, "You stand your ground!");
+					   OF_PROT_FEAR, true, "Вы твёрдо стоите на ногах!");
 }
 
 /**
@@ -923,7 +946,8 @@ static void melee_effect_handler_PARALYZE(melee_effect_handler_context_t *contex
 		context->damage = 1;
 
 	melee_effect_timed(context, TMD_PARALYZED, 3 + randint1(context->rlev),
-					   OF_FREE_ACT, true, "You resist the effects!");
+					   // OF_FREE_ACT, true, "You resist the effects!");
+					   OF_FREE_ACT, true, "Вы сопротивляетесь воздействию!");
 }
 
 /**
