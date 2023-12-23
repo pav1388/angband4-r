@@ -20,7 +20,3 @@
 {light slate}                     Форумы: http://angband.oook.cz/forum/{/}
 
                          Для помощи нажмите '?' в игре
-						 
-						 
-						 
-                             {mud}Перевод pav13@mail.ru{/}

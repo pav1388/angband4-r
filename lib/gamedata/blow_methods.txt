@@ -17,7 +17,8 @@ stun:1
 miss:1
 phys:1
 msg:MON_HIT
-act:hits {target}
+#act:hits {target}
+act:бьёт {target}
 desc:hit
 
 name:TOUCH
@@ -26,7 +27,8 @@ stun:0
 miss:1
 phys:0
 msg:MON_TOUCH
-act:touches {target}
+#act:touches {target}
+act:касается {target}
 desc:touch
 
 name:PUNCH
@@ -35,7 +37,8 @@ stun:1
 miss:1
 phys:1
 msg:MON_PUNCH
-act:punches {target}
+#act:punches {target}
+act:колотит {target}
 desc:punch
 
 name:KICK
@@ -44,7 +47,8 @@ stun:1
 miss:1
 phys:1
 msg:MON_KICK
-act:kicks {target}
+#act:kicks {target}
+act:пинает {target}
 desc:kick
 
 name:CLAW
@@ -53,7 +57,8 @@ stun:0
 miss:1
 phys:1
 msg:MON_CLAW
-act:claws {target}
+#act:claws {target}
+act:царапает {target} когтями
 desc:claw
 
 name:BITE
@@ -62,7 +67,8 @@ stun:0
 miss:1
 phys:1
 msg:MON_BITE
-act:bites {target}
+#act:bites {target}
+act:кусает {target}
 desc:bite
 
 name:STING
@@ -71,7 +77,8 @@ stun:0
 miss:1
 phys:1
 msg:MON_STING
-act:stings {target}
+#act:stings {target}
+act:жалит {target}
 desc:sting
 
 name:BUTT
@@ -80,6 +87,7 @@ stun:1
 miss:1
 phys:1
 msg:MON_BUTT
+#act:butts {target}
 act:butts {target}
 desc:butt
 
@@ -89,7 +97,8 @@ stun:1
 miss:1
 phys:1
 msg:MON_CRUSH
-act:crushes {target}
+#act:crushes {target}
+act:давит {target}
 desc:crush
 
 name:ENGULF
@@ -98,7 +107,8 @@ stun:0
 miss:1
 phys:0
 msg:MON_ENGULF
-act:engulfs {target}
+#act:engulfs {target}
+act:поглощает {target}
 desc:engulf
 
 name:CRAWL
@@ -107,7 +117,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_CRAWL
-act:crawls on {target}
+#act:crawls on {target}
+act:заползает на {target}
 desc:crawl on you
 
 name:DROOL
@@ -116,7 +127,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_DROOL
-act:drools on {target}
+#act:drools on {target}
+act:пускает слюни на {target}
 desc:drool on you
 
 name:SPIT
@@ -125,7 +137,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_SPIT
-act:spits on {target}
+#act:spits on {target}
+act:плюёт на {target}
 desc:spit
 
 name:GAZE
@@ -134,7 +147,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_GAZE
-act:gazes at {target}
+#act:gazes at {target}
+act:глазеет на {target}
 desc:gaze
 
 name:WAIL
@@ -143,7 +157,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_WAIL
-act:wails at {target}
+#act:wails at {target}
+act:воет на {target}
 desc:wail
 
 name:SPORE
@@ -152,7 +167,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_SPORE
-act:releases spores at {target}
+#act:releases spores at {target}
+act:выпускает споры на {target}
 desc:release spores
 
 name:BEG
@@ -161,7 +177,8 @@ stun:0
 miss:0
 phys:0
 msg:MON_BEG
-act:begs {target} for money
+#act:begs {target} for money
+act:просит деньги у {target}
 desc:beg
 
 name:INSULT
@@ -170,14 +187,22 @@ stun:0
 miss:0
 phys:0
 msg:MON_INSULT
-act:insults {target}!
-act:insults {oftarget} mother!
-act:gives {target} the finger!
-act:humiliates {target}!
-act:defiles {target}!
-act:dances around {target}!
-act:makes obscene gestures!
-act:moons {target}!!!
+#act:insults {target}!
+act:оскорбляет {target}!
+#act:insults {oftarget} mother!
+act:оскорбляет {oftarget} мать!
+#act:gives {target} the finger!
+act:показывает на {target} палецем!
+#act:humiliates {target}!
+act:унижает {target}!
+#act:defiles {target}!
+act:оскверняет {target}!
+#act:dances around {target}!
+act:танцует вокруг {target}!
+#act:makes obscene gestures!
+act:показывает непристойные жесты!
+#act:moons {target}!!!
+act:уставился на {target}!!!
 desc:insult
 
 name:MOAN
@@ -186,13 +211,13 @@ stun:0
 miss:0
 phys:0
 msg:MON_MOAN
-act:wants his mushrooms back
-act:tells {target} to get off his land
-act:looks for his dogs
-act:says 'Did you kill my Fang?'
-act:asks 'Do you want to buy any mushrooms?'
-act:seems sad about something
-act:asks if {target} {has} seen his dogs
-act:mumbles something about mushrooms
+act:хочет вернуть свои грибы
+act:говорит, чтобы {target} убирались с его земли
+act:ищет своих собак
+act:спрашивает 'Это ты убил моего Клыка?'
+act:спрашивает 'Хочешь купить грибы?'
+act:выглядит чем-то опечаленым
+act:спрашивает {target} не видели ли его собак
+act:бормочет что-то о грибах
 desc:moan
 
