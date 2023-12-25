@@ -190,27 +190,31 @@
 
 name:FAST
 desc:haste
-grade:G:10000:Haste:Вы чувствуете, что двигаетесь быстрее!
+#grade:G:10000:Haste:Вы чувствуете, что двигаетесь быстрее!
+grade:G:10000:Спешка:Вы чувствуете, что двигаетесь быстрее!
 on-end:Вы чувствуете, что замедляетесь.
 msgt:SPEED
 
 name:SLOW
 desc:slowness
-grade:U:10000:Slow:Вы чувствуете, что двигаетесь медленнее!
+#grade:U:10000:Slow:Вы чувствуете, что двигаетесь медленнее!
+grade:U:10000:Медляк:Вы чувствуете, что двигаетесь медленнее!
 on-end:Вы чувствуете, что ускоряетесь.
 msgt:SLOW
 fail:1:FREE_ACT
 
 name:BLIND
 desc:blindness
-grade:o:10000:Blind:Вы ослепли.
+#grade:o:10000:Blind:Вы ослепли.
+grade:o:10000:Слепота:Вы ослепли.
 on-end:Вы моргаете, и ваши глаза яснеют.
 msgt:BLIND
 fail:1:PROT_BLIND
 
 name:PARALYZED
 desc:paralysis
-grade:r:10000:Paralyzed!:Вы парализованы!
+#grade:r:10000:Paralyzed!:Вы парализованы!
+grade:r:10000:Паралич!:Вы парализованы!
 on-end:Вы снова можете двигаться.
 msgt:PARALYZED
 fail:1:FREE_ACT
@@ -218,8 +222,9 @@ flags:NONSTACKING
 
 name:CONFUSED
 desc:confusion
-grade:o:10000:Confused:Вы сбиты с толку!
-on-end:Вы больше не запутаны.
+#grade:o:10000:Confused:Вы сбиты с толку!
+grade:o:10000:Конфуз:Вы сбиты с толку!
+on-end:Вы больше не растеряны.
 on-increase:Вы запутались еще больше!
 on-decrease:Вы чувствуете себя менее растерянным.
 msgt:CONFUSED
@@ -227,7 +232,8 @@ fail:1:PROT_CONF
 
 name:AFRAID
 desc:fear
-grade:o:10000:Afraid:Вы напуганы!
+#grade:o:10000:Afraid:Вы напуганы!
+grade:o:10000:Страх:Вы напуганы!
 on-end:Теперь вы чувствуете себя смелее.
 on-increase:Вы еще больше испугались!
 msgt:AFRAID
@@ -235,7 +241,8 @@ fail:1:PROT_FEAR
 
 name:IMAGE
 desc:hallucination
-grade:o:10000:Halluc:Вы чувствуете себя одурманенным!
+#grade:o:10000:Halluc:Вы чувствуете себя одурманенным!
+grade:o:10000:Глюки:Вы чувствуете себя одурманенным!
 on-end:Вы снова можете видеть ясно.
 on-increase:Вы чувствуете себя более одурманенным!
 msgt:DRUGGED
@@ -243,6 +250,7 @@ fail:2:CHAOS
 
 name:POISONED
 desc:poisoning
+#grade:o:10000:Отравлен:Вы отравлены!
 grade:o:10000:Poisoned:Вы отравлены!
 on-end:Вы больше не отравлены.
 on-increase:Вы отравлены еще сильнее!
@@ -253,22 +261,32 @@ fail:5:OPP_POIS
 
 name:CUT
 desc:wounds
-grade:y:10:Graze:Вы получили царапину.
-grade:y:25:Light Cut:Вы получили легкий порез.
-grade:o:50:Bad Cut:Вы получили неудачный порез.
-grade:o:100:Nasty Cut:Вы получили неприятный порез.
-grade:r:200:Severe Cut:Вы получили сильный порез.
-grade:r:1000:Deep Gash:Вы получили глубокую рану.
-grade:R:10000:Mortal Wound:Вы получили смертельную рану.
+#grade:y:10:Graze:Вы получили царапину.
+grade:y:10:Царапина:Вы получили царапину.
+#grade:y:25:Light Cut:Вы получили легкий порез.
+grade:y:25:Лёг.Порез:Вы получили легкий порез.
+#grade:o:50:Bad Cut:Вы получили неудачный порез.
+grade:o:50:Плох.Порез:Вы получили неудачный порез.
+#grade:o:100:Nasty Cut:Вы получили неприятный порез.
+grade:o:100:Сущ.Порез:Вы получили существенный порез.
+#grade:r:200:Severe Cut:Вы получили сильный порез.
+grade:r:200:Сил.Порез:Вы получили сильный порез.
+#grade:r:1000:Deep Gash:Вы получили глубокую рану.
+grade:r:1000:Глуб.Рана:Вы получили глубокую рану.
+#grade:R:10000:Mortal Wound:Вы получили смертельную рану.
+grade:R:10000:Смерт.Рана:Вы получили смертельную рану.
 on-end:Вы больше не истекаете кровью.
 msgt:CUT
 fail:4:ROCK
 
 name:STUN
 desc:stunning
-grade:o:50:Stun:Вы были оглушены.
-grade:o:150:Heavy Stun:Вы были сильно оглушены.
-grade:r:10000:Knocked Out:Вы были отправлены в нокаут.
+#grade:o:50:Stun:Вы были оглушены.
+grade:o:50:Оглушение:Вы были оглушены.
+#grade:o:150:Heavy Stun:Вы были сильно оглушены.
+grade:o:150:Тяж.Оглуш:Вы были сильно оглушены.
+#grade:r:10000:Knocked Out:Вы были отправлены в нокаут.
+grade:r:10000:Нокаут:Вы были отправлены в нокаут.
 on-end:Вы больше не оглушены.
 msgt:STUN
 fail:1:PROT_STUN
@@ -293,20 +311,23 @@ lower-bound:1
 
 name:PROTEVIL
 desc:protection from evil
-grade:G:10000:ProtEvil:Вы чувствуете себя защищенным от зла!
+#grade:G:10000:ProtEvil:Вы чувствуете себя защищенным от зла!
+grade:G:10000:СопЗлу:Вы чувствуете себя защищенным от зла!
 on-end:Вы больше не чувствуете себя в безопасности от зла.
 on-increase:Вы чувствуете себя еще более защищенным от зла!
 msgt:PROT_EVIL
 
 name:INVULN
 desc:invulnerability
-grade:G:10000:Invuln:Вы чувствуете себя неуязвимым!
+#grade:G:10000:Invuln:Вы чувствуете себя неуязвимым!
+grade:G:10000:Неуязвим:Вы чувствуете себя неуязвимым!
 on-end:Вы снова чувствуете себя уязвимым.
 msgt:INVULN
 
 name:HERO
 desc:heroism
-grade:G:10000:Hero:Вы чувствуете себя героем!
+#grade:G:10000:Hero:Вы чувствуете себя героем!
+grade:G:10000:Герой:Вы чувствуете себя героем!
 on-end:Вы больше не чувствуете себя героем.
 on-increase:Вы чувствуете себя героем еще больше!
 msgt:HERO
@@ -314,7 +335,8 @@ flag-synonym:PROT_FEAR:0
 
 name:SHERO
 desc:berserk rage
-grade:G:10000:Berserk:Вы чувствуете себя машиной для убийства!
+#grade:G:10000:Berserk:Вы чувствуете себя машиной для убийства!
+grade:G:10000:Берсерк:Вы чувствуете себя машиной для убийства!
 on-end:Вы больше не чувствуете себя берсерком.
 on-increase:Вы чувствуете себя еще большим берсерком!
 msgt:BERSERK
@@ -322,20 +344,23 @@ flag-synonym:PROT_FEAR:0
 
 name:SHIELD
 desc:mystic shield
-grade:G:10000:Shield:Вокруг вашего тела образуется мистический щит!
+#grade:G:10000:Shield:Вокруг вашего тела образуется мистический щит!
+grade:G:10000:Щит:Вокруг вашего тела образуется мистический щит!
 on-end:Ваш мистический щит разрушается.
 on-increase:Ваш мистический щит усиливается.
 msgt:SHIELD
 
 name:BLESSED
 desc:your AC and to-hit bonus
-grade:G:10000:Blssd:Вы чувствуете себя праведником!
+#grade:G:10000:Blssd:Вы чувствуете себя праведником!
+grade:G:10000:Святой:Вы чувствуете себя праведником!
 on-end:Действие молитвы закончилось.
 on-increase:Вы чувствуете себя более праведным!
 msgt:BLESSED
 
 name:SINVIS
 desc:see invisible
+#grade:G:10000:SInvis:Ваши глаза очень чувствительны!
 grade:G:10000:SInvis:Ваши глаза очень чувствительны!
 on-end:Ваши глаза больше не такие чувствительные.
 on-increase:Ваши глаза стали более чувствительными!
@@ -344,14 +369,16 @@ flag-synonym:SEE_INVIS:1
 
 name:SINFRA
 desc:enhanced infravision
-grade:G:10000:Infra:Ваши глаза начинает покалывать!
+#grade:G:10000:Infra:Ваши глаза начинает покалывать!
+grade:G:10000:Инфра:Ваши глаза начинает покалывать!
 on-end:Ваши глаза перестают покалывать.
 on-increase:Покалывание в глазах усиливается.
 msgt:INFRARED
 
 name:OPP_ACID
 desc:acid resistance
-grade:s:10000:RAcid:Вы чувствуете себя устойчивым к кислоте!
+#grade:s:10000:RAcid:Вы чувствуете себя устойчивым к кислоте!
+grade:s:10000:СопКисл:Вы чувствуете себя устойчивым к кислоте!
 on-end:Вы больше не устойчивы к кислоте.
 on-increase:Вы чувствуете себя более устойчивым к кислоте!
 msgt:RES_ACID
@@ -360,7 +387,8 @@ resist:ACID
 
 name:OPP_ELEC
 desc:electricity resistance
-grade:b:10000:RElec:Вы чувствуете себя невосприимчивым к электричеству!
+#grade:b:10000:RElec:Вы чувствуете себя невосприимчивым к электричеству!
+grade:b:10000:СопЭлек:Вы чувствуете себя невосприимчивым к электричеству!
 on-end:Вы больше не устойчивы к электричеству.
 on-increase:Вы чувствуете себя более устойчивым к электричеству!
 msgt:RES_ELEC
@@ -369,7 +397,8 @@ resist:ELEC
 
 name:OPP_FIRE
 desc:fire resistance
-grade:r:10000:RFire:Вы чувствуете себя невосприимчивым к огню!
+#grade:r:10000:RFire:Вы чувствуете себя невосприимчивым к огню!
+grade:r:10000:СопОгню:Вы чувствуете себя невосприимчивым к огню!
 on-end:Вы больше не устойчивы к огню.
 on-increase:Вы чувствуете себя более устойчивым к огню!
 msgt:RES_FIRE
@@ -378,7 +407,8 @@ resist:FIRE
 
 name:OPP_COLD
 desc:cold resistance
-grade:w:10000:RCold:Вы чувствуете себя невосприимчивым к холоду!
+#grade:w:10000:RCold:Вы чувствуете себя невосприимчивым к холоду!
+grade:w:10000:СопХол:Вы чувствуете себя невосприимчивым к холоду!
 on-end:Вы больше не устойчивы к холоду.
 on-increase:Вы чувствуете себя более устойчивым к холоду!
 msgt:RES_COLD
@@ -387,7 +417,8 @@ resist:COLD
 
 name:OPP_POIS
 desc:poison resistance
-grade:g:10000:RPois:Вы чувствуете устойчивость к яду!
+#grade:g:10000:RPois:Вы чувствуете устойчивость к яду!
+grade:g:10000:СопЯду:Вы чувствуете устойчивость к яду!
 on-end:Вы больше не устойчивы к яду.
 on-increase:Вы чувствуете себя более устойчивым к яду!
 msgt:RES_POIS
@@ -396,20 +427,23 @@ resist:POIS
 
 name:OPP_CONF
 desc:confusion resistance
-grade:v:10000:RConf:Вы чувствуете себя невосприимчивым к замешательству!
+#grade:v:10000:RConf:Вы чувствуете себя невосприимчивым к замешательству!
+grade:v:10000:СопКонф:Вы чувствуете себя невосприимчивым к замешательству!
 on-end:Вы больше не сопротивляетесь замешательству.
 on-increase:Вы чувствуете себя более устойчивым к замешательству!
 flag-synonym:PROT_CONF:1
 
 name:AMNESIA
 desc:amnesia
-grade:o:10000:Amnesiac:Вы чувствуете, что ваши воспоминания исчезают.
+#grade:o:10000:Amnesiac:Вы чувствуете, что ваши воспоминания исчезают.
+grade:o:10000:Амнезия:Вы чувствуете, что ваши воспоминания исчезают.
 on-end:Ваши воспоминания возвращаются.
 msgt:GENERIC
 
 name:TELEPATHY
 desc:telepathy
-grade:B:10000:ESP:Ваш разум расширяется.
+#grade:B:10000:ESP:Ваш разум расширяется.
+grade:B:10000:Телепат:Ваш разум расширяется.
 on-end:Ваши рамки познания снова ограничены.
 on-increase:Ваш разум расширяется все больше.
 msgt:GENERIC
@@ -417,19 +451,22 @@ flag-synonym:TELEPATHY:1
 
 name:STONESKIN
 desc:stone skin
-grade:G:10000:Stone:Ваша кожа превращается в камень.
+#grade:G:10000:Stone:Ваша кожа превращается в камень.
+grade:G:10000:Камень:Ваша кожа превращается в камень.
 on-end:К вашей коже возвращается телесный оттенок.
 msgt:GENERIC
 
 name:TERROR
 desc:terror
-grade:r:10000:Terror:Вы чувствуете потребность убежать, и побыстрее!
+#grade:r:10000:Terror:Вы чувствуете потребность убежать, и побыстрее!
+grade:r:10000:Ужас:Вы чувствуете потребность убежать, и побыстрее!
 on-end:Желание убежать рассеивается.
 msgt:AFRAID
 
 name:SPRINT
 desc:sprinting
-grade:G:10000:Bold:Вы начинаете спринтерский бег.
+#grade:G:10000:Bold:Вы начинаете спринтерский бег.
+grade:G:10000:Смелый:Вы начинаете спринтерский бег.
 on-end:Вы внезапно прекращаете спринт.
 msgt:SPEED
 on-end-effect:TIMED_INC_NO_RES:SLOW
@@ -437,7 +474,8 @@ effect-dice:100
 
 name:BOLD
 desc:fearlessness
-grade:G:10000:Bold:Вы чувствуете себя смелым.
+#grade:G:10000:Bold:Вы чувствуете себя смелым.
+grade:G:10000:Смелый:Вы чувствуете себя смелым.
 on-end:Вы больше не чувствуете себя смелым.
 on-increase:Вы чувствуете себя еще смелее!
 msgt:BOLD
@@ -445,8 +483,9 @@ flag-synonym:PROT_FEAR:1
 
 name:SCRAMBLE
 desc:scrambled
-grade:v:10000:Scrambled:Ваше тело начинает метаться...
-on-end:Ваше тело вновь обретает свою истинную природу.
+#grade:v:10000:Scrambled:Ваше тело начинает метаться...
+grade:v:10000:Изменён:Ваше тело начинает метаться...
+on-end:Ваше тело вновь обретает свою истинный облик.
 on-increase:Вы еще больше изменились!
 msgt:SCRAMBLE
 fail:2:NEXUS
@@ -455,121 +494,142 @@ on-end-effect:UNSCRAMBLE_STATS
 
 name:TRAPSAFE
 desc:safety from traps
-grade:G:10000:TrapSafe:Вы чувствуете себя в безопасности от ловушек.
+#grade:G:10000:TrapSafe:Вы чувствуете себя в безопасности от ловушек.
+grade:G:10000:ЗащОтЛов:Вы чувствуете себя в безопасности от ловушек.
 on-end:Вы снова чувствуете себя уязвимым для ловушек.
 on-increase:Вы чувствуете себя еще более защищенным от ловушек!
 flag-synonym:TRAP_IMMUNE:1
 
 name:FASTCAST
 desc:mana channelling
-grade:i:10000:FastCast:Вы чувствуете, как ваш разум ускоряется.
+#grade:i:10000:FastCast:Вы чувствуете, как ваш разум ускоряется.
+grade:i:10000:БыстЗакл:Вы чувствуете, как ваш разум ускоряется.
 on-end:Вы чувствуете, как ваш разум снова замедляется.
 
 name:ATT_ACID
 desc:temporary acid brand
-grade:s:10000:AttAcid:Your {kind} start{s} to drip with acid!
-on-end:The acid disappears from your {kind}.
+#grade:s:10000:AttAcid:Your {kind} start{s} to drip with acid!
+grade:s:10000:ДопКисл:Your {kind} начинает сочиться кислота!
+on-end:Кислота бесследно исчезает из your {kind}.
 brand:ACID_3
 
 name:ATT_ELEC
 desc:temporary lightning brand
-grade:b:10000:AttElec:Sparks gather around your {kind}!
-on-end:The sparks fade from your {kind}.
+#grade:b:10000:AttElec:Sparks gather around your {kind}!
+grade:b:10000:ДопЭлек:Искры вспыхивают вокруг your {kind}!
+on-end:Искры угасают в your {kind}.
 brand:ELEC_3
 
 name:ATT_FIRE
 desc:temporary fire brand
-grade:r:10000:AttFire:Flames surround your {kind}!
-on-end:The flames on your {kind} subside.
+#grade:r:10000:AttFire:Flames surround your {kind}!
+grade:r:10000:ДопОгон:Пламя охватывает your {kind}!
+on-end:Пламя в your {kind} утихает.
 brand:FIRE_3
 
 name:ATT_COLD
 desc:temporary cold brand
-grade:w:10000:AttCold:Your {kind} {is} covered in frost!
-on-end:The frost evaporates from your {kind}.
+#grade:w:10000:AttCold:Your {kind} {is} covered in frost!
+grade:w:10000:ДопХол:Your {kind} покрывается инеем!
+on-end:Иней испарется с your {kind}.
 brand:COLD_3
 
 name:ATT_POIS
 desc:temporary poison brand
-grade:g:10000:AttPois:Your {kind} drip{s} with poison!
-on-end:The poison disappears from your {kind}.
+#grade:g:10000:AttPois:Your {kind} drip{s} with poison!
+grade:g:10000:ДопЯд:Your {kind} отравлен ядом!
+on-end:Яд бесследно исчезает из your {kind}.
 brand:POIS_3
 
 name:ATT_CONF
 desc:temporary monster confusion
-grade:U:10000:AttConf:Your hands begin to glow!
-on-end:The glow fades from your hands.
+#grade:U:10000:AttConf:Your hands begin to glow!
+grade:U:10000:ДопКонф:Ваши руки начинают светиться!
+on-end:Сияние исчезает с ваших рук.
 
 name:ATT_EVIL
 desc:temporary slay evil
-grade:w:10000:AttEvil:Your {kind} {is} imbued with holy force!
-on-end:Holy force fades from your {kind}.
+#grade:w:10000:AttEvil:Your {kind} {is} imbued with holy force!
+grade:w:10000:ДопЗло:Your {kind} наделён священной силой!
+on-end:Священная сила покидает your {kind}.
 slay:EVIL_2
 
 name:ATT_DEMON
 desc:temporary slay demon
-grade:R:10000:AttDemon:Your {kind} become{s} a bane of demons!
-on-end:Your {kind} return{s} to normal.
+#grade:R:10000:AttDemon:Your {kind} become{s} a bane of demons!
+grade:R:10000:ДопДемон:Your {kind} становится бичом для демонов!
+on-end:Your {kind} приходит в норму.
 slay:DEMON_5
 
 name:ATT_VAMP
 desc:temporary hitpoint siphoning
-grade:p:10000:AttVamp:Вы можете высасывать жизнь из своих жертв!
+#grade:p:10000:AttVamp:Вы можете высасывать жизнь из своих жертв!
+grade:p:10000:ДопВамп:Вы можете высасывать жизнь из своих жертв!
 on-end:Ваша способность высасывать жизнь пропадает.
 
 name:HEAL
 desc:turn-by-turn healing through increased metabolism
-grade:G:10000:Heal:Ваш метаболизм ускоряется!
+#grade:G:10000:Heal:Ваш метаболизм ускоряется!
+grade:G:10000:Лечение:Ваш метаболизм ускоряется!
 on-end:Ваш метаболизм приходит в норму.
 
 name:COMMAND
 desc:commanding a monster
-grade:P:10000:Cmd:Вы сосредоточены на своей цели.
+#grade:P:10000:Cmd:Вы сосредоточены на своей цели.
+grade:P:10000:Командир:Вы сосредоточены на своей цели.
 on-end:Вы возвращаете контроль над собственным телом.
 
 name:ATT_RUN
 desc:escape on attack
-grade:m:10000:HitRun:Вы напрягаетесь и готовы бежать!
+#grade:m:10000:HitRun:Вы напрягаетесь и готовы бежать!
+grade:m:10000:УдарБег:Вы напрягаетесь и готовы бежать!
 on-end:Вы снова расслабились.
 
 name:COVERTRACKS
 desc:leave no scent trail, reduce visibility
-grade:T:10000:NoTrack:Вы начинаете заметать следы.
+#grade:T:10000:NoTrack:Вы начинаете заметать следы.
+grade:T:10000:Маскировка:Вы начинаете заметать следы.
 on-end:Вы перестаете заметать следы.
 
 name:POWERSHOT
 desc:piercing shot
-grade:i:10000:PShot:Приготовьтесь к мощной стрельбе!
+#grade:i:10000:PShot:Приготовьтесь к мощной стрельбе!
+grade:i:10000:ТочВыст:Приготовьтесь к мощной стрельбе!
 on-end:Ваша сила выстрела возвращается к обычному показателю.
 
 name:TAUNT
 desc:taunting
-grade:i:10000:Taunt:Вы начинаете раздражать своих врагов!
+#grade:i:10000:Taunt:Вы начинаете раздражать своих врагов!
+grade:i:10000:Издёвка:Вы начинаете раздражать своих врагов!
 on-end:Вы перестаете раздражать своих врагов.
 
 name:BLOODLUST
 desc:desire to kill
-grade:y:10:Bloodlust: Перед вашими глазами опускается красный туман!
-grade:I:18:Bloodlust:Ваша жажда крови усиливается!
-grade:o:26:Bloodlust:Ваша жажда крови усиливается!
-grade:r:34:Bloodlust:Ваша жажда крови усиливается!
-grade:R:45:Bloodlust:Ваша жажда крови усиливается!
-grade:P:50:Bloodlust:Ваша жажда крови неутолима!
+#grade:y:10:Bloodlust: Перед вашими глазами опускается красный туман!
+grade:y:10:Кровожад: Перед вашими глазами опускается красный туман!
+grade:I:18:Кровожад:Ваша жажда крови усиливается!
+grade:o:26:Кровожад:Ваша жажда крови усиливается!
+grade:r:34:Кровожад:Ваша жажда крови усиливается!
+grade:R:45:Кровожад:Ваша жажда крови усиливается!
+grade:P:50:Кровожад:Ваша жажда крови неутолима!
 on-end:Туман рассеивается.
 
 name:BLACKBREATH
 desc:black breath
-grade:D:10:BlkBrth:Вас одолевает Чёрное Дыхание.
+#grade:D:10:BlkBrth:Вас одолевает Чёрное Дыхание.
+grade:D:10:ЧёрнДых:Вас одолевает Чёрное Дыхание.
 on-end:Чёрная Тень исчезает.
 
 name:STEALTH
 desc:stealth
-grade:D:10000:Stealth:Вы чувствуете себя бесшумным!
+#grade:D:10000:Stealth:Вы чувствуете себя бесшумным!
+grade:D:10000:Скрыт:Вы чувствуете себя бесшумным!
 on-end:Вы чувствуете себя менее скрытным.
 
 name:FREE_ACT
 desc:free action
-grade:G:10000:FrAct:Ваши конечности наполняются энергией!
+#grade:G:10000:FrAct:Ваши конечности наполняются энергией!
+grade:G:10000:СопПарал:Ваши конечности наполняются энергией!
 on-end:Ваши конечности возвращаются в нормальное состояние.
 on-increase:Ваши конечности чувствуют себя более энергичными!
 flag-synonym:FREE_ACT:1

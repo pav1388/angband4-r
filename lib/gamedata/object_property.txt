@@ -37,8 +37,8 @@ type:stat
 code:STR
 power:9
 mult:13
-adjective:strong
-neg-adjective:weak
+adjective:сильным
+neg-adjective:слабым
 bindui:stat_mod_ui_compact_0<STR>:0
 
 name:intelligence
@@ -46,8 +46,8 @@ type:stat
 code:INT
 power:5
 mult:10
-adjective:smart
-neg-adjective:stupid
+adjective:умным
+neg-adjective:глупым
 bindui:stat_mod_ui_compact_0<INT>:0
 
 name:wisdom
@@ -55,8 +55,8 @@ type:stat
 code:WIS
 power:5
 mult:10
-adjective:wise
-neg-adjective:naive
+adjective:мудрым
+neg-adjective:наивным
 bindui:stat_mod_ui_compact_0<WIS>:0
 
 name:dexterity
@@ -65,8 +65,8 @@ code:DEX
 power:8
 mult:10
 type-mult:gloves:2
-adjective:dextrous
-neg-adjective:clumsy
+adjective:ловким
+neg-adjective:неуклюжим
 bindui:stat_mod_ui_compact_0<DEX>:0
 
 name:constitution
@@ -74,8 +74,8 @@ type:stat
 code:CON
 power:12
 mult:15
-adjective:healthy
-neg-adjective:sickly
+adjective:здоровым
+neg-adjective:больным
 bindui:stat_mod_ui_compact_0<CON>:0
 
 name:stealth
@@ -223,7 +223,7 @@ subtype:sustain
 id-type:on effect
 code:SUST_STR
 power:9
-msg:Your {name} glows.
+msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<STR>:1
 
 name:sustain intelligence
@@ -232,7 +232,7 @@ subtype:sustain
 id-type:on effect
 code:SUST_INT
 power:4
-msg:Your {name} glows.
+msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<INT>:1
 
 name:sustain wisdom
@@ -241,7 +241,7 @@ subtype:sustain
 id-type:on effect
 code:SUST_WIS
 power:4
-msg:Your {name} glows.
+msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<WIS>:1
 
 name:sustain dexterity
@@ -250,7 +250,7 @@ subtype:sustain
 id-type:on effect
 code:SUST_DEX
 power:7
-msg:Your {name} glows.
+msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<DEX>:1
 
 name:sustain constitution
@@ -259,7 +259,7 @@ subtype:sustain
 id-type:on effect
 code:SUST_CON
 power:8
-msg:Your {name} glows.
+msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<CON>:1
 
 name:protection from fear
@@ -268,7 +268,7 @@ code:PROT_FEAR
 subtype:protection
 id-type:on effect
 power:6
-msg:Your {name} strengthens your courage.
+msg:Ваш {name} придаёт вам храбрости.
 bindui:pfear_ui_compact_0:0
 desc:fear
 
@@ -278,7 +278,7 @@ code:PROT_BLIND
 subtype:protection
 id-type:on effect
 power:16
-msg:Your {name} soothes your eyes.
+msg:Ваш {name} помогает успокоить глаза.
 bindui:pblind_ui_compact_0:0
 desc:blindness
 
@@ -288,7 +288,7 @@ code:PROT_CONF
 subtype:protection
 id-type:on effect
 power:24
-msg:Your {name} clears your thoughts.
+msg:Ваш {name} проясняет ваши мысли.
 bindui:pconf_ui_compact_0:0
 desc:confusion
 
@@ -298,7 +298,7 @@ code:PROT_STUN
 subtype:protection
 id-type:on effect
 power:12
-msg:Your {name} steadies you.
+msg:Ваш {name} укрепляет вас.
 bindui:pstun_ui_compact_0:0
 desc:stunning
 
@@ -308,7 +308,7 @@ subtype:misc ability
 id-type:timed
 code:SLOW_DIGEST
 power:2
-msg:You realise your {name} is slowing your metabolism.
+msg:Ваш {name} замедляет обмен веществ.
 bindui:slow_digestion_ui_compact_0:0
 desc:Slows your metabolism
 
@@ -318,7 +318,7 @@ subtype:misc ability
 id-type:on effect
 code:FEATHER
 power:1
-msg:Your {name} slows your fall.
+msg:Ваш {name} замедляет ваше падение.
 bindui:feather_falling_ui_compact_0:0
 desc:Feather Falling
 
@@ -340,7 +340,7 @@ type-mult:helm:2
 type-mult:crown:2
 type-mult:gloves:2
 type-mult:boots:2
-msg:You note that your {name} is speeding up your recovery.
+msg:Ваш {имя} способствует ускорению регенерации.
 bindui:regen_ui_compact_0:0
 desc:Speeds regeneration
 
@@ -404,7 +404,7 @@ type-mult:helm:2
 type-mult:crown:2
 type-mult:gloves:5
 type-mult:boots:2
-msg:Your {name} keeps you moving.
+msg:Ваш {name} помогает вам передвигаться.
 bindui:free_action_ui_compact_0:0
 desc:Prevents paralysis
 
@@ -426,7 +426,7 @@ type-mult:helm:2
 type-mult:crown:2
 type-mult:gloves:2
 type-mult:boots:2
-msg:Your {name} warms your spirit.
+msg:Ваш {name} согревает ваш дух.
 bindui:holdlife_ui_compact_0:0
 desc:Sustains your life force
 
@@ -449,7 +449,7 @@ type-mult:helm:0
 type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
-msg:Your {name} causes an earthquake!
+msg:Ваш {name} вызывает землетрясение!
 desc:Sometimes creates earthquakes on impact
 
 name:blessed melee
@@ -550,7 +550,7 @@ subtype:bad
 id-type:timed
 code:IMPAIR_HP
 power:-8
-msg:You feel your {name} is slowing your recovery.
+msg:Вы чувствуете, что ваш {name} замедляет выздоровление.
 bindui:imphp_ui_compact_0:0
 desc:Impairs hitpoint recovery
 
@@ -560,7 +560,7 @@ subtype:bad
 id-type:timed
 code:IMPAIR_MANA
 power:-8
-msg:You feel your {name} is slowing your mana recovery.
+msg:Вы чувствуете, что ваш {name} замедляет восстановление маны.
 bindui:impsp_ui_compact_0:0
 desc:Impairs mana recovery
 
@@ -579,7 +579,7 @@ subtype:bad
 id-type:on effect
 code:NO_TELEPORT
 power:-20
-msg:Your {name} prevents you teleporting.
+msg:Ваш {name} препятствует телепортации.
 bindui:noteleport_ui_compact_0:0
 desc:Prevents teleportation
 
@@ -589,7 +589,7 @@ subtype:bad
 id-type:timed
 code:AGGRAVATE
 power:-20
-msg:You notice your {name} aggravating things around you.
+msg:Вы замечаете, что {name} усугубляет обстановку вокруг вас.
 bindui:aggravate_ui_compact_0:0
 desc:Aggravates creatures nearby
 
@@ -599,7 +599,7 @@ subtype:bad
 id-type:timed
 code:DRAIN_EXP
 power:-5
-msg:You sense your {name} is draining your life.
+msg:Вы чувствуете, что {name} истощает ваш потенциал.
 bindui:drainxp_ui_compact_0:0
 desc:Drains experience
 
@@ -732,7 +732,7 @@ type-mult:helm:2
 type-mult:crown:2
 type-mult:gloves:2
 type-mult:boots:2
-msg:Your {name} stops you from setting off the trap.
+msg:Ваш {name} не позволит вам попасть в ловушку.
 bindui:trap_immunity_ui_compact_0:0
 desc:Gives immunity to traps
 

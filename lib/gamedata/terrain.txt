@@ -108,7 +108,7 @@
 # together.
 
 code:NONE
-name:неизвестно
+name:неизвестность
 graphics: :w
 priority:2
 

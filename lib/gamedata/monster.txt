@@ -611,7 +611,8 @@ rarity:1
 experience:2
 blow:BITE:HURT:1d3
 blow:STING:HURT:1d3
-desc:Она в длину больше метра и является плотоядной.
+flags:FEMALE
+desc:Она в длину больше метра. Она плотоядна.
 
 #name:giant white centipede
 name:гигантская белая сороконожка
@@ -629,11 +630,12 @@ rarity:1
 experience:2
 blow:CRAWL:HURT:1d2
 blow:STING:COLD:1d2
+flags:FEMALE
 flags:RAND_50 | BASH_DOOR
-desc:Она в длину около двух метров и является плотоядной.
+desc:Она в длину около двух метров. Она плотоядна.
 
 #name:white icky thing
-name:белая мерзкая вещь
+name:белое мерзкое нечто
 base:icky thing
 color:w
 speed:110
@@ -650,7 +652,7 @@ flags:RAND_25
 desc:Это маленькое, склизкое, мерзкое существо.
 
 #name:clear icky thing
-name:прозрачная мерзкая вещь
+name:прозрачное мерзкое нечто
 base:icky thing
 color:w
 speed:110
@@ -682,6 +684,7 @@ depth:1
 rarity:1
 experience:1
 blow:BITE:HURT:1d2
+flags:FEMALE
 flags:MULTIPLY
 flags:RAND_50
 desc:Она больше метра в длину и с большими зубами.
@@ -700,6 +703,7 @@ rarity:1
 experience:2
 blow:BITE:HURT:1d1
 blow:CRUSH:HURT:1d1
+flags:FEMALE
 flags:RAND_50
 desc:Её длина составляет около двух с половиной метров.
 
@@ -717,6 +721,7 @@ depth:1
 rarity:1
 experience:5
 blow:HIT:HURT:1d5
+flags:MALE
 flags:DROP_60
 desc:Это приземистая и уродливая гуманоидная фигура с клыкастой мордой.
 
@@ -732,6 +737,7 @@ depth:1
 rarity:1
 experience:2
 blow:CRAWL:POISON:1d2
+flags:FEMALE
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_POIS | NO_FEAR
@@ -749,6 +755,7 @@ depth:1
 rarity:1
 experience:1
 blow:GAZE:PARALYZE
+flags:MALE
 flags:NEVER_MOVE
 flags:HURT_LIGHT | NO_FEAR
 desc:Бесплотный глаз, парящий в метре над землей.
@@ -766,6 +773,7 @@ depth:1
 rarity:1
 experience:2
 blow:BITE:HURT:1d1
+flags:FEMALE
 desc:Это небольшая ящерица с жесткой шкурой.
 
 name:дикая собака
@@ -781,6 +789,7 @@ depth:1
 rarity:1
 experience:1
 blow:BITE:HURT:1d1
+flags:FEMALE
 flags:GROUP_AI
 friends:100:2d7:Same
 desc:Это рычащая собака, опасна, если их целая стая.
@@ -798,6 +807,7 @@ depth:1
 rarity:1
 experience:3
 blow:BITE:HURT:1d2
+flags:MALE
 desc:Крупный муравей с мощными мандибулами.
 
 name:фруктовая летучая мышь
@@ -852,7 +862,7 @@ innate-freq:4
 spells:SHRIEK
 desc:Вкуснятина!  Выглядит очень аппетитно.  Но звучит не очень приятно...
 
-name:слюнявая мерзкая вещь
+name:слюнявое мерзкое нечто
 base:icky thing
 color:W
 speed:110
@@ -885,7 +895,7 @@ experience:3
 blow:CRAWL:HURT:1d1
 blow:STING:ACID:1d1
 flags:RAND_50 | BASH_DOOR
-desc:Она имеет длину около полутора метров и является плотоядной.
+desc:Она имеет длину около полутора метров. Она плотоядна.
 
 name:солдат
 base:person
@@ -983,10 +993,11 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:Он оставляет за собой след из выпавших ингредиентов для заклинаний.
+desc:Он оставляет за собой след из потерянных ингредиентов для заклинаний.
 
-name:yellow mushroom patch
-plural:yellow mushroom patches
+#name:yellow mushroom patch
+name:жёлтая грибница
+plural:жёлтые грибницы
 base:mushroom
 color:y
 speed:110
@@ -1000,10 +1011,11 @@ experience:2
 blow:SPORE:TERRIFY:1d6
 flags:NEVER_MOVE
 flags:IM_POIS
-desc:Yum!  It looks quite tasty.
+desc:Вкуснятина!  Выглядит очень аппетитно.
 
-name:white jelly
-plural:white jellies
+#name:white jelly
+name:белое желе
+plural:белые желе
 base:jelly
 color:w
 speed:120
@@ -1017,9 +1029,10 @@ experience:10
 blow:TOUCH:POISON:1d2
 flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_POIS | HURT_COLD | NO_CONF | NO_SLEEP
-desc:It's a large pile of white flesh.
+desc:Это большая куча белой плоти.
 
-name:giant green frog
+#name:giant green frog
+name:гигантская зелёная лягушка
 base:reptile
 color:g
 speed:110
@@ -1033,9 +1046,10 @@ rarity:1
 experience:6
 blow:BITE:HURT:1d3
 flags:RAND_25 | BASH_DOOR
-desc:It is as big as a wolf.
+desc:Она огромная, как волк.
 
-name:giant black ant
+#name:giant black ant
+name:гигантский чёрный муравей
 base:ant
 color:D
 speed:110
@@ -1049,9 +1063,10 @@ rarity:1
 experience:8
 blow:BITE:HURT:1d4
 flags:RAND_25
-desc:It is about three feet long.
+desc:Его длина почти метр.
 
-name:salamander
+#name:salamander
+name:саламандра
 base:reptile
 color:o
 speed:110
@@ -1066,10 +1081,11 @@ experience:10
 blow:BITE:FIRE:1d3
 flags:RAND_25
 flags:IM_FIRE
-desc:A small black and orange lizard.
+desc:Небольшая чёрно-оранжевая ящерица.
 
-name:white harpy
-plural:white harpies
+#name:white harpy
+name:белая гарпия
+plural:белые гарпии
 base:hybrid
 color:w
 speed:110
@@ -1086,9 +1102,10 @@ blow:CLAW:HURT:1d1
 blow:BITE:HURT:1d2
 flags:FEMALE | EVIL | ANIMAL
 flags:RAND_50
-desc:A flying, screeching bird with a woman's face.
+desc:Летающая, кричащая птица с женским лицом.
 
-name:blue yeek
+#name:blue yeek
+name:синий йик
 base:yeek
 color:b
 speed:110
@@ -1102,9 +1119,10 @@ rarity:1
 experience:4
 blow:HIT:HURT:1d5
 flags:DROP_60
-desc:A small humanoid figure.
+desc:Небольшая гуманоидная фигура.
 
-name:Grip, Farmer Maggot's Dog
+#name:Grip, Farmer Maggot's Dog
+name:Грип, Собака Фермера Маггота
 base:canine
 color:y
 speed:120
@@ -1120,10 +1138,11 @@ blow:BITE:HURT:1d4
 flags:UNIQUE | NAME_COMMA
 flags:RAND_25 | BASH_DOOR
 flags:NO_CONF | NO_SLEEP
-desc:A rather vicious dog belonging to Farmer Maggot.  It thinks you are
-desc: stealing mushrooms.
+desc:Довольно злобная собака, принадлежащая фермеру Магготу.  Она
+desc: считает, что вы воруете грибы.
 
-name:Fang, Farmer Maggot's Dog
+#name:Fang, Farmer Maggot's Dog
+name:Фэнг, Собака Фермера Маггота
 base:canine
 color:y
 speed:120
@@ -1139,10 +1158,11 @@ blow:BITE:HURT:1d4
 flags:UNIQUE | NAME_COMMA
 flags:RAND_25 | BASH_DOOR
 flags:NO_CONF | NO_SLEEP
-desc:A rather vicious dog belonging to Farmer Maggot.  It thinks you are
-desc: stealing mushrooms.
+desc:Довольно злобная собака, принадлежащая фермеру Магготу.  Она
+desc: считает, что вы воруете грибы.
 
-name:green worm mass
+#name:green worm mass
+name:зелёная червивая масса
 base:worm
 color:g
 speed:100
@@ -1157,9 +1177,10 @@ blow:CRAWL:ACID:1d3
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_ACID | NO_FEAR
-desc:It is a large slimy mass of worms.
+desc:Это большая склизкая масса червей.
 
-name:cave spider
+#name:cave spider
+name:пещерный паук
 base:spider
 color:p
 speed:120
@@ -1174,9 +1195,10 @@ blow:BITE:HURT:1d4
 flags:ANIMAL | WEIRD_MIND
 flags:GROUP_AI
 friends:100:2d8:Same
-desc:It is a black spider that moves in fits and starts.
+desc:Это чёрный паук, который передвигается рывками.
 
-name:wild cat
+#name:wild cat
+name:дикий кот
 base:feline
 color:U
 speed:120
@@ -1191,10 +1213,11 @@ experience:8
 blow:CLAW:HURT:1d3
 blow:CLAW:HURT:1d3
 flags:BASH_DOOR
-desc:A larger than normal feline, hissing loudly.  Its velvet paws conceal a
-desc: fistful of needles.
+desc:Кот крупнее обычного, громко шипит.  В его бархатных
+desc: лапах скрыта горсть игл.
 
-name:crow
+#name:crow
+name:ворон
 base:bird
 color:s
 speed:120
@@ -1207,11 +1230,12 @@ rarity:2
 experience:8
 blow:BITE:HURT:1d3
 blow:BITE:HURT:1d3
-desc:It is a hooded crow, gray except for the black wings and head.
+desc:Это серый ворон, за исключением чёрных крыльев и головы.
 
 ### Dungeon level 3 ###
 
-name:Sméagol
+#name:Sméagol
+name:Смеагол
 base:humanoid
 color:B
 speed:130
@@ -1227,9 +1251,10 @@ flags:UNIQUE | MALE | EVIL | INVISIBLE
 flags:DROP_1 | DROP_GOOD | DROP_GREAT
 flags:RAND_25 | RAND_50 | TAKE_ITEM
 flags:HURT_LIGHT
-desc:Usually known as Gollum.  He's been sneaking, and he wants his 'precious.'
+desc:Известный также как Голлум. Он крадётся и хочет свою 'прелесть'.
 
-name:green ooze
+#name:green ooze
+name:зелёная слизь
 base:jelly
 color:g
 speed:120
@@ -1244,9 +1269,10 @@ blow:CRAWL:ACID:1d3
 flags:DROP_60
 flags:RAND_25 | RAND_50
 flags:IM_ACID | IM_POIS | HURT_COLD | NO_CONF | NO_SLEEP
-desc:It's green and it's oozing.
+desc:Это зёленое и текучее.
 
-name:poltergeist
+#name:poltergeist
+name:полтергейст
 base:ghost
 color:W
 speed:130
@@ -1263,9 +1289,10 @@ flags:RAND_25 | RAND_50 | TAKE_ITEM
 flags:HURT_LIGHT
 spell-freq:15
 spells:BLINK
-desc:It is a ghastly, ghostly form.
+desc:Это ужасная, призрачная форма.
 
-name:metallic blue centipede
+#name:metallic blue centipede
+name:металическая синия сороконожка
 base:centipede
 color:b
 speed:120
@@ -1280,10 +1307,11 @@ experience:7
 blow:CRAWL:HURT:1d2
 blow:STING:ELEC:1d2
 flags:RAND_50 | BASH_DOOR
-desc:It is about four feet long and carnivorous.
+desc:Она имеет длину около полутора метров. Она плотоядна.
 
-name:giant white louse
-plural:giant white lice
+#name:giant white louse
+name:гигантская белая вошь
+plural:гигантские белые вши
 base:insect
 color:w
 speed:120
@@ -1296,9 +1324,10 @@ depth:3
 rarity:1
 experience:1
 blow:BITE:HURT:1d1
-desc:It is six inches long.
+desc:Она примерно 15 сантиметров в длину.
 
-name:black naga
+#name:black naga
+name:чёрная нага
 base:naga
 color:D
 speed:110
@@ -1312,10 +1341,11 @@ experience:20
 blow:CRUSH:HURT:1d8
 flags:DROP_60
 flags:RAND_25
-desc:A large black serpent's body with a female torso.
+desc:Змея соединяет в себе чёрное змеиное тело с женской фигурой.
 
-name:spotted mushroom patch
-plural:spotted mushroom patches
+#name:spotted mushroom patch
+name:пятнистая грибница
+plural:пятнистые грибницы
 base:mushroom
 color:o
 speed:110
@@ -1329,10 +1359,11 @@ experience:3
 blow:SPORE:POISON:2d4
 flags:NEVER_MOVE
 flags:IM_POIS
-desc:Yum!  It looks quite tasty.
+desc:Вкуснятина!  Выглядит очень аппетитно.
 
-name:silver jelly
-plural:silver jellies
+#name:silver jelly
+name:серебряное желе
+plural:серебряные желе
 base:jelly
 color:W
 speed:120
@@ -1349,12 +1380,13 @@ flags:NEVER_MOVE
 flags:IM_POIS | HURT_COLD | NO_CONF | NO_SLEEP
 spell-freq:15
 spells:DRAIN_MANA
-message-invis:DRAIN_MANA:Something slurps.
-desc:It is a large pile of silver flesh that sucks all light from its
-desc: surroundings.
+message-invis:DRAIN_MANA:Что-то хлюпает.
+desc:Это большая куча серебристой плоти, которая высасывает
+desc: весь свет из окружающей среды.
 
-name:yellow jelly
-plural:yellow jellies
+#name:yellow jelly
+name:жёлтое желе
+plural:жёлтые желе
 base:jelly
 color:y
 speed:120
@@ -1370,10 +1402,11 @@ flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_POIS | HURT_COLD | NO_CONF | NO_SLEEP
 spell-freq:15
 spells:DRAIN_MANA
-message-invis:DRAIN_MANA:Something slurps.
-desc:It's a large pile of yellow flesh.
+message-invis:DRAIN_MANA:Что-то хлюпает.
+desc:Это большая куча жёлтой плоти.
 
-name:scruffy looking hobbit
+#name:scruffy looking hobbit
+name:неряшливый хоббит
 base:humanoid
 color:b
 speed:110
@@ -1389,10 +1422,11 @@ blow:TOUCH:EAT_GOLD
 flags:MALE | EVIL
 flags:DROP_60
 flags:TAKE_ITEM
-desc:A short little guy, in bedraggled clothes.  He appears to be looking for a
-desc: good tavern.
+desc:Низкорослый парень в потрепанной одежде.  Похоже, он ищет
+desc: хорошую таверну.
 
-name:giant white ant
+#name:giant white ant
+name:гигантский белый муравей
 base:ant
 color:w
 speed:110
@@ -1406,9 +1440,10 @@ rarity:1
 experience:7
 blow:BITE:HURT:1d4
 friends:100:4d4:same
-desc:It is about two feet long and has sharp pincers.
+desc:Он достигает полуметра в длину и имеет острые клешни.
 
-name:yellow mold
+#name:yellow mold
+name:жёлтая плесень
 base:mold
 color:y
 speed:110
@@ -1421,9 +1456,10 @@ rarity:1
 experience:9
 blow:SPORE:HURT:1d4
 flags:EMPTY_MIND | STUPID
-desc:It is a strange yellow growth on the dungeon floor.
+desc:Это странное жёлтое образование на полу подземелья.
 
-name:metallic red centipede
+#name:metallic red centipede
+name:металическая красная сороконожка
 base:centipede
 color:r
 speed:120
@@ -1438,9 +1474,10 @@ experience:12
 blow:CRAWL:HURT:1d2
 blow:STING:FIRE:1d2
 flags:RAND_25 | BASH_DOOR
-desc:It is about four feet long and carnivorous.
+desc:Она имеет длину около полутора метров. Она плотоядна.
 
-name:yellow worm mass
+#name:yellow worm mass
+name:жёлтая червивая масса
 base:worm
 color:y
 speed:100
@@ -1455,9 +1492,10 @@ blow:CRAWL:LOSE_DEX:1d3
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | NO_FEAR
-desc:It is a large slimy mass of worms.
+desc:Это большая склизкая масса червей.
 
-name:clear worm mass
+#name:clear worm mass
+name:прозрачная червивая масса
 base:worm
 color:w
 speed:100
@@ -1473,9 +1511,10 @@ flags:WEIRD_MIND | INVISIBLE | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_POIS | NO_FEAR
 flags:ATTR_CLEAR
-desc:It is a disgusting mass of poisonous worms.
+desc:Это отвратительное месиво из ядовитых червей.
 
-name:radiation eye
+#name:radiation eye
+name:излучающий глаз
 base:eye
 color:R
 speed:110
@@ -1491,9 +1530,9 @@ flags:NEVER_MOVE
 flags:HURT_LIGHT | NO_FEAR
 spell-freq:11
 spells:DRAIN_MANA
-desc:A disembodied eye, crackling with energy.
+desc:Бесплотный глаз, излучающий энергию.
 
-name:кобольд шаман
+name:кобольд-шаман
 base:kobold
 color:r
 speed:110
@@ -1517,7 +1556,8 @@ desc:Это кобольд, одетый в шкуры и дико размах�
 
 ### Dungeon level 4 ###
 
-name:cave lizard
+#name:cave lizard
+name:пещерная ящерица
 base:reptile
 color:u
 speed:110
@@ -1530,9 +1570,10 @@ depth:4
 rarity:1
 experience:8
 blow:BITE:HURT:1d5
-desc:It is an armoured lizard with a powerful bite.
+desc:Это бронированная ящерица с невероятно сильным укусом.
 
-name:scout
+#name:scout
+name:разведчик
 base:person
 color:W
 speed:110
@@ -1559,9 +1600,10 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:An agile hunter, ready and relaxed.
+desc:Ловкий охотник, подготовленный и спокойный.
 
-name:gallant
+#name:gallant
+name:галант
 base:person
 color:w
 speed:110
@@ -1586,9 +1628,10 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:An adventurer both devoutly religious and skillful in combat.
+desc:Искатель приключений, одновременно и набожный, и умелый в бою.
 
-name:tamer
+#name:tamer
+name:укротитель
 base:person
 color:y
 speed:110
@@ -1611,7 +1654,7 @@ friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
 friends:50:1d2:Same
-desc:A lover of nature.
+desc:Любитель природы.
 
 name:blue jelly
 plural:blue jellies
@@ -1754,7 +1797,7 @@ blow:HIT:HURT:1d8
 blow:HIT:HURT:1d8
 flags:UNIQUE | MALE
 flags:DROP_2 | DROP_GOOD | ONLY_ITEM
-friends:80:1d7:Scruffy looking hobbit:servant
+friends:80:1d7:неряшливый хоббит:servant
 desc:He is a sturdy hobbit who is renowned for his unusual strength and vigour.
 desc:  He can prove a troublesome opponent.
 
@@ -1862,7 +1905,7 @@ flags:EMPTY_MIND
 flags:OPEN_DOOR | BASH_DOOR
 desc:It is a small animated kobold skeleton.
 
-name:grey icky thing
+name:серое мерзкое нечто
 base:icky thing
 color:s
 speed:110
@@ -2069,7 +2112,7 @@ flags:DROP_20
 flags:HURT_LIGHT
 innate-freq:15
 spells:ARROW
-friends:30:1d3:Crow
+friends:30:1d3:ворон
 friends:100:2d9:Same
 desc:He is one of the many weaker 'slave' orcs, often mistakenly known as a
 desc: goblin.
@@ -2131,8 +2174,9 @@ desc: pervades the air.
 
 ### Dungeon level 7 ###
 
-name:crow of Durthang
-plural:crows of Durthang
+#name:crow of Durthang
+name:ворон Дуртанга
+plural:вороны Дуртанга
 base:bird
 color:D
 speed:120
@@ -2148,10 +2192,10 @@ blow:BITE:HURT:1d2
 spell-freq:9
 spell-power:4
 spells:WOUND
-message-vis:WOUND:{name} caws three times.
-message-invis:WOUND:Something caws three times.
-desc:A crook-beaked bird with bedraggled black feathers.  It mocks you, and you
-desc: realise that its scorn can kill.
+message-vis:WOUND:{name} трижды каркнул.
+message-invis:WOUND:Кто-то трижды каркнул.
+desc:Птица с кривым клювом и грязными черными перьями.  Она насмехается
+desc: над вами, и вы понимаете, что её презрение может убить.
 
 name:cave orc
 base:orc
@@ -2260,7 +2304,7 @@ blow:BITE:LOSE_STR:2d4
 flags:RAND_50 | BASH_DOOR
 desc:It looks poisonous.
 
-name:green icky thing
+name:зелёное мерзкое нечто
 base:icky thing
 color:g
 speed:110
@@ -2371,7 +2415,7 @@ flags:UNIQUE | MALE | MOVE_BODY
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 friends:100:1d10:маленький кобольд:servant
 friends:100:1d10:кобольд:servant
-friends:100:1d3:кобольд шаман:servant
+friends:100:1d3:кобольд-шаман:servant
 friends:100:1d5:кобольд лучник:servant
 friends:100:1d5:крупный кобольд:bodyguard
 desc:Сильный и могущественный, как для кобольда.
@@ -2587,7 +2631,7 @@ blow:CLAW:HURT:1d3
 blow:BITE:HURT:1d4
 desc:A large white figure covered in shaggy fur.
 
-name:bloodshot icky thing
+name:кровавое мерзкое нечто
 base:icky thing
 color:r
 speed:110
@@ -2603,7 +2647,7 @@ blow:CRAWL:ACID:2d4
 flags:EMPTY_MIND
 spell-freq:11
 spells:DRAIN_MANA
-message-invis:DRAIN_MANA:Something slurps.
+message-invis:DRAIN_MANA:Что-то хлюпает.
 desc:It is a strange, slimy, icky creature.
 
 name:giant grey rat
@@ -2949,7 +2993,7 @@ spell-freq:4
 spells:BLINK | CONF | HEAL | SLOW | TELE_TO
 spells:S_MONSTER
 friends:50:2d5:terrified yeek:servant
-friends:100:2d5:Blue yeek:servant
+friends:100:2d5:синий йик:servant
 friends:50:1d3:Master yeek:servant
 desc:He's just like his daddy!  He knows mighty spells, but fortunately he is a
 desc: yeek.
@@ -3367,7 +3411,7 @@ flags:NEVER_MOVE
 flags:HURT_LIGHT | HURT_COLD | IM_POIS | NO_CONF | NO_SLEEP
 spell-freq:11
 spells:DRAIN_MANA
-message-invis:DRAIN_MANA:Something slurps.
+message-invis:DRAIN_MANA:Что-то хлюпает.
 desc:Yum!  It looks quite tasty.  It is a pulsing mound of glowing flesh.
 
 name:nether worm mass
@@ -3702,7 +3746,7 @@ spell-freq:3
 spells:BLIND | BLINK | HEAL | SLOW | TPORT
 spells:S_KIN | S_MONSTER
 friends:50:2d6:terrified yeek:servant
-friends:100:2d6:Blue yeek:servant
+friends:100:2d6:синий йик:servant
 friends:100:2d4:Master yeek:servant
 friends:100:1d1:Orfax, Son of Boldor
 desc:A great yeek, powerful in magic and sorcery, but a yeek all the same.
@@ -3862,7 +3906,7 @@ friends:100:3d4:cave orc
 desc:A strong orc guarding the pass of Cirith Ungol.  He is mortally afraid of
 desc: spiders.
 
-name:blue icky thing
+name:синее мерзкое нечто
 base:icky thing
 color:b
 speed:100
@@ -3883,7 +3927,7 @@ flags:IM_POIS
 flags:FORCE_SLEEP
 spell-freq:8
 spells:BLIND | CONF | SCARE
-message-invis:BLIND:Something slurps.
+message-invis:BLIND:Что-то хлюпает.
 desc:It is a strange, slimy, icky creature, with rudimentary intelligence, but
 desc: evil cunning.  It hungers for food, and you look tasty.
 
@@ -4006,9 +4050,9 @@ flags:NEVER_MOVE
 flags:FORCE_SLEEP
 spell-freq:2
 spells:BLINK | DARKNESS | SCARE | SLOW
-message-invis:BLINK:Something hums softly.
-message-invis:DARKNESS:Something hums softly.
-message-invis:SLOW:Something hums softly.
+message-invis:BLINK:Что-то тихонько жужжит.
+message-invis:DARKNESS:Что-то тихонько жужжит.
+message-invis:SLOW:Что-то тихонько жужжит.
 desc:Yum!  It looks quite tasty.  It seems to glow with an unusual light.
 
 name:guardian naga
@@ -4770,7 +4814,7 @@ blow:BITE:HURT:1d8
 flags:RAND_25 | BASH_DOOR | GROUP_AI | ATTR_FLICKER
 spell-freq:4
 spells:BLINK | TELE_TO
-message-invis:BLINK:Something yips.
+message-invis:BLINK:Кто-то тявкает.
 friends:100:2d7:Same
 desc:A strange magical member of the canine race, its form seems to shimmer and
 desc: fade in front of your very eyes.
@@ -5161,7 +5205,7 @@ experience:250
 spell-freq:4
 spells:BLINK
 spells:S_MONSTER
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:It is a strange pulsing mound of flesh.
 
 name:sasquatch
@@ -5522,7 +5566,7 @@ flags:IM_COLD | IM_FIRE | IM_POIS
 flags:FORCE_SLEEP
 spell-freq:7
 spells:SLOW
-message-invis:SLOW:Something rumbles.
+message-invis:SLOW:Что-то грохочет.
 desc:It is a massive metal statue that moves steadily towards you.
 
 name:giant yellow scorpion
@@ -5585,8 +5629,8 @@ flags:ANIMAL | WEIRD_MIND | ATTR_FLICKER
 flags:IM_POIS | GROUP_AI
 spell-freq:5
 spells:BLINK | TELE_TO | TELE_SELF_TO
-message-invis:BLINK:Something chitters.
-message-invis:TELE_SELF_TO:Something chitters.
+message-invis:BLINK:Что-то стрекочет.
+message-invis:TELE_SELF_TO:Что-то стрекочет.
 friends:100:2d7:Same
 desc:A spider that never seems quite there.  Everywhere you look it is just
 desc: half-seen in the corner of one eye.
@@ -5609,7 +5653,7 @@ flags:RAND_50 | OPEN_DOOR | BASH_DOOR | KILL_BODY | TAKE_ITEM
 flags:IM_POIS | HURT_COLD
 spell-freq:11
 spells:DRAIN_MANA
-message-invis:DRAIN_MANA:Something slurps.
+message-invis:DRAIN_MANA:Что-то хлюпает.
 desc:It is a strangely moving puddle.
 
 name:Easterling champion
@@ -6051,8 +6095,8 @@ flags:FORCE_SLEEP
 spell-freq:4
 spells:CONF | SLOW
 spells:BO_ACID
-message-invis:SLOW:Something rumbles.
-message-invis:BO_ACID:Something rumbles.
+message-invis:SLOW:Что-то грохочет.
+message-invis:BO_ACID:Что-то грохочет.
 desc:A stumpy figure carved from stone, with glittering eyes, this sentinel
 desc: strides towards you with deadly intent.
 
@@ -6289,7 +6333,7 @@ flags:OPEN_DOOR | BASH_DOOR
 flags:IM_COLD | NO_FEAR
 spell-freq:8
 spells:DARKNESS
-message-invis:DARKNESS:Something howls.
+message-invis:DARKNESS:Кто-то воет.
 friends:100:2d4:Wolf:servant
 friends:60:2d4:White wolf:servant
 friends:60:2d4:Warg:servant
@@ -7578,8 +7622,8 @@ blow:CRUSH:HURT:4d4
 flags:RAND_25 | KILL_BODY
 spell-freq:8
 spells:HOLD | BLIND | CONF
-message-invis:HOLD:Something hisses.
-message-invis:BLIND:Something hisses.
+message-invis:HOLD:Что-то шипит.
+message-invis:BLIND:Что-то шипит.
 desc:A great serpent, with coils of steel, a lunge faster than the eye can see,
 desc: and fangs that drip with acidic poison.  Its eyes are mesmerizing.
 
@@ -7623,7 +7667,7 @@ experience:300
 flags:IM_NEXUS
 spell-freq:1
 spells:BLINK | TELE_AWAY
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:It is a very unstable, strange pulsing mound of flesh.
 
 name:southron assassin
@@ -8564,12 +8608,12 @@ innate-freq:10
 spell-freq:6
 spells:CONF | DRAIN_MANA | HOLD | MIND_BLAST | SHRIEK
 spells:S_MONSTER | S_MONSTERS
-message-vis:SHRIEK:The baleful presence of {name} inspires your enemies.
-message-invis:DRAIN_MANA:Something drains your mana away.
-message-invis:HOLD:Your muscles lock up for no apparent reason.
-message-invis:SHRIEK:Something inspires your enemies.
-desc:A figure carved from stone, with three vulture faces whose eyes glow with a
-desc: malevolent light.
+message-vis:SHRIEK:Зловещее присутствие {name} вдохновляет ваших врагов.
+message-invis:DRAIN_MANA:Что-то вытягивает вашу ману.
+message-invis:HOLD:Ваши мышцы застывают без видимой причины.
+message-invis:SHRIEK:Что-то вдохновляет ваших врагов.
+desc:Высеченная из камня фигура с тремя лицами стервятников,
+desc: глаза которых светятся недобрым светом.
 
 ### Dungeon level 36 ###
 
@@ -8615,8 +8659,8 @@ flags:FORCE_SLEEP
 spell-freq:3
 spell-power:20
 spells:BO_ELEC | BE_ELEC | TELE_SELF_TO
-message-invis:BO_ELEC:The constant crackling subsides briefly and then resumes.
-message-invis:TELE_SELF_TO:The constant crackling subsides briefly and then resumes.
+message-invis:BO_ELEC:Постоянный треск ненадолго стихает, а затем возобновляется.
+message-invis:TELE_SELF_TO:Постоянный треск ненадолго стихает, а затем возобновляется.
 desc:A man-shaped form of living lightning.  Sparks and shocks crackle all over
 desc: this madly capering figure, as it leaps and whirls around and about you.
 
@@ -9160,7 +9204,8 @@ desc:A powerful ruler who refused the summons of Mandos on death, preferring
 desc: to re-occupy his now embalmed body.  He commands a legion of his former
 desc: subjects with unearthly shrieks.
 
-name:will o' the wisp
+#name:will o' the wisp
+name:божья искра
 base:elemental
 color:W
 speed:130
@@ -9181,9 +9226,9 @@ flags:IM_ACID | IM_COLD | IM_ELEC | IM_FIRE
 flags:FORCE_SLEEP
 spell-freq:2
 spells:BLINK | WOUND | CONF | TPORT
-message-vis:WOUND:{name} crackles softly.
-message-invis:BLINK:Something crackles softly.
-message-invis:WOUND:Something crackles softly.
+message-vis:WOUND:{name} тихонько потрескивает.
+message-invis:BLINK:Что-то тихонько потрескивает.
+message-invis:WOUND:Что-то тихонько потрескивает.
 desc:A strange ball of glowing light.  It disappears and reappears and seems to
 desc: draw you to it.  You seem somehow compelled to stand still and watch its
 desc: strange dancing motion.
@@ -9244,8 +9289,9 @@ spells:BO_COLD | BO_ELEC | BO_FIRE | BO_ICE
 desc:A Black Númenórean who usurped the throne of Gondor, he is treacherous and
 desc: evil.
 
-name:time vortex
-plural:time vortices
+#name:time vortex
+name:временной вихрь
+plural:временные вихри
 base:vortex
 color:B
 speed:130
@@ -9260,7 +9306,7 @@ blow:ENGULF:EXP_20:5d5
 flags:RAND_25
 innate-freq:4
 spells:BR_TIME
-desc:You haven't seen it yet.
+desc:Такого вы ещё не видели.
 
 name:shimmering vortex
 plural:shimmering vortices
@@ -9352,8 +9398,8 @@ spell-freq:5
 spells:WEAVE | CONF | SLOW | BLIND
 spells:BR_POIS | BR_DARK
 spell-power:10
-message-invis:SLOW:Something chitters.
-message-invis:BLIND:Something chitters.
+message-invis:SLOW:Что-то стрекочет.
+message-invis:BLIND:Что-то стрекочет.
 desc:A massive spider, heaving the bloated bag of its body between great
 desc: spined legs.
 
@@ -10229,8 +10275,9 @@ shape:nexus vortex
 desc:A servant of Nienna, who grieves for the hurts to the world caused by
 desc: Morgoth.
 
-name:Maia of Mandos
-plural:Maiar of Mandos
+#name:Maia of Mandos
+name:Майя Мандоса
+plural:Майя Мандоса
 base:ainu
 color:s
 speed:120
@@ -10250,9 +10297,9 @@ flags:DROP_2
 spell-freq:3
 spells:BLIND | HASTE | HOLD | CONF
 spells:SHAPECHANGE
-shape:will o' the wisp
-shape:time vortex
-desc:A servant of Mandos, the summoner of the spirits of the slain.
+shape:божья искра
+shape:временной вихрь
+desc:Прислужник Мандоса, вызывающий духов убитых.
 
 name:mature multi-hued dragon
 base:dragon
@@ -10518,7 +10565,7 @@ experience:3000
 spell-freq:2
 spells:BLINK | TPORT
 spells:S_UNDEAD
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:It is a pulsing flesh mound that reeks of death and putrefaction.
 
 name:nalfeshnee
@@ -10592,7 +10639,7 @@ experience:3000
 spell-freq:2
 spells:BLINK | TPORT
 spells:S_DEMON
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:A pile of pulsing flesh that reeks of sulfur.  The world itself seems to
 desc: cry out against it.
 
@@ -10610,7 +10657,7 @@ experience:3000
 spell-freq:2
 spells:BLINK | TPORT
 spells:S_DRAGON
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:It looks like it was once a dragon corpse, now deeply infected with magical
 desc: bacteria that make it pulse in a foul and degrading way.
 
@@ -11665,8 +11712,8 @@ innate-freq:8
 spell-freq:8
 spells:ARROW | BLIND | CONF | SLOW
 spells:BR_POIS
-message-invis:BLIND:Something rumbles.
-message-invis:SLOW:Something rumbles.
+message-invis:BLIND:Что-то грохочет.
+message-invis:SLOW:Что-то грохочет.
 desc:A constructed dragon, the drolem has massive strength.  Powerful spells
 desc: weaved during its creation make it a fearsome adversary.  Its eyes show
 desc: little intelligence, but it has been instructed to destroy all it meets.
@@ -12865,9 +12912,9 @@ spell-freq:8
 spells:BRAIN_SMASH | WOUND | DRAIN_MANA | TELE_TO
 spells:BA_NETH
 spells:S_UNDEAD
-message-invis:WOUND:Something clatters.
-message-invis:DRAIN_MANA:Something clatters.
-message-invis:BA_NETH:Something clatters.
+message-invis:WOUND:Что-то лязгает.
+message-invis:DRAIN_MANA:Что-то лязгает.
+message-invis:BA_NETH:Что-то лязгает.
 desc:A skeletal form, black as night, constructed from the bones of its previous
 desc: victims.
 
@@ -13162,7 +13209,7 @@ flags:ATTR_FLICKER
 spell-freq:2
 spells:BLINK | TELE_TO
 spells:S_HI_DEMON
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:A massive pulsating mound of flesh, strongly reeking of sulfur.
 
 name:greater draconic quylthulg
@@ -13180,7 +13227,7 @@ flags:ATTR_FLICKER
 spell-freq:2
 spells:BLINK | TELE_TO
 spells:S_HI_DRAGON
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:A massive mound of multi-hued scaled flesh, throbbing and pulsating.
 
 name:greater rotting quylthulg
@@ -13198,7 +13245,7 @@ flags:ATTR_FLICKER
 spell-freq:2
 spells:BLINK | TELE_TO
 spells:S_HI_UNDEAD
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:A massive pile of rotting flesh.  A disgusting stench fills the air as it
 desc: throbs and writhes.
 
@@ -13612,9 +13659,9 @@ spells:BA_ELEC | BA_FIRE
 spells:BO_PLAS
 spells:BR_FIRE
 spells:S_DEMON
-message-invis:BA_ELEC:Something rumbles.
-message-invis:BA_FIRE:Something rumbles.
-message-invis:BO_PLAS:Something rumbles.
+message-invis:BA_ELEC:Что-то грохочет.
+message-invis:BA_FIRE:Что-то грохочет.
+message-invis:BO_PLAS:Что-то грохочет.
 desc:A gigantic four-armed animated bronze statue of demonic shape, glowing with
 desc: great heat.
 
@@ -13665,7 +13712,7 @@ flags:ATTR_FLICKER
 spell-freq:1
 spells:BLINK | TELE_TO
 spells:S_ANIMAL | S_HI_DEMON | S_HI_DRAGON | S_HI_UNDEAD | S_MONSTERS
-message-invis:BLINK:Something slurps.
+message-invis:BLINK:Что-то хлюпает.
 desc:A giant seething mass of flesh, overwhelming you with monster after
 desc: monster.
 
@@ -13803,7 +13850,7 @@ innate-freq:10
 spell-freq:6
 spells:BLINK | TELE_TO
 spells:BR_CHAO
-message-invis:BLINK:Something hisses.
+message-invis:BLINK:Что-то шипит.
 desc:Writhing coil upon coil, this mighty spawn of chaos constantly
 desc: disintegrates and reforms before your dazzled eyes.  It seeks to
 desc: obliterate you utterly; beware!

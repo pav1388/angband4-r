@@ -69,7 +69,7 @@ code:PARALYZE
 level:19
 effect:TIMED_INC:PARALYZED
 dice:10+d20
-msg:Вокруг вас клубится желтый дым!
+msg:Вокруг вас клубится желтый газ!
 
 name:взрывное устройство
 code:EXPLODE
