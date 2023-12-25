@@ -659,9 +659,12 @@ int rd_player(void)
 	struct player_class *c;
 
 	rd_string(player->full_name, sizeof(player->full_name));
-	rd_string(player->died_from, 80);
-	player->history = mem_zalloc(250);
-	rd_string(player->history, 250);
+	// rd_string(player->died_from, 80);
+	rd_string(player->died_from, 100);
+	// player->history = mem_zalloc(250);
+	player->history = mem_zalloc(500);
+	// rd_string(player->history, 250);
+	rd_string(player->history, 500);
 
 	/* Player race */
 	rd_string(buf, sizeof(buf));
