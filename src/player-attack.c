@@ -742,10 +742,12 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	int j, b, s, weight, dmg;
 
 	/* Default to punching */
-	my_strcpy(verb, "punch", sizeof(verb));
+	// my_strcpy(verb, "punch", sizeof(verb));
+	my_strcpy(verb, "колотите", sizeof(verb));
 
 	/* Extract monster name (or "it") */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	my_strcap(m_name);
 
 	/* Auto-Recall and track if possible and visible */
 	if (monster_is_visible(mon)) {
@@ -786,7 +788,8 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	if (obj) {
 		/* Handle normal weapon */
 		weight = obj->weight;
-		my_strcpy(verb, "hit", sizeof(verb));
+		// my_strcpy(verb, "hit", sizeof(verb));
+		my_strcpy(verb, "бьёте", sizeof(verb));
 	} else {
 		weight = 0;
 	}
@@ -879,7 +882,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* Small chance of bloodlust side-effects */
 	if (p->timed[TMD_BLOODLUST] && one_in_(50)) {
 		// msg("You feel something give way!");
-		msg("Вы чувствуете как что-то поддаётся!");
+		msg("Вы чувствуете, что-то не так!");
 		player_over_exert(p, PY_EXERT_CON, 20, 0);
 	}
 
@@ -962,7 +965,7 @@ static bool attempt_shield_bash(struct player *p, struct monster *mon, bool *fea
 	/* Encourage the player to keep wearing that heavy shield. */
 	if (randint1(bash_dam) > 30 + randint1(bash_dam / 2)) {
 		// msgt(MSG_HIT_HI_SUPERB, "WHAMM!");
-		msgt(MSG_HIT_HI_SUPERB, "УХАММ!!");
+		msgt(MSG_HIT_HI_SUPERB, "БАЦ!");
 	}
 
 	/* Damage, check for fear and death. */
@@ -1091,7 +1094,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			char msg[80];
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
-					"Цель вне досягаемости (%d м). Всё равно стрелять? ",
+					"Цель вне досягаемости на %d м. Стрелять всё равно? ",
 				taim - range);
 			if (!get_check(msg)) return;
 		}
@@ -1175,7 +1178,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 				if (!visible) {
 					/* Invisible monster */
 					// msgt(MSG_SHOOT_HIT, "The %s finds a mark.", o_name);
-					msgt(MSG_SHOOT_HIT, "%s обретает цель.", o_name);
+					msgt(MSG_SHOOT_HIT, "%s находит цель.", o_name);
 				} else {
 					for (j = 0; j < num_types; j++) {
 						char m_name[80];
