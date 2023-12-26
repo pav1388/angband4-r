@@ -929,7 +929,7 @@ static bool menu_calc_size(struct menu *menu)
 		if (menu->active.page_rows > 1) {
 			menu->active.page_rows--;
 		} else {
-			int offset = strlen(menu->prompt) + 2;
+			int offset = utf8_strlen(menu->prompt) + 2;
 			menu->active.col += offset;
 			menu->active.width -= offset;
 		}
@@ -1109,7 +1109,7 @@ size_t menu_dynamic_longest_entry(struct menu *m)
 	struct menu_entry *entry;
 
 	for (entry = menu_priv(m); entry; entry = entry->next) {
-		current = strlen(entry->text);
+		current = utf8_strlen(entry->text);
 		if (current > biggest)
 			biggest = current;
 	}

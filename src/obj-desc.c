@@ -186,11 +186,12 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
 		const char *modstr, bool terse, uint16_t number)
 {
 	if (number == 0) {
-		strnfcat(buf, max, &end, "no more ");
+		// strnfcat(buf, max, &end, "no more ");
+		strnfcat(buf, max, &end, "больше нет ");
 	} else if (number > 1) {
 		strnfcat(buf, max, &end, "%u ", number);
 	} else if (object_is_known_artifact(obj)) {
-		strnfcat(buf, max, &end, "the ");
+		// strnfcat(buf, max, &end, "the ");
 	} else if (*basename == '&') {
 		bool an = false;
 		const char *lookahead = basename + 1;
@@ -204,12 +205,12 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
 			an = true;
 		}
 
-		if (!terse) {
-			if (an)
-				strnfcat(buf, max, &end, "an ");
-			else
-				strnfcat(buf, max, &end, "a ");			
-		}
+		// if (!terse) {
+			// if (an)
+				// strnfcat(buf, max, &end, "an ");
+			// else
+				// strnfcat(buf, max, &end, "a ");	
+		// }
 	}
 
 	return end;
@@ -613,15 +614,19 @@ size_t object_desc(char *buf, size_t max, const struct object *obj,
 
 	/* Unknown itema and cash get straightforward descriptions */
 	if (obj->known && obj->kind != obj->known->kind) {
-		if (prefix)
-			return strnfmt(buf, max, "an unknown item");
-		return strnfmt(buf, max, "unknown item");
+		// if (prefix)
+			// return strnfmt(buf, max, "an unknown item");
+		// return strnfmt(buf, max, "unknown item");
+		return strnfmt(buf, max, "неизвестный предмет");
 	}
 
 	if (tval_is_money(obj))
-		return strnfmt(buf, max, "%d gold pieces worth of %s%s",
-				obj->pval, obj->kind->name,
-				ignore_item_ok(p, obj) ? " {ignore}" : "");
+		// return strnfmt(buf, max, "%d gold pieces worth of %s%s",
+		return strnfmt(buf, max, "%d золот%s монет%s %s%s", 
+				// obj->pval, obj->kind->name,
+				obj->pval, PLURAL_RU_UYU_bIE_bIH(obj->pval), PLURAL_RU_U_bI_(obj->pval), obj->kind->name,
+				// ignore_item_ok(p, obj) ? " {ignore}" : "");
+				ignore_item_ok(p, obj) ? " {игнорир}" : "");
 
 	/* Egos and kinds whose name we know are seen */
 	if (obj->known->ego && !spoil)

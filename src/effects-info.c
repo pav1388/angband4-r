@@ -321,7 +321,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 {
 	textblock *tb = NULL;
 	int nadded = 0;
-	char desc[250];
+	// char desc[250];
+	char desc[400];
 	random_value value = { 0, 0, 0, 0 };
 	bool value_set = false;
 

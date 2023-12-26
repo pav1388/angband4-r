@@ -1038,6 +1038,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 			soundfx = MSG_KILL_UNIQUE;
 	}
 
+	my_strcap(m_name);
 	/* Death message */
 	if (note) {
 		if (utf8_strlen(note) <= 1) {
@@ -1047,7 +1048,6 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 			notice_stuff(p);
 
 			/* Death by Missile attack */
-			my_strcap(m_name);
 			msgt(soundfx, "%s%s", m_name, note);
 		}
 	} else {
