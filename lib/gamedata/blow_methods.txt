@@ -98,7 +98,7 @@ miss:1
 phys:1
 msg:MON_CRUSH
 #act:crushes {target}
-act:давит {target}
+act:сдавливает {target}
 desc:crush
 
 name:ENGULF
