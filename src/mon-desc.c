@@ -108,7 +108,7 @@ void get_mon_name(char *buf, size_t buflen,
 void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 {
 	assert(mon != NULL);
-
+	my_strcap(desc);
 	/* Can we see it? (forced, or not hidden + visible) */
 	bool seen = (mode & MDESC_SHOW) ||
 		(!(mode & MDESC_HIDE) && monster_is_visible(mon));
@@ -136,45 +136,72 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 		/* Brute force: split on the possibilities */
 		switch (msex + (mode & 0x07)) {
 			/* Neuter */
-			case 0x00: choice = "it"; break;
-			case 0x01: choice = "it"; break;
-			case 0x02: choice = "its"; break;
-			case 0x03: choice = "itself"; break;
-			case 0x04: choice = "something"; break;
-			case 0x05: choice = "something"; break;
-			case 0x06: choice = "something's"; break;
-			case 0x07: choice = "itself"; break;
+			// case 0x00: choice = "it"; break;
+			case 0x00: choice = "это"; break;
+			// case 0x01: choice = "it"; break;
+			case 0x01: choice = "этого"; break;
+			// case 0x02: choice = "its"; break;
+			case 0x02: choice = "этого"; break;
+			// case 0x03: choice = "itself"; break;
+			case 0x03: choice = "сам"; break;
+			// case 0x04: choice = "something"; break;
+			case 0x04: choice = "что-то"; break;
+			// case 0x05: choice = "something"; break;
+			case 0x05: choice = "что-то"; break;
+			// case 0x06: choice = "something's"; break;
+			case 0x06: choice = "чьё-то"; break;
+			// case 0x07: choice = "itself"; break;
+			case 0x07: choice = "само"; break;
 
 			/* Male */
-			case 0x10: choice = "he"; break;
-			case 0x11: choice = "him"; break;
-			case 0x12: choice = "his"; break;
-			case 0x13: choice = "himself"; break;
-			case 0x14: choice = "someone"; break;
-			case 0x15: choice = "someone"; break;
-			case 0x16: choice = "someone's"; break;
-			case 0x17: choice = "himself"; break;
+			// case 0x10: choice = "he"; break;
+			case 0x10: choice = "он"; break;
+			// case 0x11: choice = "him"; break;
+			case 0x11: choice = "его"; break;
+			// case 0x12: choice = "his"; break;
+			case 0x12: choice = "его"; break;
+			// case 0x13: choice = "himself"; break;
+			case 0x13: choice = "себя"; break;
+			// case 0x14: choice = "someone"; break;
+			case 0x14: choice = "кто-то"; break;
+			// case 0x15: choice = "someone"; break;
+			case 0x15: choice = "кто-то"; break;
+			// case 0x16: choice = "someone's"; break;
+			case 0x16: choice = "чей-то"; break;
+			// case 0x17: choice = "himself"; break;
+			case 0x17: choice = "себя"; break;
 
 			/* Female */
-			case 0x20: choice = "she"; break;
-			case 0x21: choice = "her"; break;
-			case 0x22: choice = "her"; break;
-			case 0x23: choice = "herself"; break;
-			case 0x24: choice = "someone"; break;
-			case 0x25: choice = "someone"; break;
-			case 0x26: choice = "someone's"; break;
-			case 0x27: choice = "herself"; break;
+			// case 0x20: choice = "she"; break;
+			case 0x20: choice = "она"; break;
+			// case 0x21: choice = "her"; break;
+			case 0x21: choice = "её"; break;
+			// case 0x22: choice = "her"; break;
+			case 0x22: choice = "её"; break;
+			// case 0x23: choice = "herself"; break;
+			case 0x23: choice = "себе"; break;
+			// case 0x24: choice = "someone"; break;
+			case 0x24: choice = "кто-то"; break;
+			// case 0x25: choice = "someone"; break;
+			case 0x25: choice = "кто-то"; break;
+			// case 0x26: choice = "someone's"; break;
+			case 0x26: choice = "чей-то"; break;
+			// case 0x27: choice = "herself"; break;
+			case 0x27: choice = "себя"; break;
 		}
 
 		my_strcpy(desc, choice, max);
 	} else if ((mode & MDESC_POSS) && (mode & MDESC_OBJE)) {
 		/* The monster is visible, so use its gender */
 		if (rf_has(mon->race->flags, RF_FEMALE))
-			my_strcpy(desc, "herself", max);
+			// my_strcpy(desc, "herself", max);
+			my_strcpy(desc, "себя", max);
 		else if (rf_has(mon->race->flags, RF_MALE))
-			my_strcpy(desc, "himself", max);
+			// my_strcpy(desc, "himself", max);
+			my_strcpy(desc, "себя", max);
 		else
-			my_strcpy(desc, "itself", max);
+			// my_strcpy(desc, "itself", max);
+			my_strcpy(desc, "сам", max);
 	} else {
 		const char *comma_pos;
 
@@ -199,10 +226,12 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			if (mode & MDESC_IND_VIS) {
 				/* XXX Check plurality for "some" */
 				/* Indefinite monsters need an indefinite article */
-				my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "an " : "a ", max);
+				// my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "an " : "a ", max);
+				my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "" : "", max);
 			} else {
 				/* Definite monsters need a definite article */
-				my_strcpy(desc, "the ", max);
+				// my_strcpy(desc, "the ", max);
+				my_strcpy(desc, "", max);
 			}
 
 			/*
@@ -228,13 +257,14 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 
 		/* Handle the possessive */
 		/* XXX Check for trailing "s" */
-		if (mode & MDESC_POSS) {
-			my_strcat(desc, "'s", max);
-		}
+		// if (mode & MDESC_POSS) {
+			// my_strcat(desc, "'s", max);
+		// }
 
 		/* Mention "offscreen" monsters */
 		if (!panel_contains(mon->grid.y, mon->grid.x)) {
-			my_strcat(desc, " (offscreen)", max);
+			// my_strcat(desc, " (offscreen)", max);
+			my_strcat(desc, " (вне экрана)", max);
 		}
 	}
 

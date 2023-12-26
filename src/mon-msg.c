@@ -242,23 +242,34 @@ static void get_subject(char *buf, size_t buflen,
 {
 	if (invisible) {
 		if (count == 1) {
-			my_strcpy(buf, "It", buflen);
+			// my_strcpy(buf, "It", buflen);
+			my_strcpy(buf, "Нечто", buflen);
 		} else {
-			strnfmt(buf, buflen, "%d monsters", count);
+			// strnfmt(buf, buflen, "%d monsters", count);
+			strnfmt(buf, buflen, "%d монстр%s", count, PLURAL_RU__A_OV(count));
 		}
 	} else {
 		/* Uniques, multiple monsters, or just one */
 		if (rf_has(race->flags, RF_UNIQUE)) {
 			my_strcpy(buf, race->name, buflen);
 		} else if (count == 1) {
-			strnfmt(buf, buflen, "The %s", race->name);
+			strnfmt(buf, buflen, "%s", race->name);
+			my_strcap(buf);
 		} else {
+			char rname[80];
 			/* Get the plural of the race name */
 			if (race->plural != NULL) {
-				strnfmt(buf, buflen, "%d %s", count, race->plural);
+				// strnfmt(buf, buflen, "%d %s", count, race->plural);
+				strnfmt(buf, buflen, "%d ", count);
+				strnfmt(rname, sizeof(rname), "%s", race->plural);
+				my_strcap(rname);
+				strnfmt(buf, buflen, "%s", rname);
 			} else {
-				strnfmt(buf, buflen, "%d %s", count, race->name);
-				plural_aux(buf, buflen);
+				strnfmt(buf, buflen, "%d ", count);
+				strnfmt(rname, sizeof(rname), "%s", race->name);
+				my_strcap(rname);
+				strnfmt(buf, buflen, "%s", race->name);
+				// plural_aux(buf, buflen);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {
@@ -267,7 +278,8 @@ static void get_subject(char *buf, size_t buflen,
 	}
 
 	if (offscreen)
-		my_strcat(buf, " (offscreen)", buflen);
+		// my_strcat(buf, " (offscreen)", buflen);
+		my_strcat(buf, " (вне экрана)", buflen);
 
 	/* Add a separator */
 	my_strcat(buf, " ", buflen);

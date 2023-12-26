@@ -300,13 +300,15 @@ const char *chest_trap_name(const struct object *obj)
 
 	/* Non-zero value means there either were or are still traps */
 	if (trap_value < 0) {
-		return (trap_value == -1) ? "unlocked" : "disarmed";
+		// return (trap_value == -1) ? "unlocked" : "disarmed";
+		return (trap_value == -1) ? "разблокирована" : "обезврежена";
 	} else if (trap_value > 0) {
 		struct chest_trap *trap = chest_traps, *found = NULL;
 		while (trap) {
 			if (trap_value & trap->pval) {
 				if (found) {
-					return "multiple traps";
+					// return "multiple traps";
+					return "несколько ловушек";
 				}
 				found = trap;
 			}
@@ -317,7 +319,8 @@ const char *chest_trap_name(const struct object *obj)
 		}
 	}
 
-	return "empty";
+	// return "empty";
+	return "пусто";
 }
 
 /**
@@ -498,18 +501,22 @@ int count_chests(struct loc *grid, enum chest_query check_type)
 static void chest_death(struct loc grid, struct object *chest)
 {
 	int number, level;
-	bool large = strstr(chest->kind->name, "Large") ? true : false;;
+	// bool large = strstr(chest->kind->name, "Large") ? true : false;;
+	bool large = strstr(chest->kind->name, "Большой") ? true : false;;
 
 	/* Zero pval means empty chest */
 	if (!chest->pval)
 		return;
 
 	/* Determine how much to drop (see above) */
-	if (strstr(chest->kind->name, "wooden")) {
+	// if (strstr(chest->kind->name, "wooden")) {
+	if (strstr(chest->kind->name, "деревянный")) {
 		number = 1;
-	} else if (strstr(chest->kind->name, "iron")) {
+	// } else if (strstr(chest->kind->name, "iron")) {
+	} else if (strstr(chest->kind->name, "железный")) {
 		number = 2;
-	} else if (strstr(chest->kind->name, "steel")) {
+	// } else if (strstr(chest->kind->name, "steel")) {
+	} else if (strstr(chest->kind->name, "стальной")) {
 		number = 3;
 	} else {
 		number = randint1(3);
@@ -605,14 +612,16 @@ bool do_cmd_open_chest(struct loc grid, struct object *obj)
 
 		/* Success -- May still have traps */
 		if (randint0(100) < j) {
-			msgt(MSG_LOCKPICK, "You have picked the lock.");
+			// msgt(MSG_LOCKPICK, "You have picked the lock.");
+			msgt(MSG_LOCKPICK, "Вы взломали замок.");
 			player_exp_gain(player, 1);
 			flag = true;
 		} else {
 			/* We may continue repeating */
 			more = true;
 			event_signal(EVENT_INPUT_FLUSH);
-			msgt(MSG_LOCKPICK_FAIL, "You failed to pick the lock.");
+			// msgt(MSG_LOCKPICK_FAIL, "You failed to pick the lock.");
+			msgt(MSG_LOCKPICK_FAIL, "Вы не смогли взломать замок.");
 		}
 	}
 
@@ -700,24 +709,29 @@ bool do_cmd_disarm_chest(struct object *obj)
 
 	/* Must find the trap first. */
 	if (!obj->known->pval || ignore_item_ok(player, obj)) {
-		msg("I don't see any traps.");
+		// msg("I don't see any traps.");
+		msg("Я не вижу никаких ловушек.");
 	} else if (!is_trapped_chest(obj)) {
 		/* Already disarmed/unlocked or no traps */
-		msg("The chest is not trapped.");
+		// msg("The chest is not trapped.");
+		msg("Сундук не заперт.");
 	} else if (randint0(100) < diff) {
 		/* Success (get a lot of experience) */
-		msgt(MSG_DISARM, "You have disarmed the chest.");
+		// msgt(MSG_DISARM, "You have disarmed the chest.");
+		msgt(MSG_DISARM, "Вы обезвредили ловушку на сундуке.");
 		player_exp_gain(player, obj->pval);
 		obj->pval = (0 - obj->pval);
 	} else if (randint0(100) < diff) {
 		/* Failure -- Keep trying */
 		more = true;
 		event_signal(EVENT_INPUT_FLUSH);
-		msg("You failed to disarm the chest.");
+		// msg("You failed to disarm the chest.");
+		msg("Вам не удалось обезвредить ловушку на сундуке.");
 	} else {
 		/* Failure -- Set off the trap */
 		if (!player_is_trapsafe(player)) {
-			msg("You set off a trap!");
+			// msg("You set off a trap!");
+			msg("Вы активировали ловушку!");
 			chest_trap(obj);
 		} else if (player_of_has(player, OF_TRAP_IMMUNE)) {
 			/* Learn trap immunity. */

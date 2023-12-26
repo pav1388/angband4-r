@@ -59,15 +59,21 @@ static int check_devices(struct object *obj)
 
 	/* Get the right string */
 	if (tval_is_rod(obj)) {
-		action = "zap the rod";
+		// action = "zap the rod";
+		action = "забили жезл";
 	} else if (tval_is_wand(obj)) {
-		action = "use the wand";
-		what = "wand";
+		// action = "use the wand";
+		action = "взмахнули палочкой";
+		// what = "wand";
+		what = "палочки";
 	} else if (tval_is_staff(obj)) {
-		action = "use the staff";
-		what = "staff";
+		// action = "use the staff";
+		action = "использовали посох";
+		// what = "staff";
+		what = "посоха";
 	} else {
-		action = "activate it";
+		// action = "activate it";
+		action = "активировали это";
 		activated = true;
 	}
 
@@ -77,14 +83,16 @@ static int check_devices(struct object *obj)
 	/* Roll for usage */
 	if (randint1(1000) < fail) {
 		event_signal(EVENT_INPUT_FLUSH);
-		msg("You failed to %s properly.", action);
+		// msg("You failed to %s properly.", action);
+		msg("Вы неправильно %s.", action);
 		return false;
 	}
 
 	/* Notice empty staffs */
 	if (what && obj->pval <= 0) {
 		event_signal(EVENT_INPUT_FLUSH);
-		msg("The %s has no charges left.", what);
+		// msg("The %s has no charges left.", what);
+		msg("У %s не осталось зарядов.", what);
 		return false;
 	}
 
@@ -154,14 +162,17 @@ void do_cmd_uninscribe(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
-			/* Prompt */ "Uninscribe which item?",
-			/* Error  */ "You have nothing you can uninscribe.",
+			// /* Prompt */ "Uninscribe which item?",
+			/* Prompt */ "С какого предмета стереть надпись?",
+			// /* Error  */ "You have nothing you can uninscribe.",
+			/* Error  */ "У вас нет предметов с надписями.",
 			/* Filter */ obj_has_inscrip,
 			/* Choice */ USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR) != CMD_OK)
 		return;
 
 	obj->note = 0;
-	msg("Inscription removed.");
+	// msg("Inscription removed.");
+	msg("Надпись удалена.");
 
 	player->upkeep->notice |= (PN_COMBINE | PN_IGNORE);
 	player->upkeep->redraw |= (PR_INVEN | PR_EQUIP);
@@ -184,8 +195,10 @@ void do_cmd_inscribe(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
-			/* Prompt */ "Inscribe which item?",
-			/* Error  */ "You have nothing to inscribe.",
+			// /* Prompt */ "Inscribe which item?",
+			/* Prompt */ "Надпись на каком предмете?",
+			// /* Error  */ "You have nothing to inscribe.",
+			/* Error  */ "У вас нет предмета для нанесения надписи.",
 			/* Filter */ NULL,
 			/* Choice */ USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR | IS_HARMLESS) != CMD_OK)
 		return;
@@ -193,11 +206,13 @@ void do_cmd_inscribe(struct command *cmd)
 	/* Form prompt */
 	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
 		player);
-	strnfmt(prompt, sizeof prompt, "Inscribing %s.", o_name);
+	// strnfmt(prompt, sizeof prompt, "Inscribing %s.", o_name);
+	strnfmt(prompt, sizeof prompt, "Написать на %s.", o_name);
 
 	if (cmd_get_string(cmd, "inscription", &str,
 			quark_str(obj->note) /* Default */,
-			prompt, "Inscribe with what? ") != CMD_OK)
+			// prompt, "Inscribe with what? ") != CMD_OK)
+			prompt, "Что написать? ") != CMD_OK)
 		return;
 
 	obj->note = quark_add(str);
@@ -241,8 +256,10 @@ void do_cmd_takeoff(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
-			/* Prompt */ "Take off or unwield which item?",
-			/* Error  */ "You have nothing to take off or unwield.",
+			// /* Prompt */ "Take off or unwield which item?",
+			/* Prompt */ "Какой предмет снять и убрать в рюкзак?",
+			// /* Error  */ "You have nothing to take off or unwield.",
+			/* Error  */ "Вам нечего снять с себя.",
 			/* Filter */ obj_can_takeoff,
 			/* Choice */ USE_EQUIP) != CMD_OK)
 		return;
@@ -274,8 +291,10 @@ void do_cmd_wield(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
-			/* Prompt */ "Wear or wield which item?",
-			/* Error  */ "You have nothing to wear or wield.",
+			// /* Prompt */ "Wear or wield which item?",
+			/* Prompt */ "Какой предмет носить или использовать?",
+			// /* Error  */ "You have nothing to wear or wield.",
+			/* Error  */ "Вам нечего носить или использовать.",
 			/* Filter */ obj_can_wear,
 			/* Choice */ USE_INVEN | USE_FLOOR | USE_QUIVER) != CMD_OK)
 		return;
@@ -295,7 +314,9 @@ void do_cmd_wield(struct command *cmd)
 	 * want to replace */
 	if (tval_is_ring(obj)) {
 		if (cmd_get_item(cmd, "replace", &equip_obj,
-						 /* Prompt */ "Replace which ring? ",
+						 // /* Prompt */ "Replace which ring? ",
+						 /* Prompt */ "Каким кольцом заменить? ",
+						 // /* Error  */ "Error in do_cmd_wield(), please report.",
 						 /* Error  */ "Error in do_cmd_wield(), please report.",
 						 /* Filter */ tval_is_ring,
 						 /* Choice */ USE_EQUIP) != CMD_OK)
@@ -309,7 +330,8 @@ void do_cmd_wield(struct command *cmd)
 	if (!obj_can_takeoff(equip_obj)) {
 		object_desc(o_name, sizeof(o_name), equip_obj, ODESC_BASE,
 			player);
-		msg("You cannot remove the %s you are %s.", o_name,
+		// msg("You cannot remove the %s you are %s.", o_name,
+		msg("Вы не можете удалить %s, которым вы %s.", o_name,
 			equip_describe(player, slot));
 		return;
 	}
@@ -322,7 +344,8 @@ void do_cmd_wield(struct command *cmd)
 			ODESC_PREFIX | ODESC_FULL, player);
 		
 		/* Forget it */
-		if (!get_check(format("Really take off %s? ", o_name))) return;
+		// if (!get_check(format("Really take off %s? ", o_name))) return;
+		if (!get_check(format("Точно снять %s? ", o_name))) return;
 	}
 
 	/* Describe the object */
@@ -331,16 +354,20 @@ void do_cmd_wield(struct command *cmd)
 
 	/* Took off weapon */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
-		act = "You were wielding";
+		// act = "You were wielding";
+		act = "Вы убрали";
 	/* Took off bow */
 	else if (slot_type_is(player, slot, EQUIP_BOW))
-		act = "You were holding";
+		// act = "You were holding";
+		act = "Вы убрали";
 	/* Took off light */
 	else if (slot_type_is(player, slot, EQUIP_LIGHT))
-		act = "You were holding";
+		// act = "You were holding";
+		act = "Вы погасили";
 	/* Took off something else */
 	else
-		act = "You were wearing";
+		// act = "You were wearing";
+		act = "Вы сняли";
 
 	inven_wield(obj, slot);
 
@@ -363,15 +390,18 @@ void do_cmd_drop(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
-			/* Prompt */ "Drop which item?",
-			/* Error  */ "You have nothing to drop.",
+			// /* Prompt */ "Drop which item?",
+			/* Prompt */ "Какой предмет выбросить?",
+			// /* Error  */ "You have nothing to drop.",
+			/* Error  */ "Вам нечего выбросить.",
 			/* Filter */ NULL,
 			/* Choice */ USE_EQUIP | USE_INVEN | USE_QUIVER) != CMD_OK)
 		return;
 
 	/* Cannot remove stickied items */
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
-		msg("Hmmm, it seems to be stuck.");
+		// msg("Hmmm, it seems to be stuck.");
+		msg("Хммм, кажется он застрял.");
 		return;
 	}
 
@@ -483,7 +513,8 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 
 		/* Sound and/or message */
 		if (obj->activation) {
-			msgt(snd, "You activate it.");
+			// msgt(snd, "You activate it.");
+			msgt(snd, "Вы активируете это.");
 			activation_message(obj, player);
 		} else if (obj->kind->effect_msg) {
 			msgt(snd, "%s", obj->kind->effect_msg);
@@ -681,12 +712,15 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 				-1 : 0)) << 16), player);
 			if (from_floor) {
 				/* Print a message */
-				msg("You see %s.", name);
+				//msg("You see %s.", name);
+				msg("Вы видите %s.", name);
 			} else if (first_remainder) {
 				label = gear_to_label(player, first_remainder);
-				msg("You have %s (1st %c).", name, label);
+				//msg("You have %s (1st %c).", name, label);
+				msg("У вас %s (1-ый %c).", name, label);
 			} else {
-				msg("You have %s (%c).", name, label);
+				// msg("You have %s (%c).", name, label);
+				msg("У вас %s (%c).", name, label);
 			}
 		} else if (used && use == USE_CHARGE) {
 			/* Describe charges */
@@ -739,8 +773,10 @@ void do_cmd_read_scroll(struct command *cmd)
 
 	/* Get the scroll */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Read which scroll? ",
-			"You have no scrolls to read.",
+			// "Read which scroll? ",
+			"Какой свиток прочитать? ",
+			// "You have no scrolls to read.",
+			"У вас нет свитков для чтения.",
 			tval_is_scroll,
 			USE_INVEN | USE_FLOOR) != CMD_OK) return;
 
@@ -760,13 +796,16 @@ void do_cmd_use_staff(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Use which staff? ",
-			"You have no staves to use.",
+			// "Use which staff? ",
+			"Какой посох использовать? ",
+			// "You have no staves to use.",
+			"У вас нет посохов для использования.",
 			tval_is_staff,
 			USE_INVEN | USE_FLOOR | SHOW_FAIL) != CMD_OK) return;
 
 	if (!obj_has_charges(obj)) {
-		msg("That staff has no charges.");
+		// msg("That staff has no charges.");
+		msg("У посоха нет зарядов.");
 		return;
 	}
 
@@ -786,13 +825,16 @@ void do_cmd_aim_wand(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Aim which wand? ",
-			"You have no wands to aim.",
+			// "Aim which wand? ",
+			"Какая палочка? ",
+			// "You have no wands to aim.",
+			"У вас нет палочек для использования.",
 			tval_is_wand,
 			USE_INVEN | USE_FLOOR | SHOW_FAIL) != CMD_OK) return;
 
 	if (!obj_has_charges(obj)) {
-		msg("That wand has no charges.");
+		//msg("That wand has no charges.");
+		msg("У палочки нет зарядов.");
 		return;
 	}
 
@@ -812,13 +854,16 @@ void do_cmd_zap_rod(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Zap which rod? ",
-			"You have no rods to zap.",
+			// "Zap which rod? ",
+			"Какой жезл забить? ",
+			// "You have no rods to zap.",
+			"У вас нет жезлов.",
 			tval_is_rod,
 			USE_INVEN | USE_FLOOR | SHOW_FAIL) != CMD_OK) return;
 
 	if (!obj_can_zap(obj)) {
-		msg("That rod is still charging.");
+		// msg("That rod is still charging.");
+		msg("Жезл все ещё заряжается.");
 		return;
 	}
 
@@ -838,13 +883,16 @@ void do_cmd_activate(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Activate which item? ",
-			"You have no items to activate.",
+			// "Activate which item? ",
+			"Какой предмет активировать? ",
+			// "You have no items to activate.",
+			"У вас нет предметов для активации.",
 			obj_is_activatable,
 			USE_EQUIP | SHOW_FAIL) != CMD_OK) return;
 
 	if (!obj_can_activate(obj)) {
-		msg("That item is still charging.");
+		// msg("That item is still charging.");
+		msg("Этот предмет ещё заряжается.");
 		return;
 	}
 
@@ -860,8 +908,10 @@ void do_cmd_eat_food(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Eat which food? ",
-			"You have no food to eat.",
+			// "Eat which food? ",
+			"Какую еду съесть? ",
+			// "You have no food to eat.",
+			"У вас нет еды.",
 			tval_is_edible,
 			USE_INVEN | USE_FLOOR) != CMD_OK) return;
 
@@ -881,8 +931,10 @@ void do_cmd_quaff_potion(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Quaff which potion? ",
-			"You have no potions from which to quaff.",
+			// "Quaff which potion? ",
+			"Какое зелье выпить? ",
+			// "You have no potions from which to quaff.",
+			"У вас нет ни одного зелья.",
 			tval_is_potion,
 			USE_INVEN | USE_FLOOR) != CMD_OK) return;
 
@@ -902,8 +954,10 @@ void do_cmd_use(struct command *cmd)
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Use which item? ",
-			"You have no items to use.",
+			// "Use which item? ",
+			"Какой предмет использовать? ",
+			// "You have no items to use.",
+			"У вас нет предметов для использования",
 			obj_is_useable,
 			USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR | SHOW_FAIL | QUIVER_TAGS | SHOW_FAIL) != CMD_OK)
 		return;
@@ -920,10 +974,12 @@ void do_cmd_use(struct command *cmd)
 		if (object_is_equipped(player->body, obj)) {
 			do_cmd_activate(cmd);
 		} else {
-			msg("Equip the item to use it.");
+			// msg("Equip the item to use it.");
+			msg("Экипируйте предмет для использования.");
 		}
 	} else
-		msg("The item cannot be used at the moment");
+		// msg("The item cannot be used at the moment");
+		msg("Предмет сейчас не может быть использован");
 }
 
 
@@ -939,12 +995,14 @@ static void refill_lamp(struct object *lamp, struct object *obj)
 	lamp->timeout += obj->timeout ? obj->timeout : obj->pval;
 
 	/* Message */
-	msg("You fuel your lamp.");
+	//msg("You fuel your lamp.");
+	msg("Вы заправили свою лампу.");
 
 	/* Comment */
 	if (lamp->timeout >= z_info->fuel_lamp) {
 		lamp->timeout = z_info->fuel_lamp;
-		msg("Your lamp is full.");
+		//msg("Your lamp is full.");
+		msg("Ваша лампа заполнена.");
 	}
 
 	/* Refilled from a lantern */
@@ -1007,18 +1065,22 @@ void do_cmd_refill(struct command *cmd)
 
 	/* Check what we're wielding. */
 	if (!light || !tval_is_light(light)) {
-		msg("You are not wielding a light.");
+		//msg("You are not wielding a light.");
+		msg("У вас нет фонаря.");
 		return;
 	} else if (of_has(light->flags, OF_NO_FUEL)
 			|| !of_has(light->flags, OF_TAKES_FUEL)) {
-		msg("Your light cannot be refilled.");
+		//msg("Your light cannot be refilled.");
+		msg("Ваш фонарь нельзя заправить.");
 		return;
 	}
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
-			"Refuel with with fuel source? ",
-			"You have nothing you can refuel with.",
+			// "Refuel with with fuel source? ",
+			"Чем заправить фонарь? ",
+			// "You have nothing you can refuel with.",
+			"У вас нет ничего для заправки",
 			obj_can_refill,
 			USE_INVEN | USE_FLOOR | USE_QUIVER) != CMD_OK) return;
 
@@ -1055,9 +1117,11 @@ void do_cmd_cast(struct command *cmd)
 	if (cmd_get_spell(cmd, "spell", player, &spell_index,
 			/* Verb */ "cast",
 			/* Book */ obj_can_cast_from,
-			/* Book error */ "There are no spells you can cast.",
+			// /* Book error */ "There are no spells you can cast.",
+			/* Book error */ "Нет заклинаний для чтения.",
 			/* Filter */ spell_okay_to_cast,
-			/* Spell error */ "That book has no spells that you can cast.") != CMD_OK) {
+			// /* Spell error */ "That book has no spells that you can cast.") != CMD_OK) {
+			/* Spell error */ "В этой книге нет заклинаний для чтения.") != CMD_OK) {
 		return;
 	}
 
@@ -1070,13 +1134,15 @@ void do_cmd_cast(struct command *cmd)
 		const char *noun = spell->realm->spell_noun;
 
 		/* Warning */
-		msg("You do not have enough mana to %s this %s.", verb, noun);
+		// msg("You do not have enough mana to %s this %s.", verb, noun);
+		msg("У вас недостаточно маны для %s этого %s.", verb, noun);
 
 		/* Flush input */
 		event_signal(EVENT_INPUT_FLUSH);
 
 		/* Verify */
-		if (!get_check("Attempt it anyway? ")) return;
+		// if (!get_check("Attempt it anyway? ")) return;
+		if (!get_check("Всё равно попытаться? ")) return;
 	}
 
 	if (spell_needs_aim(spell_index)) {
@@ -1113,9 +1179,11 @@ void do_cmd_study_spell(struct command *cmd)
 	if (cmd_get_spell(cmd, "spell", player, &spell_index,
 			/* Verb */ "study",
 			/* Book */ obj_can_study,
-			/* Book error */ "You cannot learn any new spells from the books you have.",
+			// /* Book error */ "You cannot learn any new spells from the books you have.",
+			/* Book error */ "Вы не можете выучить новые заклинания из ваших книг.",
 			/* Filter */ spell_okay_to_study,
-			/* Spell error */ "That book has no spells that you can learn.") != CMD_OK)
+			// /* Spell error */ "That book has no spells that you can learn.") != CMD_OK)
+			/* Spell error */ "В этой книге нет заклинаний для изучения.") != CMD_OK)
 		return;
 
 	spell_learn(spell_index);
@@ -1138,8 +1206,10 @@ void do_cmd_study_book(struct command *cmd)
 		return;
 
 	if (cmd_get_item(cmd, "item", &book_obj,
-			/* Prompt */ "Study which book? ",
-			/* Error  */ "You cannot learn any new spells from the books you have.",
+			// /* Prompt */ "Study which book? ",
+			/* Prompt */ "Какую книгу изучить? ",
+			// /* Error  */ "You cannot learn any new spells from the books you have.",
+			/* Error  */ "Вы не можете выучить новые заклинания из ваших книг",
 			/* Filter */ obj_can_study,
 			/* Choice */ USE_INVEN | USE_FLOOR) != CMD_OK)
 		return;
@@ -1158,7 +1228,8 @@ void do_cmd_study_book(struct command *cmd)
 	}
 
 	if (spell_index < 0) {
-		msg("You cannot learn any %ss in that book.", book->realm->spell_noun);
+		// msg("You cannot learn any %ss in that book.", book->realm->spell_noun);
+		msg("Вы не можете изучить ни одного %ss из этой книги.", book->realm->spell_noun);
 	} else {
 		spell_learn(spell_index);
 		player->upkeep->energy_use = z_info->move_energy;

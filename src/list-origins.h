@@ -20,7 +20,8 @@ ORIGIN(STATS,		-1,	"")  /* ^ only the above are considered by main-stats */
 ORIGIN(ACQUIRE,		1,	"Conjured forth by magic %s")
 ORIGIN(STORE,		0,	"Bought from a store")
 ORIGIN(STOLEN,		-1,	"")
-ORIGIN(BIRTH,		0,	"An inheritance from your family")
+// ORIGIN(BIRTH,		0,	"An inheritance from your family")
+ORIGIN(BIRTH,		0,	"Наследство, полученное от вашей семьи")
 ORIGIN(CHEAT,		0,	"Created by debug option")
 ORIGIN(DROP_BREED,	2,	"Dropped by %s %s") /* from breeders */
 ORIGIN(DROP_SUMMON,	2,	"Dropped by %s %s") /* from combat summons */

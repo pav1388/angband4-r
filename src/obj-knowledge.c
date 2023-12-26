@@ -345,44 +345,53 @@ const char *rune_desc(size_t i)
 		/* Combat runes */
 		case RUNE_VAR_COMBAT: {
 			if (r->index == COMBAT_RUNE_TO_A)
-				return "Object magically increases the player's armor class";
+				// return "Object magically increases the player's armor class";
+				return "Предмет магически увеличивает класс брони игрока";
 			else if (r->index == COMBAT_RUNE_TO_H)
-				return "Object magically increases the player's chance to hit";
+				// return "Object magically increases the player's chance to hit";
+				return "Предмет магически увеличивает шанс игрока попасть в цель";
 			else if (r->index == COMBAT_RUNE_TO_D)
-				return "Object magically increases the player's damage";
+				// return "Object magically increases the player's damage";
+				return "Предмет магически увеличивает наносимый игроком урон";
 			break;
 		}
 		/* Mod runes */
 		case RUNE_VAR_MOD: {
-			return format("Object gives the player a magical bonus to %s.",
+			// return format("Object gives the player a magical bonus to %s.",
+			return format("Предмет дает игроку магический бонус к %s.",
 						  r->name);
 			break;
 		}
 		/* Element runes */
 		case RUNE_VAR_RESIST: {
-			return format("Object affects the player's resistance to %s.",
+			// return format("Object affects the player's resistance to %s.",
+			return format("Предмет влияет на сопротивление игрока к %s.",
 						  r->name);
 			break;
 		}
 		/* Brand runes */
 		case RUNE_VAR_BRAND: {
-			return format("Object brands the player's attacks with %s.",
+			// return format("Object brands the player's attacks with %s.",
+			return format("Предмет придает атакам игрока %s.",
 						  r->name);
 			break;
 		}
 		/* Slay runes */
 		case RUNE_VAR_SLAY: {
-			return format("Object makes the player's attacks against %s more powerful.", r->name);
+			// return format("Object makes the player's attacks against %s more powerful.", r->name);
+			return format("Предмет делает атаки игрока против %s более мощными.", r->name);
 			break;
 		}
 		/* Curse runes */
 		case RUNE_VAR_CURSE: {
-			return format("Object %s.", curses[r->index].desc);
+			// return format("Object %s.", curses[r->index].desc);
+			return format("Предмет %s.", curses[r->index].desc);
 			break;
 		}
 		/* Flag runes */
 		case RUNE_VAR_FLAG: {
-			return format("Object gives the player the property of %s.",
+			// return format("Object gives the player the property of %s.",
+			return format("Предмет даёт игроку свойство %s.",
 						  r->name);
 			break;
 		}
@@ -1151,11 +1160,13 @@ void player_know_object(struct player *p, struct object *obj)
 		if (object_is_carried(p, obj)) {
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_FULL, p);
-			msg("You have %s (%c).", o_name, gear_to_label(p, obj));
+			// msg("You have %s (%c).", o_name, gear_to_label(p, obj));
+			msg("У вас %s (%c).", o_name, gear_to_label(p, obj));
 		} else if (cave && square_holds_object(cave, p->grid, obj)) {
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_FULL, p);
-			msg("On the ground: %s.", o_name);
+			// msg("On the ground: %s.", o_name);
+			msg("На полу: %s.", o_name);
 		}
 	}
 
@@ -1410,63 +1421,83 @@ static void mod_message(struct object *obj, int mod)
 	switch (mod) {
 		case OBJ_MOD_STR:
 			if (obj->modifiers[OBJ_MOD_STR] > 0)
-				msg("You feel stronger!");
+				// msg("You feel stronger!");
+				msg("Вы чувствуете себя сильнее!");
 			else if (obj->modifiers[OBJ_MOD_STR] < 0)
-				msg("You feel weaker!");
+				// msg("You feel weaker!");
+				msg("Вы чувствуете себя слабее!");
 			break;
 		case OBJ_MOD_INT:
 			if (obj->modifiers[OBJ_MOD_INT] > 0)
-				msg("You feel smarter!");
+				// msg("You feel smarter!");
+				msg("Вы чувствуете себя умнее!");
 			else if (obj->modifiers[OBJ_MOD_INT] < 0)
-				msg("You feel more stupid!");
+				// msg("You feel more stupid!");
+				msg("Вы чувствуете себя еще глупее!");
 			break;
 		case OBJ_MOD_WIS:
 			if (obj->modifiers[OBJ_MOD_WIS] > 0)
-				msg("You feel wiser!");
+				// msg("You feel wiser!");
+				msg("Вы чувствуете себя мудрее!");
 			else if (obj->modifiers[OBJ_MOD_WIS] < 0)
-				msg("You feel more naive!");
+				// msg("You feel more naive!");
+				msg("Вы чувствуете себя более наивным!");
 			break;
 		case OBJ_MOD_DEX:
 			if (obj->modifiers[OBJ_MOD_DEX] > 0)
-				msg("You feel more dextrous!");
+				// msg("You feel more dextrous!");
+				msg("Вы чувствуете себя более ловким!");
 			else if (obj->modifiers[OBJ_MOD_DEX] < 0)
-				msg("You feel clumsier!");
+				// msg("You feel clumsier!");
+				msg("Вы чувствуете себя более неуклюжим!");
 			break;
 		case OBJ_MOD_CON:
 			if (obj->modifiers[OBJ_MOD_CON] > 0)
-				msg("You feel healthier!");
+				// msg("You feel healthier!");
+				msg("Вы чувствуете себя здоровее!");
 			else if (obj->modifiers[OBJ_MOD_CON] < 0)
-				msg("You feel sicklier!");
+				// msg("You feel sicklier!");
+				msg("Вы чувствуете себя хуже!");
 			break;
 		case OBJ_MOD_STEALTH:
 			if (obj->modifiers[OBJ_MOD_STEALTH] > 0)
-				msg("You feel stealthier.");
+				// msg("You feel stealthier.");
+				msg("Вы чувствуете себя менее шумным.");
 			else if (obj->modifiers[OBJ_MOD_STEALTH] < 0)
-				msg("You feel noisier.");
+				// msg("You feel noisier.");
+				msg("Вы чувствуете себя более шумным.");
 			break;
 		case OBJ_MOD_SPEED:
 			if (obj->modifiers[OBJ_MOD_SPEED] > 0)
-				msg("You feel strangely quick.");
+				// msg("You feel strangely quick.");
+				msg("Вы чувствуете себя непривычно быстрым.");
 			else if (obj->modifiers[OBJ_MOD_SPEED] < 0)
-				msg("You feel strangely sluggish.");
+				// msg("You feel strangely sluggish.");
+				msg("Вы чувствуете себя непривычно вялым.");
 			break;
 		case OBJ_MOD_BLOWS:
 			if (obj->modifiers[OBJ_MOD_BLOWS] > 0)
-				msg("Your weapon tingles in your hands.");
+				// msg("Your weapon tingles in your hands.");
+				msg("Ваше оружие пощипывает в руках.");
 			else if (obj->modifiers[OBJ_MOD_BLOWS] < 0)
-				msg("Your weapon aches in your hands.");
+				// msg("Your weapon aches in your hands.");
+				msg("Ваше оружие вызывает боль в руках.");
 			break;
 		case OBJ_MOD_SHOTS:
 			if (obj->modifiers[OBJ_MOD_SHOTS] > 0)
-				msg("Your missile weapon tingles in your hands.");
+				// msg("Your missile weapon tingles in your hands.");
+				msg("Ваше стрелковое оружие пощипывает в руках.");
 			else if (obj->modifiers[OBJ_MOD_SHOTS] < 0)
-				msg("Your missile weapon aches in your hands.");
+				// msg("Your missile weapon aches in your hands.");
+				msg("Ваше стрелковое оружие вызывает боль в руках.");
 			break;
 		case OBJ_MOD_INFRA:
-			msg("Your eyes tingle.");
+			// msg("Your eyes tingle.");
+			msg("Ваши глаза пощипывает.");
 			break;
 		case OBJ_MOD_LIGHT:
-			msg("It glows!");
+			// msg("It glows!");
+			msg("Оно сияет!");
 			break;
 		default:
 			break;

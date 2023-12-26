@@ -213,9 +213,11 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	if (mode & OLIST_FAIL && obj_can_fail(obj)) {
 		int fail = (9 + get_use_device_chance(obj)) / 10;
 		if (object_effect_is_known(obj))
-			strnfmt(buf, sizeof(buf), "%4d%% fail", fail);
+			// strnfmt(buf, sizeof(buf), "%4d%% fail", fail);
+			strnfmt(buf, sizeof(buf), "%4d%% неудачи", fail);
 		else
-			my_strcpy(buf, "    ? fail", sizeof(buf));
+			// my_strcpy(buf, "    ? fail", sizeof(buf));
+			my_strcpy(buf, "    ? неудача", sizeof(buf));
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 		ex_offset_ctr += 10;
 	}
@@ -224,9 +226,11 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	if (mode & OLIST_RECHARGE) {
 		int fail = 1000 / recharge_failure_chance(obj, player->upkeep->recharge_pow);
 		if (object_effect_is_known(obj))
-			strnfmt(buf, sizeof(buf), "%2d.%1d%% fail", fail / 10, fail % 10);
+			// strnfmt(buf, sizeof(buf), "%2d.%1d%% fail", fail / 10, fail % 10);
+			strnfmt(buf, sizeof(buf), "%2d.%1d%% неудачи", fail / 10, fail % 10);
 		else
-			my_strcpy(buf, "    ? fail", sizeof(buf));
+			// my_strcpy(buf, "    ? fail", sizeof(buf));
+			my_strcpy(buf, "    ? неудача", sizeof(buf));
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 		ex_offset_ctr += 10;
 	}
@@ -234,7 +238,8 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	/* Weight */
 	if (mode & OLIST_WEIGHT) {
 		int weight = obj->weight * obj->number;
-		strnfmt(buf, sizeof(buf), "%4d.%1d lb", weight / 10, weight % 10);
+		// strnfmt(buf, sizeof(buf), "%4d.%1d lb", weight / 10, weight % 10);
+		strnfmt(buf, sizeof(buf), "%4d.%1d кг", weight / 10, weight % 10);
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 	}
 }
@@ -305,7 +310,8 @@ static void build_obj_list(int last, struct object **list, item_tester tester,
 			my_strcpy(items[num_obj].equip_label, buf,
 					  sizeof(items[num_obj].equip_label));
 		} else if ((in_term || dead) && quiver) {
-			strnfmt(buf, sizeof(buf), "Slot %-9d: ", i);
+			// strnfmt(buf, sizeof(buf), "Slot %-9d: ", i);
+			strnfmt(buf, sizeof(buf), "Слот %-9d: ", i);
 			my_strcpy(items[num_obj].equip_label, buf,
 					  sizeof(items[num_obj].equip_label));
 		} else {
@@ -335,10 +341,12 @@ static void set_obj_names(bool terse, const struct player *p)
 
 		/* Null objects are used to skip lines, or display only a label */		
 		if (!obj) {
-			if ((i < num_head) || streq(items[i].label, "In quiver"))
+			// if ((i < num_head) || streq(items[i].label, "In quiver"))
+			if ((i < num_head) || streq(items[i].label, "В колчане"))
 				strnfmt(items[i].o_name, sizeof(items[i].o_name), "%s", "");
 			else
-				strnfmt(items[i].o_name, sizeof(items[i].o_name), "(nothing)");
+				// strnfmt(items[i].o_name, sizeof(items[i].o_name), "(nothing)");
+				strnfmt(items[i].o_name, sizeof(items[i].o_name), "(ничего)");
 		} else {
 			if (terse) {
 				object_desc(items[i].o_name,
@@ -421,7 +429,8 @@ static void show_obj_list(olist_detail_t mode)
 
 		/* Quiver may take multiple lines */
 		for (j = 0; j < quiver_slots; j++, i++) {
-			const char *fmt = "in Quiver: %d missile%s";
+			// const char *fmt = "in Quiver: %d missile%s";
+			const char *fmt = "в Колчане: %d снаряд%s";
 			char letter = all_letters_nohjkl[in_term ? i - 1 : i];
 
 			/* Number of missiles in this "slot" */
@@ -439,7 +448,7 @@ static void show_obj_list(olist_detail_t mode)
 
 			/* Print the count */
 			strnfmt(tmp_val, sizeof(tmp_val), fmt, count,
-					count == 1 ? "" : "s");
+					PLURAL_RU__A_OV(count));
 			c_put_str(COLOUR_L_UMBER, tmp_val, row + i, col + 3);
 		}
 	}
@@ -472,11 +481,13 @@ void show_inven(int mode, item_tester tester)
 	/* Include burden for term windows */
 	if (in_term) {
 		strnfmt(items[num_obj].label, sizeof(items[num_obj].label),
-		        "Burden %d.%d lb (%d.%d lb %s) ",
+		        // "Burden %d.%d lb (%d.%d lb %s) ",
+		        "Ноша %d.%d кг (%d.%d кг %s) ",
 		        player->upkeep->total_weight / 10,
 				player->upkeep->total_weight % 10,
 		        abs(diff) / 10, abs(diff) % 10,
-		        (diff < 0 ? "overweight" : "remaining"));
+		        // (diff < 0 ? "overweight" : "remaining"));
+		        (diff < 0 ? "перегруз" : "остаток"));
 
 		items[num_obj].object = NULL;
 		num_obj++;
@@ -543,7 +554,8 @@ void show_equip(int mode, item_tester tester)
 		int last_slot = -1;
 
 		strnfmt(items[num_obj].label, sizeof(items[num_obj].label),
-				"In quiver");
+				// "In quiver");
+				"В колчане");
 		items[num_obj].object = NULL;
 		num_obj++;
 
@@ -648,9 +660,11 @@ bool get_item_allow(const struct object *obj, unsigned char ch, cmd_code cmd,
 
 		const char *verb = cmd_verb(cmd);
 		if (!verb)
-			verb = "do that with";
+			// verb = "do that with";
+			verb = "сделать это с";
 
-		strnfmt(prompt_buf, sizeof(prompt_buf), "Really %s", verb);
+		// strnfmt(prompt_buf, sizeof(prompt_buf), "Really %s", verb);
+		strnfmt(prompt_buf, sizeof(prompt_buf), "Действительно %s", verb);
 
 		/* Prompt for confirmation n times */
 		while (n--) {
@@ -760,7 +774,8 @@ static void menu_header(void)
 	/* Viewing inventory */
 	if (player->upkeep->command_wrk == USE_INVEN) {
 		/* Begin the header */
-		strnfmt(out_val, sizeof(out_val), "Inven:");
+		// strnfmt(out_val, sizeof(out_val), "Inven:");
+		strnfmt(out_val, sizeof(out_val), "Инвентарь:");
 
 		/* List choices */
 		if (i1 <= i2) {
@@ -774,21 +789,25 @@ static void menu_header(void)
 
 		/* Indicate legality of equipment */
 		if (use_equip)
-			my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			// my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			my_strcat(out_val, " / в Экипировку,", sizeof(out_val));
 
 		/* Indicate legality of quiver */
 		if (use_quiver)
-			my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			// my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			my_strcat(out_val, " | в Колчан,", sizeof(out_val));
 
 		/* Indicate legality of the "floor" */
 		if (allow_floor)
-			my_strcat(out_val, " - for floor,", sizeof(out_val));
+			// my_strcat(out_val, " - for floor,", sizeof(out_val));
+			my_strcat(out_val, " - на Полу,", sizeof(out_val));
 	}
 
 	/* Viewing equipment */
 	else if (player->upkeep->command_wrk == USE_EQUIP) {
 		/* Begin the header */
-		strnfmt(out_val, sizeof(out_val), "Equip:");
+		// strnfmt(out_val, sizeof(out_val), "Equip:");
+		strnfmt(out_val, sizeof(out_val), "Экипировка:");
 
 		/* List choices */
 		if (e1 <= e2) {
@@ -802,21 +821,25 @@ static void menu_header(void)
 
 		/* Indicate legality of inventory */
 		if (use_inven)
-			my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			// my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			my_strcat(out_val, " / в Инвентарь,", sizeof(out_val));
 
 		/* Indicate legality of quiver */
 		if (use_quiver)
-			my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			// my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			my_strcat(out_val, " | в Колчан,", sizeof(out_val));
 
 		/* Indicate legality of the "floor" */
 		if (allow_floor)
-			my_strcat(out_val, " - for floor,", sizeof(out_val));
+			// my_strcat(out_val, " - for floor,", sizeof(out_val));
+			my_strcat(out_val, " - на Полу,", sizeof(out_val));
 	}
 
 	/* Viewing quiver */
 	else if (player->upkeep->command_wrk == USE_QUIVER) {
 		/* Begin the header */
-		strnfmt(out_val, sizeof(out_val), "Quiver:");
+		// strnfmt(out_val, sizeof(out_val), "Quiver:");
+		strnfmt(out_val, sizeof(out_val), "Колчан:");
 
 		/* List choices */
 		if (q1 <= q2) {
@@ -829,19 +852,23 @@ static void menu_header(void)
 
 		/* Indicate legality of inventory or equipment */
 		if (use_inven)
-			my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			// my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			my_strcat(out_val, " / в Инвентарь,", sizeof(out_val));
 		else if (use_equip)
-			my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			// my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			my_strcat(out_val, " / в Экипировку,", sizeof(out_val));
 
 		/* Indicate legality of the "floor" */
 		if (allow_floor)
-			my_strcat(out_val, " - for floor,", sizeof(out_val));
+			// my_strcat(out_val, " - for floor,", sizeof(out_val));
+			my_strcat(out_val, " - на Полу,", sizeof(out_val));
 	}
 
 	/* Viewing throwing */
 	else if (player->upkeep->command_wrk == SHOW_THROWING) {
 		/* Begin the header */
-		strnfmt(out_val, sizeof(out_val), "Throwing items:");
+		// strnfmt(out_val, sizeof(out_val), "Throwing items:");
+		strnfmt(out_val, sizeof(out_val), "Предметы для броска:");
 
 		/* List choices */
 		if (throwing_num) {
@@ -855,21 +882,25 @@ static void menu_header(void)
 
 		/* Indicate legality of inventory */
 		if (use_inven)
-			my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			// my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			my_strcat(out_val, " / в Инвентарь,", sizeof(out_val));
 
 		/* Indicate legality of quiver */
 		if (use_quiver)
-			my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			// my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			my_strcat(out_val, " | в Колчан,", sizeof(out_val));
 
 		/* Indicate legality of the "floor" */
 		if (allow_floor)
-			my_strcat(out_val, " - for floor,", sizeof(out_val));
+			// my_strcat(out_val, " - for floor,", sizeof(out_val));
+			my_strcat(out_val, " - на Полу,", sizeof(out_val));
 	}
 
 	/* Viewing floor */
 	else {
 		/* Begin the header */
-		strnfmt(out_val, sizeof(out_val), "Floor:");
+		// strnfmt(out_val, sizeof(out_val), "Floor:");
+		strnfmt(out_val, sizeof(out_val), "Пол:");
 
 		/* List choices */
 		if (f1 <= f2) {
@@ -883,13 +914,16 @@ static void menu_header(void)
 
 		/* Indicate legality of inventory or equipment */
 		if (use_inven)
-			my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			// my_strcat(out_val, " / for Inven,", sizeof(out_val));
+			my_strcat(out_val, " / в Инвентарь,", sizeof(out_val));
 		else if (use_equip)
-			my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			// my_strcat(out_val, " / for Equip,", sizeof(out_val));
+			my_strcat(out_val, " / в Экипировку,", sizeof(out_val));
 
 		/* Indicate legality of quiver */
 		if (use_quiver)
-			my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			// my_strcat(out_val, " | for Quiver,", sizeof(out_val));
+			my_strcat(out_val, " | в Колчан,", sizeof(out_val));
 	}
 
 	/* Finish the header */
@@ -1010,7 +1044,8 @@ static void item_menu_browser(int oid, void *data, const region *local_area)
 	if (olist_mode & OLIST_QUIVER && player->upkeep->command_wrk == USE_INVEN) {
 		/* Quiver may take multiple lines */
 		for (j = 0; j < quiver_slots; j++, i++) {
-			const char *fmt = "in Quiver: %d missile%s\n";
+			// const char *fmt = "in Quiver: %d missile%s\n";
+			const char *fmt = "в Колчане: %d снаряд%s\n";
 			char letter = all_letters_nohjkl[i];
 
 			/* Number of missiles in this "slot" */
@@ -1026,7 +1061,8 @@ static void item_menu_browser(int oid, void *data, const region *local_area)
 
 			/* Print the count */
 			strnfmt(tmp_val, sizeof(tmp_val), fmt, count,
-					count == 1 ? "" : "s");
+					// count == 1 ? "" : "s");
+					PLURAL_RU__A_OV(count));
 			text_out_c(COLOUR_L_UMBER, tmp_val, local_area->row + i, local_area->col + 3);
 		}
 	}
@@ -1578,7 +1614,8 @@ void textui_obj_examine(void)
 	struct object *obj;
 
 	/* Select item */
-	if (!get_item(&obj, "Examine which item?", "You have nothing to examine.",
+	// if (!get_item(&obj, "Examine which item?", "You have nothing to examine.",
+	if (!get_item(&obj, "Какой предмет осмотреть?", "Вам нечего осматривать.",
 			CMD_NULL, NULL, (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR | IS_HARMLESS)))
 		return;
 
@@ -1628,9 +1665,11 @@ void textui_cmd_ignore_menu(struct object *obj)
 
 	/* Basic ignore option */
 	if (!(obj->known->notice & OBJ_NOTICE_IGNORE)) {
-		menu_dynamic_add(m, "This item only", IGNORE_THIS_ITEM);
+		// menu_dynamic_add(m, "This item only", IGNORE_THIS_ITEM);
+		menu_dynamic_add(m, "Только этот предмет", IGNORE_THIS_ITEM);
 	} else {
-		menu_dynamic_add(m, "Unignore this item", UNIGNORE_THIS_ITEM);
+		// menu_dynamic_add(m, "Unignore this item", UNIGNORE_THIS_ITEM);
+		menu_dynamic_add(m, "Не игнор. этот пермет", UNIGNORE_THIS_ITEM);
 	}
 
 	/* Flavour-aware ignore */
@@ -1643,10 +1682,12 @@ void textui_cmd_ignore_menu(struct object *obj)
 		object_desc(tmp, sizeof(tmp), obj,
 			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
 		if (!ignored) {
-			strnfmt(out_val, sizeof out_val, "All %s", tmp);
+			// strnfmt(out_val, sizeof out_val, "All %s", tmp);
+			strnfmt(out_val, sizeof out_val, "Все %s", tmp);
 			menu_dynamic_add(m, out_val, IGNORE_THIS_FLAVOR);
 		} else {
-			strnfmt(out_val, sizeof out_val, "Unignore all %s", tmp);
+			// strnfmt(out_val, sizeof out_val, "Unignore all %s", tmp);
+			strnfmt(out_val, sizeof out_val, "Не игнор. все %s", tmp);
 			menu_dynamic_add(m, out_val, UNIGNORE_THIS_FLAVOR);
 		}
 	}
@@ -1664,10 +1705,12 @@ void textui_cmd_ignore_menu(struct object *obj)
 		choice.short_name = "";
 		(void) ego_item_name(tmp, sizeof(tmp), &choice);
 		if (!ego_is_ignored(choice.e_idx, choice.itype)) {
-			strnfmt(out_val, sizeof out_val, "All %s", tmp + 4);
+			// strnfmt(out_val, sizeof out_val, "All %s", tmp + 4);
+			strnfmt(out_val, sizeof out_val, "Все %s", tmp + 4);
 			menu_dynamic_add(m, out_val, IGNORE_THIS_EGO);
 		} else {
-			strnfmt(out_val, sizeof out_val, "Unignore all %s", tmp + 4);
+			// strnfmt(out_val, sizeof out_val, "Unignore all %s", tmp + 4);
+			strnfmt(out_val, sizeof out_val, "Не игнор. все %s", tmp + 4);
 			menu_dynamic_add(m, out_val, UNIGNORE_THIS_EGO);
 		}
 	}
@@ -1679,7 +1722,8 @@ void textui_cmd_ignore_menu(struct object *obj)
 		value = IGNORE_MAX;
 
 	if (value != IGNORE_MAX && type != ITYPE_MAX) {
-		strnfmt(out_val, sizeof out_val, "All %s %s",
+		// strnfmt(out_val, sizeof out_val, "All %s %s",
+		strnfmt(out_val, sizeof out_val, "Все %s %s",
 				quality_values[value].name, ignore_name_for_type(type));
 
 		menu_dynamic_add(m, out_val, IGNORE_THIS_QUALITY);
@@ -1695,7 +1739,8 @@ void textui_cmd_ignore_menu(struct object *obj)
 	menu_layout(m, &r);
 	region_erase_bordered(&r);
 
-	prt("(Enter to select, ESC) Ignore:", 0, 0);
+	// prt("(Enter to select, ESC) Ignore:", 0, 0);
+	prt("('Enter' выбор, ESC) Игнорир.:", 0, 0);
 	selected = menu_dynamic_select(m);
 
 	screen_load();
@@ -1729,8 +1774,10 @@ void textui_cmd_ignore(void)
 	struct object *obj;
 
 	/* Get an item */
-	const char *q = "Ignore which item? ";
-	const char *s = "You have nothing to ignore.";
+	// const char *q = "Ignore which item? ";
+	const char *q = "Какой предмет игнорировать? ";
+	// const char *s = "You have nothing to ignore.";
+	const char *s = "Вам нечего игнорировать.";
 	if (!get_item(&obj, q, s, CMD_IGNORE, NULL,
 				  USE_INVEN | USE_QUIVER | USE_EQUIP | USE_FLOOR))
 		return;

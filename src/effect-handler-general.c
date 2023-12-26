@@ -194,14 +194,17 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			/* Failure to remove, object is now fragile */
 			object_desc(o_name, sizeof(o_name), obj, ODESC_FULL,
 				player);
-			msgt(MSG_CURSED, "The spell fails; your %s is now fragile.", o_name);
+			// msgt(MSG_CURSED, "The spell fails; your %s is now fragile.", o_name);
+			msgt(MSG_CURSED, "Заклинание провалилось; ваш %s теперь хрупкий.", o_name);
 			of_on(obj->flags, OF_FRAGILE);
 			player_learn_flag(player, OF_FRAGILE);
 		} else if (one_in_(4)) {
 			/* Failure - unlucky fragile object is destroyed */
 			struct object *destroyed;
 			bool none_left = false;
-			msg("There is a bang and a flash!");
+			//msg("There is a bang and a flash!");
+			msg("Раздался взрыв и вспышка!");
+			
 			if (object_is_carried(player, obj)) {
 				destroyed = gear_object_for_use(player, obj,
 					1, false, &none_left);
@@ -217,7 +220,8 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			take_hit(player, damroll(5, 5), "Failed uncursing");
 		} else {
 			/* Non-destructive failure */
-			msg("The removal fails.");
+			//msg("The removal fails.");
+			msg("Не критичные повреждение.");
 		}
 	} else {
 		return false;
@@ -370,8 +374,10 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 	item_tester filter = num_ac ? tval_is_armor : tval_is_weapon;
 
 	/* Get an item */
-	q = "Enchant which item? ";
-	s = "You have nothing to enchant.";
+/* 	q = "Enchant which item? ";
+	s = "You have nothing to enchant."; */
+	q = "Какой предмет зачаровать? ";
+	s = "Вам нечего зачаровывать.";
 	if (cmd) {
 		if (cmd_get_item(cmd, "tgtitem", &obj, q, s, filter,
 				itemmode)) {
@@ -384,9 +390,12 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
 
 	/* Describe */
-	msg("%s %s glow%s brightly!",
-		(object_is_carried(player, obj) ? "Your" : "The"), o_name,
-			   ((obj->number > 1) ? "" : "s"));
+	// msg("%s %s glow%s brightly!",
+	msg("%s %s свет%s ярко!",
+		// (object_is_carried(player, obj) ? "Your" : "The"), o_name,
+		(object_is_carried(player, obj) ? "Ваши" : "Ваш"), o_name,
+				// ((obj->number > 1) ? "" : "s"));
+			   ((obj->number > 1) ? "ит" : "ятся"));
 
 	/* Enchant */
 	if (num_dam && enchant(obj, num_hit, ENCH_TOBOTH)) okay = true;
@@ -399,7 +408,8 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 		event_signal(EVENT_INPUT_FLUSH);
 
 		/* Message */
-		msg("The enchantment failed.");
+		//msg("The enchantment failed.");
+		msg("Зачарование не удалось.");
 	}
 
 	/* Something happened */
@@ -426,8 +436,9 @@ static void brand_object(struct object *obj, const char *name)
 		strnfmt(brand, sizeof(brand), "of %s", name);
 
 		/* Describe */
-		msg("The %s %s surrounded with an aura of %s.", o_name,
-			(obj->number > 1) ? "are" : "is", name);
+		//msg("The %s %s surrounded with an aura of %s.", o_name,
+		msg("%s окружен%s аурой %s.", o_name,
+			(obj->number > 1) ? "" : "ы", name);
 
 		/* Get the right ego type for the object */
 		for (i = 0; i < z_info->e_max; i++) {
@@ -464,7 +475,8 @@ static void brand_object(struct object *obj, const char *name)
 		enchant(obj, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
 	} else {
 		event_signal(EVENT_INPUT_FLUSH);
-		msg("The branding failed.");
+		//msg("The branding failed.");
+		msg("Клеймение не удалось.");
 	}
 }
 
@@ -501,7 +513,8 @@ bool effect_handler_NOURISH(effect_handler_context_t *context)
 		/* Set food level to amount, vomiting if necessary */
 		bool message = player->timed[TMD_FOOD] > amount;
 		if (message) {
-			msg("You vomit!");
+			//msg("You vomit!");
+			msg("Вас тошнит!");
 		}
 		player_set_timed(player, TMD_FOOD, MAX(amount, 0), false,
 			context->origin.what != SRC_PLAYER || !context->aware);
@@ -522,9 +535,11 @@ bool effect_handler_NOURISH(effect_handler_context_t *context)
 bool effect_handler_CRUNCH(effect_handler_context_t *context)
 {
 	if (one_in_(2))
-		msg("It's crunchy.");
+		//msg("It's crunchy.");
+		msg("Что-то хрустнуло.");
 	else
-		msg("It nearly breaks your tooth!");
+		//msg("It nearly breaks your tooth!");
+		msg("Это чуть не сломало вам зуб!");
 	context->ident = true;
 	return true;
 }
@@ -692,13 +707,15 @@ bool effect_handler_GLYPH(effect_handler_context_t *context)
 
 	/* Only one decoy at a time */
 	if (!loc_is_zero(decoy) && (context->subtype == GLYPH_DECOY)) {
-		msg("You can only deploy one decoy at a time.");
+		//msg("You can only deploy one decoy at a time.");
+		msg("Вы можете использовать только одну приманку за раз.");
 		return false;
 	}
 
 	/* See if the effect works */
 	if (!square_istrappable(cave, player->grid)) {
-		msg("There is no clear floor on which to cast the spell.");
+		//msg("There is no clear floor on which to cast the spell.");
+		msg("Нет свободного места для наложения заклинания.");
 		return false;
 	}
 
@@ -778,7 +795,8 @@ bool effect_handler_RESTORE_STAT(effect_handler_context_t *context)
 	update_stuff(player);
 
 	/* Message */
-	msg("You feel less %s.", desc_stat(stat, false));
+	//msg("You feel less %s.", desc_stat(stat, false));
+	msg("Вы чувствуете себя менее %s.", desc_stat(stat, false));
 
 	return (true);
 }
@@ -803,7 +821,8 @@ bool effect_handler_DRAIN_STAT(effect_handler_context_t *context)
 		equip_learn_flag(player, flag);
 
 		/* Message */
-		msg("You feel very %s for a moment, but the feeling passes.",
+		//msg("You feel very %s for a moment, but the feeling passes.",
+		msg("Вы почувствовали себя весьма %s, но это чувство ушло.",
 				   desc_stat(stat, false));
 
 		return (true);
@@ -817,7 +836,8 @@ bool effect_handler_DRAIN_STAT(effect_handler_context_t *context)
 		equip_learn_flag(player, flag);
 
 		/* Message */
-		msgt(MSG_DRAIN_STAT, "You feel very %s.", desc_stat(stat, false));
+		// msgt(MSG_DRAIN_STAT, "You feel very %s.", desc_stat(stat, false));
+		msgt(MSG_DRAIN_STAT, "Вы чувствуете себя весьма %s.", desc_stat(stat, false));
 		if (dam)
 			take_hit(player, dam, "stat drain");
 	}
@@ -839,7 +859,8 @@ bool effect_handler_LOSE_RANDOM_STAT(effect_handler_context_t *context)
 
 	/* Attempt to reduce the stat */
 	if (player_stat_dec(player, loss_stat, true)) {
-		msgt(MSG_DRAIN_STAT, "You feel very %s.", desc_stat(loss_stat, false));
+		//msgt(MSG_DRAIN_STAT, "You feel very %s.", desc_stat(loss_stat, false));
+		msgt(MSG_DRAIN_STAT, "Вы чувствуете себя весьма %s.", desc_stat(loss_stat, false));
 	}
 
 	/* ID */
@@ -858,7 +879,8 @@ bool effect_handler_GAIN_STAT(effect_handler_context_t *context)
 
 	/* Attempt to increase */
 	if (player_stat_inc(player, stat)) {
-		msg("You feel very %s!", desc_stat(stat, true));
+		//msg("You feel very %s!", desc_stat(stat, true));
+		msg("Вы чувствуете себя весьма %s!", desc_stat(stat, true));
 	}
 
 	/* Notice */
@@ -876,7 +898,8 @@ bool effect_handler_RESTORE_EXP(effect_handler_context_t *context)
 	if (player->exp < player->max_exp) {
 		/* Message */
 		if (context->origin.what != SRC_NONE)
-			msg("You feel your life energies returning.");
+			//msg("You feel your life energies returning.");
+			msg("Вы чувствуете как к вам возвращается жизненная энергия.");
 		player_exp_gain(player, player->max_exp - player->exp);
 
 		/* Recalculate max. hitpoints */
@@ -894,7 +917,8 @@ bool effect_handler_GAIN_EXP(effect_handler_context_t *context)
 {
 	int amount = effect_calculate_value(context, false);
 	if (player->exp < PY_MAX_EXP) {
-		msg("You feel more experienced.");
+		//msg("You feel more experienced.");
+		msg("Вы чувствуете себя более опытным.");
 		player_exp_gain(player, amount / 2);
 	}
 	context->ident = true;
@@ -919,7 +943,8 @@ bool effect_handler_DRAIN_LIGHT(effect_handler_context_t *context)
 
 		/* Notice */
 		if (!player->timed[TMD_BLIND]) {
-			msg("Your light dims.");
+			//msg("Your light dims.");
+			msg("Ваш свет тускнеет.");
 			context->ident = true;
 		}
 
@@ -967,7 +992,8 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 
 	/* The player has no mana */
 	if (!player->csp) {
-		msg("The draining fails.");
+		// msg("The draining fails.");
+		msg("Мана истощена.");
 		if (monster) {
 			update_smart_learn(mon, player, 0, PF_NO_MANA, -1);
 		}
@@ -996,7 +1022,8 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 
 			/* Special message */
 			if (monster_is_visible(mon))
-				msg("%s appears healthier.", m_name);
+				//msg("%s appears healthier.", m_name);
+				msg("%s кажется здоровее.", m_name);
 		}
 	}
 
@@ -1015,9 +1042,11 @@ bool effect_handler_RESTORE_MANA(effect_handler_context_t *context)
 		if (player->csp > player->msp) {
 			player->csp = player->msp;
 			player->csp_frac = 0;
-			msg("You feel your head clear.");
+			// msg("You feel your head clear.");
+			msg("Вы чувствуете как голова прояснилась.");
 		} else
-			msg("You feel your head clear somewhat.");
+			// msg("You feel your head clear somewhat.");
+			msg("Вы чувствуете как голова немного прояснилась.");
 		player->upkeep->redraw |= (PR_MANA);
 	}
 	context->ident = true;
@@ -1030,8 +1059,10 @@ bool effect_handler_RESTORE_MANA(effect_handler_context_t *context)
  */
 bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 {
-	const char *prompt = "Uncurse which item? ";
-	const char *rejmsg = "You have no curses to remove.";
+	//const char *prompt = "Uncurse which item? ";
+	//const char *rejmsg = "You have no curses to remove.";
+	const char *prompt = "С чего снять проклятие? ";
+	const char *rejmsg = "У вас нет проклятых предметов.";
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
 	int strength = effect_calculate_value(context, false);
 	struct object *obj = NULL;
@@ -1077,20 +1108,23 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 
 	/* No recall */
 	if (OPT(player, birth_no_recall) && !player->total_winner) {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 		return true;
 	}
 
 	/* No recall from quest levels with force_descend */
 	if (OPT(player, birth_force_descend)
 			&& is_quest(player, player->depth)) {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 		return true;
 	}
 
 	/* No recall from single combat */
 	if (player->upkeep->arena_level) {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 		return true;
 	}
 
@@ -1098,7 +1132,8 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 	target_depth = dungeon_get_next_level(player, player->max_depth, 1);
 	if (OPT(player, birth_force_descend) && !(player->depth)
 			&& is_quest(player, target_depth)) {
-		if (!get_check("Are you sure you want to descend? ")) {
+		//if (!get_check("Are you sure you want to descend? ")) {
+		if (!get_check("Вы уверены, что хотите спуститься? ")) {
 			return false;
 		}
 	}
@@ -1108,7 +1143,8 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 		/* Reset recall depth */
 		if (player->depth > 0) {
 			if (player->depth != player->max_depth) {
-				if (get_check("Set recall depth to current depth? ")) {
+				//if (get_check("Set recall depth to current depth? ")) {
+				if (get_check("Установить текущий этаж для перемещения? ")) {
 					player->recall_depth = player->max_depth = player->depth;
 				}
 			} else {
@@ -1122,14 +1158,17 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 		}
 
 		player->word_recall = randint0(20) + 15;
-		msg("The air about you becomes charged...");
+		//msg("The air about you becomes charged...");
+		msg("Воздух вокруг вас становится насыщенным...");
 	} else {
 		/* Deactivate recall */
-		if (!get_check("Word of Recall is already active.  Do you want to cancel it? "))
+		//if (!get_check("Word of Recall is already active.  Do you want to cancel it? "))
+		if (!get_check("Слово Возвращения уже прочитано. Вы хотите отменить его? "))
 			return false;
 
 		player->word_recall = 0;
-		msg("A tension leaves the air around you...");
+		//msg("A tension leaves the air around you...");
+		msg("Напряжение в воздух вокруг вас рассеивается...");
 	}
 
 	/* Redraw status line */
@@ -1155,14 +1194,16 @@ bool effect_handler_DEEP_DESCENT(effect_handler_context_t *context)
 	}
 
 	if (target_depth > player->depth) {
-		msgt(MSG_TPLEVEL, "The air around you starts to swirl...");
+		//msgt(MSG_TPLEVEL, "The air around you starts to swirl...");
+		msgt(MSG_TPLEVEL, "Воздух вокруг вас начинает завихряться...");
 		player->deep_descent = 3 + randint1(4);
 
 		/* Redraw status line */
 		player->upkeep->redraw |= PR_STATUS;
 		handle_stuff(player);
 	} else {
-		msgt(MSG_TPLEVEL, "You sense a malevolent presence blocking passage to the levels below.");
+		//msgt(MSG_TPLEVEL, "You sense a malevolent presence blocking passage to the levels below.");
+		msgt(MSG_TPLEVEL, "Вы чувствуете зло, блокирующее проход на этажи ниже.");
 	}
 	context->ident = true;
 	return true;
@@ -1172,7 +1213,8 @@ bool effect_handler_ALTER_REALITY(effect_handler_context_t *context)
 {
 	/* Don't allow in single combat arenas. */
 	if (player->upkeep->arena_level) return true;
-	msg("The world changes!");
+	//msg("The world changes!");
+	msg("Мир меняется!");
 	dungeon_change_level(player, player->depth);
 	context->ident = true;
 	return true;
@@ -1290,7 +1332,8 @@ bool effect_handler_READ_MINDS(effect_handler_context_t *context)
 	}
 
 	if (found) {
-		msg("Images form in your mind!");
+		//msg("Images form in your mind!");
+		msg("Образы формируются в вашем воображении!");
 		context->ident = true;
 	}
 
@@ -1362,11 +1405,13 @@ bool effect_handler_DETECT_TRAPS(effect_handler_context_t *context)
 
 	/* Describe */
 	if (detect)
-		msg("You sense the presence of traps!");
+		//msg("You sense the presence of traps!");
+		msg("Вы чувствуете близость ловушек!");
 
 	/* Trap detection always makes you aware, even if no traps are present */
 	else
-		msg("You sense no traps.");
+		//msg("You sense no traps.");
+		msg("Вы не чувствуете ловушек.");
 
 	/* Notice */
 	context->ident = true;
@@ -1431,9 +1476,11 @@ bool effect_handler_DETECT_DOORS(effect_handler_context_t *context)
 
 	/* Describe */
 	if (doors)
-		msg("You sense the presence of doors!");
+		//msg("You sense the presence of doors!");
+		msg("Вы чувствуете близость дверей!");
 	else if (context->aware)
-		msg("You sense no doors.");
+		//msg("You sense no doors.");
+		msg("Вы не чувствуете дверей.");
 
 	context->ident = true;
 
@@ -1483,9 +1530,11 @@ bool effect_handler_DETECT_STAIRS(effect_handler_context_t *context)
 
 	/* Describe */
 	if (stairs)
-		msg("You sense the presence of stairs!");
+		//msg("You sense the presence of stairs!");
+		msg("Вы чувствуете близость лестниц!");
 	else if (context->aware)
-		msg("You sense no stairs.");
+		//msg("You sense no stairs.");
+		msg("Вы не чувствуете лестниц.");
 
 	context->ident = true;
 	return true;
@@ -1540,9 +1589,11 @@ bool effect_handler_DETECT_GOLD(effect_handler_context_t *context)
 	/* Message unless we're silently detecting */
 	if (context->origin.what != SRC_NONE) {
 		if (gold_buried) {
-			msg("You sense the presence of buried treasure!");
+			//msg("You sense the presence of buried treasure!");
+			msg("Вы чувствуете близость зарытых сокровищ!");
 		} else if (context->aware) {
-			msg("You sense no buried treasure.");
+			//msg("You sense no buried treasure.");
+			msg("Вы не чувствуете зарытых сокровищ.");
 		}
 	}
 
@@ -1639,9 +1690,11 @@ bool effect_handler_SENSE_OBJECTS(effect_handler_context_t *context)
 	}
 
 	if (objects)
-		msg("You sense the presence of objects!");
+		//msg("You sense the presence of objects!");
+		msg("Вы чувствуете близость предметов!");
 	else if (context->aware)
-		msg("You sense no objects.");
+		//msg("You sense no objects.");
+		msg("Вы не чувствуете предметы.");
 
 	/* Redraw whole map, monster list */
 	player->upkeep->redraw |= PR_ITEMLIST;
@@ -1700,9 +1753,11 @@ bool effect_handler_DETECT_OBJECTS(effect_handler_context_t *context)
 	}
 
 	if (objects)
-		msg("You detect the presence of objects!");
+		//msg("You detect the presence of objects!");
+		msg("Вы обнаружили присутствие предметов!");
 	else if (context->aware)
-		msg("You detect no objects.");
+		//msg("You detect no objects.");
+		msg("Вы не обнаружили предметы.");
 
 	/* Redraw whole map, monster list */
 	player->upkeep->redraw |= PR_ITEMLIST;
@@ -1786,10 +1841,12 @@ bool effect_handler_DETECT_LIVING_MONSTERS(effect_handler_context_t *context)
 	bool monsters = detect_monsters(context->y, context->x, monster_is_living);
 
 	if (monsters)
-		msg("You sense life!");
+		//msg("You sense life!");
+		msg("Вы чувствуете жизнь!");
 	else if (context->aware)
-		msg("You sense no life.");
-
+		//msg("You sense no life.");
+		msg("Вы не чувствуете жизнь!");
+		
 	context->ident = true;
 	return true;
 }
@@ -1809,9 +1866,11 @@ bool effect_handler_DETECT_VISIBLE_MONSTERS(effect_handler_context_t *context)
 									monster_is_not_invisible);
 
 	if (monsters)
-		msg("You sense the presence of monsters!");
+		//msg("You sense the presence of monsters!");
+		msg("Вы чувствуете присутствие монстров!");
 	else if (context->aware)
-		msg("You sense no monsters.");
+		//msg("You sense no monsters.");
+		msg("Вы не чувствуете монстров.");
 
 	context->ident = true;
 	return true;
@@ -1829,9 +1888,11 @@ bool effect_handler_DETECT_INVISIBLE_MONSTERS(effect_handler_context_t *context)
 									monster_is_invisible);
 
 	if (monsters)
-		msg("You sense the presence of invisible creatures!");
+		//msg("You sense the presence of invisible creatures!");
+		msg("Вы чувствуете присутствие невидимых существ!");
 	else if (context->aware)
-		msg("You sense no invisible creatures.");
+		//msg("You sense no invisible creatures.");
+		msg("Вы не чувствуете невидимых существ.");
 
 	context->ident = true;
 	return true;
@@ -1847,9 +1908,11 @@ bool effect_handler_DETECT_FEARFUL_MONSTERS(effect_handler_context_t *context)
 	bool monsters = detect_monsters(context->y, context->x, monster_is_fearful);
 
 	if (monsters)
-		msg("These monsters could provide good sport.");
+		// msg("These monsters could provide good sport.");
+		msg("Эти монстры могли бы стать отличной разминкой.");
 	else if (context->aware)
-		msg("You smell no fear in the air.");
+		// msg("You smell no fear in the air.");
+		msg("Вы не чувствуете страха в воздухе.");
 
 	context->ident = true;
 	return true;
@@ -1865,9 +1928,11 @@ bool effect_handler_DETECT_EVIL(effect_handler_context_t *context)
 	bool monsters = detect_monsters(context->y, context->x, monster_is_evil);
 
 	if (monsters)
-		msg("You sense the presence of evil creatures!");
+		// msg("You sense the presence of evil creatures!");
+		msg("Вы чувствуете присутствие злых существ!");
 	else if (context->aware)
-		msg("You sense no evil creatures.");
+		// msg("You sense no evil creatures.");
+		msg("Вы не чувствуете злых существ.");
 
 	context->ident = true;
 	return true;
@@ -1883,9 +1948,11 @@ bool effect_handler_DETECT_SOUL(effect_handler_context_t *context)
 	bool monsters = detect_monsters(context->y, context->x, monster_has_spirit);
 
 	if (monsters)
-		msg("You sense the presence of spirits!");
+		// msg("You sense the presence of spirits!");
+		msg("Вы чувствуете присутствие духов!");
 	else if (context->aware)
-		msg("You sense no spirits.");
+		// msg("You sense no spirits.");
+		msg("Вы не чувствуете духов.");
 
 	context->ident = true;
 	return true;
@@ -1904,8 +1971,10 @@ bool effect_handler_IDENTIFY(effect_handler_context_t *context)
 	context->ident = true;
 
 	/* Get an item */
-	q = "Identify which item? ";
-	s = "You have nothing to identify.";
+	//q = "Identify which item? ";
+	//s = "You have nothing to identify.";
+	q = "Какой предмет идентифицировать? ";	
+	s = "Вам нечего идентифицировать.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				item_tester_unknown, itemmode)) {
@@ -1930,13 +1999,15 @@ bool effect_handler_CREATE_STAIRS(effect_handler_context_t *context)
 
 	/* Only allow stairs to be created on empty floor */
 	if (!square_isfloor(cave, player->grid)) {
-		msg("There is no empty floor here.");
+		//msg("There is no empty floor here.");
+		msg("На полу нет пустого места.");
 		return false;
 	}
 
 	/* Fails for persistent levels (for now) and arenas */
 	if (OPT(player, birth_levels_persist) || player->upkeep->arena_level) {
-		msg("Nothing happens!");
+		//msg("Nothing happens!");
+		msg("Ничего не происходит!");
 		return false;
 	}
 
@@ -1998,9 +2069,9 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 	/* Artifacts have a 60% chance to resist */
 	if (obj->artifact && (randint0(100) < 60)) {
 		/* Message */
-		msg("Your %s (%c) resist%s disenchantment!", o_name,
-			gear_to_label(player, obj),
-			((obj->number != 1) ? "" : "s"));
+		//msg("Your %s (%c) resist%s disenchantment!", o_name,
+		msg("Ваш%s %s (%c) противосто%s развоплощению!", ((obj->number != 1) ? "и" : ""), o_name,
+			gear_to_label(player, obj), ((obj->number != 1) ? "ят" : "ит"));
 
 		return true;
 	}
@@ -2025,9 +2096,11 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 	}
 
 	/* Message */
-	msg("Your %s (%c) %s disenchanted!", o_name,
+	//msg("Your %s (%c) %s disenchanted!", o_name,
+	msg("Ваш%s %s (%c) развоплощ%s!", ((obj->number != 1) ? "и" : ""), o_name,
 		gear_to_label(player, obj),
-		((obj->number != 1) ? "were" : "was"));
+		// ((obj->number != 1) ? "were" : "was"));
+		((obj->number != 1) ? "ены" : "ён"));
 
 	/* Recalculate bonuses */
 	player->upkeep->update |= (PU_BONUS);
@@ -2092,8 +2165,10 @@ bool effect_handler_RECHARGE(effect_handler_context_t *context)
 	player->upkeep->recharge_pow = strength;
 
 	/* Get an item */
-	q = "Recharge which item? ";
-	s = "You have nothing to recharge.";
+	//q = "Recharge which item? ";
+	//s = "You have nothing to recharge.";
+	q = "Какой предмет перезарядить? ";
+	s = "Вам ничего перезарядить.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				tval_can_have_charges, itemmode)) {
@@ -2109,8 +2184,10 @@ bool effect_handler_RECHARGE(effect_handler_context_t *context)
 		struct object *destroyed;
 		bool none_left = false;
 
-		msg("The recharge backfires!");
-		msg("There is a bright flash of light.");
+		/* msg("The recharge backfires!");
+		msg("There is a bright flash of light."); */
+		msg("Перезарядка сработала!");
+		msg("Появилась яркая вспышка света.");
 
 		/* Reduce and describe inventory */
 		if (object_is_carried(player, obj)) {
@@ -2178,7 +2255,8 @@ bool effect_handler_WAKE(effect_handler_context_t *context)
 
 	/* Messages */
 	if (woken) {
-		msg("You hear a sudden stirring in the distance!");
+		//msg("You hear a sudden stirring in the distance!");
+		msg("Вы слышите внезапное шевеление вдалеке!");
 	}
 
 	context->ident = true;
@@ -2257,7 +2335,8 @@ bool effect_handler_SUMMON(effect_handler_context_t *context)
 
 		/* Summoner failed */
 		if (!count)
-			msg("But nothing comes.");
+			//msg("But nothing comes.");
+			msg("Но ничего не приходит.");
 	} else {
 		/* If not a monster summon, it's simple */
 		while (summon_max) {
@@ -2272,8 +2351,10 @@ bool effect_handler_SUMMON(effect_handler_context_t *context)
 
 	/* Message for the blind */
 	if (count && player->timed[TMD_BLIND])
-		msgt(message_type, "You hear %s appear nearby.",
-			 (count > 1 ? "many things" : "something"));
+		// msgt(message_type, "You hear %s appear nearby.",
+		msgt(message_type, "Вы слышите, как %s появляется рядом.",
+			 // (count > 1 ? "many things" : "something"));
+			 (count > 1 ? "много всего" : "что-то"));
 
 	return true;
 }
@@ -2296,11 +2377,13 @@ bool effect_handler_BANISH(effect_handler_context_t *context)
 
 	/* Don't allow in an arena. */
 	if (player->upkeep->arena_level) {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 		return true;
 	}
 
-	if (!get_com("Choose a monster race (by symbol) to banish: ", &typ))
+	//if (!get_com("Choose a monster race (by symbol) to banish: ", &typ))
+	if (!get_com("Выберите расу монстров (по символу) для изгнания: ", &typ))
 		return false;
 
 	/* Delete the monsters of that "type" */
@@ -2332,7 +2415,8 @@ bool effect_handler_BANISH(effect_handler_context_t *context)
 	}
 
 	/* Hurt the player */
-	take_hit(player, dam, "the strain of casting Banishment");
+	//take_hit(player, dam, "the strain of casting Banishment");
+	take_hit(player, dam, "напряжение от наложения Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;
@@ -2355,7 +2439,8 @@ bool effect_handler_MASS_BANISH(effect_handler_context_t *context)
 
 	/* Don't allow in an arena. */
 	if (player->upkeep->arena_level) {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 		return true;
 	}
 
@@ -2380,7 +2465,8 @@ bool effect_handler_MASS_BANISH(effect_handler_context_t *context)
 	}
 
 	/* Hurt the player */
-	take_hit(player, dam, "the strain of casting Mass Banishment");
+	//	take_hit(player, dam, "the strain of casting Mass Banishment");
+	take_hit(player, dam, "напряжение от наложения Массового Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;
@@ -2412,14 +2498,16 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 			char m_name[80];
 
 			/* Start the message */
-			if (!probe) msg("Probing...");
+			//if (!probe) msg("Probing...");
+			if (!probe) msg("Исследование...");
 
 			/* Get "the monster" or "something" */
 			monster_desc(m_name, sizeof(m_name), mon,
 				MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA);
 
 			/* Describe the monster */
-			msg("%s has %d hit point%s.", m_name, mon->hp, (mon->hp == 1) ? "" : "s");
+			//msg("%s has %d hit point%s.", m_name, mon->hp, (mon->hp == 1) ? "" : "s");
+			msg("%s имеет %d очк%s здоровья.", m_name, mon->hp, PLURAL_RU_O_A_OV(mon->hp));
 
 			/* Learn all of the non-spell, non-treasure flags */
 			lore_do_probe(mon);
@@ -2431,7 +2519,8 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 
 	/* Done */
 	if (probe) {
-		msg("That's all.");
+		//msg("That's all.");
+		msg("Вот, собственно, и всё.");
 		context->ident = true;
 	}
 
@@ -2490,14 +2579,16 @@ bool effect_handler_TELEPORT(effect_handler_context_t *context)
 		/* Check for a no teleport grid */
 		if (square_isno_teleport(cave, start) &&
 			((dis > 10) || (dis == 0))) {
-			msg("Teleportation forbidden!");
+			//msg("Teleportation forbidden!");
+			msg("Телепортация запрещена!");
 			return true;
 		}
 
 		/* Check for a no teleport curse */
 		if (player_of_has(player, OF_NO_TELEPORT)) {
 			equip_learn_flag(player, OF_NO_TELEPORT);
-			msg("Teleportation forbidden!");
+			//msg("Teleportation forbidden!");
+			msg("Телепортация запрещена!");
 			return true;
 		}
 	} else {
@@ -2576,7 +2667,8 @@ bool effect_handler_TELEPORT(effect_handler_context_t *context)
 	/* Report failure (very unlikely) */
 	if (!num_spots) {
 		if (is_player) {
-			msg("Failed to find teleport destination!");
+			//msg("Failed to find teleport destination!");
+			msg("Место назначения для телепортации не найдено!");
 		} else {
 			/*
 			 * With either teleport self or teleport other, it'll
@@ -2679,14 +2771,16 @@ bool effect_handler_TELEPORT_TO(effect_handler_context_t *context)
 
 		/* Check for a no teleport grid */
 		if (square_isno_teleport(cave, start)) {
-			msg("Teleportation forbidden!");
+			//msg("Teleportation forbidden!");
+			msg("Телепортация запрещена!");
 			return true;
 		}
 
 		/* Check for a no teleport curse */
 		if (player_of_has(player, OF_NO_TELEPORT)) {
 			equip_learn_flag(player, OF_NO_TELEPORT);
-			msg("Teleportation forbidden!");
+			//msg("Teleportation forbidden!");
+			msg("Телепортация запрещена!");
 			return true;
 		}
 	}
@@ -2795,21 +2889,24 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 
 	/* Check for a no teleport grid */
 	if (square_isno_teleport(cave, player->grid)) {
-		msg("Teleportation forbidden!");
+		//msg("Teleportation forbidden!");
+		msg("Телепортация запрещена!");
 		return true;
 	}
 
 	/* Check for a no teleport curse */
 	if (player_of_has(player, OF_NO_TELEPORT)) {
 		equip_learn_flag(player, OF_NO_TELEPORT);
-		msg("Teleportation forbidden!");
+		//msg("Teleportation forbidden!");
+		msg("Телепортация запрещена!");
 		return true;
 	}
 
 	/* Resist hostile teleport */
 	if (context->origin.what == SRC_MONSTER &&
 			player_resists(player, ELEM_NEXUS)) {
-		msg("You resist the effect!");
+		//msg("You resist the effect!");
+		msg("Вы сопротивляетесь эффекту!");
 		return true;
 	}
 
@@ -2841,13 +2938,15 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 	 * command in the queue and is then hit by a teleport level spell)
 	 */
 	if (up) {
-		msgt(MSG_TPLEVEL, "You rise up through the ceiling.");
+		//msgt(MSG_TPLEVEL, "You rise up through the ceiling.");
+		msgt(MSG_TPLEVEL, "Вы поднимаетесь сквозь потолок.");
 		cmdq_flush();
 		target_depth = dungeon_get_next_level(player,
 			player->depth, -1);
 		dungeon_change_level(player, target_depth);
 	} else if (down) {
-		msgt(MSG_TPLEVEL, "You sink through the floor.");
+		//msgt(MSG_TPLEVEL, "You sink through the floor.");
+		msgt(MSG_TPLEVEL, "Вы проваливаетесь сквозь пол.");
 
 		cmdq_flush();
 		if (OPT(player, birth_force_descend)) {
@@ -2860,7 +2959,8 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 			dungeon_change_level(player, target_depth);
 		}
 	} else {
-		msg("Nothing happens.");
+		//msg("Nothing happens.");
+		msg("Ничего не происходит.");
 	}
 
 	return true;
@@ -2938,7 +3038,8 @@ bool effect_handler_LIGHT_LEVEL(effect_handler_context_t *context)
 {
 	bool full = context->value.base ? true : false;
 	if (full)
-		msg("An image of your surroundings forms in your mind...");
+		//msg("An image of your surroundings forms in your mind...");
+		msg("В вашем сознании формируется образ окружения...");
 	wiz_light(cave, player, full);
 	context->ident = true;
 	return true;
@@ -2948,7 +3049,8 @@ bool effect_handler_DARKEN_LEVEL(effect_handler_context_t *context)
 {
 	bool full = context->value.base ? true : false;
 	if (full)
-		msg("A great blackness rolls through the dungeon...");
+		//msg("A great blackness rolls through the dungeon...");
+		msg("В подземелье воцаряется кромешная тьма...");
 	wiz_dark(cave, player, full);
 	context->ident = true;
 	return true;
@@ -2961,7 +3063,8 @@ bool effect_handler_LIGHT_AREA(effect_handler_context_t *context)
 {
 	/* Message */
 	if (!player->timed[TMD_BLIND])
-		msg("You are surrounded by a white light.");
+		//msg("You are surrounded by a white light.");
+		msg("Вас окружает белый свет.");
 
 	/* Light up the room */
 	light_room(player->grid, true);
@@ -2994,7 +3097,8 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 		target = t_mon->grid;
 		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG);
 		if (message) {
-			msg("Darkness surrounds %s.", m_name);
+			//msg("Darkness surrounds %s.", m_name);
+			msg("Тьма окружает %s.", m_name);
 			message = false;
 		}
 	}
@@ -3007,13 +3111,15 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 			decoy_unseen = true;
 		}
 		if (message && !decoy_unseen) {
-			msg("Darkness surrounds the decoy.");
+			//msg("Darkness surrounds the decoy.");
+			msg("Тьма окружает приманку.");
 			message = false;
 		}
 	}
 
 	if (message) {
-		msg("Darkness surrounds you.");
+		//msg("Darkness surrounds you.");
+		msg("Тьма окружает вас.");
 	}
 
 	/* Darken the room */
@@ -3051,12 +3157,15 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 
 	/* Attempt a saving throw for artifacts */
 	if (obj->artifact && (randint0(100) < 50)) {
-		msg("A %s tries to %s, but your %s resists the effects!",
-				   "terrible black aura", "surround your armor", o_name);
+		/* msg("A %s tries to %s, but your %s resists the effects!",
+				   "terrible black aura", "surround your armor", o_name); */
+		msg("%s пытается %s, но ваш %s сопротивляется её воздействию!",
+				   "Ужасная чёрная аура", "окружить вашу броню", o_name);
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
-		msg("A terrible black aura blasts your %s!", o_name);
+		//msg("A terrible black aura blasts your %s!", o_name);
+		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
 
 		/* Take down bonus a wee bit */
 		obj->to_a -= randint1(3);
@@ -3109,12 +3218,15 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 
 	/* Attempt a saving throw */
 	if (obj->artifact && (randint0(100) < 50)) {
-		msg("A %s tries to %s, but your %s resists the effects!",
-				   "terrible black aura", "surround your weapon", o_name);
+		/* msg("A %s tries to %s, but your %s resists the effects!",
+				   "terrible black aura", "surround your weapon", o_name); */
+		msg("%s пытается %s, но ваше %s сопротивляется ее воздействию!",
+				   "Ужасная чёрная аура", "окружить ваше оружие", o_name);
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
-		msg("A terrible black aura blasts your %s!", o_name);
+		//msg("A terrible black aura blasts your %s!", o_name);
+		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
 
 		/* Hurt it a bit */
 		obj->to_h = 0 - randint1(3);
@@ -3157,7 +3269,8 @@ bool effect_handler_BRAND_WEAPON(effect_handler_context_t *context)
 	struct object *obj = equipped_item_by_slot_name(player, "weapon");
 
 	/* Select the brand */
-	const char *brand = one_in_(2) ? "Flame" : "Frost";
+	//const char *brand = one_in_(2) ? "Flame" : "Frost";
+	const char *brand = one_in_(2) ? "Пламя" : "Мороз";
 
 	/* Brand the weapon */
 	brand_object(obj, brand);
@@ -3179,12 +3292,14 @@ bool effect_handler_BRAND_AMMO(effect_handler_context_t *context)
 
 	/* Select the brand */
 	const char *brand = one_in_(3) ? "Flame" : (one_in_(2) ? "Frost" : "Venom");
-
+	
 	context->ident = true;
 
 	/* Get an item */
-	q = "Brand which kind of ammunition? ";
-	s = "You have nothing to brand.";
+	//q = "Brand which kind of ammunition? ";
+	//s = "You have nothing to brand.";
+	q = "Какое клеймо поставить на снаряды? ";
+	s = "У вас нет снарядов для клеймения.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				tval_is_ammo, itemmode)) {
@@ -3213,8 +3328,10 @@ bool effect_handler_BRAND_BOLTS(effect_handler_context_t *context)
 	context->ident = true;
 
 	/* Get an item */
-	q = "Brand which bolts? ";
-	s = "You have no bolts to brand.";
+	//q = "Brand which bolts? ";
+	//s = "You have no bolts to brand.";
+	q = "Какое клеймо поставить на болты? ";
+	s = "У вас нет болтов для клеймения.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				tval_is_bolt, itemmode)) {
@@ -3244,8 +3361,10 @@ bool effect_handler_CREATE_ARROWS(effect_handler_context_t *context)
 	bool none_left = false;
 
 	/* Get an item */
-	q = "Make arrows from which staff? ";
-	s = "You have no staff to use.";
+	//q = "Make arrows from which staff? ";
+	//s = "You have no staff to use.";
+	q = "Из какого посоха делать стрелы? ";
+	s = "У вас нет подходящего для стрел посоха.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				tval_is_staff, itemmode)) {
@@ -3300,8 +3419,10 @@ bool effect_handler_TAP_DEVICE(effect_handler_context_t *context)
 	const char *item = "";
 
 	/* Get an item */
-	q = "Drain charges from which item? ";
-	s = "You have nothing to drain charges from.";
+	//q = "Drain charges from which item? ";
+	//s = "You have nothing to drain charges from.";
+	q = "Из какого предмета взять заряды? ";
+	s = "У вас нет подходящего предмета.";
 	if (context->cmd) {
 		if (cmd_get_item(context->cmd, "tgtitem", &obj, q, s,
 				tval_can_have_charges, itemmode)) {
@@ -3326,7 +3447,8 @@ bool effect_handler_TAP_DEVICE(effect_handler_context_t *context)
 	/* Turn energy into mana. */
 	if (energy < 36) {
 		/* Require a resonable amount of energy */
-		msg("That %s had no useable energy", item);
+		//msg("That %s had no useable energy", item);
+		msg("У %s нет полезной энергии", item);
 	} else {
 		/* If mana below maximum, increase mana and drain object. */
 		if (player->csp < player->msp) {
@@ -3347,7 +3469,8 @@ bool effect_handler_TAP_DEVICE(effect_handler_context_t *context)
 				(player->csp = player->msp);
 			}
 
-			msg("You feel your head clear.");
+			//msg("You feel your head clear.");
+			msg("Вы чувствуете, что ваша голова прояснилась.");
 			used = true;
 			player_inc_timed(player, TMD_STUN, randint1(2), true,
 				context->origin.what != SRC_PLAYER
@@ -3357,7 +3480,8 @@ bool effect_handler_TAP_DEVICE(effect_handler_context_t *context)
 		} else {
 			char *cap = string_make(item);
 			my_strcap(cap);
-			msg("Your mana was already at its maximum.  %s not drained.", cap);
+			//msg("Your mana was already at its maximum.  %s not drained.", cap);
+			msg("У вас уже максимум маны. %s не применено.", cap);
 			string_free(cap);
 		}
 	}
@@ -3377,8 +3501,10 @@ bool effect_handler_SHAPECHANGE(effect_handler_context_t *context)
 
 	/* Change shape */
 	player->shape = lookup_player_shape(shape->name);
-	msg("You assume the shape of a %s!", shape->name);
-	msg("Your gear merges into your body.");
+	/* msg("You assume the shape of a %s!", shape->name);
+	msg("Your gear merges into your body."); */
+	msg("Вы принимаете облик %s!", shape->name);
+	msg("Ваше снаряжение сливается с вашим телом.");
 
 	/* Do effect */
 	if (shape->effect) {
@@ -3407,7 +3533,8 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 
 	/* Need to choose a monster, not just point */
 	if (!mon) {
-		msg("No monster selected!");
+		//msg("No monster selected!");
+		msg("Монстр не выбран!");
 		return false;
 	}
 
@@ -3418,7 +3545,8 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 	if (randint1(player->lev) < randint1(mon->race->level)) {
 		char m_name[80];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
-		msg("%s resists your command!", m_name);
+		//msg("%s resists your command!", m_name);
+		msg("%s сопротивляется вашим приказам!", m_name);
 		return false;
 	}
 
@@ -3445,7 +3573,8 @@ bool effect_handler_BIZARRE(effect_handler_context_t *context)
 		case 2:
 		{
 			/* Message */
-			msg("You are surrounded by a malignant aura.");
+			//msg("You are surrounded by a malignant aura.");
+			msg("Зловещая аура окружает вас.");
 
 			/* Decrease all stats (permanently) */
 			player_stat_dec(player, STAT_STR, true);
@@ -3463,7 +3592,8 @@ bool effect_handler_BIZARRE(effect_handler_context_t *context)
 		case 3:
 		{
 			/* Message */
-			msg("You are surrounded by a powerful aura.");
+			//msg("You are surrounded by a powerful aura.");
+			msg("Могущественная аура окружает вас.");
 
 			/* Dispel monsters */
 			effect_simple(EF_PROJECT_LOS, context->origin, "1000", PROJ_DISP_ALL, 0, 0, 0, 0, NULL);

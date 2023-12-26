@@ -12,7 +12,7 @@ type     normal */
 OP(none,                  "",
 SPECIAL, false)
 // OP(rogue_like_commands,   "Use the roguelike command keyset",
-OP(rogue_like_commands,   "Использовать roguelike команды",
+OP(rogue_like_commands,   "Использовать набор roguelike команд",
 INTERFACE, false)
 // OP(use_sound,             "Use sound",
 OP(use_sound,             "Включить звук",
@@ -36,7 +36,7 @@ INTERFACE, false)
 OP(show_target,           "Выделить цель курсором",
 INTERFACE, true)
 // OP(highlight_player,      "Highlight player with cursor between turns",
-OP(highlight_player,      "Выделить игрока курсором между ходами",
+OP(highlight_player,      "Выделить игрока курсором",
 INTERFACE, false)
 // OP(disturb_near,          "Disturb whenever viewable monster moves",
 OP(disturb_near,          "Тревожить всякий раз, когда монстр движется",
@@ -105,10 +105,10 @@ BIRTH, false)
 OP(birth_connect_stairs,  "Создавать соединенные лестницы",
 BIRTH, true)
 // OP(birth_force_descend,   "Force player descent (never make up stairs)",
-OP(birth_force_descend,   "Принудительный спуск игрока (движение только вниз)",
+OP(birth_force_descend,   "Принудительный спуск (движение только вниз)",
 BIRTH, false)
 // OP(birth_no_recall,       "Word of Recall has no effect",
-OP(birth_no_recall,       "Свиток Возвращения не имеет эффекта",
+OP(birth_no_recall,       "Слово Возвращения не имеет эффекта",
 BIRTH, false)
 // OP(birth_no_artifacts,    "Restrict creation of artifacts",
 OP(birth_no_artifacts,    "Ограничить создание артефактов",
@@ -120,10 +120,10 @@ BIRTH, true)
 OP(birth_lose_arts,       "Потеря артефактов при уходе с этажа",
 BIRTH, false)
 // OP(birth_feelings,        "Show level feelings",
-OP(birth_feelings,        "Показать уровень чувств",
+OP(birth_feelings,        "Показать ощущения от этажа",
 BIRTH, true)
 // OP(birth_no_selling,      "Increase gold drops but disable selling",
-OP(birth_no_selling,      "Увеличить количество золота,но запретить продажу",
+OP(birth_no_selling,      "Увеличить количество золота, но запретить продажу",
 BIRTH, true)
 // OP(birth_start_kit,       "Start with a kit of useful gear",
 OP(birth_start_kit,       "Начинать с комплектом полезного снаряжения",

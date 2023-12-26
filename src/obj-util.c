@@ -447,7 +447,7 @@ const struct artifact *lookup_artifact_name(const char *name)
 			return art;
 		
 		/* Test for close matches */
-		if (strlen(name) >= 3 && art->name && my_stristr(art->name, name)
+		if (utf8_strlen(name) >= 3 && art->name && my_stristr(art->name, name)
 			&& a_idx == -1)
 			a_idx = i;
 	}
@@ -1049,7 +1049,7 @@ void print_custom_message(const struct object *obj, const char *string,
 			case MSG_TAG_KIND:
 				if (obj) {
 					object_kind_name(&buf[end], 1024 - end, obj->kind, true);
-					end += strlen(&buf[end]);
+					end += utf8_strlen(&buf[end]);
 				} else {
 					strnfcat(buf, 1024, &end, "hands");
 				}

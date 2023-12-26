@@ -136,13 +136,18 @@ int inven_damage(struct player *p, int type, int cperc)
 					ODESC_BASE, p);
 
 				/* Message */
-				msgt(MSG_DESTROY, "%sour %s (%c) %s %s!",
+				// msgt(MSG_DESTROY, "%sour %s (%c) %s %s!",
+				msgt(MSG_DESTROY, "%s %s (%c) %s %s!",
 				           ((obj->number > 1) ?
-				            ((amt == obj->number) ? "All of y" :
-				             (amt > 1 ? "Some of y" : "One of y")) : "Y"),
+				            // ((amt == obj->number) ? "All of y" :
+				            ((amt == obj->number) ? "Все из ваших" :
+				             // (amt > 1 ? "Some of y" : "One of y")) : "Y"),
+				             (amt > 1 ? "Некоторые из ваших" : "Один из ваших")) : "Ваш"),
 				           o_name, gear_to_label(p, obj),
-				           ((amt > 1) ? "were" : "was"),
-					   (damage ? "damaged" : "destroyed"));
+				           // ((amt > 1) ? "were" : "was"),
+				           ((amt > 1) ? "были" : "был"),
+					   // (damage ? "damaged" : "destroyed"));
+					   (damage ? ((amt > 1) ? "повреждены" : "поврежден") : ((amt > 1) ? "уничтожены" : "уничтожен")));
 
 				/* Damage already done? */
 				if (damage)
@@ -212,24 +217,28 @@ static void project_object_elemental(project_object_handler_context_t *context,
 /* Acid -- Lots of things */
 static void project_object_handler_ACID(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_ACID, "melts", "melt");
 	project_object_elemental(context, ELEM_ACID, "melts", "melt");
 }
 
 /* Elec -- Rings and Wands */
 static void project_object_handler_ELEC(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_ELEC, "is destroyed", "are destroyed");
 	project_object_elemental(context, ELEM_ELEC, "is destroyed", "are destroyed");
 }
 
 /* Fire -- Flammable objects */
 static void project_object_handler_FIRE(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
 	project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
 }
 
 /* Cold -- potions and flasks */
 static void project_object_handler_COLD(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_COLD, "shatters", "shatter");
 	project_object_elemental(context, ELEM_COLD, "shatters", "shatter");
 }
 
@@ -248,12 +257,14 @@ static void project_object_handler_DARK(project_object_handler_context_t *contex
 /* Sound -- potions and flasks */
 static void project_object_handler_SOUND(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_SOUND, "shatters", "shatter");
 	project_object_elemental(context, ELEM_SOUND, "shatters", "shatter");
 }
 
 /* Shards -- potions and flasks */
 static void project_object_handler_SHARD(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_SHARD, "shatters", "shatter");
 	project_object_elemental(context, ELEM_SHARD, "shatters", "shatter");
 }
 
@@ -280,6 +291,7 @@ static void project_object_handler_WATER(project_object_handler_context_t *conte
 /* Ice -- potions and flasks */
 static void project_object_handler_ICE(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_ICE, "shatters", "shatter");
 	project_object_elemental(context, ELEM_ICE, "shatters", "shatter");
 }
 
@@ -294,6 +306,7 @@ static void project_object_handler_INERTIA(project_object_handler_context_t *con
 /* Force -- potions and flasks */
 static void project_object_handler_FORCE(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_FORCE, "shatters", "shatter");
 	project_object_elemental(context, ELEM_FORCE, "shatters", "shatter");
 }
 
@@ -304,14 +317,18 @@ static void project_object_handler_TIME(project_object_handler_context_t *contex
 /* Fire + Elec */
 static void project_object_handler_PLASMA(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
 	project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
+	// project_object_elemental(context, ELEM_ELEC, "is destroyed", "are destroyed");
 	project_object_elemental(context, ELEM_ELEC, "is destroyed", "are destroyed");
 }
 
 /* Fire + Cold */
 static void project_object_handler_METEOR(project_object_handler_context_t *context)
 {
+	// project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
 	project_object_elemental(context, ELEM_FIRE, "burns up", "burn up");
+	// project_object_elemental(context, ELEM_COLD, "shatters", "shatter");
 	project_object_elemental(context, ELEM_COLD, "shatters", "shatter");
 }
 
@@ -323,6 +340,7 @@ static void project_object_handler_MISSILE(project_object_handler_context_t *con
 static void project_object_handler_MANA(project_object_handler_context_t *context)
 {
 	context->do_kill = true;
+	// context->note_kill = VERB_AGREEMENT(context->obj->number, "is destroyed", "are destroyed");
 	context->note_kill = VERB_AGREEMENT(context->obj->number, "is destroyed", "are destroyed");
 }
 
@@ -556,8 +574,10 @@ bool project_o(struct source origin, int r, struct loc grid, int dam, int typ,
 				/* Observe the resist */
 				if (obvious && obj->known
 						&& !ignore_item_ok(player, obj)) {
-					msg("The %s %s unaffected!", o_name,
-						VERB_AGREEMENT(obj->number, "is", "are"));
+					// msg("The %s %s unaffected!", o_name,
+					msg("%s не пострадал%s!", o_name,
+						// VERB_AGREEMENT(obj->number, "is", "are"));
+						VERB_AGREEMENT(obj->number, "", "и"));
 				}
 			} else if (obj->mimicking_m_idx) {
 				/* Reveal mimics */
@@ -568,7 +588,8 @@ bool project_o(struct source origin, int r, struct loc grid, int dam, int typ,
 				/* Describe if needed */
 				if (obvious && obj->known && note_kill
 						&& !ignore_item_ok(player, obj)) {
-					msgt(MSG_DESTROY, "The %s %s!", o_name, note_kill);
+					// msgt(MSG_DESTROY, "The %s %s!", o_name, note_kill);
+					msgt(MSG_DESTROY, "%s %s!", o_name, note_kill);
 				}
 
 				/* Prevent command repetition, if necessary. */

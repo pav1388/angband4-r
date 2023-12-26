@@ -521,7 +521,8 @@ static void display_glyphs(int col, int row, int height, int width, uint8_t a,
 	        Term_erase(col, row + i, width);
 
 	/* Prompt */
-	prt("Choose colour:", row + height/2, col);
+	// prt("Choose colour:", row + height/2, col);
+	prt("Выберите цвет:", row + height/2, col);
 	Term_locate(&x, &y);
 	for (i = 0; i < MAX_COLORS; i++) big_pad(x + i, y, i, c);
 	
@@ -711,7 +712,8 @@ static void display_group_member(struct menu *menu, int oid,
 		char buf[12];
 
 		strnfmt(buf, sizeof(buf), "%d/%d", a, c);
-		c_put_str(attr, buf, row, 64 - (int) strlen(buf));
+		// c_put_str(attr, buf, row, 64 - (int) strlen(buf));
+		c_put_str(attr, buf, row, 64 - (int) utf8_strlen(buf));
 	}
 }
 
@@ -819,7 +821,8 @@ static void display_knowledge(const char *title, int *obj_list, int o_count,
 	for (i = 0; i < grp_cnt; i++) {
 		int len;
 		g_names[i] = g_funcs.name(g_list[i]);
-		len = strlen(g_names[i]);
+		// len = strlen(g_names[i]);
+		len = utf8_strlen(g_names[i]);
 		if (len > g_name_len) g_name_len = len;
 	}
 
@@ -860,9 +863,12 @@ static void display_knowledge(const char *title, int *obj_list, int o_count,
 		if (redraw) {
 			/* Print the title bits */
 			region_erase(&title_area);
-			prt(format("Knowledge - %s", title), 2, 0);
-			prt("Group", 4, 0);
-			prt("Name", 4, g_name_len + 3);
+			// prt(format("Knowledge - %s", title), 2, 0);
+			prt(format("Знания - %s", title), 2, 0);
+			// prt("Group", 4, 0);
+			prt("Группа", 4, 0);
+			// prt("Name", 4, g_name_len + 3);
+			prt("Имя", 4, g_name_len + 3);
 
 			if (otherfields)
 				prt(otherfields, 4, 46);
@@ -1246,7 +1252,8 @@ static void mon_summary(int gid, const int *item_list, int n, int top,
 	/* Different display for the first item if we've got uniques to show */
 	if (gid == 0 &&
 		rf_has((&r_info[default_join[item_list[0]].oid])->flags, RF_UNIQUE)) {
-		c_prt(COLOUR_L_BLUE, format("%d known uniques, %d slain.", n, kills),
+		// c_prt(COLOUR_L_BLUE, format("%d known uniques, %d slain.", n, kills),
+		c_prt(COLOUR_L_BLUE, format("%d известных уникальных, %d убитых.", n, kills),
 					row, col);
 	} else {
 		int tkills = 0;
@@ -1254,7 +1261,8 @@ static void mon_summary(int gid, const int *item_list, int n, int top,
 		for (i = 0; i < z_info->r_max; i++)
 			tkills += l_list[i].pkills;
 
-		c_prt(COLOUR_L_BLUE, format("Creatures slain: %d/%d (in group/in total)", kills, tkills), row, col);
+		// c_prt(COLOUR_L_BLUE, format("Creatures slain: %d/%d (in group/in total)", kills, tkills), row, col);
+		c_prt(COLOUR_L_BLUE, format("Убитые существа: %d/%d (в группе/в целом)", kills, tkills), row, col);
 	}
 }
 
@@ -1371,8 +1379,10 @@ static void do_cmd_knowledge_monsters(const char *name, int row)
 		}
 	}
 
-	display_knowledge("monsters", monsters, m_count, r_funcs, m_funcs,
-			"                   Sym  Kills");
+	// display_knowledge("monsters", monsters, m_count, r_funcs, m_funcs,
+	display_knowledge("монстры", monsters, m_count, r_funcs, m_funcs,
+			// "                   Sym  Kills");
+			"                  Симв  Убито");
 	mem_free(default_join);
 	mem_free(monsters);
 }
@@ -1387,40 +1397,75 @@ static void do_cmd_knowledge_monsters(const char *name, int row)
  */
 static const grouper object_text_order[] =
 {
-	{TV_RING,			"Ring"			},
-	{TV_AMULET,			"Amulet"		},
-	{TV_POTION,			"Potion"		},
-	{TV_SCROLL,			"Scroll"		},
-	{TV_WAND,			"Wand"			},
-	{TV_STAFF,			"Staff"			},
-	{TV_ROD,			"Rod"			},
- 	{TV_FOOD,			"Food"			},
- 	{TV_MUSHROOM,		"Mushroom"		},
-	{TV_PRAYER_BOOK,	"Priest Book"	},
-	{TV_MAGIC_BOOK,		"Magic Book"	},
-	{TV_NATURE_BOOK,	"Nature Book"	},
-	{TV_SHADOW_BOOK,	"Shadow Book"	},
-	{TV_OTHER_BOOK,		"Mystery Book"	},
-	{TV_LIGHT,			"Light"			},
-	{TV_FLASK,			"Flask"			},
-	{TV_SWORD,			"Sword"			},
-	{TV_POLEARM,		"Polearm"		},
-	{TV_HAFTED,			"Hafted Weapon" },
-	{TV_BOW,			"Bow"			},
-	{TV_ARROW,			"Ammunition"	},
+	// {TV_RING,			"Ring"			},
+	// {TV_AMULET,			"Amulet"		},
+	// {TV_POTION,			"Potion"		},
+	// {TV_SCROLL,			"Scroll"		},
+	// {TV_WAND,			"Wand"			},
+	// {TV_STAFF,			"Staff"			},
+	// {TV_ROD,			"Rod"			},
+ 	// {TV_FOOD,			"Food"			},
+ 	// {TV_MUSHROOM,		"Mushroom"		},
+	// {TV_PRAYER_BOOK,	"Priest Book"	},
+	// {TV_MAGIC_BOOK,		"Magic Book"	},
+	// {TV_NATURE_BOOK,	"Nature Book"	},
+	// {TV_SHADOW_BOOK,	"Shadow Book"	},
+	// {TV_OTHER_BOOK,		"Mystery Book"	},
+	// {TV_LIGHT,			"Light"			},
+	// {TV_FLASK,			"Flask"			},
+	// {TV_SWORD,			"Sword"			},
+	// {TV_POLEARM,		"Polearm"		},
+	// {TV_HAFTED,			"Hafted Weapon" },
+	// {TV_BOW,			"Bow"			},
+	// {TV_ARROW,			"Ammunition"	},
+	// {TV_BOLT,			NULL			},
+	// {TV_SHOT,			NULL			},
+	// {TV_SHIELD,			"Shield"		},
+	// {TV_CROWN,			"Crown"			},
+	// {TV_HELM,			"Helm"			},
+	// {TV_GLOVES,			"Gloves"		},
+	// {TV_BOOTS,			"Boots"			},
+	// {TV_CLOAK,			"Cloak"			},
+	// {TV_DRAG_ARMOR,		"Dragon Scale Mail" },
+	// {TV_HARD_ARMOR,		"Hard Armor"	},
+	// {TV_SOFT_ARMOR,		"Soft Armor"	},
+	// {TV_DIGGING,		"Digger"		},
+	// {TV_GOLD,			"Money"			},
+	// {0,					NULL			}
+	{TV_RING,			"Кольцо"		},
+	{TV_AMULET,			"Амулет"		},
+	{TV_POTION,			"Зелье"			},
+	{TV_SCROLL,			"Свиток"		},
+	{TV_WAND,			"Палочка"		},
+	{TV_STAFF,			"Посох"			},
+	{TV_ROD,			"Жезл"			},
+ 	{TV_FOOD,			"Продукты"		},
+ 	{TV_MUSHROOM,		"Гриб"			},
+	{TV_PRAYER_BOOK,	"Святая книга"	},
+	{TV_MAGIC_BOOK,		"Книга Магии"	},
+	{TV_NATURE_BOOK,	"Книга Природы"	},
+	{TV_SHADOW_BOOK,	"Книга Тени"	},
+	{TV_OTHER_BOOK,		"Книга Тайн"	},
+	{TV_LIGHT,			"Освещение"		},
+	{TV_FLASK,			"Фляга"			},
+	{TV_SWORD,			"Меч"			},
+	{TV_POLEARM,		"Молот/Топор"},
+	{TV_HAFTED,			"Хлыст"},
+	{TV_BOW,			"Лук"			},
+	{TV_ARROW,			"Снаряды"	},
 	{TV_BOLT,			NULL			},
 	{TV_SHOT,			NULL			},
-	{TV_SHIELD,			"Shield"		},
-	{TV_CROWN,			"Crown"			},
-	{TV_HELM,			"Helm"			},
-	{TV_GLOVES,			"Gloves"		},
-	{TV_BOOTS,			"Boots"			},
-	{TV_CLOAK,			"Cloak"			},
-	{TV_DRAG_ARMOR,		"Dragon Scale Mail" },
-	{TV_HARD_ARMOR,		"Hard Armor"	},
-	{TV_SOFT_ARMOR,		"Soft Armor"	},
-	{TV_DIGGING,		"Digger"		},
-	{TV_GOLD,			"Money"			},
+	{TV_SHIELD,			"Щит"			},
+	{TV_CROWN,			"Корона"		},
+	{TV_HELM,			"Шлем"			},
+	{TV_GLOVES,			"Перчатки"		},
+	{TV_BOOTS,			"Ботинки"		},
+	{TV_CLOAK,			"Плащ"			},
+	{TV_DRAG_ARMOR,		"Драк.броня" },
+	{TV_HARD_ARMOR,		"Тяжёл.броня"	},
+	{TV_SOFT_ARMOR,		"Лёгк.броня"	},
+	{TV_DIGGING,		"Копание"		},
+	{TV_GOLD,			"Деньги"		},
 	{0,					NULL			}
 };
 
@@ -1677,10 +1722,12 @@ static void do_cmd_knowledge_artifacts(const char *name, int row)
 	a_count = collect_known_artifacts(artifacts, z_info->a_max);
 
 	if (OPT(player, birth_randarts)) {
-		strnfmt(title, sizeof(title), "artifacts (seed %08lx)",
+		// strnfmt(title, sizeof(title), "artifacts (seed %08lx)",
+		strnfmt(title, sizeof(title), "артефакты (seed %08lx)",
 			(unsigned long)seed_randart);
 	} else {
-		strnfmt(title, sizeof(title), "artifacts");
+		// strnfmt(title, sizeof(title), "artifacts");
+		strnfmt(title, sizeof(title), "артефакты");
 	}
 	display_knowledge(title, artifacts, a_count, obj_f, art_f, NULL);
 	mem_free(artifacts);
@@ -1797,7 +1844,8 @@ static void do_cmd_knowledge_ego_items(const char *name, int row)
 		}
 	}
 
-	display_knowledge("ego items", egoitems, e_count, obj_f, ego_f, NULL);
+	// display_knowledge("ego items", egoitems, e_count, obj_f, ego_f, NULL);
+	display_knowledge("эго предметы", egoitems, e_count, obj_f, ego_f, NULL);
 
 	mem_free(default_join);
 	mem_free(egoitems);
@@ -1840,7 +1888,8 @@ static void display_object(int col, int row, bool cursor, int oid)
 	/* Show ignore status */
 	if ((aware && kind_is_ignored_aware(kind)) ||
 		(!aware && kind_is_ignored_unaware(kind)))
-		c_put_str(attr, "Yes", row, 46);
+		// c_put_str(attr, "Yes", row, 46);
+		c_put_str(attr, "Да", row, 46);
 
 
 	/* Show autoinscription if around */
@@ -2025,7 +2074,8 @@ static void o_xtra_act(struct keypress ch, int oid)
 		screen_save();
 
 		/* Prompt */
-		prt("Inscribe with: ", 0, 0);
+		// prt("Inscribe with: ", 0, 0);
+		prt("Подписано с: ", 0, 0);
 
 		/* Default note */
 		if (k->note_aware || k->note_unaware)
@@ -2080,8 +2130,10 @@ void textui_browse_object_knowledge(const char *name, int row)
 		}
 	}
 
-	display_knowledge("known objects", objects, o_count, kind_f, obj_f,
-					  "Ignore  Inscribed          Sym");
+	// display_knowledge("known objects", objects, o_count, kind_f, obj_f,
+	display_knowledge("предметы", objects, o_count, kind_f, obj_f,
+					  // "Ignore  Inscribed          Sym");
+					  "Игнор   Подписано          Симв");
 
 	mem_free(objects);
 }
@@ -2096,13 +2148,20 @@ void textui_browse_object_knowledge(const char *name, int row)
  */
 static const char *rune_group_text[] =
 {
-	"Combat",
-	"Modifiers",
-	"Resists",
-	"Brands",
-	"Slays",
-	"Curses",
-	"Other",
+	// "Combat",
+	"Бой",
+	// "Modifiers",
+	"Модификат.",
+	// "Resists",
+	"Сопротивл.",
+	// "Brands",
+	"Клейма",
+	// "Slays",
+	"Убийства",
+	// "Curses",
+	"Проклятия",
+	// "Other",
+	"Разное",
 	NULL
 };
 
@@ -2176,7 +2235,8 @@ static void rune_xtra_act(struct keypress ch, int oid)
 		screen_save();
 
 		/* Prompt */
-		prt("Inscribe with: ", 0, 0);
+		// prt("Inscribe with: ", 0, 0);
+		prt("Подписано с: ", 0, 0);
 
 		/* Default note */
 		if (rune_note(oid))
@@ -2231,9 +2291,11 @@ static void do_cmd_knowledge_runes(const char *name, int row)
 		runes[count++] = i;
 	}
 
-	strnfmt(buf, sizeof(buf), "runes (%d unknown)", rune_max - count);
+	// strnfmt(buf, sizeof(buf), "runes (%d unknown)", rune_max - count);
+	strnfmt(buf, sizeof(buf), "руны (%d не знаю)", rune_max - count);
 
-	display_knowledge(buf, runes, count, rune_var_f, rune_f, "Inscribed");
+	// display_knowledge(buf, runes, count, rune_var_f, rune_f, "Inscribed");
+	display_knowledge(buf, runes, count, rune_var_f, rune_f, "Подписано");
 	mem_free(runes);
 }
 
@@ -2247,14 +2309,22 @@ static void do_cmd_knowledge_runes(const char *name, int row)
  */
 static const char *feature_group_text[] =
 {
-	"Floors",
-	"Doors",
-	"Stairs",
-	"Walls",
-	"Streamers",
-	"Obstructions",
-	"Stores",
-	"Other",
+	// "Floors",
+	"Поверхности",
+	// "Doors",
+	"Двери",
+	// "Stairs",
+	"Лестницы",
+	// "Walls",
+	"Стены",
+	// "Streamers",
+	"Ископаемые",
+	// "Obstructions",
+	"Препятствия",
+	// "Stores",
+	"Магазины",
+	// "Other",
+	"Разное",
 	NULL
 };
 
@@ -2399,8 +2469,9 @@ static void do_cmd_knowledge_features(const char *name, int row)
 		features[f_count++] = i;
 	}
 
-	display_knowledge("features", features, f_count, fkind_f, feat_f,
-					  "                    Sym");
+	// display_knowledge("features", features, f_count, fkind_f, feat_f,
+	display_knowledge("окружение", features, f_count, fkind_f, feat_f,
+					  "                   Симв");
 	mem_free(features);
 }
 
@@ -2414,10 +2485,14 @@ static void do_cmd_knowledge_features(const char *name, int row)
  */
 static const char *trap_group_text[] =
 {
-	"Runes",
-	"Locks",
-	"Traps",
-	"Other",
+	// "Runes",
+	"Руны",
+	// "Locks",
+	"Замки",
+	// "Traps",
+	"Ловушки",
+	// "Other",
+	"Разное",
 	NULL
 };
 
@@ -2577,8 +2652,9 @@ static void do_cmd_knowledge_traps(const char *name, int row)
 		traps[t_count++] = i;
 	}
 
-	display_knowledge("traps", traps, t_count, tkind_f, trap_f,
-					  "                    Sym");
+	// display_knowledge("traps", traps, t_count, tkind_f, trap_f,
+	display_knowledge("ловушки", traps, t_count, tkind_f, trap_f,
+					  "                   Симв");
 	mem_free(traps);
 }
 
@@ -2712,22 +2788,26 @@ static void shape_lore_append_basic_combat(textblock *tb,
 	int n = 0;
 
 	if (s->to_a != 0) {
-		strnfmt(toa_msg, sizeof(toa_msg), "%+d to AC", s->to_a);
+		// strnfmt(toa_msg, sizeof(toa_msg), "%+d to AC", s->to_a);
+		strnfmt(toa_msg, sizeof(toa_msg), "%+d к броне", s->to_a);
 		msgs[n] = toa_msg;
 		++n;
 	}
 	if (s->to_h != 0) {
-		strnfmt(toh_msg, sizeof(toh_msg), "%+d to hit", s->to_h);
+		// strnfmt(toh_msg, sizeof(toh_msg), "%+d to hit", s->to_h);
+		strnfmt(toh_msg, sizeof(toh_msg), "%+d к попаданию", s->to_h);
 		msgs[n] = toh_msg;
 		++n;
 	}
 	if (s->to_d != 0) {
-		strnfmt(tod_msg, sizeof(tod_msg), "%+d to damage", s->to_d);
+		// strnfmt(tod_msg, sizeof(tod_msg), "%+d to damage", s->to_d);
+		strnfmt(tod_msg, sizeof(tod_msg), "%+d к урону", s->to_d);
 		msgs[n] = tod_msg;
 		++n;
 	}
 	if (n > 0) {
-		textblock_append(tb, "Adds");
+		// textblock_append(tb, "Adds");
+		textblock_append(tb, "Добавляет");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 	}
@@ -2744,14 +2824,16 @@ static void shape_lore_append_skills(textblock *tb,
 	for (i = 0; i < SKILL_MAX; ++i) {
 		if (s->skills[i] != 0) {
 			shape_lore_helper_append_to_list(
-				format("%+d to %s", s->skills[i],
+				// format("%+d to %s", s->skills[i],
+				format("%+d к %s", s->skills[i],
 					skill_index_to_name(i)),
 				&msgs, &nmax, &n);
 		}
 	}
 
 	if (n > 0) {
-		textblock_append(tb, "Adds");
+		// textblock_append(tb, "Adds");
+		textblock_append(tb, "Добавляет");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -2773,7 +2855,8 @@ static void shape_lore_append_non_stat_modifiers(textblock *tb,
 	for (i = STAT_MAX; i < OBJ_MOD_MAX; ++i) {
 		if (s->modifiers[i] != 0) {
 			shape_lore_helper_append_to_list(
-				format("%+d to %s",
+				// format("%+d to %s",
+				format("%+d к %s",
 					s->modifiers[i],
 					lookup_obj_property(OBJ_PROPERTY_MOD, i)->name),
 				&msgs, &nmax, &n);
@@ -2781,7 +2864,8 @@ static void shape_lore_append_non_stat_modifiers(textblock *tb,
 	}
 
 	if (n > 0) {
-		textblock_append(tb, "Adds");
+		// textblock_append(tb, "Adds");
+		textblock_append(tb, "Добавляет");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -2803,7 +2887,8 @@ static void shape_lore_append_stat_modifiers(textblock *tb,
 	for (i = 0; i < STAT_MAX; ++i) {
 		if (s->modifiers[i] != 0) {
 			shape_lore_helper_append_to_list(
-				format("%+d to %s",
+				// format("%+d to %s",
+				format("%+d к %s",
 					s->modifiers[i],
 					lookup_obj_property(OBJ_PROPERTY_MOD, i)->name),
 				&msgs, &nmax, &n);
@@ -2811,7 +2896,8 @@ static void shape_lore_append_stat_modifiers(textblock *tb,
 	}
 
 	if (n > 0) {
-		textblock_append(tb, "Adds");
+		// textblock_append(tb, "Adds");
+		textblock_append(tb, "Добавляет");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -2846,19 +2932,22 @@ static void shape_lore_append_resistances(textblock *tb,
 	}
 
 	if (nvul != 0) {
-		textblock_append(tb, "Makes you vulnerable to");
+		// textblock_append(tb, "Makes you vulnerable to");
+		textblock_append(tb, "Делает вас уязвимым для");
 		shape_lore_append_list(tb, vul, nvul);
 		textblock_append(tb, ".\n");
 	}
 
 	if (nres != 0) {
-		textblock_append(tb, "Makes you resistant to");
+		// textblock_append(tb, "Makes you resistant to");
+		textblock_append(tb, "Делает вас стойким к");
 		shape_lore_append_list(tb, res, nres);
 		textblock_append(tb, ".\n");
 	}
 
 	if (nimm != 0) {
-		textblock_append(tb, "Makes you immune to");
+		// textblock_append(tb, "Makes you immune to");
+		textblock_append(tb, "Делает вас устойчивым к");
 		shape_lore_append_list(tb, imm, nimm);
 		textblock_append(tb, ".\n");
 	}
@@ -2884,7 +2973,8 @@ static void shape_lore_append_protection_flags(textblock *tb,
 	}
 
 	if (n > 0) {
-		textblock_append(tb, "Provides protection from");
+		// textblock_append(tb, "Provides protection from");
+		textblock_append(tb, "Обеспечивает защиту от");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -2914,7 +3004,8 @@ static void shape_lore_append_sustains(textblock *tb,
 	}
 
 	if (n > 0) {
-		textblock_append(tb, "Sustains");
+		// textblock_append(tb, "Sustains");
+		textblock_append(tb, "Поддержка");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -2964,7 +3055,8 @@ static void shape_lore_append_misc_flags(textblock *tb,
 static void shape_lore_append_change_effects(textblock *tb,
 	const struct player_shape *s)
 {
-	textblock *tbe = effect_describe(s->effect, "Changing into the shape ",
+	// textblock *tbe = effect_describe(s->effect, "Changing into the shape ",
+	textblock *tbe = effect_describe(s->effect, "Изменение облика ",
 		0, false);
 
 	if (tbe) {
@@ -3007,7 +3099,8 @@ static void shape_lore_append_triggering_spells(textblock *tb,
 							textblock_append(tb, "\n");
 						}
 						textblock_append(tb,
-							"The %s spell, %s, from %s triggers the shapechange.",
+							// "The %s spell, %s, from %s triggers the shapechange.",
+							"Заклинание %s, %s, из %s вызывает изменение облика.",
 							c->name,
 							spell->name,
 							kind->name
@@ -3033,13 +3126,20 @@ static void shape_lore(const struct player_shape *s)
 	textblock *tb = textblock_new();
 
 	textblock_append(tb, "%s", s->name);
-	textblock_append(tb, "\nLike all shapes, the equipment at the time of "
-		"the shapechange sets the base attributes, including damage "
-		"per blow, number of blows and resistances.  While changed, "
-		"items in your pack or on the floor (except for pickup or "
-		"eating) are inaccessible.  To switch back to your normal "
-		"shape, cast a spell or use an item command other than eat "
-		"(drop, for instance).\n");
+	// textblock_append(tb, "\nLike all shapes, the equipment at the time of "
+		// "the shapechange sets the base attributes, including damage "
+		// "per blow, number of blows and resistances.  While changed, "
+		// "items in your pack or on the floor (except for pickup or "
+		// "eating) are inaccessible.  To switch back to your normal "
+		// "shape, cast a spell or use an item command other than eat "
+		// "(drop, for instance).\n");
+		textblock_append(tb, "\nКак и во всех других обликах, экипировка задает базовые "
+		"атрибуты, включая урон, количество ударов и сопротивление."
+		" Во время изменения облика предметы в рюкзаке или на полу"
+		" недоступны (кроме как для поднятия или поедания). Чтобы "
+		"вернуться к обычному облику, произнесите заклинание или "
+		"используйте другое действие для предметов, кроме \"съесть\""
+		"(например, \"бросить\").\n");
 	shape_lore_append_basic_combat(tb, s);
 	shape_lore_append_skills(tb, s);
 	shape_lore_append_non_stat_modifiers(tb, s);
@@ -3121,12 +3221,15 @@ static void do_cmd_knowledge_shapechange(const char *name, int row)
 
 		if (redraw) {
 			region_erase(&header_region);
-			prt("Knowledge - shapes", 2, 0);
-			prt("Name", 4, 0);
+			// prt("Knowledge - shapes", 2, 0);
+			prt("Знания - облики", 2, 0);
+			// prt("Name", 4, 0);
+			prt("Имя ", 4, 0);
 			for (i = 0; i < MIN(80, wnew); i++) {
 				Term_putch(i, 5, COLOUR_WHITE, L'=');
 			}
-			prt("<dir>, 'r' to recall, ESC", h - 2, 0);
+			// prt("<dir>, 'r' to recall, ESC", h - 2, 0);
+			prt("<напр>, 'r'/Enter выбор, ESC", h - 2, 0);
 			redraw = false;
 		}
 
@@ -3481,21 +3584,32 @@ static void reset_main_knowledge_menu(void)
 	struct {
 		const char *label; void (*action)(const char*, int);
 	} pre_store_actions[] = {
-		{ "Display object knowledge", textui_browse_object_knowledge },
-		{ "Display rune knowledge", do_cmd_knowledge_runes },
-		{ "Display artifact knowledge", do_cmd_knowledge_artifacts },
-		{ "Display ego item knowledge", do_cmd_knowledge_ego_items },
-		{ "Display monster knowledge", do_cmd_knowledge_monsters },
-		{ "Display feature knowledge", do_cmd_knowledge_features },
-		{ "Display trap knowledge", do_cmd_knowledge_traps },
-		{ "Display shapechange effects", do_cmd_knowledge_shapechange },
+		// { "Display object knowledge", textui_browse_object_knowledge },
+		{ "Показать знания о предметах", textui_browse_object_knowledge },
+		// { "Display rune knowledge", do_cmd_knowledge_runes },
+		{ "Показать знания о рунах", do_cmd_knowledge_runes },
+		// { "Display artifact knowledge", do_cmd_knowledge_artifacts },
+		{ "Показать знания об артефактах", do_cmd_knowledge_artifacts },
+		// { "Display ego item knowledge", do_cmd_knowledge_ego_items },
+		{ "Показать знания об эго предметах", do_cmd_knowledge_ego_items },
+		// { "Display monster knowledge", do_cmd_knowledge_monsters },
+		{ "Показать знания о монстрах", do_cmd_knowledge_monsters },
+		// { "Display feature knowledge", do_cmd_knowledge_features },
+		{ "Показать знания об окружении", do_cmd_knowledge_features },
+		// { "Display trap knowledge", do_cmd_knowledge_traps },
+		{ "Показать знания о ловушках", do_cmd_knowledge_traps },
+		// { "Display shapechange effects", do_cmd_knowledge_shapechange },
+		{ "Показать эффекты изменения облика", do_cmd_knowledge_shapechange },
 	};
 	struct {
 		const char *label; void (*action)(const char*, int);
 	} post_store_actions[] = {
-		{ "Display hall of fame", do_cmd_knowledge_scores },
-		{ "Display character history", do_cmd_knowledge_history },
-		{ "Display equippable comparison", do_cmd_knowledge_equip_cmp },
+		// { "Display hall of fame", do_cmd_knowledge_scores },
+		{ "Показать Зал Славы", do_cmd_knowledge_scores },
+		// { "Display character history", do_cmd_knowledge_history },
+		{ "Показать историю персонажа", do_cmd_knowledge_history },
+		// { "Display equippable comparison", do_cmd_knowledge_equip_cmp },
+		{ "Показать сравнительную характеристику", do_cmd_knowledge_equip_cmp },
 	};
 	const char *shortcuts[] = {
 		" (1)", " (2)", " (3)",
@@ -3550,10 +3664,14 @@ static void reset_main_knowledge_menu(void)
 
 		main_knowledge_menu.labels[i] =
 			string_make((name) ?
-				format("Display %s'%s contents%s",
-				name, (suffix(name, "s")) ? "" : "s",
-				(j < 9) ? shortcuts[j] : "") :
-				format("Display store %d's contents%s",
+				// format("Display %s'%s contents%s",
+				format("Показать ассортимент%s %s", 
+				// name, (suffix(name, "s")) ? "" : "s",
+				(j < 9) ? shortcuts[j] : "",
+				// (j < 9) ? shortcuts[j] : "") :
+				name) :
+				// format("Display store %d's contents%s",
+				format("Показать ассортимент магазина %d%s",
 				j + 1, (j < 9) ? shortcuts[j] : ""));
 		main_knowledge_menu.actions[i].name =
 			main_knowledge_menu.labels[i];
@@ -3574,7 +3692,8 @@ static void reset_main_knowledge_menu(void)
 		menu_find_iter(MN_ITER_ACTIONS));
 	menu_setpriv(&main_knowledge_menu.m, main_knowledge_menu.count,
 		main_knowledge_menu.actions);
-	main_knowledge_menu.m.title = "Display current knowledge";
+	// main_knowledge_menu.m.title = "Display current knowledge";
+	main_knowledge_menu.m.title = "Отображение текущих знаний";
 	main_knowledge_menu.m.selections = all_letters_nohjkl;
 	/*
 	 * These are shortcuts to get the contents of the stores by number;
@@ -3582,7 +3701,8 @@ static void reset_main_knowledge_menu(void)
 	 * 4 and 6 to go to the previous or next menu.
 	 */
 	if (scount > 0) {
-		const char digits[] = "123456789";
+		// const char digits[] = "123456789";
+		const char digits[] = "";
 		int kcount = 1 + ((scount > 9) ? 9 : scount);
 
 		main_knowledge_menu.storekeys = mem_alloc(kcount
@@ -3768,18 +3888,18 @@ void do_cmd_messages(void)
 				msg = format("%s <%dx>", str, count);
 
 			/* Apply horizontal scroll */
-			msg = ((int)strlen(msg) >= q) ? (msg + q) : "";
+			msg = ((int)utf8_strlen(msg) >= q) ? (msg + q) : "";
 
 			/* Dump the messages, bottom to top */
 			Term_putstr(0, hgt - 3 - j, -1, attr, msg);
 
 			/* Highlight "shower" */
-			if (strlen(shower)) {
+			if (utf8_strlen(shower)) {
 				str = msg;
 
 				/* Display matches */
 				while ((str = my_stristr(str, shower)) != NULL) {
-					int len = strlen(shower);
+					int len = utf8_strlen(shower);
 
 					/* Display the match */
 					Term_putstr(str-msg, hgt - 3 - j, len, COLOUR_YELLOW, str);
@@ -3791,15 +3911,18 @@ void do_cmd_messages(void)
 		}
 
 		/* Display header */
-		prt(format("Message recall (%d-%d of %d), offset %d",
+		// prt(format("Message recall (%d-%d of %d), offset %d",
+		prt(format("Воспоминания (%d-%d of %d), сдвиг %d",
 				   i, i + j - 1, n, q), 0, 0);
 
 		/* Display prompt (not very informative) */
-		if (strlen(shower))
-			prt("[Movement keys to navigate, '-' for next, '=' to find]",
+		if (utf8_strlen(shower))
+			// prt("[Movement keys to navigate, '-' for next, '=' to find]",
+			prt("[<Напр> навигация, '-' найти далее, '=' поиск]",
 				hgt - 1, 0);
 		else
-			prt("[Movement keys to navigate, '=' to find, or ESCAPE to exit]",
+			// prt("[Movement keys to navigate, '=' to find, or ESCAPE to exit]",
+			prt("[<Напр> навигация, '=' поиск, или ESC выход]",
 				hgt - 1, 0);
 			
 		/* Get a command */
@@ -3877,7 +4000,7 @@ void do_cmd_messages(void)
 		}
 
 		/* Find the next item */
-		if (ke.key.code == '-' && strlen(shower)) {
+		if (ke.key.code == '-' && utf8_strlen(shower)) {
 			int16_t z;
 
 			/* Scan messages */
@@ -3912,7 +4035,8 @@ void do_cmd_inven(void)
 	int ret = 3;
 
 	if (player->upkeep->inven[0] == NULL) {
-		msg("You have nothing in your inventory.");
+		// msg("You have nothing in your inventory.");
+		msg("У вас нет ничего в инвентаре.");
 		return;
 	}
 
@@ -3925,7 +4049,8 @@ void do_cmd_inven(void)
 		screen_save();
 
 		/* Get an item to use a context command on (Display the inventory) */
-		if (get_item(&obj, "Select Item:",
+		// if (get_item(&obj, "Select Item:",
+		if (get_item(&obj, "Выбрать:",
 				"Error in do_cmd_inven(), please report.",
 				CMD_NULL, NULL, GET_ITEM_PARAMS)) {
 			/* Load screen */
@@ -3958,7 +4083,8 @@ void do_cmd_equip(void)
 	int ret = 3;
 
 	if (!player->upkeep->equip_cnt) {
-		msg("You are not wielding or wearing anything.");
+		// msg("You are not wielding or wearing anything.");
+		msg("Вы не держите ни одного оружия и ничего не несёте.");
 		return;
 	}
 
@@ -3971,7 +4097,8 @@ void do_cmd_equip(void)
 		screen_save();
 
 		/* Get an item to use a context command on (Display the equipment) */
-		if (get_item(&obj, "Select Item:",
+		// if (get_item(&obj, "Select Item:",
+		if (get_item(&obj, "Выбрать:",
 				"Error in do_cmd_equip(), please report.",
 				CMD_NULL, NULL, GET_ITEM_PARAMS)) {
 			/* Load screen */
@@ -4007,7 +4134,8 @@ void do_cmd_quiver(void)
 	int ret = 3;
 
 	if (player->upkeep->quiver_cnt == 0) {
-		msg("You have nothing in your quiver.");
+		// msg("You have nothing in your quiver.");
+		msg("У вас ничего нет в колчане.");
 		return;
 	}
 
@@ -4020,7 +4148,8 @@ void do_cmd_quiver(void)
 		screen_save();
 
 		/* Get an item to use a context command on (Display the quiver) */
-		if (get_item(&obj, "Select Item:",
+		// if (get_item(&obj, "Select Item:",
+		if (get_item(&obj, "Выбрать:",
 				"Error in do_cmd_quiver(), please report.",
 				CMD_NULL, NULL, GET_ITEM_PARAMS)) {
 			/* Load screen */
@@ -4055,7 +4184,8 @@ void do_cmd_look(void)
 	/* Look around */
 	if (target_set_interactive(TARGET_LOOK, -1, -1))
 	{
-		msg("Target Selected.");
+		// msg("Target Selected.");
+		msg("Цель выбрана.");
 	}
 }
 
@@ -4336,7 +4466,8 @@ void do_cmd_query_symbol(void)
 	}
 
 	/* Prompt */
-	put_str("Recall details? (y/k/n): ", 0, 40);
+	// put_str("Recall details? (y/k/n): ", 0, 40);
+	put_str("Вспомнить детали? (y/k/n): ", 0, 40);
 
 	/* Query */
 	query = inkey();
@@ -4378,7 +4509,8 @@ void do_cmd_query_symbol(void)
 		tb = textblock_new();
 		lore_title(tb, race);
 
-		textblock_append(tb, " [(r)ecall, ESC]");
+		// textblock_append(tb, " [(r)ecall, ESC]");
+		textblock_append(tb, " [(r) вспомнить, ESC]");
 		textui_textblock_place(tb, SCREEN_REGION, NULL);
 		textblock_free(tb);
 

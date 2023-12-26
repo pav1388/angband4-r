@@ -178,7 +178,8 @@ static bool describe_stats(textblock *tb, const struct object *obj,
 			textblock_append_c(tb, attr, "%+i %s.\n", val, desc);
 		} else if (known_effect)
 			/* Ego type or jewellery description */
-			textblock_append(tb, "Affects your %s\n", desc);
+			// textblock_append(tb, "Affects your %s\n", desc);
+			textblock_append(tb, "Влияет на %s\n", desc);
 	}
 
 	return true;
@@ -252,7 +253,8 @@ static bool describe_protects(textblock *tb, const bitflag flags[OF_SIZE])
 	if (!count)
 		return false;
 
-	textblock_append(tb, "Provides protection from ");
+	// textblock_append(tb, "Provides protection from ");
+	textblock_append(tb, "Обеспечивает защиту от ");
 	info_out_list(tb, p_descs, count);
 
 	return  true;
@@ -296,7 +298,8 @@ static bool describe_hates(textblock *tb, const struct element_info el_info[])
 	if (!count)
 		return false;
 
-	textblock_append(tb, "Can be destroyed by ");
+	// textblock_append(tb, "Can be destroyed by ");
+	textblock_append(tb, "Разрушительное действие оказывает ");
 	info_out_list(tb, descs, count);
 
 	return true;
@@ -971,8 +974,10 @@ static bool describe_blows(textblock *tb, const struct object *obj)
 	textblock_append_c(tb, COLOUR_L_GREEN, "%d.%d ",
 			blow_info[0].centiblows / 100, 
 			(blow_info[0].centiblows / 10) % 10);
-	textblock_append(tb, "blow%s/round.\n",
-			(blow_info[0].centiblows > 100) ? "s" : "");
+	// textblock_append(tb, "blow%s/round.\n",
+	textblock_append(tb, "удар%s за ход.\n",
+			// (blow_info[0].centiblows > 100) ? "s" : "");
+			PLURAL_RU__A_OV(blow_info[0].centiblows / 100));
 
 	/* Then list combinations that give more blows / speed boost */
 	for (i = 1; i < num_entries; i++) {
@@ -980,13 +985,16 @@ static bool describe_blows(textblock *tb, const struct object *obj)
 
 		if (entry.centiblows % 10 == 0) {
 			textblock_append(tb, 
-				"With +%d STR and +%d DEX you would get %d.%d blows\n",
+				// "With +%d STR and +%d DEX you would get %d.%d blows\n",
+				"При +%d СИЛ и +%d ЛОВ вы получите %d.%d удар%s\n",
 				entry.str_plus, entry.dex_plus, 
 				(entry.centiblows / 100),
-				(entry.centiblows / 10) % 10);
+				(entry.centiblows / 10) % 10,
+				PLURAL_RU__A_OV(entry.centiblows / 100));
 		} else {
 			textblock_append(tb, 
-				"With +%d STR and +%d DEX you would attack a bit faster\n",
+				// "With +%d STR and +%d DEX you would attack a bit faster\n",
+				"При +%d СИЛ и +%d ЛОВ вы будете атаковать немного быстрее\n",
 				entry.str_plus, entry.dex_plus);
 		}
 	}
@@ -1531,12 +1539,15 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 
 	/* Mention slays and brands from other items */
 	if (nonweap_slay)
-		textblock_append(tb, "This weapon may benefit from one or more off-weapon brands or slays.\n");
+		// textblock_append(tb, "This weapon may benefit from one or more off-weapon brands or slays.\n");
+		textblock_append(tb, "Оружие может получить преимущества от безоружных убийств или клейм.\n");
 
 	if (throw) {
-		textblock_append(tb, "Average thrown damage: ");
+		// textblock_append(tb, "Average thrown damage: ");
+		textblock_append(tb, "Средний урон от броска: ");
 	} else {
-		textblock_append(tb, "Average damage/round: ");
+		// textblock_append(tb, "Average damage/round: ");
+		textblock_append(tb, "Средний урон за ход: ");
 	}
 
 	if (has_brands_or_slays) {
@@ -1620,9 +1631,11 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 			if (groupn > 0) {
 				if (dam != lastdam) {
 					if (groupn > 2) {
-						textblock_append(tb, ", and");
+						// textblock_append(tb, ", and");
+						textblock_append(tb, ", и");
 					} else if (groupn == 2) {
-						textblock_append(tb, " and");
+						// textblock_append(tb, " and");
+						textblock_append(tb, " и");
 					}
 				} else if (groupn > 1) {
 					textblock_append(tb, ",");
@@ -1639,10 +1652,12 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 				}
 				if (dam % 10) {
 					textblock_append_c(tb, COLOUR_L_GREEN,
-						"%d.%d vs", dam / 10, dam % 10);
+						// "%d.%d vs", dam / 10, dam % 10);
+						"%d.%d против", dam / 10, dam % 10);
 				} else {
 					textblock_append_c(tb, COLOUR_L_GREEN,
-						"%d vs", dam / 10);
+						// "%d vs", dam / 10);
+						"%d против", dam / 10);
 				}
 				groupn = 1;
 				lastdam = dam;
@@ -1655,9 +1670,11 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 		}
 		if (groupn > 0) {
 			if (groupn > 2) {
-				textblock_append(tb, ", and");
+				// textblock_append(tb, ", and");
+				textblock_append(tb, ", и");
 			} else if (groupn == 2) {
-				textblock_append(tb, " and");
+				// textblock_append(tb, " and");
+				textblock_append(tb, " и");
 			}
 			if (last_is_brand) {
 				textblock_append(tb,
@@ -1669,7 +1686,8 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 		if (nsort == 0) {
 			has_brands_or_slays = false;
 		} else {
-			textblock_append(tb, (nsort == 1) ? " and " : ", and ");
+			// textblock_append(tb, (nsort == 1) ? " and " : ", and ");
+			textblock_append(tb, (nsort == 1) ? " и " : ", и ");
 		}
 		mem_free(sortind);
 	}
@@ -1682,7 +1700,8 @@ static bool describe_damage(textblock *tb, const struct object *obj, bool throw)
 	else
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", normal_damage / 10);
 
-	if (has_brands_or_slays) textblock_append(tb, " vs. others");
+	// if (has_brands_or_slays) textblock_append(tb, " vs. others");
+	if (has_brands_or_slays) textblock_append(tb, " против других");
 	textblock_append(tb, ".\n");
 
 	mem_free(brand_damage);
@@ -1762,23 +1781,28 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 
 	if (!weapon && !ammo && !rock) {
 		if (thrown_effect) {
-			textblock_append(tb, "It can be thrown at creatures with damaging effect.\n");
+			// textblock_append(tb, "It can be thrown at creatures with damaging effect.\n");
+			textblock_append(tb, "Можно бросать в существ с нанесением урона.\n");
 			return true;
 		} else
 			return false;
 	}
 
-	textblock_append_c(tb, COLOUR_L_WHITE, "Combat info:\n");
+	// textblock_append_c(tb, COLOUR_L_WHITE, "Combat info:\n");
+	textblock_append_c(tb, COLOUR_L_WHITE, "Боевая информация:\n");
 
 	if (heavy)
-		textblock_append_c(tb, COLOUR_L_RED, "You are too weak to use this weapon.\n");
+		// textblock_append_c(tb, COLOUR_L_RED, "You are too weak to use this weapon.\n");
+		textblock_append_c(tb, COLOUR_L_RED, "Вы слишком слабы для использовани этого оружия.\n");
 
 	describe_blows(tb, obj);
 
 	if (ammo) {
-		textblock_append(tb, "When fired, hits targets up to ");
+		// textblock_append(tb, "When fired, hits targets up to ");
+		textblock_append(tb, "При выстреле поражает цели до ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range);
-		textblock_append(tb, " feet away.\n");
+		// textblock_append(tb, " feet away.\n");
+		textblock_append(tb, " метр%s.\n", PLURAL_RU_A_OV(range));
 	}
 
 	if (weapon || ammo) {
@@ -1790,7 +1814,7 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 
 	if (ammo) {
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d%%", break_chance);
-		textblock_append(tb, " chance of breaking upon contact.\n");
+		textblock_append(tb, " шанс сломаться при попадании.\n");
 	}
 
 	/* Something has been said */
@@ -1858,43 +1882,52 @@ static bool describe_digger(textblock *tb, const struct object *obj)
 	int i;
 	int deciturns[DIGGING_MAX];
 	struct object *obj1 = (struct object *) obj;
-	static const char *names[4] = { "rubble", "magma veins", "quartz veins",
-									"granite" };
-
+	// static const char *names[4] = { "rubble", "magma veins", "quartz veins",
+									// "granite" };
+	static const char *names[4] = { "завалы", "магмовые жилы", "кварцевые жилы",
+									"гранит" };
+	
 	/* Get useful info or print nothing */
 	if (!obj_known_digging(obj1, deciturns)) return false;
 
 	for (i = DIGGING_RUBBLE; i < DIGGING_DOORS; i++) {
 		if (i == 0 && deciturns[0] > 0) {
 			if (tval_is_melee_weapon(obj))
-				textblock_append(tb, "Clears ");
+				// textblock_append(tb, "Clears ");
+				textblock_append(tb, "Копает ");
 			else
-				textblock_append(tb, "With this item, your current weapon clears ");
+				// textblock_append(tb, "With this item, your current weapon clears ");
+				textblock_append(tb, "С этим предметом ваше текущее оружие копает ");
 		}
 
 		if (i == 3 || (i != 0 && deciturns[i] == 0))
-			textblock_append(tb, "and ");
+			// textblock_append(tb, "and ");
+			textblock_append(tb, "и ");
 
 		if (deciturns[i] == 0) {
-			textblock_append_c(tb, COLOUR_L_RED, "doesn't affect ");
+			// textblock_append_c(tb, COLOUR_L_RED, "doesn't affect ");
+			textblock_append_c(tb, COLOUR_L_RED, "не может копать ");
 			textblock_append(tb, "%s.\n", names[i]);
 			break;
 		}
 
-		textblock_append(tb, "%s in ", names[i]);
+		// textblock_append(tb, "%s in ", names[i]);
+		textblock_append(tb, "%s за ", names[i]);
 
 		if (deciturns[i] == 10) {
 			textblock_append_c(tb, COLOUR_L_GREEN, "1 ");
+			textblock_append(tb, "ход%s", (i == 3) ? ".\n" : ", ");
 		} else if (deciturns[i] < 100) {
 			textblock_append_c(tb, COLOUR_GREEN, "%d.%d ", deciturns[i]/10,
 							   deciturns[i]%10);
+			textblock_append(tb, "ход%s%s", PLURAL_RU__A_OV(deciturns[i]/10),
+				(i == 3) ? ".\n" : ", ");
 		} else {
 			textblock_append_c(tb, (deciturns[i] < 1000) ? COLOUR_YELLOW :
 							   COLOUR_RED, "%d ", (deciturns[i]+5)/10);
-		}
-
-		textblock_append(tb, "turn%s%s", deciturns[i] == 10 ? "" : "s",
+			textblock_append(tb, "ход%s%s", PLURAL_RU__A_OV((deciturns[i]+5)/10),
 				(i == 3) ? ".\n" : ", ");
+		}
 	}
 
 	return true;
@@ -2198,7 +2231,8 @@ static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 	} else {
 		dropper = "monster lost to history";
 	}
-	article = is_a_vowel(dropper[0]) ? "an " : "a ";
+	// article = is_a_vowel(dropper[0]) ? "an " : "a ";
+	article = is_a_vowel(dropper[0]) ? "" : "";
 	if (unique)
 		my_strcpy(name, dropper, sizeof(name));
 	else {
@@ -2302,7 +2336,8 @@ static textblock *object_info_out(const struct object *obj, int mode)
 
 	/* Unaware objects get simple descriptions */
 	if (obj->kind != obj->known->kind) {
-		textblock_append(tb, "\n\nYou do not know what this is.\n");
+		// textblock_append(tb, "\n\nYou do not know what this is.\n");
+		textblock_append(tb, "\n\nВы не знаете, что это такое.\n");
 		return tb;
 	}
 
@@ -2316,7 +2351,8 @@ static textblock *object_info_out(const struct object *obj, int mode)
 	if (!terse) describe_flavor_text(tb, obj, ego);
 
 	if (!object_fully_known(obj) &&	(obj->known->notice & OBJ_NOTICE_ASSESSED) && !tval_is_useable(obj)) {
-		textblock_append(tb, "You do not know the full extent of this item's powers.\n");
+		// textblock_append(tb, "You do not know the full extent of this item's powers.\n");
+		textblock_append(tb, "Вы не знаете всех возможностей этого предмета.\n");
 		something = true;
 	}
 
@@ -2353,7 +2389,8 @@ static textblock *object_info_out(const struct object *obj, int mode)
 
 	/* Don't append anything in terse (for chararacter dump) */
 	if (!something && !terse)
-		textblock_append(tb, "\n\nThis item does not seem to possess any special abilities.");
+		// textblock_append(tb, "\n\nThis item does not seem to possess any special abilities.");
+		textblock_append(tb, "\n\nЭтот предмет не обладает никакими особыми способностями.");
 
 	return tb;
 }

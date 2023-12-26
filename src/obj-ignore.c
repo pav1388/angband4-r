@@ -43,34 +43,53 @@ typedef struct
  */
 static quality_ignore_struct quality_mapping[] =
 {
-	{ ITYPE_GREAT,					TV_SWORD,		"Chaos" },
-	{ ITYPE_GREAT,					TV_POLEARM,		"Slicing" },
-	{ ITYPE_GREAT,					TV_HAFTED,		"Disruption" },
+	// { ITYPE_GREAT,					TV_SWORD,		"Chaos" },
+	{ ITYPE_GREAT,					TV_SWORD,		"Хаос" },
+	// { ITYPE_GREAT,					TV_POLEARM,		"Slicing" },
+	{ ITYPE_GREAT,					TV_POLEARM,		"Нарезка" },
+	// { ITYPE_GREAT,					TV_HAFTED,		"Disruption" },
+	{ ITYPE_GREAT,					TV_HAFTED,		"Разрушение" },
 	{ ITYPE_SHARP,					TV_SWORD,		"" },
 	{ ITYPE_SHARP,					TV_POLEARM,		"" },
 	{ ITYPE_BLUNT,					TV_HAFTED,		"" },
-	{ ITYPE_SLING,					TV_BOW,			"Sling" },
-	{ ITYPE_BOW,					TV_BOW,			"Bow" },
-	{ ITYPE_CROSSBOW,				TV_BOW,			"Crossbow" },
+	// { ITYPE_SLING,					TV_BOW,			"Sling" },
+	{ ITYPE_SLING,					TV_BOW,			"Праща" },
+	// { ITYPE_BOW,					TV_BOW,			"Bow" },
+	{ ITYPE_BOW,					TV_BOW,			"Лук" },
+	// { ITYPE_CROSSBOW,				TV_BOW,			"Crossbow" },
+	{ ITYPE_CROSSBOW,				TV_BOW,			"Арбалет" },
 	{ ITYPE_SHOT,					TV_SHOT,		"" },
 	{ ITYPE_ARROW,					TV_ARROW,		"" },
 	{ ITYPE_BOLT,					TV_BOLT,		"" },
-	{ ITYPE_ROBE,					TV_SOFT_ARMOR,	"Robe" },
-	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Black" },
-	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Blue" },
-	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"White" },
-	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Red" },
-	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Green" },
-	{ ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Multi" },
-	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Shining" },
-	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Law" },
-	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Gold" },
-	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Chaos" },
-	{ ITYPE_BALANCE_DRAGON_ARMOR,	TV_DRAG_ARMOR,	"Balance" },
-	{ ITYPE_POWER_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Power" },
+	// { ITYPE_ROBE,					TV_SOFT_ARMOR,	"Robe" },
+	{ ITYPE_ROBE,					TV_SOFT_ARMOR,	"Халат" },
+	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Black" },
+	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Чёрный" },
+	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Blue" },
+	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Синий" },
+	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"White" },
+	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Белый" },
+	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Red" },
+	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Green" },
+	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Зелёный" },
+	// { ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Multi" },
+	{ ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Множеств." },
+	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Shining" },
+	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Сияние" },
+	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Law" },
+	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Закон" },
+	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Gold" },
+	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Золото" },
+	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Chaos" },
+	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Хаос" },
+	// { ITYPE_BALANCE_DRAGON_ARMOR,	TV_DRAG_ARMOR,	"Balance" },
+	{ ITYPE_BALANCE_DRAGON_ARMOR,	TV_DRAG_ARMOR,	"Баланс" },
+	// { ITYPE_POWER_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Power" },
+	{ ITYPE_POWER_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Сила" },
 	{ ITYPE_BODY_ARMOR,				TV_HARD_ARMOR,	"" },
 	{ ITYPE_BODY_ARMOR,				TV_SOFT_ARMOR,	"" },
-	{ ITYPE_ELVEN_CLOAK,			TV_CLOAK,		"Elven" },
+	// { ITYPE_ELVEN_CLOAK,			TV_CLOAK,		"Elven" },
+	{ ITYPE_ELVEN_CLOAK,			TV_CLOAK,		"Эльфы" },
 	{ ITYPE_CLOAK,					TV_CLOAK,		"" },
 	{ ITYPE_SHIELD,					TV_SHIELD,		"" },
 	{ ITYPE_HEADGEAR,				TV_HELM,		"" },
@@ -97,11 +116,16 @@ quality_name_struct quality_choices[] =
  */
 quality_name_struct quality_values[IGNORE_MAX] =
 {
-	{ IGNORE_NONE,				"no ignore" },
-	{ IGNORE_BAD,				"bad" },
-	{ IGNORE_AVERAGE,			"average" },
-	{ IGNORE_GOOD,				"good" },
-	{ IGNORE_ALL,				"non-artifact" },
+	// { IGNORE_NONE,				"no ignore" },
+	{ IGNORE_NONE,				"не игнорир." },
+	// { IGNORE_BAD,				"bad" },
+	{ IGNORE_BAD,				"плохой" },
+	// { IGNORE_AVERAGE,			"average" },
+	{ IGNORE_AVERAGE,			"средний" },
+	// { IGNORE_GOOD,				"good" },
+	{ IGNORE_GOOD,				"хороший" },
+	// { IGNORE_ALL,				"non-artifact" },
+	{ IGNORE_ALL,				"неартефактный" },
 };
 
 uint8_t ignore_level[ITYPE_MAX];
@@ -277,7 +301,8 @@ int apply_autoinscription(struct player *p, struct object *obj)
 	else
 		obj->note = 0;
 
-	msg("You autoinscribe %s.", o_name);
+	// msg("You autoinscribe %s.", o_name);
+	msg("Вы автоматически подписываете %s.", o_name);
 
 	return 1;
 }
@@ -657,7 +682,8 @@ void ignore_drop(struct player *p)
 		if (!check_for_inscrip(obj, "!d") && !check_for_inscrip(obj, "!*")) {
 			/* Confirm the drop if the item is equipped. */
 			if (object_is_equipped(p->body, obj)) {
-				if (!verify_object("Really take off and drop", obj, p)) {
+				// if (!verify_object("Really take off and drop", obj, p)) {
+				if (!verify_object("Действительно снять и выбросить", obj, p)) {
 					/* Hack - inscribe the item with !d to prevent repeated
 					 * confirmations. */
 					const char *inscription = quark_str(obj->note);
