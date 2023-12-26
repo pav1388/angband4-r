@@ -256,7 +256,7 @@ struct cmd_info cmd_util[] =
 	{ "  Перерисовать экран", { KTRL('R') }, CMD_NULL, do_cmd_redraw, NULL, 0, NULL, NULL, NULL, 0 },
 
 	// { "Save \"screen dump\"", { ')' }, CMD_NULL, do_cmd_save_screen, NULL, 0, NULL, NULL, NULL, 0 }
-	{ "  Сохранить \"дамп экрана\"", { ')' }, CMD_NULL, do_cmd_save_screen, NULL, 0, NULL, NULL, NULL, 0 }
+	{ "  Сохранить скриншот", { ')' }, CMD_NULL, do_cmd_save_screen, NULL, 0, NULL, NULL, NULL, 0 }
 };
 
 /**
@@ -348,7 +348,7 @@ struct cmd_info cmd_debug_player[] =
 	// { "Increase experience", { 'x' }, CMD_WIZ_INCREASE_EXP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Увеличение опыта", { 'x' }, CMD_WIZ_INCREASE_EXP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Rerate hitpoints", { 'h' }, CMD_WIZ_RERATE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Ускорение ОЗ", { 'h' }, CMD_WIZ_RERATE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Повысить ОЗ", { 'h' }, CMD_WIZ_RERATE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Edit player", { 'e' }, CMD_WIZ_EDIT_PLAYER_START, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Редактировать игрока", { 'e' }, CMD_WIZ_EDIT_PLAYER_START, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Learn object kinds", { 'l' }, CMD_NULL, wiz_learn_all_object_kinds, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },

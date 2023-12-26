@@ -79,7 +79,7 @@ void history_display(void)
 			row++;
 		}
 		// prt("[Arrow keys scroll, p/PgUp for previous page, n/PgDn for next page, ESC to exit.]", hgt - 1, 0);
-		prt("[<напр> прокрутка, 'p' пред.страница, 'n' след.страница, ESC - выход]", hgt - 1, 0);
+		prt("[<напр> прокрутка, 'p' пред.страница, 'n' след.страница, 'ESC' выход]", hgt - 1, 5);
 
 		ch = inkey();
 

@@ -308,19 +308,26 @@ void equip_cmp_display(void)
 		/* EQUIP_CMP_MENU_DONE */
 		{ "", 0, false, false },
 		/* EQUIP_CMP_MENU_BAIL */
-		{ "Sorry, could not display.  Press any key.",
+		// { "Sorry, could not display.  Press any key.",
+		{ "Извините, не удалось отобразить.  Нажмите любую клавишу.",
 			handle_input_bail, true, false },
 		/* EQUIP_CMP_MENU_NEW_PAGE */
-		{ "[k/up, j/down, p/PgUp, n/PgDn to move; ? for help; ESC to "
-			"exit]", handle_input_equip_cmp_general, true, true },
+		// { "[k/up, j/down, p/PgUp, n/PgDn to move; ? for help; ESC to "
+		{ "[k/up, j/down, p/PgUp, n/PgDn перемещение; ? справка; ESC "
+			// "exit]", handle_input_equip_cmp_general, true, true },
+			"выход]", handle_input_equip_cmp_general, true, true },
 		/* EQUIP_CMP_MENU_SAME_PAGE */
-		{ "[k/up, j/down, p/PgUp, n/PgDn to move; ? for help; ESC to "
-			"exit]", handle_input_equip_cmp_general, false, false },
+		// { "[k/up, j/down, p/PgUp, n/PgDn to move; ? for help; ESC to "
+		{ "[k/up, j/down, p/PgUp, n/PgDn перемещение; ? справка; ESC "
+			// "exit]", handle_input_equip_cmp_general, false, false },
+			"выход]", handle_input_equip_cmp_general, false, false },
 		/* EQUIP_CMP_MENU_SEL0 */
-		{ "[k/up, j/down, p/PgUp, n/PgDn to move; return to accept]",
+		// { "[k/up, j/down, p/PgUp, n/PgDn to move; return to accept]",
+		{ "[k/up, j/down, p/PgUp, n/PgDn перемещение; Enter принять]",
 			handle_input_equip_cmp_select, true, true },
 		/* EQUIP_CMP_MENU_SEL1 */
-		{ "[k/up, j/down, p/PgUp, n/PgDn to move; return to accept]",
+		// { "[k/up, j/down, p/PgUp, n/PgDn to move; return to accept]",
+		{ "[k/up, j/down, p/PgUp, n/PgDn перемещение; Enter принять]",
 			handle_input_equip_cmp_select, true, true },
 	};
 	int istate;
@@ -357,7 +364,8 @@ void equip_cmp_display(void)
 			the_summary->dlg_trans_msg = NULL;
 		} else {
 			if (the_summary->nfilt == 0) {
-				prt("No items; use q, !, c, or R to change filter", 0, 0);
+				// prt("No items; use q, !, c, or R to change filter", 0, 0);
+				prt("Нет предметов; q, !, c, или R изменение фильтра", 0, 0);
 			} else if (! states[istate].clear) {
 				prt("", 0, 0);
 			}
@@ -401,37 +409,45 @@ static void display_equip_cmp_help(void)
 
 	Term_clear();
 	irow = 1;
-	prt("Movement/scrolling ---------------------------------", irow, 0);
+	// prt("Movement/scrolling ---------------------------------", irow, 0);
+	prt("Движение/прокрутка --------------------------------------------", irow, 0);
 	++irow;
-	prt("j, down  one line down    k, up    one line up", irow, 0);
+	prt("j, down    1 линия вниз       k, up     1 линия вверх", irow, 0);
 	++irow;
-	prt("n, PgDn  one page down    p, PgUp  one page up", irow, 0);
+	prt("n, PgDn    1 страница вниз    p, PgUp   1 страница вверх", irow, 0);
 	++irow;
-	prt("space    one page down", irow, 0);
+	prt("space      1 страница вниз", irow, 0);
 	++irow;
-	prt("Filtering/searching/sorting ------------------------", irow, 0);
 	++irow;
-	prt("q        quick filter     !        use opposite quick", irow, 0);
+	// prt("Filtering/searching/sorting ------------------------", irow, 0);
+	prt("Фильтрация/поиск/сортировка -----------------------------------", irow, 0);
 	++irow;
-	prt("c        cycle through sources of items", irow, 0);
+	prt("q          быстрый фильтр     !         обратный быстрый", irow, 0);
 	++irow;
-	prt("r        reverse", irow, 0);
+	prt("c          цикл по источникам предметов", irow, 0);
 	++irow;
-	prt("Information ----------------------------------------", irow, 0);
+	prt("r          реверс", irow, 0);
 	++irow;
-	prt("v        cycle through attribute views", irow, 0);
 	++irow;
-	prt("I, x     select one or two items for details", irow, 0);
+	// prt("Information ----------------------------------------", irow, 0);
+	prt("Информация ----------------------------------------------------", irow, 0);
 	++irow;
-	prt("Other ----------------------------------------------", irow, 0);
+	prt("v         цикл просмотра атрибутов", irow, 0);
 	++irow;
-	prt("d        dump to file     R        reset display", irow, 0);
+	prt("I, x      выберите один или два пункта для подробной информации", irow, 0);
 	++irow;
-	prt("ESC      exit", irow, 0);
+	++irow;
+	// prt("Other ----------------------------------------------", irow, 0);
+	prt("Разное --------------------------------------------------------", irow, 0);
+	++irow;
+	prt("d          сохранить в файл   R         сброс экрана", irow, 0);
+	++irow;
+	prt("ESC        выход", irow, 0);
 	++irow;
 
 	Term_get_size(&wid, &hgt);
-	prt("Press any key to continue", hgt - 1, 0);
+	// prt("Press any key to continue", hgt - 1, 0);
+	prt("Нажмите любую клавишу для продолжения", hgt - 1, 0);
 	(void) inkey();
 }
 
@@ -485,18 +501,26 @@ static int handle_input_equip_cmp_general(ui_event in, int istate,
 		ACT_CTX_EQUIPCMP_UNKNOWN,
 	};
 	static const char *trans_msg_unknown_key =
-		"Unknown key pressed; ? will list available keys";
+		// "Unknown key pressed; ? will list available keys";
+		"Нажата неизвестная клавиша;   ? выведет список доступных";
 	static const char *trans_msg_view =
-		"Showing alternate attributes; press v to cycle";
+		// "Showing alternate attributes; press v to cycle";
+		"Показ альтернативных атрибутов;  v переход к следующему циклу";
 	static const char *trans_msg_onlystore =
-		"Only showing goods from stores; press c to change";
+		// "Only showing goods from stores; press c to change";
+		"Показ только товары из магазина;   c для изменения";
 	static const char *trans_msg_withstore =
-		"Showing possessions and goods from stores; press c to change";
+		// "Showing possessions and goods from stores; press c to change";
+		"Показывать имущество и товары из магазина;   c для изменения";
 	static const char *trans_msg_carried =
-		"Only showing carried items; press c to change";
-	static const char *trans_msg_save_ok = "Successfully saved to file";
-	static const char *trans_msg_save_bad = "Failed to save to file!";
-	static const char *trans_msg_sel0 = "Select first item to examine";
+		// "Only showing carried items; press c to change";
+		"Показывать только имущество;   c для изменения";
+	// static const char *trans_msg_save_ok = "Successfully saved to file";
+	static const char *trans_msg_save_ok = "Успешно сохранено в файл";
+	// static const char *trans_msg_save_bad = "Failed to save to file!";
+	static const char *trans_msg_save_bad = "Не удалось сохранить в файл!";
+	// static const char *trans_msg_sel0 = "Select first item to examine";
+	static const char *trans_msg_sel0 = "Выберите первый предмет для изучения";
 	int action = ACT_CTX_EQUIPCMP_NONE;
 	int result = EQUIP_CMP_MENU_SAME_PAGE;
 	int ilast;
@@ -579,42 +603,53 @@ static int handle_input_equip_cmp_general(ui_event in, int istate,
 
 			m->selections = labels;
 			if (s->npage == s->maxpage) {
-				menu_dynamic_add_label(m, "Go to next page",
+				// menu_dynamic_add_label(m, "Go to next page",
+				menu_dynamic_add_label(m, "На следующую страницу",
 					'n', ACT_CTX_EQUIPCMP_NEXT_PAGE,
 					labels);
 			}
 			if ((s->indinc > 0 && s->ifirst > 0)
 					|| (s->indinc <= 0
 					&& s->ifirst < s->nfilt - 1)) {
-				menu_dynamic_add_label(m, "Go to previous page",
+				// menu_dynamic_add_label(m, "Go to previous page",
+				menu_dynamic_add_label(m, "На предыдущую страницу",
 					'p', ACT_CTX_EQUIPCMP_PREV_PAGE,
 					labels);
 			}
 			if (s->npage == s->maxpage) {
-				menu_dynamic_add_label(m, "Go to next line",
+				// menu_dynamic_add_label(m, "Go to next line",
+				menu_dynamic_add_label(m, "К следующей строке",
 					'N', ACT_CTX_EQUIPCMP_NEXT_LINE,
 					labels);
 			}
 			if ((s->indinc > 0 && s->ifirst > 0)
 					|| (s->indinc <= 0
 					&& s->ifirst < s->nfilt - 1)) {
-				menu_dynamic_add_label(m, "Go to previous line",
+				// menu_dynamic_add_label(m, "Go to previous line",
+				menu_dynamic_add_label(m, "К предыдущей строке",
 					'P', ACT_CTX_EQUIPCMP_PREV_LINE,
 					labels);
 			}
-			menu_dynamic_add_label(m, "Cycle equipment source", 'c',
+			// menu_dynamic_add_label(m, "Cycle equipment source", 'c',
+			menu_dynamic_add_label(m, "Источник списка снаряжения", 'c',
 				ACT_CTX_EQUIPCMP_CYCLE_SOURCES, labels);
-			menu_dynamic_add_label(m, "Cycle attribute view", 'v',
+			// menu_dynamic_add_label(m, "Cycle attribute view", 'v',
+			menu_dynamic_add_label(m, "Просмотр списка атрибутов", 'v',
 				ACT_CTX_EQUIPCMP_CYCLE_VIEWS, labels);
-			menu_dynamic_add_label(m, "Examine one or two items",
+			// menu_dynamic_add_label(m, "Examine one or two items",
+			menu_dynamic_add_label(m, "Изучите один или два предмета",
 				'x', ACT_CTX_EQUIPCMP_START_SELECT, labels);
-			menu_dynamic_add_label(m, "Reverse order", 'r',
+			// menu_dynamic_add_label(m, "Reverse order", 'r',
+			menu_dynamic_add_label(m, "Обратный порядок", 'r',
 				ACT_CTX_EQUIPCMP_REVERSE, labels);
-			menu_dynamic_add_label(m, "Reset display", 'R',
+			// menu_dynamic_add_label(m, "Reset display", 'R',
+			menu_dynamic_add_label(m, "Сброс экрана", 'R',
 				ACT_CTX_EQUIPCMP_RESET, labels);
-			menu_dynamic_add_label(m, "Dump as file", 'd',
+			// menu_dynamic_add_label(m, "Dump as file", 'd',
+			menu_dynamic_add_label(m, "Сохранить в файл", 'd',
 				ACT_CTX_EQUIPCMP_DUMP_FILE, labels);
-			menu_dynamic_add_label(m, "Help", '?',
+			// menu_dynamic_add_label(m, "Help", '?',
+			menu_dynamic_add_label(m, "Справка", '?',
 				ACT_CTX_EQUIPCMP_HELP, labels);
 
 			screen_save();

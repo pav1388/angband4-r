@@ -188,13 +188,16 @@ static void highscore_write(const struct high_score scores[], size_t sz)
 	safe_setuid_grab();
 
 	if (file_exists(old_name) && !file_delete(old_name))
-		msg("Couldn't delete old scorefile");
+		// msg("Couldn't delete old scorefile");
+		msg("Не удалось удалить старый файл с результатами");
 
 	if (file_exists(cur_name) && !file_move(cur_name, old_name))
-		msg("Couldn't move old scores.raw out of the way");
+		// msg("Couldn't move old scores.raw out of the way");
+		msg("Не удалось сдвинуть старый файл scores.raw с пути");
 
 	if (!file_move(new_name, cur_name))
-		msg("Couldn't rename new scorefile to scores.raw");
+		// msg("Couldn't rename new scorefile to scores.raw");
+		msg("Не удалось переименовать новый файл с результатами в scores.raw");
 
 	/* Remove the lock */
 	file_close(lok);
@@ -241,7 +244,8 @@ void build_score(struct high_score *entry, const struct player *p,
 		strftime(entry->day, sizeof(entry->day), "@%Y%m%d",
 				 localtime(death_time));
 	else
-		my_strcpy(entry->day, "TODAY", sizeof(entry->day));
+		// my_strcpy(entry->day, "TODAY", sizeof(entry->day));
+		my_strcpy(entry->day, "СЕГОДНЯ", sizeof(entry->day));
 
 	/* Save the player name (15 chars) */
 	strnfmt(entry->who, sizeof(entry->who), "%-.15s", p->full_name);
@@ -283,7 +287,7 @@ void enter_score(const struct player *p, const time_t *death_time)
 			continue;
 
 		// msg("Score not registered for cheaters.");
-		msg("Очки не регистрируются для читеров.");
+		msg("Очки не регистрируются для Читеров.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 		return;
 	}
@@ -291,23 +295,23 @@ void enter_score(const struct player *p, const time_t *death_time)
 	/* Add a new entry, if allowed */
 	if (p->noscore & (NOSCORE_WIZARD | NOSCORE_DEBUG)) {
 		// msg("Score not registered for wizards.");
-		msg("Очки не регистрируются для волшебников.");
+		msg("Очки не регистрируются для Волшебников.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 #ifdef ALLOW_BORG
 #ifndef SCORE_BORGS
 	}	else if (p->noscore & (NOSCORE_BORG)) {
 		// msg("Score not registered for borgs.");
-		msg("Очки не регистрируются для borgs.");
+		msg("Очки не регистрируются для Borgs.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 #endif
 #endif
 	} else if (!p->total_winner && streq(p->died_from, "Interrupting")) {
 		// msg("Score not registered due to interruption.");
-		msg("Очки не регистрируются для прервавших.");
+		msg("Очки не регистрируются для Прервавших.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 	} else if (!p->total_winner && streq(p->died_from, "Retiring")) {
 		// msg("Score not registered due to retiring.");
-		msg("Очки не регистрируются для ушедших в отставку.");
+		msg("Очки не регистрируются для Ушедших в Отставку.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 	} else {
 		struct high_score entry;

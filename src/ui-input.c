@@ -1297,8 +1297,8 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 	
 	if (!arg_force_name) {
 			
-			if (!get_string("File name: ", buf, sizeof buf)) return false;
-			// if (!get_string("Имя файла: ", buf, sizeof buf)) return false;
+			// if (!get_string("File name: ", buf, sizeof buf)) return false;
+			if (!get_string("Имя файла: ", buf, sizeof buf)) return false;
 
 			/* Make sure it's actually a filename */
 			if (buf[0] == '\0' || buf[0] == ' ') return false;
@@ -1311,7 +1311,8 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 		time(&ltime);
 		today = localtime(&ltime);
 
-		prt("File name: ", 0,0);
+		// prt("File name: ", 0,0);
+		prt("Имя файла: ", 0,0);
 
 		/* Overwrite the ".txt" that was added */
 		assert(strlen(buf) >= 4);
@@ -1335,7 +1336,7 @@ static bool get_file_text(const char *suggested_name, char *path, size_t len)
 
 	/* Tell the user where it's saved to. */
 	// prt(format("Saving as %s.", path), 0, 0);
-	prt(format("Сохранено как %s.", path), 0, 0);
+	prt(format("Сохранение как %s.", path), 0, 0);
 	anykey();
 	prt("", 0, 0);
 
