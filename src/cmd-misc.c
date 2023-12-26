@@ -92,7 +92,7 @@ void do_cmd_note(void)
 	// char tmp[70];
 	char tmp[130];
 	// char note[90];
-	char note[150];
+	char note[170];
 	my_strcpy(tmp, "", sizeof(tmp));
 	my_strcpy(note, "", sizeof(note));
 

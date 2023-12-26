@@ -762,11 +762,11 @@ static menu_action keymap_actions[] =
 	// { 0, 0, "Query a keymap",           ui_keymap_query },
 	// { 0, 0, "Create a keymap",          ui_keymap_create },
 	// { 0, 0, "Remove a keymap",          ui_keymap_remove },
-	{ 0, 0, "Загрузить пользовательский pref файл",    ui_keymap_pref_load },
-	{ 0, 0, "Сохранить карту клавиш в файл",     ui_keymap_pref_append },
-	{ 0, 0, "Запросить карту клавиш",           ui_keymap_query },
-	{ 0, 0, "Создать карту клавиш",          ui_keymap_create },
-	{ 0, 0, "Удалить карту клавиш",          ui_keymap_remove },
+	{ 0, 0, "Загрузить пользовательский pref-файл с макросами",    ui_keymap_pref_load },
+	{ 0, 0, "Сохранить макросы клавиш в файл",     ui_keymap_pref_append },
+	{ 0, 0, "Запросить макрос клавиши",           ui_keymap_query },
+	{ 0, 0, "Создать макрос для клавиши",          ui_keymap_create },
+	{ 0, 0, "Удалить макрос для клавиши",          ui_keymap_remove },
 };
 
 static void do_cmd_keymaps(const char *title, int row)
@@ -1030,7 +1030,7 @@ static menu_action color_events [] =
 	// { 0, 0, "Dump colors",           colors_pref_dump },
 	// { 0, 0, "Modify colors",         colors_modify }	
 	{ 0, 0, "Загрузить пользовательский pref файл", colors_pref_load },
-	{ 0, 0, "Дамп цветов",           colors_pref_dump },
+	{ 0, 0, "Сохранить цвета",           colors_pref_dump },
 	{ 0, 0, "Редактировать цвета",         colors_modify }
 };
 
@@ -1306,7 +1306,7 @@ static void do_cmd_pref_file_hack(long row)
  */
 static void do_dump_options(const char *title, int row) {
 	// dump_pref_file(option_dump, "Dump window settings", 20);
-	dump_pref_file(option_dump, "Дамп настроек окна", 20);
+	dump_pref_file(option_dump, "Сохранить настройки окна", 20);
 }
 
 /**
@@ -1314,7 +1314,7 @@ static void do_dump_options(const char *title, int row) {
  */
 static void do_dump_autoinsc(const char *title, int row) {
 	// dump_pref_file(dump_autoinscriptions, "Dump autoinscriptions", 20);
-	dump_pref_file(dump_autoinscriptions, "Дамп автонадписей", 20);
+	dump_pref_file(dump_autoinscriptions, "Сохранить автонадписи", 20);
 }
 
 /**
@@ -1322,7 +1322,7 @@ static void do_dump_autoinsc(const char *title, int row) {
  */
 static void do_dump_charscreen_opt(const char *title, int row) {
 	// dump_pref_file(dump_ui_entry_renderers, "Dump char screen options", 20);
-	dump_pref_file(dump_ui_entry_renderers, "Дамп настроек экранных символов", 20);
+	dump_pref_file(dump_ui_entry_renderers, "Сохранить настройки экранных символов", 20);
 }
 
 /**
@@ -2140,7 +2140,7 @@ static menu_action option_actions[] =
 	// { 0, 'p', "Load a user pref file", options_load_pref_file },
 	{ 0, 'p', "Загрузить пользовательский pref файл", options_load_pref_file },
 	// { 0, 'e', "Edit keymaps (advanced)", do_cmd_keymaps },
-	{ 0, 'e', "Редактировать карту клавиш (расширенное)", do_cmd_keymaps },
+	{ 0, 'e', "Редактировать макросы клавиш (расширенное)", do_cmd_keymaps },
 	// { 0, 'c', "Edit colours (продвинуто)", do_cmd_colors },
 	{ 0, 'c', "Редактировать цвета (расширенное)", do_cmd_colors },
 	// { 0, 'v', "Save visuals (advanced)", do_cmd_visuals },

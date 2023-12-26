@@ -614,7 +614,8 @@ void process_world(struct chunk *c)
 		}
 
 		/* Take damage */
-		take_hit(player, i, "a fatal wound");
+		// take_hit(player, i, "a fatal wound");
+		take_hit(player, i, "смертельного ранения");
 		if (player->is_dead) {
 			return;
 		}

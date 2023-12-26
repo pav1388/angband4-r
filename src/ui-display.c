@@ -950,7 +950,7 @@ static size_t prt_recall(int row, int col)
 		// c_put_str(COLOUR_WHITE, "Recall", row, col);
 		c_put_str(COLOUR_WHITE, "Возвращение", row, col);
 		// return sizeof "Recall";
-		return sizeof "Возвращение";
+		return 11;
 	}
 
 	return 0;
@@ -966,7 +966,7 @@ static size_t prt_descent(int row, int col)
 		// c_put_str(COLOUR_WHITE, "Descent", row, col);
 		c_put_str(COLOUR_WHITE, "Спуск", row, col);
 		// return sizeof "Descent";
-		return sizeof "Спуск";
+		return 5;
 	}
 
 	return 0;
@@ -986,7 +986,6 @@ static size_t prt_state(int row, int col)
 
 	char text[16] = "";
 
-
 	/* Displayed states are resting and repeating */
 	if (player_is_resting(player)) {
 		int i;
@@ -999,34 +998,48 @@ static size_t prt_state(int row, int col)
 		/* Display according to length or intent of rest */
 		if (n >= 1000) {
 			i = n / 100;
-			text[9] = '0';
-			text[8] = '0';
-			text[7] = I2D(i % 10);
+			// text[9] = '0';
+			text[14] = '0';
+			// text[8] = '0';
+			text[13] = '0';
+			// text[7] = I2D(i % 10);
+			text[12] = I2D(i % 10);
 			if (i >= 10) {
 				i = i / 10;
-				text[6] = I2D(i % 10);
+				// text[6] = I2D(i % 10);
+				text[11] = I2D(i % 10);
 				if (i >= 10)
-					text[5] = I2D(i / 10);
+					// text[5] = I2D(i / 10);
+					text[10] = I2D(i / 10);
 			}
 		} else if (n >= 100) {
 			i = n;
-			text[9] = I2D(i % 10);
+			// text[9] = I2D(i % 10);
+			text[14] = I2D(i % 10);
 			i = i / 10;
-			text[8] = I2D(i % 10);
-			text[7] = I2D(i / 10);
+			// text[8] = I2D(i % 10);
+			text[13] = I2D(i % 10);
+			// text[7] = I2D(i / 10);
+			text[12] = I2D(i / 10);
 		} else if (n >= 10) {
 			i = n;
-			text[9] = I2D(i % 10);
-			text[8] = I2D(i / 10);
+			// text[9] = I2D(i % 10);
+			text[14] = I2D(i % 10);
+			// text[8] = I2D(i / 10);
+			text[13] = I2D(i / 10);
 		} else if (n > 0) {
 			i = n;
-			text[9] = I2D(i);
+			// text[9] = I2D(i);
+			text[14] = I2D(i);
 		} else if (n == REST_ALL_POINTS)
-			text[5] = text[6] = text[7] = text[8] = text[9] = '*';
+			// text[5] = text[6] = text[7] = text[8] = text[9] = '*';
+			text[10] = text[11] = text[12] = text[13] = text[14] = '*';
 		else if (n == REST_COMPLETE)
-			text[5] = text[6] = text[7] = text[8] = text[9] = '&';
+			// text[5] = text[6] = text[7] = text[8] = text[9] = '&';
+			text[10] = text[11] = text[12] = text[13] = text[14] = '&';
 		else if (n == REST_SOME_POINTS)
-			text[5] = text[6] = text[7] = text[8] = text[9] = '!';
+			// text[5] = text[6] = text[7] = text[8] = text[9] = '!';
+			text[10] = text[11] = text[12] = text[13] = text[14] = '!';
 
 	} else if (cmd_get_nrepeats()) {
 		int nrepeats = cmd_get_nrepeats();
@@ -1164,13 +1177,14 @@ static size_t prt_light(int row, int col)
 
 	if (light > 0) {
 		// c_put_str(COLOUR_YELLOW, format("Light %d ", light), row, col);
-		c_put_str(COLOUR_YELLOW, format(" Свет %d ", light), row, col);
+		c_put_str(COLOUR_YELLOW, format("Свет %d ", light), row, col);
 	} else {
 		// c_put_str(COLOUR_PURPLE, format("Light %d ", light), row, col);
-		c_put_str(COLOUR_PURPLE, format(" Свет %d ", light), row, col);
+		c_put_str(COLOUR_PURPLE, format("Свет %d ", light), row, col);
 	}
 
-	return 8 + (ABS(light) > 9 ? 1 : 0) + (light < 0 ? 1 : 0);
+	// return 8 + (ABS(light) > 9 ? 1 : 0) + (light < 0 ? 1 : 0);
+	return 7 + (ABS(light) > 9 ? 1 : 0) + (light < 0 ? 1 : 0);
 }
 
 /**
@@ -1184,15 +1198,16 @@ static size_t prt_moves(int row, int col)
 	if (i > 0) {
 		/* Display the number of moves */
 		// c_put_str(COLOUR_L_TEAL, format("Moves +%d ", i), row, col);
-		c_put_str(COLOUR_L_TEAL, format(" Движ +%d ", i), row, col);
+		c_put_str(COLOUR_L_TEAL, format("Движ +%d ", i), row, col);
 	} else if (i < 0) {
 		/* Display the number of moves */
 		// c_put_str(COLOUR_L_TEAL, format("Moves -%d ", ABS(i)), row, col);
-		c_put_str(COLOUR_L_TEAL, format(" Движ -%d ", ABS(i)), row, col);
+		c_put_str(COLOUR_L_TEAL, format("Движ -%d ", ABS(i)), row, col);
 	}
 
 	/* Shouldn't be double digits, but be paranoid */
-	return (i != 0) ? (9 + ABS(i) / 10) : 0;
+	// return (i != 0) ? (9 + ABS(i) / 10) : 0;
+	return (i != 0) ? (8 + ABS(i) / 10) : 0;
 }
 
 /**
@@ -1248,10 +1263,10 @@ static size_t prt_dtrap(int row, int col)
 		/* The player is on the border */
 		if (square_dtrap_edge(cave, player->grid))
 			// c_put_str(COLOUR_YELLOW, "DTrap ", row, col);
-			c_put_str(COLOUR_YELLOW, "Об.ловуш ", row, col);
+			c_put_str(COLOUR_YELLOW, "Об.Ловуш ", row, col);
 		else
 			// c_put_str(COLOUR_L_GREEN, "DTrap ", row, col);
-			c_put_str(COLOUR_L_GREEN, "Об.ловуш ", row, col);
+			c_put_str(COLOUR_L_GREEN, "Об.Ловуш ", row, col);
 
 		// return 6;
 		return 9;
@@ -1305,7 +1320,8 @@ static size_t prt_tmd(int row, int col)
 
 			/* Food meter */
 			if (i == TMD_FOOD) {
-				char *meter = format("%d %%", player->timed[i] / 100);
+				// char *meter = format("%d %%", player->timed[i] / 100);
+				char *meter = format("%d%%", player->timed[i] / 100);
 				c_put_str(grade->color, meter, row, col + len);
 				len += strlen(meter) + 1;
 			}
@@ -1324,7 +1340,8 @@ static size_t prt_unignore(int row, int col)
 		// const char *str = "Unignoring";
 		const char *str = "Неигнорир.";
 		put_str(str, row, col);
-		return utf8_strlen(str) + 1;
+		// return utf8_strlen(str) + 1;
+		return 10 + 1;
 	}
 
 	return 0;

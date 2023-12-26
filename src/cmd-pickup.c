@@ -90,7 +90,8 @@ static void player_pickup_gold(struct player *p)
 
 	/* Pick up the gold, if present */
 	if (total_gold) {
-		char buf[100];
+		// char buf[100];
+		char buf[150];
 
 		/* Build a message */
 		(void)strnfmt(buf, sizeof(buf),

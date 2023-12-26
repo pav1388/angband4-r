@@ -671,7 +671,7 @@ static const char *show_adv_exp(void)
 static const char *show_depth(void)
 {
 	// static char buffer[13];
-	static char buffer[18];
+	static char buffer[20];
 
 	// if (player->max_depth == 0) return "Town";
 	if (player->max_depth == 0) return "Город";
@@ -759,7 +759,7 @@ static struct panel *get_panel_midleft(void) {
 	// panel_line(p, attr, "Overweight", "%d.%d lb", -diff / 10, abs(diff) % 10);
 	panel_line(p, attr, "Перегруз", "%d.%d кг", -diff / 10, abs(diff) % 10);
 	// panel_line(p, COLOUR_L_GREEN, "Max Depth", "%s", show_depth());
-	panel_line(p, COLOUR_L_GREEN, "Макс.глубина", "%s", show_depth());
+	panel_line(p, COLOUR_L_GREEN, "Глубина", "%s", show_depth());
 
 	return p;
 }
@@ -924,7 +924,8 @@ void display_player_xtra_info(void)
 
 	/* History */
 	Term_gotoxy(text_out_indent, 19);
-	text_out_to_screen(COLOUR_WHITE, player->history);
+	// text_out_to_screen(COLOUR_WHITE, player->history);
+	text_out_to_screen(COLOUR_SLATE, player->history);
 
 	/* Reset text_out() vars */
 	text_out_wrap = 0;
@@ -986,7 +987,8 @@ void write_character_dump(ang_file *fff)
 	struct store *home = &stores[f_info[FEAT_HOME].shopnum - 1];
 	struct object **home_list = mem_zalloc(sizeof(struct object *) *
 										   z_info->store_inven_max);
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	int n;
 	char *buf, *p;
@@ -1002,7 +1004,8 @@ void write_character_dump(ang_file *fff)
 	buf = mem_alloc(text_wcsz() * n + 1);
 
 	/* Begin dump */
-	file_putf(fff, "  [%s Character Dump]\n\n", buildid);
+	// file_putf(fff, "  [%s Character Dump]\n\n", buildid);
+	file_putf(fff, "  [%s Дамп Персонажа]\n\n", buildid);
 
 	/* Display player basics */
 	display_player(0);
@@ -1038,7 +1041,8 @@ void write_character_dump(ang_file *fff)
 	display_player(1);
 
 	/* Print a header */
-	file_putf(fff, "%-20s%s\n", "Resistances", "Abilities");
+	// file_putf(fff, "%-20s%s\n", "Resistances", "Abilities");
+	file_putf(fff, "%-20s%s\n", "Сопротивления", "Способности");
 
 	/* Dump part of the screen */
 	ylim = ((cached_config->n_resist_by_region[0] >
@@ -1076,7 +1080,8 @@ void write_character_dump(ang_file *fff)
 	file_putf(fff, "\n");
 
 	/* Print a header */
-	file_putf(fff, "%-20s%s\n", "Hindrances", "Modifiers");
+	// file_putf(fff, "%-20s%s\n", "Hindrances", "Modifiers");
+	file_putf(fff, "%-20s%s\n", "Ограничения", "Модификаторы");
 
 	/* Dump part of the screen */
 	ylim = ((cached_config->n_resist_by_region[2] >
@@ -1118,22 +1123,26 @@ void write_character_dump(ang_file *fff)
 	if (player->is_dead) {
 		i = messages_num();
 		if (i > 15) i = 15;
-		file_putf(fff, "  [Last Messages]\n\n");
+		// file_putf(fff, "  [Last Messages]\n\n");
+		file_putf(fff, "  [Последние сообщения]\n\n");
 		while (i-- > 0)
 		{
 			file_putf(fff, "> %s\n", message_str((int16_t)i));
 		}
 		if (streq(player->died_from, "Retiring")) {
-			file_putf(fff, "\nRetired.\n\n");
+			// file_putf(fff, "\nRetired.\n\n");
+			file_putf(fff, "\nУшёл в Отставку.\n\n");
 		} else {
-			file_putf(fff, "\nKilled by %s.\n\n",
+			// file_putf(fff, "\nKilled by %s.\n\n",
+			file_putf(fff, "\nУбит %s.\n\n",
 				player->died_from);
 		}
 	}
 
 
 	/* Dump the equipment */
-	file_putf(fff, "  [Character Equipment]\n\n");
+	// file_putf(fff, "  [Character Equipment]\n\n");
+	file_putf(fff, "  [Экипировка Персонажа]\n\n");
 	for (i = 0; i < player->body.count; i++) {
 		struct object *obj = slot_object(player, i);
 		if (!obj) continue;
@@ -1146,7 +1155,8 @@ void write_character_dump(ang_file *fff)
 	file_putf(fff, "\n\n");
 
 	/* Dump the inventory */
-	file_putf(fff, "\n\n  [Character Inventory]\n\n");
+	// file_putf(fff, "\n\n  [Character Inventory]\n\n");
+	file_putf(fff, "\n\n  [Инвентарь Персонажа]\n\n");
 	for (i = 0; i < z_info->pack_size; i++) {
 		struct object *obj = player->upkeep->inven[i];
 		if (!obj) break;
@@ -1159,7 +1169,7 @@ void write_character_dump(ang_file *fff)
 	file_putf(fff, "\n\n");
 
 	/* Dump the quiver */
-	file_putf(fff, "\n\n  [Character Quiver]\n\n");
+	file_putf(fff, "\n\n  [Колчан Персонажа]\n\n");
 	for (i = 0; i < z_info->quiver_size; i++) {
 		struct object *obj = player->upkeep->quiver[i];
 		if (!obj) continue;
@@ -1175,7 +1185,8 @@ void write_character_dump(ang_file *fff)
 	store_stock_list(home, home_list, z_info->store_inven_max);
 	if (home->stock_num) {
 		/* Header */
-		file_putf(fff, "  [Home Inventory]\n\n");
+		// file_putf(fff, "  [Home Inventory]\n\n");
+		file_putf(fff, "  [Домашний Инвентарь]\n\n");
 
 		/* Dump all available items */
 		for (i = 0; i < z_info->store_inven_max; i++) {
@@ -1197,15 +1208,18 @@ void write_character_dump(ang_file *fff)
 	file_putf(fff, "\n\n");
 
 	/* Dump options */
-	file_putf(fff, "  [Options]\n\n");
+	// file_putf(fff, "  [Options]\n\n");
+	file_putf(fff, "  [Настройки]\n\n");
 
 	/* Dump options */
 	for (i = 0; i < OP_MAX; i++) {
 		int opt;
 		const char *title = "";
 		switch (i) {
-			case OP_INTERFACE: title = "User interface"; break;
-			case OP_BIRTH: title = "Birth"; break;
+			// case OP_INTERFACE: title = "User interface"; break;
+			case OP_INTERFACE: title = "Интерфейс пользователя"; break;
+			// case OP_BIRTH: title = "Birth"; break;
+			case OP_BIRTH: title = "Рождение"; break;
 		    default: continue;
 		}
 
@@ -1215,7 +1229,8 @@ void write_character_dump(ang_file *fff)
 
 			file_putf(fff, "%-45s: %s (%s)\n",
 			        option_desc(opt),
-			        player->opts.opt[opt] ? "yes" : "no ",
+			        // player->opts.opt[opt] ? "yes" : "no ",
+			        player->opts.opt[opt] ? "да " : "нет",
 			        option_name(opt));
 		}
 
@@ -1228,7 +1243,8 @@ void write_character_dump(ang_file *fff)
 	 * used when constructing the randart file name.
 	 */
 	if (OPT(player, birth_randarts)) {
-		file_putf(fff, "  [Randart seed]\n\n");
+		// file_putf(fff, "  [Randart seed]\n\n");
+		file_putf(fff, "  [Семя Рандома]\n\n");
 		file_putf(fff, "%08lx\n\n", (unsigned long)seed_randart);
 	}
 
@@ -1246,7 +1262,8 @@ void write_character_dump(ang_file *fff)
 bool dump_save(const char *path)
 {
 	if (text_lines_to_file(path, write_character_dump)) {
-		msg("Failed to create file %s.new", path);
+		// msg("Failed to create file %s.new", path);
+		msg("Не удалось создать файл %s.new", path);
 		return false;
 	}
 
@@ -1272,7 +1289,7 @@ void do_cmd_change_name(void)
 
 	/* Prompt */
 	// p = "['c' to change name, 'f' to file, 'h' to change mode, or ESC]";
-	p = "['c' изменить имя, 'f' в файл, 'h' изменеть режим или ESC]";
+	p = "['c' изменить имя, 'f' в файл, 'h/l' изменеть режим или ESC]";
 
 	/* Save screen */
 	screen_save();
@@ -1283,7 +1300,8 @@ void do_cmd_change_name(void)
 		display_player(mode);
 
 		/* Prompt */
-		Term_putstr(2, 23, -1, COLOUR_WHITE, p);
+		// Term_putstr(2, 23, -1, COLOUR_WHITE, p);
+		Term_putstr(10, 23, -1, COLOUR_WHITE, p);
 
 		/* Query */
 		ke = inkey_ex();
@@ -1294,7 +1312,7 @@ void do_cmd_change_name(void)
 				case 'c': {
 					if(arg_force_name)
 						// msg("You are not allowed to change your name!");
-						msg("Вам не разрешается изменять своё имя!");
+						msg("Вам не разрешено изменять своё имя!");
 					else {
 					char namebuf[32] = "";
 
@@ -1327,6 +1345,7 @@ void do_cmd_change_name(void)
 				case 'h':
 				case ARROW_LEFT:
 				case ' ':
+				case KC_ENTER:
 					mode = (mode + 1) % INFO_SCREENS;
 					break;
 

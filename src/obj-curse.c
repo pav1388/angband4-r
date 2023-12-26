@@ -228,7 +228,8 @@ bool remove_object_curse(struct object *obj, int pick, bool message)
 		/* Remove the curses array if that was the last curse. */
 		check_object_curses(obj);
 		if (message) {
-			msg("The %s curse is removed!", curses[pick].name);
+			// msg("The %s curse is removed!", curses[pick].name);
+			msg("Проклятие %s снято!", curses[pick].name);
 		}
 	} else {
 		result = false;

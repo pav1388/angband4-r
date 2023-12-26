@@ -98,7 +98,7 @@ MON_MSG(NOT_COMMAND,		MSG_GENERIC,    false,  "больше не под конт
 // MON_MSG(SHAPE_FAIL,			MSG_GENERIC,    false,  "shimmers for a moment.")
 MON_MSG(SHAPE_FAIL,			MSG_GENERIC,    false,  "мерца[ет|ют] на мгновение.")
 // MON_MSG(MORIA_DEATH,		MSG_KILL,		true,	"You hear [a|several] scream[|s] of agony!")
-MON_MSG(MORIA_DEATH,		MSG_KILL,		true,	"Вы слышите [|несколько] крик[ов] агонии!")
+MON_MSG(MORIA_DEATH,		MSG_KILL,		true,	"Вы слышите[| несколько] крик[ов] агонии!")
 // MON_MSG(DISINTEGRATES,		MSG_KILL,		false,	"disintegrate[s]!")
 MON_MSG(DISINTEGRATES,		MSG_KILL,		false,	"распада[ется|ются]!")
 // MON_MSG(FREEZE_SHATTER,		MSG_KILL,		false,	"freeze[s] and shatter[s]!")

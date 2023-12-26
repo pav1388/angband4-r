@@ -200,7 +200,8 @@ void thrust_away(struct loc centre, struct loc target, int grids_away)
 				else if (d == (8 + first_d - 1)) {
 					/* Message for player. */
 					if (square(cave, grid)->mon < 0)
-						msg("You come to rest next to a wall.");
+						// msg("You come to rest next to a wall.");
+						msg("Вы останавливаетесь на отдых у стены.");
 					i = grids_away;
 				}
 			} else {
@@ -223,7 +224,8 @@ void thrust_away(struct loc centre, struct loc target, int grids_away)
 	/* Some special messages or effects for player or monster. */
 	if (square_isfiery(cave, grid)) {
 		if (square(cave, grid)->mon < 0) {
-			msg("You are thrown into molten lava!");
+			// msg("You are thrown into molten lava!");
+			msg("Вас сбрасывают в расплавленную лаву!");
 		}
 	}
 

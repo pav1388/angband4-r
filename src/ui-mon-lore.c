@@ -52,14 +52,14 @@ void lore_title(textblock *tb, const struct monster_race *race)
 
 	/* A title (use "The" for non-uniques) */
 	if (!rf_has(race->flags, RF_UNIQUE)){
-		//textblock_append(tb, "The ");
+		// textblock_append(tb, "The ");
 	} else { if (OPT(player, purple_uniques)) {
 		standard_attr = COLOUR_VIOLET;
 		if (!(optional_attr & 0x80))
 			optional_attr = COLOUR_VIOLET;
 		}
 	}
-
+	// ADDD Capitalise the first letter of race->name
 	/* Dump the name and then append standard attr/char info */
 	textblock_append(tb, "%s", race->name);
 

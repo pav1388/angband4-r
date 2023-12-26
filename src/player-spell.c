@@ -468,7 +468,8 @@ void spell_learn(int spell_index)
 	player->spell_order[i] = spell_index;
 
 	/* Mention the result */
-	msgt(MSG_STUDY, "You have learned the %s of %s.", spell->realm->spell_noun,
+	// msgt(MSG_STUDY, "You have learned the %s of %s.", spell->realm->spell_noun,
+	msgt(MSG_STUDY, "Вы выучили %s %s.", spell->realm->spell_noun,
 		 spell->name);
 
 	/* One less spell available */
@@ -476,8 +477,10 @@ void spell_learn(int spell_index)
 
 	/* Message if needed */
 	if (player->upkeep->new_spells)
-		msg("You can learn %d more %s%s.", player->upkeep->new_spells,
-			spell->realm->spell_noun, PLURAL(player->upkeep->new_spells));
+		// msg("You can learn %d more %s%s.", player->upkeep->new_spells,
+		msg("Вы можете выучить ещё %d %s.", player->upkeep->new_spells,
+			// spell->realm->spell_noun, PLURAL(player->upkeep->new_spells));
+			spell->realm->spell_noun);
 
 	/* Redraw Study Status */
 	player->upkeep->redraw |= (PR_STUDY | PR_OBJECT);
@@ -507,7 +510,8 @@ bool spell_cast(int spell_index, int dir, struct command *cmd)
 	/* Fail or succeed */
 	if (randint0(100) < chance) {
 		event_signal(EVENT_INPUT_FLUSH);
-		msg("You failed to concentrate hard enough!");
+		// msg("You failed to concentrate hard enough!");
+		msg("Вы не смогли достаточно сконцентрироваться!");
 	} else {
 		/* Cast the spell */
 		if (!effect_do(spell->effect, source_player(), NULL, &ident, true, dir,
