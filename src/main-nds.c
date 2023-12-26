@@ -493,8 +493,12 @@ static errr Term_text_nds(int x, int y, int n, int a, const wchar_t *s)
 	}
 
 	for (int i = 0; i < n; i++) {
+<<<<<<< HEAD
 		// nds_draw_char(x + i, y, s[i], fg, bg);
 		nds_draw_char(x + i, y, (s[i] & 0xff00) ? (s[i] & 0xff | 0x80) : s[i], fg, bg);
+=======
+		nds_draw_char(x + i, y, s[i], fg, bg);
+>>>>>>> 18ae60e3df5f24b970e6cca6e55157e97f273a15
 	}
 
 	return (0);
