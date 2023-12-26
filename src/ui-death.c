@@ -70,6 +70,7 @@ static void display_exit_screen(void)
 
 	Term_clear();
 	(void)time(&death_time);
+	struct tm *now = localtime(&death_time);
 
 	/* Open the background picture */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_SCREENS,
@@ -93,7 +94,7 @@ static void display_exit_screen(void)
 
 	put_str_centred(line++, 8, 8+31, "%s", player->full_name);
 	// put_str_centred(line++, 8, 8+31, "the");
-	line++;
+	put_str_centred(line++, 8, 8+31, "%d - %d", (now->tm_year + 1900) - player->age, now->tm_year + 1900);
 	
 	if (player->total_winner)
 		// put_str_centred(line++, 8, 8+31, "Magnificent");
@@ -117,16 +118,70 @@ static void display_exit_screen(void)
 	} else {
 		// put_str_centred(line++, 8, 8+31, "Killed on Level %d",
 		if (player->depth == 0){put_str_centred(line++, 8, 8+31, "Погиб в городе");}
-		else {put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже",
-		player->depth);}
+		else {put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже", player->depth);}
 		// put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
-		put_str_centred(line++, 8, 8+31, "от %s.", player->died_from);
+		put_str_centred(line++, 8, 8+31, "от %s", player->died_from);
 	}
 
 	line++;
-
+	
 	// put_str_centred(line, 8, 8+31, "on %-.24s", ctime(&death_time));
-	put_str_centred(line, 8, 8+31, "%-.24s", ctime(&death_time));
+	
+	if (now->tm_hour > 21)
+		strnfmt(buf, sizeof(buf), "поздним вечером %d ", now->tm_mday);
+	else if (now->tm_hour > 17)
+		strnfmt(buf, sizeof(buf), "вечером %d ", now->tm_mday);
+	else if (now->tm_hour > 10)
+		strnfmt(buf, sizeof(buf), "днём %d ", now->tm_mday);
+	else if (now->tm_hour > 6)
+		strnfmt(buf, sizeof(buf), "утром %d ", now->tm_mday);
+	else if (now->tm_hour > 4)
+		strnfmt(buf, sizeof(buf), "ранним утром %d ", now->tm_mday);
+	else
+		strnfmt(buf, sizeof(buf), "ночью %d ", now->tm_mday);
+	
+	switch (now->tm_mon + 1) {
+		case 1:
+			my_strcat(buf, "января", sizeof(buf));
+			break;
+		case 2:
+			my_strcat(buf, "февраля", sizeof(buf));
+			break;
+		case 3:
+			my_strcat(buf, "марта", sizeof(buf));
+			break;
+		case 4:
+			my_strcat(buf, "апреля", sizeof(buf));
+			break;
+		case 5:
+			my_strcat(buf, "мая", sizeof(buf));
+			break;
+		case 6:
+			my_strcat(buf, "июня", sizeof(buf));
+			break;
+		case 7:
+			my_strcat(buf, "июля", sizeof(buf));
+			break;
+		case 8:
+			my_strcat(buf, "августа", sizeof(buf));
+			break;
+		case 9:
+			my_strcat(buf, "сентября", sizeof(buf));
+			break;
+		case 10:
+			my_strcat(buf, "октября", sizeof(buf));
+			break;
+		case 11:
+			my_strcat(buf, "ноября", sizeof(buf));
+			break;
+		case 12:
+			my_strcat(buf, "декабря", sizeof(buf));
+			break;
+		default:
+			my_strcat(buf, "дня месяца", sizeof(buf));
+	}
+		
+	put_str_centred(line, 8, 8+31, "%s", buf);
 }
 
 
@@ -179,7 +234,8 @@ static void display_winner(void)
  */
 static void death_file(const char *title, int row)
 {
-	char buf[1024];
+	// char buf[1024];
+	char buf[1512];
 	char ftmp[80];
 
 	/* Get the filesystem-safe name and append .txt */
@@ -197,10 +253,10 @@ static void death_file(const char *title, int row)
 		/* Check result */
 		if (success)
 			// msg("Character dump successful.");
-			msg("Дамп персонажа выполнен успешно.");
+			msg("Сохранение персонажа выполнено успешно.");
 		else
 			// msg("Character dump failed!");
-			msg("Дамп персонажа завершился неудачей!");
+			msg("Сохранение персонажа завершилося неудачей!");
 
 		/* Flush messages */
 		event_signal(EVENT_MESSAGE_FLUSH);
@@ -222,7 +278,8 @@ static void death_info(const char *title, int row)
 	/* Prompt for inventory */
 	// prt("Hit any key to see more information: ", 0, 0);
 	prt("Нажмите любую клавишу для дополнительной информации: ", 0, 0);
-
+	c_prt(COLOUR_L_BLUE, "-ещё-", 0, 53);
+	
 	/* Allow abort at this point */
 	(void)anykey();
 
@@ -234,7 +291,8 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_equip(OLIST_WEIGHT | OLIST_SEMPTY | OLIST_DEATH, NULL);
 		// prt("You are using: -more-", 0, 0);
-		prt("Вы использовали: -ещё-", 0, 0);
+		prt("Вы использовали: ", 0, 0);
+		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 17);
 		(void)anykey();
 	}
 
@@ -243,7 +301,8 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_inven(OLIST_WEIGHT | OLIST_DEATH, NULL);
 		// prt("You are carrying: -more-", 0, 0);
-		prt("У вас с собой было: -ещё-", 0, 0);
+		prt("У вас с собой было: ", 0, 0);
+		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 20);
 		(void)anykey();
 	}
 
@@ -252,7 +311,8 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_quiver(OLIST_WEIGHT | OLIST_DEATH, NULL);
 		// prt("Your quiver holds: -more-", 0, 0);
-		prt("В вашем колчане было: -ещё-", 0, 0);
+		prt("В вашем колчане было: ", 0, 0);
+		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 22);
 		(void)anykey();
 	}
 
@@ -292,7 +352,8 @@ static void death_info(const char *title, int row)
 
 			/* Caption */
 			// prt(format("Your home contains (page %d): -more-", page), 0, 0);
-			prt(format("В вашем доме было (стр. %d): -ещё-", page), 0, 0);
+			prt(format("В вашем доме было (стр. %d): ", page), 0, 0);
+			c_prt(COLOUR_L_BLUE, "-ещё-", 0, 29);
 
 			/* Wait for it */
 			(void)anykey();
@@ -337,10 +398,11 @@ static void death_examine(const char *title, int row)
 	s = "Вам нечего изучать.";
 
 	while (get_item(&obj, q, s, 0, NULL, (USE_INVEN | USE_QUIVER | USE_EQUIP | IS_HARMLESS))) {
-		char header[120];
+		// char header[120];
+		char header[200];
 
 		textblock *tb;
-		region area = { 0, 0, 0, 0 };
+		region area = { 1, 0, 0, 0 };
 
 		tb = object_info(obj, OINFO_NONE);
 		object_desc(header, sizeof(header), obj,
@@ -384,22 +446,22 @@ static void death_new_game(const char *title, int row)
 static menu_action death_actions[] =
 {
 	// { 0, 'i', "Information",   death_info      },
-	// { 0, 'm', "Messages",      death_messages  },
-	// { 0, 'f', "File dump",     death_file      },
-	// { 0, 'v', "View scores",   death_scores    },
-	// { 0, 'x', "Examine items", death_examine   },
-	// { 0, 'h', "History",       death_history   },
-	// { 0, 's', "Spoilers",      death_spoilers  },
-	// { 0, 'n', "New Game",      death_new_game  },
-	// { 0, 'q', "Quit",          NULL            },
 	{ 0, 'i', "Информация",   death_info      },
+	// { 0, 'm', "Messages",      death_messages  },
 	{ 0, 'm', "Сообщения",      death_messages  },
-	{ 0, 'f', "Дамп в файл",     death_file      },
+	// { 0, 'f', "File dump",     death_file      },
+	{ 0, 'f', "Сохранить в файл",     death_file      },
+	// { 0, 'v', "View scores",   death_scores    },
 	{ 0, 'v', "Смотреть счёт",   death_scores    },
+	// { 0, 'x', "Examine items", death_examine   },
 	{ 0, 'x', "Проверить предметы", death_examine   },
+	// { 0, 'h', "History",       death_history   },
 	{ 0, 'h', "История",       death_history   },
+	// { 0, 's', "Spoilers",      death_spoilers  },
 	{ 0, 's', "Спойлеры",      death_spoilers  },
+	// { 0, 'n', "New Game",      death_new_game  },
 	{ 0, 'n', "Новая игра",      death_new_game  },
+	// { 0, 'q', "Quit",          NULL            },
 	{ 0, 'q', "Выход",          NULL            },
 };
 
