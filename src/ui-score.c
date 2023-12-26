@@ -67,14 +67,17 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* Dump some info */
 		strnfmt(out_val, sizeof(out_val),
-				"%3d.%9s  %s the %s %s, level %d",
+				// "%3d.%9s  %s the %s %s, level %d",
+				"%3d.%9s  %s - %s %s, уровень %d",
 				start + 1, score->pts, score->who,
-				r ? r->name : "<none>", c ? c->name : "<none>",
+				// r ? r->name : "<none>", c ? c->name : "<none>",
+				r ? r->name : "<нет>", c ? c->name : "<нет>",
 				clev);
 
 		/* Append a "maximum level" */
 		if (mlev > clev)
-			my_strcat(out_val, format(" (Max %d)", mlev), sizeof(out_val));
+			// my_strcat(out_val, format(" (Max %d)", mlev), sizeof(out_val));
+			my_strcat(out_val, format(" (Макс %d)", mlev), sizeof(out_val));
 
 		/* Dump the first line */
 		c_put_str(attr, out_val, n * 4 + 2, 0);
@@ -88,7 +91,7 @@ static void display_score_page(const struct high_score scores[], int start,
 		else
 			strnfmt(out_val, sizeof(out_val),
 					// "Killed by %s on dungeon level %d", score->how, cdun);
-					"Убит %s на %d этаже подземелья", score->how, cdun);
+					"Убит %s на %d-м этаже", score->how, cdun);
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)
@@ -107,7 +110,8 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* And still another line of info */
 		strnfmt(out_val, sizeof(out_val),
-				"(User %s, Date %s, Gold %s, Turn %s).",
+				// "(User %s, Date %s, Gold %s, Turn %s).",
+				"(Игрок %s, Дата %s, Золото %s, Ходов %s).",
 				user, when, gold, aged);
 		c_put_str(attr, out_val, n * 4 + 4, 15);
 	}
@@ -159,10 +163,10 @@ static void display_scores_aux(const struct high_score scores[], int from,
 		/* Wait for response; prompt centered on 80 character line */
 		if (allow_scrolling) {
 			// prt("[Press ESC to exit, up for prior page, any other key for next page.]", 23, 6);
-			prt("['ESC' выход, 'вверх' предыдущая, 'любая клавиша' следующая.]", 23, 6); 
+			prt("['вверх' предыдущая, 'любая клавиша' следующая, 'ESC' выход]", 23, 10); 
 		} else {
 			// prt("[Press ESC to exit, any other key to page forward till done.]", 23, 9);
-			prt("['ESC' выход, 'любая клавиша' на страницу вперед до конца.]", 23, 9); 
+			prt("['любая клавиша' на страницу вперед, 'ESC' выход]", 23, 15); 
 		}
 		ch = inkey();
 		prt("", 23, 0);
