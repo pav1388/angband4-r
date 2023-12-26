@@ -1248,7 +1248,8 @@ void do_cmd_accept_character(struct command *cmd)
 	/* Note player birth in the message recall */
 	message_add(" ", MSG_GENERIC);
 	message_add("  ", MSG_GENERIC);
-	message_add("====================", MSG_GENERIC);
+	// message_add("====================", MSG_GENERIC);
+	message_add("========================================", MSG_GENERIC);
 	message_add("  ", MSG_GENERIC);
 	message_add(" ", MSG_GENERIC);
 
