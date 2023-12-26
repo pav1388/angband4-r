@@ -278,15 +278,10 @@ spell: Идентифицикация Руны:8:7:25:8
 effect:IDENTIFY
 desc:Выявляет неизвестную руну на предмете.
 
-<<<<<<< HEAD
 spell:Обнаружение Сокровищ:10:3:60:5
-effect:DETECT_GOLD
-=======
-spell:Treasure Detection:10:3:60:5
 effect:DETECT_ORE
 effect-yx:22:40
 effect:SENSE_GOLD
->>>>>>> 18ae60e3df5f24b970e6cca6e55157e97f273a15
 effect-yx:22:40
 effect:SENSE_OBJECTS
 effect-yx:22:40
@@ -1440,13 +1435,9 @@ effect:TELEPORT
 dice:10
 desc:Случайным образом телепортирует вас на расстояние до 10 метров.
 
-<<<<<<< HEAD
 spell:Обнаружение Предметов:10:3:60:5
-=======
-spell:Object Detection:10:3:60:5
 effect:DETECT_ORE
 effect-yx:22:40
->>>>>>> 18ae60e3df5f24b970e6cca6e55157e97f273a15
 effect:DETECT_GOLD
 effect-yx:22:40
 effect:DETECT_OBJECTS

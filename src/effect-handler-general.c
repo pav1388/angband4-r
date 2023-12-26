@@ -1651,22 +1651,7 @@ static bool sense_stuff(effect_handler_context_t *context,
 		}
 	}
 
-<<<<<<< HEAD
-	if (objects)
-		//msg("You sense the presence of objects!");
-		msg("Вы чувствуете близость предметов!");
-	else if (context->aware)
-		//msg("You sense no objects.");
-		msg("Вы не чувствуете предметы.");
-
-	/* Redraw whole map, monster list */
-	player->upkeep->redraw |= PR_ITEMLIST;
-
-	context->ident = true;
-	return true;
-=======
 	return have_stuff;
->>>>>>> 18ae60e3df5f24b970e6cca6e55157e97f273a15
 }
 
 /**
@@ -1718,18 +1703,9 @@ static bool detect_stuff(effect_handler_context_t *context,
 			square_know_pile(cave, grid, pred);
 		}
 	}
-
-<<<<<<< HEAD
-	if (objects)
-		//msg("You detect the presence of objects!");
-		msg("Вы обнаружили присутствие предметов!");
-	else if (context->aware)
-		//msg("You detect no objects.");
-		msg("Вы не обнаружили предметы.");
-=======
+	
 	return have_stuff;
 }
->>>>>>> 18ae60e3df5f24b970e6cca6e55157e97f273a15
 
 /**
  * Sense money on the floor around the player.
@@ -1739,9 +1715,11 @@ bool effect_handler_SENSE_GOLD(effect_handler_context_t *context)
 	bool money = sense_stuff(context, tval_is_money, unknown_gold_kind);
 
 	if (money) {
-		msg("You sense the presence of gold!");
+		// msg("You sense the presence of gold!");
+		msg("Вы чувствуете присутствие золота!");
 	} else if (context->aware) {
-		msg("You sense no gold.");
+		// msg("You sense no gold.");
+		msg("Вы не чувствуете золота.");
 	}
 
 	context->ident = true;
@@ -1756,9 +1734,11 @@ bool effect_handler_DETECT_GOLD(effect_handler_context_t *context)
 	bool money = detect_stuff(context, tval_is_money);
 
 	if (money) {
-		msg("You detect the presence of gold!");
+		// msg("You detect the presence of gold!");
+		msg("Вы обнаружили присутствие золота!");
 	} else if (context->aware) {
-		msg("You detect no gold.");
+		// msg("You detect no gold.");
+		msg("Вы не обнаружили золота.");
 	}
 
 	context->ident = true;
@@ -1783,9 +1763,11 @@ bool effect_handler_SENSE_OBJECTS(effect_handler_context_t *context)
 		unknown_item_kind);
 
 	if (objects) {
-		msg("You sense the presence of objects!");
+		// msg("You sense the presence of objects!");
+		msg("Вы чувствуете присутствие предметов!");
 	} else if (context->aware) {
-		msg("You sense no objects.");
+		// msg("You sense no objects.");
+		msg("Вы не чувствуете предметы.");
 	}
 
 	/* Redraw object list */
@@ -1803,9 +1785,11 @@ bool effect_handler_DETECT_OBJECTS(effect_handler_context_t *context)
 	bool objects = detect_stuff(context, tval_is_not_money);
 
 	if (objects) {
-		msg("You detect the presence of objects!");
+		// msg("You detect the presence of objects!");
+		msg("Вы обнаружили присутствие предметов!");
 	} else if (context->aware) {
-		msg("You detect no objects.");
+		// msg("You detect no objects.");
+		msg("Вы не обнаружили никаких предметов.");
 	}
 
 	/* Redraw object list */
