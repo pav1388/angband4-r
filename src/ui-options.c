@@ -1143,11 +1143,11 @@ static void do_cmd_sidebar_mode(const char *name, int unused)
 		/* Prompt */
 		prt("", 19, 0);
 		// prt("Command: Sidebar Mode", 20, 0);
-		prt("Команда: Режим боковой панели", 20, 0);
+		prt("Команда: Положение боковой панели", 20, 0);
 		// prt(format("Current mode: %s", tmp), 21, 0);
-		prt(format("Текущий режим: %s", tmp), 21, 0);
+		prt(format("Текущее положение: %s", tmp), 21, 0);
 		// prt("ESC: go back, other: cycle", 22, 0);
-		prt("ESC: назад, любая клавиша: переключение", 22, 0);
+		prt("'ESC' назад, 'любая клавиша' переключение", 22, 0);
 		prt("", 23, 0);
 
 		/* Get a command */
@@ -2128,7 +2128,7 @@ static menu_action option_actions[] =
 	// { 0, 'm', "Set movement delay", do_cmd_lazymove_delay },
 	{ 0, 'm', "Установить задержку передвижения", do_cmd_lazymove_delay },
 	// { 0, 'o', "Set sidebar mode", do_cmd_sidebar_mode },
-	{ 0, 'o', "Установить режим боковой панели", do_cmd_sidebar_mode },
+	{ 0, 'o', "Установить положение боковой панели", do_cmd_sidebar_mode },
 	{ 0, 0, NULL, NULL },
 	// { 0, 's', "Save subwindow setup to pref file", do_dump_options },
 	{ 0, 's', "Сохранить настройки второстепенных окон в pref файл", do_dump_options },
