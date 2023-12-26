@@ -228,7 +228,8 @@ static void spell_message(struct monster *mon,
 						strnfcat(buf, sizeof(buf), &end,
 							"%s", m_name);
 					} else {
-						strnfcat(buf, sizeof(buf), &end, "you");
+						// strnfcat(buf, sizeof(buf), &end, "you");
+						strnfcat(buf, sizeof(buf), &end, "вас");
 					}
 					break;
 				}
@@ -249,7 +250,8 @@ static void spell_message(struct monster *mon,
 					char *type_name = projections[type].lash_desc;
 
 					if (type_name) {
-						strnfcat(buf, sizeof(buf), &end, " of ");
+						// strnfcat(buf, sizeof(buf), &end, " of ");
+						strnfcat(buf, sizeof(buf), &end, " ");
 						strnfcat(buf, sizeof(buf), &end,
 							"%s", type_name);
 					}
