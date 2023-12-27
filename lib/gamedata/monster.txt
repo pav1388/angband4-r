@@ -316,7 +316,7 @@ depth:0
 rarity:4
 experience:0
 blow:MOAN
-blow:MOAN
+#blow:MOAN
 flags:UNIQUE | MALE
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 flags:NO_CONF | NO_SLEEP
@@ -496,7 +496,7 @@ blow:HIT:HURT:1d10
 flags:MALE | EVIL
 flags:DROP_40
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:Никакая работа для него не может быть слишком "низкой". 
+desc:Никакая работа для него не может быть слишком 'низкой'. 
 
 #name:battle-scarred veteran
 name:закаленный боями ветеран
@@ -533,6 +533,7 @@ depth:0
 rarity:1
 experience:0
 blow:HIT:HURT:1d1
+flags:MALE
 flags:SEASONAL
 friends:30:1d5:Same
 desc:Наступил праздник Юлетида и этот эльф перебрал. 
@@ -575,6 +576,7 @@ rarity:1
 experience:3
 blow:SPORE:HURT:1d4
 blow:SPORE:HURT:1d4
+flags:FEMALE
 flags:EMPTY_MIND | STUPID
 desc:Небольшое странное серое образование.
 
@@ -592,6 +594,7 @@ depth:1
 rarity:1
 experience:1
 blow:SPORE:CONFUSE:1d4
+flags:FEMALE
 flags:IM_POIS | NEVER_MOVE
 desc:Вкуснятина!  Выглядит очень аппетитно.
 
@@ -725,7 +728,7 @@ flags:MALE
 flags:DROP_60
 desc:Это приземистая и уродливая гуманоидная фигура с клыкастой мордой.
 
-name:белая червивая масса
+name:белая масса червей
 base:worm
 color:w
 speed:100
@@ -737,13 +740,12 @@ depth:1
 rarity:1
 experience:2
 blow:CRAWL:POISON:1d2
-flags:FEMALE
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_POIS | NO_FEAR
-desc:Это большая слизистая масса червей.
+desc:Это большая слизистая червивая масса.
 
-name:парящий глаз
+name:парящее око
 base:eye
 color:o
 speed:110
@@ -755,7 +757,6 @@ depth:1
 rarity:1
 experience:1
 blow:GAZE:PARALYZE
-flags:MALE
 flags:NEVER_MOVE
 flags:HURT_LIGHT | NO_FEAR
 desc:Бесплотный глаз, парящий в метре над землей.
@@ -822,6 +823,7 @@ depth:1
 rarity:1
 experience:1
 blow:BITE:HURT:1d1
+flags:FEMALE
 flags:RAND_25
 desc:Быстро передвигающийся вредитель.
 
@@ -840,6 +842,7 @@ depth:2
 rarity:1
 experience:5
 blow:HIT:HURT:1d8
+flags:MALE
 flags:DROP_60
 desc:Это маленький гуманоид с собачьей головой.
 
@@ -855,6 +858,7 @@ sleepiness:0
 depth:2
 rarity:1
 experience:1
+flags:FEMALE
 flags:NEVER_BLOW | NEVER_MOVE
 flags:IM_POIS
 flags:FORCE_SLEEP
@@ -1009,6 +1013,7 @@ depth:2
 rarity:1
 experience:2
 blow:SPORE:TERRIFY:1d6
+flags:FEMALE
 flags:NEVER_MOVE
 flags:IM_POIS
 desc:Вкуснятина!  Выглядит очень аппетитно.
@@ -1045,6 +1050,7 @@ depth:2
 rarity:1
 experience:6
 blow:BITE:HURT:1d3
+flags:FEMALE
 flags:RAND_25 | BASH_DOOR
 desc:Она огромная, как волк.
 
@@ -1079,6 +1085,7 @@ depth:2
 rarity:1
 experience:10
 blow:BITE:FIRE:1d3
+flags:FEMALE
 flags:RAND_25
 flags:IM_FIRE
 desc:Небольшая чёрно-оранжевая ящерица.
@@ -1135,10 +1142,10 @@ depth:2
 rarity:1
 experience:30
 blow:BITE:HURT:1d4
-flags:UNIQUE | NAME_COMMA
+flags:UNIQUE | MALE | NAME_COMMA
 flags:RAND_25 | BASH_DOOR
 flags:NO_CONF | NO_SLEEP
-desc:Довольно злобная собака, принадлежащая фермеру Магготу.  Она
+desc:Довольно злобный пёс, принадлежащий фермеру Магготу.  Он
 desc: считает, что вы воруете грибы.
 
 #name:Fang, Farmer Maggot's Dog
@@ -1155,14 +1162,14 @@ depth:2
 rarity:1
 experience:30
 blow:BITE:HURT:1d4
-flags:UNIQUE | NAME_COMMA
+flags:UNIQUE | MALE | NAME_COMMA
 flags:RAND_25 | BASH_DOOR
 flags:NO_CONF | NO_SLEEP
-desc:Довольно злобная собака, принадлежащая фермеру Магготу.  Она
+desc:Довольно злобный пёс, принадлежащий фермеру Магготу.  Он
 desc: считает, что вы воруете грибы.
 
 #name:green worm mass
-name:зелёная червивая масса
+name:зелёная масса червей
 base:worm
 color:g
 speed:100
@@ -1177,7 +1184,7 @@ blow:CRAWL:ACID:1d3
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_ACID | NO_FEAR
-desc:Это большая склизкая масса червей.
+desc:Это большая склизкая червивая масса.
 
 #name:cave spider
 name:пещерный паук
@@ -1192,6 +1199,7 @@ depth:2
 rarity:1
 experience:7
 blow:BITE:HURT:1d4
+flags:MALE
 flags:ANIMAL | WEIRD_MIND
 flags:GROUP_AI
 friends:100:2d8:Same
@@ -1212,6 +1220,7 @@ rarity:2
 experience:8
 blow:CLAW:HURT:1d3
 blow:CLAW:HURT:1d3
+flags:MALE
 flags:BASH_DOOR
 desc:Кот крупнее обычного, громко шипит.  В его бархатных
 desc: лапах скрыта горсть игл.
@@ -1230,6 +1239,7 @@ rarity:2
 experience:8
 blow:BITE:HURT:1d3
 blow:BITE:HURT:1d3
+flags:MALE
 desc:Это серый ворон, за исключением чёрных крыльев и головы.
 
 ### Dungeon level 3 ###
@@ -1306,6 +1316,7 @@ rarity:1
 experience:7
 blow:CRAWL:HURT:1d2
 blow:STING:ELEC:1d2
+flags:FEMALE
 flags:RAND_50 | BASH_DOOR
 desc:Она имеет длину около полутора метров. Она плотоядна.
 
@@ -1324,6 +1335,7 @@ depth:3
 rarity:1
 experience:1
 blow:BITE:HURT:1d1
+flags:FEMALE
 desc:Она примерно 15 сантиметров в длину.
 
 #name:black naga
@@ -1339,6 +1351,7 @@ depth:3
 rarity:1
 experience:20
 blow:CRUSH:HURT:1d8
+flags:FEMALE
 flags:DROP_60
 flags:RAND_25
 desc:Змея соединяет в себе чёрное змеиное тело с женской фигурой.
@@ -1357,6 +1370,7 @@ depth:3
 rarity:1
 experience:3
 blow:SPORE:POISON:2d4
+flags:FEMALE
 flags:NEVER_MOVE
 flags:IM_POIS
 desc:Вкуснятина!  Выглядит очень аппетитно.
@@ -1439,6 +1453,7 @@ depth:3
 rarity:1
 experience:7
 blow:BITE:HURT:1d4
+flags:MALE
 friends:100:4d4:same
 desc:Он достигает полуметра в длину и имеет острые клешни.
 
@@ -1473,11 +1488,12 @@ rarity:1
 experience:12
 blow:CRAWL:HURT:1d2
 blow:STING:FIRE:1d2
+flags:FEMALE
 flags:RAND_25 | BASH_DOOR
 desc:Она имеет длину около полутора метров. Она плотоядна.
 
 #name:yellow worm mass
-name:жёлтая червивая масса
+name:жёлтая масса червей
 base:worm
 color:y
 speed:100
@@ -1495,7 +1511,7 @@ flags:HURT_LIGHT | NO_FEAR
 desc:Это большая склизкая масса червей.
 
 #name:clear worm mass
-name:прозрачная червивая масса
+name:прозрачная масса червей
 base:worm
 color:w
 speed:100
@@ -1514,7 +1530,7 @@ flags:ATTR_CLEAR
 desc:Это отвратительное месиво из ядовитых червей.
 
 #name:radiation eye
-name:излучающий глаз
+name:излучающее око
 base:eye
 color:R
 speed:110
@@ -1545,6 +1561,7 @@ depth:3
 rarity:1
 experience:15
 blow:HIT:HURT:1d8
+flags:MALE
 flags:DROP_40
 spell-freq:5
 spells:WOUND | CONF | HEAL | MISSILE
@@ -1570,6 +1587,7 @@ depth:4
 rarity:1
 experience:8
 blow:BITE:HURT:1d5
+flags:FEMALE
 desc:Это бронированная ящерица с невероятно сильным укусом.
 
 #name:scout
@@ -1647,6 +1665,7 @@ blow:HIT:HURT:1d2
 blow:HIT:HURT:1d2
 flags:OPEN_DOOR
 flags:FORCE_SLEEP
+flags:MALE
 spell-freq:8
 spells:HASTE | SLOW | CONF
 drop-base:nature book:5:1:1
@@ -1656,8 +1675,9 @@ friends-base:80:1d3:person
 friends:50:1d2:Same
 desc:Любитель природы.
 
-name:blue jelly
-plural:blue jellies
+#name:blue jelly
+name:синее желе
+plural:синие желе
 base:jelly
 color:b
 speed:110
@@ -1672,10 +1692,11 @@ blow:TOUCH:COLD:1d6
 flags:COLD_BLOOD
 flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_COLD | NO_CONF | NO_SLEEP
-desc:It's a large pile of pulsing blue flesh.
+desc:Это большая куча пульсирующей синей плоти.
 
-name:creeping copper coins
-plural:piles of creeping copper coins
+#name:creeping copper coins
+name:ползучие медные монеты
+plural:кучи ползучих медных монет
 base:creeping coins
 color:u
 speed:100
@@ -1688,10 +1709,11 @@ rarity:3
 experience:9
 blow:HIT:HURT:1d4
 blow:TOUCH:POISON:2d4
-desc:It appears to be a pile of copper coins.
+desc:Похоже, это куча медных монет.
 mimic:gold:copper
 
-name:giant white rat
+#name:giant white rat
+name:гигантская белая крыса
 base:rodent
 color:W
 speed:110
@@ -1704,11 +1726,12 @@ depth:4
 rarity:1
 experience:1
 blow:BITE:POISON:1d3
+flags:FEMALE
 flags:MULTIPLY
 flags:RAND_25
-desc:It is a very vicious rodent.
+desc:Это очень злобный грызун.
 
-name:blue worm mass
+name:синяя масса червей
 base:worm
 color:b
 speed:100
@@ -1723,9 +1746,10 @@ blow:CRAWL:COLD:1d4
 flags:COLD_BLOOD | WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50
 flags:HURT_LIGHT | IM_COLD | NO_FEAR
-desc:It is a large slimy mass of worms.
+desc:Это большая слизистая масса червей.
 
-name:large grey snake
+#name:large grey snake
+name:большая серая змея
 base:snake
 color:s
 speed:100
@@ -1738,10 +1762,11 @@ rarity:1
 experience:14
 blow:BITE:HURT:1d5
 blow:CRUSH:HURT:1d8
+flags:FEMALE
 flags:RAND_25
-desc:It is about ten feet long.
+desc:Её длина составляет около трёх метров.
 
-name:кобольд лучник
+name:кобольд-лучник
 base:kobold
 color:W
 speed:110
@@ -1754,15 +1779,16 @@ depth:4
 rarity:1
 experience:20
 blow:HIT:HURT:1d9
+flags:MALE
 flags:DROP_40
 innate-freq:2
 spells:ARROW
 friends-base:30:1d2:kobold
 friends-base:70:1d2:kobold
-desc:It is an ugly dog-headed humanoid wielding a bow.
+desc:Это уродливый гуманоид с собачьей головой вооружённый луком.
 
-name:silver mouse
-plural:silver mice
+name:серебристая мышь
+plural:серебристые мыши
 base:rodent
 color:W
 speed:110
@@ -1775,14 +1801,16 @@ depth:4
 rarity:1
 experience:1
 blow:BITE:EAT_LIGHT:1d2
+flags:FEMALE
 flags:MULTIPLY
 flags:RAND_50
-desc:It is about three feet long with large teeth.  As the light of your lamp
-desc: falls on it, it seems to grow stronger.
+desc:Она около трех футов длиной и с большими зубами.  Когда на нее падает свет
+desc: вашей лампы, кажется, что она становится сильнее.
 
 ### Dungeon level 5 ###
 
-name:Bullroarer the Hobbit
+#name:Bullroarer the Hobbit
+name:Торогром Хоббит
 base:humanoid
 color:U
 speed:120
@@ -1798,9 +1826,10 @@ blow:HIT:HURT:1d8
 flags:UNIQUE | MALE
 flags:DROP_2 | DROP_GOOD | ONLY_ITEM
 friends:80:1d7:неряшливый хоббит:servant
-desc:He is a sturdy hobbit who is renowned for his unusual strength and vigour.
-desc:  He can prove a troublesome opponent.
+desc:Это крепкий хоббит, который славится своей необычной силой и бодростью.
+desc:  Он может оказаться неприятным соперником.
 
+# name:green naga
 name:green naga
 base:naga
 color:g
@@ -1814,13 +1843,15 @@ rarity:1
 experience:30
 blow:CRUSH:HURT:1d8
 blow:SPIT:ACID:2d6
+flags:FEMALE
 flags:DROP_60
 flags:RAND_25 | TAKE_ITEM
 flags:IM_ACID
-desc:A large green serpent with a female's torso.  Her green skin glistens with
-desc: acid.
+desc:Большая зеленая змея с женским торсом.  Её зелёная кожа блестит
+desc: от кислоты.
 
-name:blue ooze
+# name:blue ooze
+name:синяя жижа
 base:jelly
 color:b
 speed:110
@@ -1835,9 +1866,10 @@ blow:CRAWL:COLD:1d4
 flags:DROP_40
 flags:RAND_25 | RAND_50
 flags:IM_COLD | NO_CONF | NO_SLEEP
-desc:It's blue and it's oozing.
+desc:Оно синее и сочится.
 
-name:green glutton ghost
+# name:green glutton ghost
+name:зелёный ненасытный призрак
 base:ghost
 color:g
 speed:130
@@ -1852,10 +1884,11 @@ blow:TOUCH:EAT_FOOD:1d1
 flags:DROP_40 | DROP_60
 flags:RAND_25 | RAND_50
 flags-off:IM_COLD
-desc:It is a very ugly green ghost with a voracious appetite.
+desc:Это очень уродливое зелёное привидение с огромным аппетитом.
 
-name:green jelly
-plural:green jellies
+# name:green jelly
+name:зелёное желе
+plural:зелёные желе
 base:jelly
 color:g
 speed:120
@@ -1869,7 +1902,7 @@ experience:18
 blow:TOUCH:ACID:1d2
 flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_ACID | HURT_COLD | NO_CONF | NO_SLEEP
-desc:It is a large pile of pulsing green flesh.
+desc:Это большая куча пульсирующей зеленой плоти.
 
 name:крупный кобольд
 base:kobold
@@ -1884,10 +1917,11 @@ depth:5
 rarity:1
 experience:25
 blow:HIT:HURT:1d10
+flags:MALE
 flags:DROP_60
 friends-base:50:1d2:kobold
 friends-base:30:1d2:kobold
-desc:It is a man-sized figure with the all too recognizable face of a kobold.
+desc:Это фигура в рост человека со слишком узнаваемым лицом кобольда.
 
 name:кобольд-скелет
 base:skeleton
@@ -1901,9 +1935,10 @@ depth:5
 rarity:1
 experience:12
 blow:HIT:HURT:1d6
+flags:MALE
 flags:EMPTY_MIND
 flags:OPEN_DOOR | BASH_DOOR
-desc:It is a small animated kobold skeleton.
+desc:Это небольшой оживший скелет кобольда.
 
 name:серое мерзкое нечто
 base:icky thing
@@ -1918,9 +1953,11 @@ rarity:1
 experience:10
 blow:TOUCH:HURT:1d5
 flags:EMPTY_MIND
-desc:It is a smallish, slimy, icky, nasty creature.
+desc:Это маленькое, склизкое, мерзкое, противное существо.
 
-name:disenchanter eye
+# name:disenchanter eye
+name:очищающее око
+plural:очищающие глаза
 base:eye
 color:v
 speed:100
@@ -1937,9 +1974,10 @@ flags:HURT_LIGHT | IM_DISEN | NO_FEAR
 flags:ATTR_MULTI
 spell-freq:9
 spells:DRAIN_MANA
-desc:A disembodied eye, crackling with magic.
+desc:Бесплотный глаз, наполненный магией.
 
-name:red worm mass
+# name:red worm mass
+name:красная масса червей
 base:worm
 color:r
 speed:100
@@ -1954,9 +1992,10 @@ blow:CRAWL:FIRE:1d6
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50 | BASH_DOOR
 flags:HURT_LIGHT | IM_FIRE | NO_FEAR
-desc:It is a large slimy mass of worms.
+desc:Это большая слизистая масса червей.
 
-name:copperhead snake
+# name:copperhead snake
+name:медноголовая змея
 base:snake
 color:o
 speed:110
@@ -1968,12 +2007,14 @@ depth:5
 rarity:1
 experience:15
 blow:BITE:POISON:2d4
+flags:FEMALE
 flags:RAND_50
 flags:IM_POIS
-desc:It has a copper head and sharp venomous fangs.
+desc:У неё медная голова и острые ядовитые клыки.
 
-name:giant white dragon fly
-plural:giant white dragon flies
+# name:giant white dragon fly
+name:гигантская белая стрекоза
+plural:гигантские белые стрекозы
 base:dragon fly
 color:w
 speed:110
@@ -1985,13 +2026,15 @@ depth:5
 rarity:2
 experience:15
 blow:BITE:COLD:1d6
+flags:FEMALE
 flags:IM_COLD
 innate-freq:10
 spells:BR_COLD
-desc:It is a large fly that drips frost.
+desc:Это большая стрекоза, с которая покрыта ледяным инеем.
 
-name:giant green dragon fly
-plural:giant green dragon flies
+# name:giant green dragon fly
+name:гигантская зелёная стрекоза
+plural:гигантские зелёные стрекозы
 base:dragon fly
 color:g
 speed:110
@@ -2003,14 +2046,16 @@ depth:5
 rarity:2
 experience:16
 blow:BITE:POISON:1d6
+flags:FEMALE
 flags:RAND_25
 flags:IM_POIS
 innate-freq:10
 spells:BR_POIS
-desc:A vast, foul-smelling dragonfly.
+desc:Огромная, дурно пахнущая стрекоза.
 
-name:rot jelly
-plural:rot jellies
+# name:rot jelly
+name:гнилое желе
+plural:гнилые желе
 base:jelly
 color:u
 speed:120
@@ -2025,13 +2070,14 @@ blow:TOUCH:EAT_FOOD:2d3
 blow:TOUCH:LOSE_WIS:2d3
 flags:NEVER_MOVE
 flags:HURT_LIGHT | IM_POIS | HURT_COLD | NO_CONF | NO_SLEEP
-desc:It is a large pile of rotting flesh, whose touch spoils your food.  The
-desc: terrible smell it exudes is also very hard to get rid of...
+desc:Это большая куча гниющей плоти, прикосновение которой испортит вашу еду.  От
+desc: ужасного запаха, который она источает, тоже очень трудно избавиться...
 
 ### Dungeon level 6 ###
 
-name:purple mushroom patch
-plural:purple mushroom patches
+# name:purple mushroom patch
+name:фиолетовая грибница
+plural:фиолетовые грибница
 base:mushroom
 color:P
 speed:110
@@ -2045,10 +2091,12 @@ experience:15
 blow:SPORE:LOSE_CON:1d2
 blow:SPORE:LOSE_CON:1d2
 blow:SPORE:LOSE_CON:1d2
+flags:FEMALE
 flags:NEVER_MOVE
-desc:Yum!  It looks quite tasty.
+desc:Вкуснятина!  Выглядит очень аппетитно.
 
-name:brown mold
+# name:brown mold
+name:коричневая плесень
 base:mold
 color:u
 speed:110
@@ -2061,9 +2109,10 @@ rarity:1
 experience:20
 blow:SPORE:CONFUSE:1d4
 flags:EMPTY_MIND | STUPID
-desc:A strange brown growth on the dungeon floor.
+desc:Странный коричневый нарост на полу подземелья.
 
-name:giant brown bat
+# name:giant brown bat
+name:гигантская коричневая летучая мышь
 base:bat
 color:u
 speed:130
@@ -2076,10 +2125,11 @@ rarity:1
 experience:10
 blow:BITE:HURT:1d3
 flags:RAND_50
-desc:It screeches as it attacks.
+desc:Она пронзительно пищит бросаясь в атаку.
 
-name:creeping silver coins
-plural:piles of creeping silver coins
+# name:creeping silver coins
+name:ползучие серебряные монеты
+plural:кучи ползучих серебряные монет
 base:creeping coins
 color:s
 speed:100
@@ -2092,10 +2142,11 @@ rarity:3
 experience:18
 blow:HIT:HURT:1d6
 blow:TOUCH:POISON:2d6
-desc:It appears to be a pile of silver coins.
+desc:Похоже, это куча серебряных монет.
 mimic:gold:silver
 
-name:snaga
+# name:snaga
+name:снага
 base:orc
 color:U
 speed:110
@@ -2108,16 +2159,18 @@ depth:6
 rarity:1
 experience:15
 blow:HIT:HURT:1d8
+flags:MALE
 flags:DROP_20
 flags:HURT_LIGHT
 innate-freq:15
 spells:ARROW
 friends:30:1d3:ворон
 friends:100:2d9:Same
-desc:He is one of the many weaker 'slave' orcs, often mistakenly known as a
-desc: goblin.
+desc:Он один из многих слабых орков-рабов, которого часто ошибочно
+desc: называют гоблином.
 
-name:rattlesnake
+# name:rattlesnake
+name:гремучая змея
 base:snake
 color:r
 speed:110
@@ -2129,13 +2182,15 @@ depth:6
 rarity:1
 experience:20
 blow:BITE:POISON:2d5
+flags:FEMALE
 flags:RAND_50
 flags:IM_POIS
-desc:It is recognized by the hard-scaled end of its body that is often rattled
-desc: to frighten its prey.
+desc:Ее можно узнать по жесткому чешуйчатому концу тела, которым
+desc: она часто гремит, чтобы напугать свою жертву.
 
-name:giant black dragon fly
-plural:giant black dragon flies
+# name:giant black dragon fly
+name:гигантская чёрная стрекоза
+plural:гигантские чёрные стрекозы
 base:dragon fly
 color:s
 speed:120
@@ -2146,14 +2201,16 @@ sleepiness:1
 depth:6
 rarity:2
 experience:18
+flags:FEMALE
 flags:NEVER_BLOW | RAND_25
 flags:IM_ACID
 innate-freq:10
 spells:BR_ACID
-desc:The size of a large bird, this fly drips caustic acid.
+desc:Размером с крупную птицу, эта стрекоза сочится едкой кислотой.
 
-name:giant gold dragon fly
-plural:giant gold dragon flies
+# name:giant gold dragon fly
+name:гигантская золотая стрекоза
+plural:гигантские золотые стрекозы
 base:dragon fly
 color:y
 speed:120
@@ -2165,12 +2222,13 @@ depth:6
 rarity:2
 experience:18
 blow:BITE:HURT:1d3
+flags:FEMALE
 flags:RAND_25
 flags:IM_FIRE | NO_STUN
 innate-freq:10
 spells:BR_SOUN
-desc:Large beating wings support this dazzling insect.  A loud buzzing noise
-desc: pervades the air.
+desc:Большие машущие крылья служат опорой для этого ослепительного насекомого.
+desc:  В воздухе разносится громкое жужжание.
 
 ### Dungeon level 7 ###
 
@@ -2189,6 +2247,7 @@ rarity:3
 experience:10
 blow:BITE:HURT:1d3
 blow:BITE:HURT:1d2
+flags:MALE
 spell-freq:9
 spell-power:4
 spells:WOUND
@@ -2197,7 +2256,10 @@ message-invis:WOUND:Кто-то трижды каркнул.
 desc:Птица с кривым клювом и грязными черными перьями.  Она насмехается
 desc: над вами, и вы понимаете, что её презрение может убить.
 
-name:cave orc
+# name:cave orc
+name:пещерный орк
+plural:пещерные орки
+base:orc
 base:orc
 color:G
 speed:110
@@ -2210,15 +2272,17 @@ depth:7
 rarity:1
 experience:20
 blow:HIT:HURT:1d8
+flags:MALE
 flags:DROP_20
 flags:HURT_LIGHT
 innate-freq:13
 spells:ARROW
-friends:50:1d8:snaga
+friends:50:1d8:снага
 friends:100:2d6:Same
-desc:He is often found in huge numbers in deep caves.
+desc:Его часто можно встретить в огромных количествах в глубоких пещерах.
 
-name:wood spider
+# name:wood spider
+name:древесный паук
 base:spider
 color:U
 speed:120
@@ -2231,12 +2295,14 @@ rarity:3
 experience:15
 blow:BITE:HURT:1d3
 blow:STING:POISON:1d4
+flags:MALE
 flags:ANIMAL | WEIRD_MIND
 flags:IM_POIS | GROUP_AI
 friends:100:2d7:Same
-desc:It scuttles towards you.
+desc:Он устремляется к вам.
 
-name:bloodshot eye
+# name:bloodshot eye
+name:кровоточащее око
 base:eye
 color:r
 speed:110
@@ -2252,9 +2318,10 @@ flags:NEVER_MOVE
 flags:HURT_LIGHT | NO_FEAR
 spell-freq:7
 spells:DRAIN_MANA
-desc:A disembodied eye, bloodshot and nasty.
+desc:Бесплотный глаз, налитый кровью и неприветливый.
 
-name:red naga
+# name:red naga
+name:красная нага
 base:naga
 color:r
 speed:110
@@ -2267,12 +2334,14 @@ rarity:2
 experience:40
 blow:CRUSH:HURT:1d10
 blow:BITE:LOSE_STR:1d4
+flags:FEMALE
 flags:DROP_60
 flags:RAND_25 | TAKE_ITEM
-desc:A large red snake with a woman's torso.
+desc:Большая красная змея с женским торсом.
 
-name:red jelly
-plural:red jellies
+# name:red jelly
+name:красное желе
+plural:красные желе
 base:jelly
 color:r
 speed:110
@@ -2286,9 +2355,10 @@ experience:26
 blow:TOUCH:LOSE_STR:1d5
 flags:NEVER_MOVE
 flags:HURT_LIGHT | HURT_COLD | NO_CONF | NO_SLEEP
-desc:It is a large pulsating mound of red flesh.
+desc:Это большой пульсирующий ком красной плоти.
 
-name:giant red frog
+# name:giant red frog
+name:гигантская красная лягушка
 base:reptile
 color:r
 speed:110
@@ -2301,8 +2371,9 @@ depth:7
 rarity:1
 experience:16
 blow:BITE:LOSE_STR:2d4
+flags:FEMALE
 flags:RAND_50 | BASH_DOOR
-desc:It looks poisonous.
+desc:Она выглядит ядовитой.
 
 name:зелёное мерзкое нечто
 base:icky thing
@@ -2318,7 +2389,7 @@ experience:18
 blow:TOUCH:ACID:2d5
 flags:EMPTY_MIND
 flags:IM_ACID
-desc:It is a smallish, slimy, icky, acidic creature.
+desc:Это маленькое, слизистое, мерзкое, кислотное существо.
 
 name:кобольд-зомби
 base:zombie
@@ -2334,12 +2405,14 @@ rarity:1
 experience:14
 blow:HIT:HURT:1d2
 blow:HIT:HURT:1d2
+flags:MALE
 flags:EMPTY_MIND
 flags:NO_FEAR
 desc:Это оживший труп кобольда.  Плоть отваливается большими кусками, когда
 desc: он ковыляет по земле.
 
-name:lost soul
+# name:lost soul
+name:потерянная душа
 base:ghost
 color:B
 speed:110
@@ -2356,10 +2429,11 @@ flags:DROP_40 | DROP_60
 flags:RAND_50 | TAKE_ITEM
 spell-freq:15
 spells:DRAIN_MANA | TPORT
-desc:It is almost insubstantial.
+desc:Оно почти бесплотно.
 
-name:eastern dwarf
-plural:eastern dwarves
+# name:eastern dwarf
+name:восточный дварф
+plural:восточные дварфы
 base:humanoid
 color:D
 speed:110
@@ -2377,8 +2451,7 @@ flags:DROP_60
 flags:FORCE_SLEEP
 spell-freq:10
 spells:CONF | DARKNESS
-desc:A dwarf of one of the eastern kindreds who has fallen under the sway of
-desc: Morgoth.
+desc:Гном одного из восточных родов, попавший во власть Моргота.
 
 name:ночная ящерица
 base:reptile
@@ -2394,7 +2467,8 @@ rarity:2
 experience:35
 blow:BITE:HURT:1d6
 blow:BITE:HURT:1d6
-desc:Это черная ящерица с переливающейся чешуей и мощной челюстью.
+flags:FEMALE
+desc:Это чёрная ящерица с переливающейся чешуей и мощной челюстью.
 
 name:Мугаш Повелитель Кобольдов
 base:kobold
@@ -2416,7 +2490,7 @@ flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 friends:100:1d10:маленький кобольд:servant
 friends:100:1d10:кобольд:servant
 friends:100:1d3:кобольд-шаман:servant
-friends:100:1d5:кобольд лучник:servant
+friends:100:1d5:кобольд-лучник:servant
 friends:100:1d5:крупный кобольд:bodyguard
 desc:Сильный и могущественный, как для кобольда.
 
@@ -2445,10 +2519,11 @@ spell-freq:5
 spells:HEAL | SLOW | TRAPS
 spells:BA_POIS
 spells:BO_COLD
-desc:He's been spying for Saruman.  He is a snivelling wretch with no morals and
-desc: disgusting habits.
+desc:Он шпион Сарумана.  Он - жалкий негодяй без морали и с
+desc: гнусными повадками.
 
-name:Lagduf, the Snaga
+# name:Lagduf, the Snaga
+name:Лагдуф, Снага
 base:orc
 color:y
 speed:110
@@ -2464,14 +2539,15 @@ blow:HIT:HURT:1d10
 blow:HIT:HURT:1d10
 blow:HIT:HURT:1d9
 blow:HIT:HURT:1d9
-flags:UNIQUE | NAME_COMMA
+flags:UNIQUE | NAME_COMMA | MALE
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 friends:80:2d7:Wolf
-friends:100:5d4:snaga:servant
-desc:A captain of a regiment of weaker orcs, Lagduf keeps his troop in order
-desc: with displays of excessive violence.
+friends:100:5d4:снага:servant
+desc:Капитан полка слабых орков, Лагдуф поддерживает порядок в своем
+desc: отряде, проявляя чрезмерную жестокость.
 
-name:terrified yeek
+# name:terrified yeek
+name:испуганный йик
 base:yeek
 color:u
 speed:110
@@ -2486,9 +2562,10 @@ experience:11
 flags:DROP_40 | FRIGHTENED | NEVER_BLOW
 innate-freq:9
 spells:SHRIEK
-desc:It is a strange small humanoid in a constant state of extreme terror.
+desc:Это странный маленький гуманоид, постоянно пребывающий в состоянии крайнего ужаса.
 
-name:giant salamander
+# name:giant salamander
+name:гигантская саламандра
 base:reptile
 color:y
 speed:110
@@ -2501,14 +2578,16 @@ depth:8
 rarity:1
 experience:50
 blow:BITE:FIRE:3d6
+flags:FEMALE
 flags:RAND_25
 flags:IM_FIRE
 flags:FORCE_SLEEP
 innate-freq:9
 spells:BR_FIRE
-desc:A large black and yellow lizard.  You'd better run away!
+desc:Большая черно-желтая ящерица.  Вам лучше убежать прочь!
 
-name:green mold
+# name:green mold
+name:зелёная плесень
 base:mold
 color:g
 speed:110
@@ -2522,9 +2601,10 @@ experience:28
 blow:SPORE:TERRIFY:1d4
 flags:EMPTY_MIND | STUPID
 flags:IM_ACID
-desc:It is a strange growth on the dungeon floor.
+desc:Это странный нарост на полу подземелья.
 
-name:skeleton orc
+# name:skeleton orc
+name:орк-скелет
 base:skeleton
 color:w
 speed:110
@@ -2536,11 +2616,13 @@ depth:8
 rarity:1
 experience:26
 blow:HIT:HURT:2d5
+flags:MALE
 flags:ORC | EMPTY_MIND
 flags:OPEN_DOOR | BASH_DOOR
-desc:It is an animated orc skeleton.
+desc:Это оживший скелет орка.
 
-name:lemure
+# name:lemure
+name:лемур
 base:minor demon
 color:U
 speed:110
@@ -2555,9 +2637,10 @@ blow:HIT:HURT:1d8
 flags:OPEN_DOOR | BASH_DOOR
 flags:NO_FEAR
 friends:100:2d7:Same
-desc:It is a minor but aggressive demon.
+desc:Это мелкий, но агрессивный демон.
 
-name:orc tracker
+# name:orc tracker
+name:орк-следопыт
 base:orc
 color:u
 speed:110
@@ -2570,13 +2653,15 @@ depth:8
 rarity:1
 experience:25
 blow:HIT:HURT:1d8
+flags:MALE
 flags:DROP_20
 flags:HURT_LIGHT
 innate-freq:12
 spells:ARROW
-desc:A small orc with wide and snuffling nostrils.
+desc:Маленький фыркающий орк с широкими ноздрями.
 
-name:ruffian
+# name:ruffian
+name:головорез
 base:person
 color:s
 speed:110
@@ -2594,7 +2679,7 @@ flags:DROP_1
 flags:OPEN_DOOR | TAKE_ITEM
 innate-freq:8
 spells:SHOT | WHIP
-desc:An uncultured brute with a club, a sling and a whip.
+desc:Некультурный грубиян с дубиной, пращой и кнутом.
 
 ### Dungeon level 9 ###
 
@@ -2992,7 +3077,7 @@ flags:FORCE_SLEEP
 spell-freq:4
 spells:BLINK | CONF | HEAL | SLOW | TELE_TO
 spells:S_MONSTER
-friends:50:2d5:terrified yeek:servant
+friends:50:2d5:испуганный йик:servant
 friends:100:2d5:синий йик:servant
 friends:50:1d3:Master yeek:servant
 desc:He's just like his daddy!  He knows mighty spells, but fortunately he is a
@@ -3031,7 +3116,7 @@ blow:SPORE:HURT:1d1
 flags:COLD_BLOOD | INVISIBLE | MULTIPLY
 flags:NEVER_MOVE
 flags:ATTR_CLEAR
-desc:Yum!  It looks quite tasty.
+desc:Вкуснятина!  Выглядит очень аппетитно.
 
 name:Grishnákh, the Hill Orc
 base:orc
@@ -3051,7 +3136,7 @@ blow:HIT:HURT:1d12
 blow:HIT:HURT:1d10
 flags:UNIQUE | NAME_COMMA
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
-friends:50:2d5:snaga:servant
+friends:50:2d5:снага:servant
 friends:80:2d7:Wolf
 friends:100:5d4:Hill orc:servant
 desc:He is a cunning and devious orc with a chaotic nature.
@@ -3412,7 +3497,7 @@ flags:HURT_LIGHT | HURT_COLD | IM_POIS | NO_CONF | NO_SLEEP
 spell-freq:11
 spells:DRAIN_MANA
 message-invis:DRAIN_MANA:Что-то хлюпает.
-desc:Yum!  It looks quite tasty.  It is a pulsing mound of glowing flesh.
+desc:Вкуснятина!  Выглядит очень аппетитно.  It is a pulsing mound of glowing flesh.
 
 name:nether worm mass
 base:worm
@@ -3426,6 +3511,7 @@ depth:12
 rarity:3
 experience:6
 blow:TOUCH:EXP_10
+flags:MALE
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50 | BASH_DOOR
 flags:HURT_LIGHT | NO_FEAR | IM_NETHER
@@ -3451,10 +3537,10 @@ blow:HIT:HURT:1d10
 flags:UNIQUE | NAME_COMMA
 flags:DROP_2 | DROP_GOOD | ONLY_ITEM
 flags:IM_COLD | IM_ELEC | IM_FIRE | IM_POIS
-friends:50:4d4:snaga:servant
+friends:50:4d4:снага:servant
 friends:80:2d7:Warg
 friends:100:5d4:Hill orc:servant
-friends:100:1d1:Bullroarer the Hobbit
+friends:100:1d1:Торогром Хоббит
 friends:100:1d1:Grishnákh, the Hill Orc
 desc:A leader of a band of raiding orcs, he picks on hobbits.
 
@@ -3745,7 +3831,7 @@ flags:FORCE_SLEEP
 spell-freq:3
 spells:BLIND | BLINK | HEAL | SLOW | TPORT
 spells:S_KIN | S_MONSTER
-friends:50:2d6:terrified yeek:servant
+friends:50:2d6:испуганный йик:servant
 friends:100:2d6:синий йик:servant
 friends:100:2d4:Master yeek:servant
 friends:100:1d1:Orfax, Son of Boldor
@@ -3901,8 +3987,8 @@ flags:UNIQUE
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 flags:IM_COLD
 friends:50:2d2:orc archer
-friends:100:4d4:snaga
-friends:100:3d4:cave orc
+friends:100:4d4:снага
+friends:100:3d4:пещерный орк
 desc:A strong orc guarding the pass of Cirith Ungol.  He is mortally afraid of
 desc: spiders.
 
@@ -4053,7 +4139,7 @@ spells:BLINK | DARKNESS | SCARE | SLOW
 message-invis:BLINK:Что-то тихонько жужжит.
 message-invis:DARKNESS:Что-то тихонько жужжит.
 message-invis:SLOW:Что-то тихонько жужжит.
-desc:Yum!  It looks quite tasty.  It seems to glow with an unusual light.
+desc:Вкуснятина!  Выглядит очень аппетитно.  It seems to glow with an unusual light.
 
 name:guardian naga
 base:naga
@@ -4138,7 +4224,7 @@ flags:DROP_20
 innate-freq:10
 spells:ARROW
 friends:50:2d4:Warg
-friends:50:1d2:orc tracker
+friends:50:1d2:орк-следопыт
 friends:100:4d4:Same
 desc:He is a hideous deformed cross-breed with man and orc, combining man's
 desc: strength and cunning with orcish evil.  The traitorous wizard Saruman is
@@ -4414,7 +4500,7 @@ innate-freq:9
 spells:ARROW | WHIP
 friends:40:1d4:Half-orc
 friends:80:2d5:Warg
-friends:50:1d2:orc tracker
+friends:50:1d2:орк-следопыт
 friends:50:1d2:orc archer
 friends:100:3d3:Same
 desc:A cunning orc of power, as tall as a man, and stronger.  It fears little.
@@ -4641,7 +4727,7 @@ innate-freq:9
 spells:ARROW
 friends:50:1d5:Wolf
 friends:50:1d5:Warg
-friends:80:1d2:orc tracker:servant
+friends:80:1d2:орк-следопыт:servant
 friends:80:1d4:orc archer:servant
 friends-base:50:1d5:orc:servant
 friends-base:50:1d5:orc:servant
@@ -4883,9 +4969,9 @@ blow:HIT:HURT:3d5
 blow:HIT:HURT:3d5
 flags:UNIQUE | NAME_COMMA
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
-friends:50:3d4:snaga:servant
-friends:80:2d4:cave orc:servant
-friends:80:1d2:orc tracker:servant
+friends:50:3d4:снага:servant
+friends:80:2d4:пещерный орк:servant
+friends:80:1d2:орк-следопыт:servant
 friends:100:1d2:orc archer:servant
 friends:100:2d4:uruk:servant
 desc:He is an orc of power and great cunning, leader of the garrison at Cirith
@@ -4909,9 +4995,9 @@ blow:HIT:HURT:3d5
 blow:HIT:HURT:3d5
 flags:UNIQUE | NAME_COMMA
 flags:DROP_1 | DROP_GOOD | ONLY_ITEM
-friends:50:3d4:snaga:servant
-friends:80:2d4:cave orc:servant
-friends:80:1d2:orc tracker:servant
+friends:50:3d4:снага:servant
+friends:80:2d4:пещерный орк:servant
+friends:80:1d2:орк-следопыт:servant
 friends:100:1d2:orc archer:servant
 friends:100:2d4:uruk:servant
 desc:He is an orc of power and great cunning, leader of the garrison at Minas
@@ -4975,10 +5061,10 @@ flags:DROP_1 | DROP_GOOD | ONLY_ITEM
 spell-freq:10
 spells:TELE_TO | HOLD
 desc:The ancient grey willow tree, ruler of the Old Forest.  He despises
-desc: trespassers in his territory.  "...a huge willow-tree, old and hoary.
+desc: trespassers in his territory.  '...a huge willow-tree, old and hoary.
 desc:  Enormous it looked, its sprawling branches going up like racing arms
 desc: with many long-fingered hands, its knotted and twisted trunk gaping in
-desc: wide fissures that creaked faintly as the boughs moved."
+desc: wide fissures that creaked faintly as the boughs moved.'
 
 ########## DUNGEON LEVELS 20-29 ##########
 
@@ -5045,9 +5131,9 @@ blow:HIT:HURT:3d6
 blow:HIT:HURT:3d6
 flags:UNIQUE | NAME_COMMA | MOVE_BODY
 flags:DROP_2 | DROP_GOOD | ONLY_ITEM
-friends:50:3d4:cave orc:servant
+friends:50:3d4:пещерный орк:servant
 friends:80:2d7:Warg
-friends:100:2d2:orc tracker
+friends:100:2d2:орк-следопыт
 friends:100:4d2:orc archer
 friends:100:4d4:Uruk:bodyguard
 desc:A large and powerful orc, he looks just like his father.  He is tall and
@@ -5267,7 +5353,7 @@ spells:BLIND | CONF | DARKNESS | HASTE
 spells:BO_COLD | BO_FIRE
 drop-base:magic book:5:1:1
 drop-base:magic book:5:1:1
-friends:80:1d3:eastern dwarf:servant
+friends:80:1d3:восточный дварф:servant
 friends:70:1d2:stonefoot warrior:servant
 friends:50:1d1:blacklock mage:servant
 friends:50:1d1:ironfist priest:servant
@@ -5502,8 +5588,8 @@ flags:EVIL
 innate-freq:12
 spells:SHRIEK
 desc:Believed to be an evil relative of the cricket, this creature gets its name
-desc: from its incessant squeaking, which can best be described as "neek-breek,
-desc: neek-breek".  The noise can drive people frantic, and worse still, can be
+desc: from its incessant squeaking, which can best be described as 'neek-breek,
+desc: neek-breek'.  The noise can drive people frantic, and worse still, can be
 desc: heard for quite some distance, alerting other monsters to your presence.
 
 name:Uglúk, the Uruk
@@ -5698,9 +5784,9 @@ blow:HIT:HURT:5d5
 blow:HIT:HURT:5d5
 flags:UNIQUE | NAME_COMMA | MOVE_BODY
 flags:DROP_2 | DROP_GOOD | ONLY_ITEM
-friends:50:3d4:cave orc:servant
+friends:50:3d4:пещерный орк:servant
 friends:80:2d7:Warg
-friends:100:2d2:orc tracker
+friends:100:2d2:орк-следопыт
 friends:100:4d2:orc archer
 friends:100:4d4:Uruk:bodyguard
 friends:50:1d3:Orc captain:servant
@@ -6173,6 +6259,7 @@ depth:26
 rarity:5
 experience:6
 blow:CRAWL:EXP_10:1d5
+flags:MALE
 flags:EVIL | WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_25 | RAND_50 | BASH_DOOR | KILL_WALL
 flags:HURT_LIGHT | NO_FEAR | COLD_BLOOD | INVISIBLE
@@ -6999,7 +7086,8 @@ flags:IM_POIS
 desc:A gleaming black scorpion as large as a lion, with a pulsating stinger
 desc: and two great deadly claws.
 
-name:purple worm
+#name:purple worm
+name:фиолетовый червь
 base:worm
 color:P
 speed:110
@@ -7013,10 +7101,11 @@ experience:400
 blow:HIT:HURT:1d8
 blow:BITE:ACID:2d8
 blow:STING:POISON:1d8
+flags:MALE
 flags:BASH_DOOR
 flags:IM_ACID | IM_POIS
-desc:It is a massive worm form, many feet in length.  Its vast maw drips acid
-desc: and poison.
+desc:Это огромный червь, достигающий в длину многих футов.  Из его огромной пасти
+desc: капает кислота и яд.
 
 name:catoblepas
 plural:catoblepones
@@ -8361,6 +8450,7 @@ blow:GAZE:EXP_20
 blow:CRAWL:ACID:2d4
 blow:BITE:HURT:1d10
 blow:BITE:POISON:1d6
+flags:MALE
 flags:BASH_DOOR
 flags:IM_ACID
 desc:A huge wormlike shape dripping acid, twisted by evil sorcery into a foul
@@ -9601,6 +9691,7 @@ depth:40
 rarity:3
 experience:30
 blow:CRAWL:DISENCHANT:1d4
+flags:MALE
 flags:WEIRD_MIND | MULTIPLY | STUPID
 flags:RAND_50 | BASH_DOOR
 flags:HURT_LIGHT | IM_DISEN | NO_FEAR
@@ -10070,7 +10161,7 @@ spells:BO_MANA | BO_WATE
 desc:This sad creature - once a mighty warrior - betrayed his former friends to
 desc: Morgoth's army in return for, he thought, safety for himself and his
 desc: wife.  And so he fell under Morgoth's power and became little more than
-desc: a mindless servant of evil, even though the other side of his "bargain"
+desc: a mindless servant of evil, even though the other side of his 'bargain'
 desc: was not kept.
 
 name:ranger chieftain
@@ -11292,7 +11383,7 @@ spell-freq:5
 spells:CONF | SCARE
 spells:BR_FIRE
 spells:S_DEMON | S_UNDEAD
-friends:100:4d4:cave orc:servant
+friends:100:4d4:пещерный орк:servant
 friends:100:3d4:cave troll:servant
 desc:A huge Balrog surrounded by raging pillars of fire, this is indeed a
 desc: terrible opponent.  Wielding a great whip of fire and a blazing sword,
@@ -12857,7 +12948,7 @@ innate-freq:9
 spell-freq:10
 spells:WOUND
 spells:BR_CHAO
-desc:"Beware the Jabberwock, my son!  The jaws that bite, the claws that catch!"
+desc:'Beware the Jabberwock, my son!  The jaws that bite, the claws that catch!'
 desc:  Run and run quickly, for death incarnate chases behind you!
 
 name:Tselakus, the Dreadlord
@@ -14459,7 +14550,7 @@ friends:100:1d1:Scatha the Worm
 friends:100:1d1:Itangast the Fire Drake
 friends:100:1d1:Smaug the Golden
 friends:100:1d1:Glaurung, Father of the Dragons
-desc:"Rushing Jaws" is his name, and death is his game; the greatest and most
+desc:'Rushing Jaws' is his name, and death is his game; the greatest and most
 desc: terrible of all dragonkind, his power dismayed even the Valar for a time.
 
 ### Dungeon level 86 ###
@@ -14878,12 +14969,9 @@ spells:BRAIN_SMASH
 spells:BA_MANA | BA_NETH
 spells:BO_MANA
 spells:S_HI_DEMON | S_HI_DRAGON | S_HI_UNDEAD | S_MONSTERS | S_UNIQUE
-desc:Он - Повелитель Ям Ангбада. Его облик похож на чёрную гору, увенчанную молниями.
-desc:  Он бушует бесконечным гневом, его тело изранено восемью могущественными ранами
-desc: Фингольфина. Он не может успокоиться из-за своей боли и стремится навсегда
-desc: подчинить всё светлое и доброе в мире. Он породил страх людей перед тьмой и создал
-desc: множество гнусных существ с помощью своей злой силы. Орки, Драконы и Тролли - это
-desc: его самые отвратительные порождения, причиняющие миру много боли и страданий,
-desc: чтобы угодить ему. Его отвратительный, искаженный злом лик увенчан железом, а
-desc: два оставшихся Сильмарилла вечно обжигают его. Гронд, могучий Молот Подземного
-desc: мира, бросает вызов, направляясь к вам, чтобы сокрушить вас в прах!
+desc:Повелитель Ям Ангбада. Облик его похож на чёрную гору, увенчанную молниями.  Он бушует,
+desc: тело поражено восемью могущественными ранами Фингольфина.  Он не может успокоить свою
+desc: боль и стремится подчинить всё светлое и доброе в мире.  Он породил страх людей перед
+desc: тьмой и создал множество гнусных существ.  Орки, Драконы и Тролли - самые отвратительные
+desc: порождения, причиняющие миру боль и страдания. Его отвратительный, искаженный злом лик
+desc: увенчан железом, а два оставшихся Сильмарилла вечно обжигают его.  Гронд бросает вам вызов!

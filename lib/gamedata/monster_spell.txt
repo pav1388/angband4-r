@@ -242,7 +242,7 @@ name:BR_ACID
 msgt:BR_ACID
 hit:100
 effect:BREATH:ACID:0:30
-lore:acid
+lore:кислоту
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -253,7 +253,7 @@ name:BR_ELEC
 msgt:BR_ELEC
 hit:100
 effect:BREATH:ELEC:0:30
-lore:lightning
+lore:молнии
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -266,7 +266,7 @@ hit:100
 effect:BREATH:FIRE:0:30
 message-vis:{name} пышет огнём.
 message-invis:Вы слышите обжигающий рёв.
-lore:fire
+lore:огонь
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -275,7 +275,7 @@ name:BR_COLD
 msgt:BR_FROST
 hit:100
 effect:BREATH:COLD:0:30
-lore:frost
+lore:мороз
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -286,7 +286,7 @@ name:BR_POIS
 msgt:BR_GAS
 hit:100
 effect:BREATH:POIS:0:30
-lore:poison
+lore:яд
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -297,17 +297,17 @@ name:BR_NETH
 msgt:BR_NETHER
 hit:100
 effect:BREATH:NETHER:0:30
-lore:nether
+lore:подземный мрак
 lore-color-base:Orange
 lore-color-resist:Light Green
-message-vis:{name} пышет магией из недр.
+message-vis:{name} пышет подземным мраком.
 message-invis:Вы слышите жуткий рёв.
 
 name:BR_LIGHT
 msgt:BR_LIGHT
 hit:100
 effect:BREATH:LIGHT:0:30
-lore:light
+lore:свет
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} пышет светом.
@@ -317,7 +317,7 @@ name:BR_DARK
 msgt:BR_DARK
 hit:100
 effect:BREATH:DARK:0:30
-lore:darkness
+lore:тьму
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} пышет тьмой.
@@ -327,7 +327,7 @@ name:BR_SOUN
 msgt:BR_SOUND
 hit:100
 effect:BREATH:SOUND:0:30
-lore:sound
+lore:звук
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -338,7 +338,7 @@ name:BR_CHAO
 msgt:BR_CHAOS
 hit:100
 effect:BREATH:CHAOS:0:30
-lore:chaos
+lore:хаос
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} пышет хаосом.
@@ -348,28 +348,28 @@ name:BR_DISE
 msgt:BR_DISEN
 hit:100
 effect:BREATH:DISEN:0:30
-lore:disenchantment
+lore:развоплощение
 lore-color-base:Light Red
 lore-color-resist:Light Green
-message-vis:{name} пышет разочарованием.
-message-invis:Вы слышите рассеивающийся рёв.
+message-vis:{name} пышет развоплощением.
+message-invis:Вы слышите раскатистый рёв.
 
 name:BR_NEXU
 msgt:BR_NEXUS
 hit:100
 effect:BREATH:NEXUS:0:30
-lore:nexus
+lore:смещение
 lore-color-base:Light Red
 lore-color-resist:Yellow
 lore-color-immune:Light Green
-message-vis:{name} пышет перемещением.
+message-vis:{name} пышет смещением.
 message-invis:Вы слышите раздирающий рёв.
 
 name:BR_TIME
 msgt:BR_TIME
 hit:100
 effect:BREATH:TIME:0:30
-lore:time
+lore:время
 lore-color-base:Light Red
 message-vis:{name} пышет временем.
 message-invis:Вы вспоминаете, что слышали рёв.
@@ -378,7 +378,7 @@ name:BR_INER
 msgt:BR_INERTIA
 hit:100
 effect:BREATH:INERTIA:0:30
-lore:inertia
+lore:инерцию
 lore-color-base:Orange
 message-vis:{name} пышет инерцией.
 message-invis:Вы слышите протяжный рёв.
@@ -387,7 +387,7 @@ name:BR_GRAV
 msgt:BR_GRAVITY
 hit:100
 effect:BREATH:GRAVITY:0:30
-lore:gravity
+lore:гравитацию
 lore-color-base:Light Red
 message-vis:{name} пышет гравитацией.
 message-invis:Вы слышите тяжёлый рёв.
@@ -396,7 +396,7 @@ name:BR_SHAR
 msgt:BR_SHARDS
 hit:100
 effect:BREATH:SHARD:0:30
-lore:shards
+lore:осколки
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} пышет осколками.
@@ -406,7 +406,7 @@ name:BR_PLAS
 msgt:BR_PLASMA
 hit:100
 effect:BREATH:PLASMA:0:30
-lore:plasma
+lore:плазму
 lore-color-base:Orange
 lore-color-resist:Yellow
 message-vis:{name} пышет плазмой.
@@ -416,7 +416,7 @@ name:BR_WALL
 msgt:BR_FORCE
 hit:100
 effect:BREATH:FORCE:0:30
-lore:force
+lore:силу
 lore-color-base:Orange
 lore-color-resist:Yellow
 message-vis:{name} пышет силой.
@@ -425,7 +425,7 @@ message-invis:Вы слышите отрывистый рёв.
 name:BR_MANA
 hit:100
 effect:BREATH:MANA:0:30
-lore:mana
+lore:ману
 lore-color-base:Light Red
 message-vis:{name} пышет чистой магией.
 message-invis:Вы слышите искрящийся рёв.
@@ -435,7 +435,7 @@ hit:60
 effect:BOLT:ARROW
 dice:$Dd12
 expr:D:SPELL_POWER:/ 7 + 1
-lore:throw boulders
+lore:бросать валуны
 lore-color-base:Yellow
 message-vis:{name} бросает валун.
 message-invis:Вы слышите вопли усилий.
@@ -445,7 +445,7 @@ name:WEAVE
 msgt:CREATE_TRAP
 hit:100
 effect:WEB
-lore:weave webs
+lore:плести паутину
 lore-color-base:Yellow
 message-vis:{name} плетёт паутину.
 message-invis:Вы слышите тихий шелест.
@@ -455,7 +455,7 @@ hit:100
 effect:BALL:ACID:2
 dice:15+1d$S
 expr:S:SPELL_POWER:* 3
-lore:produce acid balls
+lore:создать шар кислоты
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -467,11 +467,11 @@ hit:100
 effect:BALL:ELEC:2
 dice:8+1d$S
 expr:S:SPELL_POWER:* 3 / 2
-lore:produce lightning balls
+lore:создать шар молний
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
-message-vis:{name} создаёт шар из молний.
+message-vis:{name} создаёт шар молний.
 message-invis:Кто-то бормочет.
 
 name:BA_FIRE
@@ -479,14 +479,14 @@ hit:100
 effect:BALL:FIRE:2
 dice:10+1d$S
 expr:S:SPELL_POWER:* 7 / 2
-lore:produce fire balls
+lore:создать огненный шар
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
 message-vis:{name} создаёт огненный шар.
 message-invis:Кто-то бормочет.
 power-cutoff:80
-lore:produce firestorms
+lore:создать огненную бурю
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -498,14 +498,14 @@ hit:100
 effect:BALL:COLD:2
 dice:10+1d$S
 expr:S:SPELL_POWER:* 3 / 2
-lore:produce balls of cold
+lore:создать морозный шар
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
 message-vis:{name} создаёт морозный шар.
 message-invis:Кто-то бормочет.
 power-cutoff:80
-lore:produce blizzards
+lore:вызвать снежную бурю
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -517,14 +517,14 @@ hit:100
 effect:BALL:POIS:2
 dice:$Dd4
 expr:D:SPELL_POWER:/ 2 + 3
-lore:produce poison balls
+lore:создать ядовитое облако
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
 message-vis:{name} создаёт ядовитое облако.
 message-invis:Кто-то бормочет.
 power-cutoff:60
-lore:produce storms of poison
+lore:вызвать ядовитый шторм
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} выплёскивает шквал едких токсинов.
@@ -535,13 +535,13 @@ hit:100
 effect:BALL:SHARD:2
 dice:10+1d$S
 expr:S:SPELL_POWER:* 3 / 2
-lore:produce shardstorms
+lore:создать вихрь осколков
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} призывает вихрь осколков.
 message-invis:Кто-то бормочет.
 power-cutoff:70
-lore:invoke storms of knives
+lore:вызвать бурю ножей
 lore-color-base:Light Red
 lore-color-resist:Light Green
 message-vis:{name} вызывает бурю ножей!
@@ -552,16 +552,16 @@ hit:100
 effect:BALL:NETHER:2
 dice:$B+10d10
 expr:B:SPELL_POWER:* 4
-lore:produce nether balls
+lore:создать шар подземного мрака
 lore-color-base:Orange
 lore-color-resist:Light Green
-message-vis:{name} создаёт шар из магии недр.
+message-vis:{name} создаёт шар из подземного мрака.
 message-invis:Кто-то противно шепчет.
 power-cutoff:80
-lore:produce nether storms
+lore:создать бурю подземного мрака
 lore-color-base:Orange
 lore-color-resist:Light Green
-message-vis:{name} создаёт бурю из магии недр.
+message-vis:{name} создаёт бурю из подземного мрака.
 message-invis:Кто-то произносит слова со смертельной угрозой.
 
 name:BA_WATE
@@ -569,7 +569,7 @@ hit:100
 effect:BALL:WATER:2
 dice:50+1d$S
 expr:S:SPELL_POWER:* 5 / 2
-lore:produce water balls
+lore:создать водные шары
 lore-color-base:Light Red
 lore-color-resist:Orange
 message-vis:{name} создаёт водный вихрь.
@@ -590,9 +590,9 @@ hit:100
 effect:BALL:HOLY_ORB:2
 dice:10+1d$S
 expr:S:SPELL_POWER:* 3 / 2
-lore:cast orbs of draining
+lore:создать шар истощения
 lore-color-base:Orange
-message-vis:{name} вызывает сферу иссушения.
+message-vis:{name} вызывает сферу истощения.
 message-invis:Кто-то говорит.
 
 name:BA_DARK
@@ -600,13 +600,13 @@ hit:100
 effect:BALL:DARK:2
 dice:$B+10d10
 expr:B:SPELL_POWER:* 4
-lore:produce balls of darkness
+lore:создать шар тьмы
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} создаёт шар тьмы.
 message-invis:Кто-то громко бормочет.
 power-cutoff:70
-lore:invoke darkness storms
+lore:вызвать бурю тьмы
 lore-color-base:Light Red
 lore-color-resist:Light Green
 message-vis:{name} вызывает бурю тьмы.
@@ -617,13 +617,13 @@ hit:100
 effect:BALL:LIGHT:2
 dice:10+1d$S
 expr:S:SPELL_POWER:* 3 / 2
-lore:produce balls of light
+lore:создать шары света
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} создаёт шар света.
 message-invis:Кто-то бормочет.
 power-cutoff:70
-lore:invoke starbursts
+lore:вызвать звёздные вспышки
 lore-color-base:Light Red
 lore-color-resist:Light Green
 message-vis:{name} вызывает звездопад.
@@ -640,13 +640,13 @@ expr:D:SPELL_POWER:/ 3
 effect:BALL:ICE:3
 dice:20+$Dd5
 expr:D:SPELL_POWER:/ 3
-lore:create storms
+lore:создать шторм
 lore-color-base:Light Red
 lore-color-resist:Orange
 message-vis:{name} создаёт небольшой шторм.
 message-invis:Что-то булькает.
 power-cutoff:80
-lore:create tempests
+lore:создать бурю
 lore-color-base:Light Red
 lore-color-resist:Orange
 message-vis:{name} создаёт бурю из воды и ветра.
@@ -657,7 +657,7 @@ hit:100
 effect:DRAIN_MANA
 dice:d$S
 expr:S:SPELL_POWER:/ 2 + 1
-lore:drain mana
+lore:истошение маны
 lore-color-base:Yellow
 message-vis:{name} высасывает вашу ману.
 message-invis:Кто-то стонет.
@@ -668,7 +668,7 @@ effect:DAMAGE
 dice:8d8
 effect:TIMED_INC:CONFUSED
 dice:3+1d4
-lore:cause mind blasting
+lore:вызвать взрыв сознания
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -688,7 +688,7 @@ effect:TIMED_INC:PARALYZED
 dice:3+1d4
 effect:TIMED_INC:BLIND
 dice:7+1d8
-lore:cause brain smashing
+lore:вызвать разрушение мозга
 lore-color-base:Light Red
 lore-color-resist:Orange
 lore-color-immune:Light Green
@@ -704,35 +704,35 @@ expr:D:SPELL_POWER:/ 3 * 2
 effect:TIMED_INC:CUT
 dice:$Dd10
 expr:D:SPELL_POWER:/ 5 - 10
-lore:cause light wounds
+lore:нанести лёгкие раны
 lore-color-base:Yellow
 lore-color-resist:Light Green
 message-vis:{name} указывает на {target} и проклинает!
 message-invis:Кто-то проклинает!
 message-save:Ваше тело слегка покалывает.
 power-cutoff:16
-lore:cause medium wounds
+lore:нанести средние раны
 lore-color-base:Yellow
 lore-color-resist:Light Green
 message-vis:{name} указывает на {target} и ужасно проклинает!
 message-invis:Кто-то ужасно проклинает!
 message-save:Ваше тело слегка дрожит.
 power-cutoff:32
-lore:cause serious wounds
+lore:нанести серьёзные раны
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} указывает на {target} и ужасно заклинает!
 message-invis:Кто-то ужасно заклинает!
 message-save:Ваше тело слегка дрожит.
 power-cutoff:50
-lore:cause critical wounds
+lore:нанести критические раны
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} points at {target}, выкрикивая слова угрозы!
 message-invis:Кто-то гневно кричит!
 message-save:Ваше тело содрогается.
 power-cutoff:80
-lore:cause mortal wounds
+lore:нанести смертельные раны
 lore-color-base:Light Red
 lore-color-resist:Light Green
 message-vis:{name} указывает на {target} и выкрикивает слово 'УМРИ!'
@@ -744,7 +744,7 @@ hit:100
 effect:BOLT:ACID
 dice:$B+7d8
 expr:B:SPELL_POWER:/ 3
-lore:produce acid bolts
+lore:создать заряд кислоты
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -756,7 +756,7 @@ hit:100
 effect:BOLT:ELEC
 dice:$B+4d8
 expr:B:SPELL_POWER:/ 3
-lore:produce lightning bolts
+lore:создать заряд молний
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -768,7 +768,7 @@ hit:100
 effect:BOLT:FIRE
 dice:$B+9d8
 expr:B:SPELL_POWER:/ 3
-lore:produce fire bolts
+lore:создать заряд огня
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -780,7 +780,7 @@ hit:100
 effect:BOLT:COLD
 dice:$B+6d8
 expr:B:SPELL_POWER:/ 3
-lore:produce frost bolts
+lore:создать заряд мороза
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -792,7 +792,7 @@ hit:100
 effect:BOLT:POIS
 dice:$B+9d8
 expr:B:SPELL_POWER:/ 3
-lore:produce poison bolts
+lore:создать струю яда
 lore-color-base:Orange
 lore-color-resist:Yellow
 lore-color-immune:Light Green
@@ -804,10 +804,10 @@ hit:100
 effect:BOLT:NETHER
 dice:$B+5d5
 expr:B:SPELL_POWER:* 3 / 2 + 30
-lore:produce nether bolts
+lore:создать заряд подземного мрака
 lore-color-base:Orange
 lore-color-resist:Light Green
-message-vis:{name} выпускает заряд магии недр.
+message-vis:{name} выпускает заряд подземного мрака.
 message-invis:Кто-то бормочет.
 
 name:BO_WATE
@@ -815,7 +815,7 @@ hit:100
 effect:BOLT:WATER
 dice:$B+10d10
 expr:B:SPELL_POWER:+ 0
-lore:produce water bolts
+lore:создать струю воды
 lore-color-base:Light Red
 lore-color-resist:Orange
 message-vis:{name} извергает струю воды.
@@ -826,7 +826,7 @@ hit:100
 effect:BOLT:MANA
 dice:50+1d$S
 expr:S:SPELL_POWER:* 5 / 2
-lore:produce mana bolts
+lore:создать заряд чистой магии
 lore-color-base:Light Red
 message-vis:{name} выпускает заряд чистой магии.
 message-invis:Кто-то кричит.
@@ -836,7 +836,7 @@ hit:100
 effect:BOLT:PLASMA
 dice:$B+8d7
 expr:B:SPELL_POWER:+ 10
-lore:produce plasma bolts
+lore:создать заряд плазмы
 lore-color-base:Orange
 lore-color-resist:Yellow
 message-vis:{name} выпускает заряд плазмы.
@@ -847,7 +847,7 @@ hit:100
 effect:BOLT:ICE
 dice:$B+6d6
 expr:B:SPELL_POWER:+ 0
-lore:produce ice bolts
+lore:создать ледяное копьё
 lore-color-base:Orange
 lore-color-resist:Yellow
 message-vis:{name} стреляет ледяным копьём.
@@ -858,8 +858,7 @@ hit:100
 effect:BOLT:MISSILE
 dice:$B+2d6
 expr:B:SPELL_POWER:/ 3
-lore:produce magic missiles
-lore-color-base:Yellow
+lore:запуск магической стрелы
 message-vis:{name} выпускает магическую стрелу.
 message-invis:Кто-то бормочет.
 
@@ -868,7 +867,7 @@ hit:100
 effect:SHORT_BEAM:ELEC:5
 dice:$B+5d5
 expr:B:SPELL_POWER:* 2 + 30
-lore:shoot sparks of lightning
+lore:стрелять молниями
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} пускает в {target} сверкающую молнию.
@@ -879,16 +878,16 @@ hit:100
 effect:SHORT_BEAM:NETHER:10
 dice:$B+5d5
 expr:B:SPELL_POWER:* 2 + 30
-lore:hurl lances of nether
+lore:бросить копьё мрака
 lore-color-base:Orange
 lore-color-resist:Light Green
-message-vis:{name} бросает копьё из магии недр.
+message-vis:{name} бросает копьё из подземного мрака.
 message-invis:Кто-то прошептал смертоносное слово.
 power-cutoff:80
-lore:shoot rays of death
+lore:стрелять лучами смерти
 lore-color-base:Light Red
 lore-color-resist:Light Green
-message-vis:{name} выпускает луч смерти.
+message-vis:{name} выпускает лучи смерти.
 message-invis:Кто-то произносит слова смертельной угрозы.
 
 name:SCARE
@@ -896,7 +895,7 @@ msgt:CAST_FEAR
 hit:100
 effect:TIMED_INC:AFRAID
 dice:3+1d4
-lore:terrify
+lore:навести ужас
 lore-color-base:Yellow
 lore-color-resist:Light Green
 message-vis:{name} вызывает чувство жуткого ужаса.
@@ -907,7 +906,7 @@ name:BLIND
 hit:100
 effect:TIMED_INC:BLIND
 dice:11+1d4
-lore:blind
+lore:ослепление
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} порождает ослепительную вспышку.
@@ -918,7 +917,7 @@ name:CONF
 hit:100
 effect:TIMED_INC:CONFUSED
 dice:3+1d4
-lore:confuse
+lore:запутывание
 lore-color-base:Orange
 lore-color-resist:Light Green
 message-vis:{name} насылает странные мысли.
@@ -940,7 +939,7 @@ name:HOLD
 hit:100
 effect:TIMED_INC:PARALYZED
 dice:3+1d4
-lore:paralyze
+lore:парализация
 lore-color-base:Light Red
 lore-color-resist:Light Green
 message-vis:{name} пытается заставить {target} перестать двигаться.
@@ -951,7 +950,7 @@ name:HASTE
 hit:100
 effect:MON_TIMED_INC:FAST
 dice:50
-lore:haste-self
+lore:само-ускорение
 lore-color-base:Yellow
 message-vis:{name} концентрируется на своём теле.
 message-invis:Кто-то бормочет.
@@ -961,7 +960,7 @@ hit:100
 effect:MON_HEAL_HP
 dice:$B
 expr:B:SPELL_POWER:* 6
-lore:heal-self
+lore:само-лечение
 lore-color-base:Yellow
 message-vis:{name} заживляет раны магией.
 message-invis:Кто-то бормочет.
@@ -971,7 +970,7 @@ hit:100
 effect:MON_HEAL_KIN
 dice:$B
 expr:B:SPELL_POWER:* 6
-lore:heal kin
+lore:лечение сородичей
 lore-color-base:Yellow
 message-vis:{name} пытается вылечить своих соратников.
 message-invis:Кто-то бормочет.
@@ -980,7 +979,7 @@ name:BLINK
 hit:100
 effect:TELEPORT
 dice:10
-lore:blink-self
+lore:само-исчезание
 lore-color-base:Light Green
 message-vis:{name} исчезает.
 message-invis:Кто-то бормочет.
@@ -990,7 +989,7 @@ hit:100
 effect:TELEPORT
 dice:$B
 expr:B:MAX_SIGHT:* 2 + 5
-lore:teleport-self
+lore:телепортировать себя
 lore-color-base:Light Green
 message-vis:{name} телепортируется прочь.
 message-invis:Что-то издает мягкий "хлопок".
@@ -999,7 +998,7 @@ name:TELE_TO
 msgt:TELEPORT
 hit:100
 effect:TELEPORT_TO
-lore:teleport to
+lore:телепортировать к себе
 lore-color-base:Yellow
 message-vis:{name} призывает {target} вернуться.
 message-invis:Кто-то приказывает вам вернуться.
@@ -1008,7 +1007,7 @@ name:TELE_SELF_TO
 msgt:TELEPORT
 hit:100
 effect:TELEPORT_TO:SELF
-lore:teleport toward
+lore:телепортировать рядом
 lore-color-base:Yellow
 message-vis:{name} исчезает и появляется в стороне от {target}.
 message-invis:Кто-то бормочет.
@@ -1018,7 +1017,7 @@ msgt:TELEPORT
 hit:100
 effect:TELEPORT:AWAY
 dice:100
-lore:teleport away
+lore:телепортировать прочь
 lore-color-base:Yellow
 message-vis:{name} призывает {target} уйти прочь.
 message-invis:Кто-то приказывает вам уйти.
@@ -1027,7 +1026,7 @@ name:TELE_LEVEL
 msgt:TPLEVEL
 hit:100
 effect:TELEPORT_LEVEL
-lore:teleport level
+lore:телепортировать этаж
 lore-color-base:Yellow
 lore-color-resist:Light Green
 message-vis:{name} призывает {target} уйти прочь с этажа.
@@ -1039,7 +1038,7 @@ hit:100
 effect:DARKEN_AREA
 effect:BALL:DARK_WEAK:3
 dice:10
-lore:create darkness
+lore:создать тьму
 lore-color-base:Light Green
 message-vis:{name} окружает {target} тьмой.
 message-invis:Кто-то бормочет.
@@ -1048,7 +1047,7 @@ name:TRAPS
 msgt:CREATE_TRAP
 hit:100
 effect:TOUCH:MAKE_TRAP:3
-lore:create traps
+lore:создать ловушки
 lore-color-base:Yellow
 message-vis:{name} злобно хохочет над расставленными ловушками.
 message-invis:Кто-то злобно хохочет.
@@ -1057,7 +1056,7 @@ name:FORGET
 hit:100
 effect:TIMED_INC:AMNESIA
 dice:3
-lore:cause amnesia
+lore:вызвать амнезию
 lore-color-base:Yellow
 lore-color-resist:Light Green
 message-vis:{name} пытается заставить {target} что-то забыть.
@@ -1068,7 +1067,7 @@ name:SHAPECHANGE
 hit:100
 effect:MON_TIMED_INC:CHANGED
 dice:5+d10
-lore:change shape
+lore:изменение облика
 lore-color-base:Orange
 message-vis:{name} произносит незнакомые слова.
 message-invis:Кто-то бормочет.
@@ -1078,7 +1077,7 @@ msgt:SUM_MONSTER
 hit:100
 effect:SUMMON:KIN
 dice:8
-lore:summon similar monsters
+lore:призыв подобных монстров
 lore-color-base:Orange
 message-vis:{name} призывает своих сородичей.
 message-invis:Вы слышите, как поблизости появляются какие-то существа!
@@ -1088,7 +1087,7 @@ msgt:SUM_MONSTER
 hit:100
 effect:SUMMON:MONSTER
 dice:1
-lore:summon a monster
+lore:призыв монстра
 lore-color-base:Orange
 message-vis:{name} призывает соратника.
 message-invis:Вы слышите, как кто-то появляется неподалеку!
@@ -1098,7 +1097,7 @@ msgt:SUM_MONSTER
 hit:100
 effect:SUMMON:MONSTERS
 dice:8
-lore:summon monsters
+lore:призыв монстров
 lore-color-base:Orange
 message-vis:{name} призывает соратников.
 message-invis:Вы слышите, как поблизости появляются какие-то существа!
@@ -1108,7 +1107,7 @@ msgt:SUM_ANIMAL
 hit:100
 effect:SUMMON:ANIMAL
 dice:12
-lore:summon animals
+lore:призыв животных
 lore-color-base:Orange
 message-vis:{name} призывает животных.
 message-invis:Вы слышите, как поблизости появляются какие-то существа!
@@ -1118,7 +1117,7 @@ msgt:SUM_SPIDER
 hit:100
 effect:SUMMON:SPIDER
 dice:12
-lore:summon spiders
+lore:призыв пауков
 lore-color-base:Orange
 message-vis:{name} призывает пауков.
 message-invis:Вы слышите, как поблизости появляются стрекочущие существа!
@@ -1128,7 +1127,7 @@ msgt:SUM_HOUND
 hit:100
 effect:SUMMON:HOUND
 dice:12
-lore:summon hounds
+lore:призыв гончих
 lore-color-base:Orange
 message-vis:{name} призывает гончих.
 message-invis:Вы слышите, как поблизости появляются рычащие существа!
@@ -1138,7 +1137,7 @@ msgt:SUM_HYDRA
 hit:100
 effect:SUMMON:HYDRA
 dice:6
-lore:summon hydras
+lore:призыв гидр
 lore-color-base:Orange
 message-vis:{name} призывает гидр.
 message-invis:Вы слышите, как поблизости появляются какие-то существа!
@@ -1148,7 +1147,7 @@ msgt:SUM_AINU
 hit:100
 effect:SUMMON:AINU
 dice:1
-lore:summon an ainu
+lore:призыв айну
 lore-color-base:Orange
 message-vis:{name} призывает айну.
 message-invis:Вы слышите, как кто-то появляется рядом!
@@ -1158,7 +1157,7 @@ msgt:SUM_DEMON
 hit:100
 effect:SUMMON:DEMON
 dice:1
-lore:summon a demon
+lore:призыв демона
 lore-color-base:Orange
 message-vis:{name} призывает демона.
 message-invis:Вы слышите, как поблизости появляется нечто зловещее!
@@ -1168,7 +1167,7 @@ msgt:SUM_UNDEAD
 hit:100
 effect:SUMMON:UNDEAD
 dice:1
-lore:summon an undead
+lore:призыв нежити
 lore-color-base:Orange
 message-vis:{name} призывает нежить.
 message-invis:Вы слышите, как поблизости появляется что-то жуткое!
@@ -1178,7 +1177,7 @@ msgt:SUM_DRAGON
 hit:100
 effect:SUMMON:DRAGON
 dice:1
-lore:summon a dragon
+lore:призыв дракона
 lore-color-base:Orange
 message-vis:{name} призывает дракона.
 message-invis:Вы слышите, как кто-то появляется рядом!
@@ -1188,7 +1187,7 @@ msgt:SUM_HI_DEMON
 hit:100
 effect:SUMMON:HI_DEMON
 dice:8
-lore:summon greater demons
+lore:призыв высших демонов
 lore-color-base:Light Red
 message-vis:{name} призывает высших демонов.
 message-invis:Вы слышите, как поблизости появляются злые существа!
@@ -1198,7 +1197,7 @@ msgt:SUM_HI_UNDEAD
 hit:100
 effect:SUMMON:HI_UNDEAD
 dice:8
-lore:summon greater undead
+lore:призыв высшей нежити
 lore-color-base:Light Red
 message-vis:{name} призывает порождения тьмы.
 message-invis:Вы слышите, как поблизости появляются жуткие существа!
@@ -1208,7 +1207,7 @@ msgt:SUM_HI_DRAGON
 hit:100
 effect:SUMMON:HI_DRAGON
 dice:8
-lore:summon ancient dragons
+lore:призыв древних драконов
 lore-color-base:Light Red
 message-vis:{name} призывает древних драконов.
 message-invis:Вы слышите, как поблизости появляются могущественные существа!
@@ -1218,7 +1217,7 @@ msgt:SUM_WRAITH
 hit:100
 effect:SUMMON:WRAITH
 dice:8
-lore:summon ringwraiths
+lore:призыв кольценосцев
 lore-color-base:Light Red
 message-vis:{name} призывает кольценосцев.
 message-invis:Вы слышите, как поблизости появляются могущественные существа!
@@ -1228,7 +1227,7 @@ msgt:SUM_UNIQUE
 hit:100
 effect:SUMMON:UNIQUE
 dice:8
-lore:summon uniques
+lore:призыв единоверцев
 lore-color-base:Light Red
 message-vis:{name} призывает своих слуг.
 message-invis:Вы слышите, как поблизости появляются могущественные существа!

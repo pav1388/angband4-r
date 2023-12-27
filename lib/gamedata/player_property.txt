@@ -153,7 +153,7 @@ bindui:resist_ui_compact_0<NETHER>:0:1
 # name:Evil
 name:Зло
 # desc:You resist nether, but are hurt by holy attacks.
-desc:Вы сопротивляетесь преисподней, но получаете урон от святых атак.
+desc:Вы сопротивляетесь подземному мраку, но получаете урон от святых атак.
 
 type:player
 code:COMBAT_REGEN

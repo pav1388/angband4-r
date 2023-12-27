@@ -223,7 +223,7 @@ flags:NONSTACKING
 name:CONFUSED
 desc:confusion
 #grade:o:10000:Confused:Вы сбиты с толку!
-grade:o:10000:Конфуз:Вы сбиты с толку!
+grade:o:10000:Растерян:Вы сбиты с толку!
 on-end:Вы больше не растеряны.
 on-increase:Вы запутались еще больше!
 on-decrease:Вы чувствуете себя менее растерянным.

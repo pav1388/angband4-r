@@ -39,151 +39,151 @@
 # included  because of a monster base and will be sorted by level and then
 # by name.
 
-monster-category:Uniques
+monster-category:Уникальные
 mcat-include-flag:UNIQUE
 
-monster-category:Ainur
+monster-category:Айнур
 mcat-include-base:ainu
 
-monster-category:Ants
+monster-category:Муравьи
 mcat-include-base:ant
 
-monster-category:Bats
+monster-category:Летучие мыши
 mcat-include-base:bat
 
-monster-category:Birds
+monster-category:Птицы
 mcat-include-base:bird
 
-monster-category:Canines
+monster-category:Собачьи
 mcat-include-base:canine
 
-monster-category:Centipede
+monster-category:Сороконожки
 mcat-include-base:centipede
 
-monster-category:Demons
+monster-category:Демоны
 mcat-include-base:minor demon
 mcat-include-base:major demon
 
-monster-category:Dragons
+monster-category:Драконы
 mcat-include-base:dragon
 mcat-include-base:ancient dragon
 
-monster-category:Elementals/Vortices
+monster-category:Элементали/Вихри
 mcat-include-base:vortex
 mcat-include-base:elemental
 
-monster-category:Eyes/Beholders
+monster-category:Глаза/Многоглазы
 mcat-include-base:eye
 
-monster-category:Felines
+monster-category:Кощачьи
 mcat-include-base:feline
 
-monster-category:Ghosts
+monster-category:Призраки
 mcat-include-base:ghost
 
-monster-category:Giants/Ogres
+monster-category:Гиганты/Огры
 mcat-include-base:ogre
 mcat-include-base:giant
 
-monster-category:Golems
+monster-category:Големы
 mcat-include-base:golem
 
-monster-category:Harpies/Hybrids
+monster-category:Гарпии/Гибриды
 mcat-include-base:hybrid
 
-monster-category:Hominids (Elves, Dwarves)
+monster-category:Гоминиды(Эльфы, Дварфы)
 mcat-include-base:humanoid
 
-monster-category:Hydras
+monster-category:Гидры
 mcat-include-base:hydra
 
-monster-category:Icky Things
+monster-category:Мерзкие Нечто
 mcat-include-base:icky thing
 
-monster-category:Insects
+monster-category:Насекомые
 mcat-include-base:dragon fly
 mcat-include-base:insect
 
-monster-category:Jellies
+monster-category:Желе
 mcat-include-base:jelly
 
-monster-category:Killer Beetles
+monster-category:Жуки-убийцы
 mcat-include-base:killer beetle
 
-monster-category:Kobolds
+monster-category:Кобольды
 mcat-include-base:kobold
 
-monster-category:Lichs
+monster-category:Личи
 mcat-include-base:lich
 
-monster-category:Men
+monster-category:Люди
 mcat-include-base:townsfolk
 mcat-include-base:person
 
-monster-category:Mimics
+monster-category:Мимики
 mcat-include-base:lurker
 mcat-include-base:creeping coins
 mcat-include-base:mimic
 
-monster-category:Molds
+monster-category:Плесени
 mcat-include-base:mold
 
-monster-category:Mushroom Patches
+monster-category:Грибницы
 mcat-include-base:mushroom
 
-monster-category:Nagas
+monster-category:Наги
 mcat-include-base:naga
 
-monster-category:Orcs
+monster-category:Орки
 mcat-include-base:orc
 
-monster-category:Quadrupeds
+monster-category:Четвероногие
 mcat-include-base:quadruped
 
-monster-category:Quylthulgs
+monster-category:Куилтулги
 mcat-include-base:quylthulg
 
-monster-category:Reptiles/Amphibians
+monster-category:Рептилии/Амфибии
 mcat-include-base:reptile
 
-monster-category:Rodents
+monster-category:Грызуны
 mcat-include-base:rodent
 
-monster-category:Scorpions/Spiders
+monster-category:Скорпионы/Пауки
 mcat-include-base:spider
 
-monster-category:Skeletons/Drujs
+monster-category:Скелеты/Друзи
 mcat-include-base:skeleton
 
-monster-category:Snakes
+monster-category:Змеи
 mcat-include-base:snake
 
-monster-category:Trees/Ents
+monster-category:Деревья/Энты
 mcat-include-base:tree
 
-monster-category:Trolls
+monster-category:Тролли
 mcat-include-base:troll
 
-monster-category:Vampires
+monster-category:Вампиры
 mcat-include-base:vampire
 
-monster-category:Wights/Wraiths
+monster-category:Зловещие Духи
 mcat-include-base:wraith
 
-monster-category:Worms/Worm Masses
+monster-category:Черви/Червивые Массы
 mcat-include-base:worm
 
-monster-category:Xorns/Xarens
+monster-category:Ксорны/Ксарены
 mcat-include-base:xorn
 
-monster-category:Yeeks
+monster-category:Йики
 mcat-include-base:yeek
 
-monster-category:Yeti
+monster-category:Йети
 mcat-include-base:yeti
 
-monster-category:Zephyr Hounds
+monster-category:Гончие Зефира
 mcat-include-base:zephyr hound
 
-monster-category:Zombies
+monster-category:Зомби
 mcat-include-base:zombie
