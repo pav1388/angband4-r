@@ -120,6 +120,10 @@ bool option_set(const char *name, int val)
 		player->opts.opt[opt] = val ? true : false;
 		if (val && option_is_cheat(opt))
 			player->opts.opt[opt + 1] = true;
+		if (val && (opt == OPT_solid_walls))
+			player->opts.opt[OPT_hybrid_walls] = false;
+		if (val && (opt == OPT_hybrid_walls))
+			player->opts.opt[OPT_solid_walls] = false;
 
 		return true;
 	}
