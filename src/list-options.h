@@ -87,10 +87,10 @@ CHEAT, false)
 OP(score_room,            "Счёт: заглянуть в создание подземелий",
 SCORE, false)
 // OP(cheat_xtra,            "Cheat: Peek into something else",
-OP(cheat_xtra,            "Чит: заглянуть во что-то еще",
+OP(cheat_xtra,            "Чит: заглянуть во что-то ещё",
 CHEAT, false)
 // OP(score_xtra,            "Score: Peek into something else",
-OP(score_xtra,            "Счёт: заглянуть во что-то еще",
+OP(score_xtra,            "Счёт: заглянуть во что-то ещё",
 SCORE, false)
 // OP(cheat_live,            "Cheat: Allow player to avoid death",
 OP(cheat_live,            "Чит: Разрешить игроку избежать смерти",
@@ -114,7 +114,7 @@ BIRTH, false)
 OP(birth_no_artifacts,    "Ограничить создание артефактов",
 BIRTH, false)
 // OP(birth_stacking,        "Stack objects on the floor",
-OP(birth_stacking,        "Складывать предметы на пол",
+OP(birth_stacking,        "Складывать предметы(&) на пол",
 BIRTH, true)
 // OP(birth_lose_arts,       "Lose artifacts when leaving level",
 OP(birth_lose_arts,       "Потеря артефактов при уходе с этажа",
