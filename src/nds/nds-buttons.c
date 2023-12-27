@@ -21,8 +21,10 @@
 #define NDS_BTN_FILE_MAX_LINE 512
 
 #define NDS_CPAD_MAX 154
-#define NDS_CPAD_DEADZONE 20
-#define NDS_CPAD_MIN_COOLDOWN 5
+// #define NDS_CPAD_DEADZONE 20
+#define NDS_CPAD_DEADZONE 45
+// #define NDS_CPAD_MIN_COOLDOWN 5
+#define NDS_CPAD_MIN_COOLDOWN 20
 
 typedef struct {
 	char input;
