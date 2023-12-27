@@ -147,7 +147,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			// case 0x04: choice = "something"; break;
 			case 0x04: choice = "что-то"; break;
 			// case 0x05: choice = "something"; break;
-			case 0x05: choice = "что-то"; break;
+			case 0x05: choice = "чему-то"; break;
 			// case 0x06: choice = "something's"; break;
 			case 0x06: choice = "чьё-то"; break;
 			// case 0x07: choice = "itself"; break;
@@ -165,7 +165,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			// case 0x14: choice = "someone"; break;
 			case 0x14: choice = "кто-то"; break;
 			// case 0x15: choice = "someone"; break;
-			case 0x15: choice = "кто-то"; break;
+			case 0x15: choice = "кому-то"; break;
 			// case 0x16: choice = "someone's"; break;
 			case 0x16: choice = "чей-то"; break;
 			// case 0x17: choice = "himself"; break;
@@ -183,7 +183,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			// case 0x24: choice = "someone"; break;
 			case 0x24: choice = "кто-то"; break;
 			// case 0x25: choice = "someone"; break;
-			case 0x25: choice = "кто-то"; break;
+			case 0x25: choice = "кому-то"; break;
 			// case 0x26: choice = "someone's"; break;
 			case 0x26: choice = "чей-то"; break;
 			// case 0x27: choice = "herself"; break;
