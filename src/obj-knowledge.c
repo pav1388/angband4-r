@@ -64,9 +64,12 @@
 static size_t rune_max;
 static struct rune *rune_list;
 static const char *c_rune[] = {
-	"enchantment to armor",
-	"enchantment to hit",
-	"enchantment to damage"
+	// "enchantment to armor",
+	"зачарование брони",
+	// "enchantment to hit",
+	"зачарование на попадание",
+	// "enchantment to damage"
+	"зачарование для урона"
 };
 
 /**
