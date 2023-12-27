@@ -555,48 +555,60 @@ void monster_flags_known(const struct monster_race *race,
  *
  * \param awareness is the inactivity counter of the race (monster_race.sleep).
  */
-static const char *lore_describe_awareness(int16_t awareness)
+static const char *lore_describe_awareness(int16_t awareness, monster_sex_t sex)
 {
 	/* Value table ordered descending, for priority. Terminator is
 	 * {SHRT_MAX, NULL}. */
 	static const struct lore_awareness {
 		int16_t threshold;
-		const char *description;
+		const char *description_it;
+		const char *description_he;
+		const char *description_she;
 	} lore_awareness_description[] = {
 		// {200,	"prefers to ignore"},
-		{200,	"предпочитает игнорировать"},
+		{200,	"предпочитает игнорировать незваных гостей", "предпочитает игнорировать незваных гостей", "предпочитает игнорировать незваных гостей"},
 		// {95,	"pays very little attention to"},
-		{95,	"уделяет очень мало внимания"},
+		{95,	"уделяет очень мало внимания незваным гостям", "уделяет очень мало внимания незваным гостям", "уделяет очень мало внимания незваным гостям"},
 		// {75,	"pays little attention to"},
-		{75,	"уделяет мало внимания"},
+		{75,	"уделяет мало внимания незваным гостям", "уделяет мало внимания незваным гостям", "уделяет мало внимания незваным гостям"},
 		// {45,	"tends to overlook"},
-		{45,	"склонен не замечать"},
+		{45,	"склонно не замечать незваных гостей", "склонен не замечать незваных гостей", "склонна не замечать незваных гостей"},
 		// {25,	"takes quite a while to see"},
-		{25,	"требуется немало времени, чтобы увидеть"},
+		{25,	"требует немало времени, чтобы увидеть незваных гостей", "требует немало времени, чтобы увидеть незваных гостей", "требует немало времени, чтобы увидеть незваных гостей"},
 		// {10,	"takes a while to see"},
-		{10,	"требуется время, чтобы увидеть"},
+		{10,	"требует время, чтобы увидеть незваных гостей", "требует время, чтобы увидеть незваных гостей", "требует время, чтобы увидеть незваных гостей"},
 		// {5,		"is fairly observant of"},
-		{5,		"достаточно наблюдателен в отношении"},
+		{5,		"достаточно наблюдательно в отношении незваных гостей", "достаточно наблюдателен в отношении незваных гостей", "достаточно наблюдательна в отношении незваных гостей"},
 		// {3,		"is observant of"},
-		{3,		"внимателен к"},
+		{3,		"внимательно к незваным гостям", "внимателен к незваным гостям", "внимательна к незваным гостям"},
 		// {1,		"is very observant of"},
-		{1,		"очень внимателен к"},
+		{1,		"очень внимательно к незваным гостям", "очень внимателен к незваным гостям", "очень внимательна к незваным гостям"},
 		// {0,		"is vigilant for"},
-		{0,		"бдительно следит за"},
-		{SHRT_MAX,	NULL},
+		{0,		"бдительно следит за незваными гостями", "бдительно следит за незваными гостями", "бдительно следит за незваными гостями"},
+		{SHRT_MAX,	NULL, NULL, NULL},
 	};
 	const struct lore_awareness *current = lore_awareness_description;
 
-	while (current->threshold != SHRT_MAX && current->description != NULL) {
+	while (current->threshold != SHRT_MAX && current->description_it != NULL) {
 		if (awareness > current->threshold)
-			return current->description;
+			// return current->description;
+			switch (sex) {
+				case 0:
+					return current->description_it;
+				case 1:
+					return current->description_he;
+				case 2:
+					return current->description_she;
+				default:
+					return "всегда бдительно следит за незваными гостями";
+			}
 
 		current++;
 	}
 
 	/* Values zero and less are the most vigilant */
 	// return "is ever vigilant for";
-	return "всегда бдительно следит за";
+	return "всегда бдительно следит за незваными гостями";
 }
 
 /**
@@ -772,7 +784,7 @@ static const char *lore_pronoun_possessive(monster_sex_t sex, bool title_case)
 {
 	static const char *lore_pronouns[MON_SEX_MAX][2] = {
 		// {"its", "Its"},
-		{"этого", "Этого"},
+		{"это", "Это"},
 		// {"his", "His"},
 		{"его", "Его"},
 		// {"her", "Her"},
@@ -960,13 +972,17 @@ void lore_append_kills(textblock *tb, const struct monster_race *race,
 		if (lore->pkills) {
 			/* Killed some this life */
 			// textblock_append(tb, "You have killed at least %d of these creatures.  ", lore->pkills);
-			textblock_append(tb, "Вы убили не менее %d подобн%s существ%s.  ", lore->pkills, 
-						PLURAL_RU_OGO_bIH(lore->pkills), PLURAL_RU_A_(lore->pkills));
+			textblock_append(tb, "Вы убили не менее %d-%s подобн%s существ%s.  ", lore->pkills,
+						PLURAL_RU_GO_H_I(lore->pkills),
+						PLURAL_RU_OGO_bIH_bIH(lore->pkills), 
+						PLURAL_RU_A__(lore->pkills));
 		} else if (lore->tkills) {
 			/* Killed some last life */
 			// textblock_append(tb, "Your ancestors have killed at least %d of these creatures.  ", lore->tkills);
-			textblock_append(tb, "Ваши предки убили не менее %d подобн%s существ%s.  ", lore->tkills, 
-						PLURAL_RU_OGO_bIH(lore->pkills), PLURAL_RU_A_(lore->pkills));
+			textblock_append(tb, "Ваши предки убили не менее %d-%s подобн%s существ%s.  ", lore->tkills, 
+						PLURAL_RU_GO_H_I(lore->pkills),
+						PLURAL_RU_OGO_bIH_bIH(lore->pkills), 
+						PLURAL_RU_A__(lore->pkills));
 		} else {
 			/* Killed none */
 			// textblock_append(tb, "No battles to the death are recalled.  ");
@@ -1013,7 +1029,7 @@ void lore_append_movement(textblock *tb, const struct monster_race *race,
 	assert(tb && race && lore);
 
 	// textblock_append(tb, "This");
-	textblock_append(tb, "Это");
+	textblock_append(tb, "Этот");
 
 	/* Get adjectives */
 	create_mon_flag_mask(flags, RFT_RACE_A, RFT_MAX);
@@ -1030,7 +1046,7 @@ void lore_append_movement(textblock *tb, const struct monster_race *race,
 		textblock_append_c(tb, COLOUR_L_BLUE, " %s", describe_race_flag(f));
 	} else {
 		// textblock_append_c(tb, COLOUR_L_BLUE, " creature");
-		textblock_append_c(tb, COLOUR_L_BLUE, " существо");
+		textblock_append_c(tb, COLOUR_L_BLUE, " обитатель");
 	}
 
 	/* Describe location */
@@ -1143,7 +1159,7 @@ void lore_append_toughness(textblock *tb, const struct monster_race *race,
 
 		/* Armor */
 		// textblock_append(tb, ", and an armor rating of ");
-		textblock_append(tb, ", и показатель брони ");
+		textblock_append(tb, " и показатель брони ");
 		// textblock_append_c(tb, COLOUR_L_BLUE, "%d", race->ac);
 		textblock_append_c(tb, COLOUR_L_RED, "%d", race->ac);
 		textblock_append(tb, ".  ");
@@ -1160,7 +1176,8 @@ void lore_append_toughness(textblock *tb, const struct monster_race *race,
 			// textblock_append(tb, " ");
 		textblock_append_c(tb, COLOUR_L_BLUE, " %d%%", percent);
 		// textblock_append(tb, "%% chance to hit such a creature in melee (if you can see it).  ");
-		textblock_append(tb, " шанс поразить существо в ближнем бою (если вы его видите).  ");
+		textblock_append(tb, " шанс поразить существо в ближнем бою (если вы %s видите).  ", 
+							lore_pronoun_possessive(msex, false));
 	}
 }
 
@@ -1308,17 +1325,16 @@ void lore_append_drop(textblock *tb, const struct monster_race *race,
 			} else if (only_item && !only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "object%s", PLURAL(n));
-					"предмет%s", ((n) == 1 ? "" : "а"));
+					"предмет%s", PLURAL_RU__A_OV(n));
 			} else if (!only_item && only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "treasure%s", PLURAL(n));
-					"сокровищ%s", ((n) == 1 ? "е" : "а"));
+					"сокровищ%s", PLURAL_RU_E_A_(n));
 			} else if (!only_item && !only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "object%s or treasure%s",
-					"предмет%s или сокровищ%s", ((n) == 1 ? "" : "а"),
+					"предмет%s или сокровищ%s", PLURAL_RU__A_OV(n), PLURAL_RU_E_A_(n));
 					// PLURAL(n), PLURAL(n));
-					((n) == 1 ? "е" : "а"));
 			}
 		}
 
@@ -1370,7 +1386,8 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 						   bitflag known_flags[RF_SIZE])
 {
 	int flag;
-	char start[40];
+	// char start[40];
+	char start[100];
 	const char *initial_pronoun;
 	bool prev = false;
 	bitflag current_flags[RF_SIZE], test_flags[RF_SIZE];
@@ -1415,7 +1432,7 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 	/* Describe light */
 	if (race->light > 1) {
 		// textblock_append(tb, "%s illuminates %s surroundings.  ",
-		textblock_append(tb, "%s освещает окрестности.  ",
+		textblock_append(tb, "%s освещает свои окрестности.  ",
 						 // initial_pronoun, lore_pronoun_possessive(msex, false));
 						 initial_pronoun);
 	} else if (race->light == 1) {
@@ -1423,18 +1440,19 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 		textblock_append(tb, "%s светится.  ", initial_pronoun);
 	} else if (race->light == -1) {
 		// textblock_append(tb, "%s is darkened.  ", initial_pronoun);
-		textblock_append(tb, "%s затемняется.  ", initial_pronoun);
+		textblock_append(tb, "%s окутано тьмой.  ", initial_pronoun);
 	} else if (race->light < -1) {
 		// textblock_append(tb, "%s shrouds %s surroundings in darkness.  ",
-		textblock_append(tb, "%s окутывает %s окрестности тьмой.  ",
-						 initial_pronoun, lore_pronoun_possessive(msex, false));
+		textblock_append(tb, "%s окутывает свои окрестности тьмой.  ",
+						 // initial_pronoun, lore_pronoun_possessive(msex, false));
+						 initial_pronoun);
 	}
 
 	/* Collect susceptibilities */
 	create_mon_flag_mask(current_flags, RFT_VULN, RFT_VULN_I, RFT_MAX);
 	rf_inter(current_flags, known_flags);
 	// strnfmt(start, sizeof(start), "%s is hurt by ", initial_pronoun);
-	strnfmt(start, sizeof(start), "%s страдает от ", initial_pronoun);
+	strnfmt(start, sizeof(start), "%s уязвимо к ", initial_pronoun);
 	// lore_append_clause(tb, current_flags, COLOUR_VIOLET, start, "and", "");
 	lore_append_clause(tb, current_flags, COLOUR_VIOLET, start, "и", "");
 	if (!rf_is_empty(current_flags)) {
@@ -1513,10 +1531,10 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 	rf_inter(current_flags, known_flags);
 	if (prev) {
 		// my_strcpy(start, ", and cannot be ", sizeof(start));
-		my_strcpy(start, ", и не может быть ", sizeof(start));
+		my_strcpy(start, ", и не подвергается ", sizeof(start));
 	} else {
 		// strnfmt(start, sizeof(start), "%s cannot be ", initial_pronoun);
-		strnfmt(start, sizeof(start), "%s не может быть ", initial_pronoun);
+		strnfmt(start, sizeof(start), "%s не подвергается ", initial_pronoun);
 	}
 	// lore_append_clause(tb, current_flags, COLOUR_L_UMBER, start, "or", "");
 	lore_append_clause(tb, current_flags, COLOUR_L_UMBER, start, "или", "");
@@ -1551,14 +1569,15 @@ void lore_append_awareness(textblock *tb, const struct monster_race *race,
 	/* Do we know how aware it is? */
 	if (lore->sleep_known)
 	{
-		const char *aware = lore_describe_awareness(race->sleep);
+		// const char *aware = lore_describe_awareness(race->sleep);
+		const char *aware = lore_describe_awareness(race->sleep, msex);
 		// textblock_append(tb, "%s %s intruders, which %s may notice from ",
-		textblock_append(tb, "%s %s незваных гостей, которых %s можно заметить на ",
-						 lore_pronoun_nominative(msex, true), aware,
-						 lore_pronoun_nominative(msex, false));
+		textblock_append(tb, "%s %s, которых может обнаружить в ",
+						 lore_pronoun_nominative(msex, true), aware);
+						 // lore_pronoun_nominative(msex, false)
 		textblock_append_c(tb, COLOUR_L_BLUE, "%d", 10 * race->hearing);
 		// textblock_append(tb, " feet.  ");
-		textblock_append(tb, " метрах.  ");
+		textblock_append(tb, " метр%s.  ", PLURAL_RU_E_AH_AH(10 * race->hearing));
 	}
 }
 
@@ -1590,7 +1609,7 @@ void lore_append_friends(textblock *tb, const struct monster_race *race,
 						 lore_pronoun_nominative(msex, true));
 		if (rf_has(known_flags, RF_GROUP_AI))
 			// textblock_append(tb, " and hunts in packs");
-			textblock_append(tb, " и охотится стаями.");
+			textblock_append(tb, " и охотится в группе");
 		textblock_append(tb, ".  ");
 	}
 }
@@ -1653,10 +1672,10 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 			textblock_append(tb, ", и может  ");
 		} else {
 			// textblock_append(tb, "%s may ", initial_pronoun);
-			textblock_append(tb, "%s может  ", initial_pronoun);
+			textblock_append(tb, "%s может ", initial_pronoun);
 		}
 		// textblock_append_c(tb, COLOUR_L_RED, "breathe ");
-		textblock_append_c(tb, COLOUR_L_RED, "дышать ");
+		textblock_append_c(tb, COLOUR_L_RED, "извергать ");
 		// lore_append_spell_clause(tb, current_flags, know_hp, race, "or", "");
 		lore_append_spell_clause(tb, current_flags, know_hp, race, "или", "");
 		breath = true;
@@ -1670,8 +1689,8 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 			textblock_append_c(tb, COLOUR_L_GREEN, "1");
 			// textblock_append(tb, " time in ");
 			textblock_append(tb, " раз в ");
-			textblock_append_c(tb, COLOUR_L_GREEN, "%d",
-							   100 / race->freq_innate);
+			textblock_append_c(tb, COLOUR_L_GREEN, "%d", 100 / race->freq_innate);
+			textblock_append(tb, " ход%s", PLURAL_RU__A_OV(100 / race->freq_innate));
 		} else if (lore->cast_innate) {
 			/* Guess at the frequency */
 			int approx_frequency = MAX(((race->freq_innate + 9) / 10) * 10, 1);
@@ -1698,17 +1717,18 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 
 		/* Verb Phrase */
 		// textblock_append_c(tb, COLOUR_L_RED, "cast spells");
-		textblock_append_c(tb, COLOUR_L_RED, "применять заклинания");
+		textblock_append_c(tb, COLOUR_L_RED, "использовать заклинания");
 
 		/* Adverb */
 		if (rf_has(known_flags, RF_SMART))
 			// textblock_append(tb, " intelligently");
-			textblock_append(tb, " разумно ");
+			textblock_append(tb, " с умом");
 
 		/* List */
 		// textblock_append(tb, " which ");
-		textblock_append(tb, " которые ");
-		lore_append_spell_clause(tb, current_flags, know_hp, race, "or", "");
+		textblock_append(tb, ", такие как ");
+		// lore_append_spell_clause(tb, current_flags, know_hp, race, "or", "");
+		lore_append_spell_clause(tb, current_flags, know_hp, race, "или", "");
 
 		/* End the sentence about innate/other spells */
 		if (race->freq_spell) {
@@ -1718,8 +1738,8 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 				textblock_append_c(tb, COLOUR_L_GREEN, "1");
 				// textblock_append(tb, " time in ");
 				textblock_append(tb, " раз в ");
-				textblock_append_c(tb, COLOUR_L_GREEN, "%d",
-								   100 / race->freq_spell);
+				textblock_append_c(tb, COLOUR_L_GREEN, "%d", 100 / race->freq_spell);
+				textblock_append(tb, " ход%s", PLURAL_RU__A_OV(100 / race->freq_spell));
 			} else if (lore->cast_spell) {
 				/* Guess at the frequency */
 				int approx_frequency = MAX(((race->freq_spell + 9) / 10) * 10,
@@ -1729,8 +1749,8 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 				textblock_append_c(tb, COLOUR_L_GREEN, "1");
 				// textblock_append(tb, " time in ");
 				textblock_append(tb, " раза в ");
-				textblock_append_c(tb, COLOUR_L_GREEN, "%d",
-								   100 / approx_frequency);
+				textblock_append_c(tb, COLOUR_L_GREEN, "%d ход%s",
+								   100 / approx_frequency, PLURAL_RU__A_OV(100 / approx_frequency));
 			}
 		}
 
@@ -1790,9 +1810,10 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	/* Describe the lack of knowledge */
 	if (known_attacks == 0) {
 		// textblock_append_c(tb, COLOUR_ORANGE, "Nothing is known about %s attack.  ",
-		textblock_append_c(tb, COLOUR_ORANGE, "Об атаке ничего не известно.  "
+		textblock_append_c(tb, COLOUR_ORANGE, "Об%s%s атаке ничего не известно.  ",
 						 // lore_pronoun_possessive(msex, false));
-						 );
+						 msex ? " " : "",
+						 msex ? lore_pronoun_possessive(msex, false) : "");
 		return;
 	}
 
@@ -1830,7 +1851,7 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 			int index = blow_index(race->blow[i].effect->name);
 			/* Describe the attack type */
 			// textblock_append(tb, " to ");
-			textblock_append(tb, ", чтобы ");
+			textblock_append(tb, ", для ");
 			textblock_append_c(tb, blow_color(player, index), "%s", effect_str);
 
 			textblock_append(tb, " (");
@@ -1870,9 +1891,10 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	}
 	textblock_append_c(tb, COLOUR_L_GREEN, " %d", total_centidamage/100);
 	// textblock_append(tb, " damage on each of %s turns.  ",
-	textblock_append(tb, " урона за каждый ход.  "
+	textblock_append(tb, " урона за каждый из%s%s ходов.  ",
 					 // lore_pronoun_possessive(msex, false));
-					 );
+					 msex ? " " : "",
+					 msex ? lore_pronoun_possessive(msex, false) : "");
 }
 
 /**
@@ -1953,7 +1975,8 @@ static void write_lore_entries(ang_file *fff)
 		if (lore->drops) {
 			struct monster_drop *drop = lore->drops;
 			struct object_kind *kind = drop->kind;
-			char name[120] = "";
+			// char name[120] = "";
+			char name[240] = "";
 
 			while (drop) {
 				if (kind) {
@@ -2024,7 +2047,8 @@ static void write_lore_entries(ang_file *fff)
 		if (lore->mimic_kinds) {
 			struct monster_mimic *m = lore->mimic_kinds;
 			struct object_kind *kind = m->kind;
-			char name[120] = "";
+			// char name[120] = "";
+			char name[240] = "";
 
 			while (m) {
 				object_short_name(name, sizeof name, kind->name);
