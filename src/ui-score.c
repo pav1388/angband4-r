@@ -40,8 +40,10 @@ static void display_score_page(const struct high_score scores[], int start,
 		const char *user, *gold, *when, *aged;
 		struct player_class *c;
 		struct player_race *r;
-		char out_val[160];
-		char tmp_val[160];
+		// char out_val[160];
+		char out_val[210];
+		// char tmp_val[160];
+		char tmp_val[210];
 
 		/* Hack -- indicate death in yellow */
 		attr = (start == highlight) ? COLOUR_L_GREEN : COLOUR_WHITE;
@@ -95,7 +97,8 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)
-			my_strcat(out_val, format(" (Max %d)", mdun), sizeof(out_val));
+			// my_strcat(out_val, format(" (Max %d)", mdun), sizeof(out_val));
+			my_strcat(out_val, format(" (Макс %d)", mdun), sizeof(out_val));
 
 		/* Dump the info */
 		c_put_str(attr, out_val, n * 4 + 3, 15);

@@ -18,7 +18,7 @@
  *    and not for profit purposes provided that this copyright and statement
  *    are included in all such copies.  Other copyrights may also apply.
  */
-
+ 
 #ifdef __3DS__
 /* We can't include 3ds.h because utf32_to_utf8 conflicts */
 #include <3ds/types.h>
@@ -54,7 +54,7 @@
 #ifndef __3DS__
 #define hidScanInput scanKeys
 #endif
-#define DEBUG_MEMORY_USAGE // DDDEL
+
 #ifdef DEBUG_MEMORY_USAGE
 
 #include <malloc.h>
