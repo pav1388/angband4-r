@@ -1249,7 +1249,7 @@ void do_cmd_accept_character(struct command *cmd)
 	message_add(" ", MSG_GENERIC);
 	message_add("  ", MSG_GENERIC);
 	// message_add("====================", MSG_GENERIC);
-	message_add("========================================", MSG_GENERIC);
+	message_add("============================================================", MSG_GENERIC);
 	message_add("  ", MSG_GENERIC);
 	message_add(" ", MSG_GENERIC);
 
