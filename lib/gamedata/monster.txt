@@ -5312,8 +5312,9 @@ blow:CLAW:HURT:1d10
 blow:BITE:HURT:2d8
 desc:A tall shaggy, furry humanoid, it could call the yeti brother.
 
-name:werewolf
-plural:werewolves
+# name:werewolf
+name:оборотень
+plural:оборотни
 base:canine
 color:D
 speed:110
@@ -5328,9 +5329,10 @@ experience:150
 blow:CLAW:HURT:2d6
 blow:CLAW:HURT:2d6
 blow:BITE:HURT:2d10
+flags:MALE
 flags:EVIL
 flags:RAND_25 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:It is a huge wolf with eyes that glow with manly intelligence.
+desc:Это огромный волк с глазами, светящимися человеческим разумом.
 
 name:dark dwarven lord
 base:humanoid
@@ -6424,7 +6426,7 @@ message-invis:DARKNESS:Кто-то воет.
 friends:100:2d4:Wolf:servant
 friends:60:2d4:White wolf:servant
 friends:60:2d4:Warg:servant
-friends:60:1d4:Werewolf:servant
+friends:60:1d4:оборотень:servant
 desc:A great wolf-chieftain whose pack is in the service of the Dark Lord, and
 desc: whose howls strike fear into even the boldest heart.
 
@@ -12555,7 +12557,7 @@ spells:BR_NETH | BR_DARK
 spells:S_HOUND
 friends:50:2d4:warg:servant
 friends:50:2d3:hellhound:servant
-friends:100:2d3:werewolf:servant
+friends:100:2d3:оборотень:servant
 desc:A massive wolf, appearing like a mighty shadow.  Its glowing red eyes
 desc: glare malevolently as it defends its evil master's fortress.
 
@@ -14392,7 +14394,7 @@ flags:FORCE_SLEEP
 spell-freq:3
 spells:SCARE
 spells:S_HOUND | S_MONSTERS
-friends:100:3d5:Werewolf:servant
+friends:100:3d5:оборотень:servant
 friends:100:2d4:Wolf Chieftain:servant
 desc:Draugluin provides Sauron with a fearsome personal guard.  He is an
 desc: enormous wolf inhabited with a human spirit.  He is chief of all his kind.

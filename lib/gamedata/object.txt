@@ -3605,7 +3605,8 @@ effect:RANDOM
 dice:5
 effect:TIMED_INC:SCRAMBLE
 dice:20+1d20
-effect:SHAPECHANGE:bat
+# effect:SHAPECHANGE:bat
+effect:SHAPECHANGE:Летучая мышь
 effect:DRAIN_STAT:INT
 effect:DRAIN_STAT:WIS
 effect:TIMED_INC:STONESKIN

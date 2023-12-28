@@ -52,7 +52,7 @@ name:DRAIN_CHARGES
 power:10
 eval:30
 #desc:drain charges
-desc:слива зарядов
+desc:поглощение зарядов
 lore-color-base:Light Red
 lore-color-resist:Light Green
 effect-type:drain

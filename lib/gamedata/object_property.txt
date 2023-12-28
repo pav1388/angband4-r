@@ -32,7 +32,8 @@
 #         to more than one user interface element.
 # desc: an extra piece of descriptive text used in object information
 
-name:strength
+# name:strength
+name:силе
 type:stat
 code:STR
 power:9
@@ -41,7 +42,8 @@ adjective:сильным
 neg-adjective:слабым
 bindui:stat_mod_ui_compact_0<STR>:0
 
-name:intelligence
+# name:intelligence
+name:интелекту
 type:stat
 code:INT
 power:5
@@ -50,7 +52,8 @@ adjective:умным
 neg-adjective:глупым
 bindui:stat_mod_ui_compact_0<INT>:0
 
-name:wisdom
+# name:wisdom
+name:мудрости
 type:stat
 code:WIS
 power:5
@@ -69,7 +72,8 @@ adjective:ловким
 neg-adjective:неуклюжим
 bindui:stat_mod_ui_compact_0<DEX>:0
 
-name:constitution
+# name:constitution
+name:телосложению
 type:stat
 code:CON
 power:12
@@ -78,49 +82,56 @@ adjective:здоровым
 neg-adjective:больным
 bindui:stat_mod_ui_compact_0<CON>:0
 
-name:stealth
+# name:stealth
+name:скрытности
 type:mod
 code:STEALTH
 power:8
 mult:12
 bindui:stealth_ui_compact_0:0
 
-name:searching skill
+# name:searching skill
+name:навыку поиска
 type:mod
 code:SEARCH
 power:2
 mult:5
 bindui:search_ui_compact_0:0
 
-name:infravision
+# name:infravision
+name:инфравидению
 type:mod
 code:INFRA
 power:4
 mult:8
 bindui:infravision_ui_compact_0:0
 
-name:tunneling
+# name:tunneling
+name:копанию
 type:mod
 code:TUNNEL
 power:3
 mult:8
 bindui:tunneling_ui_compact_0:0
 
-name:speed
+# name:speed
+name:скорости
 type:mod
 code:SPEED
 power:20
 mult:6
 bindui:speed_ui_compact_0:0
 
-name:damage reduction
+# name:damage reduction
+name:уменьшению урона
 type:mod
 code:DAM_RED
 power:5
 mult:6
 bindui:damage_reduction_ui_compact_0:0
 
-name:extra blows
+# name:extra blows
+name:дополнительным ударам
 type:mod
 code:BLOWS
 power:0
@@ -140,7 +151,8 @@ type-mult:gloves:3
 type-mult:boots:3
 bindui:blows_ui_compact_0:0
 
-name:shooting speed
+# name:shooting speed
+name:скорости стрельбы
 type:mod
 code:SHOTS
 power:0
@@ -163,7 +175,8 @@ type-mult:gloves:4
 type-mult:boots:4
 bindui:shots_ui_compact_0:0
 
-name:shooting power
+# name:shooting power
+name:силе стрельбы
 type:mod
 code:MIGHT
 power:0
@@ -186,7 +199,8 @@ type-mult:gloves:0
 type-mult:boots:0
 bindui:shooting_power_ui_compact_0:0
 
-name:extra moves
+# name:extra moves
+name:дополнительным ходам
 type:mod
 code:MOVES
 power:0
@@ -209,7 +223,8 @@ type-mult:gloves:0
 type-mult:boots:0
 bindui:movement_speed_ui_compact_0:0
 
-name:light
+# name:light
+name:свету
 type:mod
 code:LIGHT
 power:3
@@ -217,7 +232,8 @@ mult:6
 type-mult:light:3
 bindui:light_ui_compact_0:0
 
-name:sustain strength
+# name:sustain strength
+name:поддержанию силы
 type:flag
 subtype:sustain
 id-type:on effect
@@ -226,7 +242,8 @@ power:9
 msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<STR>:1
 
-name:sustain intelligence
+# name:sustain intelligence
+name:поддержанию интелекта
 type:flag
 subtype:sustain
 id-type:on effect
@@ -235,7 +252,8 @@ power:4
 msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<INT>:1
 
-name:sustain wisdom
+# name:sustain wisdom
+name:поддержанию мудрости
 type:flag
 subtype:sustain
 id-type:on effect
@@ -244,7 +262,8 @@ power:4
 msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<WIS>:1
 
-name:sustain dexterity
+# name:sustain dexterity
+name:поддержанию ловкости
 type:flag
 subtype:sustain
 id-type:on effect
@@ -253,7 +272,8 @@ power:7
 msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<DEX>:1
 
-name:sustain constitution
+# name:sustain constitution
+name:поддержанию телосложения
 type:flag
 subtype:sustain
 id-type:on effect
@@ -262,7 +282,8 @@ power:8
 msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<CON>:1
 
-name:protection from fear
+# name:protection from fear
+name:защите от страха
 type:flag
 code:PROT_FEAR
 subtype:protection
@@ -270,9 +291,10 @@ id-type:on effect
 power:6
 msg:Ваш {name} придаёт вам храбрости.
 bindui:pfear_ui_compact_0:0
-desc:fear
+desc:страха
 
-name:protection from blindness
+# name:protection from blindness
+name:защите от ослепления
 type:flag
 code:PROT_BLIND
 subtype:protection
@@ -280,9 +302,10 @@ id-type:on effect
 power:16
 msg:Ваш {name} помогает успокоить глаза.
 bindui:pblind_ui_compact_0:0
-desc:blindness
+desc:ослепления
 
-name:protection from confusion
+# name:protection from confusion
+name:защите от замешательства
 type:flag
 code:PROT_CONF
 subtype:protection
@@ -290,9 +313,10 @@ id-type:on effect
 power:24
 msg:Ваш {name} проясняет ваши мысли.
 bindui:pconf_ui_compact_0:0
-desc:confusion
+desc:замешательства
 
-name:protection from stunning
+# name:protection from stunning
+name:защите от ошеломления
 type:flag
 code:PROT_STUN
 subtype:protection
@@ -300,9 +324,10 @@ id-type:on effect
 power:12
 msg:Ваш {name} укрепляет вас.
 bindui:pstun_ui_compact_0:0
-desc:stunning
+desc:ошеломления
 
-name:slow digestion
+# name:slow digestion
+name:медленным метаболизмом
 type:flag
 subtype:misc ability
 id-type:timed
@@ -310,9 +335,10 @@ code:SLOW_DIGEST
 power:2
 msg:Ваш {name} замедляет обмен веществ.
 bindui:slow_digestion_ui_compact_0:0
-desc:Slows your metabolism
+desc:Замедляет ваш метаболизм
 
-name:feather falling
+# name:feather falling
+name:мягкое приземление
 type:flag
 subtype:misc ability
 id-type:on effect
@@ -320,9 +346,10 @@ code:FEATHER
 power:1
 msg:Ваш {name} замедляет ваше падение.
 bindui:feather_falling_ui_compact_0:0
-desc:Feather Falling
+desc:Мягкое приземление
 
-name:regeneration
+# name:regeneration
+name:регенерацию
 type:flag
 subtype:misc ability
 id-type:timed
@@ -342,9 +369,10 @@ type-mult:gloves:2
 type-mult:boots:2
 msg:Ваш {имя} способствует ускорению регенерации.
 bindui:regen_ui_compact_0:0
-desc:Speeds regeneration
+desc:Ускоряет регенерацию
 
-name:telepathy
+# name:telepathy
+name:телепатию
 type:flag
 subtype:misc ability
 id-type:on wield
@@ -363,9 +391,10 @@ type-mult:gloves:2
 type-mult:boots:2
 power:35
 bindui:esp_ui_compact_0:0
-desc:Grants telepathy
+desc:Наделяет телепатией
 
-name:see invisible
+# name:see invisible
+name:видеть незримое
 type:flag
 subtype:misc ability
 id-type:on wield
@@ -384,9 +413,10 @@ type-mult:gloves:2
 type-mult:boots:2
 power:6
 bindui:see_invis_ui_compact_0:0
-desc:Grants the ability to see invisible things
+desc:Даёт способность видеть незримое
 
-name:free action
+# name:free action
+name:свободу действия
 type:flag
 subtype:misc ability
 id-type:on effect
@@ -406,9 +436,10 @@ type-mult:gloves:5
 type-mult:boots:2
 msg:Ваш {name} помогает вам передвигаться.
 bindui:free_action_ui_compact_0:0
-desc:Prevents paralysis
+desc:Предотвращает паралич
 
-name:hold life
+# name:hold life
+name:удержание жизни
 type:flag
 subtype:misc ability
 id-type:on effect
@@ -428,9 +459,10 @@ type-mult:gloves:2
 type-mult:boots:2
 msg:Ваш {name} согревает ваш дух.
 bindui:holdlife_ui_compact_0:0
-desc:Sustains your life force
+desc:Поддерживает ваши жизненные силы
 
-name:earthquakes
+# name:earthquakes
+name:землятресения
 type:flag
 subtype:melee
 id-type:on effect
@@ -450,9 +482,10 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 msg:Ваш {name} вызывает землетрясение!
-desc:Sometimes creates earthquakes on impact
+desc:Иногда при ударе создает землетрясения
 
-name:blessed melee
+# name:blessed melee
+name:благословенный ближний бой
 type:flag
 subtype:melee
 id-type:on wield
@@ -473,9 +506,10 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 bindui:bless_ui_compact_0:0
-desc:Blessed by the gods (combat bonuses for holy casters)
+desc:Благословение богов (боевые бонусы для святых заклинателей)
 
-name:burns out
+# name:burns out
+name:сгоранию
 type:flag
 subtype:light
 id-type:on wield
@@ -498,7 +532,8 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 
-name:takes fuel
+# name:takes fuel
+name:даёт топливо
 type:flag
 subtype:light
 id-type:on wield
@@ -521,7 +556,8 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 
-name:no fuel
+# name:no fuel
+name:нет топлива
 type:flag
 subtype:light
 id-type:on wield
@@ -544,7 +580,8 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 
-name:impaired hitpoint recovery
+# name:impaired hitpoint recovery
+name:ухудшает восстановление ОЗ
 type:flag
 subtype:bad
 id-type:timed
@@ -552,9 +589,10 @@ code:IMPAIR_HP
 power:-8
 msg:Вы чувствуете, что ваш {name} замедляет выздоровление.
 bindui:imphp_ui_compact_0:0
-desc:Impairs hitpoint recovery
+desc:Ухудшает восстановление ОЗ
 
-name:impaired mana recovery
+# name:impaired mana recovery
+name:ухудшает восстановление ОМ
 type:flag
 subtype:bad
 id-type:timed
@@ -562,18 +600,20 @@ code:IMPAIR_MANA
 power:-8
 msg:Вы чувствуете, что ваш {name} замедляет восстановление маны.
 bindui:impsp_ui_compact_0:0
-desc:Impairs mana recovery
+desc:Ухудшает восстановление ОМ
 
-name:constant fear
+# name:constant fear
+name:постоянного страха
 type:flag
 subtype:bad
 id-type:on wield
 code:AFRAID
 power:-20
 bindui:fear_ui_compact_0:0
-desc:Makes you afraid of melee, and worse at shooting and casting spells
+desc:Заставляет вас бояться ближнего боя, хуже стрелять и применять заклинания
 
-name:teleportation ban
+# name:teleportation ban
+name:запрета телепортации
 type:flag
 subtype:bad
 id-type:on effect
@@ -581,9 +621,10 @@ code:NO_TELEPORT
 power:-20
 msg:Ваш {name} препятствует телепортации.
 bindui:noteleport_ui_compact_0:0
-desc:Prevents teleportation
+desc:Препятствует телепортации
 
-name:aggravation
+# name:aggravation
+name:усугублению
 type:flag
 subtype:bad
 id-type:timed
@@ -591,9 +632,10 @@ code:AGGRAVATE
 power:-20
 msg:Вы замечаете, что {name} усугубляет обстановку вокруг вас.
 bindui:aggravate_ui_compact_0:0
-desc:Aggravates creatures nearby
+desc:Усугубляет состояние существ поблизости
 
-name:experience drain
+# name:experience drain
+name:истощению опыта
 type:flag
 subtype:bad
 id-type:timed
@@ -601,25 +643,27 @@ code:DRAIN_EXP
 power:-5
 msg:Вы чувствуете, что {name} истощает ваш потенциал.
 bindui:drainxp_ui_compact_0:0
-desc:Drains experience
+desc:Истощение опыта
 
-name:stuck on
+# name:stuck on
+name:застреванию
 type:flag
 subtype:bad
 id-type:on wield
 code:STICKY
 power:-5
 bindui:sticky_ui_compact_0:0
-desc:Can't be removed
+desc:Невозможно достать
 
-name:fragile
+# name:fragile
+name:хрупкости
 type:flag
 subtype:bad
 id-type:on wield
 code:FRAGILE
 power:-1
 bindui:fragile_ui_compact_0:0
-desc:Can be destroyed if you attempt to remove its curses
+desc:Может быть уничтожен, если вы попытаетесь снять с него проклятия
 
 name:intensity 2 light
 type:flag
@@ -714,7 +758,8 @@ type-mult:crown:0
 type-mult:gloves:0
 type-mult:boots:0
 
-name:trap immunity
+# name:trap immunity
+name:защите от ловушек
 type:flag
 subtype:misc ability
 id-type:on effect
@@ -734,156 +779,182 @@ type-mult:gloves:2
 type-mult:boots:2
 msg:Ваш {name} не позволит вам попасть в ловушку.
 bindui:trap_immunity_ui_compact_0:0
-desc:Gives immunity to traps
+desc:Даёт иммунитет к ловушкам
 
-name:throwing
+# name:throwing
+name:бросанию
 type:flag
 subtype:throw
 id-type:on wield
 code:THROWING
 power:4
 
-name:ignore acid
+# name:ignore acid
+name:игнорированию кислоты
 type:ignore
 code:ACID
 power:3
 
-name:ignore electricity
+# name:ignore electricity
+name:игнорированию электричества
 type:ignore
 code:ELEC
 power:1
 
-name:ignore fire
+# name:ignore fire
+name:игнорированию огню
 type:ignore
 code:FIRE
 power:3
 
-name:ignore cold
+# name:ignore cold
+name:игнорированию холода
 type:ignore
 code:COLD
 power:1
 
-name:acid resistance
+# name:acid resistance
+name:сопротивлению кислоте
 type:resistance
 code:ACID
 power:5
 bindui:resist_ui_compact_0<ACID>:0
 
-name:electricity resistance
+# name:electricity resistance
+name:сопротивлению электричеству
 type:resistance
 code:ELEC
 power:6
 bindui:resist_ui_compact_0<ELEC>:0
 
-name:fire resistance
+# name:fire resistance
+name:сопротивлению огню
 type:resistance
 code:FIRE
 power:6
 bindui:resist_ui_compact_0<FIRE>:0
 
-name:cold resistance
+# name:cold resistance
+name:сопротивлению холоду
 type:resistance
 code:COLD
 power:6
 bindui:resist_ui_compact_0<COLD>:0
 
-name:poison resistance
+# name:poison resistance
+name:сопротивлению яду
 type:resistance
 code:POIS
 power:28
 bindui:resist_ui_compact_0<POIS>:0
 
-name:light resistance
+# name:light resistance
+name:сопротивлению свету
 type:resistance
 code:LIGHT
 power:6
 bindui:resist_ui_compact_0<LIGHT>:0
 
-name:dark resistance
+# name:dark resistance
+name:сопротивлению тьме
 type:resistance
 code:DARK
 power:16
 bindui:resist_ui_compact_0<DARK>:0
 
-name:sound resistance
+# name:sound resistance
+name:сопротивлению звуку
 type:resistance
 code:SOUND
 power:14
 bindui:resist_ui_compact_0<SOUND>:0
 
-name:shards resistance
+# name:shards resistance
+name:сопротивлению осколкам
 type:resistance
 code:SHARD
 power:8
 bindui:resist_ui_compact_0<SHARD>:0
 
-name:nexus resistance
+# name:nexus resistance
+name:сопротивлению смещению
 type:resistance
 code:NEXUS
 power:15
 bindui:resist_ui_compact_0<NEXUS>:0
 
-name:nether resistance
+# name:nether resistance
+name:сопротивлению подземному мраку
 type:resistance
 code:NETHER
 power:20
 bindui:resist_ui_compact_0<NETHER>:0
 
-name:chaos resistance
+# name:chaos resistance
+name:сопротивлению хаосу
 type:resistance
 code:CHAOS
 power:20
 bindui:resist_ui_compact_0<CHAOS>:0
 
-name:disenchantment resistance
+# name:disenchantment resistance
+name:сопротивлению развоплощению
 type:resistance
 code:DISEN
 power:20
 bindui:resist_ui_compact_0<DISEN>:0
 
-name:acid vulnerability
+# name:acid vulnerability
+name:уязвимости к кислоте
 type:vulnerability
 code:ACID
 power:-6
 bindui:resist_ui_compact_0<ACID>:0
 
-name:lightning vulnerability
+# name:lightning vulnerability
+name:уязвимости к молниям
 type:vulnerability
 code:ELEC
 power:-6
 bindui:resist_ui_compact_0<ELEC>:0
 
-name:fire vulnerability
+# name:fire vulnerability
+name:уязвимости к огню
 type:vulnerability
 code:FIRE
 power:-6
 bindui:resist_ui_compact_0<FIRE>:0
 
-name:cold vulnerability
+# name:cold vulnerability
+name:уязвимости к холоду
 type:vulnerability
 code:COLD
 power:-6
 bindui:resist_ui_compact_0<COLD>:0
 
-name:acid immunity
+# name:acid immunity
+name:иммунитету к кислоте
 type:immunity
 code:ACID
 power:43
 bindui:resist_ui_compact_0<ACID>:0
 
-name:lightning immunity
+# name:lightning immunity
+name:иммунитету к молниям
 type:immunity
 code:ELEC
 power:41
 bindui:resist_ui_compact_0<ELEC>:0
 
-name:fire immunity
+# name:fire immunity
+name:иммунитету к огню
 type:immunity
 code:FIRE
 power:46
 bindui:resist_ui_compact_0<FIRE>:0
 
-name:cold immunity
+# name:cold immunity
+name:иммунитету к холоду
 type:immunity
 code:COLD
 power:43

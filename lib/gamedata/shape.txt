@@ -60,14 +60,16 @@
 
 name:normal
 
-name:fox
+# name:fox
+name:Лиса
 combat:-3:-3:3
 obj-flags:FEATHER | FREE_ACT
 values:STR[-3] | STEALTH[5] | BLOWS[1] | MOVES[1]
 blow:bite
 blow:claw
 
-name:Pukel-man
+# name:Pukel-man
+name:Пукел-человек
 combat:0:5:20
 skill-save:20
 obj-flags:SUST_STR | SUST_CON | PROT_STUN | REGEN | HOLD_LIFE
@@ -81,7 +83,8 @@ blow:crush
 blow:thump
 blow:strike
 
-name:bear
+# name:bear
+name:Медведь
 combat:15:15:5
 skill-disarm-phys:-5
 skill-disarm-magic:-10
@@ -96,7 +99,8 @@ blow:hit
 blow:swipe
 blow:slash
 
-name:eagle
+# name:eagle
+name:Орёл
 combat:5:0:10
 obj-flags:SUST_WIS | PROT_BLIND | PROT_CONF | PROT_FEAR | SEE_INVIS | FREE_ACT
 obj-flags:TRAP_IMMUNE
@@ -107,7 +111,8 @@ blow:claw
 blow:strike
 blow:tear
 
-name:bat
+# name:bat
+name:Летучая мышь
 combat:0:-10:10
 obj-flags:FEATHER | SEE_INVIS | PROT_BLIND
 values:SPEED[3] | STEALTH[3] | INFRA[5]
@@ -117,7 +122,8 @@ effect-msg:taking bat form
 blow:bite
 blow:scratch
 
-name:warg
+# name:warg
+name:Варг
 combat:5:5:0
 values:BLOWS[2]
 effect:DAMAGE
@@ -132,7 +138,8 @@ blow:bite
 blow:claw
 blow:tear
 
-name:vampire
+# name:vampire
+name:Вампир
 combat:3:3:-5
 obj-flags:SEE_INVIS | HOLD_LIFE
 values:LIGHT[-1] | STEALTH[5] | INFRA[5] | SPEED[5]
@@ -144,7 +151,8 @@ effect:TIMED_INC:ATT_VAMP
 dice:10+1d20
 blow:bite
 
-name:werewolf
+# name:werewolf
+name:Оборотень
 combat:5:5:0
 obj-flags:REGEN
 values:BLOWS[1] | MOVES[1]
