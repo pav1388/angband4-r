@@ -397,7 +397,8 @@ void do_cmd_wiz_acquire(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
 		n = get_quantity((great) ?
-			"How many great objects? " : "How many good objects? ",
+			// "How many great objects? " : "How many good objects? ",
+			"Сколько великих предметов? " : "Сколько хороших предметов? ",
 			40);
 		if (n < 1) return;
 		cmd_set_arg_number(cmd, "quantity", n);
@@ -522,7 +523,8 @@ void do_cmd_wiz_change_item_quantity(struct command *cmd)
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
 		char prompt[80], s[80];
 
-		strnfmt(prompt, sizeof(prompt), "Quantity (1-%d): ", nmax);
+		// strnfmt(prompt, sizeof(prompt), "Quantity (1-%d): ", nmax);
+		strnfmt(prompt, sizeof(prompt), "Количество (1-%d): ", nmax);
 
 		/* Set the default value. */
 		strnfmt(s, sizeof(s), "%d", obj->number);
@@ -595,7 +597,8 @@ void do_cmd_wiz_collect_disconnect_stats(struct command *cmd)
 		/* Set default. */
 		strnfmt(s, sizeof(s), "%d", default_nsim);
 
-		if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		// if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		if (!get_string("Число симуляций: ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &nsim) || nsim < 1) return;
 		cmd_set_arg_number(cmd, "quantity", nsim);
 	}
@@ -603,7 +606,8 @@ void do_cmd_wiz_collect_disconnect_stats(struct command *cmd)
 
 	if (cmd_get_arg_choice(cmd, "choice", &stop_on_disconnect) != CMD_OK) {
 		stop_on_disconnect =
-			get_check("Stop if disconnected level found? ") ? 1 : 0;
+			// get_check("Stop if disconnected level found? ") ? 1 : 0;
+			get_check("Остановить при обнаружении отсоединённого этажа? ") ? 1 : 0;
 		cmd_set_arg_choice(cmd, "choice", stop_on_disconnect);
 	}
 
@@ -632,7 +636,8 @@ void do_cmd_wiz_collect_obj_mon_stats(struct command *cmd)
 		/* Set default. */
 		strnfmt(s, sizeof(s), "%d", default_nsim);
 
-		if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		// if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		if (!get_string("Число симуляций: ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &nsim) || nsim < 1) return;
 		cmd_set_arg_number(cmd, "quantity", nsim);
 	}
@@ -678,7 +683,8 @@ void do_cmd_wiz_collect_pit_stats(struct command *cmd)
 		/* Set default. */
 		strnfmt(s, sizeof(s), "%d", 1000);
 
-		if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		// if (!get_string("Number of simulations: ", s, sizeof(s))) return;
+		if (!get_string("Число симуляций: ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &nsim) || nsim < 1) return;
 		cmd_set_arg_number(cmd, "quantity", nsim);
 	}
@@ -795,7 +801,8 @@ void do_cmd_wiz_create_all_obj_from_tval(struct command *cmd)
 		char s[80] = "";
 
 		strnfmt(prompt, sizeof(prompt),
-			"Create all items of which tval (1-%d)? ", TV_MAX - 1);
+			// "Create all items of which tval (1-%d)? ", TV_MAX - 1);
+			"Создать все предметы из tval (1-%d)? ", TV_MAX - 1);
 		if (!get_string(prompt, s, sizeof(s))) return;
 		if (!get_int_from_string(s, &tval) || tval < 1 ||
 			tval >= TV_MAX) return;
@@ -803,7 +810,8 @@ void do_cmd_wiz_create_all_obj_from_tval(struct command *cmd)
 	}
 
 	if (cmd_get_arg_choice(cmd, "choice", &art) != CMD_OK) {
-		art = get_check("Create instant artifacts? ");
+		// art = get_check("Create instant artifacts? ");
+		art = get_check("Создать мгновенные артефакты? ");
 		cmd_set_arg_choice(cmd, "choice", art);
 	}
 
@@ -833,7 +841,8 @@ void do_cmd_wiz_create_artifact(struct command *cmd)
 		char s[80] = "";
 
 		strnfmt(prompt, sizeof(prompt),
-			"Create which artifact (1-%d)? ", z_info->a_max - 1);
+			// "Create which artifact (1-%d)? ", z_info->a_max - 1);
+			"Какой артефакт создать? (1-%d)? ", z_info->a_max - 1);
 		if (!get_string(prompt, s, sizeof(s))) return;
 		if (!get_int_from_string(s, &ind)) return;
 		cmd_set_arg_number(cmd, "index", ind);
@@ -845,7 +854,8 @@ void do_cmd_wiz_create_artifact(struct command *cmd)
 
 		wiz_drop_object(obj);
 	} else {
-		msg("That's not a valid artifact.");
+		// msg("That's not a valid artifact.");
+		msg("Это недействительный артефакт.");
 	}
 }
 
@@ -864,7 +874,8 @@ void do_cmd_wiz_create_obj(struct command *cmd)
 		char s[80] = "";
 
 		strnfmt(prompt, sizeof(prompt),
-			"Create which object (0-%d)? ", z_info->k_max - 1);
+			// "Create which object (0-%d)? ", z_info->k_max - 1);
+			"Какой объект создать (0-%d)? ", z_info->k_max - 1);
 		if (!get_string(prompt, s, sizeof(s))) return;
 		if (!get_int_from_string(s, &ind)) return;
 		cmd_set_arg_number(cmd, "index", ind);
@@ -876,7 +887,8 @@ void do_cmd_wiz_create_obj(struct command *cmd)
 
 		wiz_drop_object(obj);
 	} else {
-		msg("That's not a valid kind of object.");
+		// msg("That's not a valid kind of object.");
+		msg("Это не подходящий тип объекта.");
 	}
 }
 
@@ -893,7 +905,8 @@ void do_cmd_wiz_create_trap(struct command *cmd)
 	if (cmd_get_arg_number(cmd, "index", &tidx) != CMD_OK) {
 		char s[80] = "";
 
-		if (!get_string("Create which trap? ", s, sizeof(s))) return;
+		// if (!get_string("Create which trap? ", s, sizeof(s))) return;
+		if (!get_string("Какую ловушку создать? ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &tidx)) {
 			const struct trap_kind *trap = lookup_trap(s);
 
@@ -906,11 +919,14 @@ void do_cmd_wiz_create_trap(struct command *cmd)
 			|| square_isplayertrap(cave, player->grid)
 			|| square_iswebbed(cave, player->grid)
 			|| square_object(cave, player->grid)) {
-		msg("You can't place a trap there!");
+		// msg("You can't place a trap there!");
+		msg("Вы не можете установить здесь ловушку!");
 	} else if (player->depth == 0) {
-		msg("You can't place a trap in the town!");
+		// msg("You can't place a trap in the town!");
+		msg("Вы не можете установить ловушку в городе!");
 	} else if (tidx < 1 || tidx >= z_info->trap_max) {
-		msg("Trap not found.");
+		// msg("Trap not found.");
+		msg("Ловушка не найдена.");
 	} else {
 		place_trap(cave, player->grid, tidx, 0);
 		/* Can not repeat since there's now a trap here. */
@@ -973,7 +989,8 @@ void do_cmd_wiz_cure_all(struct command *cmd)
 	player->upkeep->redraw |= PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIP;
 
 	/* Give the player some feedback */
-	msg("You feel *much* better!");
+	// msg("You feel *much* better!");
+	msg("Вы чувствуете себя гораздо лучше!");
 }
 
 
@@ -1210,7 +1227,8 @@ void do_cmd_wiz_edit_player_gold(struct command *cmd)
 	/* Set default value. */
 	strnfmt(s, sizeof(s), "%ld", (long)(player->au));
 
-	if (!get_string("Gold: ", s, sizeof(s)) ||
+	// if (!get_string("Gold: ", s, sizeof(s)) ||
+	if (!get_string("Золото: ", s, sizeof(s)) ||
 			!get_long_from_string(s, &newv)) {
 		/* Set next editing stage to break. */
 		edit_player_state = EDIT_PLAYER_BREAK;
@@ -1287,7 +1305,8 @@ void do_cmd_wiz_edit_player_stat(struct command *cmd)
 
 	if (cmd_get_arg_choice(cmd, "choice", &stat) != CMD_OK) {
 		strnfmt(prompt, sizeof(prompt),
-			"Edit which stat (name or 0-%d): ", STAT_MAX - 1);
+			// "Edit which stat (name or 0-%d): ", STAT_MAX - 1);
+			"Отредактировать показатель (имя или 0-%d): ", STAT_MAX - 1);
 
 		/* Set default value. */
 		strnfmt(s, sizeof(s), "%s", stat_idx_to_name(0));
@@ -1350,7 +1369,8 @@ void do_cmd_wiz_increase_exp(struct command *cmd)
 	int n;
 
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
-		n = get_quantity("Gain how much experience? ", 9999);
+		// n = get_quantity("Gain how much experience? ", 9999);
+		n = get_quantity("Сколько опыта получить? ", 9999);
 		cmd_set_arg_number(cmd, "quantity", n);
 	}
 
@@ -1377,7 +1397,8 @@ void do_cmd_wiz_jump_level(struct command *cmd)
 	if (cmd_get_arg_number(cmd, "level", &level) != CMD_OK) {
 		char prompt[80], s[80];
 
-		strnfmt(prompt, sizeof(prompt), "Jump to level (0-%d): ",
+		// strnfmt(prompt, sizeof(prompt), "Jump to level (0-%d): ",
+		strnfmt(prompt, sizeof(prompt), "Перейти на этаж (0-%d): ",
 			z_info->max_depth - 1);
 
 		/* Set default */
@@ -1400,7 +1421,8 @@ void do_cmd_wiz_jump_level(struct command *cmd)
 		player->noscore |= NOSCORE_JUMPING;
 	}
 
-	msg("You jump to dungeon level %d.", level);
+	// msg("You jump to dungeon level %d.", level);
+	msg("Вы переходите на %d этаж подземелья.", level);
 	dungeon_change_level(player, level);
 
 	/*
@@ -1424,7 +1446,8 @@ void do_cmd_wiz_learn_object_kinds(struct command *cmd)
 	if (cmd_get_arg_number(cmd, "level", &level) != CMD_OK) {
 		char s[80] = "100";
 
-		if (!get_string("Learn object kinds up to level (0-100)? ",
+		// if (!get_string("Learn object kinds up to level (0-100)? ",
+		if (!get_string("Изучить объекты с этажа (0-100)? ",
 			s, sizeof(s))) return;
 		if (!get_int_from_string(s, &level)) return;
 		cmd_set_arg_number(cmd, "level", level);
@@ -1441,7 +1464,8 @@ void do_cmd_wiz_learn_object_kinds(struct command *cmd)
 	}
 
 	update_player_object_knowledge(player);
-	msg("You now know about many items!");
+	// msg("You now know about many items!");
+	msg("Теперь вы знаете о множестве предметов!");
 }
 
 
@@ -2194,11 +2218,13 @@ void do_cmd_wiz_recall_monster(struct command *cmd)
 		char s[80] = "";
 		char c;
 
-		if (!get_com("Full recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
+		// if (!get_com("Full recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
+		if (!get_com("Вспомнить [a]всех монстров или [s]конкретного монстра? ", &c)) return;
 		if (c == 'a' || c == 'A') {
 			r_idx = -1;
 		} else if (c == 's' || c == 'S') {
-			if (!get_string("Which monster? ", s, sizeof(s)))
+			// if (!get_string("Which monster? ", s, sizeof(s)))
+			if (!get_string("Какого монстра? ", s, sizeof(s)))
 				return;
 			if (!get_int_from_string(s, &r_idx)) {
 				const struct monster_race *race =
@@ -2225,7 +2251,8 @@ void do_cmd_wiz_recall_monster(struct command *cmd)
 			cheat_monster_lore(&r_info[i], &l_list[i]);
 		}
 	} else {
-		msg("No monster found.");
+		// msg("No monster found.");
+		msg("Монстр не найден.");
 	}
 }
 
@@ -2268,7 +2295,8 @@ void do_cmd_wiz_rerate(struct command *cmd)
 	player->upkeep->update |= PU_HP;
 	player->upkeep->redraw |= PR_HP;
 
-	msg("Current Life Rating is %d/100.", percent);
+	// msg("Current Life Rating is %d/100.", percent);
+	msg("Текущий Рейтинг Жизни составляет %d/100.", percent);
 }
 
 
@@ -2607,7 +2635,8 @@ void do_cmd_wiz_summon_named(struct command *cmd)
 	} else {
 		char s[80] = "";
 
-		if (!get_string("Summon which monster? ", s, sizeof(s))) return;
+		// if (!get_string("Summon which monster? ", s, sizeof(s))) return;
+		if (!get_string("Какого монстра призвать? ", s, sizeof(s))) return;
 		/* See if an index was entered */
 		if (get_int_from_string(s, &r_idx)) {
 			if (r_idx > 0 && r_idx < z_info->r_max) {
@@ -2623,7 +2652,8 @@ void do_cmd_wiz_summon_named(struct command *cmd)
 	}
 
 	if (r == NULL) {
-		msg("No monster found.");
+		// msg("No monster found.");
+		msg("Монстр не найден.");
 		return;
 	}
 
@@ -2634,7 +2664,8 @@ void do_cmd_wiz_summon_named(struct command *cmd)
 		/* Pick an empty location. */
 		if (i >= 10 || scatter_ext(cave, &grid, 1, player->grid, 1,
 				true, square_isempty) == 0) {
-			msg("Could not place monster.");
+			// msg("Could not place monster.");
+			msg("Нет места для монстра.");
 			break;
 		}
 
@@ -2659,7 +2690,8 @@ void do_cmd_wiz_summon_random(struct command *cmd)
 	int n, i;
 
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
-		n = get_quantity("How many monsters? ", 40);
+		// n = get_quantity("How many monsters? ", 40);
+		n = get_quantity("Сколько монстров? ", 40);
 		if (n < 1) n = 1;
 		cmd_set_arg_number(cmd, "quantity", n);
 	}
@@ -2684,7 +2716,8 @@ void do_cmd_wiz_teleport_random(struct command *cmd)
 	if (cmd_get_arg_number(cmd, "range", &range) != CMD_OK) {
 		char s[80] = "100";
 
-		if (!get_string("Teleport range? ", s, sizeof(s))) return;
+		// if (!get_string("Teleport range? ", s, sizeof(s))) return;
+		if (!get_string("Дальность действия телепорта? ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &range) || range < 1) return;
 		cmd_set_arg_number(cmd, "range", range);
 	}
@@ -2900,11 +2933,13 @@ void do_cmd_wiz_wipe_recall(struct command *cmd)
 		char s[80] = "";
 		char c;
 
-		if (!get_com("Wipe recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
+		// if (!get_com("Wipe recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
+		if (!get_com("Забыть [a]всех монстров или [s]конкретного монстра? ", &c)) return;
 		if (c == 'a' || c == 'A') {
 			r_idx = -1;
 		} else if (c == 's' || c == 'S') {
-			if (!get_string("Which monster? ", s, sizeof(s)))
+			// if (!get_string("Which monster? ", s, sizeof(s)))
+			if (!get_string("Какого монстра? ", s, sizeof(s)))
 				return;
 			if (!get_int_from_string(s, &r_idx)) {
 				const struct monster_race *race =
@@ -2931,7 +2966,8 @@ void do_cmd_wiz_wipe_recall(struct command *cmd)
 			wipe_monster_lore(&r_info[i], &l_list[i]);
 		}
 	} else {
-		msg("No monster found.");
+		// msg("No monster found.");
+		msg("Монстр не найден.");
 	}
 }
 

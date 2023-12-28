@@ -299,7 +299,7 @@ static bool describe_hates(textblock *tb, const struct element_info el_info[])
 		return false;
 
 	// textblock_append(tb, "Can be destroyed by ");
-	textblock_append(tb, "Разрушительное действие оказывает ");
+	textblock_append(tb, "Может быть разрушено ");
 	info_out_list(tb, descs, count);
 
 	return true;
@@ -1789,7 +1789,7 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 	}
 
 	// textblock_append_c(tb, COLOUR_L_WHITE, "Combat info:\n");
-	textblock_append_c(tb, COLOUR_L_WHITE, "Боевая информация:\n");
+	textblock_append_c(tb, COLOUR_ORANGE, "Боевая информация:\n");
 
 	if (heavy)
 		// textblock_append_c(tb, COLOUR_L_RED, "You are too weak to use this weapon.\n");
@@ -1995,18 +1995,23 @@ static bool describe_light(textblock *tb, const struct object *obj,
 		return false;
 
 	if (tval_is_light(obj)) {
-		textblock_append(tb, "Intensity ");
+		// textblock_append(tb, "Intensity ");
+		textblock_append(tb, "Интенсивность света ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", intensity);
-		textblock_append(tb, " light.");
+		// textblock_append(tb, " light.");
+		textblock_append(tb, " метр%s.", PLURAL_RU__A_OV(intensity));
 
 		if (!obj->artifact && !uses_fuel)
-			textblock_append(tb, "  No fuel required.");
+			// textblock_append(tb, "  No fuel required.");
+			textblock_append(tb, "  Не требует топлива.");
 
 		if (!terse) {
 			if (refuel_turns)
-				textblock_append(tb, "  Refills other lanterns up to %d turns of fuel.", refuel_turns);
+				// textblock_append(tb, "  Refills other lanterns up to %d turns of fuel.", refuel_turns);
+				textblock_append(tb, "  Заправляет другие фонари топливом до %d ходов.", refuel_turns);
 			else
-				textblock_append(tb, "  Cannot be refueled.");
+				// textblock_append(tb, "  Cannot be refueled.");
+				textblock_append(tb, "  Невозможно заправить.");
 		}
 		textblock_append(tb, "\n");
 	}
@@ -2023,7 +2028,8 @@ static bool describe_book(textblock *tb, const struct object *obj,
 {
 	if (!obj_can_browse(obj)) return false;
 
-	textblock_append(tb, "\nYou can read this book.\n");
+	// textblock_append(tb, "\nYou can read this book.\n");
+	textblock_append(tb, "\nВы можете прочесть эту книгу.\n");
 
 	return true;
 }
@@ -2138,7 +2144,8 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 		else if (aimed)
 			prefix = "When aimed, it ";
 		else if (tval_is_edible(obj))
-			prefix = "When eaten, it ";
+			// prefix = "When eaten, it ";
+			prefix = "После употребления, it ";
 		else if (tval_is_potion(obj))
 			prefix = "When quaffed, it ";
 		else if (tval_is_scroll(obj))
