@@ -40,10 +40,8 @@ static void display_score_page(const struct high_score scores[], int start,
 		const char *user, *gold, *when, *aged;
 		struct player_class *c;
 		struct player_race *r;
-		// char out_val[160];
-		char out_val[210];
-		// char tmp_val[160];
-		char tmp_val[210];
+		char out_val[160];
+		char tmp_val[160];
 
 		/* Hack -- indicate death in yellow */
 		attr = (start == highlight) ? COLOUR_L_GREEN : COLOUR_WHITE;
@@ -106,9 +104,13 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* Clean up standard encoded form of "when" */
 		if ((*when == '@') && strlen(when) == 9) {
-			strnfmt(tmp_val, sizeof(tmp_val), "%.4s-%.2s-%.2s", when + 1,
-					when + 5, when + 7);
+			// strnfmt(tmp_val, sizeof(tmp_val), "%.4s-%.2s-%.2s", when + 1,
+			strnfmt(tmp_val, sizeof(tmp_val), "%.2s-%.2s-%.4s", when + 1,
+					// when + 5, when + 7);
+					when + 3, when + 5);
 			when = tmp_val;
+		} else {
+			when = "СЕГОДНЯ";
 		}
 
 		/* And still another line of info */

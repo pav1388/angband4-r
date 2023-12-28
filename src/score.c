@@ -241,11 +241,11 @@ void build_score(struct high_score *entry, const struct player *p,
 
 	/* Time of death */
 	if (death_time)
-		strftime(entry->day, sizeof(entry->day), "@%Y%m%d",
+		// strftime(entry->day, sizeof(entry->day), "@%Y%m%d",
+		strftime(entry->day, sizeof(entry->day), "@%d%m%Y",
 				 localtime(death_time));
 	else
-		// my_strcpy(entry->day, "TODAY", sizeof(entry->day));
-		my_strcpy(entry->day, "СЕГОДНЯ", sizeof(entry->day));
+		my_strcpy(entry->day, "TODAY", sizeof(entry->day));
 
 	/* Save the player name (15 chars) */
 	strnfmt(entry->who, sizeof(entry->who), "%-.15s", p->full_name);
