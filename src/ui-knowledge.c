@@ -1141,9 +1141,11 @@ static void display_monster(int col, int row, bool cursor, int oid)
 
 	/* Display kills */
 	if (!race->rarity) {
-		put_str(format("%s", "shape"), row, 70);
+		// put_str(format("%s", "shape"), row, 70);
+		put_str(format("%s", "облик"), row, 70);
 	} else if (rf_has(race->flags, RF_UNIQUE)) {
-		put_str(format("%s", (race->max_num == 0)?  " dead" : "alive"),
+		// put_str(format("%s", (race->max_num == 0)?  " dead" : "alive"),
+		put_str(format("%s", (race->max_num == 0)?  "мёртв" : "живой"),
 				row, 70);
 	} else {
 		put_str(format("%5d", lore->pkills), row, 70);
@@ -2719,39 +2721,48 @@ static const char *skill_index_to_name(int i)
 
 	switch (i) {
 	case SKILL_DISARM_PHYS:
-		name = "physical disarming";
+		// name = "physical disarming";
+		name = "физическому обезвреживанию";
 		break;
 
 	case SKILL_DISARM_MAGIC:
-		name = "magical disarming";
+		// name = "magical disarming";
+		name = "магическому обезвреживанию";
 		break;
 
 	case SKILL_DEVICE:
-		name = "magic devices";
+		// name = "magic devices";
+		name = "магическим механизмам";
 		break;
 
 	case SKILL_SAVE:
-		name = "saving throws";
+		// name = "saving throws";
+		name = "спасательным броскам";
 		break;
 
 	case SKILL_SEARCH:
-		name = "searching";
+		// name = "searching";
+		name = "поиску";
 		break;
 
 	case SKILL_TO_HIT_MELEE:
-		name = "melee to hit";
+		// name = "melee to hit";
+		name = "попаданию в ближнем бою";
 		break;
 
 	case SKILL_TO_HIT_BOW:
-		name = "shooting to hit";
+		// name = "shooting to hit";
+		name = "меткости в дальнем бою";
 		break;
 
 	case SKILL_TO_HIT_THROW:
-		name = "throwing to hit";
+		// name = "throwing to hit";
+		name = "меткости при броске";
 		break;
 
 	case SKILL_DIGGING:
-		name = "digging";
+		// name = "digging";
+		name = "копанию";
 		break;
 
 	default:
@@ -2772,7 +2783,8 @@ static void shape_lore_append_list(textblock *tb,
 		textblock_append(tb, " %s", list[0]);
 	}
 	for (i = 1; i < n; ++i) {
-		textblock_append(tb, "%s %s", (i < n - 1) ? "," : " and",
+		// textblock_append(tb, "%s %s", (i < n - 1) ? "," : " and",
+		textblock_append(tb, "%s %s", (i < n - 1) ? "," : " и",
 			list[i]);
 	}
 }
@@ -2781,9 +2793,12 @@ static void shape_lore_append_list(textblock *tb,
 static void shape_lore_append_basic_combat(textblock *tb,
 	const struct player_shape *s)
 {
-	char toa_msg[24];
-	char toh_msg[24];
-	char tod_msg[24];
+	// char toa_msg[24];
+	char toa_msg[50];
+	// char toh_msg[24];
+	char toh_msg[50];
+	// char tod_msg[24];
+	char tod_msg[50];
 	const char* msgs[3];
 	int n = 0;
 
@@ -2933,7 +2948,7 @@ static void shape_lore_append_resistances(textblock *tb,
 
 	if (nvul != 0) {
 		// textblock_append(tb, "Makes you vulnerable to");
-		textblock_append(tb, "Делает вас уязвимым для");
+		textblock_append(tb, "Делает вас уязвимым к");
 		shape_lore_append_list(tb, vul, nvul);
 		textblock_append(tb, ".\n");
 	}
@@ -2974,7 +2989,7 @@ static void shape_lore_append_protection_flags(textblock *tb,
 
 	if (n > 0) {
 		// textblock_append(tb, "Provides protection from");
-		textblock_append(tb, "Обеспечивает защиту от");
+		textblock_append(tb, "Защищает от");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -3005,7 +3020,7 @@ static void shape_lore_append_sustains(textblock *tb,
 
 	if (n > 0) {
 		// textblock_append(tb, "Sustains");
-		textblock_append(tb, "Поддержка");
+		textblock_append(tb, "Поддерживает");
 		shape_lore_append_list(tb, msgs, n);
 		textblock_append(tb, ".\n");
 		for (i = 0; i < n; ++i) {
@@ -3100,7 +3115,7 @@ static void shape_lore_append_triggering_spells(textblock *tb,
 						}
 						textblock_append(tb,
 							// "The %s spell, %s, from %s triggers the shapechange.",
-							"Заклинание %s, %s, из %s вызывает изменение облика.",
+							"Заклинание %sа '%s' из Книги %s вызывает изменение облика.",
 							c->name,
 							spell->name,
 							kind->name
@@ -3133,13 +3148,13 @@ static void shape_lore(const struct player_shape *s)
 		// "eating) are inaccessible.  To switch back to your normal "
 		// "shape, cast a spell or use an item command other than eat "
 		// "(drop, for instance).\n");
-		textblock_append(tb, "\nКак и во всех других обликах, экипировка задает базовые "
+		textblock_append_c(tb, COLOUR_YELLOW, "\nКак и во всех других обликах, экипировка задает базовые "
 		"атрибуты, включая урон, количество ударов и сопротивление."
 		" Во время изменения облика предметы в рюкзаке или на полу"
 		" недоступны (кроме как для поднятия или поедания). Чтобы "
 		"вернуться к обычному облику, произнесите заклинание или "
 		"используйте другое действие для предметов, кроме \"съесть\""
-		"(например, \"бросить\").\n");
+		"(например, \"бросить\").\n\n");
 	shape_lore_append_basic_combat(tb, s);
 	shape_lore_append_skills(tb, s);
 	shape_lore_append_non_stat_modifiers(tb, s);
@@ -3431,7 +3446,8 @@ static errr finish_ui_knowledge_parser(struct parser *p)
 
 	/* Set the element at the end which receives special treatment. */
 	monster_group[count].next = NULL;
-	monster_group[count].name = string_make("***Unclassified***");
+	// monster_group[count].name = string_make("***Unclassified***");
+	monster_group[count].name = string_make("****Вне класса****");
 	monster_group[count].inc_bases = NULL;
 	rf_wipe(monster_group[count].inc_flags);
 	monster_group[count].n_inc_bases = 0;
