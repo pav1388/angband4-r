@@ -1996,14 +1996,14 @@ static bool describe_light(textblock *tb, const struct object *obj,
 
 	if (tval_is_light(obj)) {
 		// textblock_append(tb, "Intensity ");
-		textblock_append(tb, "Интенсивность света ");
+		textblock_append(tb, "\nИнтенсивность света ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", intensity);
 		// textblock_append(tb, " light.");
 		textblock_append(tb, " метр%s.", PLURAL_RU__A_OV(intensity));
 
 		if (!obj->artifact && !uses_fuel)
 			// textblock_append(tb, "  No fuel required.");
-			textblock_append(tb, "  Не требует топлива.");
+			textblock_append(tb, "  Не расходует топливо.");
 
 		if (!terse) {
 			if (refuel_turns)
@@ -2114,15 +2114,20 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 	/* Effect not known, mouth platitudes */
 	if (!effect && object_effect(obj)) {
 		if (tval_is_edible(obj)) {
-			textblock_append(tb, "It can be eaten.\n");
+			// textblock_append(tb, "It can be eaten.\n");
+			textblock_append(tb, "Это можно съесть.\n");
 		} else if (tval_is_potion(obj)) {
-			textblock_append(tb, "It can be drunk.\n");
+			// textblock_append(tb, "It can be drunk.\n");
+			textblock_append(tb, "Это можно выпить.\n");
 		} else if (tval_is_scroll(obj)) {
-			textblock_append(tb, "It can be read.\n");
+			// textblock_append(tb, "It can be read.\n");
+			textblock_append(tb, "Это можно прочесть.\n");
 		} else if (aimed) {
-			textblock_append(tb, "It can be aimed.\n");
+			// textblock_append(tb, "It can be aimed.\n");
+			textblock_append(tb, "Этим можно взмахнуть.\n");
 		} else {
-			textblock_append(tb, "It can be activated.\n");
+			// textblock_append(tb, "It can be activated.\n");
+			textblock_append(tb, "Это можно активировать.\n");
 		}
 
 		return true;
@@ -2130,7 +2135,8 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 
 	/* Activations get a special message */
 	if (obj->activation && obj->activation->desc) {
-		textblock_append(tb, "When activated, it ");
+		// textblock_append(tb, "When activated, it ");
+		textblock_append(tb, "После активации, ");
 		textblock_append(tb, "%s", obj->activation->desc);
 	} else {
 		int level = obj->artifact ?
@@ -2140,18 +2146,23 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 		textblock *tbe;
 
 		if (obj->activation)
-			prefix = "When activated, it ";
+			// prefix = "When activated, it ";
+			prefix = "После активации, ";
 		else if (aimed)
-			prefix = "When aimed, it ";
+			// prefix = "When aimed, it ";
+			prefix = "После взмаха, ";
 		else if (tval_is_edible(obj))
 			// prefix = "When eaten, it ";
-			prefix = "После употребления, it ";
+			prefix = "После употребления, ";
 		else if (tval_is_potion(obj))
-			prefix = "When quaffed, it ";
+			// prefix = "When quaffed, it ";
+			prefix = "После выпивания, ";
 		else if (tval_is_scroll(obj))
-			prefix = "When read, it ";
+			// prefix = "When read, it ";
+			prefix = "После прочтения, ";
 		else
-			prefix = "When activated, it ";
+			// prefix = "When activated, it ";
+			prefix = "После активации, ";
 
 		tbe = effect_describe(effect, prefix, boost, false);
 		if (! tbe) {
@@ -2168,28 +2179,38 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 		int multiplier = turn_energy(player->state.speed);
 		if (!subjective) multiplier = 10;
 
-		textblock_append(tb, "Takes ");
+		// textblock_append(tb, "Takes ");
+		textblock_append(tb, "Перезарядка занимает ");
 
 		/* Correct for player speed */
 		min_time = (min_time * multiplier) / 10;
 		max_time = (max_time * multiplier) / 10;
 
+		if (min_time != max_time) {
+			textblock_append(tb, "от ");
+		}
+		
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", min_time);
 
 		if (min_time != max_time) {
-			textblock_append(tb, " to ");
+			// textblock_append(tb, " to ");
+			textblock_append(tb, " до ");
 			textblock_append_c(tb, COLOUR_L_GREEN, "%d", max_time);
 		}
 
-		textblock_append(tb, " turns to recharge");
+		// textblock_append(tb, " turns to recharge");
+		textblock_append(tb, " ход%s",
+							min_time != max_time ? PLURAL_RU__A_OV(max_time) : PLURAL_RU__A_OV(min_time));
 		if (subjective && player->state.speed != 110)
-			textblock_append(tb, " at your current speed");
+			// textblock_append(tb, " at your current speed");
+			textblock_append(tb, " при вашей текущей скорости");
 
 		textblock_append(tb, ".\n");
 	}
 
 	if (failure_chance > 0) {
-		textblock_append(tb, "Your chance of success is %d.%d%%\n", 
+		// textblock_append(tb, "Your chance of success is %d.%d%%\n", 
+		textblock_append(tb, "Ваш шанс на успех составляет %d.%d%%\n", 
 			(1000 - failure_chance) / 10, (1000 - failure_chance) % 10);
 	}
 
@@ -2221,10 +2242,12 @@ static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 
 	/* Name the place of origin */
 	if (obj->origin_depth)
-		strnfmt(loot_spot, sizeof(loot_spot), "at %d feet (level %d)",
+		// strnfmt(loot_spot, sizeof(loot_spot), "at %d feet (level %d)",
+		strnfmt(loot_spot, sizeof(loot_spot), "на глубине %d метров (этаж %d)",
 		        obj->origin_depth * 50, obj->origin_depth);
 	else
-		my_strcpy(loot_spot, "in town", sizeof(loot_spot));
+		// my_strcpy(loot_spot, "in town", sizeof(loot_spot));
+		my_strcpy(loot_spot, "в городе", sizeof(loot_spot));
 
 	/* Name the monster of origin */
 	if (obj->origin_race) {
@@ -2307,13 +2330,17 @@ static void describe_flavor_text(textblock *tb, const struct object *obj,
 static bool describe_ego(textblock *tb, const struct ego_item *ego)
 {
 	if (kf_has(ego->kind_flags, KF_RAND_HI_RES))
-		textblock_append(tb, "It provides one random higher resistance.  ");
+		// textblock_append(tb, "It provides one random higher resistance.  ");
+		textblock_append(tb, "Даёт одно случайное высокое сопротивление.  ");
 	else if (kf_has(ego->kind_flags, KF_RAND_SUSTAIN))
-		textblock_append(tb, "It provides one random sustain.  ");
+		// textblock_append(tb, "It provides one random sustain.  ");
+		textblock_append(tb, "Даёт одну случайную поддержку показателя.  ");
 	else if (kf_has(ego->kind_flags, KF_RAND_POWER))
-		textblock_append(tb, "It provides one random ability.  ");
+		// textblock_append(tb, "It provides one random ability.  ");
+		textblock_append(tb, "Даёт одну случайную способность.  ");
 	else if (kf_has(ego->kind_flags, KF_RAND_RES_POWER))
-		textblock_append(tb, "It provides one random ability or base resistance.  ");
+		// textblock_append(tb, "It provides one random ability or base resistance.  ");
+		textblock_append(tb, "Даёт одну случайную способность или базовое сопротивление.  ");
 	else
 		return false;
 

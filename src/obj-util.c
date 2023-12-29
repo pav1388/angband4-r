@@ -510,7 +510,8 @@ int lookup_sval(int tval, const char *name)
 		if (!kind || !kind->name || kind->tval != tval) continue;
 
 		obj_desc_name_format(cmp_name, sizeof cmp_name, 0, kind->name, 0,
-							 false);
+							 // false);
+							 false, 1);
 
 		/* Found a match */
 		if (!my_stricmp(cmp_name, name)) return kind->sval;

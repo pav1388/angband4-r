@@ -61,10 +61,13 @@
  * Info about a particular object
  */
 struct object_menu_data {
-	char label[80];
-	char equip_label[80];
+	// char label[80];
+	char label[160];
+	// char equip_label[80];
+	char equip_label[160];
 	struct object *object;
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 	char key;
 };
 
@@ -142,17 +145,18 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	int attr;
 	int label_attr = cursor ? COLOUR_L_BLUE : COLOUR_WHITE;
 	int ex_offset_ctr;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	struct object *obj = items[obj_num].object;
 	bool show_label = mode & (OLIST_WINDOW | OLIST_DEATH) ? true : false;
-	int label_size = show_label ? strlen(items[obj_num].label) : 0;
-	int equip_label_size = strlen(items[obj_num].equip_label);
+	int label_size = show_label ? utf8_strlen(items[obj_num].label) : 0;
+	int equip_label_size = utf8_strlen(items[obj_num].equip_label);
 
 	/* Clear the line */
 	prt("", row + obj_num, MAX(col - 1, 0));
 
 	/* If we have no label then we won't display anything */
-	if (!strlen(items[obj_num].label)) return;
+	if (!utf8_strlen(items[obj_num].label)) return;
 
 	/* Print the label */
 	if (show_label)
@@ -163,7 +167,7 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 			  col + label_size);
 
 	/* Limit object name */
-	if (label_size + equip_label_size + strlen(items[obj_num].o_name) >
+	if (label_size + equip_label_size + utf8_strlen(items[obj_num].o_name) >
 		(size_t)ex_offset) {
 		int truncate = ex_offset - label_size - equip_label_size;
 
@@ -203,7 +207,8 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 		if (store) {
 			int price = price_item(store, obj, true, obj->number);
 
-			strnfmt(buf, sizeof(buf), "%6d au", price);
+			// strnfmt(buf, sizeof(buf), "%6d au", price);
+			strnfmt(buf, sizeof(buf), "%6d зл", price);
 			put_str(buf, row + obj_num, col + ex_offset_ctr);
 			ex_offset_ctr += 9;
 		}
@@ -214,10 +219,10 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 		int fail = (9 + get_use_device_chance(obj)) / 10;
 		if (object_effect_is_known(obj))
 			// strnfmt(buf, sizeof(buf), "%4d%% fail", fail);
-			strnfmt(buf, sizeof(buf), "%4d%% неудачи", fail);
+			strnfmt(buf, sizeof(buf), "%4d%% сбой", fail);
 		else
 			// my_strcpy(buf, "    ? fail", sizeof(buf));
-			my_strcpy(buf, "    ? неудача", sizeof(buf));
+			my_strcpy(buf, "    ? сбой", sizeof(buf));
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 		ex_offset_ctr += 10;
 	}
@@ -227,10 +232,10 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 		int fail = 1000 / recharge_failure_chance(obj, player->upkeep->recharge_pow);
 		if (object_effect_is_known(obj))
 			// strnfmt(buf, sizeof(buf), "%2d.%1d%% fail", fail / 10, fail % 10);
-			strnfmt(buf, sizeof(buf), "%2d.%1d%% неудачи", fail / 10, fail % 10);
+			strnfmt(buf, sizeof(buf), "%2d.%1d%% сбой", fail / 10, fail % 10);
 		else
 			// my_strcpy(buf, "    ? fail", sizeof(buf));
-			my_strcpy(buf, "    ? неудача", sizeof(buf));
+			my_strcpy(buf, "    ? сбой", sizeof(buf));
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 		ex_offset_ctr += 10;
 	}
@@ -288,7 +293,8 @@ static void build_obj_list(int last, struct object **list, item_tester tester,
 
 	/* Build the object list */
 	for (i = 0; i <= last; i++) {
-		char buf[80];
+		// char buf[80];
+		char buf[160];
 		struct object *obj = equip ? slot_object(player, i) : list[i];
 
 		/* Acceptable items get a label */
@@ -362,8 +368,8 @@ static void set_obj_names(bool terse, const struct player *p)
 
 		/* Max length of label + object name */
 		max_len = MAX(max_len,
-					  strlen(items[i].label) + strlen(items[i].equip_label) +
-					  strlen(items[i].o_name));
+					  utf8_strlen(items[i].label) + utf8_strlen(items[i].equip_label) +
+					  utf8_strlen(items[i].o_name));
 	}
 }
 
@@ -375,7 +381,8 @@ static void set_obj_names(bool terse, const struct player *p)
 static void show_obj_list(olist_detail_t mode)
 {
 	int i, row = 0, col = 0;
-	char tmp_val[80];
+	// char tmp_val[80];
+	char tmp_val[160];
 
 	bool in_term = (mode & OLIST_WINDOW) ? true : false;
 	bool terse = false;
@@ -487,7 +494,7 @@ void show_inven(int mode, item_tester tester)
 				player->upkeep->total_weight % 10,
 		        abs(diff) / 10, abs(diff) % 10,
 		        // (diff < 0 ? "overweight" : "remaining"));
-		        (diff < 0 ? "перегруз" : "остаток"));
+		        (diff < 0 ? "перегруз" : "осталось"));
 
 		items[num_obj].object = NULL;
 		num_obj++;
@@ -605,7 +612,8 @@ static item_tester tester_m;
 static region area = { 20, 1, -1, -2 };
 static struct object *selection;
 static const char *prompt;
-static char header[80];
+// static char header[80];
+static char header[160];
 static int i1, i2;
 static int e1, e2;
 static int q1, q2;
@@ -763,8 +771,10 @@ static bool get_tag(struct object **tagged_obj, char tag, cmd_code cmd,
  */
 static void menu_header(void)
 {
-	char tmp_val[75];
-	char out_val[75];
+	// char tmp_val[75];
+	char tmp_val[120];
+	// char out_val[75];
+	char out_val[120];
 
 	bool use_inven = ((item_mode & USE_INVEN) ? true : false);
 	bool use_equip = ((item_mode & USE_EQUIP) ? true : false);
@@ -1027,7 +1037,8 @@ static bool get_item_action(struct menu *menu, const ui_event *event, int oid)
  */
 static void item_menu_browser(int oid, void *data, const region *local_area)
 {
-	char tmp_val[80];
+	// char tmp_val[80];
+	char tmp_val[160];
 	int count, j, i = num_obj;
 	int quiver_slots = (player->upkeep->quiver_cnt + z_info->quiver_slot_size - 1)
 		/ z_info->quiver_slot_size;
@@ -1146,11 +1157,11 @@ static struct object *item_menu(cmd_code cmd, int prompt_size, int mode)
 	if (area.col <= 3)
 		area.col = 0;
 	ex_offset = MIN(max_len, (size_t)(Term->wid - 1 - ex_width - area.col));
-	while (strlen(header) < max_len + ex_width + ex_offset_ctr) {
+	while (utf8_strlen(header) < max_len + ex_width + ex_offset_ctr) {
 		my_strcat(header, " ", sizeof(header));
-		if (strlen(header) > sizeof(header) - 2) break;
+		if (utf8_strlen(header) > sizeof(header) - 2) break;
 	}
-	area.width = MAX(max_len, strlen(header));
+	area.width = MAX(max_len, utf8_strlen(header));
 
 	for (row = area.row; row < area.row + area.page_rows; row++)
 		prt("", row, MAX(0, area.col - 1));
@@ -1502,14 +1513,14 @@ bool textui_get_item(struct object **choice, const char *pmt, const char *str,
 			menu_header();
 			if (pmt) {
 				prt(pmt, 0, 0);
-				prt(header, 0, strlen(pmt) + 1);
+				prt(header, 0, utf8_strlen(pmt) + 1);
 			}
 
 			/* No menu change request */
 			newmenu = false;
 
 			/* Get an item choice */
-			*choice = item_menu(cmd, MAX(pmt ? strlen(pmt) : 0, 15), mode);
+			*choice = item_menu(cmd, MAX(pmt ? utf8_strlen(pmt) : 0, 15), mode);
 
 			/* Fix the screen */
 			screen_load();
@@ -1678,7 +1689,8 @@ void textui_cmd_ignore_menu(struct object *obj)
 		bool ignored = kind_is_ignored_aware(obj->kind) ||
 				kind_is_ignored_unaware(obj->kind);
 
-		char tmp[70];
+		// char tmp[70];
+		char tmp[130];
 		object_desc(tmp, sizeof(tmp), obj,
 			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
 		if (!ignored) {
@@ -1698,7 +1710,8 @@ void textui_cmd_ignore_menu(struct object *obj)
 	if (obj->known->ego && type != ITYPE_MAX) {
 		struct ego_desc choice;
 		struct ego_item *ego = obj->ego;
-		char tmp[80] = "";
+		// char tmp[80] = "";
+		char tmp[160] = "";
 
 		choice.e_idx = ego->eidx;
 		choice.itype = type;

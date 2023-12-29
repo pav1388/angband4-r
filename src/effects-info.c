@@ -82,16 +82,14 @@ static void append_damage(char *buffer, size_t buffer_size, random_value value,
 	int dev_skill_boost)
 {
 	if (dev_skill_boost != 0) {
-		// my_strcat(buffer, format(", which your device skill increases by %d%%",
-		my_strcat(buffer, format(", что ваш навык механизмов вырос на %d%%",
+		my_strcat(buffer, format(", which your device skill increases by %d%%",
 			dev_skill_boost), buffer_size);
 	}
 
 	if (randcalc_varies(value) || dev_skill_boost > 0) {
 		// Ten times the average damage, for 1 digit of precision
 		int dam = (100 + dev_skill_boost) * randcalc(value, 0, AVERAGE) / 10;
-		// my_strcat(buffer, format(" for an average of %d.%d damage", dam / 10,
-		my_strcat(buffer, format(" для среднего %d.%d урона", dam / 10,
+		my_strcat(buffer, format(" for an average of %d.%d damage", dam / 10,
 			dam % 10), buffer_size);
 	}
 }
@@ -223,8 +221,7 @@ static textblock *create_nested_effect_description(const struct effect *e,
 			}
 			if (ivalid == nvalid - 1) {
 				my_strcat(breaths,
-					// (nvalid > 2) ? ", or " : " or ",
-					(nvalid > 2) ? ", или " : " или ",
+					(nvalid > 2) ? ", or " : " or ",
 					sizeof(breaths));
 			} else {
 				my_strcat(breaths, ", ", sizeof(breaths));
@@ -294,8 +291,7 @@ static textblock *create_nested_effect_description(const struct effect *e,
 				if (ivalid > 0) {
 					textblock_append(res,
 						(ivalid == nvalid - 1) ?
-						// " or " : ", ");
-						" или " : ", ");
+						" or " : ", ");
 				}
 				textblock_append_textblock(res, tb);
 				textblock_free(tb);
@@ -325,8 +321,7 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 {
 	textblock *tb = NULL;
 	int nadded = 0;
-	// char desc[250];
-	char desc[400];
+	char desc[250];
 	random_value value = { 0, 0, 0, 0 };
 	bool value_set = false;
 
@@ -559,8 +554,7 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 				if (e) {
 					textblock_append(tb, ", ");
 				} else {
-					// textblock_append(tb, " and ");
-					textblock_append(tb, " и ");
+					textblock_append(tb, " and ");
 				}
 			} else {
 				tb = textblock_new();
