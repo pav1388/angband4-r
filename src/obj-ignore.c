@@ -117,15 +117,15 @@ quality_name_struct quality_choices[] =
 quality_name_struct quality_values[IGNORE_MAX] =
 {
 	// { IGNORE_NONE,				"no ignore" },
-	{ IGNORE_NONE,				"не игнорир." },
+	{ IGNORE_NONE,				"не игнорировать" },
 	// { IGNORE_BAD,				"bad" },
-	{ IGNORE_BAD,				"плохой" },
+	{ IGNORE_BAD,				"плохое" },
 	// { IGNORE_AVERAGE,			"average" },
-	{ IGNORE_AVERAGE,			"средний" },
+	{ IGNORE_AVERAGE,			"среднее" },
 	// { IGNORE_GOOD,				"good" },
-	{ IGNORE_GOOD,				"хороший" },
+	{ IGNORE_GOOD,				"хорошее" },
 	// { IGNORE_ALL,				"non-artifact" },
-	{ IGNORE_ALL,				"неартефактный" },
+	{ IGNORE_ALL,				"не артефакт (все)" },
 };
 
 uint8_t ignore_level[ITYPE_MAX];

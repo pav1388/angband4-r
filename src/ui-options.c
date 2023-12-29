@@ -127,10 +127,9 @@ static void option_toggle_display(struct menu *m, int oid, bool cursor,
 
 	// c_prt(attr, format("%-45s: %s  (%s)", option_desc(oid),
 			// options[oid] ? "yes" : "no ", option_name(oid)), row, col);
-		
-	c_prt(attr, format("%-45s..............................", option_desc(oid)), row, col);
-	c_prt((attr != 1 ? attr - 2 : attr), format("%s", options[oid] ? " да" : "нет"), row, 57);
-	c_prt(attr + 1, format("%s", option_name(oid)), row, 61);
+	c_prt(attr, format("%s", option_desc(oid)), row, col);
+	c_prt((attr != 1 ? attr - 2 : attr), format("%s", options[oid] ? " да" : "нет"), row, col + 49);
+	c_prt(attr + 1, format("%s", option_name(oid)), row, col + 53);
 }
 
 /**
@@ -611,7 +610,8 @@ static void ui_keymap_query(const char *title, int row)
 	/* Keymap found? */
 	if (!act) {
 		/* Prompt */
-		prt("No keymap with that trigger.  Press any key to continue.", 16, 0);
+		// prt("No keymap with that trigger.  Press any key to continue.", 16, 0);
+		prt("Нет макроса.  Нажмите любую клавишу для продолжения.", 16, 0);
 		inkey();
 	} else {
 		/* Analyze the current action */
@@ -708,9 +708,11 @@ static void ui_keymap_create(const char *title, int row)
 		}
 	}
 
-	if (c.code && get_check("Keep this keymap? ")) {
+	// if (c.code && get_check("Keep this keymap? ")) {
+	if (c.code && get_check("Сохранить эти макросы? ")) {
 		keymap_add(mode, c, keymap_buffer, true);
-		prt("To use in other sessions, save the keymaps to a file.  Press a key to continue.", 17, 0);
+		// prt("To use in other sessions, save the keymaps to a file.  Press a key to continue.", 17, 0);
+		prt("Для использования их в следующей сессии, сохраните макросы в файл.", 17, 0);
 		inkey();
 	}
 }
@@ -1610,8 +1612,11 @@ static void quality_display(struct menu *menu, int oid, bool cursor, int row,
 
 	uint8_t attr = (cursor ? COLOUR_L_BLUE : COLOUR_WHITE);
 
-	if (oid)
-		c_put_str(attr, format("%-30s : %s", name, level_name), row, col);
+	if (oid) {
+		// c_put_str(attr, format("%-30s : %s", name, level_name), row, col);
+		c_put_str(attr, format("%s", name), row, col);
+		c_put_str(attr, format(": %s", level_name), row, col + 31);
+	}
 }
 
 
@@ -1691,7 +1696,7 @@ static void quality_menu(const char *unused, int also_unused)
 	/* Set up the menu */
 	menu_init(&menu, MN_SKIN_SCROLL, &menu_f);
 	// menu.title = "Quality ignore menu";
-	menu.title = "Меню игнорирования качества";
+	menu.title = "Меню игнорирования качества предметов";
 	menu_setpriv(&menu, ITYPE_MAX, quality_values);
 	menu_layout(&menu, &area);
 
