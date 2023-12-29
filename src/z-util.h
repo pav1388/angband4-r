@@ -61,6 +61,7 @@ extern void (*quit_aux)(const char *);
  */
 #define PLURAL(n)				((n) == 1 ? "" : "s")
 #define PLURAL_RU_A__(n)		((n % 10 == 1) && (n != 11) ? "а" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "" : "")
+#define PLURAL_RU_A_I_(n)		((n % 10 == 1) && (n != 11) ? "а" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "и" : "")
 #define PLURAL_RU_A_OV(n)		((n) == 1 ? "а" : "ов")
 #define PLURAL_RU_E_AH_AH(n)	((n % 10 == 1) && (n != 11) ? "е" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "ах" : "ах")
 #define PLURAL_RU_OGO_bIH_bIH(n)	((n % 10 == 1) && (n != 11) ? "ого" : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? "ых" : "ых")
