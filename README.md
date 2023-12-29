@@ -9,9 +9,13 @@
 
 
 <p align="center">
-  <img src="screenshots/title.png" width="425"/>
+	<img src="screenshots/title.png" width="425"/>
   
-  <img src="screenshots/game.png" width="425"/>
+	<img src="screenshots/game.png" width="425"/>
+  
+    <img src="screenshots/birth.png" width="425"/>
+	
+	<img src="screenshots/death.png" width="425"/>
 </p>
 
 Angband - это графическая игра о приключениях в подземелье, в которой 

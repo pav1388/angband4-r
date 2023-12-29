@@ -14,6 +14,7 @@
 /* name 							aim		info		args	info flags		description	menu_name */
 EFFECT(RANDOM,						false,	NULL,		0,		EFINFO_NONE,	"randomly ",	"")
 EFFECT(DAMAGE,						false,	"hurt",		1,		EFINFO_DICE,	"does %s damage to the player",	"")
+// EFFECT(DAMAGE,						false,	"hurt",		1,		EFINFO_DICE,	"наносит %s урона игроку",	"") //крашит
 EFFECT(HEAL_HP,						false,	"heal",		2,		EFINFO_HEAL,	"heals %s hitpoints%s",	"heal self")
 EFFECT(MON_HEAL_HP,					false,	NULL,		0,		EFINFO_NONE,	"heals monster hitpoints",	"")
 EFFECT(MON_HEAL_KIN,				false,	NULL,		0,		EFINFO_NONE,	"heals fellow monster hitpoints",	"")
