@@ -364,7 +364,7 @@ color:Light Slate
 
 code:INERTIA
 # name:inertia
-name:энерцией
+name:инерцией
 type:element
 desc:inertia
 player-desc:inertia

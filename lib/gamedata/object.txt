@@ -1978,7 +1978,8 @@ desc:A shield of purest white, made of mithril.
 
 ### Stat rings ###
 
-name:Strength
+# name:Strength
+name:Силы
 type:ring
 graphics:=:d
 level:30
@@ -1988,7 +1989,8 @@ alloc:50:30 to 100
 flags:SUST_STR | 
 values:STR[1+M5]
 
-name:Intelligence
+# name:Intelligence
+name:Интеллекта
 type:ring
 graphics:=:d
 level:30
@@ -1998,7 +2000,8 @@ alloc:50:30 to 100
 flags:SUST_INT | 
 values:INT[1+M5]
 
-name:Dexterity
+# name:Dexterity
+name:Ловкости
 type:ring
 graphics:=:d
 level:30
@@ -2008,7 +2011,8 @@ alloc:50:30 to 100
 flags:SUST_DEX | 
 values:DEX[1+M5]
 
-name:Constitution
+# name:Constitution
+name:Телосложения
 type:ring
 graphics:=:d
 level:30
@@ -2018,7 +2022,8 @@ alloc:50:30 to 100
 flags:SUST_CON | 
 values:CON[1+M5]
 
-name:Speed
+# name:Speed
+name:Скорости
 type:ring
 graphics:=:d
 level:75
@@ -2028,7 +2033,8 @@ alloc:40:75 to 100
 flags:GOOD
 values:SPEED[4+M6]
 
-name:Searching
+# name:Searching
+name:Поиска
 type:ring
 graphics:=:d
 level:5
@@ -2039,7 +2045,8 @@ values:SEARCH[d4M2]
 
 ### Stat sustain rings ###
 
-name:Bodykeeping
+# name:Bodykeeping
+name:Сохранения Тела
 type:ring
 graphics:=:d
 level:30
@@ -2048,7 +2055,8 @@ cost:750
 alloc:20:30 to 100
 flags:SUST_STR | SUST_DEX | SUST_CON | EASY_KNOW
 
-name:Soulkeeping
+# name:Soulkeeping
+name:Сохранения Души
 type:ring
 graphics:=:d
 level:30
@@ -2060,7 +2068,8 @@ flags:SUST_STR | SUST_INT | SUST_WIS | EASY_KNOW
 
 ### Resistance rings ###
 
-name:Resist Poison
+# name:Resist Poison
+name:Сопротивления Яду
 type:ring
 graphics:=:d
 level:40
@@ -2070,7 +2079,8 @@ alloc:50:40 to 100
 flags:EASY_KNOW
 values:RES_POIS[1]
 
-name:Resist Fire and Cold
+# name:Resist Fire and Cold
+name:Сопротивления Огню-Холоду
 type:ring
 graphics:=:d
 level:10
@@ -2082,7 +2092,8 @@ values:RES_FIRE[1] | RES_COLD[1]
 
 ### Elemental rings ###
 
-name:Light
+# name:Light
+name:Света
 type:ring
 graphics:=:d
 level:0
@@ -2091,7 +2102,8 @@ cost:400
 alloc:20:25 to 100
 values:SEARCH[1+M5] | LIGHT[1] | RES_LIGHT[1]
 
-name:Flames
+# name:Flames
+name:Пламени
 type:ring
 graphics:=:d
 level:50
@@ -2109,7 +2121,8 @@ effect:TIMED_INC:OPP_FIRE
 dice:20+1d20
 time:50+d50
 
-name:Acid
+# name:Acid
+name:Кислоты
 type:ring
 graphics:=:d
 level:50
@@ -2127,7 +2140,8 @@ effect:TIMED_INC:OPP_ACID
 dice:20+1d20
 time:50+d50
 
-name:Ice
+# name:Ice
+name:Льда
 type:ring
 graphics:=:d
 level:50
@@ -2145,7 +2159,8 @@ effect:TIMED_INC:OPP_COLD
 dice:20+1d20
 time:50+d50
 
-name:Lightning
+# name:Lightning
+name:Молний
 type:ring
 graphics:=:d
 level:50
@@ -2165,7 +2180,8 @@ time:50+d50
 
 ### Combat rings ###
 
-name:Damage
+# name:Damage
+name:Урона
 type:ring
 graphics:=:d
 level:20
@@ -2174,9 +2190,11 @@ cost:500
 alloc:30:20 to 100
 attack:0d0:0:5+d3M7
 armor:0:0
-desc:It boosts your to-dam value.
+# desc:It boosts your to-dam value.
+desc:Оно увеличивает показатель урона.
 
-name:Accuracy
+# name:Accuracy
+name:Точности
 type:ring
 graphics:=:d
 level:20
@@ -2185,9 +2203,11 @@ cost:500
 alloc:30:20 to 100
 attack:0d0:10+d6M7:0
 armor:0:0
-desc:It boosts your to-hit value.
+# desc:It boosts your to-hit value.
+desc:Оно увеличивает показатель попадания.
 
-name:Slaying
+# name:Slaying
+name:Убийства
 type:ring
 graphics:=:d
 level:40
@@ -2196,9 +2216,11 @@ cost:1000
 alloc:20:40 to 100
 attack:0d0:d10M10:d5M5
 armor:0:0
-desc:It boosts your to-hit and to-dam values.
+# desc:It boosts your to-hit and to-dam values.
+desc:Оно увеличивает ваши показатели попадания и урона.
 
-name:Protection
+# name:Protection
+name:Защиты
 type:ring
 graphics:=:d
 level:10
@@ -2207,12 +2229,14 @@ cost:500
 alloc:50:10 to 40
 attack:0d0:0:0
 armor:0:5+d5M10
-desc:It increases your armor class.
+# desc:It increases your armor class.
+desc:Оно увеличивает ваш класс брони.
 
 
 ### Mixed blessings ###
 
-name:Teleportation
+# name:Teleportation
+name:Телепортации
 type:ring
 graphics:=:d
 level:5
@@ -2223,7 +2247,8 @@ flags:EASY_KNOW
 curse:teleportation:100
 values:SPEED[2]
 
-name:Reckless Attacks
+# name:Reckless Attacks
+name:Безрассудных Атак
 type:ring
 graphics:=:d
 level:0
@@ -2233,7 +2258,8 @@ alloc:30:10 to 50
 attack:0d0:2+d3:2+d3
 armor:0:-8+4d3
 
-name:Open Wounds
+# name:Open Wounds
+name:Открытых Ран
 type:ring
 graphics:=:d
 level:10
@@ -2249,7 +2275,8 @@ effect:CURE:CUT
 effect:CURE:CONFUSED
 time:10+5d8
 
-name:Escaping
+# name:Escaping
+name:Бегства
 type:ring
 graphics:=:d
 level:30
@@ -2259,7 +2286,8 @@ alloc:50:15 to 80
 flags:AFRAID | EASY_KNOW
 values:SPEED[2]
 
-name:the Mouse
+# name:the Mouse
+name:Мыши
 type:ring
 graphics:=:d
 level:30
@@ -2270,7 +2298,8 @@ attack:0d0:0:-3d5
 armor:0:0
 values:DEX[d4] | STEALTH[d4]
 
-name:the Dog
+# name:the Dog
+name:Собаки
 type:ring
 graphics:=:d
 level:0
@@ -2282,7 +2311,8 @@ values:STEALTH[-2]
 
 ### Misc rings ###
 
-name:Slow Digestion
+# name:Slow Digestion
+name:Медленного Пищеварения
 type:ring
 graphics:=:d
 level:5
@@ -2291,7 +2321,8 @@ cost:250
 alloc:30:10 to 50
 flags:SLOW_DIGEST | EASY_KNOW
 
-name:Feather Falling
+# name:Feather Falling
+name:Мягкого Приземления
 type:ring
 graphics:=:d
 level:5
@@ -2300,7 +2331,8 @@ cost:200
 alloc:20:10 to 50
 flags:FEATHER | EASY_KNOW
 
-name:Free Action
+# name:Free Action
+name:Свободы Движения
 type:ring
 graphics:=:d
 level:20
@@ -2309,7 +2341,8 @@ cost:1500
 alloc:50:20 to 100
 flags:FREE_ACT | EASY_KNOW
 
-name:See Invisible
+# name:See Invisible
+name:Видения Незримого
 type:ring
 graphics:=:d
 level:30
@@ -2318,7 +2351,8 @@ cost:340
 alloc:50:30 to 100
 flags:SEE_INVIS | EASY_KNOW
 
-name:Digging
+# name:Digging
+name:Копания
 type:ring
 graphics:=:d
 level:0
@@ -2337,7 +2371,8 @@ time:15+2d10
 
 ### Stat boosts ###
 
-name:Wisdom
+# name:Wisdom
+name:Мудрости
 type:amulet
 graphics:":d
 level:30
@@ -2349,7 +2384,8 @@ values:WIS[1+M5]
 
 ### Resistances ###
 
-name:Resist Lightning
+# name:Resist Lightning
+name:Сопротивления Молниям
 type:amulet
 graphics:":d
 level:10
@@ -2359,7 +2395,8 @@ alloc:50:10 to 50
 flags:IGNORE_ELEC | EASY_KNOW
 values:RES_ELEC[1]
 
-name:Resist Acid
+# name:Resist Acid
+name:Сопротивления Кислоте
 type:amulet
 graphics:":d
 level:10
@@ -2369,7 +2406,8 @@ alloc:50:10 to 50
 flags:IGNORE_ACID | EASY_KNOW
 values:RES_ACID[1]
 
-name:Resistance
+# name:Resistance
+name:Сопротивления
 type:amulet
 graphics:":d
 level:60
@@ -2382,7 +2420,8 @@ values:RES_FIRE[1] | RES_ACID[1] | RES_ELEC[1] | RES_COLD[1]
 
 ### JLE amulets ###
 
-name:Sustenance
+# name:Sustenance
+name:Постоянства
 type:amulet
 graphics:":d
 level:60
@@ -2393,7 +2432,8 @@ flags:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON |
 flags:HOLD_LIFE | SLOW_DIGEST | EASY_KNOW | 
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
-name:the Magi
+# name:the Magi
+name:Волшебников
 type:amulet
 graphics:":d
 level:70
@@ -2406,7 +2446,8 @@ flags:FREE_ACT | SEE_INVIS | SUST_INT | PROT_BLIND | GOOD
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 values:SEARCH[1+M3] | INT[1+M3]
 
-name:ESP
+# name:ESP
+name:Телепатической Защиты
 type:amulet
 graphics:":d
 level:50
@@ -2416,7 +2457,8 @@ alloc:10:60 to 100
 flags:TELEPATHY
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | 
 
-name:Devotion
+# name:Devotion
+name:Преданности
 type:amulet
 graphics:":d
 level:70
@@ -2426,7 +2468,8 @@ alloc:10:70 to 100
 flags:HOLD_LIFE | SUST_WIS | GOOD
 values:WIS[1+M3] | LIGHT[1] | RES_DARK[1] | RES_LIGHT[1] | RES_FIRE[1]
 
-name:Weaponmastery
+# name:Weaponmastery
+name:Владения Оружием
 type:amulet
 graphics:":d
 level:70
@@ -2438,7 +2481,8 @@ armor:0:0
 flags:SUST_STR | SUST_CON | FREE_ACT | PROT_FEAR | GOOD
 values:STR[1+M2] | RES_DISEN[1]
 
-name:Trickery
+# name:Trickery
+name:Ловкости
 type:amulet
 graphics:":d
 level:70
@@ -2451,7 +2495,8 @@ values:RES_NEXUS[1] | RES_POIS[1]
 
 ### Ability boosts ###
 
-name:Regeneration
+# name:Regeneration
+name:Регенерации
 type:amulet
 graphics:":d
 level:30
@@ -2460,7 +2505,8 @@ cost:600
 alloc:20:30 to 100
 flags:REGEN | EASY_KNOW
 
-name:Infravision
+# name:Infravision
+name:Инфравидения
 type:amulet
 graphics:":d
 level:10
@@ -2469,7 +2515,8 @@ cost:200
 alloc:30:10 to 70
 values:INFRA[1+M5]
 
-name:Searching
+# name:Searching
+name:Поиска
 type:amulet
 graphics:":d
 level:15
@@ -2480,7 +2527,8 @@ values:SEARCH[d5M5]
 
 ### Powers ###
 
-name:Teleportation
+# name:Teleportation
+name:Телепортации
 type:amulet
 graphics:":d
 level:10
@@ -2490,7 +2538,8 @@ alloc:20:10 to 40
 flags:EASY_KNOW
 curse:teleportation:100
 
-name:Slow Digestion
+# name:Slow Digestion
+name:Медленного Пищеварения
 type:amulet
 graphics:":d
 level:15
@@ -2499,7 +2548,8 @@ cost:200
 alloc:20:15 to 40
 flags:SLOW_DIGEST | EASY_KNOW
 
-name:Adornment
+# name:Adornment
+name:Нарядности
 type:amulet
 graphics:":d
 level:10
@@ -2511,7 +2561,8 @@ flags:EASY_KNOW
 
 ### Mixed ###
 
-name:Inertia
+# name:Inertia
+name:Инерции
 type:amulet
 graphics:":d
 level:15
@@ -2528,7 +2579,8 @@ values:SPEED[-3+1d2]
 
 ### Teleportation ###
 
-name:Phase Door
+# name:Phase Door
+name:Фазовой Двери
 type:scroll
 graphics:?:w
 level:1
@@ -2540,7 +2592,8 @@ power:5
 effect:TELEPORT
 dice:10
 
-name:Teleportation
+# name:Teleportation
+name:Телепортации
 type:scroll
 graphics:?:w
 level:10
@@ -2552,7 +2605,8 @@ power:6
 effect:TELEPORT
 dice:M60
 
-name:Teleport Level
+# name:Teleport Level
+name:Телепортации Этажа
 type:scroll
 graphics:?:w
 level:20
@@ -2566,7 +2620,8 @@ effect:TELEPORT_LEVEL
 
 ### Detection ###
 
-name:Magic Mapping
+# name:Magic Mapping
+name:Магической Картографии
 type:scroll
 graphics:?:w
 level:5
@@ -2578,7 +2633,8 @@ power:10
 effect:MAP_AREA
 effect-yx:22:40
 
-name:Treasure Detection
+# name:Treasure Detection
+name:Обнаружения Сокровища
 type:scroll
 graphics:?:w
 level:0
@@ -2594,7 +2650,8 @@ effect-yx:22:40
 effect:SENSE_OBJECTS
 effect-yx:22:40
 
-name:Detect Invisible
+# name:Detect Invisible
+name:Обнаружения Незримого
 type:scroll
 graphics:?:w
 level:1
@@ -2606,7 +2663,8 @@ power:6
 effect:DETECT_INVISIBLE_MONSTERS
 effect-yx:22:40
 
-name:Identify Rune
+# name:Identify Rune
+name:Идентификации Руны
 type:scroll
 graphics:?:w
 level:1
@@ -2619,7 +2677,8 @@ effect:IDENTIFY
 
 ### Enchantments ###
 
-name:Enchant Weapon To-Hit
+# name:Enchant Weapon To-Hit
+name:Улучшения Оружия-Попадания
 type:scroll
 graphics:?:w
 level:15
@@ -2631,7 +2690,8 @@ power:15
 effect:ENCHANT:TOHIT
 dice:1
 
-name:Enchant Weapon To-Dam
+# name:Enchant Weapon To-Dam
+name:Улучшения Оружия-Урона
 type:scroll
 graphics:?:w
 level:15
@@ -2643,7 +2703,8 @@ power:20
 effect:ENCHANT:TODAM
 dice:1
 
-name:Enchant Armour
+# name:Enchant Armour
+name:Улучшения Брони
 type:scroll
 graphics:?:w
 level:15
@@ -2655,7 +2716,8 @@ power:12
 effect:ENCHANT:TOAC
 dice:1
 
-name:*Enchant Weapon*
+# name:*Enchant Weapon*
+name:*Улучшения Оружия*
 type:scroll
 graphics:?:w
 level:50
@@ -2668,7 +2730,8 @@ effect:ENCHANT:TOBOTH
 dice:1d3
 
 
-name:*Enchant Armour*
+# name:*Enchant Armour*
+name:*Улучшения Брони*
 type:scroll
 graphics:?:w
 level:50
@@ -2681,7 +2744,8 @@ effect:ENCHANT:TOAC
 dice:2+1d3
 
 
-name:Remove Curse
+# name:Remove Curse
+name:Снятия Проклятия
 type:scroll
 graphics:?:w
 level:10
@@ -2694,7 +2758,8 @@ effect:REMOVE_CURSE
 dice:20+d20
 
 
-name:*Remove Curse*
+# name:*Remove Curse*
+name:*Снятия Проклятия*
 type:scroll
 graphics:?:w
 level:50
@@ -2708,7 +2773,8 @@ dice:50+d50
 
 ### Summoning ###
 
-name:Summon Monster
+# name:Summon Monster
+name:Призыва Монстра
 type:scroll
 graphics:?:w
 level:1
@@ -2720,7 +2786,8 @@ power:0
 effect:SUMMON:ANY
 dice:1d3
 
-name:Summon Undead
+# name:Summon Undead
+name:Призыва Нежити
 type:scroll
 graphics:?:w
 level:15
@@ -2732,7 +2799,8 @@ power:0
 effect:SUMMON:UNDEAD
 dice:1d3
 
-name:Acquirement
+# name:Acquirement
+name:Приобретения
 type:scroll
 graphics:?:w
 level:20
@@ -2743,7 +2811,8 @@ power:20000
 effect:ACQUIRE
 dice:1
 
-name:*Acquirement*
+# name:*Acquirement*
+name:*Приобретения*
 type:scroll
 graphics:?:w
 level:60
@@ -2757,7 +2826,8 @@ dice:1+1d2
 
 ### Killing scrolls ###
 
-name:Dispel Undead
+# name:Dispel Undead
+name:Рассеивания Нежити
 type:scroll
 graphics:?:w
 level:40
@@ -2769,7 +2839,8 @@ power:9
 effect:PROJECT_LOS:DISP_UNDEAD:0:1
 dice:60
 
-name:Banishment
+# name:Banishment
+name:Изгнания
 type:scroll
 graphics:?:w
 level:40
@@ -2779,7 +2850,8 @@ alloc:25:40 to 100
 power:20
 effect:BANISH
 
-name:Mass Banishment
+# name:Mass Banishment
+name:Массового Изгнания
 type:scroll
 graphics:?:w
 level:50
@@ -2792,7 +2864,8 @@ effect:MASS_BANISH
 
 ### Utility ###
 
-name:Remove Hunger
+# name:Remove Hunger
+name:Устранения голода
 type:scroll
 graphics:?:w
 level:5
@@ -2804,7 +2877,8 @@ power:7
 effect:NOURISH:INC_TO
 dice:50
 
-name:Light
+# name:Light
+name:Света
 type:scroll
 graphics:?:w
 level:0
@@ -2817,7 +2891,8 @@ effect:LIGHT_AREA
 effect:SPOT:LIGHT_WEAK:2
 dice:2d8
 
-name:Word of Recall
+# name:Word of Recall
+name:Слова Возвращения
 type:scroll
 graphics:?:w
 level:5
@@ -2828,7 +2903,8 @@ pile:35:2d3
 power:15
 effect:RECALL
 
-name:Recharging
+# name:Recharging
+name:Перезарядки
 type:scroll
 graphics:?:w
 level:40
@@ -2840,7 +2916,8 @@ power:11
 effect:RECHARGE
 dice:6
 
-name:Door Destruction
+# name:Door Destruction
+name:Разрушения Двери
 type:scroll
 graphics:?:w
 level:10
@@ -2851,7 +2928,8 @@ pile:25:2d3
 power:6
 effect:TOUCH:KILL_DOOR
 
-name:Deep Descent
+# name:Deep Descent
+name:Глубокого Спуска
 type:scroll
 graphics:?:w
 level:10
@@ -2865,7 +2943,8 @@ effect:DEEP_DESCENT
 
 ### "Holy" spells ###
 
-name:Blessing
+# name:Blessing
+name:Благословения
 type:scroll
 graphics:?:w
 level:1
@@ -2877,7 +2956,8 @@ power:6
 effect:TIMED_INC:BLESSED
 dice:6+1d12
 
-name:Holy Chant
+# name:Holy Chant
+name:Святого Пения
 type:scroll
 graphics:?:w
 level:10
@@ -2889,7 +2969,8 @@ power:7
 effect:TIMED_INC:BLESSED
 dice:12+1d24
 
-name:Holy Prayer
+# name:Holy Prayer
+name:Святой Молитвы
 type:scroll
 graphics:?:w
 level:25
@@ -2901,7 +2982,8 @@ power:8
 effect:TIMED_INC:BLESSED
 dice:24+1d48
 
-name:Protection from Evil
+# name:Protection from Evil
+name:Защиты от Зла
 type:scroll
 graphics:?:w
 level:30
@@ -2917,7 +2999,8 @@ expr:B:PLAYER_LEVEL:* 3
 
 ### Misc. ###
 
-name:Monster Confusion
+# name:Monster Confusion
+name:Запутывания Монстров
 type:scroll
 graphics:?:w
 level:5
@@ -2929,7 +3012,8 @@ power:8
 effect:TIMED_INC:ATT_CONF
 dice:10000
 
-name:Rune of Protection
+# name:Rune of Protection
+name:Руны Защиты
 type:scroll
 graphics:?:w
 level:60
@@ -2939,7 +3023,8 @@ alloc:30:70 to 100
 power:20
 effect:GLYPH:WARDING
 
-name:*Destruction*
+# name:*Destruction*
+name:*Разрушения*
 type:scroll
 graphics:?:w
 level:40
@@ -2951,7 +3036,8 @@ effect:DESTRUCTION:LIGHT:15
 
 ### Bad scrolls ###
 
-name:Aggravate Monster
+# name:Aggravate Monster
+name:Раздражения Монстров
 type:scroll
 graphics:?:w
 level:5
@@ -2960,12 +3046,14 @@ cost:0
 alloc:10:5 to 70
 pile:70:1d3
 power:0
-msg:There is a high pitched humming noise.
+# msg:There is a high pitched humming noise.
+msg:Раздаётся сильный гудящий грохот.
 effect:WAKE
 effect:PROJECT_LOS:MON_SPEED
 dice:25
 
-name:Curse Weapon
+# name:Curse Weapon
+name:Проклятого Оружия
 type:scroll
 graphics:?:w
 level:50
@@ -2976,7 +3064,8 @@ pile:70:1d3
 power:0
 effect:CURSE_WEAPON
 
-name:Curse Armour
+# name:Curse Armour
+name:Проклятой Брони
 type:scroll
 graphics:?:w
 level:50
@@ -2987,7 +3076,8 @@ pile:70:1d3
 power:0
 effect:CURSE_ARMOR
 
-name:Darkness
+# name:Darkness
+name:Тьмы
 type:scroll
 graphics:?:w
 level:1
@@ -3000,7 +3090,8 @@ effect:DARKEN_AREA
 effect:SPOT:DARK_WEAK:3
 dice:10
 
-name:Trap Creation
+# name:Trap Creation
+name:Создания ловушки
 type:scroll
 graphics:?:w
 level:10
@@ -3009,7 +3100,8 @@ cost:0
 alloc:10:10 to 70
 pile:70:1d3
 power:0
-msg:You hear a low-pitched whistling sound.
+# msg:You hear a low-pitched whistling sound.
+msg:Вы слышите негромкий свистящий звук.
 effect:TOUCH:MAKE_TRAP:3
 
 
@@ -3019,7 +3111,8 @@ effect:TOUCH:MAKE_TRAP:3
 
 ### Statgain ###
 
-name:Strength
+# name:Strength
+name:Силы
 type:potion
 graphics:!:d
 level:30
@@ -3031,7 +3124,8 @@ power:20000
 effect:RESTORE_STAT:STR
 effect:GAIN_STAT:STR
 
-name:Intelligence
+# name:Intelligence
+name:Интеллекта
 type:potion
 graphics:!:d
 level:30
@@ -3043,7 +3137,8 @@ power:20000
 effect:RESTORE_STAT:INT
 effect:GAIN_STAT:INT
 
-name:Wisdom
+# name:Wisdom
+name:Мудрости
 type:potion
 graphics:!:d
 level:30
@@ -3055,7 +3150,8 @@ power:20000
 effect:RESTORE_STAT:WIS
 effect:GAIN_STAT:WIS
 
-name:Dexterity
+# name:Dexterity
+name:Ловкости
 type:potion
 graphics:!:d
 level:30
@@ -3067,7 +3163,8 @@ power:20000
 effect:RESTORE_STAT:DEX
 effect:GAIN_STAT:DEX
 
-name:Constitution
+# name:Constitution
+name:Телосложения
 type:potion
 graphics:!:d
 level:30
@@ -3079,7 +3176,8 @@ power:20000
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:CON
 
-name:Augmentation
+# name:Augmentation
+name:Улучшения
 type:potion
 graphics:!:d
 level:40
@@ -3100,7 +3198,8 @@ effect:GAIN_STAT:DEX
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:CON
 
-name:Experience
+# name:Experience
+name:Опыта
 type:potion
 graphics:!:d
 level:65
@@ -3113,7 +3212,8 @@ dice:200000
 
 ### Healings ###
 
-name:Cure Light Wounds
+# name:Cure Light Wounds
+name:Лечения Лёгких Ран
 type:potion
 graphics:!:d
 level:0
@@ -3132,7 +3232,8 @@ dice:20
 effect:NOURISH:INC_BY
 dice:1
 
-name:Cure Serious Wounds
+# name:Cure Serious Wounds
+name:Лечения Серьёзных Ран
 type:potion
 graphics:!:d
 level:3
@@ -3149,7 +3250,8 @@ effect:CURE:CONFUSED
 effect:NOURISH:INC_BY
 dice:1
 
-name:Cure Critical Wounds
+# name:Cure Critical Wounds
+name:Лечения Критических Ран
 type:potion
 graphics:!:d
 level:5
@@ -3169,7 +3271,8 @@ effect:CURE:CONFUSED
 effect:NOURISH:INC_BY
 dice:1
 
-name:Healing
+# name:Healing
+name:Исцеления
 type:potion
 graphics:!:d
 level:15
@@ -3189,7 +3292,8 @@ effect:CURE:CONFUSED
 effect:NOURISH:INC_BY
 dice:1
 
-name:*Healing*
+# name:*Healing*
+name:*Исцеления*
 type:potion
 graphics:!:d
 level:40
@@ -3208,7 +3312,8 @@ effect:CURE:STUN
 effect:CURE:AMNESIA
 effect:CURE:CONFUSED
 
-name:Life
+# name:Life
+name:Жизни
 type:potion
 graphics:!:d
 level:60
@@ -3217,7 +3322,7 @@ cost:5000
 alloc:20:60 to 100
 attack:1d1:0:0
 armor:0:0
-msg:You feel life flow through your body!
+msg:Вы чувствуете, как жизнь разливается по вашему телу!
 power:21
 effect:RESTORE_EXP
 effect:CURE:BLIND
@@ -3235,7 +3340,8 @@ effect:RESTORE_STAT:CON
 effect:HEAL_HP
 dice:5000
 
-name:Neutralize Poison
+# name:Neutralize Poison
+name:Нейтрализации Яда
 type:potion
 graphics:!:d
 level:5
@@ -3246,7 +3352,8 @@ pile:25:2
 power:1
 effect:CURE:POISONED
 
-name:Restore Mana
+# name:Restore Mana
+name:Восстановления Маны
 type:potion
 graphics:!:d
 level:25
@@ -3262,7 +3369,8 @@ effect:RESTORE_MANA
 
 # removed: old stat restoration
 
-name:Restore Life Levels
+# name:Restore Life Levels
+name:Восстановления Уровней Жизни
 type:potion
 graphics:!:d
 level:40
@@ -3276,7 +3384,8 @@ effect:RESTORE_EXP
 
 ### Gain one/lose one potions ###
 
-name:Brawn
+# name:Brawn
+name:Мускулатуры
 type:potion
 graphics:!:d
 level:3
@@ -3289,7 +3398,8 @@ effect:RESTORE_STAT:STR
 effect:GAIN_STAT:STR
 effect:LOSE_RANDOM_STAT:STR
 
-name:Intellect
+# name:Intellect
+name:Интеллекта
 type:potion
 graphics:!:d
 level:20
@@ -3302,7 +3412,8 @@ effect:RESTORE_STAT:INT
 effect:GAIN_STAT:INT
 effect:LOSE_RANDOM_STAT:INT
 
-name:Contemplation
+# name:Contemplation
+name:Созерцания
 type:potion
 graphics:!:d
 level:20
@@ -3315,7 +3426,8 @@ effect:RESTORE_STAT:WIS
 effect:GAIN_STAT:WIS
 effect:LOSE_RANDOM_STAT:WIS
 
-name:Nimbleness
+# name:Nimbleness
+name:Проворства
 type:potion
 graphics:!:d
 level:5
@@ -3328,7 +3440,8 @@ effect:RESTORE_STAT:DEX
 effect:GAIN_STAT:DEX
 effect:LOSE_RANDOM_STAT:DEX
 
-name:Toughness
+# name:Toughness
+name:Выносливости
 type:potion
 graphics:!:d
 level:10
@@ -3344,7 +3457,8 @@ effect:LOSE_RANDOM_STAT:CON
 
 ### Knowledge ###
 
-name:Enlightenment
+# name:Enlightenment
+name:Прозрения
 type:potion
 graphics:!:d
 level:25
@@ -3356,7 +3470,8 @@ power:22
 effect:LIGHT_LEVEL
 dice:1
 
-name:*Enlightenment*
+# name:*Enlightenment*
+name:*Прозрения*
 type:potion
 graphics:!:d
 level:70
@@ -3386,7 +3501,8 @@ effect-yx:500:500
 
 ### Buffs ###
 
-name:Speed
+# name:Speed
+name:Скорости
 type:potion
 graphics:!:d
 level:1
@@ -3398,7 +3514,8 @@ power:10
 effect:TIMED_INC:FAST:0:5
 dice:20+2d10
 
-name:Heroism
+# name:Heroism
+name:Героизма
 type:potion
 graphics:!:d
 level:1
@@ -3413,7 +3530,8 @@ effect:CURE:AFRAID
 effect:TIMED_INC:HERO
 dice:25+1d25
 
-name:Berserk Strength
+# name:Berserk Strength
+name:Силы Берсерка
 type:potion
 graphics:!:d
 level:3
@@ -3428,7 +3546,8 @@ effect:CURE:AFRAID
 effect:TIMED_INC:SHERO
 dice:25+1d25
 
-name:Boldness
+# name:Boldness
+name:Смелости
 type:potion
 graphics:!:d
 level:1
@@ -3439,7 +3558,8 @@ pile:25:2
 power:2
 effect:CURE:AFRAID
 
-name:Resist Heat
+# name:Resist Heat
+name:Сопротивления Нагреву
 type:potion
 graphics:!:d
 level:30
@@ -3451,7 +3571,8 @@ power:4
 effect:TIMED_INC:OPP_FIRE
 dice:50+1d10
 
-name:Resist Cold
+# name:Resist Cold
+name:Сопротивления Холоду
 type:potion
 graphics:!:d
 level:30
@@ -3463,7 +3584,8 @@ power:4
 effect:TIMED_INC:OPP_COLD
 dice:50+1d10
 
-name:Resist Poison
+# name:Resist Poison
+name:Сопротивления Яду
 type:potion
 graphics:!:d
 level:20
@@ -3476,7 +3598,8 @@ effect:TIMED_INC:OPP_POIS
 dice:50+1d10
 effect:CURE:POISONED
 
-name:True Seeing
+# name:True Seeing
+name:Истинного Зрения
 type:potion
 graphics:!:d
 level:3
@@ -3489,7 +3612,8 @@ effect:CURE:BLIND
 effect:TIMED_INC:SINVIS
 dice:50+2d6
 
-name:Infravision
+# name:Infravision
+name:Инфравидения
 type:potion
 graphics:!:d
 level:3
@@ -3504,7 +3628,8 @@ dice:100+4d25
 
 ### Useless buggers ###
 
-name:Slime Mold Juice
+# name:Slime Mold Juice
+name:из Сока Слизистой Плесени
 type:potion
 graphics:!:d
 level:0
@@ -3516,7 +3641,8 @@ power:0
 effect:NOURISH:INC_BY
 dice:10
 
-name:Sleep
+# name:Sleep
+name:Сна
 type:potion
 graphics:!:d
 level:0
@@ -3532,7 +3658,8 @@ dice:5+1d5
 effect:NOURISH:INC_BY
 dice:1
 
-name:Blindness
+# name:Blindness
+name:Ослепления
 type:potion
 graphics:!:d
 level:0
@@ -3546,7 +3673,8 @@ power:0
 effect:TIMED_INC:BLIND
 dice:75+4d25
 
-name:Confusion
+# name:Confusion
+name:Замешательства
 type:potion
 graphics:!:d
 level:0
@@ -3562,7 +3690,8 @@ dice:10+4d5
 effect:NOURISH:INC_BY
 dice:1
 
-name:Poison
+# name:Poison
+name:Отравления
 type:potion
 graphics:!:d
 level:3
@@ -3576,7 +3705,8 @@ power:0
 effect:TIMED_INC:POISONED
 dice:10+2d7
 
-name:Slowness
+# name:Slowness
+name:Медлительности
 type:potion
 graphics:!:d
 level:1
@@ -3592,7 +3722,8 @@ dice:15+1d25
 effect:NOURISH:INC_BY
 dice:1
 
-name:Surprise
+# name:Surprise
+name:Сюрприза
 type:potion
 graphics:!:d
 level:10
@@ -3612,7 +3743,8 @@ effect:DRAIN_STAT:WIS
 effect:TIMED_INC:STONESKIN
 dice:20+1d20
 
-name:Salt Water
+# name:Salt Water
+name:Солёной Воды
 type:potion
 graphics:!:d
 level:0
@@ -3621,7 +3753,7 @@ cost:0
 alloc:10:3 to 15
 pile:100:1d2
 power:0
-msg:The potion makes you queasy.
+msg:От этого зелья вас тошнит.
 effect:NOURISH:SET_TO
 dice:2
 effect:CURE:POISONED
@@ -3654,7 +3786,8 @@ dice:80
 
 ### Bolts ###
 
-name:Magic Missile
+# name:Magic Missile
+name:Магической Стрелы
 type:wand
 graphics:-:d
 level:3
@@ -3668,7 +3801,8 @@ power:3
 effect:BOLT_OR_BEAM:MISSILE
 dice:3d4
 
-name:Lightning Bolts
+# name:Lightning Bolts
+name:Молний
 type:wand
 graphics:-:d
 level:15
@@ -3682,7 +3816,8 @@ power:5
 effect:BEAM:ELEC
 dice:6d6
 
-name:Frost Bolts
+# name:Frost Bolts
+name:Мороза
 type:wand
 graphics:-:d
 level:20
@@ -3696,7 +3831,8 @@ power:4
 effect:BOLT:COLD
 dice:12d8
 
-name:Fire Bolts
+# name:Fire Bolts
+name:Огня
 type:wand
 graphics:-:d
 level:30
@@ -3710,7 +3846,8 @@ power:7
 effect:BOLT_OR_BEAM:FIRE
 dice:12d8
 
-name:Acid Bolts
+# name:Acid Bolts
+name:Кислоты
 type:wand
 graphics:-:d
 level:30
@@ -3727,7 +3864,8 @@ dice:10d8
 
 ### Balls ###
 
-name:Stinking Cloud
+# name:Stinking Cloud
+name:Зловонного Облака
 type:wand
 graphics:-:d
 level:5
@@ -3741,7 +3879,8 @@ power:3
 effect:BALL:POIS:3
 dice:12
 
-name:Lightning Balls
+# name:Lightning Balls
+name:Шаровых Молний
 type:wand
 graphics:-:d
 level:35
@@ -3756,7 +3895,8 @@ power:9
 effect:BALL:ELEC:2
 dice:64
 
-name:Cold Balls
+# name:Cold Balls
+name:Морозных Шаров
 type:wand
 graphics:-:d
 level:40
@@ -3771,7 +3911,8 @@ power:10
 effect:BALL:COLD:2
 dice:100
 
-name:Fire Balls
+# name:Fire Balls
+name:Огненных Шаров
 type:wand
 graphics:-:d
 level:50
@@ -3786,7 +3927,8 @@ power:11
 effect:BALL:FIRE:2
 dice:144
 
-name:Acid Balls
+# name:Acid Balls
+name:Кислотных Шаров
 type:wand
 graphics:-:d
 level:50
@@ -3804,7 +3946,8 @@ dice:120
 
 ### Monster status changing ###
 
-name:Slow Monster
+# name:Slow Monster
+name:Замедления Монстра
 type:wand
 graphics:-:d
 level:5
@@ -3818,7 +3961,8 @@ power:3
 effect:BOLT_AWARE:MON_SLOW
 dice:10+1d20
 
-name:Confuse Monster
+# name:Confuse Monster
+name:Запутывания Монстра
 type:wand
 graphics:-:d
 level:5
@@ -3832,7 +3976,8 @@ power:3
 effect:BOLT_AWARE:MON_CONF
 dice:5+1d5
 
-name:Hold Monster
+# name:Hold Monster
+name:Удержания Монстра
 type:wand
 graphics:-:d
 level:5
@@ -3846,7 +3991,8 @@ power:3
 effect:BOLT_AWARE:MON_HOLD
 dice:3+1d5
 
-name:Stun Monster
+# name:Stun Monster
+name:Оглушения Монстра
 type:wand
 graphics:-:d
 level:5
@@ -3860,7 +4006,8 @@ power:3
 effect:BOLT_AWARE:MON_STUN
 dice:5+1d5
 
-name:Scare Monster
+# name:Scare Monster
+name:Устрашения Монстра
 type:wand
 graphics:-:d
 level:10
@@ -3877,7 +4024,8 @@ dice:10
 
 ### Utility ###
 
-name:Light
+# name:Light
+name:Света
 type:wand
 graphics:-:d
 level:3
@@ -3887,12 +4035,15 @@ alloc:20:3 to 60
 attack:1d1:0:0
 armor:0:0
 charges:6+d10
-vis-msg:A line of shimmering blue light appears.
+# vis-msg:A line of shimmering blue light appears.
+vis-msg:Появляется линия мерцающего голубого света.
 power:6
 effect:LINE:LIGHT_WEAK
 dice:6d8
 
-name:Stone to Mud
+# name:Stone to Mud
+# name:Камнетёса ???
+name:Камня-в-Грязь
 type:wand
 graphics:-:d
 level:10
@@ -3906,7 +4057,8 @@ power:6
 effect:LINE:KILL_WALL
 dice:20+1d30
 
-name:Polymorph
+# name:Polymorph
+name:Изменения
 type:wand
 graphics:-:d
 level:20
@@ -3921,7 +4073,8 @@ effect:BOLT_AWARE:MON_POLY
 dice:$B
 expr:B:PLAYER_LEVEL:+ 0
 
-name:Darkness
+# name:Darkness
+name:Тьмы
 type:wand
 graphics:-:d
 level:3
@@ -3935,7 +4088,8 @@ power:4
 effect:LINE:DARK_WEAK
 dice:6d8
 
-name:Clone Monster
+# name:Clone Monster
+name:Клон-монстра
 type:wand
 graphics:-:d
 level:15
@@ -3948,7 +4102,8 @@ charges:3+d5
 power:0
 effect:BOLT_STATUS:MON_CLONE
 
-name:Teleport Other
+# name:Teleport Other
+name:Телепортации Других
 type:wand
 graphics:-:d
 level:20
@@ -3963,7 +4118,8 @@ effect:BOLT_STATUS:AWAY_ALL
 dice:$B
 expr:B:MAX_SIGHT:* 5
 
-name:Disable Traps
+# name:Disable Traps
+name:Обезвреживания Ловушек
 type:wand
 graphics:-:d
 level:20
@@ -3976,7 +4132,8 @@ charges:4+d5
 power:7
 effect:ALTER:KILL_TRAP
 
-name:Wonder
+# name:Wonder
+name:Устойчивости
 type:wand
 graphics:-:d
 level:3
@@ -3996,7 +4153,8 @@ expr:B:PLAYER_LEVEL:/ 5
 
 ### Dragons' wands ###
 
-name:Dragon's Flame
+# name:Dragon's Flame
+name:Пламени Дракона
 type:wand
 graphics:-:d
 level:50
@@ -4011,7 +4169,8 @@ power:13
 effect:ARC:FIRE:0:30
 dice:200
 
-name:Dragon's Frost
+# name:Dragon's Frost
+name:Драконьего Холода
 type:wand
 graphics:-:d
 level:50
@@ -4026,7 +4185,8 @@ power:12
 effect:ARC:COLD:0:30
 dice:160
 
-name:Dragon's Breath
+# name:Dragon's Breath
+name:Дыхания Дракона
 type:wand
 graphics:-:d
 level:60
@@ -4054,7 +4214,8 @@ dice:160
 
 ### Drain lifes ###
 
-name:Drain Life
+# name:Drain Life
+name:Истощения Жизни
 type:wand
 graphics:-:d
 level:50
@@ -4068,7 +4229,8 @@ power:11
 effect:BOLT_STATUS_DAM:MON_DRAIN
 dice:150
 
-name:Annihilation
+# name:Annihilation
+name:Уничтожения
 type:wand
 graphics:-:d
 level:60
@@ -4086,7 +4248,8 @@ dice:250
 
 ### Rubbish ###
 
-name:Heal Monster
+# name:Heal Monster
+name:Исцеления Монстра
 type:wand
 graphics:-:d
 level:3
@@ -4100,7 +4263,8 @@ power:0
 effect:BOLT_STATUS:MON_HEAL
 dice:4d6
 
-name:Haste Monster
+# name:Haste Monster
+name:Ускорения Монстра
 type:wand
 graphics:-:d
 level:3
@@ -4121,7 +4285,8 @@ dice:100
 
 ### Bad staffs ###
 
-name:Summoning
+# name:Summoning
+name:Призыва
 type:staff
 graphics:_:d
 level:10
@@ -4135,7 +4300,8 @@ power:0
 effect:SUMMON:ANY
 dice:1d3
 
-name:Haste Monsters
+# name:Haste Monsters
+name:Ускорения Монстров
 type:staff
 graphics:_:d
 level:10
@@ -4149,7 +4315,8 @@ power:0
 effect:PROJECT_LOS:MON_SPEED
 dice:50
 
-name:Darkness
+# name:Darkness
+name:Тьмы
 type:staff
 graphics:_:d
 level:5
@@ -4166,7 +4333,8 @@ dice:10
 
 ### Destruction ###
 
-name:Earthquakes
+# name:Earthquakes
+name:Землятресений
 type:staff
 graphics:_:d
 level:40
@@ -4179,7 +4347,8 @@ charges:3+d5
 power:5
 effect:EARTHQUAKE:NONE:10
 
-name:*Destruction*
+# name:*Destruction*
+name:*Разрушения*
 type:staff
 graphics:_:d
 level:50
@@ -4194,7 +4363,8 @@ effect:DESTRUCTION:LIGHT:15
 
 ### Monster-affecting ###
 
-name:Confuse Monsters
+# name:Confuse Monsters
+name:Запутывания Монстров
 type:staff
 graphics:_:d
 level:10
@@ -4208,7 +4378,8 @@ power:10
 effect:PROJECT_LOS_AWARE:MON_CONF
 dice:5+1d5
 
-name:Slow Monsters
+# name:Slow Monsters
+name:Замедления Монстров
 type:staff
 graphics:_:d
 level:10
@@ -4222,7 +4393,8 @@ power:7
 effect:PROJECT_LOS:MON_SLOW
 dice:10+1d10
 
-name:Sleep Monsters
+# name:Sleep Monsters
+name:Усыпления Монстров
 type:staff
 graphics:_:d
 level:10
@@ -4240,7 +4412,8 @@ expr:B:PLAYER_LEVEL:* 10 + 500
 
 ### Detect ###
 
-name:Detect Invisible
+# name:Detect Invisible
+name:Обнаружения Незримого
 type:staff
 graphics:_:d
 level:5
@@ -4254,7 +4427,8 @@ power:6
 effect:DETECT_INVISIBLE_MONSTERS
 effect-yx:22:40
 
-name:Detect Evil
+# name:Detect Evil
+name:Обнаружения Зла
 type:staff
 graphics:_:d
 level:20
@@ -4268,7 +4442,8 @@ power:6
 effect:DETECT_EVIL
 effect-yx:22:40
 
-name:Mapping
+# name:Mapping
+name:Картографии
 type:staff
 graphics:_:d
 level:20
@@ -4285,7 +4460,8 @@ effect-yx:22:40
 
 ### Healing ###
 
-name:Curing
+# name:Curing
+name:Лечения
 type:staff
 graphics:_:d
 level:25
@@ -4302,7 +4478,8 @@ effect:CURE:POISONED
 effect:CURE:STUN
 effect:CURE:CONFUSED
 
-name:Cure Light Wounds
+# name:Cure Light Wounds
+name:Лечения Лёгких Ран
 type:staff
 graphics:_:d
 level:5
@@ -4321,7 +4498,8 @@ dice:20
 effect:TIMED_DEC:CONFUSED
 dice:20
 
-name:Healing
+# name:Healing
+name:Исцеления
 type:staff
 graphics:_:d
 level:70
@@ -4344,7 +4522,8 @@ effect:CURE:CONFUSED
 
 ### Killing staffs ###
 
-name:Dispel Evil
+# name:Dispel Evil
+name:Рассеивания Зла
 type:staff
 graphics:_:d
 level:50
@@ -4358,7 +4537,8 @@ power:9
 effect:PROJECT_LOS:DISP_EVIL:0:1
 dice:60
 
-name:Banishment
+# name:Banishment
+name:Изгнания
 type:staff
 graphics:_:d
 level:70
@@ -4371,7 +4551,8 @@ charges:1+d2
 power:20
 effect:BANISH
 
-name:Power
+# name:Power
+name:Могущества
 type:staff
 graphics:_:d
 level:70
@@ -4385,7 +4566,8 @@ power:11
 effect:PROJECT_LOS:DISP_ALL:0:1
 dice:120
 
-name:Holiness
+# name:Holiness
+name:Святости
 type:staff
 graphics:_:d
 level:70
@@ -4417,7 +4599,8 @@ effect:CURE:AMNESIA
 
 ### Utility ###
 
-name:Light
+# name:Light
+name:Света
 type:staff
 graphics:_:d
 level:5
@@ -4432,7 +4615,8 @@ effect:LIGHT_AREA
 effect:SPOT:LIGHT_WEAK:2
 dice:2d8
 
-name:Starlight
+# name:Starlight
+name:Звёздного Света
 type:staff
 graphics:_:d
 level:20
@@ -4446,7 +4630,8 @@ power:5
 effect:STAR:LIGHT
 dice:6d8
 
-name:Teleportation
+# name:Teleportation
+name:Телепортации
 type:staff
 graphics:_:d
 level:20
@@ -4460,7 +4645,8 @@ power:6
 effect:TELEPORT
 dice:M60
 
-name:Speed
+# name:Speed
+name:Скорости
 type:staff
 graphics:_:d
 level:40
@@ -4474,7 +4660,8 @@ power:10
 effect:TIMED_INC:FAST:0:5
 dice:20+2d10
 
-name:Remove Curse
+# name:Remove Curse
+name:Снятия Проклятия
 type:staff
 graphics:_:d
 level:40
@@ -4488,7 +4675,8 @@ power:8
 effect:REMOVE_CURSE
 dice:20+d20
 
-name:the Magi
+# name:the Magi
+name:Волшебников
 type:staff
 graphics:_:d
 level:70
@@ -4547,7 +4735,8 @@ effect:DETECT_VISIBLE_MONSTERS
 effect-yx:22:40
 time:100
 
-name:Magic Mapping
+# name:Magic Mapping
+name:Магической Картографии
 type:rod
 graphics:-:d
 level:65
@@ -4561,7 +4750,8 @@ effect:MAP_AREA
 effect-yx:33:55
 time:100
 
-name:Probing
+# name:Probing
+name:Допроса
 type:rod
 graphics:-:d
 level:35
@@ -4577,7 +4767,8 @@ time:100
 
 ### Bolts ###
 
-name:Fire Bolts
+# name:Fire Bolts
+name:Огня
 type:rod
 graphics:-:d
 level:30
@@ -4591,7 +4782,8 @@ effect:BOLT_OR_BEAM:FIRE
 dice:12d8
 time:15
 
-name:Frost Bolts
+# name:Frost Bolts
+name:Мороза
 type:rod
 graphics:-:d
 level:25
@@ -4605,7 +4797,8 @@ effect:BOLT:COLD
 dice:12d8
 time:13
 
-name:Lightning Bolts
+# name:Lightning Bolts
+name:Молний
 type:rod
 graphics:-:d
 level:20
@@ -4619,7 +4812,8 @@ effect:BEAM:ELEC
 dice:6d6
 time:11
 
-name:Acid Bolts
+# name:Acid Bolts
+name:Кислоты
 type:rod
 graphics:-:d
 level:40
@@ -4636,7 +4830,8 @@ time:12
 
 ### Balls ###
 
-name:Fire Balls
+# name:Fire Balls
+name:Огненных Шаров
 type:rod
 graphics:-:d
 level:75
@@ -4650,7 +4845,8 @@ effect:BALL:FIRE:2
 dice:144
 time:30
 
-name:Cold Balls
+# name:Cold Balls
+name:Морозных Шаров
 type:rod
 graphics:-:d
 level:60
@@ -4664,7 +4860,8 @@ effect:BALL:COLD:2
 dice:100
 time:25
 
-name:Lightning Balls
+# name:Lightning Balls
+name:Шаровых Молний
 type:rod
 graphics:-:d
 level:55
@@ -4679,7 +4876,8 @@ effect:BALL:ELEC:2
 dice:64
 time:23
 
-name:Acid Balls
+# name:Acid Balls
+name:Кислотных Шаров
 type:rod
 graphics:-:d
 level:70
@@ -4696,7 +4894,8 @@ time:27
 
 ### Status-affecting ###
 
-name:Slow Monster
+# name:Slow Monster
+name:Замедления Монстра
 type:rod
 graphics:-:d
 level:30
@@ -4710,7 +4909,8 @@ effect:BOLT_AWARE:MON_SLOW
 dice:10+1d20
 time:40
 
-name:Hold Monster
+# name:Hold Monster
+name:Удержания Монстра
 type:rod
 graphics:-:d
 level:30
@@ -4727,7 +4927,8 @@ time:40
 
 ### Healing ###
 
-name:Curing
+# name:Curing
+name:Лечения
 type:rod
 graphics:-:d
 level:65
@@ -4744,7 +4945,8 @@ effect:CURE:STUN
 effect:CURE:CONFUSED
 time:100
 
-name:Healing
+# name:Healing
+name:Исцеления
 type:rod
 graphics:-:d
 level:80
@@ -4783,7 +4985,8 @@ time:1000
 
 ### Other ###
 
-name:Polymorph
+# name:Polymorph
+name:Изменения
 type:rod
 graphics:-:d
 level:35
@@ -4798,7 +5001,8 @@ dice:$B
 expr:B:PLAYER_LEVEL:+ 0
 time:25
 
-name:Drain Life
+# name:Drain Life
+name:Истощения Жизни
 type:rod
 graphics:-:d
 level:75
@@ -4812,7 +5016,8 @@ effect:BOLT_STATUS_DAM:MON_DRAIN
 dice:150
 time:23
 
-name:Teleport Other
+# name:Teleport Other
+name:Телепортации Других
 type:rod
 graphics:-:d
 level:45
@@ -4827,7 +5032,8 @@ dice:$B
 expr:B:MAX_SIGHT:* 5
 time:25
 
-name:Disable Traps
+# name:Disable Traps
+name:Обезвреживания Ловушек
 type:rod
 graphics:-:d
 level:35
@@ -4840,7 +5046,8 @@ power:7
 effect:ALTER:KILL_TRAP
 time:30
 
-name:Light
+# name:Light
+name:Света
 type:rod
 graphics:-:d
 level:10
@@ -4884,7 +5091,8 @@ power:15
 effect:RECALL
 time:60
 
-name:Speed
+# name:Speed
+name:Скорости
 type:rod
 graphics:-:d
 level:95

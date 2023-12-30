@@ -33,7 +33,7 @@
 # desc: an extra piece of descriptive text used in object information
 
 # name:strength
-name:силе
+name:силу
 type:stat
 code:STR
 power:9
@@ -43,7 +43,7 @@ neg-adjective:слабым
 bindui:stat_mod_ui_compact_0<STR>:0
 
 # name:intelligence
-name:интелекту
+name:интеллект
 type:stat
 code:INT
 power:5
@@ -53,7 +53,7 @@ neg-adjective:глупым
 bindui:stat_mod_ui_compact_0<INT>:0
 
 # name:wisdom
-name:мудрости
+name:мудрость
 type:stat
 code:WIS
 power:5
@@ -62,7 +62,8 @@ adjective:мудрым
 neg-adjective:наивным
 bindui:stat_mod_ui_compact_0<WIS>:0
 
-name:dexterity
+# name:dexterity
+name:ловкость
 type:stat
 code:DEX
 power:8
@@ -73,7 +74,7 @@ neg-adjective:неуклюжим
 bindui:stat_mod_ui_compact_0<DEX>:0
 
 # name:constitution
-name:телосложению
+name:телосложение
 type:stat
 code:CON
 power:12
@@ -83,7 +84,7 @@ neg-adjective:больным
 bindui:stat_mod_ui_compact_0<CON>:0
 
 # name:stealth
-name:скрытности
+name:скрытность
 type:mod
 code:STEALTH
 power:8
@@ -91,7 +92,7 @@ mult:12
 bindui:stealth_ui_compact_0:0
 
 # name:searching skill
-name:навыку поиска
+name:навык поиска
 type:mod
 code:SEARCH
 power:2
@@ -99,7 +100,7 @@ mult:5
 bindui:search_ui_compact_0:0
 
 # name:infravision
-name:инфравидению
+name:инфравидение
 type:mod
 code:INFRA
 power:4
@@ -107,7 +108,7 @@ mult:8
 bindui:infravision_ui_compact_0:0
 
 # name:tunneling
-name:копанию
+name:копание
 type:mod
 code:TUNNEL
 power:3
@@ -115,7 +116,7 @@ mult:8
 bindui:tunneling_ui_compact_0:0
 
 # name:speed
-name:скорости
+name:скорость
 type:mod
 code:SPEED
 power:20
@@ -123,7 +124,7 @@ mult:6
 bindui:speed_ui_compact_0:0
 
 # name:damage reduction
-name:уменьшению урона
+name:уменьшение урона
 type:mod
 code:DAM_RED
 power:5
@@ -131,7 +132,7 @@ mult:6
 bindui:damage_reduction_ui_compact_0:0
 
 # name:extra blows
-name:дополнительным ударам
+name:дополнительные удары
 type:mod
 code:BLOWS
 power:0
@@ -152,7 +153,7 @@ type-mult:boots:3
 bindui:blows_ui_compact_0:0
 
 # name:shooting speed
-name:скорости стрельбы
+name:скорость стрельбы
 type:mod
 code:SHOTS
 power:0
@@ -176,7 +177,7 @@ type-mult:boots:4
 bindui:shots_ui_compact_0:0
 
 # name:shooting power
-name:силе стрельбы
+name:мощь стрельбы
 type:mod
 code:MIGHT
 power:0
@@ -200,7 +201,7 @@ type-mult:boots:0
 bindui:shooting_power_ui_compact_0:0
 
 # name:extra moves
-name:дополнительным ходам
+name:дополнительные ходы
 type:mod
 code:MOVES
 power:0
@@ -224,7 +225,7 @@ type-mult:boots:0
 bindui:movement_speed_ui_compact_0:0
 
 # name:light
-name:свету
+name:свет
 type:mod
 code:LIGHT
 power:3
@@ -233,7 +234,7 @@ type-mult:light:3
 bindui:light_ui_compact_0:0
 
 # name:sustain strength
-name:поддержанию силы
+name:поддержание силы
 type:flag
 subtype:sustain
 id-type:on effect
@@ -243,7 +244,7 @@ msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<STR>:1
 
 # name:sustain intelligence
-name:поддержанию интелекта
+name:поддержание интеллекта
 type:flag
 subtype:sustain
 id-type:on effect
@@ -253,7 +254,7 @@ msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<INT>:1
 
 # name:sustain wisdom
-name:поддержанию мудрости
+name:поддержание мудрости
 type:flag
 subtype:sustain
 id-type:on effect
@@ -263,7 +264,7 @@ msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<WIS>:1
 
 # name:sustain dexterity
-name:поддержанию ловкости
+name:поддержание ловкости
 type:flag
 subtype:sustain
 id-type:on effect
@@ -273,7 +274,7 @@ msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<DEX>:1
 
 # name:sustain constitution
-name:поддержанию телосложения
+name:поддержание телосложения
 type:flag
 subtype:sustain
 id-type:on effect
@@ -283,7 +284,7 @@ msg:Ваш {name} сияет.
 bindui:stat_mod_ui_compact_0<CON>:1
 
 # name:protection from fear
-name:защите от страха
+name:защиту от страха
 type:flag
 code:PROT_FEAR
 subtype:protection
@@ -294,7 +295,7 @@ bindui:pfear_ui_compact_0:0
 desc:страха
 
 # name:protection from blindness
-name:защите от ослепления
+name:защиту от ослепления
 type:flag
 code:PROT_BLIND
 subtype:protection
@@ -305,7 +306,7 @@ bindui:pblind_ui_compact_0:0
 desc:ослепления
 
 # name:protection from confusion
-name:защите от замешательства
+name:защиту от замешательства
 type:flag
 code:PROT_CONF
 subtype:protection
@@ -316,7 +317,7 @@ bindui:pconf_ui_compact_0:0
 desc:замешательства
 
 # name:protection from stunning
-name:защите от ошеломления
+name:защиту от ошеломления
 type:flag
 code:PROT_STUN
 subtype:protection
@@ -327,7 +328,7 @@ bindui:pstun_ui_compact_0:0
 desc:ошеломления
 
 # name:slow digestion
-name:медленным метаболизмом
+name:медленный метаболизм
 type:flag
 subtype:misc ability
 id-type:timed
@@ -416,7 +417,7 @@ bindui:see_invis_ui_compact_0:0
 desc:Даёт способность видеть незримое
 
 # name:free action
-name:свободу действия
+name:свободу движения
 type:flag
 subtype:misc ability
 id-type:on effect

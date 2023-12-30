@@ -197,7 +197,7 @@ name:LOSE_INT
 power:0
 eval:20
 #desc:reduce intelligence
-desc:понижения интелекта
+desc:понижения интеллекта
 lore-color-base:Orange
 lore-color-resist:Light Green
 effect-type:flag

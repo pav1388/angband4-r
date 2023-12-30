@@ -255,7 +255,7 @@ type:object
 code:FEATHER
 bindui:feather_falling_ui_compact_0:0:1
 # name:Feather Falling
-name:Падение Пера
+name:Мягкое Приземление
 # desc:You fall lightly.
 desc:Вы мягко приземляетесь.
 
@@ -279,7 +279,7 @@ type:object
 code:SEE_INVIS
 bindui:see_invis_ui_compact_0:0:1
 # name:See Invisible
-name:Видеть Невидимое
+name:Видеть Незримое
 # desc:You can see invisible creatures.
 desc:Вы можете видеть незримых существ.
 
@@ -287,7 +287,7 @@ type:object
 code:FREE_ACT
 bindui:free_action_ui_compact_0:0:1
 # name:Free Action
-name:Свобода Действия
+name:Свобода Движения
 # desc:You are immune to paralysis.
 desc:У вас есть иммунитет к параличу.
 

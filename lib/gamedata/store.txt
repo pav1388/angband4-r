@@ -157,25 +157,25 @@ owner:15000:Га-Нат Жадный (Гном)
 owner:15000:Велла Стройная (Человек)
 slots:6:10
 turnover:9
-always:scroll:Word of Recall
-always:scroll:Phase Door
-always:scroll:Remove Curse
-always:potion:Cure Light Wounds
-normal:scroll:Monster Confusion
-normal:scroll:Magic Mapping
-normal:scroll:Detect Invisible
-normal:scroll:Recharging
-normal:scroll:Remove Hunger
-normal:scroll:Blessing
-normal:scroll:Holy Chant
-normal:potion:Boldness
-normal:potion:Berserk Strength
-normal:potion:Resist Heat
-normal:potion:Resist Cold
-normal:potion:Restore Life Levels
-normal:potion:Neutralize Poison
-normal:potion:Cure Serious Wounds
-normal:potion:Cure Critical Wounds
+always:scroll:Слова Возвращения
+always:scroll:Фазовой Двери
+always:scroll:Снятия Проклятия
+always:potion:Лечения Лёгких Ран
+normal:scroll:Запутывания Монстров
+normal:scroll:Магической Картографии
+normal:scroll:Обнаружения Незримого
+normal:scroll:Перезарядки
+normal:scroll:Устранения голода
+normal:scroll:Благословения
+normal:scroll:Святого Пения
+normal:potion:Смелости
+normal:potion:Силы Берсерка
+normal:potion:Сопротивления Нагреву
+normal:potion:Сопротивления Холоду
+normal:potion:Восстановления Уровней Жизни
+normal:potion:Нейтрализации Яда
+normal:potion:Лечения Серьёзных Ран
+normal:potion:Лечения Критических Ран
 buy:scroll
 buy:potion
 
@@ -187,23 +187,23 @@ owner:25000:Инглориан Маг (Человек)
 owner:30000:Лютиэн Звёздная (Высокий Эльф)
 slots:4:14
 turnover:9
-normal:ring:Searching
-normal:ring:Feather Falling
-normal:ring:Protection
-normal:ring:Open Wounds
-normal:amulet:Slow Digestion
-normal:amulet:Resist Acid
-normal:wand:Light
-normal:wand:Slow Monster
-normal:wand:Confuse Monster
-normal:wand:Magic Missile
-normal:wand:Stinking Cloud
-normal:wand:Stone to Mud
-normal:staff:Teleportation
-normal:staff:Light
-normal:staff:Mapping
-normal:staff:Detect Invisible
-normal:staff:Detect Evil
+normal:ring:Поиска
+normal:ring:Мягкого Приземления
+normal:ring:Защиты
+normal:ring:Открытых Ран
+normal:amulet:Медленного Пищеварения
+normal:amulet:Сопротивления Кислоте
+normal:wand:Света
+normal:wand:Замедления Монстра
+normal:wand:Запутывания Монстра
+normal:wand:Магической Стрелы
+normal:wand:Зловонного Облака
+normal:wand:Камня-в-Грязь
+normal:staff:Телепортации
+normal:staff:Света
+normal:staff:Картографии
+normal:staff:Обнаружения Незримого
+normal:staff:Обнаружения Зла
 buy:magic book
 buy:amulet
 buy:ring
