@@ -107,9 +107,23 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	}
 
 	/* Dump the spell --(-- */
-	strnfmt(out, sizeof(out), "%-30s%2d %4d %3d%%%s", spell->name,
-			spell->slevel, spell->smana, spell_chance(spell_index), comment);
-	c_prt(attr, illegible ? illegible : out, row, col);
+	// strnfmt(out, sizeof(out), "%-30s%2d %4d %3d%%%s", spell->name,
+			// spell->slevel, spell->smana, spell_chance(spell_index), comment);
+	// c_prt(attr, illegible ? illegible : out, row, col);
+	if (!illegible){
+		strnfmt(out, sizeof(out), "%s", spell->name);
+		c_prt(attr, out, row, col);
+		strnfmt(out, sizeof(out), "%2d", spell->slevel);
+		c_prt(attr, out, row, col + 30);
+		strnfmt(out, sizeof(out), "%4d", spell->smana);
+		c_prt(attr, out, row, col + 33);
+		strnfmt(out, sizeof(out), "%3d%%", spell_chance(spell_index));
+		c_prt(attr, out, row, col + 38);
+		strnfmt(out, sizeof(out), "%s", comment);
+		c_prt(attr, out, row, col + 42);
+	} else {
+		c_prt(attr, illegible, row, col);
+	}
 }
 
 /**

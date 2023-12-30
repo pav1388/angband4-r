@@ -1471,7 +1471,7 @@ void store_update(void)
 
 			/* Message */
 			// if (OPT(player, cheat_xtra)) msg("Shuffling a Shopkeeper...");
-			if (OPT(player, cheat_xtra)) msg("Перестановка продавца...");
+			if (OPT(player, cheat_xtra)) msg("Смена продавца...");
 
 			/* Pick a random shop (except home) */
 			for (n = 0; n < z_info->store_max; n++) {
@@ -1684,7 +1684,8 @@ void do_cmd_buy(struct command *cmd)
 
 	struct object *obj, *bought, *known_obj;
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 	int price;
 
 	struct store *store = store_at(cave, player->grid);
@@ -1702,7 +1703,7 @@ void do_cmd_buy(struct command *cmd)
 
 	if (!pile_contains(store->stock, obj)) {
 		// msg("You cannot buy that item because it's not in the store.");
-		msg("Вы не можете купить этот товар, его нет в магазине.");
+		msg("Вы не можете купить этот товар, потому что его нет в магазине.");
 		return;
 	}
 
@@ -1839,7 +1840,7 @@ void do_cmd_retrieve(struct command *cmd)
 
 	if (!pile_contains(store->stock, obj)) {
 		// msg("You cannot retrieve that item because it's not in the home.");
-		msg("Вы не можете получить этот предмет, его нет в доме.");
+		msg("Вы не можете получить этот предмет, потому что его нет в доме.");
 		return;
 	}
 
@@ -1853,7 +1854,7 @@ void do_cmd_retrieve(struct command *cmd)
 	/* Ensure we have room */
 	if (picked_item->number > inven_carry_num(player, picked_item)) {
 		// msg("You cannot carry that many items.");
-		msg("Вы не можете носить с собой много предметов.");
+		msg("Вы не можете носить с собой так много предметов.");
 		object_delete(NULL, NULL, &picked_item);
 		return;
 	}
@@ -1901,7 +1902,8 @@ void do_cmd_sell(struct command *cmd)
 	struct object dummy_item;
 	struct store *store = store_at(cave, player->grid);
 	int price, dummy, value;
-	char o_name[120];
+	// char o_name[120];
+	char o_name[200];
 	char label;
 
 	struct object *obj, *sold_item;
@@ -2046,7 +2048,8 @@ void do_cmd_stash(struct command *cmd)
 	int amt;
 	struct object dummy;
 	struct store *store = store_at(cave, player->grid);
-	char o_name[120];
+	// char o_name[120];
+	char o_name[200];
 	char label;
 
 	struct object *obj, *dropped;

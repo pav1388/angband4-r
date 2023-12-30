@@ -203,8 +203,10 @@ void spoil_obj_desc(const char *fname)
 	int i, k, s, t, n = 0;
 	uint16_t *who;
 	char buf[1024];
-	char wgt[80];
-	char dam[80];
+	// char wgt[80];
+	char wgt[160];
+	// char dam[80];
+	char dam[160];
 	const char *format = "%-51s  %7s%6s%4s%9s\n";
 
 	/* Open the file */

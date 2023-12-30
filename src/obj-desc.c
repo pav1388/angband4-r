@@ -680,7 +680,7 @@ size_t object_desc(char *buf, size_t max, const struct object *obj,
 				// obj->pval, obj->kind->name,
 				obj->pval, PLURAL_RU_UYU_bIE_bIH(obj->pval), PLURAL_RU_U_bI_(obj->pval), obj->kind->name,
 				// ignore_item_ok(p, obj) ? " {ignore}" : "");
-				ignore_item_ok(p, obj) ? " {игнорир}" : "");
+				ignore_item_ok(p, obj) ? " {игнор}" : "");
 
 	/* Egos and kinds whose name we know are seen */
 	if (obj->known->ego && !spoil)

@@ -204,7 +204,8 @@ static bool describe_elements(textblock *tb,
 		list[i] = (el_info[i].res_level == 3);
 	count = element_info_collect(list, i_descs);
 	if (count) {
-		textblock_append(tb, "Provides immunity to ");
+		// textblock_append(tb, "Provides immunity to ");
+		textblock_append(tb, "Обеспечивает иммунитет к ");
 		info_out_list(tb, i_descs, count);
 		prev = true;
 	}
@@ -214,7 +215,8 @@ static bool describe_elements(textblock *tb,
 		list[i] = (el_info[i].res_level == 1);
 	count = element_info_collect(list, r_descs);
 	if (count) {
-		textblock_append(tb, "Provides resistance to ");
+		// textblock_append(tb, "Provides resistance to ");
+		textblock_append(tb, "Обеспечивает сопротивление к ");
 		info_out_list(tb, r_descs, count);
 		prev = true;
 	}
@@ -224,7 +226,8 @@ static bool describe_elements(textblock *tb,
 		list[i] = (el_info[i].res_level == -1);
 	count = element_info_collect(list, v_descs);
 	if (count) {
-		textblock_append(tb, "Makes you vulnerable to ");
+		// textblock_append(tb, "Makes you vulnerable to ");
+		textblock_append(tb, "Делает вас уязвимым к ");
 		info_out_list(tb, v_descs, count);
 		prev = true;
 	}
@@ -276,7 +279,8 @@ static bool describe_ignores(textblock *tb, const struct element_info el_info[])
 	if (!count)
 		return false;
 
-	textblock_append(tb, "Cannot be harmed by ");
+	// textblock_append(tb, "Cannot be harmed by ");
+	textblock_append(tb, "Не может быть повреждено ");
 	info_out_list(tb, descs, count);
 
 	return true;
@@ -323,7 +327,8 @@ static bool describe_sustains(textblock *tb, const bitflag flags[OF_SIZE])
 	if (!count)
 		return false;
 
-	textblock_append(tb, "Sustains ");
+	// textblock_append(tb, "Sustains ");
+	textblock_append(tb, "Поддерживает ");
 	info_out_list(tb, descs, count);
 
 	return true;
@@ -2160,7 +2165,7 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 			prefix = "После активации, ";
 		else if (aimed)
 			// prefix = "When aimed, it ";
-			prefix = "После взмаха, ";
+			prefix = "После наведения, ";
 		else if (tval_is_edible(obj))
 			// prefix = "When eaten, it ";
 			prefix = "После употребления, ";
