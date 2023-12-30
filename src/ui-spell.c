@@ -74,6 +74,7 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	int attr;
 	const char *illegible = NULL;
 	const char *comment = "";
+	size_t u8len;
 
 	if (!spell) return;
 
@@ -107,6 +108,7 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	}
 
 	/* Dump the spell --(-- */
+<<<<<<< HEAD
 	// strnfmt(out, sizeof(out), "%-30s%2d %4d %3d%%%s", spell->name,
 			// spell->slevel, spell->smana, spell_chance(spell_index), comment);
 	// c_prt(attr, illegible ? illegible : out, row, col);
@@ -124,6 +126,24 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	} else {
 		c_prt(attr, illegible, row, col);
 	}
+=======
+	u8len = utf8_strlen(spell->name);
+	if (u8len < 30) {
+		strnfmt(out, sizeof(out), "%s%*s", spell->name,
+			(int)(30 - u8len), " ");
+	} else {
+		char *name_copy = string_make(spell->name);
+
+		if (u8len > 30) {
+			utf8_clipto(name_copy, 30);
+		}
+		my_strcpy(out, name_copy, sizeof(out));
+		string_free(name_copy);
+	}
+	my_strcat(out, format("%2d %4d %3d%%%s", spell->slevel, spell->smana,
+		spell_chance(spell_index), comment), sizeof(out));
+	c_prt(attr, illegible ? illegible : out, row, col);
+>>>>>>> 24ba21ca729ab6c1382a82e7f25c0197f49daf37
 }
 
 /**

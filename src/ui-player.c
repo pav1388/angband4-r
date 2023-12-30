@@ -1225,12 +1225,27 @@ void write_character_dump(ang_file *fff)
 
 		file_putf(fff, "  [%s]\n\n", title);
 		for (opt = 0; opt < OPT_MAX; opt++) {
-			if (option_type(opt) != i) continue;
+			const char *desc;
+			size_t u8len;
 
+<<<<<<< HEAD
 			file_putf(fff, "%-45s: %s (%s)\n",
 			        option_desc(opt),
 			        // player->opts.opt[opt] ? "yes" : "no ",
 			        player->opts.opt[opt] ? "да " : "нет",
+=======
+			if (option_type(opt) != i) continue;
+			desc = option_desc(opt);
+			u8len = utf8_strlen(desc);
+			if (u8len < 45) {
+				file_putf(fff, "%s%*s", desc,
+					(int)(45 - u8len), " ");
+			} else {
+				file_putf(fff, "%s", desc);
+			}
+			file_putf(fff, ": %s (%s)\n",
+			        player->opts.opt[opt] ? "yes" : "no ",
+>>>>>>> 24ba21ca729ab6c1382a82e7f25c0197f49daf37
 			        option_name(opt));
 		}
 
