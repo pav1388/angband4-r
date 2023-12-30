@@ -27,10 +27,10 @@ INTERFACE, false)
 OP(pickup_always,         "Всегда подбирать предметы",
 INTERFACE, false)
 // OP(pickup_inven,          "Always pickup items matching inventory",
-OP(pickup_inven,          "Всегда подбирать предметы имеющиеся в инвентаре",
+OP(pickup_inven,          "Всегда подбирать уже имеющиеся предметы",
 INTERFACE, true)
 // OP(show_flavors,          "Show flavors in object descriptions",
-OP(show_flavors,          "Показывать вкусы(flavors) в описаниях объектов",
+OP(show_flavors,          "Показывать вкусы(flavors) в описаниях",
 INTERFACE, false)
 // OP(show_target,           "Highlight target with cursor",
 OP(show_target,           "Выделить цель курсором",
@@ -57,7 +57,7 @@ INTERFACE, false)
 OP(center_player,         "Центрировать карту постоянно",
 INTERFACE, false)
 // OP(purple_uniques,        "Color: Show unique monsters in purple",
-OP(purple_uniques,        "Цвет: показывать уникальных монстров фиолетовым",
+OP(purple_uniques,        "Цвет: уникальные монстры фиолетовые",
 INTERFACE, false)
 // OP(auto_more,             "Automatically clear '-more-' prompts",
 OP(auto_more,             "Автоматически очищать подсказки '-ещё-'",
@@ -99,7 +99,7 @@ CHEAT, false)
 OP(score_live,            "Счёт: позволить игроку избежать смерти",
 SCORE, false)
 // OP(birth_randarts,        "Generate a new, random artifact set",
-OP(birth_randarts,        "Сгенерировать новый, случайный набор артефактов",
+OP(birth_randarts,        "Генерировать случайный набор артефактов",
 BIRTH, false)
 // OP(birth_connect_stairs,  "Generate connected stairs",
 OP(birth_connect_stairs,  "Создавать соединенные лестницы",
@@ -123,7 +123,7 @@ BIRTH, false)
 OP(birth_feelings,        "Показать ощущения от этажа",
 BIRTH, true)
 // OP(birth_no_selling,      "Increase gold drops but disable selling",
-OP(birth_no_selling,      "Увеличить количество золота, но запретить продажу",
+OP(birth_no_selling,      "Больше золота, но запретить продажу",
 BIRTH, true)
 // OP(birth_start_kit,       "Start with a kit of useful gear",
 OP(birth_start_kit,       "Начинать с комплектом полезного снаряжения",

@@ -34,7 +34,7 @@ ITYPE(MULTI_DRAGON_ARMOR,	"Многоцветная Драконья Броня"
 // ITYPE(HIGH_DRAGON_ARMOR,	"High Dragon Scale Mail")
 ITYPE(HIGH_DRAGON_ARMOR,	"Высшая Драконья Броня")
 // ITYPE(BALANCE_DRAGON_ARMOR,	"Balance Dragon Scale Mail")
-ITYPE(BALANCE_DRAGON_ARMOR,	"Сбалансированная Драконья Броня")
+ITYPE(BALANCE_DRAGON_ARMOR,	"Сбалансир. Драконья Броня")
 // ITYPE(POWER_DRAGON_ARMOR,	"Power Dragon Scale Mail")
 ITYPE(POWER_DRAGON_ARMOR,	"Силовая Драконья Броня")
 // ITYPE(CLOAK,				"Cloaks")

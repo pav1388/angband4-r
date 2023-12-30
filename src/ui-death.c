@@ -49,11 +49,7 @@ static void put_str_centred(int y, int x1, int x2, const char *fmt, ...)
 	tmp = vformat(fmt, vp);
 	va_end(vp);
 
-<<<<<<< HEAD
-	/* Centre now */
-=======
 	/* Centre now; account for possible multibyte characters */
->>>>>>> 24ba21ca729ab6c1382a82e7f25c0197f49daf37
 	len = utf8_strlen(tmp);
 	x = x1 + ((x2-x1)/2 - len/2);
 

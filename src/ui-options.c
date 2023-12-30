@@ -127,13 +127,6 @@ static void option_toggle_display(struct menu *m, int oid, bool cursor,
 	const char *desc = option_desc(oid);
 	size_t u8len = utf8_strlen(desc);
 
-<<<<<<< HEAD
-	// c_prt(attr, format("%-45s: %s  (%s)", option_desc(oid),
-			// options[oid] ? "yes" : "no ", option_name(oid)), row, col);
-	c_prt(attr, format("%s", option_desc(oid)), row, col);
-	c_prt((attr != 1 ? attr - 2 : attr), format("%s", options[oid] ? " да" : "нет"), row, col + 49);
-	c_prt(attr + 1, format("%s", option_name(oid)), row, col + 53);
-=======
 	if (u8len < 45) {
 		c_prt(attr, format("%s%*s", desc, (int)(45 - u8len), " "), row,
 			col);
@@ -146,9 +139,8 @@ static void option_toggle_display(struct menu *m, int oid, bool cursor,
 		c_prt(attr, desc_copy, row, col);
 		string_free(desc_copy);
 	}
-	c_prt(attr, format(": %s  (%s)", options[oid] ? "yes" : "no ",
+	c_prt(attr, format(": %s  (%s)", options[oid] ? " да" : "нет",
 		option_name(oid)), row, col + 45);
->>>>>>> 24ba21ca729ab6c1382a82e7f25c0197f49daf37
 }
 
 /**
@@ -1637,14 +1629,6 @@ static void quality_display(struct menu *menu, int oid, bool cursor, int row,
 		} else {
 			char *name_copy = string_make(name);
 
-<<<<<<< HEAD
-	uint8_t attr = (cursor ? COLOUR_L_BLUE : COLOUR_WHITE);
-
-	if (oid) {
-		// c_put_str(attr, format("%-30s : %s", name, level_name), row, col);
-		c_put_str(attr, format("%s", name), row, col);
-		c_put_str(attr, format(": %s", level_name), row, col + 31);
-=======
 			if (u8len > 30) {
 				utf8_clipto(name_copy, 30);
 			}
@@ -1652,7 +1636,6 @@ static void quality_display(struct menu *menu, int oid, bool cursor, int row,
 			string_free(name_copy);
 		}
 		c_put_str(attr, format(" : %s", level_name), row, col + 30);
->>>>>>> 24ba21ca729ab6c1382a82e7f25c0197f49daf37
 	}
 }
 
