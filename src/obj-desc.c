@@ -613,7 +613,7 @@ static size_t obj_desc_aware(const struct object *obj, char *buf, size_t max,
 {
 	if (!object_flavor_is_aware(obj)) {
 		// strnfcat(buf, max, &end, " {unseen}");
-		strnfcat(buf, max, &end, " {неизвестно}");
+		strnfcat(buf, max, &end, " {неизв}");
 	} else if (!object_runes_known(obj)) {
 		strnfcat(buf, max, &end, " {??}");
 	} else if (obj->known->curses) {

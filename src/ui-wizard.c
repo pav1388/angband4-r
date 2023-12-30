@@ -161,9 +161,11 @@ static void wiz_create_item_subdisplay(struct menu *m, int oid, bool cursor,
 		// object_base_name(name, sizeof(name), current_tval, true);
 		object_base_name(name, sizeof(name), current_tval, true, 2);
 		if (choose_artifact) {
-			strnfmt(buf, sizeof(buf), "All artifact %s", name);
+			// strnfmt(buf, sizeof(buf), "All artifact %s", name);
+			strnfmt(buf, sizeof(buf), "Все артефакт %s", name);
 		} else {
-			strnfmt(buf, sizeof(buf), "All %s", name);
+			// strnfmt(buf, sizeof(buf), "All %s", name);
+			strnfmt(buf, sizeof(buf), "Все %s", name);
 		}
 	} else {
 		if (choose_artifact) {
@@ -226,9 +228,11 @@ static void wiz_create_item_display(struct menu *m, int oid, bool cursor,
 
 	if (oid == WIZ_CREATE_ALL_MENU_ITEM) {
 		if (choose_artifact) {
-			my_strcpy(buf, "All artifacts", sizeof(buf));
+			// my_strcpy(buf, "All artifacts", sizeof(buf));
+			my_strcpy(buf, "Все артефакты", sizeof(buf));
 		} else {
-			my_strcpy(buf, "All objects", sizeof(buf));
+			// my_strcpy(buf, "All objects", sizeof(buf));
+			my_strcpy(buf, "Все предметы", sizeof(buf));
 		}
 	} else {
 		// object_base_name(buf, sizeof(buf), oid, true);

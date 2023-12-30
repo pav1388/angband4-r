@@ -917,16 +917,21 @@ static void display_knowledge(const char *title, int *obj_list, int o_count,
 		{
 			const char *pedit = (!o_funcs.xattr) ? "" :
 					(!(attr_idx|char_idx) ?
-					 ", 'c' to copy" : ", 'c', 'p' to paste");
+					 // ", 'c' to copy" : ", 'c', 'p' to paste");
+					 ", 'c' копир." : ", 'c/p' вставить");
 			const char *xtra = o_funcs.xtra_prompt ?
 				o_funcs.xtra_prompt(oid) : "";
 			const char *pvs = "";
 
-			if (tile_picker) pvs = ", ENTER to accept";
-			else if (glyph_picker) pvs = ", 'i' to insert, ENTER to accept";
-			else if (o_funcs.xattr) pvs = ", 'v' for visuals";
+			// if (tile_picker) pvs = ", ENTER to accept";
+			if (tile_picker) pvs = ", ENTER принять";
+			// else if (glyph_picker) pvs = ", 'i' to insert, ENTER to accept";
+			else if (glyph_picker) pvs = ", 'i' вставить, ENTER принять";
+			// else if (o_funcs.xattr) pvs = ", 'v' for visuals";
+			else if (o_funcs.xattr) pvs = ", 'v' визуал";
 
-			prt(format("<dir>%s%s%s, ESC", pvs, pedit, xtra), hgt - 1, 0);
+			// prt(format("<dir>%s%s%s, ESC", pvs, pedit, xtra), hgt - 1, 0);
+			prt(format("<напр>%s%s%s, ESC", pvs, pedit, xtra), hgt - 1, 0);
 		}
 
 		if (do_swap) {
