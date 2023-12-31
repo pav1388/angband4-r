@@ -60,7 +60,7 @@ static int check_devices(struct object *obj)
 	/* Get the right string */
 	if (tval_is_rod(obj)) {
 		// action = "zap the rod";
-		action = "забили жезл";
+		action = "выставили жезл";
 	} else if (tval_is_wand(obj)) {
 		// action = "use the wand";
 		action = "взмахнули палочкой";
@@ -855,7 +855,7 @@ void do_cmd_zap_rod(struct command *cmd)
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
 			// "Zap which rod? ",
-			"Какой жезл забить? ",
+			"Какой жезл выставить? ",
 			// "You have no rods to zap.",
 			"У вас нет жезлов.",
 			tval_is_rod,

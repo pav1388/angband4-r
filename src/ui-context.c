@@ -715,7 +715,7 @@ int context_menu_object(struct object *obj)
 			menu_row_validity_t valid = (obj_can_zap(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
 			// ADD_LABEL("Zap", CMD_USE_ROD, valid);
-			ADD_LABEL("Забить", CMD_USE_ROD, valid);
+			ADD_LABEL("Выставить", CMD_USE_ROD, valid);
 		} else if (tval_is_staff(obj)) {
 			menu_row_validity_t valid = (obj_has_charges(obj)) ?
 				MN_ROW_VALID : MN_ROW_INVALID;
