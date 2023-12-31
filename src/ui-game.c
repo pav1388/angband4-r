@@ -344,7 +344,7 @@ struct cmd_info cmd_debug_player[] =
 	// { "Cure everything", { 'a' }, CMD_WIZ_CURE_ALL, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Вылечить всё", { 'a' }, CMD_WIZ_CURE_ALL, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Make powerful", { 'A' }, CMD_WIZ_ADVANCE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Сделать мощным", { 'A' }, CMD_WIZ_ADVANCE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Сделать Всесильным", { 'A' }, CMD_WIZ_ADVANCE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Increase experience", { 'x' }, CMD_WIZ_INCREASE_EXP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Увеличение опыта", { 'x' }, CMD_WIZ_INCREASE_EXP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Rerate hitpoints", { 'h' }, CMD_WIZ_RERATE, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
@@ -352,11 +352,11 @@ struct cmd_info cmd_debug_player[] =
 	// { "Edit player", { 'e' }, CMD_WIZ_EDIT_PLAYER_START, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Редактировать игрока", { 'e' }, CMD_WIZ_EDIT_PLAYER_START, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Learn object kinds", { 'l' }, CMD_NULL, wiz_learn_all_object_kinds, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Изучить виды объектов", { 'l' }, CMD_NULL, wiz_learn_all_object_kinds, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Изучить предмет", { 'l' }, CMD_NULL, wiz_learn_all_object_kinds, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Recall monster", { 'r' }, CMD_WIZ_RECALL_MONSTER, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Вспомнить монстра", { 'r' }, CMD_WIZ_RECALL_MONSTER, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Erase monster recall", { 'W' }, CMD_WIZ_WIPE_RECALL, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Стереть память о монстре", { 'W' }, CMD_WIZ_WIPE_RECALL, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Забыть монстра", { 'W' }, CMD_WIZ_WIPE_RECALL, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 };
 
 struct cmd_info cmd_debug_tele[] =
@@ -380,7 +380,7 @@ struct cmd_info cmd_debug_effects[] =
 	// { "Map local area", { 'm' }, CMD_WIZ_MAGIC_MAP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Карта местности", { 'm' }, CMD_WIZ_MAGIC_MAP, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Hit all in LOS", { 'H' }, CMD_WIZ_HIT_ALL_LOS, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Hit all in LOS", { 'H' }, CMD_WIZ_HIT_ALL_LOS, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Ударить всех в поле зрения", { 'H' }, CMD_WIZ_HIT_ALL_LOS, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Perform an effect", { 'E' }, CMD_WIZ_PERFORM_EFFECT, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Выполнить эффект", { 'E' }, CMD_WIZ_PERFORM_EFFECT, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Graphics demo", { 'G' }, CMD_NULL, wiz_proj_demo, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
