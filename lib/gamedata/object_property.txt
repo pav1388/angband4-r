@@ -440,7 +440,7 @@ bindui:free_action_ui_compact_0:0
 desc:Предотвращает паралич
 
 # name:hold life
-name:удержание жизни
+name:защита опыта
 type:flag
 subtype:misc ability
 id-type:on effect

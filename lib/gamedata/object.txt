@@ -460,7 +460,8 @@ desc: distant wood borne from afar by a cool breeze at night.
 
 ### The shrooms, an interesting collection ###
 
-name:Second Sight
+# name:Second Sight
+name:Прозрения
 type:mushroom
 graphics:,:d
 level:0
@@ -475,7 +476,8 @@ dice:50+7d7
 effect:NOURISH:INC_BY
 dice:5
 
-name:Fast Recovery
+# name:Fast Recovery
+name:Быстрого Восстановления
 type:mushroom
 graphics:,:d
 level:0
@@ -493,7 +495,8 @@ effect:CURE:BLIND
 effect:NOURISH:INC_BY
 dice:5
 
-name:Vigor
+# name:Vigor
+name:Бодрости
 type:mushroom
 graphics:,:d
 level:0
@@ -510,7 +513,8 @@ effect:RESTORE_STAT:CON
 effect:NOURISH:INC_BY
 dice:5
 
-name:Clear Mind
+# name:Clear Mind
+name:Чистого Разума
 type:mushroom
 graphics:,:d
 level:0
@@ -529,7 +533,8 @@ dice:50+7d7
 effect:NOURISH:INC_BY
 dice:5
 
-name:Emergency
+# name:Emergency
+name:Неотложной Помощи
 type:mushroom
 graphics:,:d
 level:0
@@ -549,7 +554,8 @@ dice:200
 effect:NOURISH:INC_BY
 dice:5
 
-name:Terror
+# name:Terror
+name:Паники
 type:mushroom
 graphics:,:d
 level:0
@@ -562,9 +568,10 @@ effect:TIMED_SET:TERROR
 dice:25+5d5
 effect:NOURISH:INC_BY
 dice:5
-desc:It allows you to run for your life.
+desc:Позволит вам убежать, спасая свою жизнь.
 
-name:Stoneskin
+# name:Stoneskin
+name:Каменной Кожи
 type:mushroom
 graphics:,:d
 level:0
@@ -577,9 +584,10 @@ effect:TIMED_SET:STONESKIN
 dice:50+7d7
 effect:NOURISH:INC_BY
 dice:5
-desc:Its poison turns your skin to stone, albeit briefly.
+desc:Его яд превращает вашу кожу в камень, хотя и ненадолго.
 
-name:Turbulence
+# name:Turbulence
+name:Волнения
 type:mushroom
 graphics:,:d
 level:0
@@ -590,7 +598,8 @@ pile:70:1d4
 #E:SHROOM_TURB
 pval:500
 
-name:Debility
+# name:Debility
+name:Слабости
 type:mushroom
 graphics:,:d
 level:0
@@ -607,7 +616,8 @@ dice:2
 effect:DRAIN_STAT:STR
 effect:DRAIN_STAT:CON
 
-name:Sprinting
+# name:Sprinting
+name:Ускоренного Бега
 type:mushroom
 graphics:,:d
 level:0
@@ -620,9 +630,10 @@ effect:TIMED_INC:SPRINT
 dice:100
 effect:NOURISH:INC_BY
 dice:5
-desc:It hastes you for a while, but then makes you slower for a while afterward.
+desc:На некоторое время ускоряет вас, но затем на некоторое время замедляет.
 
-name:Purging
+# name:Purging
+name:Очищения
 type:mushroom
 graphics:,:d
 level:0
@@ -637,9 +648,10 @@ dice:5
 effect:RESTORE_STAT:STR
 effect:RESTORE_STAT:CON
 effect:CURE:POISONED
-desc:It makes you very hungry but otherwise healthy.
+desc:Сделает вас очень голодным, но в остальном совершенно  здоровым.
 
-name:Shadows
+# name:Shadows
+name:Теней
 type:mushroom
 graphics:,:d
 level:0
@@ -652,7 +664,7 @@ effect:NOURISH:INC_BY
 dice:5
 effect:TIMED_INC:STEALTH
 dice:10+d10
-desc:It makes you very stealthy for a short while.
+desc:На короткое время сделает вас очень незаметным.
 
 
 ##### Weapons #####
@@ -3763,7 +3775,8 @@ dice:4
 
 ### Weird one ###
 
-name:Dragon Breath
+# name:Dragon Breath
+name:Дыхания Дракона
 type:potion
 graphics:!:d
 level:0
@@ -4696,7 +4709,8 @@ effect:RESTORE_MANA
 
 ### Detection ###
 
-name:Treasure Location
+# name:Treasure Location
+name:Обнаружения Сокровищ
 type:rod
 graphics:-:d
 level:5
@@ -4712,7 +4726,8 @@ effect:SENSE_OBJECTS
 effect-yx:22:40
 time:50
 
-name:Detection
+# name:Detection
+name:Обнаружения
 type:rod
 graphics:-:d
 level:30
@@ -4963,7 +4978,8 @@ effect:CURE:CUT
 effect:CURE:STUN
 time:1000
 
-name:Restoration
+# name:Restoration
+name:Восстановления
 type:rod
 graphics:-:d
 level:80
@@ -5062,7 +5078,8 @@ effect:LINE:LIGHT_WEAK
 dice:6d8
 time:9
 
-name:Illumination
+# name:Illumination
+name:Сияющего Света
 type:rod
 graphics:-:d
 level:20
@@ -5077,7 +5094,8 @@ effect:SPOT:LIGHT_WEAK:2
 dice:2d8
 time:30
 
-name:Recall
+# name:Recall
+name:Возвращения
 type:rod
 graphics:-:d
 level:30
@@ -5191,7 +5209,8 @@ power:11
 effect:BREATH:ACID:0:20
 dice:120
 time:50
-desc:A suit of utterly black scales, against which no metal or wood can rest.
+desc:Костюм из абсолютно черной чешуи, против которой не устоит
+desc: ни металл, ни дерево.
 
 name:Blue Dragon Scale Mail~
 type:dragon armor
@@ -5208,8 +5227,8 @@ power:18
 effect:BREATH:ELEC:0:20
 dice:150
 time:50
-desc:A suit of scales as blue as sapphires, emitting eerie sparks and coronas
-desc: as you move about in it.
+desc:Броня из чешуи, голубой как сапфиры, излучающая жуткие искры
+desc: и коронирование при движении.
 
 name:White Dragon Scale Mail~
 type:dragon armor
@@ -5226,8 +5245,8 @@ power:10
 effect:BREATH:COLD:0:20
 dice:100
 time:50
-desc:A suit of scales, coldly gleaming in frosty white.  A shiver runs down
-desc: through your spine even as you look at it.
+desc:Броня из чешуи, холодно поблескивающий морозной белизной.
+desc:  Даже при взгляде на неё по позвоночнику пробегает дрожь.
 
 name:Red Dragon Scale Mail~
 type:dragon armor
@@ -5244,8 +5263,8 @@ power:20
 effect:BREATH:FIRE:0:20
 dice:200
 time:50
-desc:A suit of scales, with all the reds of every fire ever lit.  The scar
-desc: tissue from an old burn aches as you put this armour on.
+desc:Броня из чешуи, окрашенной в красный цвет всех когда-либо горевших
+desc: костров.  Шрамы от старых ожогов болят, когда вы надеваете эту броню.
 
 name:Green Dragon Scale Mail~
 type:dragon armor
@@ -5262,8 +5281,8 @@ power:19
 effect:BREATH:POIS:0:20
 dice:150
 time:50
-desc:A suit of scales, glistening in sickly green, out from which falls the
-desc: skeleton of a rat who touched it and died in agony.
+desc:Броня из чешуи, сверкающей тошнотворным зелёным цветом, из
+desc: которой выпадает скелет крысы, коснувшиеся её умерают в муках.
 
 name:Multi-Hued Dragon Scale Mail~
 type:dragon armor
@@ -5290,8 +5309,7 @@ dice:250
 effect:BREATH:POIS:0:20
 dice:250
 time:50
-desc:A suit of scales that throbs with angry energies; it takes all your energy
-desc: to master the Elements fighting an endless war trapped inside.
+desc:Броня из чешуи, в которой пульсирует энергия гнева.  Требует всех ваших сил, чтобы овладеть Элементами, сражаясь в бесконечной войне, запертой внутри.
 
 name:Shining Dragon Scale Mail~
 type:dragon armor
@@ -5312,8 +5330,8 @@ dice:200
 effect:BREATH:DARK:0:20
 dice:200
 time:50
-desc:A suit of scales shining like a beacon of Light even as it greedily sucks
-desc: the energy away from everything that glows into Dark insatiate.
+desc:Броня из чешуи сияет как маяк Света, но при этом жадно
+desc: высасывает энергию из всего, что светится, погружая во тьму.
 
 name:Law Dragon Scale Mail~
 type:dragon armor
@@ -5334,8 +5352,9 @@ dice:230
 effect:BREATH:SHARD:0:20
 dice:230
 time:50
-desc:A suit of scales in stern blue and silver.  You feel the slightest tremor
-desc: as you touch it, like massed trumpets heard and cyclones felt from afar.
+desc:Броня из чешуи насыщенного синего и серебряного цвета.  Прикоснувшись к ней,
+desc: вы ощущаете легкую дрожь, словно вдалеке звучит множество труб
+desc: и проносятся циклоны.
 
 name:Gold Dragon Scale Mail~
 type:dragon armor
@@ -5352,9 +5371,9 @@ power:19
 effect:BREATH:SOUND:0:20
 dice:150
 time:50
-desc:A suit of scales in mirror-like gold.  You hear nothing unusual as you
-desc: wear this armour, yet your ears ache as though in the midst of a
-desc: cacophony.
+desc:Броня из чешуи зеркального золота.  Вы не слышите ничего необычного,
+desc: пока носите эти доспехи, но ваши уши болят, как будто вы
+desc: находитесь среди какофонии.
 
 name:Chaos Dragon Scale Mail~
 type:dragon armor
@@ -5375,8 +5394,8 @@ dice:220
 effect:BREATH:DISEN:0:20
 dice:220
 time:50
-desc:A suit of scales that ripples and twists through every color and shape
-desc: imaginable as you stare in fascination.
+desc:Броня из чешуи, которая переливается всеми цветами и формами, какие
+desc: только можно себе представить, пока вы завороженно смотрите на неё.
 
 name:Balance Dragon Scale Mail~
 type:dragon armor
@@ -5401,9 +5420,9 @@ dice:250
 effect:BREATH:DISEN:0:20
 dice:250
 time:50
-desc:A suit of scales.  Featureless grey to casual inspection, yet a closer
-desc: look reveals patterns within patterns of iridescence that throb with
-desc: leashed energies bound as though by chains of adamant.
+desc:Броня из чешуи.  При ближайшем рассмотрении обнаруживаются
+desc: переливающиеся узоры внутри узоров, пульсирующие энергией,
+desc: связанной словно адамантовыми цепями.
 
 name:Power Dragon Scale Mail~
 type:dragon armor
@@ -5423,55 +5442,66 @@ power:25
 effect:BREATH:MISSILE:0:20
 dice:300
 time:50
-desc:A suit with scales of every color, surrounded in a nimbus of perfectly
-desc: untrammelled yet inextricably intermingled and utterly mastered powers
-desc: elemental and ethereal.
+desc:Броня с чешуйками всех цветов, окруженная нимбом совершенно
+desc: необъяснимых, но неразрывно переплетенных и полностью
+desc: подвластных сил элементальных и неземных.
 
 
 
 ##### Gold/gems #####
 
-name:copper
+# name:copper
+name:медь
 type:gold
 graphics:$:u
 
-name:silver
+# name:silver
+name:серебро
 type:gold
 graphics:$:s
 
-name:garnets
+# name:garnets
+name:гранаты
 type:gold
 graphics:$:r
 
-name:gold
+# name:gold
+name:золото
 type:gold
 graphics:$:y
 
-name:opals
+# name:opals
+name:опалы
 type:gold
 graphics:$:W
 
-name:sapphires
+# name:sapphires
+name:сапфиры
 type:gold
 graphics:$:b
 
-name:rubies
+# name:rubies
+name:рубины
 type:gold
 graphics:$:r
 
-name:diamonds
+# name:diamonds
+name:бриллианты
 type:gold
 graphics:$:w
 
-name:emeralds
+# name:emeralds
+name:изумруды
 type:gold
 graphics:$:g
 
-name:mithril
+# name:mithril
+name:мифрил
 type:gold
 graphics:$:B
 
-name:adamantite
+# name:adamantite
+name:адамантин
 type:gold
 graphics:$:G
 

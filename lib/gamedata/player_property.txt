@@ -295,7 +295,7 @@ type:object
 code:HOLD_LIFE
 bindui:holdlife_ui_compact_0:0:1
 # name:Hold Life
-name:Удержание Жизни
+name:Защита Опыта
 # desc:Your life force is sustained.
 desc:Ваша жизненная неизменна.
 
