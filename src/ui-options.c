@@ -43,7 +43,8 @@
  */
 static bool get_pref_path(const char *what, int row, char *buf, size_t max)
 {
-	char ftmp[80];
+	// char ftmp[80];
+	char ftmp[160];
 	bool ok;
 
 	screen_save();
@@ -249,7 +250,8 @@ static bool use_option_context_menu(struct menu *m, const ui_event *in,
 	char *labels = string_make(lower_case);
 	struct menu *cm = menu_dynamic_new();
 	bool refresh = false;
-	char save_label[40];
+	// char save_label[40];
+	char save_label[120];
 	int selected;
 	char dummy;
 
@@ -567,7 +569,8 @@ static struct keypress keymap_buffer[KEYMAP_ACTION_MAX + 1];
  */
 static struct keypress keymap_get_trigger(void)
 {
-	char tmp[80];
+	// char tmp[80];
+	char tmp[160];
 	struct keypress buf[2] = { KEYPRESS_NULL, KEYPRESS_NULL };
 
 	/* Flush */
@@ -1268,7 +1271,8 @@ static void do_cmd_lazymove_delay(const char *name, int unused)
  */
 static void do_cmd_pref_file_hack(long row)
 {
-	char ftmp[80];
+	// char ftmp[80];
+	char ftmp[160];
 	bool ok;
 
 	screen_save();
@@ -1404,7 +1408,8 @@ int ego_item_name(char *buf, size_t buf_size, struct ego_desc *desc)
 
 	/* Found a prefix? */
 	if (prefix_size > 0) {
-		char prefix[100];
+		// char prefix[100];
+		char prefix[200];
 
 		/* Get a copy of the prefix */
 		my_strcpy(prefix, long_name, prefix_size + 1);
@@ -1435,7 +1440,8 @@ static int ego_comp_func(const void *a_ptr, const void *b_ptr)
 static void ego_display(struct menu * menu, int oid, bool cursor, int row,
 						int col, int width)
 {
-	char buf[80] = "";
+	// char buf[80] = "";
+	char buf[160] = "";
 	struct ego_desc *choice = (struct ego_desc *) menu->menu_data;
 	bool ignored = ego_is_ignored(choice[oid].e_idx, choice[oid].itype);
 
@@ -1584,8 +1590,10 @@ typedef struct
  */
 static int cmp_ignore(const void *a, const void *b)
 {
-	char bufa[80];
-	char bufb[80];
+	// char bufa[80];
+	char bufa[160];
+	// char bufb[80];
+	char bufb[160];
 	const ignore_choice *x = a;
 	const ignore_choice *y = b;
 
@@ -1810,7 +1818,8 @@ bool ignore_tval(int tval)
 static void ignore_sval_menu_display(struct menu *menu, int oid, bool cursor,
 									 int row, int col, int width)
 {
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	const ignore_choice *choice = menu_priv(menu);
 
 	struct object_kind *kind = choice[oid].kind;

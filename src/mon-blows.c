@@ -114,7 +114,8 @@ char *monster_blow_method_action(struct blow_method *method, int midx)
 
 			switch (blow_tag_lookup(tag)) {
 				case BLOW_TAG_TARGET: {
-					char m_name[80];
+					// char m_name[80];
+					char m_name[160];
 					if (midx > 0) {
 						int mdesc_mode = MDESC_TARG;
 
@@ -133,7 +134,8 @@ char *monster_blow_method_action(struct blow_method *method, int midx)
 					break;
 				}
 				case BLOW_TAG_OF_TARGET: {
-					char m_name[80];
+					// char m_name[80];
+					char m_name[160];
 					if (midx > 0) {
 						monster_desc(m_name,
 							sizeof(m_name), t_mon,
@@ -195,7 +197,8 @@ static void steal_player_item(melee_effect_handler_context_t *context)
     /* Find an item */
     for (tries = 0; tries < 10; tries++) {
 		struct object *obj, *stolen;
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 		bool split = false;
 		bool none_left = false;
 
@@ -221,7 +224,8 @@ static void steal_player_item(melee_effect_handler_context_t *context)
 		/* Try to steal */
 		if (react_to_slay(obj, context->mon)) {
 			/* React to objects that hurt the monster */
-			char m_name[80];
+			// char m_name[80];
+			char m_name[160];
 
 			/* Get the monster names (or "it") */
 			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD);
@@ -815,7 +819,8 @@ static void melee_effect_handler_EAT_FOOD(melee_effect_handler_context_t *contex
 		/* Pick an item from the pack */
 		int index = randint0(z_info->pack_size);
 		struct object *obj, *eaten;
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 		bool none_left = false;
 
 		/* Get the item */

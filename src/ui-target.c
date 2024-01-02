@@ -52,7 +52,8 @@
  * (modulates how later handlers act).
  */
 struct target_aux_state {
-	char coord_desc[20];
+	// char coord_desc[20];
+	char coord_desc[40];
 	const char *phrase1;
 	const char *phrase2;
 	struct loc grid;
@@ -315,7 +316,8 @@ static ui_event target_recall_loop_object(struct object *obj, int y, int x,
 			display_object_recall_interactive(cave->objects[obj->oidx]);
 			press = inkey_m();
 		} else {
-			char o_name[80];
+			// char o_name[80];
+			char o_name[160];
 
 			/* Obtain an object description */
 			object_desc(o_name, sizeof(o_name),
@@ -450,7 +452,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 {
 	struct monster *mon;
 	const struct monster_lore *lore;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	char out_val[TARGET_OUT_VAL_SIZE];
 	bool recall;
 
@@ -481,7 +484,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 			lore_show_interactive(mon->race, lore);
 			auxst->press = inkey_m();
 		} else {
-			char buf[80];
+			// char buf[80];
+			char buf[160];
 
 			/* Describe the monster */
 			look_mon_desc(buf, sizeof(buf),
@@ -574,7 +578,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 
 		/* Scan all objects being carried */
 		for (obj = mon->held_obj; obj; obj = obj->next) {
-			char o_name[80];
+			// char o_name[80];
+			char o_name[160];
 
 			/* Obtain an object description */
 			object_desc(o_name, sizeof(o_name), obj,

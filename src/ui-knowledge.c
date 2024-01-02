@@ -709,7 +709,8 @@ static void display_group_member(struct menu *menu, int oid,
 	if (o_funcs->is_visual && o_funcs->xattr) {
 		wchar_t c = *o_funcs->xchar(oid);
 		uint8_t a = *o_funcs->xattr(oid);
-		char buf[12];
+		// char buf[12];
+		char buf[20];
 
 		strnfmt(buf, sizeof(buf), "%d/%d", a, c);
 		// c_put_str(attr, buf, row, 64 - (int) strlen(buf));
@@ -1499,7 +1500,8 @@ static void get_artifact_display_name(char *o_name, size_t namelen, int a_idx)
 static void display_artifact(int col, int row, bool cursor, int oid)
 {
 	uint8_t attr = curs_attrs[CURS_KNOWN][(int)cursor];
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	get_artifact_display_name(o_name, sizeof o_name, oid);
 
@@ -1588,7 +1590,8 @@ static void desc_art_fake(int a_idx)
 	struct object object_body = OBJECT_NULL, known_object_body = OBJECT_NULL;
 	bool fake = false;
 
-	char header[120];
+	// char header[120];
+	char header[240];
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
@@ -1721,7 +1724,8 @@ static void do_cmd_knowledge_artifacts(const char *name, int row)
 
 	int *artifacts;
 	int a_count = 0;
-	char title[40];
+	// char title[40];
+	char title[80];
 
 	artifacts = mem_zalloc(z_info->a_max * sizeof(int));
 
@@ -1871,7 +1875,8 @@ static void display_object(int col, int row, bool cursor, int oid)
 	struct object_kind *kind = &k_info[oid];
 	const char *inscrip = get_autoinscription(kind, kind->aware);
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	/* Choose a color */
 	bool aware = (!kind->flavor || kind->aware);
@@ -1918,7 +1923,8 @@ static void desc_obj_fake(int k_idx)
 	struct object *old_obj = player->upkeep->object;
 	struct object *obj = object_new(), *known_obj = object_new();
 
-	char header[120];
+	// char header[120];
+	char header[240];
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
@@ -2075,7 +2081,8 @@ static void o_xtra_act(struct keypress ch, int oid)
 		remove_autoinscription(oid);
 	} else if (ch.code == '{') {
 		/* Inscribe */
-		char text[80] = "";
+		// char text[80] = "";
+		char text[160] = "";
 
 		/* Avoid the prompt getting in the way */
 		screen_save();
@@ -2236,7 +2243,8 @@ static void rune_xtra_act(struct keypress ch, int oid)
 		rune_set_note(oid, NULL);
 	} else if (ch.code == '{') {
 		/* Inscribe */
-		char note_text[80] = "";
+		// char note_text[80] = "";
+		char note_text[160] = "";
 
 		/* Avoid the prompt getting in the way */
 		screen_save();
@@ -2286,7 +2294,8 @@ static void do_cmd_knowledge_runes(const char *name, int row)
 	int rune_max = max_runes();
 	int count = 0;
 	int i;
-	char buf[30];
+	// char buf[30];
+	char buf[60];
 
 	runes = mem_zalloc(rune_max * sizeof(int));
 
@@ -3874,7 +3883,8 @@ void do_cmd_messages(void)
 	int i, j, n, q;
 	int wid, hgt;
 
-	char shower[80] = "";
+	// char shower[80] = "";
+	char shower[160] = "";
 
 	/* Total messages */
 	n = messages_num();
@@ -4237,8 +4247,10 @@ void do_cmd_locate(void)
 
 	/* Show panels until done */
 	while (1) {
-		char tmp_val[80];
-		char out_val[160];
+		// char tmp_val[80];
+		char tmp_val[160];
+		// char out_val[160];
+		char out_val[320];
 
 		/* Assume no direction */
 		int dir = 0;
@@ -4423,7 +4435,8 @@ static void lookup_symbol(char sym, char *buf, size_t max)
 void do_cmd_query_symbol(void)
 {
 	int idx, num;
-	char buf[128];
+	// char buf[128];
+	char buf[256];
 
 	char sym;
 	struct keypress query;

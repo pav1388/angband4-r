@@ -368,7 +368,8 @@ static void get_ahw(struct player *p)
  */
 static void player_embody(struct player *p)
 {
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	int i;
 
 	assert(p->race);

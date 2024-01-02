@@ -20,11 +20,12 @@
 #define NDS_BTN_FILE "/angband/nds/button-mappings.txt"
 #define NDS_BTN_FILE_MAX_LINE 512
 
-#define NDS_CPAD_MAX 154
+// #define NDS_CPAD_MAX 154
+#define NDS_CPAD_MAX 180
 // #define NDS_CPAD_DEADZONE 20
-#define NDS_CPAD_DEADZONE 45
+#define NDS_CPAD_DEADZONE 70
 // #define NDS_CPAD_MIN_COOLDOWN 5
-#define NDS_CPAD_MIN_COOLDOWN 12
+#define NDS_CPAD_MIN_COOLDOWN 10
 
 typedef struct {
 	char input;

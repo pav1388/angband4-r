@@ -69,7 +69,7 @@ INTERFACE, true)
 OP(mouse_movement,        "Разрешить перемещение игрока щелчками мыши",
 INTERFACE, true)
 // OP(notify_recharge,       "Notify on object recharge",
-OP(notify_recharge,       "Уведомлять о перезарядке объекта",
+OP(notify_recharge,       "Уведомлять о перезарядке предмета",
 INTERFACE, false)
 // OP(effective_speed,       "Show effective speed as multiplier",
 OP(effective_speed,       "Показывать скорость как множитель",

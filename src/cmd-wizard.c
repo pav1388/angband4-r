@@ -521,7 +521,8 @@ void do_cmd_wiz_change_item_quantity(struct command *cmd)
 
 	/* Get the new quantity. */
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
-		char prompt[80], s[80];
+		// char prompt[80], s[80];
+		char prompt[160], s[160];
 
 		// strnfmt(prompt, sizeof(prompt), "Quantity (1-%d): ", nmax);
 		strnfmt(prompt, sizeof(prompt), "Количество (1-%d): ", nmax);
@@ -739,8 +740,10 @@ void do_cmd_wiz_create_all_artifact_from_tval(struct command *cmd)
 	int tval, i;
 
 	if (cmd_get_arg_number(cmd, "tval", &tval) != CMD_OK) {
-		char prompt[80];
-		char s[80] = "";
+		// char prompt[80];
+		char prompt[160];
+		// char s[80] = "";
+		char s[160] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			"Create all artifacts of which tval (1-%d)? ",
@@ -797,8 +800,10 @@ void do_cmd_wiz_create_all_obj_from_tval(struct command *cmd)
 	int i;
 
 	if (cmd_get_arg_number(cmd, "tval", &tval) != CMD_OK) {
-		char prompt[80];
-		char s[80] = "";
+		// char prompt[80];
+		char prompt[160];
+		// char s[80] = "";
+		char s[160] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create all items of which tval (1-%d)? ", TV_MAX - 1);
@@ -837,8 +842,10 @@ void do_cmd_wiz_create_artifact(struct command *cmd)
 	int ind;
 
 	if (cmd_get_arg_number(cmd, "index", &ind) != CMD_OK) {
-		char prompt[80];
-		char s[80] = "";
+		// char prompt[80];
+		char prompt[160];
+		// char s[80] = "";
+		char s[160] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create which artifact (1-%d)? ", z_info->a_max - 1);
@@ -870,8 +877,10 @@ void do_cmd_wiz_create_obj(struct command *cmd)
 	int ind;
 
 	if (cmd_get_arg_number(cmd, "index", &ind) != CMD_OK) {
-		char prompt[80];
-		char s[80] = "";
+		// char prompt[80];
+		char prompt[160];
+		// char s[80] = "";
+		char s[160] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create which object (0-%d)? ", z_info->k_max - 1);
@@ -1163,7 +1172,8 @@ void do_cmd_wiz_display_keylog(struct command *cmd)
 void do_cmd_wiz_dump_level_map(struct command *cmd)
 {
 	char path[1024] = "";
-	char title[80];
+	// char title[80];
+	char title[160];
 	ang_file *fo;
 
 	strnfmt(title, sizeof(title), "Map of level %d", player->depth);
@@ -1299,7 +1309,8 @@ void do_cmd_wiz_edit_player_start(struct command *cmd)
 void do_cmd_wiz_edit_player_stat(struct command *cmd)
 {
 	int stat, newv;
-	char prompt[80], s[80];
+	// char prompt[80], s[80];
+	char prompt[160], s[160];
 
 	if (edit_player_state == EDIT_PLAYER_BREAK) return;
 
@@ -1395,7 +1406,8 @@ void do_cmd_wiz_jump_level(struct command *cmd)
 	int level, choose_gen;
 
 	if (cmd_get_arg_number(cmd, "level", &level) != CMD_OK) {
-		char prompt[80], s[80];
+		// char prompt[80], s[80];
+		char prompt[160], s[160];
 
 		// strnfmt(prompt, sizeof(prompt), "Jump to level (0-%d): ",
 		strnfmt(prompt, sizeof(prompt), "Перейти на этаж (0-%d): ",
@@ -1581,8 +1593,10 @@ void do_cmd_wiz_peek_noise_scent(struct command *cmd)
  */
 void do_cmd_wiz_perform_effect(struct command *cmd)
 {
-	char name[80] = "";
-	char dice[80] = "0";
+	// char name[80] = "";
+	char name[160] = "";
+	// char dice[80] = "0";
+	char dice[160] = "0";
 	int index = -1;
 	int p1 = 0, p2 = 0, p3 = 0;
 	int y = 0, x = 0;
@@ -2502,7 +2516,8 @@ void do_cmd_wiz_stat_item(struct command *cmd)
 
 	/* Get the depth to use when generating treasure. */
 	if (cmd_get_arg_number(cmd, "depth", &level) != CMD_OK) {
-		char prompt[80], s[80];
+		// char prompt[80], s[80];
+		char prompt[160], s[160];
 
 		strnfmt(prompt, sizeof(prompt), "Depth for treasure (0-%d): ",
 			z_info->max_depth - 1);
@@ -2775,7 +2790,8 @@ void do_cmd_wiz_tweak_item(struct command *cmd)
 		NULL
 	};
 	struct object *obj;
-	char tmp_val[80];
+	// char tmp_val[80];
+	char tmp_val[160];
 	int i, val;
 	int update = 0;
 
@@ -2888,7 +2904,7 @@ void do_cmd_wiz_tweak_item(struct command *cmd)
 	wiz_display_item(obj, true, player);
 
 #define WIZ_TWEAK(attribute, name) do {\
-		char prompt[80];\
+		char prompt[160];\
 		strnfmt(prompt, sizeof(prompt), "Enter new %s setting: ", name);\
 		strnfmt(tmp_val, sizeof(tmp_val), "%d", obj->attribute);\
 		if (!get_string(prompt, tmp_val, sizeof(tmp_val))) {\

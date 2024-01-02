@@ -90,9 +90,9 @@ void do_cmd_note(void)
 {
 	/* Allocate/Initialize strings to get and format user input. */
 	// char tmp[70];
-	char tmp[130];
+	char tmp[140];
 	// char note[90];
-	char note[170];
+	char note[180];
 	my_strcpy(tmp, "", sizeof(tmp));
 	my_strcpy(note, "", sizeof(note));
 

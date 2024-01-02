@@ -1163,8 +1163,10 @@ static int textui_get_quantity(const char *prompt, int max)
 
 	/* Prompt if needed */
 	if (max != 1) {
-		char tmp[80];
-		char buf[80];
+		// char tmp[80];
+		char tmp[160];
+		// char buf[80];
+		char buf[160];
 
 		/* Build a prompt if needed */
 		if (!prompt) {
@@ -1211,7 +1213,8 @@ static bool textui_get_check(const char *prompt)
 {
 	ui_event ke;
 
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	/*
 	 * Hack -- Build a "useful" prompt; do this first so prompts built by
@@ -1256,7 +1259,8 @@ static bool textui_get_check(const char *prompt)
 char get_char(const char *prompt, const char *options, size_t len, char fallback)
 {
 	struct keypress key;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	/* Paranoia */
 	event_signal(EVENT_MESSAGE_FLUSH);

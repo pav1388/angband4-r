@@ -263,7 +263,8 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 	struct monster *mon = midx > 0 ? cave_monster(cave, midx) : NULL;
 
 	int amount = effect_calculate_value(context, false);
-	char m_name[80], m_poss[80];
+	// char m_name[80], m_poss[80];
+	char m_name[160], m_poss[160];
 	bool seen;
 
 	if (!mon) return true;
@@ -326,7 +327,8 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 	if (!mon) return true;
 
 	int amount = effect_calculate_value(context, false);
-	char m_name[80], m_poss[80];
+	// char m_name[80], m_poss[80];
+	char m_name[160], m_poss[160];
 	bool seen;
 
 	/* Find a nearby monster */
@@ -470,7 +472,8 @@ bool effect_handler_TOUCH_AWARE(effect_handler_context_t *context)
 bool effect_handler_DAMAGE(effect_handler_context_t *context)
 {
 	int dam = effect_calculate_value(context, false);
-	char killer[80];
+	// char killer[80];
+	char killer[160];
 
 	/* Always ID */
 	context->ident = true;
@@ -1489,7 +1492,8 @@ bool effect_handler_EARTHQUAKE(effect_handler_context_t *context)
 				/* Most monsters cannot co-exist with rock */
 				if (!flags_test(mon->race->flags, RF_SIZE, RF_KILL_WALL,
 								RF_PASS_WALL, FLAG_END)) {
-					char m_name[80];
+					// char m_name[80];
+					char m_name[160];
 					int m_dam;
 
 					/* Assume not safe */
@@ -1615,7 +1619,8 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 	int amount = effect_calculate_value(context, false);
 	struct loc target;
 	struct monster *mon = NULL;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
@@ -1698,7 +1703,8 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	struct loc victim, grid;
 	int d, first_d = randint0(8);
 	struct monster *mon = NULL;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
@@ -1863,7 +1869,8 @@ bool effect_handler_SINGLE_COMBAT(effect_handler_context_t *context)
 
 		/* Monsters with high spell power can resist */
 		if (randint0(mon->race->spell_power) > player->lev) {
-			char m_name[80];
+			// char m_name[80];
+			char m_name[160];
 			monster_desc(m_name, sizeof(m_name), mon,
 				MDESC_CAPITAL | MDESC_COMMA);
 			//msg("%s resists!", m_name);

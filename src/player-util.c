@@ -984,7 +984,8 @@ bool player_get_resume_normal_shape(struct player *p, struct command *cmd)
 	if (player_is_shapechanged(p)) {
 		// msg("You cannot do this while in %s form.", p->shape->name);
 		msg("Вы не можете сделать это, находясь в облике %s.", p->shape->name);
-		char prompt[100];
+		// char prompt[100];
+		char prompt[200];
 		strnfmt(prompt, sizeof(prompt),
 		        // "Change back and %s (y/n) or (r)eturn to normal? ",
 		        "Измениться обратно и %s (y/n) или (r)вернуться к нормальному состоянию? ",
@@ -1092,7 +1093,8 @@ bool player_can_study(const struct player *p, bool show_msg)
 		if (show_msg) {
 			int count;
 			struct magic_realm *r = class_magic_realms(p->class, &count), *r1;
-			char buf[120];
+			// char buf[120];
+			char buf[160];
 
 			my_strcpy(buf, r->spell_noun, sizeof(buf));
 			my_strcat(buf, "s", sizeof(buf));
@@ -1105,7 +1107,8 @@ bool player_can_study(const struct player *p, bool show_msg)
 					if (count) {
 						my_strcat(buf, ", ", sizeof(buf));
 					} else {
-						my_strcat(buf, " or ", sizeof(buf));
+						// my_strcat(buf, " or ", sizeof(buf));
+						my_strcat(buf, " или ", sizeof(buf));
 					}
 					my_strcat(buf, r->spell_noun, sizeof(buf));
 					my_strcat(buf, "s", sizeof(buf));

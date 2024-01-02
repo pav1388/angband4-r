@@ -244,12 +244,12 @@ static void adjust_level(struct player *p, bool verbose)
 		if (verbose) {
 			/* Log level updates */
 			// strnfmt(buf, sizeof(buf), "Reached level %d", p->lev);
-			strnfmt(buf, sizeof(buf), "Достигнут уровень %d", p->lev);
+			strnfmt(buf, sizeof(buf), "Достигнут %d-й уровень", p->lev);
 			history_add(p, buf, HIST_GAIN_LEVEL);
 
 			/* Message */
 			// msgt(MSG_LEVEL, "Welcome to level %d.",	p->lev);
-			msgt(MSG_LEVEL, "Добро пожаловать на %d-й уровень.",	p->lev);
+			msgt(MSG_LEVEL, "Вы получили %d-й уровень.",	p->lev);
 		}
 
 		effect_simple(EF_RESTORE_STAT, source_none(), "0", STAT_STR, 0, 0, 0, 0, NULL);

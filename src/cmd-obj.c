@@ -187,7 +187,7 @@ void do_cmd_inscribe(struct command *cmd)
 	const char *str;
 
 	char prompt[1024];
-	char o_name[80];
+	char o_name[160];
 
 	if (!player_get_resume_normal_shape(player, cmd)) {
 		return;
@@ -277,7 +277,7 @@ void do_cmd_takeoff(struct command *cmd)
 void do_cmd_wield(struct command *cmd)
 {
 	struct object *equip_obj;
-	char o_name[80];
+	char o_name[160];
 	const char *act;
 
 	unsigned n;
@@ -704,7 +704,8 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 			 * Describe what's left of single use items or newly
 			 * identified items of all kinds.
 			 */
-			char name[80];
+			// char name[80];
+			char name[160];
 
 			object_desc(name, sizeof(name), work_obj,
 				ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |

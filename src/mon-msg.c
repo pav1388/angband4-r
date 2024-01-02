@@ -392,8 +392,10 @@ static int get_message_type(int msg_code, const struct monster_race *race)
  */
 static void show_message(struct monster_race_message *msg)
 {
-	char subject[60] = "";
-	char body[60];
+	// char subject[60] = "";
+	char subject[120] = "";
+	// char body[60];
+	char body[120];
 
 	/* Some messages don't require a monster name */
 	if (!skip_subject(msg->msg_code)) {

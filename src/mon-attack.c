@@ -396,7 +396,8 @@ bool make_ranged_attack(struct monster *mon)
 	struct monster_lore *lore = get_lore(mon->race);
 	int thrown_spell, failrate;
 	bitflag f[RSF_SIZE];
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	bool seen = (player->timed[TMD_BLIND] == 0) && monster_is_visible(mon);
 	bool innate = false;
 
@@ -551,8 +552,10 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 	struct monster_lore *lore = get_lore(mon->race);
 	int rlev = ((mon->race->level >= 1) ? mon->race->level : 1);
 	int ap_cnt;
-	char m_name[80];
-	char ddesc[80];
+	// char m_name[80];
+	char m_name[160];
+	// char ddesc[80];
+	char ddesc[160];
 	bool blinked = false;
 
 	/* Not allowed to attack */
@@ -792,8 +795,10 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 	struct monster_lore *lore = get_lore(mon->race);
 	int rlev = ((mon->race->level >= 1) ? mon->race->level : 1);
 	int ap_cnt;
-	char m_name[80];
-	char t_name[80];
+	// char m_name[80];
+	char m_name[160];
+	// char t_name[80];
+	char t_name[160];
 	bool blinked = false;
 
 	/* Not allowed to attack */

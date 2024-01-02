@@ -786,9 +786,9 @@ static bool get_tag(struct object **tagged_obj, char tag, cmd_code cmd,
 static void menu_header(void)
 {
 	// char tmp_val[75];
-	char tmp_val[120];
+	char tmp_val[150];
 	// char out_val[75];
-	char out_val[120];
+	char out_val[150];
 
 	bool use_inven = ((item_mode & USE_INVEN) ? true : false);
 	bool use_equip = ((item_mode & USE_EQUIP) ? true : false);
@@ -1580,7 +1580,8 @@ bool textui_get_item(struct object **choice, const char *pmt, const char *str,
  */
 void display_object_recall(struct object *obj)
 {
-	char header_buf[120];
+	// char header_buf[120];
+	char header_buf[240];
 
 	textblock *tb = object_info(obj, OINFO_NONE);
 	object_desc(header_buf, sizeof(header_buf), obj,
@@ -1614,7 +1615,8 @@ void display_object_kind_recall(struct object_kind *kind)
  */
 void display_object_recall_interactive(struct object *obj)
 {
-	char header_buf[120];
+	// char header_buf[120];
+	char header_buf[240];
 	textblock *tb;
 
 	event_signal(EVENT_MESSAGE_FLUSH);
@@ -1631,7 +1633,8 @@ void display_object_recall_interactive(struct object *obj)
  */
 void textui_obj_examine(void)
 {
-	char header_buf[120];
+	// char header_buf[120];
+	char header_buf[240];
 
 	textblock *tb;
 	region local_area = { 0, 0, 0, 0 };
@@ -1674,7 +1677,8 @@ enum {
 
 void textui_cmd_ignore_menu(struct object *obj)
 {
-	char out_val[160];
+	// char out_val[160];
+	char out_val[320];
 
 	struct menu *m;
 	region r;
@@ -1704,7 +1708,7 @@ void textui_cmd_ignore_menu(struct object *obj)
 				kind_is_ignored_unaware(obj->kind);
 
 		// char tmp[70];
-		char tmp[130];
+		char tmp[140];
 		object_desc(tmp, sizeof(tmp), obj,
 			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
 		if (!ignored) {

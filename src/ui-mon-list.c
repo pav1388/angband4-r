@@ -60,7 +60,8 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 	int line_count = 0;
 	int index;
 	int total;
-	char line_buffer[200];
+	// char line_buffer[200];
+	char line_buffer[400];
 	const char *punctuation = (lines_to_display == 0) ? "." : ":";
 	// const char *others = (show_others) ? "other " : "";
 	const char *others = (show_others) ? "других " : "";
@@ -442,7 +443,8 @@ void monster_list_show_interactive(int height, int width)
 									  NULL);
 		region_erase_bordered(&r);
 
-		char buf[300];
+		// char buf[300];
+		char buf[450];
 
 		if (sort_exp) {
 			// my_strcpy(buf, "Press 'x' to turn OFF 'sort by exp'", sizeof(buf));

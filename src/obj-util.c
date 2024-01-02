@@ -190,7 +190,8 @@ void flavor_init(void)
 
 	/* Scrolls (random titles, always white) */
 	for (i = 0; i < MAX_TITLES; i++) {
-		char buf[26];
+		// char buf[26];
+		char buf[52];
 		char *end = buf + 1;
 		int titlelen = 0;
 		int wordlen;
@@ -510,8 +511,7 @@ int lookup_sval(int tval, const char *name)
 		if (!kind || !kind->name || kind->tval != tval) continue;
 
 		obj_desc_name_format(cmp_name, sizeof cmp_name, 0, kind->name, 0,
-							 // false);
-							 false, 1);
+							 false);
 
 		/* Found a match */
 		if (!my_stricmp(cmp_name, name)) return kind->sval;
@@ -970,9 +970,11 @@ bool recharge_timeout(struct object *obj)
 bool verify_object(const char *prompt, const struct object *obj,
 		const struct player *p)
 {
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
-	char out_val[160];
+	// char out_val[160];
+	char out_val[320];
 
 	/* Describe */
 	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);

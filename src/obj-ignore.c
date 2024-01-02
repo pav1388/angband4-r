@@ -265,7 +265,8 @@ const char *get_autoinscription(struct object_kind *kind, bool aware)
  */
 int apply_autoinscription(struct player *p, struct object *obj)
 {
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 	bool aware = obj->kind->aware;
 	const char *note = obj ? get_autoinscription(obj->kind, aware) : NULL;
 

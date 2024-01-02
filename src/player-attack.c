@@ -725,7 +725,8 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 
 	/* Information about the target of the attack */
 	struct monster *mon = square_monster(cave, grid);
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	bool stop = false;
 
 	/* The weapon used */
@@ -1091,7 +1092,8 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 		target_get(&target);
 		taim = distance(grid, target);
 		if (taim > range) {
-			char msg[80];
+			// char msg[80];
+			char msg[160];
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
 					"Цель вне досягаемости на %d м. Стрелять всё равно? ",
@@ -1146,12 +1148,13 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			struct attack_result result = attack(p, obj, grid);
 			int dmg = result.dmg;
 			uint32_t msg_type = result.msg_type;
-			char hit_verb[20];
+			// char hit_verb[20];
+			char hit_verb[40];
 			my_strcpy(hit_verb, result.hit_verb, sizeof(hit_verb));
 			mem_free(result.hit_verb);
 
 			if (result.success) {
-				char o_name[80];
+				char o_name[160];
 
 				hit_target = true;
 
@@ -1181,7 +1184,8 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 					msgt(MSG_SHOOT_HIT, "%s находит цель.", o_name);
 				} else {
 					for (j = 0; j < num_types; j++) {
-						char m_name[80];
+						// char m_name[80];
+						char m_name[160];
 						const char *dmg_text = "";
 
 						if (msg_type != hit_types[j].msg_type) {

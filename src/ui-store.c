@@ -147,7 +147,8 @@ static const char *random_hint(void)
  */
 static void prt_welcome(const struct owner *proprietor)
 {
-	char short_name[20];
+	// char short_name[20];
+	char short_name[50];
 	const char *owner_name = proprietor->name;
 
 	int j;
@@ -280,8 +281,10 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 	int32_t x;
 	uint32_t desc = ODESC_PREFIX;
 
-	char o_name[80];
-	char out_val[160];
+	// char o_name[80];
+	char o_name[160];
+	// char out_val[160];
+	char out_val[240];
 	uint8_t colour;
 
 	struct store_context *ctx = menu_priv(menu);
@@ -320,7 +323,8 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 
 		/* Actually draw the price */
 		if (tval_can_have_charges(obj) && (obj->number > 1))
-			strnfmt(out_val, sizeof out_val, "%9ld avg", (long)x);
+			// strnfmt(out_val, sizeof out_val, "%9ld avg", (long)x);
+			strnfmt(out_val, sizeof out_val, "%9ld срд", (long)x);
 		else
 			strnfmt(out_val, sizeof out_val, "%9ld    ", (long)x);
 
@@ -334,7 +338,8 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
  */
 static void store_display_frame(struct store_context *ctx)
 {
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	struct store *store = ctx->store;
 	struct owner *proprietor = store->owner;
 
@@ -349,7 +354,7 @@ static void store_display_frame(struct store_context *ctx)
 
 		/* Label the object descriptions */
 		// put_str("Home Inventory", ctx->scr_places_y[LOC_HEADER], 1);
-		put_str("Дом. Инвентарь", ctx->scr_places_y[LOC_HEADER], 1);
+		put_str("Домашний Инвентарь", ctx->scr_places_y[LOC_HEADER], 1);
 
 		/* Show weight header */
 		// put_str("Weight", ctx->scr_places_y[LOC_HEADER],
@@ -380,7 +385,7 @@ static void store_display_frame(struct store_context *ctx)
 
 		/* Label the asking price (in stores) */
 		// put_str("Price", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 4);
-		put_str(" Цена", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 4);
+		put_str("Цена", ctx->scr_places_y[LOC_HEADER], ctx->scr_places_x[LOC_PRICE] + 5);
 	}
 }
 
@@ -430,17 +435,15 @@ static void store_display_help(struct store_context *ctx)
 		if (OPT(player, birth_no_selling) && !is_home) {
 			text_out_c(COLOUR_L_GREEN, "d/s");
 			// text_out(" (or ");
-			//text_out(" (или ");
-			//text_out_c(COLOUR_L_GREEN, "s");
-			//text_out(")");
+			// text_out_c(COLOUR_L_GREEN, "s");
+			// text_out(")");
 			// text_out(" gives an item to the store in return for its identification. Some wands and staves will also be recharged. ");
 			text_out(" отдать предмет в обмен на его идентификацию. Некоторые жезлы и посохи так можно перезарядить. ");
 		} else {
 			text_out_c(COLOUR_L_GREEN, "d/s");
 			// text_out(" (or ");
-			//text_out(" (или ");
-			//text_out_c(COLOUR_L_GREEN, "s");
-			//text_out(")");
+			// text_out_c(COLOUR_L_GREEN, "s");
+			// text_out(")");
 			// if (is_home) text_out(" drops");
 			if (is_home) text_out(" положить");
 			// else text_out(" sells");
@@ -484,7 +487,7 @@ static void store_redraw(struct store_context *ctx)
 
 	if (ctx->flags & (STORE_GOLD_CHANGE)) {
 		// prt(format("Gold Remaining: %9ld", (long)player->au),
-		prt(format("Осталось золота: %9ld", (long)player->au),
+		prt(format("Осталось Золота: %9ld", (long)player->au),
 				ctx->scr_places_y[LOC_AU], ctx->scr_places_x[LOC_AU]);
 		ctx->flags &= ~(STORE_GOLD_CHANGE);
 	}
@@ -524,7 +527,8 @@ static bool store_sell(struct store_context *ctx)
 	struct object object_type_body = OBJECT_NULL;
 	struct object *temp_obj = &object_type_body;
 
-	char o_name[120];
+	// char o_name[80];
+	char o_name[160];
 
 	item_tester tester = NULL;
 
@@ -576,7 +580,7 @@ static bool store_sell(struct store_context *ctx)
 		object_wipe(temp_obj);
 		if (store->feat == FEAT_HOME)
 			// msg("Your home is full.");
-			msg("Твой дом полон.");
+			msg("Ваш дом полон.");
 		else
 			// msg("I have not the room in my store to keep it.");
 			msg("У меня больше нет места в магазине для этого.");
@@ -644,7 +648,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 	struct object *obj = ctx->list[item];
 	struct object *dummy = NULL;
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	int amt, num;
 
@@ -805,7 +810,8 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 static void store_examine(struct store_context *ctx, int item)
 {
 	struct object *obj;
-	char header[120];
+	// char header[120];
+	char header[240];
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
 	uint32_t odesc_flags = ODESC_PREFIX | ODESC_FULL;
@@ -1031,7 +1037,8 @@ static bool context_menu_store_item(struct store_context *ctx, const int oid, in
 	menu_iter mod_iter;
 	int selected;
 	char *labels;
-	char header[120];
+	// char header[120];
+	char header[240];
 
 	object_desc(header, sizeof(header), obj,
 		ODESC_PREFIX | ODESC_FULL | ((home) ? 0 : ODESC_STORE), player);

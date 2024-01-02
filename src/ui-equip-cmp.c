@@ -1650,7 +1650,8 @@ static void append_to_file(ang_file *fff)
 static char *set_short_name(const struct object *obj, size_t length,
 		const struct player *p)
 {
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	const char *nmsrc;
 	size_t nmlen;
 	bool tail;

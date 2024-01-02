@@ -798,7 +798,8 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 	bool obvious = true;
 
 	/* Monster or trap name (for damage) */
-	char killer[80];
+	// char killer[80];
+	char killer[160];
 
 	project_player_handler_f player_handler = player_handlers[typ];
 	project_player_handler_context_t context = {

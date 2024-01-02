@@ -411,7 +411,8 @@ bool minus_ac(struct player *p)
 
 	/* If we can still damage the item */
 	if (obj && (obj->ac + obj->to_a > 0)) {
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
 
 		/* Object resists */
@@ -527,7 +528,8 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 {
 	struct object *usable;
 	struct object *first_remainder = NULL;
-	char name[80];
+	// char name[80];
+	char name[160];
 	char label = gear_to_label(p, obj);
 	bool artifact = (obj->known->artifact != NULL);
 
@@ -801,7 +803,6 @@ void inven_item_charges(struct object *obj)
 		// msg("You have %d charge%s remaining.",
 		msg("У вас остал%s %d заряд%s.", (obj->pval) == 1 ? "ся" : "ось", obj->pval, PLURAL_RU__A_OV(obj->pval));
 				// obj->pval,
-				
 				// PLURAL(obj->pval));
 				
 	}
@@ -898,7 +899,8 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 	update_stuff(p);
 
 	if (message) {
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 		struct object *first;
 		uint16_t total;
 		char label;
@@ -942,7 +944,8 @@ void inven_wield(struct object *obj, int slot)
 	struct object *wielded, *old = player->body.slots[slot].obj;
 
 	const char *fmt;
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 	bool dummy = false;
 
 	/* Increase equipment counter if empty slot */
@@ -1042,7 +1045,8 @@ void inven_takeoff(struct object *obj)
 {
 	int slot = equipped_item_slot(player->body, obj);
 	const char *act;
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	/* Paranoia */
 	if (slot == player->body.count) return;
@@ -1090,7 +1094,8 @@ void inven_drop(struct object *obj, int amt)
 	bool equipped = false;
 	bool quiver;
 
-	char name[80];
+	// char name[80];
+	char name[160];
 	char label;
 
 	/* Error check */
@@ -1353,7 +1358,8 @@ bool pack_is_overfull(void)
 void pack_overflow(struct object *obj)
 {
 	int i;
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	if (!pack_is_overfull()) return;
 

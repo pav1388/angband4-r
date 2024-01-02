@@ -68,8 +68,10 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	int spell_index = d->spells[oid];
 	const struct class_spell *spell = spell_by_index(player, spell_index);
 
-	char help[30];
-	char out[80];
+	// char help[30];
+	char help[60];
+	// char out[80];
+	char out[160];
 
 	int attr;
 	const char *illegible = NULL;
@@ -285,7 +287,8 @@ static void spell_menu_destroy(struct menu *m)
 static int spell_menu_select(struct menu *m, const char *noun, const char *verb)
 {
 	struct spell_menu_data *d = menu_priv(m);
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	screen_save();
 	region_erase_bordered(&m->active);

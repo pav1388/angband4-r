@@ -2237,8 +2237,10 @@ static bool describe_effect(textblock *tb, const struct object *obj,
  */
 static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 {
-	char loot_spot[80];
-	char name[80];
+	// char loot_spot[80];
+	char loot_spot[160];
+	// char name[80];
+	char name[160];
 	int origin;
 	const char *dropper = NULL;
 	const char *article;

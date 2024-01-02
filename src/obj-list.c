@@ -364,7 +364,8 @@ uint8_t object_list_entry_line_attribute(const object_list_entry_t *entry)
 void object_list_format_name(const object_list_entry_t *entry,
 							 char *line_buffer, size_t size)
 {
-	char name[80];
+	// char name[80];
+	char name[160];
 	const char *chunk;
 	char *source;
 	bool has_singular_prefix;

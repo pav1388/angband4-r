@@ -39,7 +39,8 @@ static char view_ability_tag(struct menu *menu, int oid)
 static void view_ability_display(struct menu *menu, int oid, bool cursor,
 	int row, int col, int width)
 {
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	uint8_t color;
 	struct player_ability *choices = menu->menu_data;
 
@@ -114,7 +115,8 @@ void textui_view_ability_menu(struct player_ability *ability_list,
 	struct menu menu;
 	menu_iter menu_f = { view_ability_tag, 0, view_ability_display, 0, 0 };
 	region loc = { 0, 0, 70, -99 };
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	/* Save the screen and clear it */
 	screen_save();

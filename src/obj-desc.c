@@ -28,14 +28,13 @@
 /**
  * Puts the object base kind's name into buf.
  */
-// void object_base_name(char *buf, size_t max, int tval, bool plural)
-void object_base_name(char *buf, size_t max, int tval, bool plural, uint16_t number)
+void object_base_name(char *buf, size_t max, int tval, bool plural)
 {
 	struct object_base *kb = &kb_info[tval];
 	size_t end = 0;
 
 	if (kb->name && kb->name[0]) 
-		(void) obj_desc_name_format(buf, max, end, kb->name, NULL, plural, number);
+		(void) obj_desc_name_format(buf, max, end, kb->name, NULL, plural);
 }
 
 
@@ -55,7 +54,7 @@ void object_kind_name(char *buf, size_t max, const struct object_kind *kind,
 
 	/* Use proper name (Healing, or whatever) */
 	else
-		(void) obj_desc_name_format(buf, max, 0, kind->name, NULL, false, 1);
+		(void) obj_desc_name_format(buf, max, 0, kind->name, NULL, false);
 }
 
 
@@ -121,80 +120,61 @@ static const char *obj_desc_get_basename(const struct object *obj, bool aware,
 			return obj->kind->name;
 
 		case TV_AMULET:
-			// return (show_flavor ? "& # Amulet~" : "& Amulet~");
-			return (show_flavor ? "# Амулет/" : "Амулет/");
+			return (show_flavor ? "# Amulet~" : "Amulet~");
 
 		case TV_RING:
-			// return (show_flavor ? "& # Ring~" : "& Ring~");
-			return (show_flavor ? "# Кол|ьцо|ьца|ец|" : "Кол|ьцо|ьца|ец|");
+			return (show_flavor ? "# Ring~" : "Ring~");
 
 		case TV_STAFF:
-			// return (show_flavor ? "& # Sta|ff|ves|" : "& Sta|ff|ves|");
-			return (show_flavor ? "# Посох/" : "Посох/");
+			return (show_flavor ? "# Sta|ff|ves|" : "Sta|ff|ves|");
 
 		case TV_WAND:
-			// return (show_flavor ? "& # Wand~" : "& Wand~");
-			return (show_flavor ? "# Палоч|ка|ки|ек|" : "Палоч|ка|ки|ек|");
+			return (show_flavor ? "# Wand~" : "Wand~");
 
 		case TV_ROD:
-			// return (show_flavor ? "& # Rod~" : "& Rod~");
-			return (show_flavor ? "# Жезл/" : "Жезл/");
+			return (show_flavor ? "# Rod~" : "Rod~");
 
 		case TV_POTION:
-			// return (show_flavor ? "& # Potion~" : "& Potion~");
-			return (show_flavor ? "# Зель|е|я|ев|" : "Зель|е|я|ев|");
+			return (show_flavor ? "# Potion~" : "Potion~");
 
 		case TV_SCROLL:
-			// return (show_flavor ? "& Scroll~ titled #" : "& Scroll~");
-			return (show_flavor ? "Свит|ок|ка|ков| подписанный #" : "Свит|ок|ка|ков|");
+			return (show_flavor ? "Scroll~ titled #" : "Scroll~");
 
 		case TV_MAGIC_BOOK:
 			if (terse)
-				// return "& Book~ #";
-				return "Книг|а|и|| #";
+				return "Book~ #";
 			else
-				// return "& Book~ of Magic Spells #";
-				return "Книг|а|и|| Магических Заклинаний #";
+				return "Book~ of Magic Spells #";
 
 		case TV_PRAYER_BOOK:
 			if (terse)
-				// return "& Book~ #";
-				return "Книг|а|и|| #";
+				return "Book~ #";
 			else
-				// return "& Holy Book~ of Prayers #";
-				return "Свят|ая|ые|ых| Книг|а|и|| Молитв #";
+				return "Holy Book~ of Prayers #";
 
 		case TV_NATURE_BOOK:
 			if (terse)
-				// return "& Book~ #";
-				return "Книг|а|и|| #";
+				return "Book~ #";
 			else
-				// return "& Book~ of Nature Magics #";
-				return "Книг|а|и|| Магии Природы #";
+				return "Book~ of Nature Magics #";
 
 		case TV_SHADOW_BOOK:
 			if (terse)
-				// return "& Tome~ #";
-				return "Том/ #";
+				return "Tome~ #";
 			else
-				// return "& Necromantic Tome~ #";
-				return "Некромантическ|ий|их|их| Том/ #";
+				return "Necromantic Tome~ #";
 
 		case TV_OTHER_BOOK:
 			if (terse)
-				// return "& Book~ #";
-				return "Книг|а|и|| #";
+				return "Book~ #";
 			else
-				// return "& Book of Mysteries~ #";
-				return "Книг|а|и|| Таинств|а||| #";
+				return "Book of Mysteries~ #";
 
 		case TV_MUSHROOM:
-			// return (show_flavor ? "& # Mushroom~" : "& Mushroom~");
-			return (show_flavor ? "# Гриб/" : "Гриб/");
+			return (show_flavor ? "# Mushroom~" : "Mushroom~");
 	}
 
-	// return "(nothing)";
-	return "(ничего)";
+	return "(nothing)";
 }
 
 
@@ -210,29 +190,27 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
 		strnfcat(buf, max, &end, "больше нет ");
 	} else if (number > 1) {
 		strnfcat(buf, max, &end, "%u ", number);
-	} else if (object_is_known_artifact(obj)) {
+	// } else if (object_is_known_artifact(obj)) {
 		// strnfcat(buf, max, &end, "the ");
-	} else if (*basename == '&') {
-		bool an = false;
-		const char *lookahead = basename + 1;
+	// } else if (*basename == '&') {
+		// bool an = false;
+		// const char *lookahead = basename + 1;
 
-		while (*lookahead == ' ') lookahead++;
+		// while (*lookahead == ' ') lookahead++;
 
-		if (*lookahead == '#') {
-			if (modstr && is_a_vowel(*modstr))
-				an = true;
-		} else if (is_a_vowel(*lookahead)) {
-			an = true;
-		}
+		// if (*lookahead == '#') {
+			// if (modstr && is_a_vowel(*modstr))
+				// an = true;
+		// } else if (is_a_vowel(*lookahead)) {
+			// an = true;
+		// }
 
-		if (!terse) {
-			if (an)
+		// if (!terse) {
+			// if (an)
 				// strnfcat(buf, max, &end, "an ");
-				strnfcat(buf, max, &end, NULL);
-			else
-				// strnfcat(buf, max, &end, "a ");
-				strnfcat(buf, max, &end, NULL);
-		}
+			// else
+				// strnfcat(buf, max, &end, "a ");			
+		// }
 	}
 
 	return end;
@@ -252,8 +230,7 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
  * formats given above).
  */
 size_t obj_desc_name_format(char *buf, size_t max, size_t end,
-		// const char *fmt, const char *modstr, bool pluralise)
-		const char *fmt, const char *modstr, bool pluralise, uint16_t number)
+		const char *fmt, const char *modstr, bool pluralise)
 {
 	/* Copy the string */
 	while (*fmt) {
@@ -276,55 +253,33 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 				strnfcat(buf, max, &end, "es");
 			else
 				strnfcat(buf, max, &end, "s");
-				
-		} else if (*fmt == '/') {
-			if (!pluralise)	{
-				fmt++;
-				continue;
-			}
-			strnfcat(buf, max, &end, "%s", PLURAL_RU__A_OV(number));
-				
 		} else if (*fmt == '|') {
 			/* Special plurals 
 			* e.g. kni|fe|ves|
 			*          ^  ^  ^ */
 			const char *singular = fmt + 1;
-			const char *plural2  = strchr(singular, '|');
-			const char *plural5  = NULL;
+			const char *plural   = strchr(singular, '|');
 			const char *endmark  = NULL;
 
-			if (plural2) {
-				plural2++;
-				plural5 = strchr(plural2, '|');
-			}
-			
-			if (plural5) {
-				plural5++;
-				endmark = strchr(plural5, '|');
+			if (plural) {
+				plural++;
+				endmark = strchr(plural, '|');
 			}
 
-			if (!singular || !plural2 || !plural5 || !endmark) return end;
-			
-			uint8_t mod = number % 10;
-			
-			if ((!pluralise) || ((mod == 1) && (number != 11))) {
+			if (!singular || !plural || !endmark) return end;
+
+			if (!pluralise)
 				strnfcat(buf, max, &end, "%.*s",
-					(int) (plural2 - singular) - 1,
+					(int) (plural - singular) - 1,
 					singular);
-			} else {
-				if ((mod > 1) && (mod < 5) && (number != 12) && (number != 13) && (number != 14)) {
-					strnfcat(buf, max, &end, "%.*s",
-						(int) (plural5 - plural2) - 1, plural2);
-				} else {
-					strnfcat(buf, max, &end, "%.*s",
-						(int) (endmark - plural5), plural5);
-				}
-			}
-						
+			else
+				strnfcat(buf, max, &end, "%.*s",
+					(int) (endmark - plural), plural);
+
 			fmt = endmark;
 		} else if (*fmt == '#') {
 			/* Add modstr, with pluralisation if relevant */
-			end = obj_desc_name_format(buf, max, end, modstr, NULL,	pluralise, number);
+			end = obj_desc_name_format(buf, max, end, modstr, NULL,	pluralise);
 		}
 
 		else
@@ -369,7 +324,7 @@ static size_t obj_desc_name(char *buf, size_t max, size_t end,
 			modstr, terse, number);
 
 	/* Base name */
-	end = obj_desc_name_format(buf, max, end, basename, modstr, plural, number);
+	end = obj_desc_name_format(buf, max, end, basename, modstr, plural);
 
 	/* Append extra names of various kinds */
 	if (object_is_known_artifact(obj))
@@ -478,8 +433,7 @@ static size_t obj_desc_light(const struct object *obj, char *buf, size_t max,
 {
 	/* Fuelled light sources get number of remaining turns appended */
 	if (tval_is_light(obj) && !of_has(obj->flags, OF_NO_FUEL))
-		// strnfcat(buf, max, &end, " (%d turns)", obj->timeout);
-		strnfcat(buf, max, &end, " (%d ход%s)", obj->timeout, PLURAL_RU__A_OV(obj->timeout));
+		strnfcat(buf, max, &end, " (%d turns)", obj->timeout);
 
 	return end;
 }
@@ -537,18 +491,14 @@ static size_t obj_desc_charges(const struct object *obj, char *buf, size_t max,
 
 	/* Wands and staffs have charges, others may be charging */
 	if (aware && tval_can_have_charges(obj)) {
-		// strnfcat(buf, max, &end, " (%d charge%s)", obj->pval,
-		strnfcat(buf, max, &end, " (%d заряд%s)", obj->pval,
-				 // PLURAL(obj->pval));
-				 PLURAL_RU__A_OV(obj->pval));
+		strnfcat(buf, max, &end, " (%d charge%s)", obj->pval,
+				 PLURAL(obj->pval));
 	} else if (obj->timeout > 0) {
 		if (tval_is_rod(obj) && obj->number > 1)
-			// strnfcat(buf, max, &end, " (%d charging)", number_charging(obj));
-			strnfcat(buf, max, &end, " (%d заряжается)", number_charging(obj));
+			strnfcat(buf, max, &end, " (%d charging)", number_charging(obj));
 		else if (tval_is_rod(obj) || obj->activation || obj->effect)
 			/* Artifacts, single rods */
-			// strnfcat(buf, max, &end, " (charging)");
-			strnfcat(buf, max, &end, " (заряжается)");
+			strnfcat(buf, max, &end, " (charging)");
 	}
 
 	return end;
@@ -612,13 +562,11 @@ static size_t obj_desc_aware(const struct object *obj, char *buf, size_t max,
 							 size_t end)
 {
 	if (!object_flavor_is_aware(obj)) {
-		// strnfcat(buf, max, &end, " {unseen}");
-		strnfcat(buf, max, &end, " {неизв}");
+		strnfcat(buf, max, &end, " {unseen}");
 	} else if (!object_runes_known(obj)) {
 		strnfcat(buf, max, &end, " {??}");
 	} else if (obj->known->curses) {
-		// strnfcat(buf, max, &end, " {cursed}");
-		strnfcat(buf, max, &end, " {проклято}");
+		strnfcat(buf, max, &end, " {cursed}");
 	}
 
 	return end;
@@ -663,24 +611,19 @@ size_t object_desc(char *buf, size_t max, const struct object *obj,
 
 	/* Simple description for null item */
 	if (!obj || !obj->known)
-		// return strnfmt(buf, max, "(nothing)");
-		return strnfmt(buf, max, "(ничего)");
+		return strnfmt(buf, max, "(nothing)");
 
 	/* Unknown itema and cash get straightforward descriptions */
 	if (obj->known && obj->kind != obj->known->kind) {
-		// if (prefix)
-			// return strnfmt(buf, max, "an unknown item");
-		// return strnfmt(buf, max, "unknown item");
-		return strnfmt(buf, max, "неизвестный предмет");
+		if (prefix)
+			return strnfmt(buf, max, "an unknown item");
+		return strnfmt(buf, max, "unknown item");
 	}
 
 	if (tval_is_money(obj))
-		// return strnfmt(buf, max, "%d gold pieces worth of %s%s",
-		return strnfmt(buf, max, "%d золот%s монет%s %s%s", 
-				// obj->pval, obj->kind->name,
-				obj->pval, PLURAL_RU_UYU_bIE_bIH(obj->pval), PLURAL_RU_U_bI_(obj->pval), obj->kind->name,
-				// ignore_item_ok(p, obj) ? " {ignore}" : "");
-				ignore_item_ok(p, obj) ? " {игнор}" : "");
+		return strnfmt(buf, max, "%d gold pieces worth of %s%s",
+				obj->pval, obj->kind->name,
+				ignore_item_ok(p, obj) ? " {ignore}" : "");
 
 	/* Egos and kinds whose name we know are seen */
 	if (obj->known->ego && !spoil)

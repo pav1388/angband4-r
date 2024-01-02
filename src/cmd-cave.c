@@ -1225,7 +1225,8 @@ static bool do_cmd_walk_test(struct loc grid)
 		/* Handle player fear */
 		if (player_of_has(player, OF_AFRAID)) {
 			/* Extract monster name (or "it") */
-			char m_name[80];
+			// char m_name[80];
+			char m_name[160];
 			monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
 
 			/* Message */
@@ -1664,7 +1665,8 @@ void do_cmd_mon_command(struct command *cmd)
 {
 	struct monster *mon = get_commanded_monster();
 	struct monster_lore *lore = NULL;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 
 	assert(mon);
 	lore = get_lore(mon->race);
@@ -1729,7 +1731,8 @@ void do_cmd_mon_command(struct command *cmd)
 			break;
 		}
 		case CMD_DROP: {
-			char o_name[80];
+			// char o_name[80];
+			char o_name[160];
 			struct object *obj = get_random_monster_object(mon);
 			if (!obj) break;
 			obj->held_m_idx = 0;

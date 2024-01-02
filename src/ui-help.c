@@ -75,16 +75,19 @@ bool show_file(const char *name, const char *what, int line, int mode)
 	const char *tag = NULL;
 
 	/* Hold a string to find */
-	char finder[80] = "";
+	// char finder[80] = "";
+	char finder[160] = "";
 
 	/* Hold a string to show */
-	char shower[80] = "";
+	// char shower[80] = "";
+	char shower[160] = "";
 
 	/* Filename */
 	char filename[1024];
 
 	/* Describe this thing */
-	char caption[128] = "";
+	// char caption[128] = "";
+	char caption[256] = "";
 
 	/* Path buffer */
 	char path[1024];
@@ -393,7 +396,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 
 		/* Go to a specific line */
 		if (ch.code == '#') {
-			char tmp[80] = "0";
+			// char tmp[80] = "0";
+			char tmp[160] = "0";
 
 			//prt("Goto Line: ", hgt - 1, 0);
 			prt("Перейти к строке: ", hgt - 1, 0);
@@ -403,7 +407,8 @@ bool show_file(const char *name, const char *what, int line, int mode)
 
 		/* Go to a specific file */
 		if (ch.code == '%') {
-			char ftmp[80];
+			// char ftmp[80];
+			char ftmp[160];
 
 			if (OPT(player, rogue_like_commands)) {
 				my_strcpy(ftmp, "r_index.txt", sizeof(ftmp));

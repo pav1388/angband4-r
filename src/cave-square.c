@@ -1536,7 +1536,8 @@ const char *square_apparent_look_in_preposition(struct chunk *c, struct loc grid
 	int actual = square(c, grid)->feat;
 	const struct feature *fp = f_info[actual].mimic ?
 		f_info[actual].mimic : &f_info[actual];
-	return (fp->look_in_preposition) ?  fp->look_in_preposition : "on ";
+	// return (fp->look_in_preposition) ?  fp->look_in_preposition : "on ";
+	return (fp->look_in_preposition) ?  fp->look_in_preposition : "на ";
 }
 
 /* Memorize the terrain */

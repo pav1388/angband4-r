@@ -40,7 +40,8 @@ static void get_curse_display(struct menu *menu, int oid, bool cursor, int row,
 {
 	struct curse_menu_data *choice = menu_priv(menu);
 	int attr = cursor ? COLOUR_L_BLUE : COLOUR_WHITE;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	int power = choice[oid].power;
 	char *name = curses[choice[oid].index].name;
 
@@ -68,7 +69,8 @@ static bool get_curse_action(struct menu *menu, const ui_event *event, int oid)
 static void curse_menu_browser(int oid, void *data, const region *loc)
 {
 	struct curse_menu_data *choice = data;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	/* Redirect output to the screen */
 	text_out_hook = text_out_to_screen;
@@ -93,7 +95,8 @@ static int curse_menu(struct object *obj, char *dice_string)
 {
 	menu_iter menu_f = { 0, 0, get_curse_display, get_curse_action, 0 };
 	struct menu *m = menu_new(MN_SKIN_SCROLL, &menu_f);
-	char header[80];
+	// char header[80];
+	char header[160];
 	int row;
 	unsigned int length = 0;
 	int i, count = 0;

@@ -235,8 +235,9 @@ static void display_winner(void)
 static void death_file(const char *title, int row)
 {
 	// char buf[1024];
-	char buf[1512];
-	char ftmp[80];
+	char buf[2048];
+	// char ftmp[80];
+	char ftmp[160];
 
 	/* Get the filesystem-safe name and append .txt */
 	player_safe_name(ftmp, sizeof(ftmp), player->full_name, false);
@@ -332,8 +333,10 @@ static void death_info(const char *title, int row)
 			for (line = 0; obj && line < 12; obj = obj->next, line++) {
 				uint8_t attr;
 
-				char o_name[80];
-				char tmp_val[80];
+				// char o_name[80];
+				char o_name[160];
+				// char tmp_val[80];
+				char tmp_val[160];
 
 				/* Print header, clear line */
 				strnfmt(tmp_val, sizeof(tmp_val), "%c) ", I2A(line));
@@ -399,7 +402,7 @@ static void death_examine(const char *title, int row)
 
 	while (get_item(&obj, q, s, 0, NULL, (USE_INVEN | USE_QUIVER | USE_EQUIP | IS_HARMLESS))) {
 		// char header[120];
-		char header[200];
+		char header[240];
 
 		textblock *tb;
 		region area = { 1, 0, 0, 0 };

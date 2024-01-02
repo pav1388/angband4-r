@@ -1440,7 +1440,8 @@ static void calc_spells(struct player *p)
 		if (p->upkeep->new_spells) {
 			int count;
 			struct magic_realm *r = class_magic_realms(p->class, &count), *r1;
-			char buf[120];
+			// char buf[120];
+			char buf[160];
 
 			my_strcpy(buf, r->spell_noun, sizeof(buf));
 			if (p->upkeep->new_spells > 1) {

@@ -95,7 +95,8 @@ bool curses_are_equal(const struct object *obj1, const struct object *obj2)
 static bool curses_conflict(int first, int second)
 {
 	struct curse *c = &curses[first];
-	char buf[80] = "|";
+	// char buf[80] = "|";
+	char buf[160] = "|";
 
 	/* First curse has no conflicts */
 	if (!c->conflict) {

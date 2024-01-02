@@ -1197,7 +1197,8 @@ void lore_append_exp(textblock *tb, const struct monster_race *race,
 					 bitflag known_flags[RF_SIZE])
 {
 	// const char *ordinal, *article;
-	char buf[20] = "";
+	// char buf[20] = "";
+	char buf[40] = "";
 	long exp_integer, exp_fraction;
 	int16_t level;
 
@@ -1206,9 +1207,9 @@ void lore_append_exp(textblock *tb, const struct monster_race *race,
 	if (!race->rarity) return;
 
 	/* Introduction */
-	// if (rf_has(known_flags, RF_UNIQUE))
-		// textblock_append(tb, "Убийство");
-	// else
+	if (rf_has(known_flags, RF_UNIQUE))
+		textblock_append(tb, "Убийство");
+	else
 		textblock_append(tb, "Убийство");
 
 	// textblock_append(tb, " this creature");
@@ -1387,7 +1388,7 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 {
 	int flag;
 	// char start[40];
-	char start[100];
+	char start[80];
 	const char *initial_pronoun;
 	bool prev = false;
 	bitflag current_flags[RF_SIZE], test_flags[RF_SIZE];

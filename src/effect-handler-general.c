@@ -181,7 +181,8 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 
 	if (get_curse(&index, obj, dice_string)) {
 		struct curse_data curse = obj->curses[index];
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 
 		if (curse.power >= 100) {
 			/* Curse is permanent */
@@ -367,7 +368,8 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 
 	struct object *obj;
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	const char *q, *s;
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
@@ -429,15 +431,18 @@ static void brand_object(struct object *obj, const char *name)
 
 	/* You can never modify artifacts, ego items or worthless items */
 	if (obj && obj->kind->cost && !obj->artifact && !obj->ego) {
-		char o_name[80];
-		char brand[20];
+		// char o_name[80];
+		char o_name[160];
+		// char brand[20];
+		char brand[40];
 
 		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
-		strnfmt(brand, sizeof(brand), "of %s", name);
+		// strnfmt(brand, sizeof(brand), "of %s", name);
+		strnfmt(brand, sizeof(brand), "%s", name);
 
 		/* Describe */
 		//msg("The %s %s surrounded with an aura of %s.", o_name,
-		msg("%s окружен%s аурой %s.", o_name,
+		msg("%s окружён%s аурой %s.", o_name,
 			(obj->number > 1) ? "" : "ы", name);
 
 		/* Get the right ego type for the object */
@@ -962,7 +967,8 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 {
 	int drain = effect_calculate_value(context, false);
 	bool monster = context->origin.what != SRC_TRAP;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 	struct monster *mon = NULL;
 	struct monster *t_mon = monster_target_monster(context);
 	struct loc decoy = cave_find_decoy(cave);
@@ -1066,7 +1072,8 @@ bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
 	int strength = effect_calculate_value(context, false);
 	struct object *obj = NULL;
-	char dice_string[20];
+	// char dice_string[20];
+	char dice_string[30];
 
 	context->ident = true;
 
@@ -2060,7 +2067,8 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 {
 	int i, count = 0;
 	struct object *obj;
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	/* Count slots */
 	for (i = 0; i < player->body.count; i++) {
@@ -2528,7 +2536,8 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 
 		/* Probe visible monsters */
 		if (monster_is_visible(mon)) {
-			char m_name[80];
+			// char m_name[80];
+			char m_name[160];
 
 			/* Start the message */
 			//if (!probe) msg("Probing...");
@@ -3126,7 +3135,8 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 
 	/* Check for monster targeting another monster */
 	if (t_mon) {
-		char m_name[80];
+		// char m_name[80];
+		char m_name[160];
 		target = t_mon->grid;
 		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG);
 		if (message) {
@@ -3177,7 +3187,8 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 {
 	struct object *obj;
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	/* Curse the body armor */
 	obj = equipped_item_by_slot_name(player, "body");
@@ -3238,7 +3249,8 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 {
 	struct object *obj;
 
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 
 	/* Curse the weapon */
 	obj = equipped_item_by_slot_name(player, "weapon");
@@ -3576,7 +3588,8 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 
 	/* Explicit saving throw */
 	if (randint1(player->lev) < randint1(mon->race->level)) {
-		char m_name[80];
+		// char m_name[80];
+		char m_name[160];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 		//msg("%s resists your command!", m_name);
 		msg("%s сопротивляется вашим приказам!", m_name);

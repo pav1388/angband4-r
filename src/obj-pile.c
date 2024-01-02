@@ -825,7 +825,8 @@ struct object *floor_object_for_use(struct player *p, struct object *obj,
 	int num, bool message, bool *none_left)
 {
 	struct object *usable;
-	char name[80];
+	// char name[80];
+	char name[160];
 
 	/* Bounds check */
 	num = MIN(num, obj->number);
@@ -988,7 +989,8 @@ static void floor_carry_fail(struct chunk *c, struct object *drop, bool broke)
 
 	/* Delete completely */
 	if (known) {
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 		const char *verb = broke ?
 			VERB_AGREEMENT(drop->number, "breaks", "break") :
 			VERB_AGREEMENT(drop->number, "disappears", "disappear");
@@ -1121,7 +1123,8 @@ static void drop_find_grid(const struct player *p, struct chunk *c,
 void drop_near(struct chunk *c, struct object **dropped, int chance,
 			   struct loc grid, bool verbose, bool prefer_pile)
 {
-	char o_name[80];
+	// char o_name[80];
+	char o_name[160];
 	struct loc best = grid;
 	bool dont_ignore = verbose && !ignore_item_ok(player, *dropped);
 

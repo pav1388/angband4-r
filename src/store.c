@@ -1684,7 +1684,6 @@ void do_cmd_buy(struct command *cmd)
 
 	struct object *obj, *bought, *known_obj;
 
-	// char o_name[80];
 	char o_name[160];
 	int price;
 
@@ -1731,7 +1730,7 @@ void do_cmd_buy(struct command *cmd)
 
 	if (price > player->au) {
 		// msg("You cannot afford that purchase.");
-		msg("Вы не можете позволить себе такую покупку.");
+		msg("Вы не можете позволить себе такую дорогую покупку.");
 		object_delete(NULL, NULL, &bought);
 		return;
 	}
@@ -1902,8 +1901,7 @@ void do_cmd_sell(struct command *cmd)
 	struct object dummy_item;
 	struct store *store = store_at(cave, player->grid);
 	int price, dummy, value;
-	// char o_name[120];
-	char o_name[200];
+	char o_name[240];
 	char label;
 
 	struct object *obj, *sold_item;
@@ -2000,7 +1998,7 @@ void do_cmd_sell(struct command *cmd)
 	/* Describe the result (in message buffer) */
 	if (OPT(player, birth_no_selling)) {
 		// msg("You had %s (%c).", o_name, label);
-		msg("У вас было %s (%c).", o_name, label);
+		msg("Вы отдали %s (%c).", o_name, label);
 	} else {
 		// msg("You sold %s (%c) for %d gold.", o_name, label, price);
 		msg("Вы продали %s (%c) за %d золота.", o_name, label, price);
@@ -2048,8 +2046,7 @@ void do_cmd_stash(struct command *cmd)
 	int amt;
 	struct object dummy;
 	struct store *store = store_at(cave, player->grid);
-	// char o_name[120];
-	char o_name[200];
+	char o_name[240];
 	char label;
 
 	struct object *obj, *dropped;
@@ -2087,7 +2084,7 @@ void do_cmd_stash(struct command *cmd)
 	object_wipe(&dummy);
 	if (no_room) {
 		// msg("Your home is full.");
-		msg("В вашем доме нет места.");
+		msg("Ваш дом полон.");
 		return;
 	}
 

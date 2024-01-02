@@ -370,7 +370,8 @@ static const grouper tval_names[] =
  */
 static char *de_armour(const char *name)
 {
-	char newname[40];
+	// char newname[40];
+	char newname[80];
 	char *armour;
 
 	my_strcpy(newname, name, sizeof(newname));

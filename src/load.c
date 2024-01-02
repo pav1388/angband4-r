@@ -104,7 +104,8 @@ static struct object *rd_item(void)
 	uint16_t tmp16u;
 	uint8_t effect;
 	size_t i;
-	char buf[128];
+	// char buf[128];
+	char buf[256];
 	uint8_t ver = 1;
 
 	rd_u16b(&tmp16u);
@@ -360,7 +361,8 @@ static void rd_trap(struct trap *trap)
 {
 	int i;
 	uint8_t tmp8u;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	rd_string(buf, sizeof(buf));
 	if (buf[0]) {
@@ -452,7 +454,8 @@ int rd_options(void)
 	/* Read options */
 	while (1) {
 		uint8_t value;
-		char name[40];
+		// char name[40];
+		char name[80];
 		rd_string(name, sizeof name);
 
 		if (!name[0])
@@ -471,7 +474,8 @@ int rd_options(void)
 int rd_messages(void)
 {
 	int i;
-	char buf[128];
+	// char buf[128];
+	char buf[256];
 	uint16_t tmp16u;
 
 	int16_t num;
@@ -500,7 +504,8 @@ int rd_messages(void)
 int rd_monster_memory(void)
 {
 	uint16_t nkill, ntheft;
-	char buf[128];
+	// char buf[128];
+	char buf[256];
 	int i;
 
 	/* Monster temporary flags */
@@ -653,14 +658,15 @@ int rd_player(void)
 	int i;
 	uint8_t tmp8u, num;
 	uint8_t stat_max = 0;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 	struct player_race *r;
 	struct player_shape *s;
 	struct player_class *c;
 
 	rd_string(player->full_name, sizeof(player->full_name));
 	// rd_string(player->died_from, 80);
-	rd_string(player->died_from, 100);
+	rd_string(player->died_from, 160);
 	// player->history = mem_zalloc(250);
 	player->history = mem_zalloc(500);
 	// rd_string(player->history, 250);
@@ -899,7 +905,8 @@ int rd_ignore(void)
 
 	/* Read the aware object autoinscriptions array */
 	for (i = 0; i < inscriptions; i++) {
-		char tmp[80];
+		// char tmp[80];
+		char tmp[160];
 		uint8_t tval, sval;
 		struct object_kind *k;
 
@@ -919,7 +926,8 @@ int rd_ignore(void)
 
 	/* Read the unaware object autoinscriptions array */
 	for (i = 0; i < inscriptions; i++) {
-		char tmp[80];
+		// char tmp[80];
+		char tmp[160];
 		uint8_t tval, sval;
 		struct object_kind *k;
 
@@ -939,7 +947,8 @@ int rd_ignore(void)
 
 	/* Read the rune autoinscriptions array */
 	for (i = 0; i < inscriptions; i++) {
-		char tmp[80];
+		// char tmp[80];
+		char tmp[160];
 		int16_t runeid;
 
 		rd_s16b(&runeid);
@@ -1647,7 +1656,8 @@ int rd_chunks(void)
 
 		/* Read other chunk info */
 		if (OPT(player, birth_levels_persist)) {
-			char buf[80];
+			// char buf[80];
+			char buf[160];
 			int i;
 			uint8_t tmp8u;
 			uint16_t tmp16u;
@@ -1729,8 +1739,10 @@ int rd_history(void)
 		bitflag type[HIST_SIZE];
 		const struct artifact *art = NULL;
 		int aidx = 0;
-		char name[80];
-		char text[80];
+		// char name[80];
+		char name[160];
+		// char text[80];
+		char text[160];
 
 		for (j = 0; j < hist_size; j++)		
 			rd_byte(&type[j]);

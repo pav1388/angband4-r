@@ -40,7 +40,8 @@ static struct menu *effect_menu_new(struct effect *effect, int count,
 	region loc = { 0, 1, -99, -99 };
 	int ms_count = 0;
 	char **ms;
-	char buf[80];
+	// char buf[80];
+	char buf[160];
 
 	m->selections = all_letters_nohjkl;
 

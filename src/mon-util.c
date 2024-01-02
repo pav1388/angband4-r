@@ -722,7 +722,8 @@ void become_aware(struct chunk *c, struct monster *mon)
 		/* Delete any false items */
 		if (mon->mimicked_obj) {
 			struct object *obj = mon->mimicked_obj;
-			char o_name[80];
+			// char o_name[80];
+			char o_name[160];
 			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
 
 			/* Print a message */
@@ -1013,8 +1014,10 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 {
 	int32_t div, new_exp, new_exp_frac;
 	struct monster_lore *lore = get_lore(mon->race);
-	char m_name[80];
-	char buf[80];
+	// char m_name[80];
+	char m_name[160];
+	// char buf[80];
+	char buf[160];
 	int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0);
 
 	/* Assume normal death sound */
@@ -1088,7 +1091,8 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 
 	/* When the player kills a Unique, it stays dead */
 	if (monster_is_unique(mon)) {
-		char unique_name[80];
+		// char unique_name[80];
+		char unique_name[160];
 		assert(mon->original_race == NULL);
 		mon->race->max_num = 0;
 
@@ -1429,7 +1433,8 @@ void steal_monster_item(struct monster *mon, int midx)
 	struct object *obj = get_random_monster_object(mon);
 	struct monster_lore *lore = get_lore(mon->race);
 	struct monster *thief = NULL;
-	char m_name[80];
+	// char m_name[80];
+	char m_name[160];
 
 	/* Get the target monster name (or "it") */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
@@ -1488,7 +1493,8 @@ void steal_monster_item(struct monster *mon, int midx)
 				/* Drop immediately if ignored,
 				   or if inventory already full to prevent pack overflow */
 				if (ignore_item_ok(player, obj) || !inven_carry_okay(obj)) {
-					char o_name[80];
+					// char o_name[80];
+					char o_name[160];
 					object_desc(o_name, sizeof(o_name), obj,
 						ODESC_PREFIX | ODESC_FULL,
 						player);
@@ -1507,7 +1513,8 @@ void steal_monster_item(struct monster *mon, int midx)
 			mon_dec_timed(mon, MON_TMD_SLEEP, wake, MON_TMD_FLG_NOTIFY);
 		} else if (monster_reaction / 2 < steal_skill) {
 			/* Decent attempt, at least */
-			char o_name[80];
+			// char o_name[80];
+			char o_name[160];
 
 			object_see(player, obj);
 			if (tval_is_money(obj)) {
@@ -1542,7 +1549,8 @@ void steal_monster_item(struct monster *mon, int midx)
 		}
 	} else {
 		/* Get the thief details */
-		char t_name[80];
+		// char t_name[80];
+		char t_name[160];
 		thief = cave_monster(cave, midx);
 		assert(thief);
 		monster_desc(t_name, sizeof(t_name), thief, MDESC_STANDARD);
@@ -1658,7 +1666,8 @@ bool monster_change_shape(struct monster *mon)
 
 	/* Print a message immediately, update visuals */
 	if (monster_is_obvious(mon)) {
-		char m_name[80];
+		// char m_name[80];
+		char m_name[160];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 		// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 		msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
@@ -1693,7 +1702,8 @@ bool monster_revert_shape(struct monster *mon)
 {
 	if (mon->original_race) {
 		if (monster_is_obvious(mon)) {
-			char m_name[80];
+			// char m_name[80];
+			char m_name[160];
 			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 			// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 			msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");

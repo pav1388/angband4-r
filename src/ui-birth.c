@@ -354,7 +354,8 @@ static void class_help(int i, void *db, const region *l)
 	if (c->magic.total_spells) {
 		int count;
 		struct magic_realm *realm = class_magic_realms(c, &count), *realm_next;
-		char buf[120];
+		// char buf[120];
+		char buf[160];
 
 		my_strcpy(buf, realm->name, sizeof(buf));
 		realm_next = realm->next;
@@ -366,7 +367,8 @@ static void class_help(int i, void *db, const region *l)
 				if (count) {
 					my_strcat(buf, ", ", sizeof(buf));
 				} else {
-					my_strcat(buf, " and ", sizeof(buf));
+					// my_strcat(buf, " and ", sizeof(buf));
+					my_strcat(buf, " и ", sizeof(buf));
 				}
 				my_strcat(buf, realm->name, sizeof(buf));
 				realm_next = realm->next;
@@ -907,7 +909,8 @@ static enum birth_stage roller_command(bool first_call)
 		ACT_CTX_BIRTH_ROLL_QUIT,
 		ACT_CTX_BIRTH_ROLL_HELP
 	};
-	char prompt[80] = "";
+	// char prompt[80] = "";
+	char prompt[160] = "";
 	size_t promptlen = 0;
 	int action = ACT_CTX_BIRTH_ROLL_NONE;
 	ui_event in;

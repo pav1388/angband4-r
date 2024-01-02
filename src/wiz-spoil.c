@@ -493,13 +493,20 @@ void spoil_mon_desc(const char *fname)
 
 	char buf[1024];
 
-	char nam[80];
-	char lev[80];
-	char rar[80];
-	char spd[80];
-	char ac[80];
-	char hp[80];
-	char exp[80];
+	// char nam[80];
+	char nam[160];
+	// char lev[80];
+	char lev[160];
+	// char rar[80];
+	char rar[160];
+	// char spd[80];
+	char spd[160];
+	// char ac[80];
+	char ac[160];
+	// char hp[80];
+	char hp[160];
+	// char exp[80];
+	char exp[160];
 
 	uint16_t *who;
 

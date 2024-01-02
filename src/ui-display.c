@@ -197,7 +197,8 @@ static int fmt_title(char buf[], int max, bool short_mode)
  */
 static void prt_title(int row, int col)
 {	
-	char buf[32];
+	// char buf[32];
+	char buf[64];
 
 	fmt_title(buf, sizeof(buf), false);	
 
@@ -521,7 +522,8 @@ static int prt_speed_aux(char buf[], int max, uint8_t *attr)
 static void prt_speed(int row, int col)
 {
 	uint8_t attr = COLOUR_WHITE;
-	char buf[32] = "";
+	// char buf[32] = "";
+	char buf[50] = "";
 
 	prt_speed_aux(buf, sizeof(buf), &attr);
 
@@ -1237,7 +1239,7 @@ static size_t prt_terrain(int row, int col)
 	struct feature *feat = square_feat(cave, player->grid);
 	struct trap *trap = square_trap(cave, player->grid);
 	// char buf[30];
-	char buf[50];
+	char buf[60];
 	uint8_t attr;
 
 	if (trap && !square_isinvis(cave, player->grid)) {
@@ -2656,7 +2658,8 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 	if (floor_num == 1) {
 		/* Get the object */
 		struct object *obj = floor_list[0];
-		char o_name[80];
+		// char o_name[80];
+		char o_name[160];
 
 		if (!can_pickup)
 			// p = "have no room for";

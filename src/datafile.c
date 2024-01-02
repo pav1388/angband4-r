@@ -222,7 +222,8 @@ errr grab_rand_value(random_value *value, const char **value_type,
 	int i = 0;
 	/* Get a rewritable string */
 	char *value_name = string_make(name_and_value);
-	char dice_string[40];
+	// char dice_string[40];
+	char dice_string[80];
 	dice_t *dice;
 
 	/* Parse the value expression */

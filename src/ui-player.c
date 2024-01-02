@@ -53,7 +53,8 @@
 struct panel_line {
 	uint8_t attr;
 	const char *label;
-	char value[20];
+	// char value[20];
+	char value[40];
 };
 
 /**
@@ -468,7 +469,8 @@ void display_player_stat_info(void)
 {
 	int i, row, col;
 
-	char buf[80];
+	// char buf[80];
+	char buf[100];
 
 
 	/* Row */
