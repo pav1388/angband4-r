@@ -469,7 +469,7 @@ static void show_obj_list(olist_detail_t mode)
 
 			/* Print the count */
 			strnfmt(tmp_val, sizeof(tmp_val), fmt, count,
-					PLURAL_RU__A_OV(count));
+					PLURAL_RU(count, "", "а", "ов"));
 			c_put_str(COLOUR_L_UMBER, tmp_val, row + i, col + 3);
 		}
 	}
@@ -1087,7 +1087,7 @@ static void item_menu_browser(int oid, void *data, const region *local_area)
 			/* Print the count */
 			strnfmt(tmp_val, sizeof(tmp_val), fmt, count,
 					// count == 1 ? "" : "s");
-					PLURAL_RU__A_OV(count));
+					PLURAL_RU(count, "", "а", "ов"));
 			text_out_c(COLOUR_L_UMBER, tmp_val, local_area->row + i, local_area->col + 3);
 		}
 	}

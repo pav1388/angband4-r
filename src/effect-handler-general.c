@@ -434,7 +434,7 @@ static void brand_object(struct object *obj, const char *name)
 		// char o_name[80];
 		char o_name[160];
 		// char brand[20];
-		char brand[40];
+		char brand[60];
 
 		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
 		// strnfmt(brand, sizeof(brand), "of %s", name);
@@ -2549,7 +2549,7 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 
 			/* Describe the monster */
 			//msg("%s has %d hit point%s.", m_name, mon->hp, (mon->hp == 1) ? "" : "s");
-			msg("%s имеет %d очк%s здоровья.", m_name, mon->hp, PLURAL_RU_O_A_OV(mon->hp));
+			msg("%s имеет %d очк%s здоровья.", m_name, mon->hp, PLURAL_RU(mon->hp, "о", "а", "ов"));
 
 			/* Learn all of the non-spell, non-treasure flags */
 			lore_do_probe(mon);

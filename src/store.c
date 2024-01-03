@@ -1751,7 +1751,9 @@ void do_cmd_buy(struct command *cmd)
 	/* Message */
 	if (one_in_(3)) msgt(MSG_STORE5, "%s", ONE_OF(comment_accept));
 	// msg("You bought %s for %d gold.", o_name, price);
-	msg("Вы купили %s за %d золот%s монет%s.", o_name, price, PLURAL_RU_UYU_bIE_bIH(price), PLURAL_RU_U_bI_(price));
+	msg("Вы купили %s за %d золот%s монет%s.", o_name, price, 
+			PLURAL_RU(price, "ую", "ые", "ых"), 
+			PLURAL_RU(price, "у", "ы", ""));
 
 	/* Erase the inscription */
 	bought->note = 0;

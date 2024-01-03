@@ -246,7 +246,7 @@ static void get_subject(char *buf, size_t buflen,
 			my_strcpy(buf, "Нечто", buflen);
 		} else {
 			// strnfmt(buf, buflen, "%d monsters", count);
-			strnfmt(buf, buflen, "%d монстр%s", count, PLURAL_RU__A_OV(count));
+			strnfmt(buf, buflen, "%d монстр%s", count, PLURAL_RU(count, "", "а", "ов"));
 		}
 	} else {
 		/* Uniques, multiple monsters, or just one */

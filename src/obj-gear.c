@@ -801,7 +801,7 @@ void inven_item_charges(struct object *obj)
 	/* Require staff/wand */
 	if (tval_can_have_charges(obj) && object_flavor_is_aware(obj)) {
 		// msg("You have %d charge%s remaining.",
-		msg("У вас остал%s %d заряд%s.", (obj->pval) == 1 ? "ся" : "ось", obj->pval, PLURAL_RU__A_OV(obj->pval));
+		msg("У вас остал%s %d заряд%s.", (obj->pval) == 1 ? "ся" : "ось", obj->pval, PLURAL_RU(obj->pval, "", "а", "ов"));
 				// obj->pval,
 				// PLURAL(obj->pval));
 				
@@ -995,13 +995,17 @@ void inven_wield(struct object *obj, int slot)
 
 	/* Where is the item now */
 	if (tval_is_melee_weapon(wielded))
-		fmt = "You are wielding %s (%c).";
+		// fmt = "You are wielding %s (%c).";
+		fmt = "Вы владеете %s (%c).";
 	else if (wielded->tval == TV_BOW)
-		fmt = "You are shooting with %s (%c).";
+		// fmt = "You are shooting with %s (%c).";
+		fmt = "Вы стреляете из %s (%c).";
 	else if (tval_is_light(wielded))
-		fmt = "Your light source is %s (%c).";
+		// fmt = "Your light source is %s (%c).";
+		fmt = "Ваш источник света это %s (%c).";
 	else
-		fmt = "You are wearing %s (%c).";
+		// fmt = "You are wearing %s (%c).";
+		fmt = "Вы носите %s (%c).";
 
 	/* Describe the result */
 	object_desc(o_name, sizeof(o_name), wielded,
@@ -1013,7 +1017,8 @@ void inven_wield(struct object *obj, int slot)
 	/* Sticky flag geats a special mention */
 	if (of_has(wielded->flags, OF_STICKY)) {
 		/* Warn the player */
-		msgt(MSG_CURSED, "Oops! It feels deathly cold!");
+		// msgt(MSG_CURSED, "Oops! It feels deathly cold!");
+		msgt(MSG_CURSED, "Ой! Чувствуется смертельный холод!");
 	}
 
 	/* See if we have to overflow the pack */
@@ -1057,13 +1062,17 @@ void inven_takeoff(struct object *obj)
 
 	/* Describe removal by slot */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
-		act = "You were wielding";
+		// act = "You were wielding";
+		act = "Вы владели";
 	else if (slot_type_is(player, slot, EQUIP_BOW))
-		act = "You were holding";
+		// act = "You were holding";
+		act = "Вы держали";
 	else if (slot_type_is(player, slot, EQUIP_LIGHT))
-		act = "You were holding";
+		// act = "You were holding";
+		act = "Вы держали";
 	else
-		act = "You were wearing";
+		// act = "You were wearing";
+		act = "Вы носили";
 
 	/* De-equip the object */
 	player->body.slots[slot].obj = NULL;
@@ -1131,13 +1140,15 @@ void inven_drop(struct object *obj, int amt)
 		player);
 
 	/* Message */
-	msg("You drop %s (%c).", name, label);
+	// msg("You drop %s (%c).", name, label);
+	msg("Вы роняете %s (%c).", name, label);
 
 	/* Describe what's left */
 	if (dropped->artifact) {
 		object_desc(name, sizeof(name), dropped,
 			ODESC_FULL | ODESC_SINGULAR, player);
-		msg("You no longer have the %s (%c).", name, label);
+		// msg("You no longer have the %s (%c).", name, label);
+		msg("У вас больше нет %s (%c).", name, label);
 	} else {
 		struct object *first;
 		struct object *desc_target;
@@ -1167,13 +1178,16 @@ void inven_drop(struct object *obj, int amt)
 			ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
 			(total << 16), player);
 		if (!first) {
-			msg("You have %s (%c).", name, label);
+			// msg("You have %s (%c).", name, label);
+			msg("У вас есть %s (%c).", name, label);
 		} else {
 			label = gear_to_label(player, first);
 			if (total > first->number) {
-				msg("You have %s (1st %c).", name, label);
+				// msg("You have %s (1st %c).", name, label);
+				msg("У вас есть %s (1-ый %c).", name, label);
 			} else {
-				msg("You have %s (%c).", name, label);
+				// msg("You have %s (%c).", name, label);
+				msg("У вас есть %s (%c).", name, label);
 			}
 		}
 	}
@@ -1325,7 +1339,8 @@ void combine_pack(struct player *p)
 
 	/* Message */
 	if (display_message) {
-		msg("You combine some items in your pack.");
+		// msg("You combine some items in your pack.");
+		msg("Вы объединяете некоторые предметы в своем рюкзаке.");
 
 		/*
 		 * Stop "repeat last command" from working if a stack was
@@ -1388,14 +1403,16 @@ void pack_overflow(struct object *obj)
 		player);
 
 	/* Message */
-	msg("You drop %s.", o_name);
+	// msg("You drop %s.", o_name);
+	msg("Вы роняете %s.", o_name);
 
 	/* Excise the object and drop it (carefully) near the player */
 	gear_excise_object(player, obj);
 	drop_near(cave, &obj, 0, player->grid, false, true);
 
 	/* Describe */
-	msg("You no longer have %s.", o_name);
+	// msg("You no longer have %s.", o_name);
+	msg("У вас больше нет %s.", o_name);
 
 	/* Notice, update, redraw */
 	if (player->upkeep->notice) notice_stuff(player);

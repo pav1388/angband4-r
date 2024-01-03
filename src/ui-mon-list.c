@@ -93,7 +93,7 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 							  prefix,
 							  list->total_monsters[section],
 							  others,
-							  PLURAL_RU_A_OV(list->total_monsters[section]),
+							  PLURAL_RU(list->total_monsters[section], "а", "ов", "ов"),
 							  punctuation);
 
 	if (tb != NULL)

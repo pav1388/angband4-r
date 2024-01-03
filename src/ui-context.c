@@ -263,31 +263,38 @@ int context_menu_player(int mx, int my)
 	labels = string_make(lower_case);
 	m->selections = labels;
 
-	ADD_LABEL("Use", CMD_USE, MN_ROW_VALID);
+	// ADD_LABEL("Use", CMD_USE, MN_ROW_VALID);
+	ADD_LABEL("Использовать", CMD_USE, MN_ROW_VALID);
 
 	/* if player can cast, add casting option */
 	if (player_can_cast(player, false)) {
-		ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+		// ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+		ADD_LABEL("Произнести", CMD_CAST, MN_ROW_VALID);
 	}
 
 	/* if player is on stairs add option to use them */
 	if (square_isupstairs(cave, player->grid)) {
-		ADD_LABEL("Go Up", CMD_GO_UP, MN_ROW_VALID);
+		// ADD_LABEL("Go Up", CMD_GO_UP, MN_ROW_VALID);
+		ADD_LABEL("Идти Вверх", CMD_GO_UP, MN_ROW_VALID);
 	}
 	else if (square_isdownstairs(cave, player->grid)) {
-		ADD_LABEL("Go Down", CMD_GO_DOWN, MN_ROW_VALID);
+		// ADD_LABEL("Go Down", CMD_GO_DOWN, MN_ROW_VALID);
+		ADD_LABEL("Идти Вниз", CMD_GO_DOWN, MN_ROW_VALID);
 	}
 
 	/* Looking has different keys, but we don't have a way to look them up
 	 * (see ui-game.c). */
 	cmdkey = (mode == KEYMAP_MODE_ORIG) ? 'l' : 'x';
-	menu_dynamic_add_label(m, "Look", cmdkey, MENU_VALUE_LOOK, labels);
+	// menu_dynamic_add_label(m, "Look", cmdkey, MENU_VALUE_LOOK, labels);
+	menu_dynamic_add_label(m, "Осмотреться", cmdkey, MENU_VALUE_LOOK, labels);
 
 	/* 'R' is used for resting in both keymaps. */
-	menu_dynamic_add_label(m, "Rest", 'R', MENU_VALUE_REST, labels);
+	// menu_dynamic_add_label(m, "Rest", 'R', MENU_VALUE_REST, labels);
+	menu_dynamic_add_label(m, "Отдохнуть", 'R', MENU_VALUE_REST, labels);
 
 	/* 'i' is used for inventory in both keymaps. */
-	menu_dynamic_add_label(m, "Inventory", 'i', MENU_VALUE_INVENTORY, labels);
+	// menu_dynamic_add_label(m, "Inventory", 'i', MENU_VALUE_INVENTORY, labels);
+	menu_dynamic_add_label(m, "Инвентарь", 'i', MENU_VALUE_INVENTORY, labels);
 
 	/* if object under player add pickup option */
 	obj = square_object(cave, player->grid);
@@ -295,20 +302,25 @@ int context_menu_player(int mx, int my)
 			menu_row_validity_t valid;
 
 			/* 'f' isn't in rogue keymap, so we can use it here. */
-  			menu_dynamic_add_label(m, "Floor", 'f', MENU_VALUE_FLOOR, labels);
+  			// menu_dynamic_add_label(m, "Floor", 'f', MENU_VALUE_FLOOR, labels);
+  			menu_dynamic_add_label(m, "Пол", 'f', MENU_VALUE_FLOOR, labels);
 			valid = (inven_carry_okay(obj)) ? MN_ROW_VALID : MN_ROW_INVALID;
-			ADD_LABEL("Pick up", CMD_PICKUP, valid);
+			// ADD_LABEL("Pick up", CMD_PICKUP, valid);
+			ADD_LABEL("Поднять", CMD_PICKUP, valid);
 	}
 
 	/* 'C' is used for the character sheet in both keymaps. */
-	menu_dynamic_add_label(m, "Character", 'C', MENU_VALUE_CHARACTER, labels);
+	// menu_dynamic_add_label(m, "Character", 'C', MENU_VALUE_CHARACTER, labels);
+	menu_dynamic_add_label(m, "Персонаж", 'C', MENU_VALUE_CHARACTER, labels);
 
 	if (!OPT(player, center_player)) {
-		menu_dynamic_add_label(m, "^Center Map", 'L', MENU_VALUE_CENTER_MAP,
+		// menu_dynamic_add_label(m, "^Center Map", 'L', MENU_VALUE_CENTER_MAP,
+		menu_dynamic_add_label(m, "^Центрир.карту", 'L', MENU_VALUE_CENTER_MAP,
 							   labels);
 	}
 
-	menu_dynamic_add_label(m, "Other", ' ', MENU_VALUE_OTHER, labels);
+	// menu_dynamic_add_label(m, "Other", ' ', MENU_VALUE_OTHER, labels);
+	menu_dynamic_add_label(m, "Другие", ' ', MENU_VALUE_OTHER, labels);
 
 	/* Hack -- no flush needed */
 	msg_flag = false;
@@ -317,7 +329,8 @@ int context_menu_player(int mx, int my)
 	menu_dynamic_calc_location(m, mx, my);
 	region_erase_bordered(&m->boundary);
 
-	prt("(Enter to select, ESC) Command:", 0, 0);
+	// prt("(Enter to select, ESC) Command:", 0, 0);
+	prt("('Enter' выбор, ESC) Действие:", 0, 0);
 	selected = menu_dynamic_select(m);
 
 	menu_dynamic_free(m);

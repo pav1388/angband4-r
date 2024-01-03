@@ -1094,10 +1094,20 @@ bool player_can_study(const struct player *p, bool show_msg)
 			int count;
 			struct magic_realm *r = class_magic_realms(p->class, &count), *r1;
 			// char buf[120];
-			char buf[160];
+			char buf[200];
 
-			my_strcpy(buf, r->spell_noun, sizeof(buf));
-			my_strcat(buf, "s", sizeof(buf));
+			// my_strcpy(buf, r->spell_noun, sizeof(buf));
+			// my_strcat(buf, "s", sizeof(buf));
+			my_strcpy(buf, "", sizeof(buf));
+			if (streq(r->spell_noun, "spell"))
+				my_strcat(buf, "заклинания", sizeof(buf));
+			else if (streq(r->spell_noun, "prayer"))
+				my_strcat(buf, "молитвы", sizeof(buf));
+			else if (streq(r->spell_noun, "verse"))
+				my_strcat(buf, "стихи", sizeof(buf));
+			else if (streq(r->spell_noun, "ritual"))
+				my_strcat(buf, "ритуалы", sizeof(buf));
+			
 			r1 = r->next;
 			mem_free(r);
 			r = r1;
@@ -1110,8 +1120,17 @@ bool player_can_study(const struct player *p, bool show_msg)
 						// my_strcat(buf, " or ", sizeof(buf));
 						my_strcat(buf, " или ", sizeof(buf));
 					}
-					my_strcat(buf, r->spell_noun, sizeof(buf));
-					my_strcat(buf, "s", sizeof(buf));
+					// my_strcat(buf, r->spell_noun, sizeof(buf));
+					// my_strcat(buf, "s", sizeof(buf));
+					if (streq(r->spell_noun, "spell"))
+						my_strcat(buf, "заклинания", sizeof(buf));
+					else if (streq(r->spell_noun, "prayer"))
+						my_strcat(buf, "молитвы", sizeof(buf));
+					else if (streq(r->spell_noun, "verse"))
+						my_strcat(buf, "стихи", sizeof(buf));
+					else if (streq(r->spell_noun, "ritual"))
+						my_strcat(buf, "ритуалы", sizeof(buf));
+			
 					r1 = r->next;
 					mem_free(r);
 					r = r1;

@@ -9,32 +9,24 @@
 
 name:arcane
 stat:INT
-#verb:cast
-verb:произнести
-#spell-noun:spell
-spell-noun:заклинание
+verb:cast
+spell-noun:spell
 book-noun:magic book
 
 name:divine
 stat:WIS
-#verb:recite
-verb:прочесть
-#spell-noun:prayer
-spell-noun:молитва
+verb:recite
+spell-noun:prayer
 book-noun:prayer book
 
 name:nature
 stat:WIS
-#verb:chant
-verb:напеть
-#spell-noun:verse
-spell-noun:стих
+verb:chant
+spell-noun:verse
 book-noun:nature book
 
 name:shadow
 stat:INT
-#verb:perform
-verb:провести
-#spell-noun:ritual
-spell-noun:ритуал
+verb:perform
+spell-noun:ritual
 book-noun:shadow book

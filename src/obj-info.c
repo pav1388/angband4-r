@@ -982,7 +982,7 @@ static bool describe_blows(textblock *tb, const struct object *obj)
 	// textblock_append(tb, "blow%s/round.\n",
 	textblock_append(tb, "удар%s за ход.\n",
 			// (blow_info[0].centiblows > 100) ? "s" : "");
-			PLURAL_RU__A_OV(blow_info[0].centiblows / 100));
+			PLURAL_RU(blow_info[0].centiblows / 100, "", "а", "ов"));
 
 	/* Then list combinations that give more blows / speed boost */
 	for (i = 1; i < num_entries; i++) {
@@ -995,7 +995,7 @@ static bool describe_blows(textblock *tb, const struct object *obj)
 				entry.str_plus, entry.dex_plus, 
 				(entry.centiblows / 100),
 				(entry.centiblows / 10) % 10,
-				PLURAL_RU__A_OV(entry.centiblows / 100));
+				PLURAL_RU(entry.centiblows / 100, "", "а", "ов"));
 		} else {
 			textblock_append(tb, 
 				// "With +%d STR and +%d DEX you would attack a bit faster\n",
@@ -1815,9 +1815,9 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 	if (ammo) {
 		// textblock_append(tb, "When fired, hits targets up to ");
 		textblock_append(tb, "При выстреле поражает цели до ");
-		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range);
+		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range / 3);
 		// textblock_append(tb, " feet away.\n");
-		textblock_append(tb, " метр%s.\n", PLURAL_RU_A_OV(range));
+		textblock_append(tb, " метр%s.\n", PLURAL_RU(range, "а", "ов", "ов"));
 	}
 
 	if (weapon || ammo) {
@@ -1922,7 +1922,7 @@ static bool describe_digger(textblock *tb, const struct object *obj)
 		if (deciturns[i] == 0) {
 			// textblock_append_c(tb, COLOUR_L_RED, "doesn't affect ");
 			textblock_append_c(tb, COLOUR_L_RED, "не может копать ");
-			textblock_append(tb, "%s.\n", names[i]);
+			textblock_append(tb, "%s.\n \n", names[i]);
 			break;
 		}
 
@@ -1935,12 +1935,12 @@ static bool describe_digger(textblock *tb, const struct object *obj)
 		} else if (deciturns[i] < 100) {
 			textblock_append_c(tb, COLOUR_GREEN, "%d.%d ", deciturns[i]/10,
 							   deciturns[i]%10);
-			textblock_append(tb, "ход%s%s", PLURAL_RU__A_OV(deciturns[i]/10),
+			textblock_append(tb, "ход%s%s", PLURAL_RU(deciturns[i]/10, "", "а", "ов"),
 				(i == 3) ? ".\n" : ", ");
 		} else {
 			textblock_append_c(tb, (deciturns[i] < 1000) ? COLOUR_YELLOW :
 							   COLOUR_RED, "%d ", (deciturns[i]+5)/10);
-			textblock_append(tb, "ход%s%s", PLURAL_RU__A_OV((deciturns[i]+5)/10),
+			textblock_append(tb, "ход%s%s", PLURAL_RU((deciturns[i]+5)/10, "", "а", "ов"),
 				(i == 3) ? ".\n" : ", ");
 		}
 	}
@@ -2014,7 +2014,7 @@ static bool describe_light(textblock *tb, const struct object *obj,
 		textblock_append(tb, "\nИнтенсивность света ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", intensity);
 		// textblock_append(tb, " light.");
-		textblock_append(tb, " метр%s.", PLURAL_RU__A_OV(intensity));
+		textblock_append(tb, " метр%s.", PLURAL_RU(intensity, "", "а", "ов"));
 
 		if (!obj->artifact && !uses_fuel)
 			// textblock_append(tb, "  No fuel required.");
@@ -2215,7 +2215,7 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 
 		// textblock_append(tb, " turns to recharge");
 		textblock_append(tb, " ход%s",
-							min_time != max_time ? PLURAL_RU__A_OV(max_time) : PLURAL_RU__A_OV(min_time));
+			min_time != max_time ? PLURAL_RU(max_time, "", "а", "ов") : PLURAL_RU(min_time, "", "а", "ов"));
 		if (subjective && player->state.speed != 110)
 			// textblock_append(tb, " at your current speed");
 			textblock_append(tb, " при вашей текущей скорости");
@@ -2225,7 +2225,8 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 
 	if (failure_chance > 0) {
 		// textblock_append(tb, "Your chance of success is %d.%d%%\n", 
-		textblock_append(tb, "Ваш шанс на успех составляет %d.%d%%\n", 
+		textblock_append(tb, "Ваш шанс на успех составляет ");
+		textblock_append_c(tb, COLOUR_L_GREEN, "%d.%d%%\n", 
 			(1000 - failure_chance) / 10, (1000 - failure_chance) % 10);
 	}
 

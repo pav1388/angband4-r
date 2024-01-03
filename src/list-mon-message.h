@@ -12,7 +12,7 @@
 // MON_MSG(NONE,				MSG_GENERIC,	false,	"[is|are] hurt.")
 MON_MSG(NONE,				MSG_GENERIC,	false,	"страдает.")
 // MON_MSG(DIE,				MSG_KILL,		false,	"die[s].")
-MON_MSG(DIE,				MSG_KILL,		false,	"умер[ли].")
+MON_MSG(DIE,				MSG_KILL,		false,	"[умерли|умер].")
 // MON_MSG(DESTROYED,			MSG_KILL,		false,	"[is|are] destroyed.")
 MON_MSG(DESTROYED,			MSG_KILL,		false,	"уничтожен[ы].")
 // MON_MSG(RESIST_A_LOT,		MSG_GENERIC,	false,	"resist[s] a lot.")

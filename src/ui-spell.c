@@ -295,7 +295,9 @@ static int spell_menu_select(struct menu *m, const char *noun, const char *verb)
 
 	/* Format, capitalise and display */
 	// strnfmt(buf, sizeof buf, "%s which %s? ('?' to toggle description)",
-	strnfmt(buf, sizeof buf, "%s какой %s? ('?' переключ. описание)",
+	noun = streq(noun, "spell") ? "ое заклинание" : streq(noun, "prayer") ? "ую молитву" :
+		streq(noun, "verse") ? "ой стих" : streq(noun, "ritual") ? "ой ритуал" : "";
+	strnfmt(buf, sizeof buf, "%s как%s? ('?' переключ. описание)",
 			verb, noun);
 	my_strcap(buf);
 	prt(buf, 0, 0);
@@ -317,7 +319,9 @@ static void spell_menu_browse(struct menu *m, const char *noun)
 
 	region_erase_bordered(&m->active);
 	// prt(format("Browsing %ss. ('?' to toggle description)", noun), 0, 0);
-	prt(format("Просмотр %ss. ('?' переключ. описание)", noun), 0, 0);
+	noun = streq(noun, "spell") ? "заклинаний" : streq(noun, "prayer") ? "молитв" :
+		streq(noun, "verse") ? "стихов" : streq(noun, "ritual") ? "ритуалов" : "";
+	prt(format("Просмотр %s. ('?' переключить описание)", noun), 0, 0);
 
 	d->browse = true;
 	menu_select(m, 0, true);

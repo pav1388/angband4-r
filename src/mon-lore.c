@@ -973,16 +973,16 @@ void lore_append_kills(textblock *tb, const struct monster_race *race,
 			/* Killed some this life */
 			// textblock_append(tb, "You have killed at least %d of these creatures.  ", lore->pkills);
 			textblock_append(tb, "Вы убили не менее %d-%s подобн%s существ%s.  ", lore->pkills,
-						PLURAL_RU_GO_H_I(lore->pkills),
-						PLURAL_RU_OGO_bIH_bIH(lore->pkills), 
-						PLURAL_RU_A__(lore->pkills));
+						PLURAL_RU(lore->pkills, "го", "х", "и"),
+						PLURAL_RU(lore->pkills, "ого", "ых", "ых"), 
+						PLURAL_RU(lore->pkills, "а", "", ""));
 		} else if (lore->tkills) {
 			/* Killed some last life */
 			// textblock_append(tb, "Your ancestors have killed at least %d of these creatures.  ", lore->tkills);
 			textblock_append(tb, "Ваши предки убили не менее %d-%s подобн%s существ%s.  ", lore->tkills, 
-						PLURAL_RU_GO_H_I(lore->pkills),
-						PLURAL_RU_OGO_bIH_bIH(lore->pkills), 
-						PLURAL_RU_A__(lore->pkills));
+						PLURAL_RU(lore->pkills, "го", "х", "и"),
+						PLURAL_RU(lore->pkills, "ого", "ых", "ых"), 
+						PLURAL_RU(lore->pkills, "а", "", ""));
 		} else {
 			/* Killed none */
 			// textblock_append(tb, "No battles to the death are recalled.  ");
@@ -1234,7 +1234,7 @@ void lore_append_exp(textblock *tb, const struct monster_race *race,
 	// textblock_append_c(tb, COLOUR_BLUE, "%s point%s", buf,
 	textblock_append_c(tb,  COLOUR_BLUE, "%s очк%s опыта", buf,
 		// PLURAL((exp_integer == 1) && (exp_fraction == 0)));
-		PLURAL_RU_O_A_OV(exp_integer));
+		PLURAL_RU(exp_integer, "о", "а", "ов"));
 
 	/* Take account of annoying English */
 	// ordinal = "th";
@@ -1326,15 +1326,15 @@ void lore_append_drop(textblock *tb, const struct monster_race *race,
 			} else if (only_item && !only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "object%s", PLURAL(n));
-					"предмет%s", PLURAL_RU__A_OV(n));
+					"предмет%s", PLURAL_RU(n, "", "а", "ов"));
 			} else if (!only_item && only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "treasure%s", PLURAL(n));
-					"сокровищ%s", PLURAL_RU_E_A_(n));
+					"сокровищ%s", PLURAL_RU(n, "е", "а", ""));
 			} else if (!only_item && !only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "object%s or treasure%s",
-					"предмет%s или сокровищ%s", PLURAL_RU__A_OV(n), PLURAL_RU_E_A_(n));
+					"предмет%s или сокровищ%s", PLURAL_RU(n, "", "а", "ов"), PLURAL_RU(n, "е", "а", ""));
 					// PLURAL(n), PLURAL(n));
 			}
 		}
@@ -1578,7 +1578,7 @@ void lore_append_awareness(textblock *tb, const struct monster_race *race,
 						 // lore_pronoun_nominative(msex, false)
 		textblock_append_c(tb, COLOUR_L_BLUE, "%d", 10 * race->hearing);
 		// textblock_append(tb, " feet.  ");
-		textblock_append(tb, " метр%s.  ", PLURAL_RU_E_AH_AH(10 * race->hearing));
+		textblock_append(tb, " метр%s.  ", PLURAL_RU(10 * race->hearing, "е", "ах", "ах"));
 	}
 }
 
@@ -1691,7 +1691,7 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 			// textblock_append(tb, " time in ");
 			textblock_append(tb, " раз в ");
 			textblock_append_c(tb, COLOUR_L_GREEN, "%d", 100 / race->freq_innate);
-			textblock_append(tb, " ход%s", PLURAL_RU__A_OV(100 / race->freq_innate));
+			textblock_append(tb, " ход%s", PLURAL_RU(100 / race->freq_innate, "", "а", "ов"));
 		} else if (lore->cast_innate) {
 			/* Guess at the frequency */
 			int approx_frequency = MAX(((race->freq_innate + 9) / 10) * 10, 1);
@@ -1740,7 +1740,7 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 				// textblock_append(tb, " time in ");
 				textblock_append(tb, " раз в ");
 				textblock_append_c(tb, COLOUR_L_GREEN, "%d", 100 / race->freq_spell);
-				textblock_append(tb, " ход%s", PLURAL_RU__A_OV(100 / race->freq_spell));
+				textblock_append(tb, " ход%s", PLURAL_RU(100 / race->freq_spell, "", "а", "ов"));
 			} else if (lore->cast_spell) {
 				/* Guess at the frequency */
 				int approx_frequency = MAX(((race->freq_spell + 9) / 10) * 10,
@@ -1751,7 +1751,7 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 				// textblock_append(tb, " time in ");
 				textblock_append(tb, " раза в ");
 				textblock_append_c(tb, COLOUR_L_GREEN, "%d ход%s",
-								   100 / approx_frequency, PLURAL_RU__A_OV(100 / approx_frequency));
+								   100 / approx_frequency, PLURAL_RU(100 / approx_frequency, "", "а", "ов"));
 			}
 		}
 

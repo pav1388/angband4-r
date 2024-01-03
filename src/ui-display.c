@@ -496,7 +496,7 @@ static int prt_speed_aux(char buf[], int max, uint8_t *attr)
 	if (i > 110) {
 		*attr = COLOUR_L_GREEN;
 		// type = "Fast";
-		type = "Быстр";
+		type = "Быст";
 	} else if (i < 110) {
 		*attr = COLOUR_L_UMBER;
 		// type = "Slow";
@@ -2663,7 +2663,7 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 
 		if (!can_pickup)
 			// p = "have no room for";
-			p = "нет места для";
+			p = "не находите места для";
 		else if (blind)
 			// p = "feel";
 			p = "ощущаете";
@@ -2686,7 +2686,7 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 
 		if (!can_pickup)
 			// p = "have no room for the following objects";
-			p = "нет места для следующих объектов";
+			p = "не находите места для следующих предметов";
 		else if (blind)
 			// p = "feel something on the floor";
 			p = "почувствовали что-то на полу";

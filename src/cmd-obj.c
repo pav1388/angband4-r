@@ -1116,7 +1116,8 @@ void do_cmd_cast(struct command *cmd)
 
 	/* Get arguments */
 	if (cmd_get_spell(cmd, "spell", player, &spell_index,
-			/* Verb */ "cast",
+			// /* Verb */ "cast",
+			/* Verb */ "произнести",
 			/* Book */ obj_can_cast_from,
 			// /* Book error */ "There are no spells you can cast.",
 			/* Book error */ "Нет заклинаний для чтения.",
@@ -1131,12 +1132,19 @@ void do_cmd_cast(struct command *cmd)
 
 	/* Verify "dangerous" spells */
 	if (spell->smana > player->csp) {
-		const char *verb = spell->realm->verb;
-		const char *noun = spell->realm->spell_noun;
-
+		// const char *verb = spell->realm->verb;
+		// const char *noun = spell->realm->spell_noun;
+		const char *verb = streq(spell->realm->verb, "cast") ? "произнести" : 
+			streq(spell->realm->verb, "recite") ? "прочесть" : 
+			streq(spell->realm->verb, "chant") ? "напеть" : 
+			streq(spell->realm->verb, "perform") ? "провести" : "";
+		const char *noun = streq(spell->realm->spell_noun, "spell") ? "о заклинание" : 
+			streq(spell->realm->spell_noun, "prayer") ? "у молитвы" : 
+			streq(spell->realm->spell_noun, "verse") ? "от стих" : 
+			streq(spell->realm->spell_noun, "ritual") ? "от ритуал" : "";
 		/* Warning */
 		// msg("You do not have enough mana to %s this %s.", verb, noun);
-		msg("У вас недостаточно маны для %s этого %s.", verb, noun);
+		msg("У вас недостаточно маны чтобы %s эт%s.", verb, noun);
 
 		/* Flush input */
 		event_signal(EVENT_INPUT_FLUSH);
@@ -1178,7 +1186,8 @@ void do_cmd_study_spell(struct command *cmd)
 		return;
 
 	if (cmd_get_spell(cmd, "spell", player, &spell_index,
-			/* Verb */ "study",
+			// /* Verb */ "study",
+			/* Verb */ "изучить",
 			/* Book */ obj_can_study,
 			// /* Book error */ "You cannot learn any new spells from the books you have.",
 			/* Book error */ "Вы не можете выучить новые заклинания из ваших книг.",
@@ -1210,7 +1219,7 @@ void do_cmd_study_book(struct command *cmd)
 			// /* Prompt */ "Study which book? ",
 			/* Prompt */ "Какую книгу изучить? ",
 			// /* Error  */ "You cannot learn any new spells from the books you have.",
-			/* Error  */ "Вы не можете выучить новые заклинания из ваших книг",
+			/* Error  */ "Вы не можете изучить новые заклинания из ваших книг",
 			/* Filter */ obj_can_study,
 			/* Choice */ USE_INVEN | USE_FLOOR) != CMD_OK)
 		return;
@@ -1230,7 +1239,11 @@ void do_cmd_study_book(struct command *cmd)
 
 	if (spell_index < 0) {
 		// msg("You cannot learn any %ss in that book.", book->realm->spell_noun);
-		msg("Вы не можете изучить ни одного %ss из этой книги.", book->realm->spell_noun);
+		msg("Вы не можете изучить ни одно%s из этой книги.", 
+			streq(book->realm->spell_noun, "spell") ? "го заклинания" : 
+			streq(book->realm->spell_noun, "prayer") ? "й молитвы" : 
+			streq(book->realm->spell_noun, "verse") ? "го стиха" : 
+			streq(book->realm->spell_noun, "ritual") ? "го ритуала" : "");
 	} else {
 		spell_learn(spell_index);
 		player->upkeep->energy_use = z_info->move_energy;

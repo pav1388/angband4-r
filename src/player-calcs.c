@@ -1441,12 +1441,22 @@ static void calc_spells(struct player *p)
 			int count;
 			struct magic_realm *r = class_magic_realms(p->class, &count), *r1;
 			// char buf[120];
-			char buf[160];
+			char buf[240];
 
-			my_strcpy(buf, r->spell_noun, sizeof(buf));
-			if (p->upkeep->new_spells > 1) {
-				my_strcat(buf, "s", sizeof(buf));
-			}
+			// my_strcpy(buf, r->spell_noun, sizeof(buf));
+			// if (p->upkeep->new_spells > 1) {
+				// my_strcat(buf, "s", sizeof(buf));
+			// }
+			my_strcpy(buf, "", sizeof(buf));
+			if (streq(r->spell_noun, "spell"))
+				strnfmt(buf, sizeof(buf), "заклинани%s", PLURAL_RU(p->upkeep->new_spells, "е", "я", "ий"));
+			else if (streq(r->spell_noun, "prayer"))
+				strnfmt(buf, sizeof(buf), "молитв%s", PLURAL_RU(p->upkeep->new_spells, "у", "ы", ""));
+			else if (streq(r->spell_noun, "verse"))
+				strnfmt(buf, sizeof(buf), "стих%s", PLURAL_RU(p->upkeep->new_spells, "", "а", "ов"));
+			else if (streq(r->spell_noun, "ritual"))
+				strnfmt(buf, sizeof(buf), "ритуал%s", PLURAL_RU(p->upkeep->new_spells, "", "а", "ов"));
+			
 			r1 = r->next;
 			mem_free(r);
 			r = r1;
@@ -1459,10 +1469,20 @@ static void calc_spells(struct player *p)
 						// my_strcat(buf, " or ", sizeof(buf));
 						my_strcat(buf, " или ", sizeof(buf));
 					}
-					my_strcat(buf, r->spell_noun, sizeof(buf));
-					if (p->upkeep->new_spells > 1) {
-						my_strcat(buf, "s", sizeof(buf));
-					}
+					// my_strcat(buf, r->spell_noun, sizeof(buf));
+					// if (p->upkeep->new_spells > 1) {
+						// my_strcat(buf, "s", sizeof(buf));
+					// }
+					my_strcpy(buf, "", sizeof(buf));
+					if (streq(r->spell_noun, "spell"))
+						strnfmt(buf, sizeof(buf), "заклинани%s", PLURAL_RU(p->upkeep->new_spells, "е", "я", "й"));
+					else if (streq(r->spell_noun, "prayer"))
+						strnfmt(buf, sizeof(buf), "молитв%s", PLURAL_RU(p->upkeep->new_spells, "у", "ы", ""));
+					else if (streq(r->spell_noun, "verse"))
+						strnfmt(buf, sizeof(buf), "стих%s", PLURAL_RU(p->upkeep->new_spells, "", "а", "ов"));
+					else if (streq(r->spell_noun, "ritual"))
+						strnfmt(buf, sizeof(buf), "ритуал%s", PLURAL_RU(p->upkeep->new_spells, "", "а", "ов"));
+					
 					r1 = r->next;
 					mem_free(r);
 					r = r1;
@@ -2074,7 +2094,8 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	}
 
 	/* Effects of food outside the "Fed" range */
-	if (!player_timed_grade_eq(p, TMD_FOOD, "Fed")) {
+	// if (!player_timed_grade_eq(p, TMD_FOOD, "Fed")) {
+	if (!player_timed_grade_eq(p, TMD_FOOD, "Сытый")) {
 		int excess = p->timed[TMD_FOOD] - PY_FOOD_FULL;
 		int lack = PY_FOOD_HUNGRY - p->timed[TMD_FOOD];
 		if ((excess > 0) && !p->timed[TMD_ATT_VAMP]) {
@@ -2116,14 +2137,16 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	/* Other timed effects */
 	player_flags_timed(p, state->flags);
 
-	if (player_timed_grade_eq(p, TMD_STUN, "Heavy Stun")) {
+	// if (player_timed_grade_eq(p, TMD_STUN, "Heavy Stun")) {
+	if (player_timed_grade_eq(p, TMD_STUN, "Тяж.Оглуш")) {
 		state->to_h -= 20;
 		state->to_d -= 20;
 		adjust_skill_scale(&state->skills[SKILL_DEVICE], -1, 5, 0);
 		if (update) {
 			p->timed[TMD_FASTCAST] = 0;
 		}
-	} else if (player_timed_grade_eq(p, TMD_STUN, "Stun")) {
+	// } else if (player_timed_grade_eq(p, TMD_STUN, "Stun")) {
+	} else if (player_timed_grade_eq(p, TMD_STUN, "Оглушение")) {
 		state->to_h -= 5;
 		state->to_d -= 5;
 		adjust_skill_scale(&state->skills[SKILL_DEVICE], -1, 10, 0);

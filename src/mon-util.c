@@ -1481,7 +1481,7 @@ void steal_monster_item(struct monster *mon, int midx)
 			pile_excise(&mon->held_obj, obj);
 			if (tval_is_money(obj)) {
 				// msg("You steal %d gold pieces worth of treasure.", obj->pval);
-				msg("Вы украли сокровище стоимостью %d золот%s монет%s.", obj->pval, PLURAL_RU_AYA_bIE_bIH(obj->pval), PLURAL_RU_A_bI_(obj->pval));
+				msg("Вы украли сокровище стоимостью %d золот%s монет%s.", obj->pval, PLURAL_RU(obj->pval, "ая", "ые", "ых"), PLURAL_RU(obj->pval, "а", "ы", ""));
 				player->au += obj->pval;
 				player->upkeep->redraw |= (PR_GOLD);
 				delist_object(cave, obj);

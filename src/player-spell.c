@@ -469,19 +469,32 @@ void spell_learn(int spell_index)
 
 	/* Mention the result */
 	// msgt(MSG_STUDY, "You have learned the %s of %s.", spell->realm->spell_noun,
-	msgt(MSG_STUDY, "Вы выучили %s %s.", spell->realm->spell_noun,
-		 spell->name);
+	// msgt(MSG_STUDY, "Вы выучили %s %s.", spell->realm->spell_noun,
+	msgt(MSG_STUDY, "Вы выучили %s %s.", (streq(spell->realm->spell_noun, "spell") ? "заклинание" :
+		streq(spell->realm->spell_noun, "prayer") ? "молитву" : 
+		streq(spell->realm->spell_noun, "verse") ? "стих" : 
+		streq(spell->realm->spell_noun, "ritual") ? "ритуал" : ""), 
+		spell->name);
 
 	/* One less spell available */
 	player->upkeep->new_spells--;
-
+	
 	/* Message if needed */
-	if (player->upkeep->new_spells)
+	if (player->upkeep->new_spells) {
 		// msg("You can learn %d more %s%s.", player->upkeep->new_spells,
-		msg("Вы можете выучить ещё %d %s.", player->upkeep->new_spells,
 			// spell->realm->spell_noun, PLURAL(player->upkeep->new_spells));
-			spell->realm->spell_noun);
-
+		char noun[25];
+		if (streq(spell->realm->spell_noun, "spell"))
+				strnfmt(noun, sizeof(noun), "заклинани%s", PLURAL_RU(player->upkeep->new_spells, "е", "я", "й"));
+		else if (streq(spell->realm->spell_noun, "prayer"))
+			strnfmt(noun, sizeof(noun), "молитв%s", PLURAL_RU(player->upkeep->new_spells, "у", "ы", ""));
+		else if (streq(spell->realm->spell_noun, "verse"))
+			strnfmt(noun, sizeof(noun), "стих%s", PLURAL_RU(player->upkeep->new_spells, "", "а", "ов"));
+		else if (streq(spell->realm->spell_noun, "ritual"))
+			strnfmt(noun, sizeof(noun), "ритуал%s", PLURAL_RU(player->upkeep->new_spells, "", "а", "ов"));
+		
+		msg("Вы можете выучить ещё %d %s.", player->upkeep->new_spells, noun);
+	}
 	/* Redraw Study Status */
 	player->upkeep->redraw |= (PR_STUDY | PR_OBJECT);
 }

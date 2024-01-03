@@ -731,7 +731,7 @@ static void melee_effect_handler_EAT_GOLD(melee_effect_handler_context_t *contex
         msg("Ваш кошелёк стал легче.");
         if (current_player->au)
             // msg("%d coins were stolen!", gold);
-            msg("У вас украли %d монет%s!", gold, PLURAL_RU_U_bI_(gold));
+            msg("У вас украли %d монет%s!", gold, PLURAL_RU(gold, "у", "ы", ""));
         else
             // msg("All of your coins were stolen!");
             msg("Все ваши монеты были украдены!");

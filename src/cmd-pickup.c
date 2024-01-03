@@ -98,8 +98,8 @@ static void player_pickup_gold(struct player *p)
 		(void)strnfmt(buf, sizeof(buf),
 			// "You have found %ld gold pieces worth of ", (long)total_gold);
 			"Стоимостью %ld золот%s монет%s вы нашли ", (long)total_gold, 
-			PLURAL_RU_UYU_bIE_bIH((long)total_gold), 
-			PLURAL_RU_U_bI_((long)total_gold));
+			PLURAL_RU((long)total_gold, "ую", "ые", "ых"), 
+			PLURAL_RU((long)total_gold, "у", "ы", ""));
 
 		/* One treasure type.. */
 		if (at_most_one)

@@ -35,7 +35,7 @@ ORIGIN(ACQUIRE,		1,	"Создано магией %s")
 ORIGIN(STORE,		0,	"Куплено в магазине")
 ORIGIN(STOLEN,		-1,	"")
 // ORIGIN(BIRTH,		0,	"An inheritance from your family")
-ORIGIN(BIRTH,		0,	"Наследство, полученное от вашей семьи")
+ORIGIN(BIRTH,		0,	"Наследство, полученное от вашей семьи.")
 // ORIGIN(CHEAT,		0,	"Created by debug option")
 ORIGIN(CHEAT,		0,	"Создано опциями отладки")
 // ORIGIN(DROP_BREED,	2,	"Dropped by %s %s") /* from breeders */

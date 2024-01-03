@@ -253,7 +253,7 @@ static bool wiz_create_item_action(struct menu *m, const ui_event *e, int oid)
 	char title[160];
 
 	// int choice[70];
-	int choice[130];
+	int choice[140];
 	int num;
 
 	int i;

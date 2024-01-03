@@ -39,12 +39,15 @@ void do_cmd_wizard(void)
 	/* Verify first time */
 	if (!(player->noscore & NOSCORE_WIZARD)) {
 		/* Mention effects */
-		msg("You are about to enter 'wizard' mode for the very first time!");
-		msg("This is a form of cheating, and your game will not be scored!");
+		// msg("You are about to enter 'wizard' mode for the very first time!");
+		msg("Сейчас вы впервые войдёте в режим 'Волшебника'!");
+		// msg("This is a form of cheating, and your game will not be scored!");
+		msg("Это форма жульничества, ваша игра не будет засчитана!");
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Verify request */
-		if (!get_check("Are you sure you want to enter wizard mode? "))
+		// if (!get_check("Are you sure you want to enter wizard mode? "))
+		if (!get_check("Вы уверены, что хотите войти в режим 'Волшебника'? "))
 			return;
 
 		/* Mark savefile */
@@ -54,10 +57,12 @@ void do_cmd_wizard(void)
 	/* Toggle mode */
 	if (player->wizard) {
 		player->wizard = false;
-		msg("Wizard mode off.");
+		// msg("Wizard mode off.");
+		msg("Режим 'Волшебника' отключён.");
 	} else {
 		player->wizard = true;
-		msg("Wizard mode on.");
+		// msg("Wizard mode on.");
+		msg("Режим 'Волшебника' включён.");
 	}
 
 	/* Update monsters */
@@ -134,12 +139,15 @@ void do_cmd_try_borg(void)
 	if (!(player->noscore & NOSCORE_BORG))
 	{
 		/* Mention effects */
-		msg("You are about to use the dangerous, unsupported, borg commands!");
-		msg("Your machine may crash, and your savefile may become corrupted!");
+		// msg("You are about to use the dangerous, unsupported, borg commands!");
+		msg("Вы собираетесь использовать опасные, неподдерживаемые, borg команды!");
+		// msg("Your machine may crash, and your savefile may become corrupted!");
+		msg("Ваша система может выйти из строя, а файл сохранения может быть поврежден!");
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Verify request */
-		if (!get_check("Are you sure you want to use the borg commands? "))
+		// if (!get_check("Are you sure you want to use the borg commands? "))
+		if (!get_check("Вы уверены, что хотите использовать borg команды? "))
 			return;
 
 		/* Mark savefile */

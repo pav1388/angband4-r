@@ -250,8 +250,8 @@ fail:2:CHAOS
 
 name:POISONED
 desc:poisoning
-#grade:o:10000:Отравлен:Вы отравлены!
-grade:o:10000:Poisoned:Вы отравлены!
+#grade:o:10000:Poisoned:Вы отравлены!
+grade:o:10000:Отравлен:Вы отравлены!
 on-end:Вы больше не отравлены.
 on-increase:Вы отравлены еще сильнее!
 on-decrease:Вы чувствуете себя менее отравленным.
@@ -361,7 +361,7 @@ msgt:BLESSED
 name:SINVIS
 desc:see invisible
 #grade:G:10000:SInvis:Ваши глаза очень чувствительны!
-grade:G:10000:SInvis:Ваши глаза очень чувствительны!
+grade:G:10000:В.Незр:Ваши глаза очень чувствительны!
 on-end:Ваши глаза больше не такие чувствительные.
 on-increase:Ваши глаза стали более чувствительными!
 msgt:SEE_INVIS

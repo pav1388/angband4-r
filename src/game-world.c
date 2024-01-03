@@ -305,7 +305,8 @@ static void decrease_timeouts(void)
 			case TMD_CUT:
 			{
 				/* Check for truly "mortal" wound */
-				if (player_timed_grade_eq(player, i, "Mortal Wound")) {
+				// if (player_timed_grade_eq(player, i, "Mortal Wound")) {
+				if (player_timed_grade_eq(player, i, "Смерт.Рана")) {
 					decr = 0;
 				} else {
 					decr = adjust;
@@ -605,10 +606,13 @@ void process_world(struct chunk *c)
 		if (player_has(player, PF_ROCK)) {
 			/* Rock players just maintain */
 			i = 0;
-		} else if (player_timed_grade_eq(player, TMD_CUT, "Mortal Wound") ||
-				   player_timed_grade_eq(player, TMD_CUT, "Deep Gash")) {
+		// } else if (player_timed_grade_eq(player, TMD_CUT, "Mortal Wound") ||
+		} else if (player_timed_grade_eq(player, TMD_CUT, "Смерт.Рана") ||
+				   // player_timed_grade_eq(player, TMD_CUT, "Deep Gash")) {
+				   player_timed_grade_eq(player, TMD_CUT, "Глуб.Рана")) {
 			i = 3;
-		} else if (player_timed_grade_eq(player, TMD_CUT, "Severe Cut")) {
+		// } else if (player_timed_grade_eq(player, TMD_CUT, "Severe Cut")) {
+		} else if (player_timed_grade_eq(player, TMD_CUT, "Сил.Порез")) {
 			i = 2;
 		} else {
 			i = 1;
@@ -662,7 +666,8 @@ void process_world(struct chunk *c)
 	/*** Check the Food, and Regenerate ***/
 
 	/* Digest */
-	if (!player_timed_grade_eq(player, TMD_FOOD, "Full")) {
+	// if (!player_timed_grade_eq(player, TMD_FOOD, "Full")) {
+	if (!player_timed_grade_eq(player, TMD_FOOD, "Переел")) {
 		/* Digest normally */
 		if (!(turn % 100)) {
 			/* Basic digestion rate based on speed */
@@ -701,7 +706,7 @@ void process_world(struct chunk *c)
 	}
 
 	/* Faint or starving */
-	if (player_timed_grade_eq(player, TMD_FOOD, "Faint")) {
+	if (player_timed_grade_eq(player, TMD_FOOD, "Обморок")) {
 		/* Faint occasionally */
 		if (!player->timed[TMD_PARALYZED] && one_in_(10)) {
 			/* Message */
@@ -713,7 +718,7 @@ void process_world(struct chunk *c)
 			(void)player_inc_timed(player, TMD_PARALYZED,
 				1 + randint0(5), true, true, false);
 		}
-	} else if (player_timed_grade_eq(player, TMD_FOOD, "Starving")) {
+	} else if (player_timed_grade_eq(player, TMD_FOOD, "Голодание")) {
 		/* Calculate damage */
 		i = (PY_FOOD_STARVE - player->timed[TMD_FOOD]) / 10;
 
@@ -971,7 +976,8 @@ void process_player(void)
 
 		/* Paralyzed or Knocked Out player gets no turn */
 		if (player->timed[TMD_PARALYZED] ||
-			player_timed_grade_eq(player, TMD_STUN, "Knocked Out")) {
+			// player_timed_grade_eq(player, TMD_STUN, "Knocked Out")) {
+			player_timed_grade_eq(player, TMD_STUN, "Нокаут")) {
 			cmdq_push(CMD_SLEEP);
 		}
 
