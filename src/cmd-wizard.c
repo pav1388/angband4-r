@@ -999,7 +999,7 @@ void do_cmd_wiz_cure_all(struct command *cmd)
 
 	/* Give the player some feedback */
 	// msg("You feel *much* better!");
-	msg("Вы чувствуете себя гораздо лучше!");
+	msg("Вы чувствуете себя *гораздо* лучше!");
 }
 
 
@@ -1016,7 +1016,8 @@ void do_cmd_wiz_curse_item(struct command *cmd)
 {
 	struct object *obj;
 	int curse_index, power;
-	char s[80];
+	// char s[80];
+	char s[160];
 	int update;
 
 	if (cmd_get_arg_item(cmd, "item", &obj) != CMD_OK) {

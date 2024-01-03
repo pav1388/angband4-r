@@ -223,10 +223,9 @@ attack:1d4:0:0
 armor:0:0
 pval:7500
 flags:EXPLODE | THROWING
-desc:It can be used to fuel a lantern with 7500 turns of light, up to
-desc: a maximum of 15000 turns of light.
-desc:  When thrown, it is considered lit, so it does more than nominal
-desc: damage (which occurs even against creatures resistant to fire).
+desc:Можно использовать для заправки фонаря на 7500 ходов (макс. 15000).
+desc:  При броске считается горящим, поэтому наносит больше номинального
+desc: урона (что имеет место даже против существ, устойчивых к огню).
 
 ##### Food #####
 
@@ -242,7 +241,8 @@ power:0
 effect:NOURISH:INC_BY
 dice:10
 effect:CRUNCH
-desc:A filling if tooth-breaking biscuit made mostly of rye.
+desc:Печенье с начинкой, настолько твёрдое, что можно сломать зубы.
+desc:  В основном из ржи.
 
 name:& Apple~
 type:food
@@ -256,7 +256,7 @@ power:0
 msg:That tastes good.
 effect:NOURISH:INC_BY
 dice:10
-desc:Wrinkled, but sound and sweet.
+desc:Морщинистое, но плотное и сладкое.
 
 name:& Handful~ of Dried Fruits
 type:food
@@ -269,8 +269,8 @@ power:0
 msg:That tastes good.
 effect:NOURISH:INC_BY
 dice:15
-desc:Fruit roughly chopped and sun-dried, prepared as marching rations for the
-desc: rangers of Ithilien.
+desc:Грубо нарезанные и высушенные на солнце фрукты, приготовленные
+desc: в качестве походного рациона для следопытов Итилиэна.
 
 name:& Slime Mold~
 type:food
@@ -284,8 +284,8 @@ power:0
 msg:That tastes better than nothing.
 effect:NOURISH:INC_BY
 dice:15
-desc:A strange fungal growth, prone to moving if not observed.  Not very tasty
-desc: but quite filling.
+desc:Странный гриб, склонный к перемещению, если за ним не наблюдать.
+desc:  Не очень вкусный, но довольно сытный.
 
 name:& Ration~ of Food
 type:food
@@ -299,9 +299,9 @@ power:0
 msg:That tastes good.
 effect:NOURISH:INC_BY
 dice:30
-desc:This nutritious but fairly bland food, called cram by the Lake-men who
-desc: make it is familiar to anyone contemplating long journeys.  It is
-desc: sustaining, but very uninteresting except as a chewing exercise.
+desc:Эта питательная, но довольно безвкусная пища, которую озёрные жители называют
+desc: 'крам', знакома всем, кто собирается в дальнюю дорогу.  Она поддерживает
+desc: силы, но очень пресная, годится разве что в качестве упражнения для жевания.
 
 name:& Scrap~ of Flesh
 type:food
@@ -325,8 +325,8 @@ effect:NOURISH:SET_TO
 dice:1d4
 effect:NOURISH:SET_TO
 dice:5+1d4
-desc:A grey-looking piece of dried flesh of you dare not guess what creature.
-desc:  You would have to be desperate to eat this.
+desc:Серый на вид кусок высушенной плоти какого-то существа. Нужно
+desc: быть отчаянным, чтобы съесть это.
 
 
 name:& Slice~ of Meat
@@ -341,8 +341,8 @@ power:0
 msg:That tastes good.
 effect:NOURISH:INC_BY
 dice:40
-desc:A thick slice of pork, salted to keep it from spoiling.  It is very
-desc: filling.
+desc:Толстый кусок свинины, засоленный, чтобы не испортился.
+desc:  Очень сытный.
 
 name:& Honey-cake~
 type:food
@@ -356,9 +356,9 @@ power:1
 msg:Delicious!
 effect:NOURISH:INC_TO
 dice:60
-desc:The Beornings are renowned as the best bakers among men, and their
-desc: honey-cakes are deservedly prized.  Made of wheat flour with nuts and
-desc: honey and twice baked, they will sustain you through a long march.
+desc:Беорнинги славятся как лучшие пекари среди людей, а их медовые
+desc: пряники заслуженно ценятся.  Сделанные из пшеничной муки с орехами
+desc: и медом, дважды обжаренные, они поддержат вас во время долгого похода.
 
 name:& Piece~ of Elvish Waybread
 type:food
@@ -375,8 +375,9 @@ dice:75
 effect:CURE:POISONED
 effect:HEAL_HP
 dice:4d8
-desc:Food of the elves is always good; their waybread is no exception.  These
-desc: thin cakes are wrapped in leaves and keep their tastiness for months.
+desc:Еда эльфов всегда хороша, и их дорожный хлебец - не исключение.
+desc:  Эти тонкие лепешки заворачиваются в листья и сохраняют свою
+desc: аппетитность в течение нескольких месяцев.
 
 name:& Flask~ of Whisky
 type:food
@@ -390,7 +391,7 @@ effect:NOURISH:INC_BY
 dice:3
 effect:TIMED_INC:CONFUSED
 dice:-1+1d5
-desc:It raises your spirits.
+desc:Она поднимает настроение.
 
 name:& Pint~ of Fine Wine
 type:food
@@ -404,7 +405,7 @@ effect:NOURISH:INC_BY
 dice:3
 effect:TIMED_INC:BOLD
 dice:79+1d41
-desc:A fine way to wash down some otherwise unappetising rations.
+desc:Отличный напиток, чтобы запить неаппетитный рацион.
 
 name:& Sip~ of Miruvor
 type:food
@@ -419,8 +420,8 @@ effect:NOURISH:INC_BY
 dice:3
 effect:RESTORE_STAT:STR
 effect:RESTORE_STAT:CON
-desc:Just a little of this warm and fragrant liquor gives you fresh hope and
-desc: vigour.
+desc:Всего лишь небольшое количество этого тёплого и ароматного
+desc: ликёра подарит вам новую надежду и бодрость.
 
 name:& Swig~ of Orcish Liquor
 type:food
@@ -438,7 +439,7 @@ effect:TIMED_SET:STUN
 dice:2+1d3
 effect:TIMED_SET:SLOW
 dice:2+1d3
-desc:This is a dirty brown color; you don't trust it.
+desc:Цвет грязно-коричневый, ему нельзя доверять.
 
 name:& Draught~ of the Ents
 type:food
@@ -455,8 +456,8 @@ effect:RESTORE_STAT:STR
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:STR
 effect:GAIN_STAT:CON
-desc:This looks like pure water, but its scent reminds you of the smell of a
-desc: distant wood borne from afar by a cool breeze at night.
+desc:На вид это чистая вода, но ее аромат напоминает запах далекого
+desc: леса, который доносит издалека ночной прохладный ветерок.
 
 ### The shrooms, an interesting collection ###
 
@@ -648,7 +649,7 @@ dice:5
 effect:RESTORE_STAT:STR
 effect:RESTORE_STAT:CON
 effect:CURE:POISONED
-desc:Сделает вас очень голодным, но в остальном совершенно  здоровым.
+desc:Сделает вас очень голодным, но в остальном совершенно здоровым.
 
 # name:Shadows
 name:Теней
@@ -3382,7 +3383,7 @@ effect:RESTORE_MANA
 # removed: old stat restoration
 
 # name:Restore Life Levels
-name:Восстановления Уровней Жизни
+name:Восстановления Опыта
 type:potion
 graphics:!:d
 level:40

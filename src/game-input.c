@@ -269,12 +269,16 @@ bool confirm_debug(void)
 	}
 
 	/* Otherwise, use a generic procedure.  First, mention effects. */
-	msg("You are about to use the dangerous, unsupported, debug commands!");
-	msg("Your machine may crash, and your savefile may become corrupted!");
+	// msg("You are about to use the dangerous, unsupported, debug commands!");
+	msg("Вы собираетесь использовать опасные, неподдерживаемые, отладочные команды!");
+	// msg("Your machine may crash, and your savefile may become corrupted!");
+	msg("Ваша система может выйти из строя, а файл сохранения может быть поврежден!");
 	event_signal(EVENT_MESSAGE_FLUSH);
 
 	/* Then verify. */
-	return get_check("Are you sure you want to use the debug commands? ");
+	// return get_check("Are you sure you want to use the debug commands? ");
+	// return get_check("Are you sure you want to use the debug commands? ");
+	return get_check("Вы уверены, что хотите использовать отладочные команды? ");
 }
 
 /**

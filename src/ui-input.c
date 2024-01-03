@@ -1220,7 +1220,8 @@ static bool textui_get_check(const char *prompt)
 	 * Hack -- Build a "useful" prompt; do this first so prompts built by
 	 * format() won't run afoul of event_signal()'s side effects.
 	 */
-	strnfmt(buf, 78, "%.70s[y/n] ", prompt);
+	// strnfmt(buf, 78, "%.70s[y/n] ", prompt);
+	strnfmt(buf, sizeof(buf), "%s[y/n] ", prompt);
 
 	/* Paranoia */
 	event_signal(EVENT_MESSAGE_FLUSH);

@@ -207,7 +207,7 @@ static textblock *create_nested_effect_description(const struct effect *e,
 		same_dice && same_other) {
 		/* Concatenate the list of possible elements. */
 		// char breaths[120], dice_string[20], desc[200];
-		char breaths[240], dice_string[40], desc[400];
+		char breaths[350], dice_string[20], desc[500];
 		int ivalid;
 
 		strnfmt(breaths, sizeof(breaths), "%s",
@@ -323,15 +323,14 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 	textblock *tb = NULL;
 	int nadded = 0;
 	// char desc[250];
-	char desc[500];
+	char desc[1024];
 	random_value value = { 0, 0, 0, 0 };
 	bool value_set = false;
 
 	while (e) {
 		const char* edesc = effect_desc(e);
 		int roll = 0;
-		// char dice_string[20];
-		char dice_string[40];
+		char dice_string[20];
 
 		/* Deal with special clear value effect. */
 		if (e->index == EF_CLEAR_VALUE) {
@@ -394,7 +393,7 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 			/* Healing sometimes has a minimum percentage. */
 			{
 				// char min_string[50];
-				char min_string[160];
+				char min_string[100];
 
 				if (value.m_bonus) {
 					strnfmt(min_string, sizeof(min_string),
@@ -418,8 +417,7 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 				const char *fed = e->subtype ?
 					(e->subtype == 1 ? "uses enough food value" : 
 					 "leaves you nourished") : "feeds you";
-				// char turn_dice_string[20];
-				char turn_dice_string[40];
+				char turn_dice_string[20];
 
 				format_dice_string(&value, z_info->food_value,
 					sizeof(turn_dice_string),
@@ -466,7 +464,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 			 * monsters.
 			 */
 			{
-				char dist[32];
+				// char dist[32];
+				char dist[80];
 
 				if (value.m_bonus) {
 					strnfmt(dist, sizeof(dist),

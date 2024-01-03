@@ -2139,7 +2139,7 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 			textblock_append(tb, "Это можно прочесть.\n");
 		} else if (aimed) {
 			// textblock_append(tb, "It can be aimed.\n");
-			textblock_append(tb, "Этим можно взмахнуть.\n");
+			textblock_append(tb, "Это можно навести.\n");
 		} else {
 			// textblock_append(tb, "It can be activated.\n");
 			textblock_append(tb, "Это можно активировать.\n");
@@ -2215,7 +2215,8 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 
 		// textblock_append(tb, " turns to recharge");
 		textblock_append(tb, " ход%s",
-			min_time != max_time ? PLURAL_RU(max_time, "", "а", "ов") : PLURAL_RU(min_time, "", "а", "ов"));
+			// min_time != max_time ? PLURAL_RU(max_time, "", "а", "ов") : PLURAL_RU(min_time, "", "а", "ов")); DDDEL
+			PLURAL_RU(min_time != max_time ? max_time : min_time, "", "а", "ов"));
 		if (subjective && player->state.speed != 110)
 			// textblock_append(tb, " at your current speed");
 			textblock_append(tb, " при вашей текущей скорости");
@@ -2244,8 +2245,8 @@ static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 	char name[160];
 	int origin;
 	const char *dropper = NULL;
-	const char *article;
-	bool unique = false;
+	// const char *article;
+	// bool unique = false;
 	bool comma = false;
 
 	/* Only give this info in chardumps if wieldable */
@@ -2270,9 +2271,9 @@ static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 	/* Name the monster of origin */
 	if (obj->origin_race) {
 		dropper = obj->origin_race->name;
-		if (rf_has(obj->origin_race->flags, RF_UNIQUE)) {
-			unique = true;
-		}
+		// if (rf_has(obj->origin_race->flags, RF_UNIQUE)) {
+			// unique = true;
+		// }
 		if (rf_has(obj->origin_race->flags, RF_NAME_COMMA)) {
 			comma = true;
 		}
@@ -2280,13 +2281,12 @@ static bool describe_origin(textblock *tb, const struct object *obj, bool terse)
 		dropper = "monster lost to history";
 	}
 	// article = is_a_vowel(dropper[0]) ? "an " : "a ";
-	article = is_a_vowel(dropper[0]) ? "" : "";
-	if (unique)
+	// if (unique)
 		my_strcpy(name, dropper, sizeof(name));
-	else {
-		my_strcpy(name, article, sizeof(name));
-		my_strcat(name, dropper, sizeof(name));
-	}
+	// else {
+		// my_strcpy(name, article, sizeof(name));
+		// my_strcat(name, dropper, sizeof(name));
+	// }
 	if (comma) {
 		my_strcat(name, ",", sizeof(name));
 	}

@@ -172,7 +172,7 @@ normal:potion:Смелости
 normal:potion:Силы Берсерка
 normal:potion:Сопротивления Нагреву
 normal:potion:Сопротивления Холоду
-normal:potion:Восстановления Уровней Жизни
+normal:potion:Восстановления Опыта
 normal:potion:Нейтрализации Яда
 normal:potion:Лечения Серьёзных Ран
 normal:potion:Лечения Критических Ран

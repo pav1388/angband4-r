@@ -801,7 +801,8 @@ void inven_item_charges(struct object *obj)
 	/* Require staff/wand */
 	if (tval_can_have_charges(obj) && object_flavor_is_aware(obj)) {
 		// msg("You have %d charge%s remaining.",
-		msg("У вас остал%s %d заряд%s.", (obj->pval) == 1 ? "ся" : "ось", obj->pval, PLURAL_RU(obj->pval, "", "а", "ов"));
+		msg("У вас остал%s %d заряд%s.", PLURAL_RU(obj->pval, "ся", "ось", "ось"), 
+			PLURAL_RU(obj->pval, "", "а", "ов"));
 				// obj->pval,
 				// PLURAL(obj->pval));
 				
@@ -1002,7 +1003,7 @@ void inven_wield(struct object *obj, int slot)
 		fmt = "Вы стреляете из %s (%c).";
 	else if (tval_is_light(wielded))
 		// fmt = "Your light source is %s (%c).";
-		fmt = "Ваш источник света это %s (%c).";
+		fmt = "Ваш источник света %s (%c).";
 	else
 		// fmt = "You are wearing %s (%c).";
 		fmt = "Вы носите %s (%c).";
