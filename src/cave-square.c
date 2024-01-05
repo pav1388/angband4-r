@@ -1375,7 +1375,8 @@ void square_destroy_decoy(struct chunk *c, struct loc grid)
 	square_remove_all_traps(c, grid);
 	c->decoy = loc(0, 0);
 	if (los(c, player->grid, grid) && !player->timed[TMD_BLIND]){
-		msg("The decoy is destroyed!");
+		// msg("The decoy is destroyed!");
+		msg("Приманка уничтожена!");
 	}
 }
 

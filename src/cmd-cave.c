@@ -559,7 +559,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	if (best_digger != current_weapon &&
 			(!current_weapon || obj_can_takeoff(current_weapon))) {
 		// with_clause = "with your swap digger";
-		with_clause = "своим спец.инструментом";
+		with_clause = "своим инструментом для раскопок";
 		/* Use only one without the overhead of gear_obj_for_use(). */
 		if (best_digger) {
 			oldn = best_digger->number;
@@ -594,6 +594,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	}
 
 	/* Success */
+	char buf[80];
 	if (okay && twall(grid)) {
 		/* Rubble is a special case - could be handled more generally NRM */
 		if (rubble) {
@@ -633,13 +634,34 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 		player->upkeep->update |= (PU_UPDATE_VIEW | PU_MONSTERS);
 	} else if (chance > 0) {
 		/* Failure, continue digging */
-		if (rubble)
+		if (rubble) {
 			//msg("You dig in the rubble %s.", with_clause);
 			msg("Вы копаете завалы %s.", with_clause);
-		else
+		} else {
 			//msg("You tunnel into the %s %s.",
-			msg("Вы роете проход в %s %s.",
-				square_apparent_name(player->cave, grid), with_clause);
+				// square_apparent_name(player->cave, grid), with_clause);
+			switch (square(player->cave, grid)->feat) {
+			case FEAT_GRANITE:
+				my_strcpy(buf, "гранитной стене", sizeof(buf));
+				break;
+			case FEAT_MAGMA:
+				my_strcpy(buf, "магмовой жиле", sizeof(buf));
+				break;
+			case FEAT_MAGMA_K:
+				my_strcpy(buf, "магмовой жиле с сокровищем", sizeof(buf));
+				break;
+			case FEAT_QUARTZ:
+				my_strcpy(buf, "кварцевой жиле", sizeof(buf));
+				break;
+			case FEAT_QUARTZ_K:
+				my_strcpy(buf, "кварцевой жиле с сокровищем", sizeof(buf));
+				break;
+			default: 
+				my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf));
+				break;
+			}
+			msg("Вы роете проход в %s %s.", buf, with_clause);
+		}	
 		more = true;
 	} else {
 		/* Don't automatically repeat if there's no hope. */
@@ -647,9 +669,29 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			//msg("You dig in the rubble %s with little effect.", with_clause);
 			msg("Вы копаете завалы %s без особого эффекта.", with_clause);
 		} else {
-			// msg("You chip away futilely %s at the %s.", with_clause,
-			msg("Вы ТЩЕТНО копаете %s %s.", with_clause,
-				square_apparent_name(player->cave, grid));
+			// msg("You chip away futilely %s at the %d.", with_clause,
+				// square_apparent_name(player->cave, grid));
+			switch (square(player->cave, grid)->feat) {
+			case FEAT_GRANITE:
+				my_strcpy(buf, "гранитную стену", sizeof(buf));
+				break;
+			case FEAT_MAGMA:
+				my_strcpy(buf, "магмовую жилу", sizeof(buf));
+				break;
+			case FEAT_MAGMA_K:
+				my_strcpy(buf, "магмовую жилу с сокровищем", sizeof(buf));
+				break;
+			case FEAT_QUARTZ:
+				my_strcpy(buf, "кварцевую жилу", sizeof(buf));
+				break;
+			case FEAT_QUARTZ_K:
+				my_strcpy(buf, "кварцевую жилу с сокровищем", sizeof(buf));
+				break;
+			default: 
+				my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf));
+				break;
+			}
+			msg("Вы ТЩЕТНО копаете %s %s.", with_clause, buf);			
 		}
 	}
 
@@ -1742,7 +1784,7 @@ void do_cmd_mon_command(struct command *cmd)
 				ODESC_PREFIX | ODESC_FULL, player);
 			if (!ignore_item_ok(player, obj)) {
 				//msg("%s drops %s.", m_name, o_name);
-				msg("%s выпадает %s.", m_name, o_name);
+				msg("%s роняет %s.", m_name, o_name);
 			}
 
 			break;

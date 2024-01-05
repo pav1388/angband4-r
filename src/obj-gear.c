@@ -629,10 +629,16 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 		} else if (first_remainder) {
 			label = gear_to_label(p, first_remainder);
 			// msg("You have %s (1st %c).", name, label);
-			msg("У вас есть %s (1-ый %c).", name, label);
+			if (obj->number == 0)
+				msg("У вас %s (1-ый %c).", name, label);
+			else
+				msg("У вас есть %s (1-ый %c).", name, label);
 		} else {
 			// msg("You have %s (%c).", name, label);
-			msg("У вас есть %s (%c).", name, label);
+			if (obj->number == 0)
+				msg("У вас %s (%c).", name, label);
+			else
+				msg("У вас есть %s (%c).", name, label);
 		}
 	}
 
@@ -924,11 +930,17 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 		label = gear_to_label(p, first);
 		if (total > first->number) {
 			// msg("You have %s (1st %c).", o_name, label);
-			msg("У вас есть %s (1-ый %c).", o_name, label);
+			if (total == 0)
+				msg("У вас %s (1-ый %c).", o_name, label);
+			else
+				msg("У вас есть %s (1-ый %c).", o_name, label);
 		} else {
 			assert(first == obj);
 			// msg("You have %s (%c).", o_name, label);
-			msg("У вас есть %s (%c).", o_name, label);
+			if (total == 0)
+				msg("У вас %s (%c).", o_name, label);
+			else
+				msg("У вас есть %s (%c).", o_name, label);
 		}
 	}
 
@@ -997,7 +1009,7 @@ void inven_wield(struct object *obj, int slot)
 	/* Where is the item now */
 	if (tval_is_melee_weapon(wielded))
 		// fmt = "You are wielding %s (%c).";
-		fmt = "Вы владеете %s (%c).";
+		fmt = "Вы держите %s (%c).";
 	else if (wielded->tval == TV_BOW)
 		// fmt = "You are shooting with %s (%c).";
 		fmt = "Вы стреляете из %s (%c).";
@@ -1064,16 +1076,16 @@ void inven_takeoff(struct object *obj)
 	/* Describe removal by slot */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
 		// act = "You were wielding";
-		act = "Вы владели";
+		act = "Вы убрали";
 	else if (slot_type_is(player, slot, EQUIP_BOW))
 		// act = "You were holding";
-		act = "Вы держали";
+		act = "Вы убрали";
 	else if (slot_type_is(player, slot, EQUIP_LIGHT))
 		// act = "You were holding";
-		act = "Вы держали";
+		act = "Вы убрали";
 	else
 		// act = "You were wearing";
-		act = "Вы носили";
+		act = "Вы убрали";
 
 	/* De-equip the object */
 	player->body.slots[slot].obj = NULL;
@@ -1180,15 +1192,24 @@ void inven_drop(struct object *obj, int amt)
 			(total << 16), player);
 		if (!first) {
 			// msg("You have %s (%c).", name, label);
-			msg("У вас есть %s (%c).", name, label);
+			if (total == 0)
+				msg("У вас %s (%c).", name, label);
+			else
+				msg("У вас есть %s (%c).", name, label);
 		} else {
 			label = gear_to_label(player, first);
 			if (total > first->number) {
 				// msg("You have %s (1st %c).", name, label);
-				msg("У вас есть %s (1-ый %c).", name, label);
+				if (total == 0)
+					msg("У вас %s (1-ый %c).", name, label);
+				else
+					msg("У вас есть %s (1-ый %c).", name, label);
 			} else {
 				// msg("You have %s (%c).", name, label);
-				msg("У вас есть %s (%c).", name, label);
+				if (total == 0)
+					msg("У вас %s (%c).", name, label);
+				else
+					msg("У вас есть %s (%c).", name, label);
 			}
 		}
 	}

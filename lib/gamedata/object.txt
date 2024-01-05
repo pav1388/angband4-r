@@ -253,7 +253,7 @@ cost:3
 alloc:40:0 to 20
 pile:10:1d2
 power:0
-msg:That tastes good.
+msg:Это вкусно.
 effect:NOURISH:INC_BY
 dice:10
 desc:Морщинистое, но плотное и сладкое.
@@ -266,7 +266,7 @@ weight:3
 cost:3
 alloc:40:0 to 50
 power:0
-msg:That tastes good.
+msg:Это вкусно.
 effect:NOURISH:INC_BY
 dice:15
 desc:Грубо нарезанные и высушенные на солнце фрукты, приготовленные
@@ -296,7 +296,7 @@ cost:3
 alloc:40:0 to 50
 pile:100:1d5
 power:0
-msg:That tastes good.
+msg:Это вкусно.
 effect:NOURISH:INC_BY
 dice:30
 desc:Эта питательная, но довольно безвкусная пища, которую озёрные жители называют
@@ -338,7 +338,7 @@ cost:3
 alloc:30:10 to 50
 pile:50:1d3
 power:0
-msg:That tastes good.
+msg:Это вкусно.
 effect:NOURISH:INC_BY
 dice:40
 desc:Толстый кусок свинины, засоленный, чтобы не испортился.
@@ -682,7 +682,8 @@ alloc:20:0 to 100
 attack:1d4:0:0
 armor:0:0
 flags:THROWING
-desc:A short two-edged blade perfect for thrusting or throwing.
+desc:Короткий обоюдоострый клинок, идеально подходящий для
+desc: ударов и бросков.
 
 name:& Main Gauche~
 type:sword
@@ -693,7 +694,8 @@ cost:45
 alloc:20:3 to 100
 attack:1d5:0:0
 armor:0:0
-desc:A short thrusting blade with a large guard, primarily used in duels.
+desc:Короткий ударный клинок с большой гардой, используемый в
+desc: основном в дуэлях.
 
 name:& Rapier~
 type:sword
@@ -704,7 +706,7 @@ cost:70
 alloc:20:5 to 100
 attack:1d6:0:0
 armor:0:0
-desc:A long, thin thrusting blade, mainly used in duels.
+desc:Длинный тонкий ударный клинок, используемый в основном на дуэлях.
 
 name:& Short Sword~
 type:sword
@@ -715,7 +717,7 @@ cost:90
 alloc:20:5 to 100
 attack:1d7:0:0
 armor:0:0
-desc:A short thrusting sword.
+desc:Короткий ударный меч.
 
 name:& Cutlass~
 type:sword
@@ -726,8 +728,8 @@ cost:120
 alloc:20:5 to 100
 attack:1d8:0:0
 armor:0:0
-desc:A thicker and slightly longer dagger, the cutlass is a slashing sword.  It
-desc: possesses a slight curve and only one side is sharp.
+desc:Толстый и немного длинный кинжал, косая сабля.  Она
+desc: имеет небольшой изгиб и острую только одну сторону.
 
 name:& Tulwar~
 type:sword
@@ -738,7 +740,7 @@ cost:170
 alloc:20:5 to 100
 attack:2d4:0:0
 armor:0:0
-desc:A wider-bladed cousin of the shamshir, with less of a curve.
+desc:Двоюродный брат шамшира с более широким лезвием и меньшим изгибом.
 
 name:& Scimitar~
 type:sword
@@ -749,7 +751,7 @@ cost:300
 alloc:20:10 to 100
 attack:4d2:0:0
 armor:0:0
-desc:A long sabre with an extreme curve to the blade.
+desc:Длинная сабля с сильно изогнутым клинком.
 
 name:& Long Sword~
 type:sword
@@ -760,8 +762,8 @@ cost:300
 alloc:20:10 to 100
 attack:2d5:0:0
 armor:0:0
-desc:A long, straight, two-edged blade, with two hand guards projecting out
-desc: from the hilt to form a perfect cross.
+desc:Длинный, прямой, обоюдоострый клинок с двумя гардами,
+desc: выступающими из рукояти и образующими идеальный крест.
 
 name:& Broad Sword~
 type:sword
@@ -772,7 +774,7 @@ cost:300
 alloc:20:10 to 100
 attack:2d5:0:0
 armor:0:0
-desc:A heavy, single-edged sword with a strong grip.
+desc:Тяжёлый одноострый меч с крепкой рукоятью.
 
 name:& Bastard Sword~
 type:sword
@@ -783,8 +785,8 @@ cost:400
 alloc:20:15 to 100
 attack:3d4:0:0
 armor:0:0
-desc:Also known as the hand-and-a-half blade.  A larger-than-normal straight-
-desc:sided sword with two cutting edges.
+desc:Также известен как полуторный клинок.  Меч большего
+desc: размера, чем обычный, с двумя режущими кромками.
 
 name:& Katana~
 type:sword
@@ -795,8 +797,8 @@ cost:600
 alloc:20:20 to 100
 attack:3d5:0:0
 armor:0:0
-desc:A slightly curved long-handled slashing sword with a single-edged
-desc: blade and a chisel tip.
+desc:Слегка изогнутый длинноручный меч с одноострым
+desc: лезвием и долотообразным наконечником.
 
 name:& Zweihander~
 type:sword
@@ -807,7 +809,7 @@ cost:700
 alloc:20:30 to 100
 attack:3d6:0:0
 armor:0:0
-desc:A sword designed for two hands.
+desc:Меч, рассчитанный на две руки.
 
 name:& Executioner's Sword~
 type:sword
@@ -818,7 +820,8 @@ cost:850
 alloc:20:40 to 100
 attack:4d5:0:0
 armor:0:0
-desc:A giant, curved blade designed to cleave the head cleanly from the body.
+desc:Огромный изогнутый клинок, предназначенный для
+desc: отсечения головы от тела.
 
 name:& Blade~ of Chaos
 type:sword
@@ -830,8 +833,8 @@ alloc:10:70 to 100
 attack:6d5:0:0
 armor:0:0
 values:RES_CHAOS[1]
-desc:This inconstant weapon revels in disorder, hacking and slashing your foes
-desc: with bloodthirsty glee.
+desc:Это непостоянное оружие любит беспорядок, рубя и
+desc: кромсая врагов с кровожадным ликованием.
 
 
 
@@ -846,8 +849,8 @@ cost:30
 alloc:20:3 to 100
 attack:1d3:0:0
 armor:0:0
-desc:A heavy whip, this thick coil is thrown from the shoulder and can
-desc: knock down a large man.
+desc:Тяжелый кнут, этот толстый моток бросается с плеча
+desc: и может сбить с ног крупного мужчину.
 
 name:& Ball-and-Chain~
 type:hafted
@@ -858,7 +861,8 @@ cost:200
 alloc:20:20 to 100
 attack:2d4:0:0
 armor:0:0
-desc:A weighty iron ball, suspended by a chain from a sturdy oaken handle.
+desc:Увесистый железный шар, подвешенный на цепочке к
+desc: прочной дубовой ручке.
 
 name:& Morning Star~
 type:hafted
@@ -869,8 +873,8 @@ cost:396
 alloc:20:10 to 100
 attack:2d6:0:0
 armor:0:0
-desc:A sturdy wooden pole connected by a chain to a ball of steel, which often
-desc: has projecting spikes.
+desc:Прочный деревянный шест, соединенный цепью со стальным
+desc: шаром, который часто имеет выступающие шипы.
 
 name:& Flail~
 type:hafted
@@ -881,8 +885,8 @@ cost:353
 alloc:20:10 to 100
 attack:2d6:0:0
 armor:0:0
-desc:Two heavy bars of wood connected by a short link of chain, capable of
-desc: delivering crushing blows.
+desc:Два тяжёлых деревянных бруска, соединенных короткой
+desc: цепью, способные наносить сокрушительные удары.
 
 name:& Two-Handed Great Flail~
 type:hafted
@@ -893,8 +897,8 @@ cost:590
 alloc:20:45 to 100
 attack:3d6:0:0
 armor:0:0
-desc:Two great bars of wood connected by a massive chain, needing two hands
-desc: to properly wield.
+desc:Два огромных деревянных бруска, соединенных массивной
+desc: цепью.
 
 
 ### Clubs ###
@@ -908,7 +912,7 @@ cost:130
 alloc:20:5 to 100
 attack:2d4:0:0
 armor:0:0
-desc:A war club with an iron head, usually flanged or spiked.
+desc:Боевая дубина с железной головкой, обычно с фланцем или шипом.
 
 name:& Lead-Filled Mace~
 type:hafted
@@ -919,8 +923,8 @@ cost:502
 alloc:20:15 to 100
 attack:4d3:0:0
 armor:0:0
-desc:A heavy war club topped with a mass of lead-filled steel, capable of
-desc: landing crushing blows.
+desc:Тяжёлая боевая дубина, увенчанная стальным наконечником,
+desc: наполненным свинцом, способная наносить сокрушительные удары.
 
 name:& Quarterstaff~
 type:hafted
@@ -931,8 +935,8 @@ cost:200
 alloc:20:10 to 100
 attack:1d9:0:0
 armor:0:0
-desc:Six feet of oak which can be wielded in both hands to give a drubbing or
-desc: block one.
+desc:Два метра дубового бруса, который можно держать в обеих
+desc: руках, чтобы наносить удары или блокировать их.
 
 name:& Throwing Hammer~
 type:hafted
@@ -944,7 +948,8 @@ alloc:10:40 to 100
 attack:2d4:0:0
 armor:0:0
 flags:THROWING
-desc:A short-handled iron hammer that can strike hard when thrown.
+desc:Железный молот с короткой ручкой, способный наносить
+desc: сильные удары при броске.
 
 name:& War Hammer~
 type:hafted
@@ -955,7 +960,7 @@ cost:225
 alloc:20:5 to 100
 attack:3d3:0:0
 armor:0:0
-desc:A mallet with a tapered head and a long handle.
+desc:Молоток с конической головкой и длинной ручкой.
 
 name:& Maul~
 type:hafted
@@ -966,7 +971,7 @@ cost:130
 alloc:20:5 to 100
 attack:4d4:0:0
 armor:0:0
-desc:A long-handled hammer with a heavy head.
+desc:Молоток с длинной ручкой и тяжёлой насадкой.
 
 name:& Great Hammer~
 type:hafted
@@ -977,7 +982,8 @@ cost:500
 alloc:20:20 to 100
 attack:8d1:0:0
 armor:0:0
-desc:A mighty hammer with a massive head designed to crush and stun.
+desc:Мощный молот с массивной насадкой, предназначенный
+desc: для разрушения и оглушения.
 
 name:& Mace~ of Disruption
 type:hafted
@@ -989,8 +995,8 @@ alloc:10:80 to 100
 attack:5d8:0:0
 armor:0:0
 slay:UNDEAD_3
-desc:A giant's weapon, enchanted with shattering power that breaks bones,
-desc: bodies, and spirit.
+desc:Оружие великана, зачарованное на разбивающую силу,
+desc: которая ломает кости, тела и дух.
 
 
 
@@ -1006,8 +1012,8 @@ alloc:20:5 to 100
 attack:1d6:0:0
 armor:0:0
 flags:THROWING
-desc:The basic polearm, with a double-edged knife mounted on a light shaft.
-desc:  This weapon can be thrown effectively.
+desc:Простейшее древковое оружие с обоюдоострым ножом, закрепленным
+desc: на лёгкой рукояти. Это оружие можно эффективно метать.
 
 name:& Awl-Pike~
 type:polearm
@@ -1018,9 +1024,10 @@ cost:340
 alloc:20:10 to 100
 attack:1d8:0:0
 armor:0:0
-desc:A more robust version of the basic polearm, with a double-edged knife
-desc: mounted on a sturdy shaft.  It cannot be thrown effectively, but offers
-desc: some protection to the wielder.
+desc:Более прочная версия обычного древкового оружия, с обоюдоострым
+desc: ножом, закрепленным на прочной рукояти.  Его нельзя
+desc: эффективно метать, но он обеспечивает некоторую
+desc: защиту владельцу.
 
 name:& Trident~
 type:polearm
@@ -1031,7 +1038,7 @@ cost:120
 alloc:20:5 to 100
 attack:1d10:0:0
 armor:0:0
-desc:A three-pronged spear, originally for catching fish.
+desc:Трёхконечное копьё, первоначально предназначенное для ловли рыбы.
 
 name:& Halberd~
 type:polearm
@@ -1042,9 +1049,8 @@ cost:430
 alloc:20:25 to 100
 attack:3d5:0:0
 armor:0:0
-desc:The most successful of the polearms, the halberd has a long haft mounted
-desc: with a heavy axe blade and opposing spike, and topped by a thrusting
-desc: spine.
+desc:Алебарда - самое удачное из древковых оружий - имеет длинную
+desc: рукоять с тяжелым лезвием топора, увенчанным острым шипом.
 
 name:& Pike~
 type:polearm
@@ -1055,8 +1061,8 @@ cost:358
 alloc:20:15 to 100
 attack:2d5:0:0
 armor:0:0
-desc:A fifteen foot spear, requiring two hands to wield, principally used in
-desc: infantry formations.
+desc:Пятиметровое копье, требующее двух рук для удержания, в
+desc: основном используется в пехотных формированиях.
 
 
 ### Axes ###
@@ -1071,8 +1077,8 @@ alloc:10:25 to 100
 attack:2d3:0:0
 armor:0:0
 flags:THROWING
-desc:A short-handled hatchet, balanced for throwing.  A classic skirmisher's
-desc: weapon.
+desc:Топор с короткой рукояткой, сбалансированный для метания.
+desc:  Классическое оружие застрельщика.
 
 name:& Beaked Axe~
 type:polearm
@@ -1083,7 +1089,7 @@ cost:408
 alloc:20:15 to 100
 attack:2d6:0:0
 armor:0:0
-desc:A narrow axe head opposed by a crow's beak for penetrating armour.
+desc:Узкая головка топора с вороньим клювом для пробивания доспехов.
 
 name:& Broad Axe~
 type:polearm
@@ -1094,7 +1100,8 @@ cost:304
 alloc:20:15 to 100
 attack:2d6:0:0
 armor:0:0
-desc:A simple, single-bladed war axe capable of chopping though limbs or armour.
+desc:Простой боевой топор с одним лезвием, способный разрубить
+desc: конечности или броню.
 
 name:& Battle Axe~
 type:polearm
@@ -1105,7 +1112,7 @@ cost:334
 alloc:20:15 to 100
 attack:2d8:0:0
 armor:0:0
-desc:A double-bladed axe.  Very popular among Dwarves.
+desc:Топор с двумя лезвиями.  Очень популярен среди Дварфов.
 
 name:& Lochaber Axe~
 type:polearm
@@ -1116,7 +1123,7 @@ cost:750
 alloc:20:45 to 100
 attack:3d8:0:0
 armor:0:0
-desc:A long shaft with a long narrow blade.
+desc:Длинное древко с длинным узким лезвием.
 
 name:& Great Axe~
 type:polearm
@@ -1127,8 +1134,8 @@ cost:500
 alloc:20:40 to 100
 attack:4d4:0:0
 armor:0:0
-desc:An enormous two-handed battle axe, carried by Dwarven champions, who
-desc: compete to see who can cleave the most orc heads.
+desc:Огромный двуручный боевой топор, который носят с собой дварфские
+desc: чемпионы, соревнующиеся в том, кто разрубит больше голов орков.
 
 
 ### Other misc polearms ###
@@ -1142,8 +1149,9 @@ cost:800
 alloc:20:45 to 100
 attack:5d3:0:0
 armor:0:0
-desc:The long crescent blade stands out from the handle of this
-desc: polearm, and it is swung with two hands to harvest grain or blood.
+desc:Из рукояти этого оружия торчит длинное лезвие в виде полумесяца,
+desc: которым размахивают двумя руками, чтобы собирать зерно
+desc: ... или кровь.
 
 name:& Glaive~
 type:polearm
@@ -1154,8 +1162,9 @@ cost:363
 alloc:20:20 to 100
 attack:2d6:0:0
 armor:0:0
-desc:A reinforced wooden pole eight feet long, topped by a massive knife blade
-desc: that can be used to thrust or chop.
+desc:Укрепленный деревянный шест длиной два с половиной метра,
+desc: увенчанный массивным лезвием, которое можно использовать
+desc: для удара или рубки.
 
 name:& Lance~
 type:polearm
@@ -1166,7 +1175,8 @@ cost:230
 alloc:20:10 to 100
 attack:2d8:0:0
 armor:0:0
-desc:A massive, tapered spear used primarily from horseback.
+desc:Массивное, коническое копье, используемое преимущественно
+desc: с лошади.
 
 name:& Scythe~ of Slicing
 type:polearm
@@ -1177,8 +1187,8 @@ cost:3500
 alloc:10:60 to 100
 attack:8d4:0:0
 armor:0:0
-desc:A reaper's weapon, the long blade almost hums in anticipation of
-desc: the blood it will spill.
+desc:Орудие жнеца, длинный клинок словно гудит в предвкушении
+desc: крови, которую он прольет.
 
 name:& Lucerne Hammer~
 type:polearm
@@ -1189,7 +1199,8 @@ cost:376
 alloc:20:10 to 100
 attack:2d5:0:0
 armor:0:0
-desc:A long pole with a three- or four-pronged head balanced by a long spike.
+desc:Длинный шест с трех- или четырехгранной головкой,
+desc: уравновешенной длинным шипом.
 
 
 ##### Bows, Crossbows, Slings #####
@@ -1203,8 +1214,8 @@ cost:5
 alloc:20:1 to 100
 flags:SHOOTS_SHOTS
 pval:2
-desc:A loop of leather and cords able to hurl stones or shot with
-desc: tremendous velocity.
+desc:Петля из кожи и шнуров, способная метать камни или дробь с
+desc: огромной скоростью.
 
 name:& Short Bow~
 type:bow
@@ -1215,7 +1226,8 @@ cost:50
 alloc:20:3 to 100
 flags:SHOOTS_ARROWS
 pval:2
-desc:The traditional hunter's weapon, this light bow is easily drawn.
+desc:Традиционное оружие охотника, этот легкий лук очень просто
+desc: натягивается.
 
 name:& Long Bow~
 type:bow
@@ -1226,8 +1238,8 @@ cost:120
 alloc:20:10 to 100
 flags:SHOOTS_ARROWS
 pval:3
-desc:As tall as a man, the longbow can drive an arrow through the
-desc: heaviest armour.
+desc:Длинный лук в рост человека, способен пробить стрелой даже
+desc: самые тяжёлые доспехи.
 
 name:& Light Crossbow~
 type:bow
@@ -1238,8 +1250,8 @@ cost:140
 alloc:20:15 to 100
 flags:SHOOTS_BOLTS
 pval:3
-desc:A mechanical bow made of wood, it is cocked to augment the strength
-desc: of its wielder.
+desc:Механический лук, сделанный из дерева, он взводится, чтобы
+desc: увеличить силу своего владельца.
 
 name:& Heavy Crossbow~
 type:bow
@@ -1250,8 +1262,8 @@ cost:300
 alloc:20:30 to 100
 flags:SHOOTS_BOLTS
 pval:4
-desc:This arbalest is so powerful it has to be reinforced with metal and
-desc: requires a crank to be cocked.
+desc:Этот арбалет настолько мощный, что его пришлось усилить
+desc: металлом, а для взведения требуется рукоять.
 
 
 ##### Missiles #####
@@ -1266,7 +1278,7 @@ pile:100:7d7
 alloc:30:3 to 100
 attack:1d4:0:0
 armor:0:0
-desc:It can be shot with a bow.
+desc:Ею можно стрелять из лука.
 
 name:& Seeker Arrow~
 type:arrow
@@ -1278,7 +1290,7 @@ alloc:25:55 to 100
 pile:100:7d7
 attack:4d4:0:0
 armor:0:0
-desc:It can be shot with a bow.
+desc:Ею можно стрелять из лука.
 
 name:& Mithril Arrow~
 type:arrow
@@ -1291,7 +1303,7 @@ alloc:20:50 to 100
 attack:3d4:0:0
 armor:0:0
 flags:IGNORE_ACID | IGNORE_FIRE
-desc:It can be shot with a bow.
+desc:Ею можно стрелять из лука.
 
 
 name:& Bolt~
@@ -1304,7 +1316,7 @@ pile:100:5d7
 alloc:30:3 to 100
 attack:1d5:0:0
 armor:0:0
-desc:It can be shot with a crossbow.
+desc:Им можно стрелять из арбалета.
 
 name:& Seeker Bolt~
 type:bolt
@@ -1316,7 +1328,7 @@ pile:100:5d7
 alloc:25:65 to 100
 attack:4d5:0:0
 armor:0:0
-desc:It can be shot with a crossbow.
+desc:Им можно стрелять из арбалета.
 
 name:& Mithril Bolt~
 type:bolt
@@ -1329,7 +1341,7 @@ alloc:20:60 to 100
 attack:3d5:0:0
 armor:0:0
 flags:IGNORE_ACID
-desc:It can be shot with a crossbow.
+desc:Им можно стрелять из арбалета.
 
 
 name:& Rounded Pebble~
@@ -1343,7 +1355,7 @@ alloc:30:0 to 100
 attack:1d2:0:0
 armor:0:0
 flags:THROWING
-desc:It can be shot with a sling or thrown.
+desc:Им можно стрелять из пращи или бросать.
 
 
 name:& Iron Shot~
@@ -1357,7 +1369,7 @@ alloc:25:3 to 100
 attack:1d4:0:0
 armor:0:0
 flags:THROWING
-desc:It can be shot with a sling or thrown.
+desc:Им можно стрелять из пращи или бросать.
 
 name:& Mithril Shot~
 type:shot
@@ -1370,7 +1382,7 @@ alloc:20:40 to 100
 attack:2d4:5:5
 armor:0:0
 flags:THROWING
-desc:It can be shot with a sling or thrown.
+desc:Им можно стрелять из пращи или бросать.
 
 
 ##### Digging Tools #####
@@ -1385,7 +1397,7 @@ alloc:20:5 to 100
 attack:1d2:0:0
 armor:0:0
 flags:DIG_1
-desc:A compact and sturdy spade.
+desc:Компактная и прочная лопата.
 
 name:& Pick~
 type:digger
@@ -1397,8 +1409,8 @@ alloc:20:30 to 100
 attack:1d3:0:0
 armor:0:0
 flags:DIG_2
-desc:A heavy mining tool with a long, slightly curved head that tapers
-desc: to chisel points on both ends.
+desc:Тяжёлый горный инструмент с удлиненной, слегка изогнутой
+desc: головкой, сужающейся к острию клинка на обоих концах.
 
 name:& Mattock~
 type:digger
@@ -1410,8 +1422,9 @@ alloc:20:50 to 100
 attack:1d8:0:0
 armor:0:0
 flags:DIG_3
-desc:A digging tool with a broad horizontal blade balanced by a smaller
-desc: vertical blade.  Used as a weapon of war by dwarves.
+desc:Орудие для копания с широким горизонтальным лезвием, уравновешенным
+desc: вертикальным лезвием меньшего размера.  Используется дварфами
+desc: в качестве боевого оружия.
 
 
 ##### Armor #####
@@ -1427,8 +1440,8 @@ cost:4
 alloc:20:1 to 100
 attack:1d1:0:0
 armor:1:0
-desc:A set of open-topped footgear with soft calfskin lacings and a sturdy
-desc: cured leather base.
+desc:Комплект обуви с открытым верхом с мягкой шнуровкой из
+desc: телячьей кожи и прочной основой из обработанной кожи.
 
 name:& Pair~ of Leather Boots
 type:boots
@@ -1439,7 +1452,8 @@ cost:7
 alloc:20:3 to 100
 attack:1d1:0:0
 armor:2:0
-desc:These are calf-high boots of flexible leather, laced from heel to calf.
+desc:Это высокие сапоги из эластичной кожи, зашнурованные от
+desc: пятки до голенища.
 
 name:& Pair~ of Iron Shod Boots
 type:boots
@@ -1451,8 +1465,8 @@ alloc:20:5 to 100
 attack:1d1:0:0
 armor:4:0
 flags:IGNORE_FIRE
-desc:A set of sturdy leather boots strengthened with iron that will last
-desc: many weary miles.
+desc:Набор прочных кожаных сапог, укрепленных железом, которые
+desc: прослужат вам не один десяток километров.
 
 name:& Pair~ of Steel Shod Boots
 type:boots
@@ -1464,8 +1478,8 @@ alloc:20:20 to 100
 attack:1d1:0:0
 armor:7:0
 flags:IGNORE_FIRE
-desc:A set of double-lined leather boots, with toes and heels reinforced with
-desc: steel.
+desc:Комплект кожаных сапог с двойной подкладкой, носки и пятки
+desc: которых усилены сталью.
 
 name:& Pair~ of Mithril Shod Boots
 type:boots
@@ -1477,8 +1491,8 @@ alloc:20:60 to 100
 attack:1d1:0:0
 armor:8:0
 flags:IGNORE_ACID | IGNORE_FIRE
-desc:The enduring dwarves make the finest footgear known, and they march in it
-desc: for endless miles without wearying.
+desc:Выносливые гномы делают самую лучшую обувь из всех известных,
+desc: в ней они проходят бесконечные мили, не уставая.
 
 name:& Pair~ of Ethereal Slippers
 type:boots
@@ -1490,7 +1504,7 @@ alloc:10:30 to 100
 attack:0d0:0:0
 armor:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD 
-desc:Fine quality elvish slippers, hard-wearing but apparently weightless.
+desc:Эльфийские тапочки изящного качества, прочные и невесомые.
 
 
 ### Headgear ###
@@ -1504,7 +1518,7 @@ cost:12
 alloc:20:3 to 100
 attack:0d0:0:0
 armor:2:0
-desc:A padded skullcap of boiled leather.
+desc:Тюбетейка из выделанной кожи.
 
 name:& Metal Cap~
 type:helm
@@ -1515,7 +1529,7 @@ cost:30
 alloc:20:10 to 100
 attack:1d1:0:0
 armor:3:0
-desc:A pot-helm of steel that protects the skull.
+desc:Стальной котелок, защищающий череп.
 
 name:& Iron Helm~
 type:helm
@@ -1526,7 +1540,7 @@ cost:75
 alloc:20:20 to 100
 attack:1d3:0:0
 armor:7:0
-desc:A mighty helmet of heavy iron, completely enclosing the head.
+desc:Могучий шлем из тяжёлого железа, полностью закрывающий голову.
 
 name:& Steel Helm~
 type:helm
@@ -1537,8 +1551,8 @@ cost:200
 alloc:20:40 to 100
 attack:1d3:0:0
 armor:9:0
-desc:This great helm covers the head and shoulders with plates of steel and a
-desc: curtain of mail.
+desc:Этот огромный шлем покрывает голову и плечи стальными
+desc: пластинами и забралом.
 
 name:& Iron Crown~
 type:crown
@@ -1549,8 +1563,8 @@ cost:500
 alloc:20:45 to 100
 attack:1d1:0:0
 armor:0:0
-desc:A plain band of iron, crowned with iron spikes.  It is a tyrant's
-desc: symbol.
+desc:Простая полоса железа, увенчанная железными шипами.
+desc:  Это символ тирана.
 
 name:& Golden Crown~
 type:crown
@@ -1562,8 +1576,8 @@ alloc:10:45 to 100
 attack:1d1:0:0
 armor:0:0
 flags:IGNORE_ACID
-desc:An elegant golden circlet, with slender spines thrusting upward.
-desc:  It looks like it should be resting over the brow of a king.
+desc:Изящный золотой обруч, из которого торчат тонкие шипы.
+desc:  Кажется, он должен покоиться на челе короля.
 
 name:& Jewel Encrusted Crown~
 type:crown
@@ -1575,8 +1589,8 @@ alloc:10:50 to 100
 attack:1d1:0:0
 armor:0:0
 flags:IGNORE_ACID
-desc:An elaboratedly decorated crown of massive gold, studded with a rainbow
-desc: of gems and jewels; worthy of a High King.
+desc:Искусно украшенная корона из золота, усыпанная радугой драгоценных
+desc: камней и украшений, достойная Верховного Короля.
 
 
 ### Body armours ###
@@ -1590,7 +1604,7 @@ cost:4
 alloc:20:1 to 100
 attack:0d0:0:0
 armor:2:0
-desc:A practical garment of thick wool or velvet, draping from neck to heels.
+desc:Практичная одежда из толстой шерсти или бархата, длиной от шеи до пят.
 
 name:Soft Leather Armour~
 type:soft armor
@@ -1601,7 +1615,7 @@ cost:20
 alloc:20:3 to 100
 attack:0d0:0:0
 armor:8:0
-desc:A cuirass of pliable leather, with a thicker leather jack.
+desc:Кираса из эластичной кожи, с более толстой кожаной рубашкой.
 
 name:Studded Leather Armour~
 type:soft armor
@@ -1612,7 +1626,7 @@ cost:100
 alloc:20:5 to 100
 attack:1d1:-1:0
 armor:12:0
-desc:A cuirass of pliable leather studded with metal rivets.
+desc:Кираса из эластичной кожи, шипованная металлическими заклепками.
 
 name:Hard Leather Armour~
 type:soft armor
@@ -1623,7 +1637,7 @@ cost:150
 alloc:20:10 to 100
 attack:1d2:-1:0
 armor:16:0
-desc:A boiled leather cuirass and shoulder plates.
+desc:Кираса из вареной кожи и наплечных пластин.
 
 name:Leather Scale Mail~
 type:soft armor
@@ -1634,8 +1648,8 @@ cost:370
 alloc:20:15 to 100
 attack:1d1:-1:0
 armor:20:0
-desc:A tunic and skirt sewn with thick, overlapping scales of hardened
-desc: leather.
+desc:Туника и юбка, сшитые из толстых, наложенных друг на друга
+desc: чешуй из прочной кожи.
 
 name:Metal Scale Mail~
 type:hard armor
@@ -1646,8 +1660,8 @@ cost:550
 alloc:20:25 to 100
 attack:1d4:-2:0
 armor:38:0
-desc:A heavy shirt of overlapping steel scales backed by leather, with
-desc: matching skirt and sleeves.
+desc:Тяжелая рубашка из накладных стальных чешуек, подбитых
+desc: кожей, с юбкой и рукавами.
 
 name:Chain Mail~
 type:hard armor
@@ -1658,8 +1672,8 @@ cost:750
 alloc:20:20 to 100
 attack:1d4:-2:0
 armor:32:0
-desc:A hauberk, leggings, and sleeves of interlocking steel rings, well padded
-desc: with leather.
+desc:Кольчуга, гамаши и рукава из переплетенных стальных колец,
+desc: хорошо обшитых кожей.
 
 name:Augmented Chain Mail~
 type:hard armor
@@ -1670,9 +1684,9 @@ cost:900
 alloc:20:35 to 100
 attack:1d4:-2:0
 armor:42:0
-desc:A hauberk, leggings, and sleeves of interlocking steel rings,
-desc: strategically reinforced at vital locations with a second layer
-desc: of chain, all over a layer of heavy padding.
+desc:Кольчуга, гамаши и рукава из скрепленных между собой стальных
+desc: колец, укрепленных в стратегически важных местах вторым
+desc: слоем звеньев и всё это поверх слоя плотной набивки. 
 
 name:Bar Chain Mail~
 type:hard armor
@@ -1683,9 +1697,9 @@ cost:950
 alloc:20:40 to 100
 attack:1d4:-2:0
 armor:45:0
-desc:A hauberk, leggings, and sleeves of interlocking steel rings,
-desc: reinforced around the shoulders with segmented plates of steel,
-desc: all over a layer of heavy padding.
+desc:Кольчуга, гамаши и рукава из скрепленных между собой стальных
+desc: колец, усиленные вокруг плеч стальными пластинами, поверх
+desc: которых уложен слой плотной набивки.
 
 name:Metal Brigandine Armour~
 type:hard armor
@@ -1696,9 +1710,9 @@ cost:1100
 alloc:20:45 to 100
 attack:1d4:-3:0
 armor:48:0
-desc:A stiff suit of armour composed of small metal plates sewn to an
-desc: inner layer of heavy canvas, and covered with a second layer of
-desc: cloth.
+desc:Прочный доспех, состоящий из небольших металлических пластин,
+desc: пришитых к внутреннему слою плотного полотна и покрытых
+desc: вторым слоем ткани.
 
 name:Partial Plate Armour~
 type:hard armor
@@ -1709,7 +1723,7 @@ cost:1200
 alloc:20:30 to 100
 attack:1d6:-3:0
 armor:40:0
-desc:A steel corselet and vambraces over a skirt and leggings of chain.
+desc:Стальной корсет и камзол поверх юбки и леггинсов из звеньев.
 
 name:Metal Lamellar Armour~
 type:hard armor
@@ -1720,8 +1734,9 @@ cost:1250
 alloc:20:50 to 100
 attack:1d6:-3:0
 armor:58:0
-desc:This unusual armour is a surprisingly light suit of laced and
-desc: overlapping metal plates.
+desc:Эта необычная броня представляет собой удивительно лёгкий доспех
+desc: из металлических пластин, скреплённых шнуровкой и
+desc: наложенных друг на друга.
 
 name:Full Plate Armour~
 type:hard armor
@@ -1732,8 +1747,9 @@ cost:1350
 alloc:15:55 to 100
 attack:2d4:-3:0
 armor:62:0
-desc:A full suit of carefully fitted plates, with hinged joints backed
-desc: by chain, and light padding underneath.
+desc:Полный комплект тщательно подогнанных пластин, с шарнирными
+desc: соединениями, поддерживаемыми цепями, а под ними -
+desc: лёгкая подкладка.
 
 name:Ribbed Plate Armour~
 type:hard armor
@@ -1744,8 +1760,8 @@ cost:1500
 alloc:15:60 to 100
 attack:2d4:-3:0
 armor:66:0
-desc:A full suit of finely fitted metal armour consisting of steel plates
-desc: reinforced ridging.
+desc:Полный комплект металлических доспехов, состоящих из
+desc: стальных пластин усиленных рифлением.
 
 name:Mithril Chain Mail~
 type:hard armor
@@ -1757,7 +1773,8 @@ alloc:10:55 to 100
 attack:1d4:-1:0
 armor:28:0
 flags:IGNORE_ACID
-desc:This wondrous suit of fine-linked chain shimmers as though of pure silver.
+desc:Этот чудесный комплект из тончайших звеньев переливается, словно
+desc: из чистого серебра.
 
 name:Mithril Plate Mail~
 type:hard armor
@@ -1769,8 +1786,9 @@ alloc:10:65 to 100
 attack:2d4:-3:0
 armor:60:0
 flags:IGNORE_ACID
-desc:A shimmering suit of true-silver, forged long ago by dwarven smiths of
-desc: legend.  It gleams with purest white as you gaze upon it.
+desc:Сверкающий доспех из чистого серебра, выкованный давным-давно
+desc: легендарными гномьими кузнецами.  Он сияет чистейшей
+desc: белизной, когда вы смотрите на него.
 
 name:Adamantite Plate Mail~
 type:hard armor
@@ -1782,7 +1800,7 @@ alloc:10:75 to 100
 attack:2d4:-4:0
 armor:80:0
 flags:IGNORE_ACID
-desc:An exquisite suit of nearly impenetrable adamantite.
+desc:Изысканный костюм из почти непробиваемого адамантита.
 
 ### Cloaks ###
 
@@ -1795,7 +1813,7 @@ cost:3
 alloc:20:1 to 100
 attack:0d0:0:0
 armor:1:0
-desc:A traveller's sturdy outer garment.
+desc:Прочная верхняя одежда путешественника.
 
 name:& Fur Cloak~
 type:cloak
@@ -1806,7 +1824,7 @@ cost:600
 alloc:20:20 to 100
 attack:0d0:0:0
 armor:3:0
-desc:A heavy cloak made from fur and lined with leather; a luxury.
+desc:Тяжёлый плащ из меха с кожаной подкладкой; предмет роскоши.
 
 name:& Elven Cloak~
 type:cloak
@@ -1818,8 +1836,9 @@ alloc:8:40 to 100
 attack:0d0:0:0
 armor:6:0
 values:STEALTH[1] | SPEED[1]
-desc:A mantle made of curious silken material by the Galadrim that wondrously
-desc: takes on the hues and shapes of its surroundings.
+desc:Плащ, сделанный народом Галадрима из диковинного шелковистого
+desc: материала, который удивительным образом принимает оттенки
+desc: и формы окружающего его мира.
 
 name:& Ethereal Cloak~
 type:cloak
@@ -1831,8 +1850,9 @@ alloc:10:70 to 100
 attack:0d0:0:0
 armor:0:10
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD 
-desc:This unearthly, completely transparent body mantle folds and drapes in
-desc: iridescent patterns around you.  It weighs absolutely nothing.
+desc:Эта неземной, абсолютно прозрачный плащ для тела складывается
+desc: и переливается вокруг вас радужными узорами.  Он
+desc: абсолютно ничего не весит.
 
 
 ### Gloves ###
@@ -1846,7 +1866,7 @@ cost:5
 alloc:20:1 to 100
 attack:0d0:0:0
 armor:1:0
-desc:Leather hand protection, with an open palm for gripping weapons.
+desc:Кожаная защита для рук, с открытой ладонью для удержания оружия.
 
 name:& Set~ of Gauntlets
 type:gloves
@@ -1857,7 +1877,8 @@ cost:45
 alloc:20:10 to 100
 attack:1d1:0:0
 armor:3:0
-desc:A set of gloves that completely covers the hand and wrist in steel plating.
+desc:Набор перчаток, полностью покрывающих руку и запястье
+desc: стальным панцирем.
 
 name:& Set~ of Mithril Gauntlets
 type:gloves
@@ -1869,7 +1890,7 @@ alloc:20:40 to 100
 attack:1d1:0:0
 armor:6:0
 flags:IGNORE_ACID | IGNORE_FIRE
-desc:A set of gauntlets wrought of light, shining mithril.
+desc:Перчатки, сделанные из светлого, сияющего мифрила.
 
 name:& Set~ of Caestus
 type:gloves
@@ -1880,8 +1901,8 @@ cost:100
 alloc:10:20 to 100
 attack:1d1:0:3
 armor:5:0
-desc:An ancient battle glove designed for hand-to-hand fighting.  Its layered
-desc: leather thongs are enhanced for combat by bloody-looking spikes.
+desc:Древняя боевая перчатка, предназначенная для рукопашного боя.
+desc:  Многослойные кожаные ремешки дополнены кровожадными шипами.
 
 name:& Set~ of Alchemist's Gloves
 type:gloves
@@ -1893,7 +1914,8 @@ alloc:10:50 to 100
 attack:1d1:0:0
 armor:0:5+d5
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
-desc:Highly protective gloves designed for an alchemist's elemental magics.
+desc:Перчатки с высокой степенью защиты, предназначенные для работы
+desc: с элементальными магиями алхимика.
 
 #N:179:& Set~ of Mining Gloves
 #G:]:U
@@ -1912,7 +1934,7 @@ desc:Highly protective gloves designed for an alchemist's elemental magics.
 #W:3:0:20:30
 #A:100:3 to 100
 #P:1:1d1:0:0:0
-#D:A small round shield designed to be useful in deflecting enemy swords.
+#D:Небольшой круглый щит, предназначенный для отражения вражеских мечей.
 
 name:& Wicker Shield~
 type:shield
@@ -1923,7 +1945,7 @@ cost:20
 alloc:20:1 to 100
 attack:1d1:0:0
 armor:2:0
-desc:A light circular frame of wood surrounding fine-grained wickerwork.
+desc:Лёгкий круглый каркас из дерева окружает плетёные детали.
 
 name:& Small Metal Shield~
 type:shield
@@ -1934,7 +1956,8 @@ cost:80
 alloc:20:15 to 100
 attack:1d2:0:0
 armor:5:0
-desc:A round shield of wood reinforced with metal rims and central disk.
+desc:Круглый щит из дерева, укреплённый металлическими ободами
+desc: и центральным диском.
 
 name:& Leather Shield~
 type:shield
@@ -1945,8 +1968,8 @@ cost:200
 alloc:20:10 to 100
 attack:1d3:0:0
 armor:8:0
-desc:A large oval shield made of layered wooden strips with a thick leather
-desc: covering.
+desc:Большой овальный щит из многослойных деревянных реек
+desc: с толстым кожаным верхом.
 
 name:& Large Metal Shield~
 type:shield
@@ -1957,8 +1980,8 @@ cost:500
 alloc:20:30 to 100
 attack:1d5:0:0
 armor:12:0
-desc:An oval shield of wood covered by leather and rimmed with metal.  A large
-desc: iron shield boss offers excellent hand protection.
+desc:Овальный щит из дерева, обтянутый кожей и окантованный металлом.
+desc:  Большой железный щит отлично защищает руки.
 
 name:& Knight's Shield~
 type:shield
@@ -1969,8 +1992,8 @@ cost:750
 alloc:10:50 to 100
 attack:1d6:0:0
 armor:15:0
-desc:A kite-shaped shield with rounded corners that covers the wearer from
-desc: chest to toe, emblazoned with heraldic symbols.
+desc:Щит в форме змеи с закругленными углами, закрывающий владельца
+desc: от груди до пят и украшенный геральдическими символами.
 
 name:& Mithril Shield~
 type:shield
@@ -1982,7 +2005,7 @@ alloc:10:70 to 100
 attack:1d4:0:0
 armor:16:10
 flags:IGNORE_ACID
-desc:A shield of purest white, made of mithril.
+desc:Щит чистого белого цвета, изготовленный из мифрила.
 
 
 
@@ -5073,7 +5096,8 @@ cost:500
 alloc:30:5 to 100
 attack:1d1:0:0
 armor:0:0
-vis-msg:A line of shimmering blue light appears.
+# vis-msg:A line of shimmering blue light appears.
+vis-msg:Появляется линия мерцающего голубого света.
 power:6
 effect:LINE:LIGHT_WEAK
 dice:6d8
@@ -5310,7 +5334,9 @@ dice:250
 effect:BREATH:POIS:0:20
 dice:250
 time:50
-desc:Броня из чешуи, в которой пульсирует энергия гнева.  Требует всех ваших сил, чтобы овладеть Элементами, сражаясь в бесконечной войне, запертой внутри.
+desc:Броня из чешуи, в которой пульсирует энергия гнева.  Требует
+desc: всех ваших сил, чтобы овладеть Элементами, сражаясь в
+desc: бесконечной войне, запертой внутри.
 
 name:Shining Dragon Scale Mail~
 type:dragon armor

@@ -1489,7 +1489,8 @@ static int prompt_for_easy_filter(struct equippable_summary *s, bool apply_not)
 static void display_object_comparison(const struct equippable_summary *s,
 		const struct player *p)
 {
-	char hbuf[120];
+	// char hbuf[120];
+	char hbuf[240];
 	textblock *tb0;
 	region local_area = { 0, 0, 0, 0 };
 

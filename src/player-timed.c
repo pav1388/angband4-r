@@ -321,23 +321,17 @@ static enum parser_error parse_player_timed_grade(struct parser *p)
 	if (food_scl != 1) {
 		l->max *= food_scl;
 		if (l->name) {
-			// if (streq(l->name, "Starving")) {
-			if (streq(l->name, "Голодание")) {
+			if (streq(l->name, "Starving")) {
 				PY_FOOD_STARVE = l->max;
-			// } else if (streq(l->name, "Faint")) {
-			} else if (streq(l->name, "Обморок")) {
+			} else if (streq(l->name, "Faint")) {
 				PY_FOOD_FAINT = l->max;
-			// } else if (streq(l->name, "Weak")) {
-			} else if (streq(l->name, "Слабый")) {
+			} else if (streq(l->name, "Weak")) {
 				PY_FOOD_WEAK = l->max;
-			// } else if (streq(l->name, "Hungry")) {
-			} else if (streq(l->name, "Голодный")) {
+			} else if (streq(l->name, "Hungry")) {
 				PY_FOOD_HUNGRY = l->max;
-			// } else if (streq(l->name, "Fed")) {
-			} else if (streq(l->name, "Сытый")) {
+			} else if (streq(l->name, "Fed")) {
 				PY_FOOD_FULL = l->max;
-			// } else if (streq(l->name, "Full")) {
-			} else if (streq(l->name, "Переел")) {
+			} else if (streq(l->name, "Full")) {
 				PY_FOOD_MAX = l->max;
 			}
 		}

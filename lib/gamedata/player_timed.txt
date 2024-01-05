@@ -261,32 +261,22 @@ fail:5:OPP_POIS
 
 name:CUT
 desc:wounds
-#grade:y:10:Graze:Вы получили царапину.
-grade:y:10:Царапина:Вы получили царапину.
-#grade:y:25:Light Cut:Вы получили легкий порез.
-grade:y:25:Лёг.Порез:Вы получили легкий порез.
-#grade:o:50:Bad Cut:Вы получили неудачный порез.
-grade:o:50:Плох.Порез:Вы получили неудачный порез.
-#grade:o:100:Nasty Cut:Вы получили неприятный порез.
-grade:o:100:Сущ.Порез:Вы получили существенный порез.
-#grade:r:200:Severe Cut:Вы получили сильный порез.
-grade:r:200:Сил.Порез:Вы получили сильный порез.
-#grade:r:1000:Deep Gash:Вы получили глубокую рану.
-grade:r:1000:Глуб.Рана:Вы получили глубокую рану.
-#grade:R:10000:Mortal Wound:Вы получили смертельную рану.
-grade:R:10000:Смерт.Рана:Вы получили смертельную рану.
+grade:y:10:Graze:Вы получили царапину.
+grade:y:25:Light Cut:Вы получили легкий порез.
+grade:o:50:Bad Cut:Вы получили неудачный порез.
+grade:o:100:Nasty Cut:Вы получили неприятный порез.
+grade:r:200:Severe Cut:Вы получили сильный порез.
+grade:r:1000:Deep Gash:Вы получили глубокую рану.
+grade:R:10000:Mortal Wound:Вы получили смертельную рану.
 on-end:Вы больше не истекаете кровью.
 msgt:CUT
 fail:4:ROCK
 
 name:STUN
 desc:stunning
-#grade:o:50:Stun:Вы были оглушены.
-grade:o:50:Оглушение:Вы были оглушены.
-#grade:o:150:Heavy Stun:Вы были сильно оглушены.
-grade:o:150:Тяж.Оглуш:Вы были сильно оглушены.
-#grade:r:10000:Knocked Out:Вы были отправлены в нокаут.
-grade:r:10000:Нокаут:Вы были отправлены в нокаут.
+grade:o:50:Stun:Вы оглушены.
+grade:o:150:Heavy Stun:Вы сильно оглушены.
+grade:r:10000:Knocked Out:Вы отправлены в нокаут.
 on-end:Вы больше не оглушены.
 msgt:STUN
 fail:1:PROT_STUN
@@ -294,18 +284,12 @@ fail:1:PROT_STUN
 # Note food grades are in percantages here, and are translated on parsing
 name:FOOD
 desc:nourishment
-#grade:R:1:Starving: :You are starving!!
-grade:R:1:Голодание: :Вы умираете от голода!!!
-#grade:r:4:Faint:You are still faint.:You are getting faint from hunger!
-grade:r:4:Обморок:Вы всё ещё в обмороке.:Вы теряете сознание от голода!
-#grade:o:8:Weak:You are still weak.:You are getting weak from hunger!
-grade:o:8:Слабый:Вы всё ещё слабы.:Вы слабеете от голода!
-#grade:y:15:Hungry:You are still hungry.:You are getting hungry.
-grade:y:15:Голодный:Вы всё ещё голодны.:Вы проголодались.
-#grade:G:90:Fed:You are no longer hungry.:You are no longer full.
-grade:G:90:Сытый:Вы больше не голодны.:Вы больше не переполнены.
-#grade:g:100:Full:You are full!:
-grade:g:100:Переел:Вы объелись!:
+grade:R:1:Starving: :Вы умираете от голода!!!
+grade:r:4:Faint:Вы всё ещё в обмороке.:Вы теряете сознание от голода!
+grade:o:8:Weak:Вы всё ещё слабы.:Вы слабеете от голода!
+grade:y:15:Hungry:Вы всё ещё голодны.:Вы проголодались.
+grade:G:90:Fed:Вы больше не голодны.:Вы больше не переполнены.
+grade:g:100:Full:Вы объелись!:
 msgt:HUNGRY
 lower-bound:1
 
@@ -428,7 +412,7 @@ resist:POIS
 name:OPP_CONF
 desc:confusion resistance
 #grade:v:10000:RConf:Вы чувствуете себя невосприимчивым к замешательству!
-grade:v:10000:СопКонф:Вы чувствуете себя невосприимчивым к замешательству!
+grade:v:10000:СопЗамеш:Вы чувствуете себя невосприимчивым к замешательству!
 on-end:Вы больше не сопротивляетесь замешательству.
 on-increase:Вы чувствуете себя более устойчивым к замешательству!
 flag-synonym:PROT_CONF:1
@@ -442,8 +426,7 @@ msgt:GENERIC
 
 name:TELEPATHY
 desc:telepathy
-#grade:B:10000:ESP:Ваш разум расширяется.
-grade:B:10000:Телепат:Ваш разум расширяется.
+grade:B:10000:ESP:Ваш разум расширяется.
 on-end:Ваши рамки познания снова ограничены.
 on-increase:Ваш разум расширяется все больше.
 msgt:GENERIC
@@ -465,8 +448,8 @@ msgt:AFRAID
 
 name:SPRINT
 desc:sprinting
-#grade:G:10000:Bold:Вы начинаете спринтерский бег.
-grade:G:10000:Смелый:Вы начинаете спринтерский бег.
+#grade:G:10000:Sprint:Вы начинаете спринтерский бег.
+grade:G:10000:Спринт:Вы начинаете спринтерский бег.
 on-end:Вы внезапно прекращаете спринт.
 msgt:SPEED
 on-end-effect:TIMED_INC_NO_RES:SLOW
@@ -509,36 +492,36 @@ on-end:Вы чувствуете, как ваш разум снова замед
 name:ATT_ACID
 desc:temporary acid brand
 #grade:s:10000:AttAcid:Your {kind} start{s} to drip with acid!
-grade:s:10000:ДопКисл:Your {kind} начинает сочиться кислота!
-on-end:Кислота бесследно исчезает из your {kind}.
+grade:s:10000:ДопКисл:Ваш {kind} начинает сочиться кислота!
+on-end:Кислота бесследно исчезает из вашего {kind}.
 brand:ACID_3
 
 name:ATT_ELEC
 desc:temporary lightning brand
 #grade:b:10000:AttElec:Sparks gather around your {kind}!
-grade:b:10000:ДопЭлек:Искры вспыхивают вокруг your {kind}!
-on-end:Искры угасают в your {kind}.
+grade:b:10000:ДопЭлек:Искры вспыхивают вокруг вашего {kind}!
+on-end:Искры угасают в вашем {kind}.
 brand:ELEC_3
 
 name:ATT_FIRE
 desc:temporary fire brand
 #grade:r:10000:AttFire:Flames surround your {kind}!
-grade:r:10000:ДопОгон:Пламя охватывает your {kind}!
-on-end:Пламя в your {kind} утихает.
+grade:r:10000:ДопОгон:Пламя охватывает ваш {kind}!
+on-end:Пламя в вашем {kind} утихает.
 brand:FIRE_3
 
 name:ATT_COLD
 desc:temporary cold brand
 #grade:w:10000:AttCold:Your {kind} {is} covered in frost!
-grade:w:10000:ДопХол:Your {kind} покрывается инеем!
-on-end:Иней испарется с your {kind}.
+grade:w:10000:ДопХол:Ваш {kind} покрывается инеем!
+on-end:Иней испарется с вашего {kind}.
 brand:COLD_3
 
 name:ATT_POIS
 desc:temporary poison brand
 #grade:g:10000:AttPois:Your {kind} drip{s} with poison!
-grade:g:10000:ДопЯд:Your {kind} отравлен ядом!
-on-end:Яд бесследно исчезает из your {kind}.
+grade:g:10000:ДопЯд:Ваш {kind} отравлен ядом!
+on-end:Яд бесследно исчезает из вашего {kind}.
 brand:POIS_3
 
 name:ATT_CONF
@@ -550,15 +533,15 @@ on-end:Сияние исчезает с ваших рук.
 name:ATT_EVIL
 desc:temporary slay evil
 #grade:w:10000:AttEvil:Your {kind} {is} imbued with holy force!
-grade:w:10000:ДопЗло:Your {kind} наделён священной силой!
-on-end:Священная сила покидает your {kind}.
+grade:w:10000:ДопЗло:Ваш {kind} наделён священной силой!
+on-end:Священная сила покидает ваш {kind}.
 slay:EVIL_2
 
 name:ATT_DEMON
 desc:temporary slay demon
 #grade:R:10000:AttDemon:Your {kind} become{s} a bane of demons!
-grade:R:10000:ДопДемон:Your {kind} становится бичом для демонов!
-on-end:Your {kind} приходит в норму.
+grade:R:10000:ДопДемон:Ваш {kind} становится бичом для демонов!
+on-end:Ваш {kind} приходит в норму.
 slay:DEMON_5
 
 name:ATT_VAMP
@@ -628,8 +611,7 @@ on-end:Вы чувствуете себя менее скрытным.
 
 name:FREE_ACT
 desc:free action
-#grade:G:10000:FrAct:Ваши конечности наполняются энергией!
-grade:G:10000:СопПарал:Ваши конечности наполняются энергией!
+grade:G:10000:FrAct:Ваши конечности наполняются энергией!
 on-end:Ваши конечности возвращаются в нормальное состояние.
 on-increase:Ваши конечности чувствуют себя более энергичными!
 flag-synonym:FREE_ACT:1

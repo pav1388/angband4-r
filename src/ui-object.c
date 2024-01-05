@@ -1708,7 +1708,7 @@ void textui_cmd_ignore_menu(struct object *obj)
 				kind_is_ignored_unaware(obj->kind);
 
 		// char tmp[70];
-		char tmp[140];
+		char tmp[160];
 		object_desc(tmp, sizeof(tmp), obj,
 			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
 		if (!ignored) {

@@ -728,7 +728,8 @@ void become_aware(struct chunk *c, struct monster *mon)
 
 			/* Print a message */
 			if (square_isseen(c, obj->grid))
-				msg("The %s was really a monster!", o_name);
+				// msg("The %s was really a monster!", o_name);
+				msg("%s был настоящим монстром!", o_name);
 
 			/* Clear the mimicry */
 			obj->mimicking_m_idx = 0;
@@ -1500,7 +1501,7 @@ void steal_monster_item(struct monster *mon, int midx)
 						player);
 					drop_near(cave, &obj, 0, player->grid, true, true);
 					// msg("You drop %s.", o_name);
-					msg("Вы выбросили %s.", o_name);
+					msg("Вы роняете %s.", o_name);
 				} else {
 					inven_carry(player, obj, true, true);
 				}

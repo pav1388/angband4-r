@@ -94,7 +94,8 @@ static void display_exit_screen(void)
 
 	put_str_centred(line++, 8, 8+31, "%s", player->full_name);
 	// put_str_centred(line++, 8, 8+31, "the");
-	put_str_centred(line++, 8, 8+31, "%d - %d", (now->tm_year + 1900) - player->age, now->tm_year + 1900);
+	if (!retired)
+		put_str_centred(line++, 8, 8+31, "%d - %d", (now->tm_year + 1900) - player->age, now->tm_year + 1900);
 	
 	if (player->total_winner)
 		// put_str_centred(line++, 8, 8+31, "Magnificent");
@@ -113,14 +114,25 @@ static void display_exit_screen(void)
 	put_str_centred(line++, 8, 8+31, "Золото: %d", (int)player->au);
 	if (retired) {
 		// put_str_centred(line++, 8, 8+31, "Retired on Level %d",
-		put_str_centred(line++, 8, 8+31, "Отставка на этаже %d",
-			player->depth);
+		put_str_centred(line++, 8, 8+31, "Ушёл в Отставку");
+		if (player->depth == 0)
+			put_str_centred(line++, 8, 8+31, "в городе");
+		else
+			put_str_centred(line++, 8, 8+31, "на %d-м этаже", player->depth);
 	} else {
 		// put_str_centred(line++, 8, 8+31, "Killed on Level %d",
-		if (player->depth == 0){put_str_centred(line++, 8, 8+31, "Погиб в городе");}
-		else {put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже", player->depth);}
+		if (player->depth == 0)
+			put_str_centred(line++, 8, 8+31, "Погиб в городе");
+		else
+			put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже", player->depth);
+		
 		// put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
-		put_str_centred(line++, 8, 8+31, "от %s", player->died_from);
+		put_str_centred(line++, 8, 8+31, "от %s", 
+			streq(player->died_from, "starvation") ? "голодания" : 
+			streq(player->died_from, "poison") ? "отравления" : 
+			streq(player->died_from, "a fatal wound") ? "смертельного ранения" : 
+			streq(player->died_from, "Ripe Old Age") ? "Почтенного Возраста" : 
+			player->died_from);
 	}
 
 	line++;
@@ -140,41 +152,41 @@ static void display_exit_screen(void)
 	else
 		strnfmt(buf, sizeof(buf), "ночью %d ", now->tm_mday);
 	
-	switch (now->tm_mon + 1) {
-		case 1:
+	switch (now->tm_mon) {
+		case 0:
 			my_strcat(buf, "января", sizeof(buf));
 			break;
-		case 2:
+		case 1:
 			my_strcat(buf, "февраля", sizeof(buf));
 			break;
-		case 3:
+		case 2:
 			my_strcat(buf, "марта", sizeof(buf));
 			break;
-		case 4:
+		case 3:
 			my_strcat(buf, "апреля", sizeof(buf));
 			break;
-		case 5:
+		case 4:
 			my_strcat(buf, "мая", sizeof(buf));
 			break;
-		case 6:
+		case 5:
 			my_strcat(buf, "июня", sizeof(buf));
 			break;
-		case 7:
+		case 6:
 			my_strcat(buf, "июля", sizeof(buf));
 			break;
-		case 8:
+		case 7:
 			my_strcat(buf, "августа", sizeof(buf));
 			break;
-		case 9:
+		case 8:
 			my_strcat(buf, "сентября", sizeof(buf));
 			break;
-		case 10:
+		case 9:
 			my_strcat(buf, "октября", sizeof(buf));
 			break;
-		case 11:
+		case 10:
 			my_strcat(buf, "ноября", sizeof(buf));
 			break;
-		case 12:
+		case 11:
 			my_strcat(buf, "декабря", sizeof(buf));
 			break;
 		default:
@@ -182,6 +194,8 @@ static void display_exit_screen(void)
 	}
 		
 	put_str_centred(line, 8, 8+31, "%s", buf);
+	if (retired)
+		put_str_centred(line+1, 8, 8+31, "%d года", now->tm_year + 1900);
 }
 
 

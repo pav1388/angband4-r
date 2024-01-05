@@ -867,7 +867,8 @@ struct object *floor_object_for_use(struct player *p, struct object *obj,
 			obj->number = num;
 
 		/* Print a message */
-		msg("You see %s.", name);
+		// msg("You see %s.", name);
+		msg("Вы видите %s.", name);
 	}
 
 	return usable;

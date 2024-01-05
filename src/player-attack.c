@@ -1149,11 +1149,12 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			int dmg = result.dmg;
 			uint32_t msg_type = result.msg_type;
 			// char hit_verb[20];
-			char hit_verb[40];
+			char hit_verb[60];
 			my_strcpy(hit_verb, result.hit_verb, sizeof(hit_verb));
 			mem_free(result.hit_verb);
 
 			if (result.success) {
+				// char o_name[80];
 				char o_name[160];
 
 				hit_target = true;
@@ -1175,7 +1176,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 					dmg = 0;
 					msg_type = MSG_MISS;
 					// my_strcpy(hit_verb, "fails to harm", sizeof(hit_verb));
-					my_strcpy(hit_verb, "не наносите урона",  sizeof(hit_verb));
+					my_strcpy(hit_verb, "не наносит урона",  sizeof(hit_verb));
 				}
 
 				if (!visible) {
@@ -1196,15 +1197,15 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 							dmg_text = format(" (%d)", dmg);
 						}
 
-						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE);
-
+						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL);
+						
 						if (hit_types[j].text) {
 							// msgt(msg_type, "Your %s %s %s%s. %s", o_name, 
-							msgt(msg_type, "Ваш %s %s %s%s. %s", o_name, 
+							msgt(msg_type, "Ваш %s %s по %s%s. %s", o_name, 
 								 hit_verb, m_name, dmg_text, hit_types[j].text);
 						} else {
 							// msgt(msg_type, "Your %s %s %s%s.", o_name, hit_verb,
-							msgt(msg_type, "Ваш %s %s %s%s.", o_name, hit_verb,
+							msgt(msg_type, "Ваш %s %s по %s%s.", o_name, hit_verb,
 								 m_name, dmg_text);
 						}
 					}
@@ -1264,7 +1265,8 @@ struct attack_result make_ranged_shot(struct player *p,
 	struct monster *mon = square_monster(cave, grid);
 	int b = 0, s = 0;
 
-	my_strcpy(hit_verb, "hits", 20);
+	// my_strcpy(hit_verb, "hits", 20);
+	my_strcpy(hit_verb, "попадает", 20);
 
 	/* Did we hit it */
 	if (!test_hit(chance_of_missile_hit(p, ammo, bow, mon), mon->race->ac))
@@ -1301,7 +1303,8 @@ struct attack_result make_ranged_throw(struct player *p,
 	struct monster *mon = square_monster(cave, grid);
 	int b = 0, s = 0;
 
-	my_strcpy(hit_verb, "hits", 20);
+	// my_strcpy(hit_verb, "hits", 20);
+	my_strcpy(hit_verb, "попадает", 20);
 
 	/* If we missed then we're done */
 	if (!test_hit(chance_of_missile_hit(p, obj, NULL, mon), mon->race->ac))

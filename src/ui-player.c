@@ -280,7 +280,6 @@ static const char *likert(int x, int y, uint8_t *attr)
 		*attr = COLOUR_RED;
 		// return ("Very Bad");
 		return ("Скверно");
-		// return (" 1 /10");
 	}
 
 	/* Analyze the value */
@@ -292,14 +291,12 @@ static const char *likert(int x, int y, uint8_t *attr)
 			*attr = COLOUR_RED;
 			// return ("Bad");
 			return ("Плохо");
-			// return (" 2 /10");
 		}
 		case 2:
 		{
 			*attr = COLOUR_RED;
 			// return ("Poor");
 			return ("Слабо");
-			// return (" 3 /10");
 		}
 		case 3:
 		case 4:
@@ -307,21 +304,18 @@ static const char *likert(int x, int y, uint8_t *attr)
 			*attr = COLOUR_YELLOW;
 			// return ("Fair");
 			return ("Честно");
-			// return (" 4 /10");
 		}
 		case 5:
 		{
 			*attr = COLOUR_YELLOW;
 			// return ("Good");
 			return ("Хорошо");
-			// return (" 5 /10");
 		}
 		case 6:
 		{
 			*attr = COLOUR_YELLOW;
 			// return ("Very Good");
 			return ("Похвально");
-			// return (" 6 /10");
 		}
 		case 7:
 		case 8:
@@ -329,7 +323,6 @@ static const char *likert(int x, int y, uint8_t *attr)
 			*attr = COLOUR_L_GREEN;
 			// return ("Excellent");
 			return ("Отлично");
-			// return (" 7 /10");
 		}
 		case 9:
 		case 10:
@@ -340,7 +333,6 @@ static const char *likert(int x, int y, uint8_t *attr)
 			*attr = COLOUR_L_GREEN;
 			// return ("Superb");
 			return ("Лучший");
-			// return (" 8 /10");
 		}
 		case 14:
 		case 15:
@@ -350,14 +342,12 @@ static const char *likert(int x, int y, uint8_t *attr)
 			*attr = COLOUR_L_GREEN;
 			// return ("Heroic");
 			return ("Герой");
-			// return (" 9 /10");
 		}
 		default:
 		{
 			*attr = COLOUR_L_GREEN;
 			// return ("Legendary");
 			return ("Легенда");
-			// return ("10 /10");
 		}
 	}
 }

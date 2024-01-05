@@ -1174,6 +1174,7 @@ void lore_append_toughness(textblock *tb, const struct monster_race *race,
 		// if (percent == 8 || percent / 10 == 8)
 			//textblock_append(tb, "n");
 			// textblock_append(tb, " ");
+		// textblock_append_c(tb, COLOUR_L_BLUE, " %d", percent);
 		textblock_append_c(tb, COLOUR_L_BLUE, " %d%%", percent);
 		// textblock_append(tb, "%% chance to hit such a creature in melee (if you can see it).  ");
 		textblock_append(tb, " шанс поразить существо в ближнем бою (если вы %s видите).  ", 

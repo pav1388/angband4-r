@@ -413,7 +413,8 @@ void spoil_artifact(const char *fname)
 		for (j = 1; j < z_info->a_max; ++j) {
 			const struct artifact *art = &a_info[j];
 			struct artifact artc;
-			char buf2[80];
+			// char buf2[80];
+			char buf2[160];
 			struct object *obj, *known_obj;
 
 			/* We only want objects in the current group */

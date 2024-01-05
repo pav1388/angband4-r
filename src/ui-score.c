@@ -87,13 +87,22 @@ static void display_score_page(const struct high_score scores[], int start,
 
 		/* Died where? */
 		if (!cdun)
-			// strnfmt(out_val, sizeof(out_val), "Killed by %s in the town",
-			strnfmt(out_val, sizeof(out_val), "Убит %s в городе",
+			// strnfmt(out_val, sizeof(out_val), "Killed by %s in the town", score->how);
+			strnfmt(out_val, sizeof(out_val), "Умер от %s в городе",
+					streq(score->how, "starvation") ? "голодания" : 
+					streq(score->how, "poison") ? "отравления" : 
+					streq(score->how, "a fatal wound") ? "смертельного ранения" : 
+					streq(score->how, "Ripe Old Age") ? "Почтенного Возраста" : 
 					score->how);
 		else
 			strnfmt(out_val, sizeof(out_val),
 					// "Killed by %s on dungeon level %d", score->how, cdun);
-					"Убит %s на %d-м этаже", score->how, cdun);
+					"Умер от %s на %d-м этаже", 
+					streq(score->how, "starvation") ? "голодания" : 
+					streq(score->how, "poison") ? "отравления" : 
+					streq(score->how, "a fatal wound") ? "смертельного ранения" : 
+					streq(score->how, "Ripe Old Age") ? "Почтенного Возраста" : 
+					score->how, cdun);
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)

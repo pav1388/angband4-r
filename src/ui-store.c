@@ -283,8 +283,7 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 
 	// char o_name[80];
 	char o_name[160];
-	// char out_val[160];
-	char out_val[240];
+	char out_val[160];
 	uint8_t colour;
 
 	struct store_context *ctx = menu_priv(menu);
@@ -583,7 +582,7 @@ static bool store_sell(struct store_context *ctx)
 			msg("Ваш дом полон.");
 		else
 			// msg("I have not the room in my store to keep it.");
-			msg("У меня больше нет места в магазине для этого.");
+			msg("У меня в магазине нет места для этого.");
 
 		return false;
 	}

@@ -1402,6 +1402,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 	/* Take or kill objects on the floor */
 	obj = square_object(cave, new);
 	while (obj) {
+		// char o_name[80];
 		char o_name[160];
 		bool safe = obj->artifact ? true : false;
 		struct object *next = obj->next;
@@ -1435,7 +1436,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 					&& !ignore_item_ok(player, obj)) {
 				/* Dump a message */
 				// msg("%s tries to pick up %s, but fails.", m_name, o_name);
-				msg("%s пытается поднять %s, но не удается.", m_name, o_name);
+				msg("%s пытается поднять %s, но не удаётся.", m_name, o_name);
 			}
 		} else if (rf_has(mon->race->flags, RF_TAKE_ITEM)) {
 			/*

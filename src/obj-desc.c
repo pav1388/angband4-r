@@ -209,6 +209,7 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
 		// strnfcat(buf, max, &end, "no more ");
 		strnfcat(buf, max, &end, "больше нет ");
 	} else if (number > 1) {
+		// strnfcat(buf, max, &end, "%u ", number);
 		strnfcat(buf, max, &end, "%u ", number);
 	// } else if (object_is_known_artifact(obj)) {
 		// strnfcat(buf, max, &end, "the ");
@@ -303,14 +304,15 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 
 			if (!singular || !plural2 || !plural5 || !endmark) return end;
 			
-			uint8_t mod = number % 10;
+			uint8_t mod10 = number % 10;
+			uint8_t mod100 = number % 100;
 			
-			if ((!pluralise) || ((mod == 1) && (number != 11))) {
+			if ((!pluralise) || ((mod10 == 1) && (mod100 != 11))) {
 				strnfcat(buf, max, &end, "%.*s",
 					(int) (plural2 - singular) - 1,
 					singular);
 			} else {
-				if ((mod > 1) && (mod < 5) && (number != 12) && (number != 13) && (number != 14)) {
+				if ((mod10 > 1) && (mod10 < 5) && (mod100 != 12) && (mod100 != 13) && (mod100 != 14)) {
 					strnfcat(buf, max, &end, "%.*s",
 						(int) (plural5 - plural2) - 1, plural2);
 				} else {

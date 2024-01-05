@@ -3943,7 +3943,7 @@ void do_cmd_messages(void)
 
 		/* Display header */
 		// prt(format("Message recall (%d-%d of %d), offset %d",
-		prt(format("Воспоминания (%d-%d of %d), сдвиг %d",
+		prt(format("Воспоминания (%d-%d из %d), сдвиг %d симв",
 				   i, i + j - 1, n, q), 0, 0);
 
 		/* Display prompt (not very informative) */
@@ -3984,7 +3984,8 @@ void do_cmd_messages(void)
 				case '=':
 				{
 					/* Get the string to find */
-					prt("Find: ", hgt - 1, 0);
+					// prt("Find: ", hgt - 1, 0);
+					prt("Поиск: ", hgt - 1, 0);
 					if (!askfor_aux(shower, sizeof shower, NULL)) continue;
 		
 					/* Set to find */

@@ -46,7 +46,7 @@ static void player_pickup_gold(struct player *p)
 {
 	int32_t total_gold = 0L;
 	// char name[30] = "";
-	char name[60] = "";
+	char name[100] = "";
 
 	struct object *obj = square_object(cave, p->grid), *next;
 

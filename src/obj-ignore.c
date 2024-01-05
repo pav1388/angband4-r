@@ -62,7 +62,7 @@ static quality_ignore_struct quality_mapping[] =
 	{ ITYPE_ARROW,					TV_ARROW,		"" },
 	{ ITYPE_BOLT,					TV_BOLT,		"" },
 	// { ITYPE_ROBE,					TV_SOFT_ARMOR,	"Robe" },
-	{ ITYPE_ROBE,					TV_SOFT_ARMOR,	"Халат" },
+	{ ITYPE_ROBE,					TV_SOFT_ARMOR,	"Мантия" },
 	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Black" },
 	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Чёрный" },
 	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Blue" },
@@ -70,10 +70,11 @@ static quality_ignore_struct quality_mapping[] =
 	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"White" },
 	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Белый" },
 	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Red" },
+	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Красный" },
 	// { ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Green" },
 	{ ITYPE_BASIC_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Зелёный" },
 	// { ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Multi" },
-	{ ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Множеств." },
+	{ ITYPE_MULTI_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Многоцвет." },
 	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Shining" },
 	{ ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Сияние" },
 	// { ITYPE_HIGH_DRAGON_ARMOR,		TV_DRAG_ARMOR,	"Law" },
@@ -125,7 +126,7 @@ quality_name_struct quality_values[IGNORE_MAX] =
 	// { IGNORE_GOOD,				"good" },
 	{ IGNORE_GOOD,				"хорошее" },
 	// { IGNORE_ALL,				"non-artifact" },
-	{ IGNORE_ALL,				"не артефакт (все)" },
+	{ IGNORE_ALL,				"не-артефакт (все)" },
 };
 
 uint8_t ignore_level[ITYPE_MAX];

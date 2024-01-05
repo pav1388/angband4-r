@@ -187,6 +187,7 @@ void do_cmd_inscribe(struct command *cmd)
 	const char *str;
 
 	char prompt[1024];
+	// char o_name[80];
 	char o_name[160];
 
 	if (!player_get_resume_normal_shape(player, cmd)) {
@@ -277,6 +278,7 @@ void do_cmd_takeoff(struct command *cmd)
 void do_cmd_wield(struct command *cmd)
 {
 	struct object *equip_obj;
+	// char o_name[80];
 	char o_name[160];
 	const char *act;
 
@@ -718,10 +720,16 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 			} else if (first_remainder) {
 				label = gear_to_label(player, first_remainder);
 				//msg("You have %s (1st %c).", name, label);
-				msg("У вас %s (1-ый %c).", name, label);
+				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0)
+					msg("У вас %s (1-ый %c).", name, label);
+				else
+					msg("У вас есть %s (1-ый %c).", name, label);
 			} else {
 				// msg("You have %s (%c).", name, label);
-				msg("У вас %s (%c).", name, label);
+				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0)
+					msg("У вас %s (%c).", name, label);
+				else
+					msg("У вас есть %s (%c).", name, label);
 			}
 		} else if (used && use == USE_CHARGE) {
 			/* Describe charges */
@@ -1137,11 +1145,11 @@ void do_cmd_cast(struct command *cmd)
 		const char *verb = streq(spell->realm->verb, "cast") ? "произнести" : 
 			streq(spell->realm->verb, "recite") ? "прочесть" : 
 			streq(spell->realm->verb, "chant") ? "напеть" : 
-			streq(spell->realm->verb, "perform") ? "провести" : "";
+			streq(spell->realm->verb, "perform") ? "провести" : "произнести";
 		const char *noun = streq(spell->realm->spell_noun, "spell") ? "о заклинание" : 
 			streq(spell->realm->spell_noun, "prayer") ? "у молитвы" : 
 			streq(spell->realm->spell_noun, "verse") ? "от стих" : 
-			streq(spell->realm->spell_noun, "ritual") ? "от ритуал" : "";
+			streq(spell->realm->spell_noun, "ritual") ? "от ритуал" : "о заклинание";
 		/* Warning */
 		// msg("You do not have enough mana to %s this %s.", verb, noun);
 		msg("У вас недостаточно маны чтобы %s эт%s.", verb, noun);
@@ -1243,7 +1251,7 @@ void do_cmd_study_book(struct command *cmd)
 			streq(book->realm->spell_noun, "spell") ? "го заклинания" : 
 			streq(book->realm->spell_noun, "prayer") ? "й молитвы" : 
 			streq(book->realm->spell_noun, "verse") ? "го стиха" : 
-			streq(book->realm->spell_noun, "ritual") ? "го ритуала" : "");
+			streq(book->realm->spell_noun, "ritual") ? "го ритуала" : "го заклинания");
 	} else {
 		spell_learn(spell_index);
 		player->upkeep->energy_use = z_info->move_energy;

@@ -2457,7 +2457,7 @@ bool effect_handler_BANISH(effect_handler_context_t *context)
 
 	/* Hurt the player */
 	//take_hit(player, dam, "the strain of casting Banishment");
-	take_hit(player, dam, "напряжение от наложения Изгнания");
+	take_hit(player, dam, "напряжения от наложения Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;
@@ -2507,7 +2507,7 @@ bool effect_handler_MASS_BANISH(effect_handler_context_t *context)
 
 	/* Hurt the player */
 	//	take_hit(player, dam, "the strain of casting Mass Banishment");
-	take_hit(player, dam, "напряжение от наложения Массового Изгнания");
+	take_hit(player, dam, "напряжения от наложения Массового Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;

@@ -471,7 +471,7 @@ static const char *comment_accept[] =
 	// "Done!",
 	// "Taken!"
 	"Хорошо.",
-	"Отлично",
+	"Отлично.",
 	"Принято!",
 	"Согласен!",
 	"Готово!",
@@ -1684,6 +1684,7 @@ void do_cmd_buy(struct command *cmd)
 
 	struct object *obj, *bought, *known_obj;
 
+	// char o_name[80];
 	char o_name[160];
 	int price;
 
@@ -1903,6 +1904,7 @@ void do_cmd_sell(struct command *cmd)
 	struct object dummy_item;
 	struct store *store = store_at(cave, player->grid);
 	int price, dummy, value;
+	// char o_name[120];
 	char o_name[240];
 	char label;
 
@@ -2048,6 +2050,7 @@ void do_cmd_stash(struct command *cmd)
 	int amt;
 	struct object dummy;
 	struct store *store = store_at(cave, player->grid);
+	// char o_name[120];
 	char o_name[240];
 	char label;
 
@@ -2102,7 +2105,7 @@ void do_cmd_stash(struct command *cmd)
 
 	/* Message */
 	// msg("You drop %s (%c).", o_name, label);
-	msg("Вы выбросили %s (%c).", o_name, label);
+	msg("Вы роняете %s (%c).", o_name, label);
 
 	/* Handle stuff */
 	handle_stuff(player);

@@ -79,8 +79,7 @@ void do_cmd_retire(struct command *cmd)
 {
 	/* Treat retired character as dead to satisfy end of game logic. */
 	player->is_dead = true;
-	// my_strcpy(player->died_from, "Retiring", sizeof(player->died_from));
-	my_strcpy(player->died_from, "Отставка", sizeof(player->died_from));
+	my_strcpy(player->died_from, "Retiring", sizeof(player->died_from)); // не переводить
 }
 
 /**

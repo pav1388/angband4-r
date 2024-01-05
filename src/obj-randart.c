@@ -188,7 +188,7 @@ static int artifact_power(int a_idx, const char *reason, bool verbose)
 	struct object *obj = object_new();
 	struct object *known_obj = object_new();
 	// char buf[256];
-	char buf[700];
+	char buf[1024];
 	int32_t power;
 
 	file_putf(log_file, "********** Evaluating %s ********\n", reason);

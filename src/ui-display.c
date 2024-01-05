@@ -1317,8 +1317,39 @@ static size_t prt_tmd(int row, int col)
 				grade = grade->next;
 			}
 			if (!grade->name) continue;
-			c_put_str(grade->color, grade->name, row, col + len);
-			len += utf8_strlen(grade->name) + 1;
+			// c_put_str(grade->color, grade->name, row, col + len);
+			char name_ru[40];
+			if (i == TMD_FOOD) { switch (grade->grade) {
+				case 1: my_strcpy(name_ru, "Голодание", sizeof(name_ru)); break; // Starving
+				case 2: my_strcpy(name_ru, "Обморок", sizeof(name_ru)); break; // Faint
+				case 3: my_strcpy(name_ru, "Слабый", sizeof(name_ru)); break; // Weak
+				case 4: my_strcpy(name_ru, "Голодный", sizeof(name_ru)); break; // Hungry
+				case 5: my_strcpy(name_ru, "Сытый", sizeof(name_ru)); break; // Fed
+				case 6: my_strcpy(name_ru, "Переел", sizeof(name_ru)); break; // Full
+				default: break; }}
+			else if (i == TMD_STUN) { switch (grade->grade) {
+				case 1: my_strcpy(name_ru, "Оглушение", sizeof(name_ru)); break; // Stun
+				case 2: my_strcpy(name_ru, "Тяж.Оглуш", sizeof(name_ru)); break; // Heavy Stun
+				case 3: my_strcpy(name_ru, "Нокаут", sizeof(name_ru)); break; // Knocked Out
+				default: break;	}}
+			else if (i == TMD_CUT) { switch (grade->grade) {
+				case 1: my_strcpy(name_ru, "Царапина", sizeof(name_ru)); break; // Graze
+				case 2: my_strcpy(name_ru, "Лёг.Порез", sizeof(name_ru)); break; // Light Cut
+				case 3: my_strcpy(name_ru, "Плох.Порез", sizeof(name_ru)); break; // Bad Cut
+				case 4: my_strcpy(name_ru, "Сущ.Порез", sizeof(name_ru)); break; // Nasty Cut
+				case 5: my_strcpy(name_ru, "Сил.Порез", sizeof(name_ru)); break; // Severe Cut
+				case 6: my_strcpy(name_ru, "Глуб.Рана", sizeof(name_ru)); break; // Deep Gash
+				case 7: my_strcpy(name_ru, "Смерт.Рана", sizeof(name_ru)); break; // Mortal Wound
+				default: break; }}
+			else if (i == TMD_TELEPATHY) { my_strcpy(name_ru, "Телепат", sizeof(name_ru));	} // ESP
+			else if (i == TMD_FREE_ACT) { my_strcpy(name_ru, "СвобДвиж", sizeof(name_ru));	} // FrAct
+			else
+				my_strcpy(name_ru, grade->name, sizeof(name_ru));
+			
+			// c_put_str(grade->color, grade->name, row, col + len);
+			c_put_str(grade->color, name_ru, row, col + len);
+			// len += utf8_strlen(grade->name) + 1;
+			len += utf8_strlen(name_ru) + 1;
 
 			/* Food meter */
 			if (i == TMD_FOOD) {

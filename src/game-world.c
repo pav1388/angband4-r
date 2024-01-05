@@ -305,8 +305,7 @@ static void decrease_timeouts(void)
 			case TMD_CUT:
 			{
 				/* Check for truly "mortal" wound */
-				// if (player_timed_grade_eq(player, i, "Mortal Wound")) {
-				if (player_timed_grade_eq(player, i, "Смерт.Рана")) {
+				if (player_timed_grade_eq(player, i, "Mortal Wound")) {
 					decr = 0;
 				} else {
 					decr = adjust;
@@ -606,21 +605,17 @@ void process_world(struct chunk *c)
 		if (player_has(player, PF_ROCK)) {
 			/* Rock players just maintain */
 			i = 0;
-		// } else if (player_timed_grade_eq(player, TMD_CUT, "Mortal Wound") ||
-		} else if (player_timed_grade_eq(player, TMD_CUT, "Смерт.Рана") ||
-				   // player_timed_grade_eq(player, TMD_CUT, "Deep Gash")) {
-				   player_timed_grade_eq(player, TMD_CUT, "Глуб.Рана")) {
+		} else if (player_timed_grade_eq(player, TMD_CUT, "Mortal Wound") ||
+				   player_timed_grade_eq(player, TMD_CUT, "Deep Gash")) {
 			i = 3;
-		// } else if (player_timed_grade_eq(player, TMD_CUT, "Severe Cut")) {
-		} else if (player_timed_grade_eq(player, TMD_CUT, "Сил.Порез")) {
+		} else if (player_timed_grade_eq(player, TMD_CUT, "Severe Cut")) {
 			i = 2;
 		} else {
 			i = 1;
 		}
 
 		/* Take damage */
-		// take_hit(player, i, "a fatal wound");
-		take_hit(player, i, "смертельного ранения");
+		take_hit(player, i, "a fatal wound");
 		if (player->is_dead) {
 			return;
 		}
@@ -646,19 +641,19 @@ void process_world(struct chunk *c)
 	if (player->timed[TMD_BLACKBREATH]) {
 		if (one_in_(2)) {
 			// msg("The Black Breath sickens you.");
-			msg("Черное Дыхание мутит вас.");
+			msg("Чёрное Дыхание мутит вас.");
 			player_stat_dec(player, STAT_CON, false);
 		}
 		if (one_in_(2)) {
 			// msg("The Black Breath saps your strength.");
-			msg("Черное Дыхание лишает вас сил.");
+			msg("Чёрное Дыхание лишает вас сил.");
 			player_stat_dec(player, STAT_STR, false);
 		}
 		if (one_in_(2)) {
 			/* Life draining */
 			int drain = 100 + (player->exp / 100) * z_info->life_drain_percent;
 			// msg("The Black Breath dims your life force.");
-			msg("Черное Дыхание уменьшает вашу жизненную силу.");
+			msg("Чёрное Дыхание уменьшает вашу жизненную силу.");
 			player_exp_lose(player, drain, false);
 		}
 	}
@@ -666,8 +661,7 @@ void process_world(struct chunk *c)
 	/*** Check the Food, and Regenerate ***/
 
 	/* Digest */
-	// if (!player_timed_grade_eq(player, TMD_FOOD, "Full")) {
-	if (!player_timed_grade_eq(player, TMD_FOOD, "Переел")) {
+	if (!player_timed_grade_eq(player, TMD_FOOD, "Full")) {
 		/* Digest normally */
 		if (!(turn % 100)) {
 			/* Basic digestion rate based on speed */
@@ -706,7 +700,7 @@ void process_world(struct chunk *c)
 	}
 
 	/* Faint or starving */
-	if (player_timed_grade_eq(player, TMD_FOOD, "Обморок")) {
+	if (player_timed_grade_eq(player, TMD_FOOD, "Faint")) {
 		/* Faint occasionally */
 		if (!player->timed[TMD_PARALYZED] && one_in_(10)) {
 			/* Message */
@@ -718,7 +712,7 @@ void process_world(struct chunk *c)
 			(void)player_inc_timed(player, TMD_PARALYZED,
 				1 + randint0(5), true, true, false);
 		}
-	} else if (player_timed_grade_eq(player, TMD_FOOD, "Голодание")) {
+	} else if (player_timed_grade_eq(player, TMD_FOOD, "Starving")) {
 		/* Calculate damage */
 		i = (PY_FOOD_STARVE - player->timed[TMD_FOOD]) / 10;
 
@@ -976,8 +970,7 @@ void process_player(void)
 
 		/* Paralyzed or Knocked Out player gets no turn */
 		if (player->timed[TMD_PARALYZED] ||
-			// player_timed_grade_eq(player, TMD_STUN, "Knocked Out")) {
-			player_timed_grade_eq(player, TMD_STUN, "Нокаут")) {
+			player_timed_grade_eq(player, TMD_STUN, "Knocked Out")) {
 			cmdq_push(CMD_SLEEP);
 		}
 

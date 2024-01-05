@@ -288,7 +288,8 @@ desc: нетелесные монстры могут проходить скво
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 
 code:MAGMA_K
-name:магм.жила с сокровищем
+# name:магм.жила с сокровищем
+name:магмовая жила с сокровищем
 graphics:*:o
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | MAGMA
@@ -300,7 +301,8 @@ desc: Препятствует любым заклинаниям, снаряда
 desc: Внутри очевидно находятся сокровища.
 
 code:QUARTZ_K
-name:кварц.жила с сокровищем
+# name:кварц.жила с сокровищем
+name:кварцевая жила с сокровищем
 graphics:*:y
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | QUARTZ

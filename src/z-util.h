@@ -60,7 +60,7 @@ extern void (*quit_aux)(const char *);
  * Return "s" (or not) depending on whether n is singular.
  */
 #define PLURAL(n)				((n) == 1 ? "" : "s")
-#define PLURAL_RU(n, a, b, c)	((n % 10 == 1) && (n != 11) ? a : (n % 10 > 1) && (n % 10 < 5) && (n != 12) && (n != 13) && (n != 14) ? b : c)
+#define PLURAL_RU(n, a, b, c)	((n % 10 == 1) && (n % 100 != 11) ? a : (n % 10 > 1) && (n % 10 < 5) && (n % 100 != 12) && (n % 100 != 13) && (n % 100 != 14) ? b : c)
 
 /**
  * Return the verb form matching the given count
