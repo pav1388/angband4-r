@@ -988,7 +988,7 @@ bool player_get_resume_normal_shape(struct player *p, struct command *cmd)
 		char prompt[200];
 		strnfmt(prompt, sizeof(prompt),
 		        // "Change back and %s (y/n) or (r)eturn to normal? ",
-		        "Измениться обратно и %s (y/n) или (r)вернуться к нормальному состоянию? ",
+		        "Измениться обратно и %s (y/n) или (r) вернуться к норме? ",
 		        cmd_verb(cmd->code));
 		char answer = get_char(prompt, "yrn", 3, 'n');
 
@@ -1053,7 +1053,7 @@ bool player_can_cast(const struct player *p, bool show_msg)
 	if (!p->class->magic.total_spells) {
 		if (show_msg) {
 			// msg("You cannot pray or produce magics.");
-			msg("Вы не можете молиться или вызывать магию.");
+			msg("Вы не можете молиться или использовать магию.");
 		}
 		return false;
 	}

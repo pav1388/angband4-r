@@ -256,7 +256,8 @@ static void get_subject(char *buf, size_t buflen,
 			strnfmt(buf, buflen, "%s", race->name);
 			my_strcap(buf);
 		} else {
-			char rname[80];
+			// char rname[80];
+			char rname[160];
 			/* Get the plural of the race name */
 			if (race->plural != NULL) {
 				// strnfmt(buf, buflen, "%d %s", count, race->plural);
@@ -270,6 +271,7 @@ static void get_subject(char *buf, size_t buflen,
 				my_strcap(rname);
 				strnfmt(buf, buflen, "%s", race->name);
 				// plural_aux(buf, buflen);
+				strnfmt(buf, buflen, "ы"); // DDDEL
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {
@@ -393,9 +395,9 @@ static int get_message_type(int msg_code, const struct monster_race *race)
 static void show_message(struct monster_race_message *msg)
 {
 	// char subject[60] = "";
-	char subject[120] = "";
+	char subject[160] = "";
 	// char body[60];
-	char body[120];
+	char body[160];
 
 	/* Some messages don't require a monster name */
 	if (!skip_subject(msg->msg_code)) {

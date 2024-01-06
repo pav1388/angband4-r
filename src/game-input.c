@@ -277,7 +277,6 @@ bool confirm_debug(void)
 
 	/* Then verify. */
 	// return get_check("Are you sure you want to use the debug commands? ");
-	// return get_check("Are you sure you want to use the debug commands? ");
 	return get_check("Вы уверены, что хотите использовать отладочные команды? ");
 }
 

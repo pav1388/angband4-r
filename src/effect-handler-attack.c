@@ -753,7 +753,7 @@ bool effect_handler_BREATH(effect_handler_context_t *context)
 		}
 	} else if (context->origin.what == SRC_PLAYER) {
 		// msgt(projections[type].msgt, "You breathe %s.", projections[type].desc);
-		msgt(projections[type].msgt, "Ваше дыхание %s.", projections[type].desc);
+		msgt(projections[type].msgt, "Вы дышите %s.", projections[type].desc);
 
 		/* Ask for a target if no direction given */
 		if (context->dir == DIR_TARGET && target_okay()) {

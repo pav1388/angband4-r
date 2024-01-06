@@ -25,7 +25,7 @@
 // #define NDS_CPAD_DEADZONE 20
 #define NDS_CPAD_DEADZONE 70
 // #define NDS_CPAD_MIN_COOLDOWN 5
-#define NDS_CPAD_MIN_COOLDOWN 10
+#define NDS_CPAD_MIN_COOLDOWN 8
 
 typedef struct {
 	char input;

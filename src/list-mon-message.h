@@ -10,11 +10,11 @@
 
 /* id						MSG_GENERIC,	text */
 // MON_MSG(NONE,				MSG_GENERIC,	false,	"[is|are] hurt.")
-MON_MSG(NONE,				MSG_GENERIC,	false,	"страдает.")
+MON_MSG(NONE,				MSG_GENERIC,	false,	"[страдает|страдают].")
 // MON_MSG(DIE,				MSG_KILL,		false,	"die[s].")
-MON_MSG(DIE,				MSG_KILL,		false,	"[умерли|умер].")
+MON_MSG(DIE,				MSG_KILL,		false,	"[умер|умерли].")
 // MON_MSG(DESTROYED,			MSG_KILL,		false,	"[is|are] destroyed.")
-MON_MSG(DESTROYED,			MSG_KILL,		false,	"уничтожен[ы].")
+MON_MSG(DESTROYED,			MSG_KILL,		false,	"уничтожен[|ы].")
 // MON_MSG(RESIST_A_LOT,		MSG_GENERIC,	false,	"resist[s] a lot.")
 MON_MSG(RESIST_A_LOT,		MSG_GENERIC,	false,	"упорно сопротивляется.")
 // MON_MSG(HIT_HARD,			MSG_GENERIC,	false,	"[is|are] hit hard.")
@@ -28,7 +28,7 @@ MON_MSG(RESIST_SOMEWHAT,	MSG_GENERIC,	false,	"немного сопротивл�
 // MON_MSG(UNAFFECTED,			MSG_GENERIC,	false,	"[is|are] unaffected!")
 MON_MSG(UNAFFECTED,			MSG_GENERIC,	false,	"не пострадал[и]!")
 // MON_MSG(SPAWN,				MSG_GENERIC,	false,	"spawn[s]!")
-MON_MSG(SPAWN,				MSG_GENERIC,	false,	"размножается!")
+MON_MSG(SPAWN,				MSG_GENERIC,	false,	"размножа[ется|ются]!")
 // MON_MSG(HEALTHIER,			MSG_GENERIC,	false,	"look[s] healthier.")
 MON_MSG(HEALTHIER,			MSG_GENERIC,	false,	"выглядит здоровым.")
 // MON_MSG(FALL_ASLEEP,		MSG_GENERIC,	false,	"fall[s] asleep!")

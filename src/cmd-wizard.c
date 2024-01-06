@@ -2520,7 +2520,8 @@ void do_cmd_wiz_stat_item(struct command *cmd)
 		// char prompt[80], s[80];
 		char prompt[160], s[160];
 
-		strnfmt(prompt, sizeof(prompt), "Depth for treasure (0-%d): ",
+		// strnfmt(prompt, sizeof(prompt), "Depth for treasure (0-%d): ",
+		strnfmt(prompt, sizeof(prompt), "Глубина для сокровища (0-%d): ",
 			z_info->max_depth - 1);
 
 		/* Set default. */

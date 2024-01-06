@@ -298,7 +298,8 @@ static void race_help(int i, void *db, const region *l)
 				   (r->el_info[ability->index].res_level != ability->value)) {
 			continue;
 		}
-		text_out_e("\n{light umber}%s{/}", ability->name);
+		// text_out_e("\n%s", ability->name);
+		text_out_e("\n%s {Slate}(%s){/}", ability->name, ability->desc);
 		n_flags++;
 	}
 
@@ -354,10 +355,19 @@ static void class_help(int i, void *db, const region *l)
 	if (c->magic.total_spells) {
 		int count;
 		struct magic_realm *realm = class_magic_realms(c, &count), *realm_next;
-		// char buf[120];
-		char buf[160];
-
-		my_strcpy(buf, realm->name, sizeof(buf));
+		char buf[120];
+		
+		// my_strcpy(buf, realm->name, sizeof(buf));
+		if (streq(realm->name, "arcane"))
+			my_strcpy(buf, "Тайную", sizeof(buf));
+		else if (streq(realm->name, "divine"))
+			my_strcpy(buf, "Божественную", sizeof(buf));
+		else if (streq(realm->name, "nature"))
+			my_strcpy(buf, "Природную", sizeof(buf));
+		else if (streq(realm->name, "shadow"))
+			my_strcpy(buf, "Теневую", sizeof(buf));
+		else my_strcpy(buf, realm->name, sizeof(buf));
+		
 		realm_next = realm->next;
 		mem_free(realm);
 		realm = realm_next;
@@ -370,14 +380,24 @@ static void class_help(int i, void *db, const region *l)
 					// my_strcat(buf, " and ", sizeof(buf));
 					my_strcat(buf, " и ", sizeof(buf));
 				}
-				my_strcat(buf, realm->name, sizeof(buf));
+				// my_strcat(buf, realm->name, sizeof(buf));
+				if (streq(realm->name, "arcane"))
+					my_strcpy(buf, "Тайную", sizeof(buf));
+				else if (streq(realm->name, "divine"))
+					my_strcpy(buf, "Божественную", sizeof(buf));
+				else if (streq(realm->name, "nature"))
+					my_strcpy(buf, "Природную", sizeof(buf));
+				else if (streq(realm->name, "shadow"))
+					my_strcpy(buf, "Теневую", sizeof(buf));
+				else my_strcpy(buf, realm->name, sizeof(buf));
+		
 				realm_next = realm->next;
 				mem_free(realm);
 				realm = realm_next;
 			}
 		}
 		// text_out_e("\nLearns %s magic", buf);
-		text_out_e("\n{light umber}Изучает{/} {orange}%s{/} {light umber}магию{/}", buf);
+		text_out_e("\nИзучает {orange}%s{/} магию", buf);
 	}
 
 	for (ability = player_abilities; ability; ability = ability->next) {
@@ -392,7 +412,7 @@ static void class_help(int i, void *db, const region *l)
 			continue;
 		}
 
-		text_out_e("\n{light umber}%s{/}", ability->name);
+		text_out_e("\n%s", ability->name);
 		n_flags++;
 	}
 

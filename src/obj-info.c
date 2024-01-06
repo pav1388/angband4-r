@@ -97,7 +97,8 @@ static size_t element_info_collect(const bool list[], const char *recepticle[])
 
 	for (i = 0; i < ELEM_MAX; i++) {
 		if (list[i])
-			recepticle[count++] = projections[i].name;
+			// recepticle[count++] = projections[i].name;
+			recepticle[count++] = projections[i].desc;
 	}
 
 	return count;
