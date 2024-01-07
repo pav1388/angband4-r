@@ -807,10 +807,10 @@ void inven_item_charges(struct object *obj)
 	/* Require staff/wand */
 	if (tval_can_have_charges(obj) && object_flavor_is_aware(obj)) {
 		// msg("You have %d charge%s remaining.",
-		msg("У вас остал%s %d заряд%s.", PLURAL_RU(obj->pval, "ся", "ось", "ось"), 
-			PLURAL_RU(obj->pval, "", "а", "ов"));
 				// obj->pval,
 				// PLURAL(obj->pval));
+	msg("У вас остал%s %d заряд%s.", PLURAL_RU(obj->pval, "ся", "ось", "ось"), obj->pval,
+			PLURAL_RU(obj->pval, "", "а", "ов"));
 				
 	}
 }
