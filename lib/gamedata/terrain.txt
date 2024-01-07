@@ -111,13 +111,15 @@ code:NONE
 name:неизвестность
 graphics: :w
 priority:2
-
+look-prefix:неизвестность
 
 code:FLOOR
 name:пустой пол
 graphics:.:w
 priority:5
 flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TRAP | TORCH
+look-prefix:пустой пол
+look-in-preposition:стоите на пустом полу
 desc:Открытый пол или голая земля.  По нему может пройти что угодно,
 desc: и на нём можно разместить ловушки или предметы.
 
@@ -128,6 +130,8 @@ priority:17
 flags:DOOR_ANY | DOOR_CLOSED | INTERESTING
 digging:5
 confused-msg:ударяетесь о дверь
+look-prefix:закрытую дверь
+# look-in-preposition: 
 desc:Двери могут быть заперты, а пройти через них может быть непросто.
 desc: С замками поможет справиться навык обезвреживания, но вы также
 desc: можете взять кирку или открыть их с помощью магии. Двери также
@@ -139,7 +143,8 @@ name:открытая дверь
 graphics:':U
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
-look-in-preposition: 
+look-prefix:открытую дверь
+look-in-preposition:стоите в проёме открытой двери
 desc:Дверь, которая уже открыта.  Игрок, монстр, заклинание и снаряд
 desc: могут пройти через неё, пока она остаётся открытой.
 
@@ -148,7 +153,8 @@ name:сломанная дверь
 graphics:':u
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
-look-in-preposition: 
+look-prefix:сломанную дверь
+look-in-preposition:стоите в проёме сломанной двери
 desc:Дверь настолько сломана, что ее невозможно закрыть.
 
 code:LESS
@@ -157,7 +163,9 @@ graphics:<:w
 priority:25
 flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | UPSTAIR
 flags:EASY | TORCH
-desc:Лестница вверх, в менее глубокую часть подземелья.
+look-prefix:лестницу вверх
+look-in-preposition:стоите на нижнй ступени лестницы вверх
+desc:Лестница вверх, в более высокую часть подземелья.
 
 code:MORE
 name:лестница вниз
@@ -165,6 +173,8 @@ graphics:>:w
 priority:25
 flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | DOWNSTAIR
 flags:EASY | TORCH
+look-prefix:лестницу вниз
+look-in-preposition:стоите на верхней ступени лестницы вниз
 desc:Лестница вниз, в более глубокую часть подземелья.
 
 code:STORE_GENERAL
@@ -172,8 +182,8 @@ name:Главный Магазин
 graphics:1:U
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Главный Магазин
+look-in-preposition:находитесь в Главном Магазине
 desc:В Главном Магазине продаются продукты питания, снаряды
 desc: и осветительные приборы.
 
@@ -182,8 +192,8 @@ name:Арсенал
 graphics:2:s
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Арсенал
+look-in-preposition:находитесь в Арсенале
 desc:Доспехи, продающиеся здесь, обеспечат вам защиту от ударов врагов.
 
 code:STORE_WEAPON
@@ -191,8 +201,8 @@ name:Оружейная Кузня
 graphics:3:w
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Оружейную Кузню
+look-in-preposition:находитесь в Оружейной Кузне
 desc:Оружие для ударов и стрельбы по врагам выковывается в жарком, едком
 desc: подсобном помещении этой заманчивой мастерской.
 
@@ -201,8 +211,8 @@ name:Магазин Книг
 graphics:4:g
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Магазин Книг
+look-in-preposition:находитесь в Магазине Книг
 desc:Тихое место для размышлений, уставленное полками с мистическими
 desc: книгами.
 
@@ -211,8 +221,8 @@ name:Алхимическая Лавка
 graphics:5:b
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Алхимическую Лавку
+look-in-preposition:находитесь в Алхимической Лавке
 desc:Тусклая, ароматная комната, где торгуют зельями и свитками.
 
 code:STORE_MAGIC
@@ -220,8 +230,8 @@ name:Магический Магазин
 graphics:6:r
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Магический Магазин
+look-in-preposition:находитесь в Магическом Магазине
 desc:Магазин устройств и украшений, в которых заключена магия.
 
 code:STORE_BLACK
@@ -229,8 +239,8 @@ name:Чёрный Рынок
 graphics:7:D
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в Чёрный Рынок
+look-in-preposition:находитесь на Чёрном Рынке
 desc:Заходя в это неприглядное заведение, будьте бдительны и держите
 desc: кошелек в руках - не ждите дружелюбного обслуживания или 
 desc: выгодных покупок.
@@ -240,8 +250,8 @@ name:Дом
 graphics:8:y
 priority:20
 flags:SHOP | LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | EASY
-look-prefix:вход в
-look-in-preposition: 
+look-prefix:вход в свой Дом
+look-in-preposition:находитесь в своём Доме
 desc:Ваш безопасный уголок в Средиземье и единственное место, где вы
 desc: можете хранить предметы, кроме ношения с собой.
 
@@ -253,6 +263,8 @@ mimic:GRANITE
 flags:WALL | ROCK | DOOR_ANY | GRANITE | TORCH
 digging:5
 confused-msg:ударяетесь о стену
+look-prefix:тайную дверь
+# look-in-preposition: 
 desc:Дверь, которая для неподготовленных глаз кажется гранитной стеной.
 
 code:RUBBLE
@@ -262,6 +274,8 @@ priority:13
 flags:ROCK | NO_SCENT | NO_FLOW | INTERESTING | TORCH
 digging:1
 confused-msg:натыкаетесь на какие-то камни
+look-prefix:завалы
+# look-in-preposition: 
 desc:Преграждает поле зрения, останавливает снаряды, болты и лучи. Можно
 desc: растворить или прокопать туннель к обычному полу.
 
@@ -272,6 +286,8 @@ priority:12
 flags:WALL | ROCK | NO_SCENT | NO_FLOW | MAGMA | TORCH
 digging:2
 confused-msg:ударяетесь о стену
+look-prefix:магмовую жилу
+# look-in-preposition: 
 desc:Пласт мягкой породы.  Его можно удалить с помощью подкопа или магии,
 desc: нетелесные монстры могут проходить сквозь.
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
@@ -283,31 +299,35 @@ priority:11
 flags:WALL | ROCK | NO_SCENT | NO_FLOW | QUARTZ | TORCH
 digging:3
 confused-msg:ударяетесь о стену
+look-prefix:кварцевую жилу
+# look-in-preposition: 
 desc:Пласт твердой породы. Его можно удалить с помощью копания или магии,
 desc: нетелесные монстры могут проходить сквозь.
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 
 code:MAGMA_K
-# name:магм.жила с сокровищем
 name:магмовая жила с сокровищем
 graphics:*:o
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | MAGMA
 digging:2
 confused-msg:ударяетесь о стену
+look-prefix:магмовую жилу с сокровищем
+# look-in-preposition: 
 desc:Пласт мягкой породы.  Его можно удалить с помощью подкопа или магии,
 desc: нетелесные монстры могут проходить сквозь.
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
 desc: Внутри очевидно находятся сокровища.
 
 code:QUARTZ_K
-# name:кварц.жила с сокровищем
 name:кварцевая жила с сокровищем
 graphics:*:y
 priority:19
 flags:WALL | ROCK | INTERESTING | NO_SCENT | NO_FLOW | GOLD | QUARTZ
 digging:3
 confused-msg:ударяетесь о стену
+look-prefix:кварцевую жилу с сокровищем
+# look-in-preposition: 
 desc:Пласт твердой породы. Его можно удалить с помощью подкопа или магии,
 desc: нетелесные монстры могут проходить сквозь.
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
@@ -320,6 +340,8 @@ priority:10
 flags:WALL | ROCK | GRANITE | NO_SCENT | NO_FLOW | TORCH
 digging:4
 confused-msg:ударяетесь о стену
+look-prefix:гранитную стену
+# look-in-preposition: 
 desc:Пласт твердой породы. Его можно удалить с помощью подкопа или магии,
 desc: нетелесные монстры могут проходить сквозь.
 desc: Препятствует любым заклинаниям, снарядам и прямой видимости.
@@ -330,6 +352,8 @@ graphics:#:z
 priority:10
 flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW
 confused-msg:ударяетесь о стену
+look-prefix:Вечный камень
+# look-in-preposition: 
 desc:Большинство стен можно копать, но эти непробиваемы.  
 desc: Подземелье окружено такими стенами, а также из них
 desc: сделаны специальные комнаты.
@@ -341,7 +365,8 @@ name:лава
 graphics:#:r
 priority:10
 flags:LOS | PROJECT | FIERY | PASSABLE | NO_SCENT | BRIGHT
-look-prefix:немного
+look-prefix:бассейн лавы
+look-in-preposition:стоите по щиколотки в раскалённой лаве
 desc:Огненный бассейн с раскаленной лавой. Ходить рядом рисковано!
 walk-msg:Лава может обжечь вас!    Сделать шаг? 
 run-msg:Лава преграждает вам путь.    Шагнуть в неё? 
@@ -355,6 +380,8 @@ graphics:::u
 priority:13
 flags:ROCK | PASSABLE | INTERESTING | TORCH
 digging:1
+look-prefix:проходимые завалы
+look-in-preposition:стоите на груде из камней и грязи
 desc:Преграждает поле зрения, останавливает снаряды, болты и лучи, а также
 desc: уменьшает радиус шаров заклинаний. Можно растворить или прокопать
 desc: проход к обычному полу, по ним могут ходить игрок и монстры.

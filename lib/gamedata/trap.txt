@@ -55,28 +55,33 @@
 #    also triggered 50% of the time.  If they are triggered, the 'msg-xtra'
 #    line is printed, if present.
 
-name:no trap:no trap
+# name:no trap:нет ловушки
+name:нет ловушки:нет ловушки
 graphics: :w
 
-name:glyph of warding:glyph of warding
+# name:glyph of warding:glyph of warding
+name:глиф охраны:глиф охраны
 graphics:;:y
 appear:0:0:0
 flags:GLYPH | VISIBLE | FLOOR
 desc:Магическая руна, которую монстры не смогут пройти без труда.
 
-name:decoy:decoy
+# name:decoy:decoy
+name:приманка:приманка
 graphics:;:G
 appear:0:0:0
 flags:GLYPH | VISIBLE | FLOOR
-desc:Магическая приманка, которая звучит и выглядит как игрок.
+desc:Магическая приманка, которая выглядит и звучит как игрок.
 
-name:door lock:door lock
+# name:door lock:door lock
+name:дверной замок:дверной замок
 graphics: :w
 appear:0:0:0
 flags:LOCK | INVISIBLE
 desc:Устройство, с помощью которого закрытую дверь труднее открыть.
 
-name:web:web
+# name:web:web
+name:паутина:паутина
 graphics:%:y
 appear:0:0:0
 flags:WEB | VISIBLE
@@ -86,7 +91,8 @@ desc:Целый пучок липкой паутины.
 
 # trap door
 
-name:trap door:trap door
+# name:trap door:trap door
+name:люк-ловушка:люк-ловушка
 graphics:^:w
 appear:1:2:0
 visibility:2d10M50
@@ -95,12 +101,13 @@ effect:DAMAGE
 dice:2d8
 save:FEATHER
 desc:Кажется что это пол, но стоит сделать неосторожный шаг и вы провалитесь сквозь него.
-msg:Вы проваливаетесь в дверь-ловушку!
+msg:Вы проваливаетесь в люк-ловушку!
 msg-good:Вы плавно спускаетесь на следующий этаж.
 
 # open pit
 
-name:pit:pit
+# name:pit:pit
+name:яма:яма
 graphics:^:s
 appear:1:2:0
 visibility:90
@@ -114,7 +121,8 @@ msg-good:Вы плавно скатываетесь на дно ямы.
 
 # spiked pit
 
-name:pit:spiked pit
+# name:pit:spiked pit
+name:яма:яма с шипами
 graphics:^:s
 appear:1:2:0
 visibility:80
@@ -126,14 +134,15 @@ dice-xtra:2d6
 effect-xtra:TIMED_INC:CUT
 dice-xtra:4d6
 save:FEATHER
-desc:Яма, выкопанная с шипами, чтобы заманить в нее несчастного.
+desc:Яма с шипами, выкопанная, чтобы заманить в неё и ранить несчастного.
 msg:Вы падаете в яму с шипами!
 msg-good:Вы плавно скатываетесь на дно ямы, аккуратно избегая шипы.
 msg-xtra:Вас пронзило шипом!
 
 # poison pit
 
-name:pit:poison pit
+# name:pit:poison pit
+name:яма:яма с отравленными шипами
 graphics:^:s
 appear:1:2:0
 visibility:70
@@ -154,7 +163,8 @@ msg-xtra:Вы насажены на ядовитые шипы!
 
 # rune -- summon (OoD) monster
 
-name:strange rune:rune of summon foe
+# name:strange rune:rune of summon foe
+name:странная руна:руна призыва врага
 graphics:^:B
 appear:1:3:0
 visibility:0
@@ -166,7 +176,8 @@ msg:Новый враг появляется из ниоткуда!
 
 # rune -- summon monsters
 
-name:strange rune:rune of summoning
+# name:strange rune:rune of summoning
+name:странная руна:руна призыва монстров
 graphics:^:B
 appear:2:3:0
 visibility:0
@@ -178,7 +189,8 @@ msg:Вас окутывает облако дыма!
 
 # rune -- summon undead
 
-name:strange rune:rune of necromancy
+# name:strange rune:rune of necromancy
+name:странная руна:руна некромантии
 graphics:^:B
 appear:1:20:0
 visibility:0
@@ -190,7 +202,8 @@ msg:Вас охватывает чувство ужаса...
 
 # rune -- summon dragons
 
-name:strange rune:rune of dragonsong
+# name:strange rune:rune of dragonsong
+name:странная руна:руна драконьей песни
 graphics:^:B
 appear:1:20:0
 visibility:0
@@ -202,7 +215,8 @@ msg:Вы слышите зов дракона!
 
 # rune -- summon demons
 
-name:strange rune:hellhole
+# name:strange rune:hellhole
+name:странная руна:руна призыва демонов
 graphics:^:B
 appear:1:20:0
 visibility:0
@@ -216,7 +230,8 @@ msg:Демоны появляются!
 
 # rune -- teleport
 
-name:strange rune:teleport rune
+# name:strange rune:teleport rune
+name:странная руна:руна телепортации
 graphics:^:o
 appear:1:1:0
 visibility:30+d30
@@ -228,7 +243,8 @@ msg:Вы попали в телепортационную ловушку!
 
 # spot -- fire
 
-name:discolored spot:fire trap
+# name:discolored spot:fire trap
+name:цветное пятно:огненная ловушка
 graphics:^:u
 appear:1:2:0
 visibility:20
@@ -241,7 +257,8 @@ msg:Вы охвачены пламенем!
 
 # spot -- acid
 
-name:discolored spot:acid trap
+# name:discolored spot:acid trap
+name:цветное пятно:кислотная ловушка
 graphics:^:u
 appear:1:2:0
 visibility:0
@@ -254,7 +271,8 @@ msg:На вас брызнула кислота!
 
 # dart -- slow
 
-name:dart trap:slow dart
+# name:dart trap:slow dart
+name:дротик-ловушка:замедляющий дротик
 graphics:^:r
 appear:1:2:0
 visibility:M50
@@ -269,7 +287,8 @@ msg-bad:Маленький дротик попадает в вас!
 
 # dart -- lose str
 
-name:dart trap:strength loss dart
+# name:dart trap:strength loss dart
+name:дротик-ловушка:дротик потери силы
 graphics:^:r
 appear:2:6:0
 visibility:30
@@ -283,7 +302,8 @@ msg-bad:Маленький дротик попадает в вас!
 
 # dart -- lose dex
 
-name:dart trap:dexterity loss dart
+# name:dart trap:dexterity loss dart
+name:дротик-ловушка:дротик потери ловкости
 graphics:^:r
 appear:2:6:0
 visibility:30
@@ -297,7 +317,8 @@ msg-bad:Маленький дротик попадает в вас!
 
 # dart -- lose con
 
-name:dart trap:constitution loss dart
+# name:dart trap:constitution loss dart
+name:дротик-ловушка:дротик потери телосложения
 graphics:^:r
 appear:2:6:0
 visibility:30
@@ -311,7 +332,8 @@ msg-bad:Маленький дротик попадает в вас!
 
 # gas -- blind
 
-name:gas trap:blinding gas trap
+# name:gas trap:blinding gas trap
+name:газовая ловушка:ловушка ослепляющего газа
 graphics:^:g
 appear:1:2:0
 visibility:20+d5
@@ -323,7 +345,8 @@ msg:Вы окружены чёрным газом!
 
 # gas -- confuse
 
-name:gas trap:confusion gas trap
+# name:gas trap:confusion gas trap
+name:газовая ловушка:ловушка дурманещего газа
 graphics:^:g
 appear:1:1:0
 visibility:20+d5
@@ -335,7 +358,8 @@ msg:Вы окружены сверкающим газом!
 
 # gas -- poison
 
-name:gas trap:poison gas trap
+# name:gas trap:poison gas trap
+name:газовая ловушка:ловушка ядовитого газа
 graphics:^:g
 appear:1:2:0
 visibility:20+d5
@@ -347,7 +371,8 @@ msg:Вас окружает едкий зелёный газ!
 
 # gas -- sleep
 
-name:gas trap:sleep gas trap
+# name:gas trap:sleep gas trap
+name:газовая ловушка:ловушка усыпляющего газа
 graphics:^:g
 appear:1:2:0
 visibility:20+d5
@@ -359,7 +384,8 @@ msg:Вас окружает странный белый туман!
 
 # alarm -- aggravation
 
-name:alarm:aggravation trap
+# name:alarm:aggravation trap
+name:сигнализация:раздражающая ловушка
 graphics:^:R
 appear:1:5:0
 visibility:M50
@@ -372,7 +398,8 @@ msg:По подземелью разносится свист!
 
 # alarm -- siren
 
-name:alarm:siren
+# name:alarm:siren
+name:сигнализация:сирена
 graphics:^:R
 appear:1:1:0
 visibility:60+d10
@@ -383,7 +410,8 @@ msg:Звучит звук горна!
 
 # explosion -- mine
 
-name:explosion:mine trap
+# name:explosion:mine trap
+name:взрыв:мина-ловушка
 graphics:^:M
 appear:1:15:0
 visibility:10+d5
@@ -396,7 +424,8 @@ msg:Пол взрывается вокруг вас!
 
 # explosion -- blast
 
-name:explosion:blast trap
+# name:explosion:blast trap
+name:взрыв:взрывная ловушка
 graphics:^:M
 appear:2:25:0
 visibility:0
@@ -417,7 +446,8 @@ msg:Воздух, похоже, воспламеняется!
 
 # mental assault -- mind blast
 
-name:mind blast trap:mind blasting trap
+# name:mind blast trap:mind blasting trap
+name:ловушка для разума:ловушка взрыва разума
 graphics:^:G
 appear:1:20:0
 visibility:30+d10
@@ -434,7 +464,8 @@ msg-bad:Ваш разум поражен псионической энергие
 
 # mental assault -- brain smash
 
-name:mind blast trap:brain smashing trap
+# name:mind blast trap:brain smashing trap
+name:ловушка для разума:ловушка раздробления мозга
 graphics:^:G
 appear:2:40:0
 visibility:30+d10
@@ -457,7 +488,8 @@ msg-bad:Ваш разум поражен псионической энергие
 
 # dungeon alter -- rock fall
 
-name:ancient mechanism:rock fall trap
+# name:ancient mechanism:rock fall trap
+name:древний механизм:ловушка с обвалом камней
 graphics:^:U
 appear:1:4:0
 visibility:40+d5
@@ -473,7 +505,8 @@ msg:Камень падает вам на голову!
 
 # dungeon alter -- earthquake
 
-name:ancient mechanism:earthquake trap
+# name:ancient mechanism:earthquake trap
+name:древний механизм:ловушка землетрясения
 graphics:^:U
 appear:1:30:0
 visibility:30+d5
@@ -485,7 +518,8 @@ effect:EARTHQUAKE:NONE:5
 desc:Ловушка, вызывающая землетрясение.
 msg:Земля трясется.
 
-name:ancient mechanism:block fall trap
+# name:ancient mechanism:block fall trap
+name:древний механизм:ловушка блокирования
 graphics:^:U
 appear:1:4:0
 visibility:40+d5
@@ -497,7 +531,8 @@ msg:За вами обрушивается часть потолка!
 # dungeon alter - stone to mud
 # XXX this currently prints loads of annoying messages
 
-name:ancient mechanism:area blast trap
+# name:ancient mechanism:area blast trap
+name:древний механизм:ловушка взрыва окресностей
 graphics:^:U
 appear:2:40:0
 visibility:20+d5
@@ -513,7 +548,8 @@ msg:Ловушка взрывается, расчищая окрестности
 
 # blinding flash
 
-name:trap:blinding flash trap
+# name:trap:blinding flash trap
+name:ловушка:ловушка ослепительной вспышки
 graphics:^:light yellow
 appear:1:5:0
 visibility:30+d5
@@ -526,7 +562,8 @@ msg:Пылающий свет спускается на вас!
 
 # blinding trap
 
-name:trap:blinding trap
+# name:trap:blinding trap
+name:ловушка:ловушка с ослепляющим эффектом
 graphics:^:light slate
 appear:1:5:0
 visibility:20+d5
@@ -541,7 +578,8 @@ msg: Всё вокруг начинает исчезать...
 
 # mana drain
 
-name:trap:mana drain trap
+# name:trap:mana drain trap
+name:ловушка:ловушка истощения маны
 graphics:^:light purple
 appear:1:5:0
 visibility:50+d10
@@ -556,7 +594,8 @@ desc:Ловушка, которая высасывает вашу ману.
 # XXX ideally this would have an effect that wasn't cured in one turn
 #   - maybe make CSW only heal 100 points of cuts?
 
-name:trap:knife trap
+# name:trap:knife trap
+name:ловушка:ловушка с лезвиями
 graphics:^:yellow
 appear:1:20:0
 visibility:20+d5
@@ -571,7 +610,8 @@ desc:Ловушка, призванная обескровить вас до с�
 
 # petrifier
 
-name:trap:petrifying trap
+# name:trap:petrifying trap
+name:ловушка:ловушка окаменения
 graphics:^:blue
 appear:1:5:0
 visibility:20+d5

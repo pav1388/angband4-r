@@ -173,7 +173,7 @@ mcat-include-base:wraith
 monster-category:Черви/Червивые Массы
 mcat-include-base:worm
 
-monster-category:Ксорны/Ксарены
+monster-category:Хорны/Харены
 mcat-include-base:xorn
 
 monster-category:Йики

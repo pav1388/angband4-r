@@ -37,7 +37,8 @@ flags:DROP_4
 flags:MOVE_BODY | CLEAR_WEB
 flags:NO_CONF | NO_SLEEP | NO_HOLD
 flags:FORCE_SLEEP
-desc:Ancient Dragon/Wyrm
+# desc:Ancient Dragon/Wyrm
+desc:Древний дракон/Вирм
 
 # Ainur were the founding spirits of Arda, and could take any form they wished.
 # Ainur in Angband typically have shapechanges and many possibe other spells,
@@ -50,7 +51,8 @@ flags:ONLY_ITEM
 flags:OPEN_DOOR | BASH_DOOR | TAKE_ITEM | CLEAR_WEB
 flags:IM_COLD | IM_FIRE | IM_POIS | NO_CONF | NO_SLEEP | NO_HOLD
 flags:FORCE_SLEEP
-desc:Ainu/maia
+# desc:Ainu/maia
+desc:Айну/майя
 
 # Ants have lowish HP but highish armor class, and powerful melee for their
 # depth
@@ -59,21 +61,24 @@ glyph:a
 pain:7
 flags:ANIMAL | WEIRD_MIND
 flags:BASH_DOOR
-desc:Ant
+# desc:Ant
+desc:Муравей
 
 # Fast, not strong, annoying
 name:bat
 glyph:b
 pain:4
 flags:ANIMAL
-desc:Bat
+# desc:Bat
+desc:Летучая мышь
 
 # Quickish monsters usually with some effect beyond melee
 name:bird
 glyph:B
 pain:8
 flags:ANIMAL | CLEAR_WEB
-desc:Bird
+# desc:Bird
+desc:Птица
 
 # Wolves are animals which mostly come in packs, and are associated with evil
 # creatures, especially orcs and Sauron
@@ -81,7 +86,8 @@ name:canine
 glyph:C
 pain:3
 flags:ANIMAL | CLEAR_WEB
-desc:Canine (Dog)
+# desc:Canine (Dog)
+desc:Клык (Собака)
 
 # Centipedes are mastly weak, sometimes quick, and their melee attacks are often
 # early examples of different blow effects
@@ -89,7 +95,8 @@ name:centipede
 glyph:c
 pain:5
 flags:ANIMAL | WEIRD_MIND
-desc:Centipede
+# desc:Centipede
+desc:Сороконожка
 
 # Creeping coins are mimics which look like coins until they attack, hit to
 # poison, and drop the approriate type of treasure
@@ -101,7 +108,8 @@ flags:ONLY_GOLD
 flags:BASH_DOOR | CLEAR_WEB
 flags:IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
 flags:MIMIC_INV
-desc:Creeping Coins
+# desc:Creeping Coins
+desc:Ползучие Монеты
 
 # Dragons are the most important breathing monsters in Angband, and their
 # breaths are their most important quality.
@@ -110,7 +118,8 @@ glyph:d
 pain:1
 flags:DRAGON | EVIL | SPIRIT
 flags:FORCE_SLEEP | CLEAR_WEB
-desc:Dragon
+# desc:Dragon
+desc:Дракон
 
 # Early, weak breathers which move quickly and erratically
 name:dragon fly
@@ -119,7 +128,8 @@ pain:7
 flags:ANIMAL | WEIRD_MIND
 flags:RAND_50 | BASH_DOOR
 flags:FORCE_SLEEP
-desc:Dragon Fly
+# desc:Dragon Fly
+desc:Стрекоза
 
 # These come in two stages:
 # 1. Motionless creatures which cause bad effects if you stand next to them
@@ -129,7 +139,8 @@ name:eye
 glyph:e
 pain:1
 flags:CLEAR_WEB
-desc:Floating Eye
+# desc:Floating Eye
+desc:Парящее око
 
 # Creatures (mostly) embodying a single element, mostly with lowish HP
 name:elemental
@@ -138,14 +149,16 @@ pain:1
 flags:EMPTY_MIND | CLEAR_WEB
 flags:IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP
 flags:NONLIVING
-desc:Elemental
+# desc:Elemental
+desc:Элементаль
 
 # Fast moving, bash doors, hit hard in melee
 name:feline
 glyph:f
 pain:6
 flags:ANIMAL | CLEAR_WEB
-desc:Feline (Cat)
+# desc:Feline (Cat)
+desc:Кошачьи (Кот)
 
 # Wall-passing invisible spirits, frequently drain experience and/or stats.
 # Relatively weak to compensate for being hard to escape
@@ -155,7 +168,8 @@ pain:1
 flags:UNDEAD | EVIL | INVISIBLE | COLD_BLOOD | SPIRIT
 flags:PASS_WALL
 flags:IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_STUN | NO_HOLD
-desc:Ghost
+# desc:Ghost
+desc:Призрак
 
 # Giants are big, strong humanoids which hit hard and throw boulders.  They
 # may be associated with an element and have some spells, but their focus is
@@ -165,7 +179,8 @@ glyph:P
 pain:1
 flags:GIANT | EVIL | SPIRIT
 flags:BASH_DOOR | CLEAR_WEB
-desc:Giant Humanoid
+# desc:Giant Humanoid
+desc:Персона/Гигант
 
 # Mostly slow with lots of hitpoints and armor
 name:golem
@@ -174,20 +189,23 @@ pain:1
 flags:EMPTY_MIND | CLEAR_WEB
 flags:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP
 flags:NONLIVING
-desc:Golem
+# desc:Golem
+desc:Голем
 
 name:humanoid
 glyph:h
 pain:1
 flags:OPEN_DOOR | BASH_DOOR | SPIRIT | CLEAR_WEB
-desc:Hobbit/Elf/Dwarf
+# desc:Hobbit/Elf/Dwarf
+desc:Хоббит/Эльф/Дварф
 
 # Weird legendary stuff, mostly without spells, sometimes with breath
 name:hybrid
 glyph:H
 pain:1
 flags:CLEAR_WEB
-desc:Hybrid
+# desc:Hybrid
+desc:Гибрид
 
 # Quick monsters with strong melee, the higher level ones getting fire and/or
 # poison attacks
@@ -198,14 +216,16 @@ flags:ANIMAL
 flags:ONLY_GOLD
 flags:BASH_DOOR | CLEAR_WEB
 flags:FORCE_SLEEP | HURT_COLD
-desc:Hydra
+# desc:Hydra
+desc:Гидра
 
 # Non-descript early monsters that demonstrate some stuff but are mostly filler
 name:icky thing
 glyph:i
 pain:2
 flags:RAND_50
-desc:Icky Thing
+# desc:Icky Thing
+desc:Мерзкое Нечто
 
 # Insects are small, a bit fast, weak breeders which bite for various effects
 name:insect
@@ -213,7 +233,8 @@ glyph:I
 pain:7
 flags:ANIMAL | WEIRD_MIND | MULTIPLY
 flags:RAND_50 | RAND_25
-desc:Insect
+# desc:Insect
+desc:Насекомое
 
 # Mostly non-moving creatures which touch for various effects
 name:jelly
@@ -221,7 +242,8 @@ glyph:j
 pain:2
 flags:EMPTY_MIND | STUPID | CLEAR_WEB
 flags:NO_FEAR
-desc:Jelly
+# desc:Jelly
+desc:Желе
 
 # Giant beetles with high armor class and fairly powerful bites, frequently
 # spitting.  No breaths or spells.
@@ -230,7 +252,8 @@ glyph:K
 pain:7
 flags:ANIMAL | WEIRD_MIND
 flags:BASH_DOOR
-desc:Killer Beetle
+# desc:Killer Beetle
+desc:Жук-убийца
 
 # Early-game equivalents of things like orcs and trolls
 name:kobold
@@ -239,7 +262,8 @@ pain:1
 flags:EVIL
 flags:OPEN_DOOR | BASH_DOOR | SPIRIT | CLEAR_WEB
 flags:IM_POIS
-desc:Kobold
+# desc:Kobold
+desc:Кобольд
 
 # Powerful undead spellcasters, tending to drain dexterity and charges in melee
 name:lich
@@ -249,7 +273,8 @@ flags:UNDEAD | EVIL | COLD_BLOOD | SMART | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_STUN | NO_HOLD
 flags:FORCE_SLEEP
-desc:Lich
+# desc:Lich
+desc:Лич
 
 # Weird monsters tha look like floor.
 name:lurker
@@ -258,7 +283,8 @@ pain:1
 flags:COLD_BLOOD | EMPTY_MIND | INVISIBLE | UNAWARE
 flags:NEVER_MOVE
 flags:NO_FEAR | NO_CONF | NO_SLEEP
-desc:Lurker
+# desc:Lurker
+desc:Скрытный Наблюдатель
 
 # Demons are evil and tend to be fire-based.  Major demons frequently summon,
 # have a few powerful spells and/or breaths, and often dangerous melee.
@@ -270,7 +296,8 @@ flags:ONLY_ITEM
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:NO_CONF | NO_SLEEP | NO_HOLD
 flags:FORCE_SLEEP
-desc:Major Demon
+# desc:Major Demon
+desc:Старший Демон
 
 # Monsters which pretend to be objects.  They don't move but do cast spells,
 # and attack if the player steps next to them.
@@ -281,7 +308,8 @@ flags:COLD_BLOOD | EMPTY_MIND | UNAWARE
 flags:NEVER_MOVE
 flags:NO_FEAR | NO_CONF | NO_SLEEP
 flags:FORCE_SLEEP | ATTR_CLEAR
-desc:Mimic
+# desc:Mimic
+desc:Мимик
 
 # Demons are evil and tend to be fire-based.  Minor demons are mostly
 # annoying rather than dangerous.
@@ -291,7 +319,8 @@ pain:1
 flags:DEMON | EVIL | SPIRIT
 flags:CLEAR_WEB
 flags:IM_FIRE
-desc:Minor Demon
+# desc:Minor Demon
+desc:Младший Демон
 
 # Non-moving growths which release spores when stepped next to
 name:mold
@@ -299,7 +328,8 @@ glyph:m
 pain:2
 flags:NEVER_MOVE
 flags:IM_POIS | HURT_FIRE | NO_FEAR | NO_CONF | NO_SLEEP
-desc:Mold
+# desc:Mold
+desc:Плесень
 
 # Small (mostly) non-moving (mostly) spore-releasing-for-effect creatures
 name:mushroom
@@ -307,7 +337,8 @@ glyph:,
 pain:2
 flags:EMPTY_MIND | STUPID
 flags:HURT_FIRE | NO_FEAR | NO_CONF | NO_SLEEP
-desc:Mushroom
+# desc:Mushroom
+desc:Гриб
 
 # Female serpent-like monsters
 name:naga
@@ -315,7 +346,8 @@ glyph:n
 pain:1
 flags:FEMALE | EVIL | HURT_COLD | SPIRIT
 flags:BASH_DOOR | CLEAR_WEB
-desc:Naga
+# desc:Naga
+desc:Нага
 
 # Ogres are like small giants, or large orcs.  Mostly straightforward melee
 # fighters who come in packs, with occaisonal lone spellcasters.
@@ -324,7 +356,8 @@ glyph:O
 pain:1
 flags:GIANT | EVIL | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
-desc:Ogre
+# desc:Ogre
+desc:Огр
 
 # Orcs are the foot-soldiers of Morgoth.  They melee and use archery, but 
 # mostly don't use magic.  They tend to appear in groups.
@@ -333,20 +366,23 @@ glyph:o
 pain:1
 flags:MALE | ORC | EVIL | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
-desc:Orc
+# desc:Orc
+desc:Орк
 
 name:person
 glyph:p
 pain:1
 flags:BASH_DOOR | SPIRIT | CLEAR_WEB
-desc:Person/Human
+# desc:Person/Human
+desc:Персона/Человек
 
 # A grab-bag of four-legged things with no real defining quality
 name:quadruped
 glyph:q
 pain:4
 flags:BASH_DOOR | CLEAR_WEB
-desc:Quadruped
+# desc:Quadruped
+desc:Четвероногое
 
 # Non-moving, non-attacking summoners
 name:quylthulg
@@ -356,21 +392,24 @@ flags:EMPTY_MIND | INVISIBLE
 flags:NEVER_BLOW | NEVER_MOVE
 flags:NO_FEAR | NO_CONF | NO_SLEEP | NO_HOLD
 flags:FORCE_SLEEP
-desc:Quylthulg
+# desc:Quylthulg
+desc:Квилтулг
 
 # Mostly early monsters, but later ones are dangerous.  Not fast for depth
 name:reptile
 glyph:R
 pain:5
 flags:ANIMAL | HURT_COLD | CLEAR_WEB
-desc:Reptile/Amphibian
+# desc:Reptile/Amphibian
+desc:Рептилия/Амфибия
 
 # Small, weak, early breeders, with one surprise non-breeder
 name:rodent
 glyph:r
 pain:4
 flags:ANIMAL | CLEAR_WEB
-desc:Rodent
+# desc:Rodent
+desc:Грызун
 
 # The non-unique skeletons break into two (early and late) groups:
 # 1. Empty minded animated skeletons with movement and melee but no spells
@@ -381,7 +420,8 @@ glyph:s
 pain:9
 flags:UNDEAD | EVIL | COLD_BLOOD | CLEAR_WEB
 flags:IM_COLD | IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP | NO_STUN
-desc:Skeleton
+# desc:Skeleton
+desc:Скелет
 
 # Snakes are typically slow, but have high armor class
 name:snake
@@ -389,7 +429,8 @@ glyph:J
 pain:5
 flags:ANIMAL | HURT_COLD
 flags:BASH_DOOR | CLEAR_WEB
-desc:Snake
+# desc:Snake
+desc:Змея
 
 # Spiders are frequently poisonous and weave webs, and tend to have an
 # affinity with darkness.  Any spells they have tend to focus on disabling
@@ -398,7 +439,8 @@ name:spider
 glyph:S
 pain:7
 flags:BASH_DOOR | PASS_WEB
-desc:Spider/Scorpion/Tick
+# desc:Spider/Scorpion/Tick
+desc:Паук/Скорпион/Клещ
 
 # Weak, except the odd one to surprise the unwary newcomer.  Always native to
 # level 0, never give experience
@@ -406,7 +448,8 @@ name:townsfolk
 glyph:t
 pain:4
 flags:SPIRIT | CLEAR_WEB
-desc:Townsfolk
+# desc:Townsfolk
+desc:Городской житель
 
 # High hitpoints and armor class
 name:tree
@@ -414,7 +457,8 @@ glyph:l
 pain:9
 flags:CLEAR_WEB | COLD_BLOOD | REGENERATE
 flags:NO_FEAR | NO_CONF | HURT_FIRE | IM_WATER
-desc:Tree/Ent
+# desc:Tree/Ent
+desc:Дерево/Энт
 
 # Trolls are evil, larger than human-size humanoids. They have strong melee
 # combat, and many are hurt by light.  They fall roughly between ogres and
@@ -424,7 +468,8 @@ glyph:T
 pain:1
 flags:TROLL | EVIL | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
-desc:Troll
+# desc:Troll
+desc:Тролль
 
 # Powerful undead which drain experience
 name:vampire
@@ -434,7 +479,8 @@ flags:UNDEAD | EVIL | COLD_BLOOD | REGENERATE | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:HURT_LIGHT | HURT_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_STUN
 flags:FORCE_SLEEP
-desc:Vampire
+# desc:Vampire
+desc:Вампир
 
 # Always awake, elemental objects which engulf and breathe their element(s)
 name:vortex
@@ -445,14 +491,16 @@ flags:RAND_50 | BASH_DOOR | CLEAR_WEB
 flags:NO_FEAR | NO_CONF | NO_SLEEP | NO_HOLD | IM_POIS
 flags:FORCE_SLEEP
 flags:NONLIVING
-desc:Vortex
+# desc:Vortex
+desc:Вихрь
 
 # Worms are mostly low level slow breeders with crawl attacks for an effect
 name:worm
 glyph:w
 pain:1
 flags:ANIMAL
-desc:Worm/Worm Mass
+# desc:Worm/Worm Mass
+desc:Червь/Масса Червей
 
 # Undead which range from wights to wraiths to the Ringwraiths.  Experience
 # drainers and spellcasters; the Ringwraiths summon each other and are the
@@ -462,7 +510,8 @@ glyph:W
 pain:1
 flags:UNDEAD | EVIL | COLD_BLOOD | SPIRIT | CLEAR_WEB
 flags:HURT_LIGHT | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_STUN | NO_HOLD
-desc:Wight/Wraith
+# desc:Wight/Wraith
+desc:Зловещие Духи
 
 # Strange part rock beings which can destroy or pass through walls
 name:xorn
@@ -470,7 +519,8 @@ glyph:X
 pain:4
 flags:COLD_BLOOD | EMPTY_MIND | CLEAR_WEB
 flags:HURT_ROCK | IM_POIS | NO_CONF | NO_SLEEP
-desc:Xorn/Xaren
+# desc:Xorn/Xaren
+desc:Хорн/Харен
 
 # Small, weak, comical humanoids
 name:yeek
@@ -479,7 +529,8 @@ pain:1
 flags:ANIMAL | SPIRIT
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:IM_ACID
-desc:Yeek
+# desc:Yeek
+desc:Йик
 
 # Yetis are a couple of niche monsters, big furry bear-like creatures
 name:yeti
@@ -488,7 +539,8 @@ pain:1
 flags:ANIMAL
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:IM_COLD
-desc:Yeti
+# desc:Yeti
+desc:Йети
 
 # Zephyr hounds come in packs and (with a couple of exceptions) breathe a
 # single element, with melee that matches where possible.  Simple.
@@ -496,7 +548,8 @@ name:zephyr hound
 glyph:Z
 pain:3
 flags:ANIMAL | GROUP_AI | CLEAR_WEB
-desc:Zephyr Hound
+# desc:Zephyr Hound
+desc:Гончая Зефира
 
 # Animated corpses, frequently with no mind of their own.  Mostly fairly weak
 # for their level
@@ -506,16 +559,19 @@ pain:10
 flags:UNDEAD | EVIL | COLD_BLOOD
 flags:OPEN_DOOR | BASH_DOOR | CLEAR_WEB
 flags:IM_COLD | IM_POIS | HURT_FIRE | NO_CONF | NO_SLEEP | NO_STUN
-desc:Zombie/Mummy
+# desc:Zombie/Mummy
+desc:Зомби/Мумия
 
 ##### Special templates #####
 
 name:player
 glyph:@
 pain:1
-desc:You
+# desc:You
+desc:Вы
 
 name:Morgoth
 glyph:P
 pain:12
-desc:Morgoth
+# desc:Morgoth
+desc:Моргот

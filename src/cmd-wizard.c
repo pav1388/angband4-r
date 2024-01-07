@@ -2769,7 +2769,8 @@ void do_cmd_wiz_teleport_to(struct command *cmd)
 		effect_simple(EF_TELEPORT_TO, source_player(), "0", 0, 0, 0,
 			grid.y, grid.x, NULL);
 	} else {
-		msg("The square you are aiming for is impassable.");
+		// msg("The square you are aiming for is impassable.");
+		msg("Квадрат, к которому вы направляетесь, непроходим.");
 	}
 }
 

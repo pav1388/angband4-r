@@ -1371,10 +1371,10 @@ static size_t prt_unignore(int row, int col)
 {
 	if (player->unignoring) {
 		// const char *str = "Unignoring";
-		const char *str = "Неигнорир.";
+		const char *str = "Неигнорирование";
 		put_str(str, row, col);
 		// return utf8_strlen(str) + 1;
-		return 10 + 1;
+		return 16;
 	}
 
 	return 0;

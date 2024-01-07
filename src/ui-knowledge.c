@@ -919,7 +919,7 @@ static void display_knowledge(const char *title, int *obj_list, int o_count,
 			const char *pedit = (!o_funcs.xattr) ? "" :
 					(!(attr_idx|char_idx) ?
 					 // ", 'c' to copy" : ", 'c', 'p' to paste");
-					 ", 'c' копир." : ", 'c/p' вставить");
+					 ", 'c' копир.символ" : ", 'c/p' копир/встав символ");
 			const char *xtra = o_funcs.xtra_prompt ?
 				o_funcs.xtra_prompt(oid) : "";
 			const char *pvs = "";
@@ -2427,10 +2427,14 @@ static const char *feat_prompt(int oid)
 {
 	(void)oid;
 		switch (f_uik_lighting) {
-				case LIGHTING_LIT:  return ", 't/T' for lighting (lit)";
-                case LIGHTING_TORCH: return ", 't/T' for lighting (torch)";
-				case LIGHTING_LOS:  return ", 't/T' for lighting (LOS)";
-				default:	return ", 't/T' for lighting (dark)";
+				// case LIGHTING_LIT:  return ", 't/T' for lighting (lit)";
+				case LIGHTING_LIT:  return ", 't/T' для освещения (свет)";
+                // case LIGHTING_TORCH: return ", 't/T' for lighting (torch)";
+                case LIGHTING_TORCH: return ", 't/T' для освещения (факел)";
+				// case LIGHTING_LOS:  return ", 't/T' for lighting (LOS)";
+				case LIGHTING_LOS:  return ", 't/T' для освещения (преграда)";
+				// default:	return ", 't/T' for lighting (dark)";
+				default:	return ", 't/T' для освещения (тьма)";
 		}		
 }
 
@@ -4451,19 +4455,23 @@ void do_cmd_query_symbol(void)
 	uint16_t *who;
 
 	/* Get a character, or abort */
-	if (!get_com("Enter character to be identified, or control+[ANU]: ", &sym))
+	// if (!get_com("Enter character to be identified, or control+[ANU]: ", &sym))
+	if (!get_com("Введите символ, который нужно идентифицировать или ctrl+[ANU]: ", &sym))
 		return;
 
 	/* Describe */
 	if (sym == KTRL('A')) {
 		all = true;
-		my_strcpy(buf, "Full monster list.", sizeof(buf));
+		// my_strcpy(buf, "Full monster list.", sizeof(buf));
+		my_strcpy(buf, "Полный список монстров.", sizeof(buf));
 	} else if (sym == KTRL('U')) {
 		all = uniq = true;
-		my_strcpy(buf, "Unique monster list.", sizeof(buf));
+		// my_strcpy(buf, "Unique monster list.", sizeof(buf));
+		my_strcpy(buf, "Список уникальных монстров.", sizeof(buf));
 	} else if (sym == KTRL('N')) {
 		all = norm = true;
-		my_strcpy(buf, "Non-unique monster list.", sizeof(buf));
+		// my_strcpy(buf, "Non-unique monster list.", sizeof(buf));
+		my_strcpy(buf, "Список неуникальных монстров.", sizeof(buf));
 	} else {
 		lookup_symbol(sym, buf, sizeof(buf));
 	}
@@ -4514,7 +4522,7 @@ void do_cmd_query_symbol(void)
 	if (query.code == 'k') {
 		/* Sort by kills (and level) */
 		sort(who, num, sizeof(*who), cmp_pkill);
-	} else if (query.code == 'y' || query.code == 'p') {
+	} else if (query.code == 'y' || query.code == 'p'|| query.code == KC_ENTER) { // y=enter
 		/* Sort by level; accept 'p' as legacy */
 		sort(who, num, sizeof(*who), cmp_level);
 	} else {
@@ -4569,7 +4577,8 @@ void do_cmd_query_symbol(void)
 		if (query.code == ESCAPE) break;
 
 		/* Move to previous or next monster */
-		if (query.code == '-') {
+		// if (query.code == '-') {
+		if (query.code == '-' || query.code == '8') {
 			/* Previous is a step forward in the array */
 			idx++;
 			/* Wrap if we're at the end of the array */

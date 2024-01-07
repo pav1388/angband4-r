@@ -327,7 +327,8 @@ static ui_event target_recall_loop_object(struct object *obj, int y, int x,
 			/* Describe the object */
 			if (p->wizard) {
 				strnfmt(out_val, TARGET_OUT_VAL_SIZE,
-						"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).", s1, s2, s3,
+						// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).", s1, s2, s3,
+						"%s%s%s%s, %s (%d:%d, шум=%d, запах=%d).", s1, s2, s3,
 						o_name, coords, y, x, (int)cave->noise.grids[y][x],
 						(int)cave->scent.grids[y][x]);
 			} else {
@@ -377,18 +378,18 @@ static bool aux_reinit(struct chunk *c, struct player *p,
 		// auxst->phrase1 = "You are ";
 		auxst->phrase1 = "Вы ";
 		// auxst->phrase2 = "on ";
-		auxst->phrase2 = "на ";
+		auxst->phrase2 = "стоите на ";
 	} else {
 		/* Default */
 		if (square_isseen(c, auxst->grid)) {
 			// auxst->phrase1 = "You see ";
-			auxst->phrase1 = "Вы видите ";
+			auxst->phrase1 = "Вы видите, что это ";
 		} else {
 			mon = square_monster(c, auxst->grid);
 			if (mon && monster_is_obvious(mon)) {
 				/* Monster is visible because of detection or telepathy */
 				// auxst->phrase1 = "You sense ";
-				auxst->phrase1 = "Вы чувствуете ";
+				auxst->phrase1 = "Вы чувствуете, что это ";
 			} else {
 				// auxst->phrase1 = "You  recall ";
 				auxst->phrase1 = "Вы вспоминаете, что это ";
@@ -407,7 +408,7 @@ static bool aux_hallucinate(struct chunk *c, struct player *p,
 		struct target_aux_state *auxst)
 {
 	// const char *name_strange = "something strange";
-	const char *name_strange = "что-то странное";
+	const char *name_strange = (*auxst->phrase2) ? "чём-то странном" : "нечто странное";
 	char out_val[TARGET_OUT_VAL_SIZE];
 
 	if (!p->timed[TMD_IMAGE]) return false;
@@ -416,7 +417,8 @@ static bool aux_hallucinate(struct chunk *c, struct player *p,
 	/* Display a message */
 	if (p->wizard) {
 		strnfmt(out_val, sizeof(out_val),
-			"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+			// "%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+			"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
 			auxst->phrase1,
 			auxst->phrase2,
 			name_strange,
@@ -570,11 +572,12 @@ static bool aux_monster(struct chunk *c, struct player *p,
 			lphrase1 = "Он ";
 		} else {
 			// lphrase1 = "It is ";
-			lphrase1 = "Это ";
+			lphrase1 = "Оно ";
 		}
 
 		/* Use a verb */
-		lphrase2 = "carrying ";
+		// lphrase2 = "carrying ";
+		lphrase2 = "несёт ";
 
 		/* Scan all objects being carried */
 		for (obj = mon->held_obj; obj; obj = obj->next) {
@@ -586,7 +589,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 				ODESC_PREFIX | ODESC_FULL, p);
 
 			strnfmt(out_val, sizeof(out_val),
-				"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				// "%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
 				lphrase1,
 				lphrase2,
 				o_name,
@@ -621,7 +625,8 @@ static bool aux_monster(struct chunk *c, struct player *p,
 			}
 
 			/* Change the intro */
-			lphrase2 = "also carrying ";
+			// lphrase2 = "also carrying ";
+			lphrase2 = "так же несёт ";
 		}
 
 		/* Double break */
@@ -651,14 +656,15 @@ static bool aux_trap(struct chunk *c, struct player *p,
 
 	/* Pick proper indefinite article */
 	// lphrase3 = (is_a_vowel(trap->kind->desc[0])) ? "an " : "a ";
-	lphrase3 = (is_a_vowel(trap->kind->desc[0])) ? "" : "";
+	lphrase3 = (*auxst->phrase2) ? "том, что известно как " : "";
 
 	/* Interact */
 	while (1) {
 		/* Describe, and prompt for recall */
 		if (p->wizard) {
 			strnfmt(out_val, sizeof(out_val),
-				"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+				"%s%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
 				auxst->phrase1,
 				auxst->phrase2,
 				lphrase3,
@@ -731,9 +737,11 @@ static bool aux_object(struct chunk *c, struct player *p,
 			/* Describe the pile */
 			if (p->wizard) {
 				strnfmt(out_val, sizeof(out_val),
-					"%s%sa pile of %d objects, %s (%d:%d, noise=%d, scent=%d).",
+					// "%s%sa pile of %d objects, %s (%d:%d, noise=%d, scent=%d).",
+					"%s%sкуч%s из %d предметов, %s (%d:%d, шум=%d, запах=%d).",
 					auxst->phrase1,
 					auxst->phrase2,
+					(*auxst->phrase2) ? "е" : "а",
 					floor_num,
 					auxst->coord_desc,
 					auxst->grid.y,
@@ -742,9 +750,11 @@ static bool aux_object(struct chunk *c, struct player *p,
 					(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
 			} else {
 				strnfmt(out_val, sizeof(out_val),
-					"%s%sa pile of %d objects, %s.",
+					// "%s%sa pile of %d objects, %s.",
+					"%s%sкуч%s из %d предметов, %s.",
 					auxst->phrase1,
 					auxst->phrase2,
+					(*auxst->phrase2) ? "е" : "а",
 					floor_num,
 					auxst->coord_desc);
 			}
@@ -835,32 +845,37 @@ static bool aux_object(struct chunk *c, struct player *p,
 static bool aux_terrain(struct chunk *c, struct player *p,
 		struct target_aux_state *auxst)
 {
-	const char *name, *lphrase2, *lphrase3;
+	// const char *name, *lphrase2, *lphrase3;
+	const char *lphrase2, *lphrase3;
 	char out_val[TARGET_OUT_VAL_SIZE];
 
 	if (!auxst->boring && !square_isinteresting(p->cave, auxst->grid))
 		return false;
 
 	/* Terrain feature if needed */
-	name = square_apparent_name(p->cave, auxst->grid);
+	// name = square_apparent_name(p->cave, auxst->grid);
 
 	/* Hack -- handle unknown grids */
 
 	/* Pick a preposition if needed */
-	lphrase2 = (*auxst->phrase2) ?
-		square_apparent_look_in_preposition(p->cave, auxst->grid) : "";
+	// lphrase2 = (*auxst->phrase2) ?
+		// square_apparent_look_in_preposition(p->cave, auxst->grid) : "";
 
 	/* Pick prefix for the name */
-	lphrase3 = square_apparent_look_prefix(p->cave, auxst->grid);
+	// lphrase3 = square_apparent_look_prefix(p->cave, auxst->grid);
+
+	lphrase2 = (*auxst->phrase2) ? square_apparent_look_in_preposition(p->cave, auxst->grid) : "";
+	lphrase3 = (*auxst->phrase2) ? "" : square_apparent_look_prefix(p->cave, auxst->grid);
 
 	/* Display a message */
 	if (p->wizard) {
 		strnfmt(out_val, sizeof(out_val),
-			"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+			// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
+			"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
 			auxst->phrase1,
 			lphrase2,
 			lphrase3,
-			name,
+			// name,
 			auxst->coord_desc,
 			auxst->grid.y,
 			auxst->grid.x,
@@ -868,11 +883,12 @@ static bool aux_terrain(struct chunk *c, struct player *p,
 			(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
 	} else {
 		strnfmt(out_val, sizeof(out_val),
-			"%s%s%s%s, %s.",
+			// "%s%s%s%s, %s.",
+			"%s%s%s, %s.",
 			auxst->phrase1,
 			lphrase2,
 			lphrase3,
-			name,
+			// name,
 			auxst->coord_desc);
 	}
 
@@ -969,7 +985,7 @@ void textui_target(void)
 		msg("Цель выбрана.");
 	else
 		// msg("Target Aborted.");
-		msg("Отмена цели.");
+		msg("Цель отменена.");
 }
 
 /**
@@ -1460,7 +1476,8 @@ bool target_set_interactive(int mode, int x, int y)
 			Term_clear();
 			handle_stuff(player);
 			if (!help)
-				prt("Press '?' for help.", help_prompt_loc, 0);
+				// prt("Press '?' for help.", help_prompt_loc, 0);
+				prt("Нажмите '?' для справки.", help_prompt_loc, 0);
 
 		} else {
 			/* Try to extract a direction from the key press */

@@ -56,7 +56,8 @@ void wiz_cheat_death(void)
 	if (player->word_recall)
 	{
 		/* Message */
-		msg("A tension leaves the air around you...");
+		// msg("A tension leaves the air around you...");
+		msg("Напряжение в воздухе вокруг вас рассеивается...");
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Hack -- Prevent recall */
@@ -67,7 +68,8 @@ void wiz_cheat_death(void)
 	if (player->deep_descent)
 	{
 		/* Message */
-		msg("The air around you stops swirling...");
+		// msg("The air around you stops swirling...");
+		msg("Воздух вокруг вас перестает завихряться...");
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Hack -- Prevent recall */

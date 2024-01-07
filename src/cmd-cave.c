@@ -672,25 +672,13 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			// msg("You chip away futilely %s at the %d.", with_clause,
 				// square_apparent_name(player->cave, grid));
 			switch (square(player->cave, grid)->feat) {
-			case FEAT_GRANITE:
-				my_strcpy(buf, "гранитную стену", sizeof(buf));
-				break;
-			case FEAT_MAGMA:
-				my_strcpy(buf, "магмовую жилу", sizeof(buf));
-				break;
-			case FEAT_MAGMA_K:
-				my_strcpy(buf, "магмовую жилу с сокровищем", sizeof(buf));
-				break;
-			case FEAT_QUARTZ:
-				my_strcpy(buf, "кварцевую жилу", sizeof(buf));
-				break;
-			case FEAT_QUARTZ_K:
-				my_strcpy(buf, "кварцевую жилу с сокровищем", sizeof(buf));
-				break;
-			default: 
-				my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf));
-				break;
-			}
+			case FEAT_GRANITE: my_strcpy(buf, "гранитную стену", sizeof(buf)); break;
+			case FEAT_MAGMA: my_strcpy(buf, "магмовую жилу", sizeof(buf)); break;
+			case FEAT_MAGMA_K: my_strcpy(buf, "магмовую жилу с сокровищем", sizeof(buf)); break;
+			case FEAT_QUARTZ: my_strcpy(buf, "кварцевую жилу", sizeof(buf)); break;
+			case FEAT_QUARTZ_K: my_strcpy(buf, "кварцевую жилу с сокровищем", sizeof(buf)); break;
+			default: my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf)); break; }
+			
 			msg("Вы ТЩЕТНО копаете %s %s.", with_clause, buf);			
 		}
 	}

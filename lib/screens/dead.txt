@@ -1,20 +1,20 @@
                                                                               
-            {light dark}_______________________{/}                                         
-           {light dark}/{/}                       {light dark}\{/}         {light dark}___{/}                            
-          {light dark}/{/}                         {light dark}\{/} {light dark}___{/}   {light dark}/{/}   {light dark}\{/}                    
-         {light dark}/{/}            RIP            {light dark}\{/}   {light dark}\{/}  {light dark}:{/}   {light dark}:{/}                  
-        {light dark}/{/}                             {light dark}\{/}  {light dark}:{/} {mud}_{/}{light dark};{/}{mud},,,{/}{light dark};{/}{mud}_{/}                
-       {light dark}/{/}                               {light dark}\{/}{mud},{/}{light dark};{/}{mud}_{/}         
-      {light dark}|{/}                                 {light dark}|{/}   {light dark}___{/}                             
-      {light dark}|{/}                                 {light dark}|{/}  {light dark}/{/}   {light dark}\{/}                            
-      {light dark}|{/}                                 {light dark}|{/}  {light dark}:{/}   {light dark}:{/}                            
-      {light dark}|{/}                                 {light dark}|{/} {mud}_{/}{light dark};{/}{mud},,,{/}{light dark};{/}{mud}_{/}   {light dark}____{/}                    
-      {light dark}|{/}                                 {light dark}|{/}          {light dark}/{/}    {light dark}\{/}                   
-      {light dark}|{/}                                 {light dark}|{/}          {light dark}:{/}    {light dark}:{/}                   
-      {light dark}|{/}                                 {light dark}|{/}          {light dark}:{/}    {light dark}:{/}                   
-      {light dark}|{/}                                 {light dark}|{/}         {mud}_{/}{light dark};{/}{mud},,,,{/}{light dark};{/}{mud}_{/}                  
-      {light dark}|{/}                                 {light dark}|{/}                                   
-      {light dark}|{/}                                 {light dark}|{/}                                   
-      {light dark}|{/}                                 {light dark}|{/}                                   
-     {red}*{/}{light dark}|{/}   {yellow}*{/}     {yellow}*{/}     {blue}*{/}    {violet}*{/}   {red}*{/}     {teal}*{/}  {light dark}|{/} {yellow}*{/}                                 
-{mud}_____{/}{green})/\\{/}{mud}_{/}{green}){/}{mud}_{/}{green}/{/}{mud}___{/}{green}(\/{/}{mud}___{/}{green}(//{/}{mud}_{/}{green}\)/{/}{mud}_{/}{green}\//{/}{mud}__{/}{green}\\(/{/}{mud}_{/}{light dark}|{/}{mud}_{/}{green}){/}{mud}__________________________{/}
+            _______________________                                         
+           /                       \         ___                            
+          /                         \ ___   /   \                    
+         /            RIP            \   \  :   :                  
+        /                             \  : {mud}_{/};{mud},,,{/};{mud}_{/}                
+       /                               \{mud},{/};{mud}_{/}         
+      |                                 |   ___                             
+      |                                 |  /   \                            
+      |                                 |  :   :                            
+      |                                 | {mud}_{/};{mud},,,{/};{mud}_{/}   ____                    
+      |                                 |          /    \                   
+      |                                 |          :    :                   
+      |                                 |          :    :                   
+      |                                 |         {mud}_{/};{mud},,,,{/};{mud}_{/}                  
+      |                                 |                                   
+      |                                 |                                   
+      |                                 |                                   
+     {red}*{/}|   {yellow}*{/}     {yellow}*{/}     {blue}*{/}    {violet}*{/}   {red}*{/}     {teal}*{/}  | {yellow}*{/}                                 
+{mud}_____{/}{green})/\\{/}{mud}_{/}{green}){/}{mud}_{/}{green}/{/}{mud}___{/}{green}(\/{/}{mud}___{/}{green}(//{/}{mud}_{/}{green}\)/{/}{mud}_{/}{green}\//{/}{mud}__{/}{green}\\(/{/}{mud}_{/}|{mud}_{/}{green}){/}{mud}__________________________{/}

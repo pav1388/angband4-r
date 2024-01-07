@@ -4057,7 +4057,8 @@ flags:RAND_25 | BASH_DOOR
 friends:100:2d7:Same
 desc:It is a large wolf with eyes full of cunning.
 
-name:lurker
+# name:lurker
+name:скрытник
 base:lurker
 color:w
 speed:110
@@ -4070,8 +4071,9 @@ rarity:3
 experience:80
 blow:HIT:HURT:1d8
 blow:HIT:HURT:1d8
-desc:A strange creature that merges with the dungeon floor, trapping its
-desc: victims by enveloping them within its perfectly disguised form.
+desc:Странное существо, сливающееся с полом подземелья, заманивает своих
+desc: жертв в ловушку, окутывая их своей идеально замаскированной
+desc: оболочкой.
 
 ### Dungeon level 15 ###
 
@@ -8898,7 +8900,8 @@ desc:An enormous construct resembling a titan made from stone.  It strides
 desc: purposefully towards you, swinging its slow fists with earth-shattering
 desc: power.
 
-name:trapper
+# name:trapper
+name:ловец
 base:lurker
 color:W
 speed:120
@@ -8913,8 +8916,9 @@ blow:HIT:HURT:3d8
 blow:HIT:HURT:3d8
 blow:HIT:PARALYZE:15d1
 blow:HIT:PARALYZE:15d1
-desc:A larger cousin of the lurker, this creature traps unsuspecting victims and
-desc: paralyzes them, to be slowly digested later.
+desc:Более крупный кузен скрытника, это существо ловит ничего не
+desc: подозревающих жертв и парализует их, чтобы потом
+desc: медленно переварить.
 
 name:bodak
 base:minor demon

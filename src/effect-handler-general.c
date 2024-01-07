@@ -1175,7 +1175,7 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 
 		player->word_recall = 0;
 		//msg("A tension leaves the air around you...");
-		msg("Напряжение в воздух вокруг вас рассеивается...");
+		msg("Напряжение в воздухе вокруг вас рассеивается...");
 	}
 
 	/* Redraw status line */
@@ -2225,9 +2225,9 @@ bool effect_handler_RECHARGE(effect_handler_context_t *context)
 		struct object *destroyed;
 		bool none_left = false;
 
-		/* msg("The recharge backfires!");
-		msg("There is a bright flash of light."); */
+		// msg("The recharge backfires!");
 		msg("Перезарядка сработала!");
+		// msg("There is a bright flash of light.");
 		msg("Появилась яркая вспышка света.");
 
 		/* Reduce and describe inventory */

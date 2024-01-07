@@ -298,8 +298,7 @@ static void race_help(int i, void *db, const region *l)
 				   (r->el_info[ability->index].res_level != ability->value)) {
 			continue;
 		}
-		// text_out_e("\n%s", ability->name);
-		text_out_e("\n%s {Slate}(%s){/}", ability->name, ability->desc);
+		text_out_e("\n%s", ability->name);
 		n_flags++;
 	}
 
