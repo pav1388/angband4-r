@@ -84,25 +84,16 @@ static void display_score_page(const struct high_score scores[], int start,
 		/* Dump the first line */
 		c_put_str(attr, out_val, n * 4 + 2, 0);
 
-
+		strnfmt(out_val, sizeof(out_val), "Умер от %s", CAUSE_OF_DEATH(score->how));
+		
 		/* Died where? */
 		if (!cdun)
 			// strnfmt(out_val, sizeof(out_val), "Killed by %s in the town", score->how);
-			strnfmt(out_val, sizeof(out_val), "Умер от %s в городе",
-					streq(score->how, "starvation") ? "голодания" : 
-					streq(score->how, "poison") ? "отравления" : 
-					streq(score->how, "a fatal wound") ? "смертельного ранения" : 
-					streq(score->how, "Ripe Old Age") ? "Почтенного Возраста" : 
-					score->how);
+			strnfmt(out_val, sizeof(out_val), " в городе");
 		else
 			strnfmt(out_val, sizeof(out_val),
 					// "Killed by %s on dungeon level %d", score->how, cdun);
-					"Умер от %s на %d-м этаже", 
-					streq(score->how, "starvation") ? "голодания" : 
-					streq(score->how, "poison") ? "отравления" : 
-					streq(score->how, "a fatal wound") ? "смертельного ранения" : 
-					streq(score->how, "Ripe Old Age") ? "Почтенного Возраста" : 
-					score->how, cdun);
+					"на %d-м этаже", cdun);
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)
@@ -120,15 +111,14 @@ static void display_score_page(const struct high_score scores[], int start,
 					// when + 5, when + 7);
 					when + 3, when + 5);
 			when = tmp_val;
-		} else {
-			when = "СЕГОДНЯ";
 		}
 
 		/* And still another line of info */
 		strnfmt(out_val, sizeof(out_val),
 				// "(User %s, Date %s, Gold %s, Turn %s).",
 				"(Игрок %s, Дата %s, Золото %s, Ходов %s).",
-				user, when, gold, aged);
+				// user, when, gold, aged);
+				user, streq(when, "TODAY") ? "СЕГОДНЯ" : when, gold, aged);
 		c_put_str(attr, out_val, n * 4 + 4, 15);
 	}
 }

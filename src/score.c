@@ -36,7 +36,8 @@ static long total_points(const struct player *p)
  */
 size_t highscore_read(struct high_score scores[], size_t sz)
 {
-	char fname[1024];
+	// char fname[1024];
+	char fname[2048];
 	ang_file *scorefile;
 	size_t i;
 
@@ -130,10 +131,14 @@ static void highscore_write(const struct high_score scores[], size_t sz)
 	ang_file *lok;
 	ang_file *scorefile;
 
-	char old_name[1024];
-	char cur_name[1024];
-	char new_name[1024];
-	char lok_name[1024];
+	// char old_name[1024];
+	char old_name[2048];
+	// char cur_name[1024];
+	char cur_name[2048];
+	// char new_name[1024];
+	char new_name[2048];
+	// char lok_name[1024];
+	char lok_name[2048];
 	bool exists;
 
 	path_build(old_name, sizeof(old_name), ANGBAND_DIR_SCORES, "scores.old");

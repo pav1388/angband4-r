@@ -1816,7 +1816,7 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 	if (ammo) {
 		// textblock_append(tb, "When fired, hits targets up to ");
 		textblock_append(tb, "При выстреле поражает цели до ");
-		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range / 3);
+		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range);
 		// textblock_append(tb, " feet away.\n");
 		textblock_append(tb, " метр%s.\n", PLURAL_RU(range, "а", "ов", "ов"));
 	}

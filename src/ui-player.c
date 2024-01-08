@@ -876,7 +876,7 @@ static struct panel *get_panel_misc(void) {
 	panel_line(p, attr, "Возраст", "%d %s", player->age, PLURAL_RU(player->age, "год", "года", "лет"));
 	panel_line(p, attr, "Рост", "%d  см", ((player->ht / 12) * 31)); // примерные "сантиметры"
 	panel_line(p, attr, "Вес", "%d  кг", ((player->wt * 65) / 140)); // примерные "килограммы"
-	panel_line(p, attr, "Ходов использовано:", "");
+	panel_line(p, attr, "Сделано ходов:", "");
 	panel_line(p, attr, "Игра", "%d", turn);
 	panel_line(p, attr, "Стандарт", "%d", player->total_energy / 100);
 	panel_line(p, attr, "Отдых", "%d", player->resting_turn);

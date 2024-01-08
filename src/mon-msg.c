@@ -415,6 +415,25 @@ static void show_message(struct monster_race_message *msg)
 			msg->race,
 			msg->count > 1);
 
+	if (msg->count < 2) {
+		switch (msg->msg_code) {
+			case MON_MSG_DESTROYED:
+			case MON_MSG_HIT_HARD:
+			case MON_MSG_IMMUNE:
+			case MON_MSG_UNAFFECTED:
+			case MON_MSG_NOT_CONFUSED:
+			case MON_MSG_UNHARMED:
+			case MON_MSG_MORE_DAZED:
+			case MON_MSG_DAZED:
+			case MON_MSG_NOT_DAZED:
+				my_strcat(body, (rf_has(msg->race->flags, RF_FEMALE)) ? "а" : (rf_has(msg->race->flags, RF_MALE)) ? "" : "о", sizeof(body));
+				break;
+			
+		default:
+				break;
+		}
+	}
+	
 	/* Show the message */
 	msgt(get_message_type(msg->msg_code, msg->race),
 			"%s%s",

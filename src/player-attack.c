@@ -1096,8 +1096,9 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			char msg[160];
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
-					"Цель вне досягаемости на %d м. Стрелять всё равно? ",
-				taim - range);
+					// taim - range);
+					"Цель дальше досягаемости на %d ход%s. Стрелять всё равно? ",
+					taim - range, PLURAL_RU(taim - range, "", "а", "ов"));
 			if (!get_check(msg)) return;
 		}
 	}
@@ -1199,13 +1200,28 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 
 						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL);
 						
+						uint8_t o_sex;
+						switch (obj->tval) {
+							case TV_ARROW:
+								o_sex = 2; // female
+								break;
+							
+							// case TV_:
+								// o_sex = 0; // neutral
+								// break;
+							
+							default:
+								o_sex = 1; // male
+								break;
+						}
+						
 						if (hit_types[j].text) {
 							// msgt(msg_type, "Your %s %s %s%s. %s", o_name, 
-							msgt(msg_type, "Ваш %s %s по %s%s. %s", o_name, 
+							msgt(msg_type, "Ваш%s %s %s по %s%s. %s", o_sex == 1 ? "" : o_sex == 2 ? "а" : "е", o_name, 
 								 hit_verb, m_name, dmg_text, hit_types[j].text);
 						} else {
 							// msgt(msg_type, "Your %s %s %s%s.", o_name, hit_verb,
-							msgt(msg_type, "Ваш %s %s по %s%s.", o_name, hit_verb,
+							msgt(msg_type, "Ваш%s %s %s по %s%s.", o_sex == 1 ? "" : o_sex == 2 ? "а" : "е", o_name, hit_verb,
 								 m_name, dmg_text);
 						}
 					}

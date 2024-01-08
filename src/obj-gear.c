@@ -629,16 +629,16 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 		} else if (first_remainder) {
 			label = gear_to_label(p, first_remainder);
 			// msg("You have %s (1st %c).", name, label);
-			if (obj->number == 0)
+			if (obj->number == 1)
 				msg("У вас %s (1-ый %c).", name, label);
 			else
 				msg("У вас есть %s (1-ый %c).", name, label);
 		} else {
 			// msg("You have %s (%c).", name, label);
-			if (obj->number == 0)
+			if (obj->number == 1)
 				msg("У вас %s (%c).", name, label);
 			else
-				msg("У вас есть %s (%c).", name, label);
+				msg("У вас есть %s (%c).", name, label); 
 		}
 	}
 
@@ -1009,16 +1009,16 @@ void inven_wield(struct object *obj, int slot)
 	/* Where is the item now */
 	if (tval_is_melee_weapon(wielded))
 		// fmt = "You are wielding %s (%c).";
-		fmt = "Вы держите %s (%c).";
+		fmt = "Вы вооружились %s (%c).";
 	else if (wielded->tval == TV_BOW)
 		// fmt = "You are shooting with %s (%c).";
-		fmt = "Вы стреляете из %s (%c).";
+		fmt = "Вы вооружились %s (%c).";
 	else if (tval_is_light(wielded))
 		// fmt = "Your light source is %s (%c).";
 		fmt = "Ваш источник света %s (%c).";
 	else
 		// fmt = "You are wearing %s (%c).";
-		fmt = "Вы носите %s (%c).";
+		fmt = "Вы экипировали %s (%c).";
 
 	/* Describe the result */
 	object_desc(o_name, sizeof(o_name), wielded,
@@ -1076,16 +1076,16 @@ void inven_takeoff(struct object *obj)
 	/* Describe removal by slot */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
 		// act = "You were wielding";
-		act = "Вы убрали";
+		act = "Вы отложили";
 	else if (slot_type_is(player, slot, EQUIP_BOW))
 		// act = "You were holding";
 		act = "Вы убрали";
 	else if (slot_type_is(player, slot, EQUIP_LIGHT))
 		// act = "You were holding";
-		act = "Вы убрали";
+		act = "Вы погасили";
 	else
 		// act = "You were wearing";
-		act = "Вы убрали";
+		act = "Вы сняли";
 
 	/* De-equip the object */
 	player->body.slots[slot].obj = NULL;
