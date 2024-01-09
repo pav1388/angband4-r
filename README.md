@@ -1,7 +1,6 @@
 # Angband 4.2.5 - ru
 
 Русская локализация последней ванильной версии игры
-(скорее всего правильнее назвать это Вариантом, а не локализацией).
 
 Теперь русский язык доступен и для Nintendo 3DS. 
 
@@ -10,12 +9,6 @@
 
 <p align="center">
 <img src="screenshots/title.png" width="425"/>
-
-<img src="screenshots/game.png" width="425"/>
-  
-<img src="screenshots/birth.png" width="425"/>
-	
-<img src="screenshots/death.png" width="425"/>
 </p>
 
 Angband - это графическая игра о приключениях в подземелье, в которой 

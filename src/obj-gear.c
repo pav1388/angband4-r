@@ -638,7 +638,7 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 			if (obj->number == 1)
 				msg("У вас %s (%c).", name, label);
 			else
-				msg("У вас есть %s (%c).", name, label);
+				msg("У вас есть %s (%c).", name, label); 
 		}
 	}
 
@@ -807,10 +807,17 @@ void inven_item_charges(struct object *obj)
 	/* Require staff/wand */
 	if (tval_can_have_charges(obj) && object_flavor_is_aware(obj)) {
 		// msg("You have %d charge%s remaining.",
+<<<<<<< HEAD
 		msg("У вас остал%s %d заряд%s.",
 				obj->pval,
 				// PLURAL(obj->pval));
 				PLURAL_RU(obj->pval, "", "а", "ов"));
+=======
+				// obj->pval,
+				// PLURAL(obj->pval));
+	msg("У вас остал%s %d заряд%s.", PLURAL_RU(obj->pval, "ся", "ось", "ось"), obj->pval,
+			PLURAL_RU(obj->pval, "", "а", "ов"));
+>>>>>>> 717fd3b5a61c38aa380f0aa2231b2d7a2122e53a
 				
 	}
 }

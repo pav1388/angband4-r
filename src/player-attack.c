@@ -1097,7 +1097,11 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
 					// taim - range);
+<<<<<<< HEAD
 					"Цель дальше досягаемости на %d ход%s. Всё равно стрелять ? ",
+=======
+					"Цель дальше досягаемости на %d ход%s. Стрелять всё равно? ",
+>>>>>>> 717fd3b5a61c38aa380f0aa2231b2d7a2122e53a
 					taim - range, PLURAL_RU(taim - range, "", "а", "ов"));
 			if (!get_check(msg)) return;
 		}

@@ -84,15 +84,24 @@ static void display_score_page(const struct high_score scores[], int start,
 		/* Dump the first line */
 		c_put_str(attr, out_val, n * 4 + 2, 0);
 
-
+		strnfmt(out_val, sizeof(out_val), "Умер от %s", CAUSE_OF_DEATH(score->how));
+		
 		/* Died where? */
 		if (!cdun)
 			// strnfmt(out_val, sizeof(out_val), "Killed by %s in the town", score->how);
+<<<<<<< HEAD
 			strnfmt(out_val, sizeof(out_val), "Умер от %s в городе", CAUSE_OF_DEATH(score->how));
 		else
 			strnfmt(out_val, sizeof(out_val),
 					// "Killed by %s on dungeon level %d", score->how, cdun);
 					"Умер от %s на %d-м этаже", CAUSE_OF_DEATH(score->how), cdun);
+=======
+			strnfmt(out_val, sizeof(out_val), " в городе");
+		else
+			strnfmt(out_val, sizeof(out_val),
+					// "Killed by %s on dungeon level %d", score->how, cdun);
+					"на %d-м этаже", cdun);
+>>>>>>> 717fd3b5a61c38aa380f0aa2231b2d7a2122e53a
 
 		/* Append a "maximum level" */
 		if (mdun > cdun)
