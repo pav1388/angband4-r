@@ -14,19 +14,19 @@ MON_MSG(NONE,				MSG_GENERIC,	false,	"[страдает|страдают].")
 // MON_MSG(DIE,				MSG_KILL,		false,	"die[s].")
 MON_MSG(DIE,				MSG_KILL,		false,	"[умирает|умирают].")
 // MON_MSG(DESTROYED,			MSG_KILL,		false,	"[is|are] destroyed.")
-MON_MSG(DESTROYED,			MSG_KILL,		false,	"уничтожен[|ы].")							// +1-"" "а" "о"
+MON_MSG(DESTROYED,			MSG_KILL,		false,	"уничтожен[|ы.]")							// +1-"" "а" "о"
 // MON_MSG(RESIST_A_LOT,		MSG_GENERIC,	false,	"resist[s] a lot.")
 MON_MSG(RESIST_A_LOT,		MSG_GENERIC,	false,	"упорно сопротивля[ется|ются].")
 // MON_MSG(HIT_HARD,			MSG_GENERIC,	false,	"[is|are] hit hard.")
-MON_MSG(HIT_HARD,			MSG_GENERIC,	false,	"сильно пострадал[|и].")					// +1-"" "а" "о"
+MON_MSG(HIT_HARD,			MSG_GENERIC,	false,	"сильно пострадал[|и.]")					// +1-"" "а" "о"
 // MON_MSG(RESIST,				MSG_GENERIC,	false,	"resist[s].")
 MON_MSG(RESIST,				MSG_GENERIC,	false,	"сопротивля[ется|ются].")
 // MON_MSG(IMMUNE,				MSG_GENERIC,	false,	"[is|are] immune.")
-MON_MSG(IMMUNE,				MSG_GENERIC,	false,	"неуязвим[|ы].")							// +1-"" "а" "о"
+MON_MSG(IMMUNE,				MSG_GENERIC,	false,	"неуязвим[|ы.]")							// +1-"" "а" "о"
 // MON_MSG(RESIST_SOMEWHAT,	MSG_GENERIC,	false,	"resist[s] somewhat.")
 MON_MSG(RESIST_SOMEWHAT,	MSG_GENERIC,	false,	"немного сопротивля[ется|ются].")
 // MON_MSG(UNAFFECTED,			MSG_GENERIC,	false,	"[is|are] unaffected!")
-MON_MSG(UNAFFECTED,			MSG_GENERIC,	false,	"не пострадал[|и]!")						// +1-"" "а" "о"
+MON_MSG(UNAFFECTED,			MSG_GENERIC,	false,	"не пострадал[|и!]")						// +1-"" "а" "о"
 // MON_MSG(SPAWN,				MSG_GENERIC,	false,	"spawn[s]!")
 MON_MSG(SPAWN,				MSG_GENERIC,	false,	"размножа[ется|ются]!")
 // MON_MSG(HEALTHIER,			MSG_GENERIC,	false,	"look[s] healthier.")
@@ -54,11 +54,11 @@ MON_MSG(CHANGE,				MSG_GENERIC,	false,	"меня[ется|ются]!")
 // MON_MSG(DISAPPEAR,			MSG_GENERIC,	false,	"disappear[s]!")
 MON_MSG(DISAPPEAR,			MSG_GENERIC,	false,	"исчеза[ет|ют]!")
 // MON_MSG(MORE_DAZED,			MSG_GENERIC,	false,	"[is|are] even more stunned.")
-MON_MSG(MORE_DAZED,			MSG_GENERIC,	false,	"сильно ошеломлен[|ы].")					// +1-"" "а" "о"
+MON_MSG(MORE_DAZED,			MSG_GENERIC,	false,	"сильно ошеломлен[|ы.]")					// +1-"" "а" "о"
 // MON_MSG(DAZED,				MSG_GENERIC,	false,	"[is|are] stunned.")
-MON_MSG(DAZED,				MSG_GENERIC,	false,	"ошеломлен[|ы].")							// +1-"" "а" "о"
+MON_MSG(DAZED,				MSG_GENERIC,	false,	"ошеломлен[|ы.]")							// +1-"" "а" "о"
 // MON_MSG(NOT_DAZED,			MSG_GENERIC,	false,	"[is|are] no longer stunned.")
-MON_MSG(NOT_DAZED,			MSG_GENERIC,	false,	"больше не ошеломлен[|ы].")					// +1-"" "а" "о"
+MON_MSG(NOT_DAZED,			MSG_GENERIC,	false,	"больше не ошеломлен[|ы.]")					// +1-"" "а" "о"
 // MON_MSG(MORE_CONFUSED,		MSG_GENERIC,	false,	"look[s] more confused.")
 MON_MSG(MORE_CONFUSED,		MSG_GENERIC,	false,	"выгляд[ит|ят] сильно растерянн[о|ыми].")	// -2-"" "" ""
 // MON_MSG(CONFUSED,			MSG_GENERIC,	false,	"look[s] confused.")
@@ -110,7 +110,7 @@ MON_MSG(BRIEF_PUZZLE,		MSG_GENERIC,	false,	"выгляд[ит|ят] озадач
 // MON_MSG(MAINTAIN_SHAPE,		MSG_GENERIC,	false,	"maintain[s] the same shape.")
 MON_MSG(MAINTAIN_SHAPE,		MSG_GENERIC,	false,	"сохраня[ет|ют] прежний облик.")
 // MON_MSG(UNHARMED,			MSG_GENERIC,	false,	"[is|are] unharmed.")
-MON_MSG(UNHARMED,			MSG_GENERIC,	false,	"невредимым[|ы].")							// +1-"" "а" "о"
+MON_MSG(UNHARMED,			MSG_GENERIC,	false,	"невредимым[|ы.]")							// +1-"" "а" "о"
 // MON_MSG(APPEAR,			MSG_GENERIC,	false,	"appear[s]!")
 MON_MSG(APPEAR,			MSG_GENERIC,	false,	"появля[ется|ются]!")
 // MON_MSG(HIT_AND_RUN,		MSG_GENERIC,	true,	"There is a puff of smoke!")

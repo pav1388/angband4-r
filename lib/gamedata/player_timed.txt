@@ -222,10 +222,10 @@ flags:NONSTACKING
 
 name:CONFUSED
 desc:confusion
-#grade:o:10000:Confused:Вы сбиты с толку!
-grade:o:10000:Растерян:Вы сбиты с толку!
+#grade:o:10000:Confused:Вы растеряны!
+grade:o:10000:Растерян:Вы растеряны!
 on-end:Вы больше не растеряны.
-on-increase:Вы запутались еще больше!
+on-increase:Вы растеряны ещё больше!
 on-decrease:Вы чувствуете себя менее растерянным.
 msgt:CONFUSED
 fail:1:PROT_CONF
@@ -288,7 +288,7 @@ grade:R:1:Starving: :Вы умираете от голода!!!
 grade:r:4:Faint:Вы всё ещё в обмороке.:Вы теряете сознание от голода!
 grade:o:8:Weak:Вы всё ещё слабы.:Вы слабеете от голода!
 grade:y:15:Hungry:Вы всё ещё голодны.:Вы проголодались.
-grade:G:90:Fed:Вы больше не голодны.:Вы больше не переполнены.
+grade:G:90:Fed:Вы больше не голодны.:Вы пришли в норму после переедания.
 grade:g:100:Full:Вы объелись!:
 msgt:HUNGRY
 lower-bound:1
@@ -467,9 +467,9 @@ flag-synonym:PROT_FEAR:1
 name:SCRAMBLE
 desc:scrambled
 #grade:v:10000:Scrambled:Ваше тело начинает метаться...
-grade:v:10000:Изменён:Ваше тело начинает метаться...
-on-end:Ваше тело вновь обретает свою истинный облик.
-on-increase:Вы еще больше изменились!
+grade:v:10000:Смещён:Ваше тело начинает метаться в пространстве...
+on-end:Ваше тело вновь обретает постоянство.
+on-increase:Вы еще больше подверглись смещению!
 msgt:SCRAMBLE
 fail:2:NEXUS
 on-begin-effect:SCRAMBLE_STATS
@@ -492,7 +492,7 @@ on-end:Вы чувствуете, как ваш разум снова замед
 name:ATT_ACID
 desc:temporary acid brand
 #grade:s:10000:AttAcid:Your {kind} start{s} to drip with acid!
-grade:s:10000:ДопКисл:Ваш {kind} начинает сочиться кислота!
+grade:s:10000:ДопКисл:Ваш {kind} начинает сочиться кислотой!
 on-end:Кислота бесследно исчезает из вашего {kind}.
 brand:ACID_3
 

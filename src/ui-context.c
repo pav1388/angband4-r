@@ -563,14 +563,15 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 			ODESC_PREFIX | ODESC_FULL, player);
 
 		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
-		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s:",
+		prt(format("(Enter выбор, ESC отмена) Вы видете %s:",
 				   o_name), 0, 0);
 	} else {
 		/* Feature (apply mimic) */
-		const char *name = square_apparent_name(player->cave, grid);
+		// const char *name = square_apparent_name(player->cave, grid);
 		const char *prefix = square_apparent_look_prefix(player->cave, grid);
 
-		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s%s:", prefix, name), 0, 0);
+		// prt(format("(Enter to select command, ESC to cancel) You see %s%s:", prefix, name), 0, 0);
+		prt(format("(Enter выбор, ESC отмена) Вы видите %s:", prefix), 0, 0);
 	}
 
 	selected = menu_dynamic_select(m);

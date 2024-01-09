@@ -201,7 +201,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			my_strcpy(desc, "себя", max);
 		else
 			// my_strcpy(desc, "itself", max);
-			my_strcpy(desc, "сам", max);
+			my_strcpy(desc, "само", max);
 	} else {
 		const char *comma_pos;
 

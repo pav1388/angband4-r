@@ -53,22 +53,22 @@ static void format_dice_string(const random_value *v, int multiplier,
 {
 	if (v->dice && v->base) {
 		if (multiplier == 1) {
-			// strnfmt(dice_string, len, "%d+%dd%d", v->base, v->dice,
-			strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice,
+			strnfmt(dice_string, len, "%d+%dd%d", v->base, v->dice,
+			// strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice,
 				v->sides);
 		} else {
-			// strnfmt(dice_string, len, "%d+%d*(%dd%d)",
-			strnfmt(dice_string, len, "%d+%d*(%dк%d)",
+			strnfmt(dice_string, len, "%d+%d*(%dd%d)",
+			// strnfmt(dice_string, len, "%d+%d*(%dк%d)",
 				multiplier * v->base, multiplier, v->dice,
 				v->sides);
 		}
 	} else if (v->dice) {
 		if (multiplier == 1) {
-			// strnfmt(dice_string, len, "%dd%d", v->dice, v->sides);
-			strnfmt(dice_string, len, "%dк%d", v->dice, v->sides);
+			strnfmt(dice_string, len, "%dd%d", v->dice, v->sides);
+			// strnfmt(dice_string, len, "%dк%d", v->dice, v->sides);
 		} else {
-			// strnfmt(dice_string, len, "%d*(%dd%d)", multiplier,
-			strnfmt(dice_string, len, "%d*(%dк%d)", multiplier,
+			strnfmt(dice_string, len, "%d*(%dd%d)", multiplier,
+			// strnfmt(dice_string, len, "%d*(%dк%d)", multiplier,
 				v->dice, v->sides);
 		}
 	} else {

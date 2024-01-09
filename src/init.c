@@ -2262,17 +2262,17 @@ static errr finish_parse_feat(struct parser *p) {
 		 * Ensure the prefixes and prepositions end with a space for
 		 * ease of use with the targeting code.
 		 */
-		if (f_info[fidx].look_prefix && !suffix(
-				f_info[fidx].look_prefix, " ")) {
-			f_info[fidx].look_prefix = string_append(
-				f_info[fidx].look_prefix, " ");
-		}
-		if (f_info[fidx].look_in_preposition && !suffix(
-				f_info[fidx].look_in_preposition, " ")) {
-			f_info[fidx].look_in_preposition =
-				string_append(f_info[fidx].look_in_preposition,
-				" ");
-		}
+		// if (f_info[fidx].look_prefix && !suffix(
+				// f_info[fidx].look_prefix, " ")) {
+			// f_info[fidx].look_prefix = string_append(
+				// f_info[fidx].look_prefix, " ");
+		// }
+		// if (f_info[fidx].look_in_preposition && !suffix(
+				// f_info[fidx].look_in_preposition, " ")) {
+			// f_info[fidx].look_in_preposition =
+				// string_append(f_info[fidx].look_in_preposition,
+				// " ");
+		// }
 	}
 	z_info->store_max = shop_idx;
 

@@ -504,7 +504,7 @@ static int prt_speed_aux(char buf[], int max, uint8_t *attr)
 	}
 
 	if (type && !OPT(player, effective_speed))
-		strnfmt(buf, max, "%s (%+d)", type, (i - 110));
+		strnfmt(buf, max, "%s (%+d) ", type, (i - 110));
 	else if (type && OPT(player, effective_speed))
 	{
 		int multiplier = 10 * extract_energy[i] / extract_energy[110];

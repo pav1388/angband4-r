@@ -1426,7 +1426,8 @@ void do_cmd_wiz_jump_level(struct command *cmd)
 	if (level < 0 || level >= z_info->max_depth) return;
 
 	if (cmd_get_arg_choice(cmd, "choice", &choose_gen) != CMD_OK) {
-		choose_gen = (get_check("Choose cave profile? ")) ? 1 : 0;
+		// choose_gen = (get_check("Choose cave profile? ")) ? 1 : 0;
+		choose_gen = (get_check("Выбрать профиль пещеры? ")) ? 1 : 0;
 		cmd_set_arg_choice(cmd, "choice", choose_gen);
 	}
 
@@ -1607,7 +1608,8 @@ void do_cmd_wiz_perform_effect(struct command *cmd)
 	screen_save();
 
 	/* Get the name */
-	if (get_string("Do which effect: ", name, sizeof(name))) {
+	// if (get_string("Do which effect: ", name, sizeof(name))) {
+	if (get_string("Какой эффект: ", name, sizeof(name))) {
 		/* See if an effect index was entered */
 		if (!get_int_from_string(name, &index)) {
 			/* If not, find the effect with that name */
@@ -1616,20 +1618,23 @@ void do_cmd_wiz_perform_effect(struct command *cmd)
 
 		/* Failed */
 		if (index <= EF_NONE || index >= EF_MAX) {
-			msg("No effect found.");
+			// msg("No effect found.");
+			msg("Эффект не найден.");
 			return;
 		}
 	}
 
 	/* Get the dice */
-	if (! get_string("Enter damage dice (eg 1+2d6M2): ", dice,
+	// if (! get_string("Enter damage dice (eg 1+2d6M2): ", dice,
+	if (! get_string("Введите кубик урона (например 1+2d6M2): ", dice,
 			sizeof(dice))) {
 		my_strcpy(dice, "0", sizeof(dice));
 	}
 
 	/* Get the effect subtype */
 	my_strcpy(name, "0", sizeof(name));
-	if (get_string("Enter name or number for effect subtype: ", name,
+	// if (get_string("Enter name or number for effect subtype: ", name,
+	if (get_string("Введите имя или номер подтипа эффекта: ", name,
 			sizeof(name))) {
 		/* See if an effect parameter was entered */
 		p1 = effect_subtype(index, name);
@@ -1637,10 +1642,14 @@ void do_cmd_wiz_perform_effect(struct command *cmd)
 	}
 
 	/* Get the parameters */
-	p2 = get_quantity("Enter second parameter (radius): ", 100);
-	p3 = get_quantity("Enter third parameter (other): ", 100);
-	y = get_quantity("Enter y parameter: ", 100);
-	x = get_quantity("Enter x parameter: ", 100);
+	// p2 = get_quantity("Enter second parameter (radius): ", 100);
+	p2 = get_quantity("Введите второй параметр (радиус): ", 100);
+	// p3 = get_quantity("Enter third parameter (other): ", 100);
+	p3 = get_quantity("Введите третий параметр (другое): ", 100);
+	// y = get_quantity("Enter y parameter: ", 100);
+	y = get_quantity("Введите 'y' параметр: ", 100);
+	// x = get_quantity("Enter x parameter: ", 100);
+	x = get_quantity("Введите 'x' параметр: ", 100);
 
 	/* Reload the screen */
 	screen_load();
@@ -1648,7 +1657,8 @@ void do_cmd_wiz_perform_effect(struct command *cmd)
 	effect_simple(index, source_player(), dice, p1, p2, p3, y, x, &ident);
 
 	if (ident) {
-		msg("Identified!");
+		// msg("Identified!");
+		msg("Идентифицировано!");
 	}
 }
 
@@ -1701,8 +1711,10 @@ void do_cmd_wiz_play_item(struct command *cmd)
 		}
 	} else {
 		if (cmd_get_arg_item(cmd, "item", &obj) != CMD_OK || !obj) {
-			if (!get_item(&obj, "Play with which object? ",
-					"You have nothing to play with.",
+			// if (!get_item(&obj, "Play with which object? ",
+			if (!get_item(&obj, "С каким предметом играть? ",
+					// "You have nothing to play with.",
+					"Вам не с чем играть.",
 					cmd->code, NULL, (USE_EQUIP |
 					USE_INVEN | USE_QUIVER | USE_FLOOR))) {
 				return;
@@ -1862,16 +1874,19 @@ void do_cmd_wiz_play_item(struct command *cmd)
 		}
 
 		if (queue_failed &&
-				get_check("Couldn't proceed.  Stop playing with item and lose all changes? ")) {
+				// get_check("Couldn't proceed.  Stop playing with item and lose all changes? ")) {
+				get_check("Не удалось продолжить.  Прекратить игру и потерять все изменения? ")) {
 			done = true;
 			if (object_changed) {
-				done_msg = "Bailed out.  Changes to item lost.";
+				// done_msg = "Bailed out.  Changes to item lost.";
+				done_msg = "Вышел из строя.  Изменения утеряны.";
 			}
 		}
 	} else {
 		done = true;
 		if (object_changed) {
-			done_msg = "Changes ignored.";
+			// done_msg = "Changes ignored.";
+			done_msg = "Изменения проигнорированы.";
 		}
 	}
 
@@ -1880,7 +1895,8 @@ void do_cmd_wiz_play_item(struct command *cmd)
 		if (cmdq_push_copy(cmd) != 0) {
 			/* Failed.  Bail out without saving changes. */
 			done = true;
-			done_msg = "Couldn't queue command.  Changes lost.";
+			// done_msg = "Couldn't queue command.  Changes lost.";
+			done_msg = "Не удалось поставить команду в очередь.  Изменения потеряны.";
 		}
 	}
 
@@ -2019,7 +2035,8 @@ void do_cmd_wiz_query_feature(struct command *cmd)
 	if (cmd_get_arg_choice(cmd, "choice", &feature_class) != CMD_OK) {
 		char choice;
 
-		if (!get_com("Debug Command Feature Query: ", &choice)) return;
+		// if (!get_com("Debug Command Feature Query: ", &choice)) return;
+		if (!get_com("Команда отладки Запрос Функции: ", &choice)) return;
 		feature_class = choice;
 		cmd_set_arg_choice(cmd, "choice", feature_class);
 	}
@@ -2117,7 +2134,8 @@ void do_cmd_wiz_query_feature(struct command *cmd)
 
 		/* Invalid entry */
 		default:
-			msg("That was an invalid selection.  Use one of fobuztcdhmqgpra .");
+			// msg("That was an invalid selection.  Use one of fobuztcdhmqgpra .");
+			msg("Это был неправильный выбор.  Используйте один из 'fobuztcdhmqgpra' .");
 			return;
 	}
 
@@ -2125,7 +2143,8 @@ void do_cmd_wiz_query_feature(struct command *cmd)
 
 	Term_redraw();
 
-	msg("Press any key.");
+	// msg("Press any key.");
+	msg("Нажмите любую клавишу.");
 	inkey_ex();
 	prt("", 0, 0);
 
@@ -2201,7 +2220,8 @@ void do_cmd_wiz_query_square_flag(struct command *cmd)
 
 	Term_redraw();
 
-	msg("Press any key.");
+	// msg("Press any key.");
+	msg("Нажмите любую клавишу.");
 	inkey_ex();
 	prt("", 0, 0);
 
@@ -2311,7 +2331,7 @@ void do_cmd_wiz_rerate(struct command *cmd)
 	player->upkeep->redraw |= PR_HP;
 
 	// msg("Current Life Rating is %d/100.", percent);
-	msg("Текущий Рейтинг Жизни составляет %d/100.", percent);
+	msg("Текущий Показатель Здоровья составляет %d/100.", percent);
 }
 
 
@@ -2333,8 +2353,10 @@ void do_cmd_wiz_reroll_item(struct command *cmd)
 
 	/* Get the item to reroll. */
 	if (cmd_get_arg_item(cmd, "item", &obj) != CMD_OK) {
-		if (!get_item(&obj, "Reroll which item? ",
-				"You have nothing to reroll.", cmd->code,
+		// if (!get_item(&obj, "Reroll which item? ",
+		if (!get_item(&obj, "Какой предмет перебросить? ",
+				// "You have nothing to reroll.", cmd->code,
+				"Вам нечего перебросить.", cmd->code,
 				NULL, (USE_EQUIP | USE_INVEN | USE_QUIVER |
 				USE_FLOOR))) {
 			return;
@@ -2346,7 +2368,7 @@ void do_cmd_wiz_reroll_item(struct command *cmd)
 	if (cmd_get_arg_choice(cmd, "choice", &roll_choice) != CMD_OK) {
 		char ch;
 
-		if (!get_com("Roll as [n]ormal, [g]ood, or [e]xcellent? ", &ch)) {
+		if (!get_com("Бросок как [n]нормальный, [g]хороший, or [e]превосходный? ", &ch)) {
 			return;
 		}
 		if (ch == 'n' || ch == 'N') {

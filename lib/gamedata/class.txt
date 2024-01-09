@@ -1606,7 +1606,7 @@ desc: смертонос, сломан или проклят.
 
 
 ############### BLACKGUARD ###############
-name:Тёмный Страж
+name:Чернокнижник
 stats:2:0:-3:0:2
 skill-disarm-phys:20:15
 skill-disarm-magic:20:10

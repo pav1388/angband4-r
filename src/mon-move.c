@@ -1243,7 +1243,8 @@ static bool monster_turn_can_move(struct monster *mon, const char *m_name,
 			if (randint0(mon->hp / 10) > k) {
 				if (will_bash) {
 					// msg("%s slams against the door.", m_name);
-					msg("%s хлопнул дверью.", m_name);
+					msg("%s хлопнул%s дверью.", m_name, rf_has(mon->race->flags, RF_FEMALE) ? "а" :
+							rf_has(mon->race->flags, RF_MALE) ? "" : "о");
 					
 				} else {
 					// msg("%s fiddles with the lock.", m_name);

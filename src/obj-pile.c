@@ -994,7 +994,7 @@ static void floor_carry_fail(struct chunk *c, struct object *drop, bool broke)
 		char o_name[160];
 		const char *verb = broke ?
 			// VERB_AGREEMENT(drop->number, "breaks", "break") :
-			VERB_AGREEMENT(drop->number, "ломается", "ломаются") :
+			VERB_AGREEMENT(drop->number, "разбивается", "разбиваются") :
 			// VERB_AGREEMENT(drop->number, "disappears", "disappear");
 			VERB_AGREEMENT(drop->number, "исчезает", "исчезают");
 		object_desc(o_name, sizeof(o_name), drop, ODESC_BASE, player);

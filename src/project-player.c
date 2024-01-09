@@ -112,14 +112,20 @@ static void project_player_drain_stats(int num)
 
 	for (i = 0; i < num; i++) {
 		switch (randint1(5)) {
-			case 1: k = STAT_STR; act = "strong"; break;
-			case 2: k = STAT_INT; act = "bright"; break;
-			case 3: k = STAT_WIS; act = "wise"; break;
-			case 4: k = STAT_DEX; act = "agile"; break;
-			case 5: k = STAT_CON; act = "hale"; break;
+			// case 1: k = STAT_STR; act = "strong"; break;
+			case 1: k = STAT_STR; act = "сильный"; break;
+			// case 2: k = STAT_INT; act = "bright"; break;
+			case 2: k = STAT_INT; act = "умный"; break;
+			// case 3: k = STAT_WIS; act = "wise"; break;
+			case 3: k = STAT_WIS; act = "мудрый"; break;
+			// case 4: k = STAT_DEX; act = "agile"; break;
+			case 4: k = STAT_DEX; act = "ловкий"; break;
+			// case 5: k = STAT_CON; act = "hale"; break;
+			case 5: k = STAT_CON; act = "выносливый"; break;
 		}
 
-		msg("You're not as %s as you used to be...", act);
+		// msg("You're not as %s as you used to be...", act);
+		msg("Вы не такой %, как были раньше...", act);
 		player_stat_dec(player, k, false);
 	}
 
@@ -163,7 +169,8 @@ static int project_player_handler_FIRE(project_player_handler_context_t *context
 	/* Occasional side-effects for powerful fire attacks */
 	if (context->power >= 80) {
 		if (randint0(context->dam) > 500) {
-			msg("The intense heat saps you.");
+			// msg("The intense heat saps you.");
+			msg("Сильная жара выматывает вас.");
 			effect_simple(EF_DRAIN_STAT, source_none(), "0", STAT_STR, 0, 0, 0,
 						  0, &context->obvious);
 		}
@@ -171,14 +178,16 @@ static int project_player_handler_FIRE(project_player_handler_context_t *context
 			if (player_inc_timed(player, TMD_BLIND,
 					randint1(context->dam / 100), true,
 					true, true)) {
-				msg("Your eyes fill with smoke!");
+				// msg("Your eyes fill with smoke!");
+				msg("Ваши глаза наполняются дымом!");
 			}
 		}
 		if (randint0(context->dam) > 500) {
 			if (player_inc_timed(player, TMD_POISONED,
 					randint1(context->dam / 10), true,
 					true, true)) {
-				msg("You are assailed by poisonous fumes!");
+				// msg("You are assailed by poisonous fumes!");
+				msg("Вас окутывают ядовитые испарения!");
 			}
 		}
 	}
@@ -193,7 +202,8 @@ static int project_player_handler_COLD(project_player_handler_context_t *context
 	/* Occasional side-effects for powerful cold attacks */
 	if (context->power >= 80) {
 		if (randint0(context->dam) > 500) {
-			msg("The cold seeps into your bones.");
+			// msg("The cold seeps into your bones.");
+			msg("Холод пробирает до костей.");
 			effect_simple(EF_DRAIN_STAT, source_none(), "0", STAT_DEX, 0, 0, 0,
 						  0, &context->obvious);
 		}
@@ -202,7 +212,8 @@ static int project_player_handler_COLD(project_player_handler_context_t *context
 				equip_learn_flag(player, OF_HOLD_LIFE);
 			} else {
 				int drain = context->dam;
-				msg("The cold withers your life force!");
+				// msg("The cold withers your life force!");
+				msg("Холод лишает вас жизненных сил!");
 				player_exp_lose(player, drain, false);
 			}
 		}
@@ -216,7 +227,8 @@ static int project_player_handler_POIS(project_player_handler_context_t *context
 
 	if (!player_inc_timed(player, TMD_POISONED, 10 + randint1(context->dam),
 			true, true, true)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 	}
 
 	/* Occasional side-effects for powerful poison attacks */
@@ -224,7 +236,8 @@ static int project_player_handler_POIS(project_player_handler_context_t *context
 		if (randint0(context->dam) > 200) {
 			if (!player_is_immune(player, ELEM_ACID)) {
 				int dam = context->dam / 5;
-				msg("The venom stings your skin!");
+				// msg("The venom stings your skin!");
+				msg("Яд щиплет вашу кожу!");
 				inven_damage(player, PROJ_ACID, dam);
 				xtra += adjust_dam(player, PROJ_ACID, dam, RANDOMISE,
 								 player->state.el_info[PROJ_ACID].res_level,
@@ -232,7 +245,8 @@ static int project_player_handler_POIS(project_player_handler_context_t *context
 			}
 		}
 		if (randint0(context->dam) > 200) {
-			msg("The stench sickens you.");
+			// msg("The stench sickens you.");
+			msg("От зловония вас тошнит.");
 			effect_simple(EF_DRAIN_STAT, source_none(), "0", STAT_CON, 0, 0, 0,
 						  0, &context->obvious);
 		}
@@ -243,7 +257,8 @@ static int project_player_handler_POIS(project_player_handler_context_t *context
 static int project_player_handler_LIGHT(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_LIGHT)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -254,7 +269,8 @@ static int project_player_handler_LIGHT(project_player_handler_context_t *contex
 	if (context->dam > 300) {
 		/* Check for resistance before issuing a message. */
 		if (player_inc_check(player, TMD_CONFUSED, false)) {
-			msg("You are dazzled!");
+			// msg("You are dazzled!");
+			msg("Вы ошеломлены!");
 		}
 		(void)player_inc_timed(player, TMD_CONFUSED,
 			2 + randint1(context->dam / 100), true, true, true);
@@ -265,7 +281,8 @@ static int project_player_handler_LIGHT(project_player_handler_context_t *contex
 static int project_player_handler_DARK(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_DARK)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -280,21 +297,24 @@ static int project_player_handler_DARK(project_player_handler_context_t *context
 				equip_learn_flag(player, OF_HOLD_LIFE);
 			} else {
 				int drain = context->dam;
-				msg("The darkness steals your life force!");
+				// msg("The darkness steals your life force!");
+				msg("Тьма забирает ваши жизненные силы!");
 				player_exp_lose(player, drain, false);
 			}
 		}
 
 		/* Slowing */
 		if (randint0(context->dam) > 200) {
-			msg("You feel unsure of yourself in the darkness.");
+			// msg("You feel unsure of yourself in the darkness.");
+			msg("Вы чувствуете себя неуверенно в темноте.");
 			(void)player_inc_timed(player, TMD_SLOW,
 				context->dam / 100, true, true, false);
 		}
 
 		/* Amnesia */
 		if (randint0(context->dam) > 300) {
-			msg("Darkness penetrates your mind!");
+			// msg("Darkness penetrates your mind!");
+			msg("Тьма проникает в ваш разум!");
 			(void)player_inc_timed(player, TMD_AMNESIA,
 				context->dam / 100, true, true, false);
 		}
@@ -305,7 +325,8 @@ static int project_player_handler_DARK(project_player_handler_context_t *context
 static int project_player_handler_SOUND(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_SOUND)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -323,7 +344,8 @@ static int project_player_handler_SOUND(project_player_handler_context_t *contex
 	if (context->dam > 300) {
 		/* Check for resistance before issuing a message. */
 		if (player_inc_check(player, TMD_CONFUSED, false)) {
-			msg("The noise disorients you.");
+			// msg("The noise disorients you.");
+			msg("Шум дезориентирует вас.");
 		}
 		(void)player_inc_timed(player, TMD_CONFUSED,
 			2 + randint1(context->dam / 100), true, true, true);
@@ -334,7 +356,8 @@ static int project_player_handler_SOUND(project_player_handler_context_t *contex
 static int project_player_handler_SHARD(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_SHARD)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -352,13 +375,15 @@ static int project_player_handler_NEXUS(project_player_handler_context_t *contex
 	}
 
 	if (player_resists(player, ELEM_NEXUS)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
 	/* Stat swap */
 	if (randint0(100) < player->state.skills[SKILL_SAVE]) {
-		msg("You avoid the effect!");
+		// msg("You avoid the effect!");
+		msg("Вы избегаете воздействия!");
 	} else {
 		player_inc_timed(player, TMD_SCRAMBLE, randint0(20) + 20, true,
 			true, true);
@@ -369,7 +394,8 @@ static int project_player_handler_NEXUS(project_player_handler_context_t *contex
 					  mon->grid.y, mon->grid.x, NULL);
 	} else if (one_in_(4)) { /* Teleport level */
 		if (randint0(100) < player->state.skills[SKILL_SAVE]) {
-			msg("You avoid the effect!");
+			// msg("You avoid the effect!");
+			msg("Вы избегаете воздействия!");
 			return 0;
 		}
 		effect_simple(EF_TELEPORT_LEVEL, context->origin, "0", 0, 0, 0, 0, 0,
@@ -387,27 +413,31 @@ static int project_player_handler_NETHER(project_player_handler_context_t *conte
 
 	if (player_resists(player, ELEM_NETHER) ||
 		player_of_has(player, OF_HOLD_LIFE)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		equip_learn_flag(player, OF_HOLD_LIFE);
 		return 0;
 	}
 
 	/* Life draining */
-	msg("You feel your life force draining away!");
+	// msg("You feel your life force draining away!");
+	msg("Вы чувствуете как истощается ваша жизненная сила!");
 	player_exp_lose(player, drain, false);
 
 	/* Powerful nether attacks have further side-effects */
 	if (context->power >= 80) {
 		/* Mana loss */
 		if ((randint0(context->dam) > 100) && player->msp) {
-			msg("Your mind is dulled.");
+			// msg("Your mind is dulled.");
+			msg("Ваш разум затуманен.");
 			player->csp -= MIN(player->csp, context->dam / 10);
 			player->upkeep->redraw |= PR_MANA;
 		}
 
 		/* Loss of energy */
 		if (randint0(context->dam) > 200) {
-			msg("Your energy is sapped!");
+			// msg("Your energy is sapped!");
+			msg("Ваша энергия исчерпана!");
 			player->energy = 0;
 		}
 	}
@@ -417,7 +447,8 @@ static int project_player_handler_NETHER(project_player_handler_context_t *conte
 static int project_player_handler_CHAOS(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_CHAOS)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -432,7 +463,8 @@ static int project_player_handler_CHAOS(project_player_handler_context_t *contex
 	/* Life draining */
 	if (!player_of_has(player, OF_HOLD_LIFE)) {
 		int drain = ((player->exp * 3)/ (100 * 2)) * z_info->life_drain_percent;
-		msg("You feel your life force draining away!");
+		// msg("You feel your life force draining away!");
+		msg("Вы чувствуете как истощается ваша жизненная сила!");
 		player_exp_lose(player, drain, false);
 	} else {
 		equip_learn_flag(player, OF_HOLD_LIFE);
@@ -443,7 +475,8 @@ static int project_player_handler_CHAOS(project_player_handler_context_t *contex
 static int project_player_handler_DISEN(project_player_handler_context_t *context)
 {
 	if (player_resists(player, ELEM_DISEN)) {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 		return 0;
 	}
 
@@ -474,7 +507,8 @@ static int project_player_handler_ICE(project_player_handler_context_t *context)
 		(void)player_inc_timed(player, TMD_CUT, damroll(5, 8), true,
 			true, false);
 	} else {
-		msg("You resist the effect!");
+		// msg("You resist the effect!");
+		msg("Вы сопротивляетесь воздействию!");
 	}
 
 	/* Stun */
@@ -485,7 +519,8 @@ static int project_player_handler_ICE(project_player_handler_context_t *context)
 
 static int project_player_handler_GRAVITY(project_player_handler_context_t *context)
 {
-	msg("Gravity warps around you.");
+	// msg("Gravity warps around you.");
+	msg("Гравитация смещается вокруг вас.");
 
 	/* Blink */
 	if (randint1(127) > player->lev) {
@@ -541,7 +576,8 @@ static int project_player_handler_TIME(project_player_handler_context_t *context
 	if (one_in_(2)) {
 		/* Life draining */
 		int drain = 100 + (player->exp / 100) * z_info->life_drain_percent;
-		msg("You feel your life force draining away!");
+		// msg("You feel your life force draining away!");
+		msg("Вы чувствуете, как из вас утекают жизненные силы!");
 		player_exp_lose(player, drain, false);
 	} else if (!one_in_(5)) {
 		/* Drain some stats */
@@ -549,7 +585,8 @@ static int project_player_handler_TIME(project_player_handler_context_t *context
 	} else {
 		/* Drain all stats */
 		int i;
-		msg("You're not as powerful as you used to be...");
+		// msg("You're not as powerful as you used to be...");
+		msg("Вы не так могущественны, как были раньше...");
 
 		for (i = 0; i < STAT_MAX; i++)
 			player_stat_dec(player, i, false);
@@ -605,7 +642,8 @@ static int project_player_handler_DARK_WEAK(project_player_handler_context_t *co
 {
 	if (player_resists(player, ELEM_DARK)) {
 		if (!player_has(player, PF_UNLIGHT)) {
-			msg("You resist the effect!");
+			// msg("You resist the effect!");
+			msg("Вы сопротивляетесь воздействию!");
 		}
 		return 0;
 	}
@@ -828,7 +866,8 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 			/* Don't affect projector unless explicitly allowed */
 			if (!self) return false;
 			/* Use the same message as the DAMAGE handler. */
-			my_strcpy(killer, "yourself", sizeof(killer));
+			// my_strcpy(killer, "yourself", sizeof(killer));
+			my_strcpy(killer, "сами себя", sizeof(killer));
 			break;
 		}
 

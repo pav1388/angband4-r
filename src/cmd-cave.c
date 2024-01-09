@@ -559,7 +559,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	if (best_digger != current_weapon &&
 			(!current_weapon || obj_can_takeoff(current_weapon))) {
 		// with_clause = "with your swap digger";
-		with_clause = "своим инструментом для раскопок";
+		with_clause = "своим шахтёрским инвентарём";
 		/* Use only one without the overhead of gear_obj_for_use(). */
 		if (best_digger) {
 			oldn = best_digger->number;
@@ -594,7 +594,6 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	}
 
 	/* Success */
-	char buf[80];
 	if (okay && twall(grid)) {
 		/* Rubble is a special case - could be handled more generally NRM */
 		if (rubble) {
@@ -621,10 +620,10 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			/* Found treasure */
 			place_gold(cave, grid, player->depth, ORIGIN_FLOOR);
 			// msg("You have found something digging %s!", with_clause);
-			msg("Вы нашли что-то, копая %s!", with_clause);
+			msg("Вы что-то нашли, копая %s!", with_clause);
 		} else {
 			// msg("You have finished the tunnel %s.", with_clause);
-			msg("Вы закончили рыть проход %s.", with_clause);
+			msg("Вы закончили копать проход %s.", with_clause);
 		}
 		/* On the surface, new terrain may be exposed to the sun. */
 		if (cave->depth == 0) expose_to_sun(cave, grid, is_daytime());
@@ -638,29 +637,10 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			//msg("You dig in the rubble %s.", with_clause);
 			msg("Вы копаете завалы %s.", with_clause);
 		} else {
-			//msg("You tunnel into the %s %s.",
+			// msg("You tunnel into the %s %s.",
+			msg("Вы копаете проход через %s %s.",
 				// square_apparent_name(player->cave, grid), with_clause);
-			switch (square(player->cave, grid)->feat) {
-			case FEAT_GRANITE:
-				my_strcpy(buf, "гранитной стене", sizeof(buf));
-				break;
-			case FEAT_MAGMA:
-				my_strcpy(buf, "магмовой жиле", sizeof(buf));
-				break;
-			case FEAT_MAGMA_K:
-				my_strcpy(buf, "магмовой жиле с сокровищем", sizeof(buf));
-				break;
-			case FEAT_QUARTZ:
-				my_strcpy(buf, "кварцевой жиле", sizeof(buf));
-				break;
-			case FEAT_QUARTZ_K:
-				my_strcpy(buf, "кварцевой жиле с сокровищем", sizeof(buf));
-				break;
-			default: 
-				my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf));
-				break;
-			}
-			msg("Вы роете проход в %s %s.", buf, with_clause);
+				square_apparent_look_prefix(player->cave, grid), with_clause);
 		}	
 		more = true;
 	} else {
@@ -669,17 +649,10 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			//msg("You dig in the rubble %s with little effect.", with_clause);
 			msg("Вы копаете завалы %s без особого эффекта.", with_clause);
 		} else {
-			// msg("You chip away futilely %s at the %d.", with_clause,
+			// msg("You chip away futilely %s at the %s.", with_clause,
+			msg("Вы безуспешно копаете %s %s.", with_clause,
 				// square_apparent_name(player->cave, grid));
-			switch (square(player->cave, grid)->feat) {
-			case FEAT_GRANITE: my_strcpy(buf, "гранитную стену", sizeof(buf)); break;
-			case FEAT_MAGMA: my_strcpy(buf, "магмовую жилу", sizeof(buf)); break;
-			case FEAT_MAGMA_K: my_strcpy(buf, "магмовую жилу с сокровищем", sizeof(buf)); break;
-			case FEAT_QUARTZ: my_strcpy(buf, "кварцевую жилу", sizeof(buf)); break;
-			case FEAT_QUARTZ_K: my_strcpy(buf, "кварцевую жилу с сокровищем", sizeof(buf)); break;
-			default: my_strcpy(buf, square_apparent_name(player->cave, grid), sizeof(buf)); break; }
-			
-			msg("Вы ТЩЕТНО копаете %s %s.", with_clause, buf);			
+				square_apparent_look_prefix(player->cave, grid));		
 		}
 	}
 
@@ -1855,7 +1828,8 @@ void do_cmd_mon_command(struct command *cmd)
 							if (randint0(mon->hp / 10) > k) {
 								if (can_bash) {
 									//msg("%s slams against the door.", m_name);
-									msg("%s хлопнул дверью.", m_name);
+									msg("%s хлопнул%s дверью.", m_name, rf_has(mon->race->flags, RF_FEMALE) ? "а" :
+											rf_has(mon->race->flags, RF_MALE) ? "" : "о");
 								} else {
 									//msg("%s fiddles with the lock.", m_name);
 									msg("%s возится с замком.", m_name);

@@ -865,7 +865,7 @@ static bool aux_terrain(struct chunk *c, struct player *p,
 	// lphrase3 = square_apparent_look_prefix(p->cave, auxst->grid);
 
 	lphrase2 = (*auxst->phrase2) ? square_apparent_look_in_preposition(p->cave, auxst->grid) : "";
-	lphrase3 = (*auxst->phrase2) ? "" : square_apparent_look_prefix(p->cave, auxst->grid);
+	lphrase3 = (*auxst->phrase2) ? "" : square_apparent_name(p->cave, auxst->grid);
 
 	/* Display a message */
 	if (p->wizard) {

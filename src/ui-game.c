@@ -336,7 +336,7 @@ struct cmd_info cmd_debug_obj[] =
 	// { "Acquire great", { 'v' }, CMD_NULL, wiz_acquire_great, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "  Выдать великие предметы", { 'v' }, CMD_NULL, wiz_acquire_great, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 	// { "Play with item", { 'o' }, CMD_WIZ_PLAY_ITEM, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
-	{ "  Редактировать предмет", { 'o' }, CMD_WIZ_PLAY_ITEM, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "  Играть с предметом", { 'o' }, CMD_WIZ_PLAY_ITEM, NULL, player_can_debug_prereq, 0, NULL, NULL, NULL, 0 },
 };
 
 struct cmd_info cmd_debug_player[] =

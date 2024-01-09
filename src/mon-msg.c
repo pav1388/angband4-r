@@ -426,7 +426,8 @@ static void show_message(struct monster_race_message *msg)
 			case MON_MSG_MORE_DAZED:
 			case MON_MSG_DAZED:
 			case MON_MSG_NOT_DAZED:
-				my_strcat(body, (rf_has(msg->race->flags, RF_FEMALE)) ? "а" : (rf_has(msg->race->flags, RF_MALE)) ? "" : "о", sizeof(body));
+				my_strcat(body, (rf_has(msg->race->flags, RF_FEMALE)) ? "а." : 
+							(rf_has(msg->race->flags, RF_MALE)) ? "." : "о.", sizeof(body));
 				break;
 			
 		default:

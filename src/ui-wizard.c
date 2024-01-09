@@ -162,7 +162,7 @@ static void wiz_create_item_subdisplay(struct menu *m, int oid, bool cursor,
 		object_base_name(name, sizeof(name), current_tval, true, 2);
 		if (choose_artifact) {
 			// strnfmt(buf, sizeof(buf), "All artifact %s", name);
-			strnfmt(buf, sizeof(buf), "Все артефакт %s", name);
+			strnfmt(buf, sizeof(buf), "Все артефакты %s", name);
 		} else {
 			// strnfmt(buf, sizeof(buf), "All %s", name);
 			strnfmt(buf, sizeof(buf), "Все %s", name);

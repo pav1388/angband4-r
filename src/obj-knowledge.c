@@ -1197,7 +1197,7 @@ void player_know_object(struct player *p, struct object *obj)
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_FULL, p);
 			// msg("You have %s (%c).", o_name, gear_to_label(p, obj));
-			msg("У вас %s (%c).", o_name, gear_to_label(p, obj));
+			msg("У вас есть %s (%c).", o_name, gear_to_label(p, obj));
 		} else if (cave && square_holds_object(cave, p->grid, obj)) {
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_FULL, p);
@@ -1376,7 +1376,8 @@ static void player_learn_rune(struct player *p, size_t i, bool message)
 
 	/* Give a message */
 	if (message)
-		msgt(MSG_RUNE, "You have learned the rune of %s.", rune_name(i));
+		// msgt(MSG_RUNE, "You have learned the rune of %s.", rune_name(i));
+		msgt(MSG_RUNE, "Вы изучили руну %s.", rune_name(i));
 
 	/* Update knowledge */
 	update_player_object_knowledge(p);

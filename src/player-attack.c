@@ -738,7 +738,8 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	bool do_quake = false;
 	bool success = false;
 
-	char verb[20];
+	// char verb[20];
+	char verb[40];
 	uint32_t msg_type = MSG_HIT;
 	int j, b, s, weight, dmg;
 
@@ -794,7 +795,10 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	} else {
 		weight = 0;
 	}
-
+	
+	if (!(monster_is_visible(mon)))
+		my_strcat(verb, " по", sizeof(verb));
+	
 	/* Best attack from all slays or brands on all non-launcher equipment */
 	b = 0;
 	s = 0;
@@ -883,7 +887,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* Small chance of bloodlust side-effects */
 	if (p->timed[TMD_BLOODLUST] && one_in_(50)) {
 		// msg("You feel something give way!");
-		msg("Вы чувствуете, что-то не так!");
+		msg("Вы чувствуете как что-то отступает!");
 		player_over_exert(p, PY_EXERT_CON, 20, 0);
 	}
 

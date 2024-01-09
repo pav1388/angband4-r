@@ -1323,7 +1323,7 @@ void lore_append_drop(textblock *tb, const struct monster_race *race,
 			if (only_item && only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "error%s", PLURAL(n));
-					"ошибк%s", ((n) == 1 ? "у" : "и"));
+					"ошиб%s", PLURAL_RU(n, "ку", "ки", "ок"));
 			} else if (only_item && !only_gold) {
 				textblock_append_c(tb, COLOUR_BLUE,
 					// "object%s", PLURAL(n));
@@ -1579,7 +1579,7 @@ void lore_append_awareness(textblock *tb, const struct monster_race *race,
 						 // lore_pronoun_nominative(msex, false)
 		textblock_append_c(tb, COLOUR_L_BLUE, "%d", 10 * race->hearing);
 		// textblock_append(tb, " feet.  ");
-		textblock_append(tb, " метр%s.  ", PLURAL_RU(10 * race->hearing, "е", "ах", "ах"));
+		textblock_append(tb, " метрах.  ");
 	}
 }
 

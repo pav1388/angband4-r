@@ -487,7 +487,8 @@ void compact_monsters(struct chunk *c, int num_to_compact)
 
 	/* Message (only if compacting) */
 	if (num_to_compact)
-		msg("Compacting monsters...");
+		// msg("Compacting monsters...");
+		msg("Уплотнение монстров...");
 
 
 	/* Compact at least 'num_to_compact' objects */
