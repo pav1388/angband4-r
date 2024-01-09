@@ -294,9 +294,9 @@ void do_cmd_wield(struct command *cmd)
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
 			// /* Prompt */ "Wear or wield which item?",
-			/* Prompt */ "Какой предмет носить или использовать?",
+			/* Prompt */ "Какой предмет экипировать?",
 			// /* Error  */ "You have nothing to wear or wield.",
-			/* Error  */ "Вам нечего носить или использовать.",
+			/* Error  */ "Вам нечего экипировать.",
 			/* Filter */ obj_can_wear,
 			/* Choice */ USE_INVEN | USE_FLOOR | USE_QUIVER) != CMD_OK)
 		return;
@@ -333,7 +333,7 @@ void do_cmd_wield(struct command *cmd)
 		object_desc(o_name, sizeof(o_name), equip_obj, ODESC_BASE,
 			player);
 		// msg("You cannot remove the %s you are %s.", o_name,
-		msg("Вы не можете удалить %s, которым вы %s.", o_name,
+		msg("Вы не можете снять %s из вашего %s.", o_name,
 			equip_describe(player, slot));
 		return;
 	}
@@ -357,7 +357,7 @@ void do_cmd_wield(struct command *cmd)
 	/* Took off weapon */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
 		// act = "You were wielding";
-		act = "Вы убрали";
+		act = "Вы отложили";
 	/* Took off bow */
 	else if (slot_type_is(player, slot, EQUIP_BOW))
 		// act = "You were holding";

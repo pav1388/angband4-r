@@ -1717,14 +1717,15 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 		// textblock_append(tb, "%s may ", initial_pronoun);
 		textblock_append(tb, "%s может ", initial_pronoun);
 
+		/* Adverb */
+		if (rf_has(known_flags, RF_SMART))
+			// textblock_append(tb, " intelligently");
+			textblock_append(tb, " грамотно");
+		
 		/* Verb Phrase */
 		// textblock_append_c(tb, COLOUR_L_RED, "cast spells");
 		textblock_append_c(tb, COLOUR_L_RED, "использовать заклинания");
 
-		/* Adverb */
-		if (rf_has(known_flags, RF_SMART))
-			// textblock_append(tb, " intelligently");
-			textblock_append(tb, " с умом");
 
 		/* List */
 		// textblock_append(tb, " which ");
