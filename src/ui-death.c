@@ -127,12 +127,7 @@ static void display_exit_screen(void)
 			put_str_centred(line++, 8, 8+31, "Погиб на %d-м этаже", player->depth);
 		
 		// put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
-		put_str_centred(line++, 8, 8+31, "от %s", 
-			streq(player->died_from, "starvation") ? "голодания" : 
-			streq(player->died_from, "poison") ? "отравления" : 
-			streq(player->died_from, "a fatal wound") ? "смертельного ранения" : 
-			streq(player->died_from, "Ripe Old Age") ? "Почтенного Возраста" : 
-			player->died_from);
+		put_str_centred(line++, 8, 8+31, "от %s", CAUSE_OF_DEATH(player->died_from));
 	}
 
 	line++;

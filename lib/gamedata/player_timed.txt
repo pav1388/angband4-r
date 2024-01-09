@@ -426,7 +426,7 @@ msgt:GENERIC
 
 name:TELEPATHY
 desc:telepathy
-grade:B:10000:ESP:Ваш разум расширяется.
+grade:B:10000:ESP:Ваш разум расширяет границы познания.
 on-end:Ваши рамки познания снова ограничены.
 on-increase:Ваш разум расширяется все больше.
 msgt:GENERIC

@@ -60,7 +60,9 @@ extern void (*quit_aux)(const char *);
  * Return "s" (or not) depending on whether n is singular.
  */
 #define PLURAL(n)				((n) == 1 ? "" : "s")
-#define PLURAL_RU(n, a, b, c)	((n % 10 == 1) && (n % 100 != 11) ? a : (n % 10 > 1) && (n % 10 < 5) && (n % 100 != 12) && (n % 100 != 13) && (n % 100 != 14) ? b : c)
+#define PLURAL_RU(n, a, b, c)	((((n) % 10) == 1) && (((n) % 100) != 11) ? (a) : (((n) % 10) > 1) && (((n) % 10) < 5) && (((n) % 100) != 12) && (((n) % 100) != 13) && (((n) % 100) != 14) ? (b) : (c))
+
+#define CAUSE_OF_DEATH(a)	(streq((a), "starvation") ? "голодания" : streq((a), "poison") ? "отравления" : streq((a), "a fatal wound") ? "смертельного ранения" : streq((a), "Ripe Old Age") ? "Почтенного Возраста" : (a))
 
 /**
  * Return the verb form matching the given count
