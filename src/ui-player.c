@@ -744,12 +744,13 @@ static struct panel *get_panel_midleft(void) {
 	panel_line(p, COLOUR_L_GREEN, "Опыт расш.", "%s", show_adv_exp());
 	panel_space(p);
 	// panel_line(p, COLOUR_L_GREEN, "Gold", "%d", player->au);
-	panel_line(p, COLOUR_L_GREEN, "Золото", "%d монет%s", player->au, PLURAL_RU(player->au, "а", "ы", ""));
-	// panel_line(p, attr, "Burden", "%.1f lb",
-	panel_line(p, attr, "Ноша", "%.1f кг",
-			   player->upkeep->total_weight / 10.0F);
+	panel_line(p, COLOUR_L_GREEN, "Золото", "%d", player->au);
+	// panel_line(p, attr, "Burden", "%.1f lb", player->upkeep->total_weight / 10.0F);
+	panel_line(p, attr, "Ноша", "%d.%d кг", player->upkeep->total_weight / 22,
+				((player->upkeep->total_weight * 10) / 22) % 10); // фунты в кг
 	// panel_line(p, attr, "Overweight", "%d.%d lb", -diff / 10, abs(diff) % 10);
-	panel_line(p, attr, "Перегруз", "%d.%d кг", -diff / 10, abs(diff) % 10);
+	panel_line(p, attr, "Перегруз", "%d.%d кг", -diff / 22,
+				((abs(diff) * 10) / 22) % 10); // фунты в кг
 	// panel_line(p, COLOUR_L_GREEN, "Max Depth", "%s", show_depth());
 	panel_line(p, COLOUR_L_GREEN, "Глубина", "%s", show_depth());
 
@@ -781,7 +782,7 @@ static struct panel *get_panel_combat(void) {
 	}
 
 	// panel_line(p, COLOUR_L_BLUE, "Melee", "%dd%d,%+d", melee_dice, melee_sides, dam);
-	panel_line(p, COLOUR_L_BLUE, "Ближний бой", "%dd%d,%+d", melee_dice, melee_sides, dam);
+	panel_line(p, COLOUR_L_BLUE, "Ближний бой", "%dк%d,%+d", melee_dice, melee_sides, dam);
 	// panel_line(p, COLOUR_L_BLUE, "To-hit", "%d,%+d", bth / 10, hit);
 	panel_line(p, COLOUR_L_BLUE, "Попадание", "%d,%+d", bth / 10, hit);
 	// panel_line(p, COLOUR_L_BLUE, "Blows", "%d.%d/turn",
@@ -819,7 +820,7 @@ static struct panel *get_panel_skills(void) {
 	/* Saving throw */
 	skill = BOUND(player->state.skills[SKILL_SAVE], 0, 100);
 	// panel_line(p, colour_table[skill / 10], "Saving Throw", "%d%%", skill);
-	panel_line(p, colour_table[skill / 10], "Спас Бросок", "%d%%", skill);
+	panel_line(p, colour_table[skill / 10], "Спас.Бросок", "%d%%", skill);
 
 	/* Stealth */
 	desc = likert(player->state.skills[SKILL_STEALTH], 1, &attr);
@@ -874,8 +875,8 @@ static struct panel *get_panel_misc(void) {
 	// panel_line(p, attr, "Standard", "%d", player->total_energy / 100);
 	// panel_line(p, attr, "Resting", "%d", player->resting_turn);
 	panel_line(p, attr, "Возраст", "%d %s", player->age, PLURAL_RU(player->age, "год", "года", "лет"));
-	panel_line(p, attr, "Рост", "%d  см", ((player->ht / 12) * 31)); // примерные "сантиметры"
-	panel_line(p, attr, "Вес", "%d  кг", ((player->wt * 65) / 140)); // примерные "килограммы"
+	panel_line(p, attr, "Рост", "%d см", ((player->ht / 12) * 31)); // примерные "сантиметры"
+	panel_line(p, attr, "Вес", "%d кг", ((player->wt * 65) / 140)); // примерные "килограммы"
 	panel_line(p, attr, "Сделано ходов:", "");
 	panel_line(p, attr, "Игра", "%d", turn);
 	panel_line(p, attr, "Стандарт", "%d", player->total_energy / 100);

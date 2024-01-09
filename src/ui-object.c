@@ -244,7 +244,7 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	if (mode & OLIST_WEIGHT) {
 		int weight = obj->weight * obj->number;
 		// strnfmt(buf, sizeof(buf), "%4d.%1d lb", weight / 10, weight % 10);
-		strnfmt(buf, sizeof(buf), "%4d.%1d кг", weight / 10, weight % 10);
+		strnfmt(buf, sizeof(buf), "%4d.%1d кг", weight / 22, obj->weight < 5 ? 1 : ((obj->weight * 10) / 22) % 10); // lb в кг
 		put_str(buf, row + obj_num, col + ex_offset_ctr);
 	}
 }
@@ -504,9 +504,12 @@ void show_inven(int mode, item_tester tester)
 		strnfmt(items[num_obj].label, sizeof(items[num_obj].label),
 		        // "Burden %d.%d lb (%d.%d lb %s) ",
 		        "Ноша %d.%d кг (%d.%d кг %s) ",
-		        player->upkeep->total_weight / 10,
-				player->upkeep->total_weight % 10,
-		        abs(diff) / 10, abs(diff) % 10,
+		        // player->upkeep->total_weight / 10,
+		        player->upkeep->total_weight / 22,
+				// player->upkeep->total_weight % 10,
+				((player->upkeep->total_weight * 10) / 22) % 10,
+		        // abs(diff) / 10, abs(diff) % 10,
+		        abs(diff) / 22, ((abs(diff) * 10) / 22) % 10, // lb в кг
 		        // (diff < 0 ? "overweight" : "remaining"));
 		        (diff < 0 ? "перегруз" : "осталось"));
 

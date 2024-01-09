@@ -2390,7 +2390,7 @@ static textblock *object_info_out(const struct object *obj, int mode)
 	/* Unaware objects get simple descriptions */
 	if (obj->kind != obj->known->kind) {
 		// textblock_append(tb, "\n\nYou do not know what this is.\n");
-		textblock_append(tb, "\n\nВы не знаете, что это такое.\n");
+		textblock_append(tb, "\n\nВы не знаете, что это.\n");
 		return tb;
 	}
 

@@ -9,16 +9,28 @@
 # followed by a sequence of alternating slot-type and slot-name lines.
 
 body:Humanoid
+# slot:WEAPON:weapon
+# slot:BOW:shooting
+# slot:RING:right hand
+# slot:RING:left hand
+# slot:AMULET:neck
+# slot:LIGHT:light
+# slot:BODY_ARMOR:body
+# slot:CLOAK:back
+# slot:SHIELD:arm
+# slot:HAT:head
+# slot:GLOVES:hands
+# slot:BOOTS:feet
 slot:WEAPON:weapon
 slot:BOW:shooting
-slot:RING:right hand
-slot:RING:left hand
-slot:AMULET:neck
+slot:RING:прав. руку
+slot:RING:левую руку
+slot:AMULET:шеи
 slot:LIGHT:light
-slot:BODY_ARMOR:body
-slot:CLOAK:back
-slot:SHIELD:arm
-slot:HAT:head
-slot:GLOVES:hands
-slot:BOOTS:feet
+slot:BODY_ARMOR:тело
+slot:CLOAK:плечи
+slot:SHIELD:руку
+slot:HAT:голову
+slot:GLOVES:руки
+slot:BOOTS:стопы
 

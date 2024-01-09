@@ -598,9 +598,11 @@ static size_t append_random_value_string(char *buffer, size_t size,
 	}
 
 	if (rv->dice == 1 && rv->sides > 0) {
-		offset += strnfmt(buffer + offset, size - offset, "d%d", rv->sides);
+		// offset += strnfmt(buffer + offset, size - offset, "d%d", rv->sides);
+		offset += strnfmt(buffer + offset, size - offset, "к%d", rv->sides);
 	} else if (rv->dice > 1 && rv->sides > 0) {
-		offset += strnfmt(buffer + offset, size - offset, "%dd%d", rv->dice,
+		// offset += strnfmt(buffer + offset, size - offset, "%dd%d", rv->dice,
+		offset += strnfmt(buffer + offset, size - offset, "%dк%d", rv->dice,
 						  rv->sides);
 	}
 

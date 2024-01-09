@@ -426,7 +426,8 @@ static size_t obj_desc_combat(const struct object *obj, char *buf, size_t max,
 	/* Display damage dice if they are known */
 	if (kf_has(obj->kind->kind_flags, KF_SHOW_DICE) &&
 		(!p || (p->obj_k->dd && p->obj_k->ds))) {
-		strnfcat(buf, max, &end, " (%dd%d)", obj->dd, obj->ds);
+		// strnfcat(buf, max, &end, " (%dd%d)", obj->dd, obj->ds);
+		strnfcat(buf, max, &end, " (%dк%d)", obj->dd, obj->ds);
 	}
 
 	/* Display shooting power as part of the multiplier */

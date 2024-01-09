@@ -480,9 +480,9 @@ title:Садовник
 title:Лесник
 title:Создатель
 title:Страж Земли
-title:ВсадникВетра
+title:Ветроносец
 title:Штормовик
-title:ВысшыйМистик
+title:Высший Маг
 
 magic:1:350:5
 
@@ -986,9 +986,9 @@ equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:ZERO_FAIL | CHOOSE_SPELLS | UNLIGHT | EVIL
 title:Послушник
 title:Проклятый
-title:Тёмн.Студент
+title:Тёмн.Адепт
 title:Посвященный
-title:Рабовладелец
+title:Владыка
 title:Призыватель
 title:Управляющий
 title:Командир
@@ -1256,7 +1256,7 @@ title:Рыцарь
 title:Хранитель
 title:Шевалье
 title:Паладин
-title:Паладин Лорд 
+title:Воин Света
 
 magic:1:400:3
 
@@ -1419,7 +1419,7 @@ title:Взломщик
 title:Писака
 title:Жулик
 title:Вор
-title:КорольВоров
+title:Глава Воров
 
 magic:5:350:2
 

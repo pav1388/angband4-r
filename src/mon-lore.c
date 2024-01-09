@@ -1720,12 +1720,11 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 		/* Adverb */
 		if (rf_has(known_flags, RF_SMART))
 			// textblock_append(tb, " intelligently");
-			textblock_append(tb, " грамотно");
+			textblock_append(tb, "грамотно ");
 		
 		/* Verb Phrase */
 		// textblock_append_c(tb, COLOUR_L_RED, "cast spells");
 		textblock_append_c(tb, COLOUR_L_RED, "использовать заклинания");
-
 
 		/* List */
 		// textblock_append(tb, " which ");
@@ -1792,7 +1791,7 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	/* Notice lack of attacks */
 	if (rf_has(known_flags, RF_NEVER_BLOW)) {
 		// textblock_append(tb, "%s has no physical attacks.  ",
-		textblock_append(tb, "У %s нет физических атак.  ",
+		textblock_append(tb, "%s не имеет физических атак.  ",
 						 lore_pronoun_nominative(msex, true));
 		return;
 	}
@@ -1813,10 +1812,9 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	/* Describe the lack of knowledge */
 	if (known_attacks == 0) {
 		// textblock_append_c(tb, COLOUR_ORANGE, "Nothing is known about %s attack.  ",
-		textblock_append_c(tb, COLOUR_ORANGE, "Об%s%s атаке ничего не известно.  ",
+		textblock_append_c(tb, COLOUR_ORANGE, "Не известно как %s атакует.  ",
 						 // lore_pronoun_possessive(msex, false));
-						 msex ? " " : "",
-						 msex ? lore_pronoun_possessive(msex, false) : "");
+						 lore_pronoun_nominative(msex, false));
 		return;
 	}
 
@@ -1864,7 +1862,8 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 					textblock_append_c(tb, COLOUR_L_GREEN, "%d", dice.base);
 
 				if (dice.dice && dice.sides)
-					textblock_append_c(tb, COLOUR_L_GREEN, "%dd%d", dice.dice, dice.sides);
+					// textblock_append_c(tb, COLOUR_L_GREEN, "%dd%d", dice.dice, dice.sides);
+					textblock_append_c(tb, COLOUR_L_GREEN, "%dк%d", dice.dice, dice.sides);
 
 				if (dice.m_bonus)
 					textblock_append_c(tb, COLOUR_L_GREEN, "M%d", dice.m_bonus);

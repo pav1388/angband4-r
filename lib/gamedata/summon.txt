@@ -47,77 +47,77 @@
 name:ANY
 msgt:SUM_MONSTER
 uniques:1
-desc:a monster
+desc:монстра
 
 name:KIN
 msgt:SUM_MONSTER
 uniques:0
-desc:similar monsters
+desc:подобных монстров
 
 name:MONSTER
 msgt:SUM_MONSTER
 uniques:0
-desc:a monster
+desc:монстра
 
 name:MONSTERS
 msgt:SUM_MONSTER
 uniques:0
-desc:monsters
+desc:монстров
 
 name:ANIMAL
 msgt:SUM_ANIMAL
 uniques:0
 race-flag:ANIMAL
-desc:animals
+desc:животных
 
 name:SPIDER
 msgt:SUM_SPIDER
 uniques:0
 base:spider
-desc:spiders
+desc:пауков
 
 name:HOUND
 msgt:SUM_HOUND
 uniques:0
 base:zephyr hound
 base:canine
-desc:hounds
+desc:гончих
 
 name:HYDRA
 msgt:SUM_HYDRA
 uniques:0
 base:hydra
-desc:hydras
+desc:гидр
 
 name:AINU
 msgt:SUM_AINU
 uniques:0
 base:ainu
-desc:ainur
+desc:айнур
 
 name:DEMON
 msgt:SUM_DEMON
 uniques:0
 race-flag:DEMON
-desc:demons
+desc:демонов
 
 name:UNDEAD
 msgt:SUM_UNDEAD
 uniques:0
 race-flag:UNDEAD
-desc:undead
+desc:нежити
 
 name:DRAGON
 msgt:SUM_DRAGON
 uniques:0
 race-flag:DRAGON
-desc:dragons
+desc:драконов
 
 name:HI_DEMON
 msgt:SUM_HI_DEMON
 uniques:1
 base:major demon
-desc:greater demons
+desc:высших демонов
 
 name:HI_UNDEAD
 msgt:SUM_HI_UNDEAD
@@ -125,13 +125,13 @@ uniques:1
 base:vampire
 base:wraith
 base:lich
-desc:greater undead
+desc:высшую нежить
 
 name:HI_DRAGON
 msgt:SUM_HI_DRAGON
 uniques:1
 base:ancient dragon
-desc:ancient dragons
+desc:древних драконов
 
 name:WRAITH
 msgt:SUM_WRAITH
@@ -139,11 +139,11 @@ uniques:1
 base:wraith
 race-flag:UNIQUE
 fallback:HI_UNDEAD
-desc:ringwraiths
+desc:кольценосцев
 
 name:UNIQUE
 msgt:SUM_UNIQUE
 uniques:1
 race-flag:UNIQUE
 fallback:HI_UNDEAD
-desc:unique monsters
+desc:уникальных монстров

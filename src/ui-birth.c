@@ -230,12 +230,12 @@ static void skill_help(const int r_skills[], const int c_skills[], int mhp, int 
 	text_out_e("Удар/Стрельба/Бросок: {Orange}%+3d{/}/{Orange}%+3d{/}/{Orange}%+3d{/}\n", skills[SKILL_TO_HIT_MELEE],
 			   skills[SKILL_TO_HIT_BOW], skills[SKILL_TO_HIT_THROW]);
 	// text_out_e("Hit die: %2d   XP mod: %d%%\n", mhp, exp);
-	text_out_e("  Смерт.удар:  {Orange}%+3d{/}     Мод Опыта: {Orange}%d%%{/}\n", mhp, exp);
+	text_out_e("    Здоровье:  {Orange}%+3d{/}     Мод.Опыта: {Orange}%d%%{/}\n", mhp, exp);
 	// text_out_e("Disarm: %+3d/%+3d   Devices: %+3d\n", skills[SKILL_DISARM_PHYS],
 	text_out_e("   Обезвреж.: {Orange}%+3d{/}/{Orange}%+3d{/}  Механизмы: {Orange}%+3d{/}\n", skills[SKILL_DISARM_PHYS],
 			   skills[SKILL_DISARM_MAGIC], skills[SKILL_DEVICE]);
 	// text_out_e("Save:   %+3d   Stealth: %+3d\n", skills[SKILL_SAVE],
-	text_out_e("    Спасение:  {Orange}%+3d{/}    Скрытность: {Orange}%+3d{/}\n", skills[SKILL_SAVE],
+	text_out_e(" Спас.Бросок:  {Orange}%+3d{/}    Скрытность: {Orange}%+3d{/}\n", skills[SKILL_SAVE],
 			   skills[SKILL_STEALTH]);
 	// text_out_e("Digging:      %+d\n", skills[SKILL_DIGGING]);
 	text_out_e("     Копание:  {Orange}%+3d{/}\n", skills[SKILL_DIGGING]);

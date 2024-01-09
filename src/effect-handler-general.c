@@ -1067,7 +1067,7 @@ bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 {
 	//const char *prompt = "Uncurse which item? ";
 	//const char *rejmsg = "You have no curses to remove.";
-	const char *prompt = "С чего снять проклятие? ";
+	const char *prompt = "С какого предмета снять проклятие? ";
 	const char *rejmsg = "У вас нет проклятых предметов.";
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
 	int strength = effect_calculate_value(context, false);
@@ -1088,15 +1088,19 @@ bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 
 	/* Get the possible dice strings */
 	if ((context->value.dice == 1) && context->value.base) {
-		strnfmt(dice_string, sizeof(dice_string), "%d+d%d",
+		// strnfmt(dice_string, sizeof(dice_string), "%d+d%d",
+		strnfmt(dice_string, sizeof(dice_string), "%d+к%d",
 				context->value.base, context->value.sides);
 	} else if (context->value.dice && context->value.base) {
-		strnfmt(dice_string, sizeof(dice_string), "%d+%dd%d",
+		// strnfmt(dice_string, sizeof(dice_string), "%d+%dd%d",
+		strnfmt(dice_string, sizeof(dice_string), "%d+%dк%d",
 				context->value.base, context->value.dice, context->value.sides);
 	} else if (context->value.dice == 1) {
-		strnfmt(dice_string, sizeof(dice_string), "d%d", context->value.sides);
+		// strnfmt(dice_string, sizeof(dice_string), "d%d", context->value.sides);
+		strnfmt(dice_string, sizeof(dice_string), "к%d", context->value.sides);
 	} else if (context->value.dice) {
-		strnfmt(dice_string, sizeof(dice_string), "%dd%d",
+		// strnfmt(dice_string, sizeof(dice_string), "%dd%d",
+		strnfmt(dice_string, sizeof(dice_string), "%dк%d",
 				context->value.dice, context->value.sides);
 	} else {
 		strnfmt(dice_string, sizeof(dice_string), "%d", context->value.base);
