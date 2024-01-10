@@ -97,9 +97,9 @@
 code:ACID
 name:acid
 type:element
-desc:кислотой
+desc:acid
 player-desc:acid
-blind-desc:кислотой
+blind-desc:acid
 lash-desc:acid
 numerator:1  
 denominator:3
@@ -113,9 +113,9 @@ color:Slate
 code:ELEC
 name:lightning
 type:element
-desc:молнией
+desc:lightning
 player-desc:lightning
-blind-desc:молнией
+blind-desc:lightning
 lash-desc:lightning
 numerator:1  
 denominator:3
@@ -129,9 +129,9 @@ color:Blue
 code:FIRE
 name:fire
 type:element
-desc:огнём
+desc:fire
 player-desc:fire
-blind-desc:огнём
+blind-desc:fire
 lash-desc:fire
 numerator:1  
 denominator:3
@@ -145,9 +145,9 @@ color:Red
 code:COLD
 name:cold
 type:element
-desc:холодом
+desc:cold
 player-desc:frost
-blind-desc:холодом
+blind-desc:cold
 lash-desc:frost
 numerator:1  
 denominator:3
@@ -161,9 +161,9 @@ color:White
 code:POIS
 name:poison
 type:element
-desc:ядом
+desc:poison
 player-desc:poison gas
-blind-desc:ядом
+blind-desc:poison
 lash-desc:venom
 numerator:1  
 denominator:3
@@ -177,9 +177,9 @@ color:Green
 code:LIGHT
 name:light
 type:element
-desc:светом
+desc:light
 player-desc:light
-blind-desc:чем-то
+blind-desc:something
 lash-desc:brightness
 numerator:6
 denominator:8+1d4
@@ -193,9 +193,9 @@ color:Orange
 code:DARK
 name:dark
 type:element
-desc:тьмой
+desc:dark
 player-desc:dark
-blind-desc:чем-то
+blind-desc:something
 lash-desc:blackness
 numerator:6
 denominator:8+1d4
@@ -209,9 +209,9 @@ color:Light Dark
 code:SOUND
 name:sound
 type:element
-desc:звуком
+desc:sound
 player-desc:sound
-blind-desc:шумом
+blind-desc:noise
 lash-desc:sound
 numerator:6
 denominator:8+1d4
@@ -225,9 +225,9 @@ color:Yellow
 code:SHARD
 name:shards
 type:element
-desc:осколками
+desc:shards
 player-desc:shards
-blind-desc:чем-то острым
+blind-desc:something sharp
 lash-desc:razors
 numerator:6
 denominator:8+1d4
@@ -241,9 +241,9 @@ color:Umber
 code:NEXUS
 name:nexus
 type:element
-desc:смещением
+desc:nexus
 player-desc:nexus
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:dislocation
 numerator:6
 denominator:8+1d4
@@ -257,9 +257,9 @@ color:Light Red
 code:NETHER
 name:nether
 type:element
-desc:подземным мраком
+desc:nether
 player-desc:nether
-blind-desc:чем-то холодным
+blind-desc:something cold
 lash-desc:withering
 numerator:6
 denominator:8+1d4
@@ -273,9 +273,9 @@ color:Light Green
 code:CHAOS
 name:chaos
 type:element
-desc:хаосом
+desc:chaos
 player-desc:chaos
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:confusion
 numerator:6
 denominator:8+1d4
@@ -289,9 +289,9 @@ color:Violet
 code:DISEN
 name:disenchantment
 type:element
-desc:развоплощением
+desc:disenchantment
 player-desc:disenchantment
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:unmagic
 numerator:6
 denominator:8+1d4
@@ -305,9 +305,9 @@ color:Violet
 code:WATER
 name:water
 type:element
-desc:водой
+desc:water
 player-desc:water
-blind-desc:водой
+blind-desc:water
 lash-desc:water
 divisor:6
 damage-cap:0
@@ -319,9 +319,9 @@ color:Slate
 code:ICE
 name:ice
 type:element
-desc:льдом
+desc:ice
 player-desc:ice
-blind-desc:чем-то острым
+blind-desc:something sharp
 lash-desc:icicles
 numerator:1
 denominator:3
@@ -335,9 +335,9 @@ color:White
 code:GRAVITY
 name:gravity
 type:element
-desc:гравитацией
+desc:gravity
 player-desc:gravity
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:gravity
 divisor:3
 damage-cap:200
@@ -349,9 +349,9 @@ color:Light Slate
 code:INERTIA
 name:inertia
 type:element
-desc:инерцией
+desc:inertia
 player-desc:inertia
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:lassitude
 divisor:6
 damage-cap:200
@@ -363,9 +363,9 @@ color:Light Slate
 code:FORCE
 name:force
 type:element
-desc:силой
+desc:force
 player-desc:force
-blind-desc:чем-то твёрдым
+blind-desc:something hard
 lash-desc:impact
 divisor:6
 damage-cap:200
@@ -377,9 +377,9 @@ color:Umber
 code:TIME
 name:time
 type:element
-desc:временем
+desc:time
 player-desc:time
-blind-desc:чем-то странным
+blind-desc:something strange
 lash-desc:ruination
 divisor:3
 damage-cap:150
@@ -391,9 +391,9 @@ color:Light Blue
 code:PLASMA
 name:plasma
 type:element
-desc:плазмой
+desc:plasma
 player-desc:plasma
-blind-desc:чем-то
+blind-desc:something
 lash-desc:living fire
 divisor:6
 damage-cap:150
@@ -405,9 +405,9 @@ color:Red
 code:METEOR
 name:meteors
 type:element
-desc:метеорами
+desc:a meteor
 player-desc:meteor
-blind-desc:чем-то
+blind-desc:something
 lash-desc:meteoric iron
 divisor:6
 damage-cap:0
@@ -419,9 +419,9 @@ color:Red
 code:MISSILE
 name:magic missiles
 type:element
-desc:магическими стрелами
+desc:a missile
 player-desc:magical energy
-blind-desc:чем-то
+blind-desc:something
 divisor:6
 damage-cap:0
 msgt:GENERIC
@@ -432,9 +432,9 @@ color:Violet
 code:MANA
 name:mana
 type:element
-desc:маной
+desc:mana
 player-desc:the elements
-blind-desc:чем-то
+blind-desc:something
 lash-desc:raw magic
 divisor:3
 damage-cap:1600
@@ -446,9 +446,9 @@ color:Light dark
 code:HOLY_ORB
 name:holy power
 type:element
-desc:святой силой
+desc:a holy orb
 player-desc:holy power
-blind-desc:чем-то
+blind-desc:something
 lash-desc:holy power
 divisor:6
 damage-cap:0
@@ -460,9 +460,9 @@ color:Light Dark
 code:ARROW
 name:arrows
 type:element
-desc:стрелами
+desc:an arrow
 player-desc:arrows
-blind-desc:чем-то острым
+blind-desc:something sharp
 divisor:6
 damage-cap:0
 msgt:GENERIC
@@ -474,7 +474,7 @@ code:LIGHT_WEAK
 type:environs
 desc:light
 player-desc:weak light
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 color:ORANGE
 
@@ -482,70 +482,70 @@ code:DARK_WEAK
 type:environs
 desc:darkness
 player-desc:darkness
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:L_DARK
 
 code:KILL_WALL
 type:environs
 desc:rock remover
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 color:WHITE
 
 code:KILL_DOOR
 type:environs
 desc:destroys doors
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:WHITE
 
 code:KILL_TRAP
 type:environs
 desc:disables traps
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:WHITE
 
 code:MAKE_DOOR
 type:environs
 desc:creates doors
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:WHITE
 
 code:MAKE_TRAP
 type:environs
 desc:creates traps
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:WHITE
 
 code:AWAY_UNDEAD
 type:monster
 desc:teleports undead away
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:AWAY_EVIL
 type:monster
 desc:teleports evil monsters away
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:AWAY_SPIRIT
 type:monster
 desc:teleports monsters with a spirit away
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:AWAY_ALL
 type:monster
 desc:teleports monsters away
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -553,28 +553,28 @@ color:White
 code:TURN_UNDEAD
 type:monster
 desc:turns undead
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:TURN_EVIL
 type:monster
 desc:frightens evil monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:TURN_LIVING
 type:monster
 desc:scares living monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:TURN_ALL
 type:monster
 desc:causes monsters to flee
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 wake:1
 color:White
@@ -582,21 +582,21 @@ color:White
 code:DISP_UNDEAD
 type:monster
 desc:damages undead
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:DISP_EVIL
 type:monster
 desc:damages evil monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:DISP_ALL
 type:monster
 desc:damages all monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -604,42 +604,42 @@ color:White
 code:SLEEP_UNDEAD
 type:monster
 desc:attempts to put undead to sleep
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:SLEEP_EVIL
 type:monster
 desc:attempts to put evil monsters to sleep
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:SLEEP_ALL
 type:monster
 desc:attempts to put all monsters to sleep
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:MON_CLONE
 type:monster
 desc:hastes, heals and magically duplicates monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 color:White
 
 code:MON_POLY
 type:monster
 desc:polymorphs monsters into other kinds of creatures
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:MON_HEAL
 type:monster
 desc:heals monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -647,7 +647,7 @@ color:White
 code:MON_SPEED
 type:monster
 desc:hastes monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -655,7 +655,7 @@ color:White
 code:MON_SLOW
 type:monster
 desc:attempts to slow monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -663,28 +663,28 @@ color:White
 code:MON_CONF
 type:monster
 desc:attempts to confuse monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:MON_HOLD
 type:monster
 desc:attempts to hold monsters still
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:MON_STUN
 type:monster
 desc:attempts to stun monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:0
 color:White
 
 code:MON_DRAIN
 type:monster
 desc:damages living monsters
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 wake:1
 color:White
@@ -692,7 +692,7 @@ color:White
 code:MON_CRUSH
 type:monster
 desc:kills monsters below a hitpoint threshold
-blind-desc:чем-то
+blind-desc:something
 obvious:1
 color:White
 
