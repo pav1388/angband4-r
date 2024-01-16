@@ -88,7 +88,7 @@ static void wr_item(const struct object *obj)
 		char name[1024];
 		obj_desc_name_format(name, sizeof name, 0,
 							 // lookup_kind(obj->tval, obj->sval)->name, 0, false);
-							 lookup_kind(obj->tval, obj->sval)->name, 0, false, 1);
+							 lookup_kind(obj->tval, obj->sval)->name, 0, 0);
 		wr_string(name);
 	} else {
 		wr_string("");
@@ -560,7 +560,7 @@ void wr_ignore(void)
 			wr_string(tval_find_name(k_info[i].tval));
 			obj_desc_name_format(name, sizeof name, 0, k_info[i].name, 0,
 								 // false);
-								 false, 1);
+								 0);
 			wr_string(name);
 			wr_string(quark_str(k_info[i].note_aware));
 		}
@@ -581,7 +581,7 @@ void wr_ignore(void)
 			wr_string(tval_find_name(k_info[i].tval));
 			obj_desc_name_format(name, sizeof name, 0, k_info[i].name, 0,
 								 // false);
-								 false, 1);
+								 0);
 			wr_string(name);
 			wr_string(quark_str(k_info[i].note_unaware));
 		}

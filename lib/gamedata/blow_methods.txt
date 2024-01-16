@@ -178,7 +178,7 @@ miss:0
 phys:0
 msg:MON_BEG
 #act:begs {target} for money
-act:просит у {target} деньги 
+act:просит у {target} деньги
 desc:попрошайничать
 
 name:INSULT

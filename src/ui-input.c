@@ -986,7 +986,8 @@ static bool get_name_keypress(char *buf, size_t buflen, size_t *curs,
 		case '*':
 		{
 			*len = player_random_name(buf, buflen);
-			*curs = 0;
+			// *curs = 0;
+			*curs = *len;
 			result = false;
 			break;
 		}
@@ -1048,7 +1049,7 @@ static int handle_name_mouse(char *buf, size_t buflen, size_t *curs,
 	// menu_dynamic_add_label(m, "Accept", 'a', ACT_CTX_NAME_ACCEPT, labels);
 	menu_dynamic_add_label(m, "Принять", 'a', ACT_CTX_NAME_ACCEPT, labels);
 	// menu_dynamic_add_label(m, "Set to random name", 'r',
-	menu_dynamic_add_label(m, "Выбрать сличайное имя", 'r',
+	menu_dynamic_add_label(m, "Выбрать случайное имя", 'r',
 		ACT_CTX_NAME_RANDOM, labels);
 	// menu_dynamic_add_label(m, "Clear name", 'c', ACT_CTX_NAME_CLEAR,
 	menu_dynamic_add_label(m, "Очистить имя", 'c', ACT_CTX_NAME_CLEAR,
@@ -1075,7 +1076,8 @@ static int handle_name_mouse(char *buf, size_t buflen, size_t *curs,
 
 	case ACT_CTX_NAME_RANDOM:
 		*len = player_random_name(buf, buflen);
-		*curs = 0;
+		// *curs = 0;
+		*curs = *len;
 		break;
 
 	case ACT_CTX_NAME_CLEAR:
@@ -1107,7 +1109,8 @@ bool get_character_name(char *buf, size_t buflen)
 	prt("Введите имя для вашего персонажа (* случайное имя): ", 0, 0);
 
 	/* Save the player name */
-	my_strcpy(buf, player->full_name, buflen);
+	// my_strcpy(buf, player->full_name, buflen);
+	player_random_name(buf, buflen);
 
 	/* Ask the user for a string */
 	res = askfor_aux_ext(buf, buflen, get_name_keypress, handle_name_mouse);

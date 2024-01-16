@@ -64,6 +64,82 @@ extern void (*quit_aux)(const char *);
 
 #define CAUSE_OF_DEATH(a)	(streq((a), "starvation") ? "голодания" : streq((a), "poison") ? "отравления" : streq((a), "a fatal wound") ? "смертельного ранения" : streq((a), "Ripe Old Age") ? "Почтенного Возраста" : (a))
 
+#define C_IMEN		0
+#define C_RODIT		1
+#define C_DAT		2
+#define C_VINIT		3
+#define C_TVORIT	4
+#define C_PREDL		5
+#define W_PART		0
+#define W_GEN		1
+#define W_DECL		2
+#define W_ALTER		3
+#define W_PART_NOUN	0
+#define W_PART_ADJ	1
+#define W_GEN_NEUT	0
+#define W_GEN_MALE	1
+#define W_GEN_FEM	2
+
+#define	E_		0
+#define	E_A		1
+#define	E_AM	2
+#define	E_AMI	3
+#define	E_AH	4
+#define	E_AYA	5
+#define	E_E		6
+#define	E_EV	7
+#define	E_EGO	8
+#define	E_EE	9
+#define	E_EJ	10
+#define	E_EM	11
+#define	E_YOM	12
+#define	E_EMU	13
+#define	E_ENEM	14
+#define	E_I		15
+#define	E_IE	16
+#define	E_IEM	17
+#define	E_II	18
+#define	E_IJ	19
+#define	E_IM	20
+#define	E_IMI	21
+#define	E_IH	22
+#define	E_IYU	23
+#define	E_IYA	24
+#define	E_IYAMI	25
+#define	E_IYAH	26
+#define	E_J		27
+#define	E_O		28
+#define	E_OV	29
+#define	E_OGO	30
+#define	E_OE	31
+#define	E_OJ	32
+#define	E_OM	33
+#define	E_OMU	34
+#define	E_U		35
+#define	E_UYU	36
+#define	E_Y		37
+#define	E_YE	38
+#define	E_YJ	39
+#define	E_YM	40
+#define	E_YMI	41
+#define	E_YH	42
+#define	E_b		43
+#define	E_bE	44
+#define	E_bEM	45
+#define	E_bYU	46
+#define	E_bYA	47
+#define	E_bYAM	48
+#define	E_bYAMI	49
+#define	E_bYAH	50
+#define	E_YU	51
+#define	E_YUYU	52
+#define	E_YA	53
+#define	E_YAM	54
+#define	E_YAMI	55
+#define	E_YAH	56
+#define	E_YAYA	57
+
+
 /**
  * Return the verb form matching the given count
  */

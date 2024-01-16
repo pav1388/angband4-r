@@ -54,7 +54,7 @@
 #ifndef __3DS__
 #define hidScanInput scanKeys
 #endif
-
+#define DEBUG_MEMORY_USAGE
 #ifdef DEBUG_MEMORY_USAGE
 
 #include <malloc.h>

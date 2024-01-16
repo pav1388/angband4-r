@@ -512,7 +512,7 @@ int lookup_sval(int tval, const char *name)
 
 		obj_desc_name_format(cmp_name, sizeof cmp_name, 0, kind->name, 0,
 							 // false);
-							 false, 1);
+							 0);
 
 		/* Found a match */
 		if (!my_stricmp(cmp_name, name)) return kind->sval;

@@ -559,7 +559,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	if (best_digger != current_weapon &&
 			(!current_weapon || obj_can_takeoff(current_weapon))) {
 		// with_clause = "with your swap digger";
-		with_clause = "своим шахтёрским инвентарём";
+		with_clause = "своим копателем";
 		/* Use only one without the overhead of gear_obj_for_use(). */
 		if (best_digger) {
 			oldn = best_digger->number;
@@ -620,7 +620,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 			/* Found treasure */
 			place_gold(cave, grid, player->depth, ORIGIN_FLOOR);
 			// msg("You have found something digging %s!", with_clause);
-			msg("Вы что-то нашли, копая %s!", with_clause);
+			msg("Вы что-то нашли копая %s!", with_clause);
 		} else {
 			// msg("You have finished the tunnel %s.", with_clause);
 			msg("Вы закончили копать проход %s.", with_clause);

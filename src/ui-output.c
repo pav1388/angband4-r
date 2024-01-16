@@ -182,7 +182,8 @@ struct keypress textui_textblock_show(textblock *tb, region orig_area, const cha
 
 		Term_erase(area.col, area.row + area.page_rows, area.width);
 		Term_erase(area.col, area.row + area.page_rows + 1, area.width);
-		c_put_str(COLOUR_L_BLUE, "(Up/down or ESCAPE to exit.)",
+		// c_put_str(COLOUR_L_BLUE, "(Up/down or ESCAPE to exit.)",
+		c_put_str(COLOUR_L_BLUE, "(Up/Down или ESC выход.)",
 				area.row + area.page_rows + 1, area.col);
 
 		/* Pager mode */

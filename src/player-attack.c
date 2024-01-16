@@ -796,9 +796,6 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 		weight = 0;
 	}
 	
-	if (!(monster_is_visible(mon)))
-		my_strcat(verb, " по", sizeof(verb));
-	
 	/* Best attack from all slays or brands on all non-launcher equipment */
 	b = 0;
 	s = 0;

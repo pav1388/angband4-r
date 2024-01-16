@@ -159,7 +159,7 @@ static void wiz_create_item_subdisplay(struct menu *m, int oid, bool cursor,
 		char name[140];
 
 		// object_base_name(name, sizeof(name), current_tval, true);
-		object_base_name(name, sizeof(name), current_tval, true, 2);
+		object_base_name(name, sizeof(name), current_tval, 1);
 		if (choose_artifact) {
 			// strnfmt(buf, sizeof(buf), "All artifact %s", name);
 			strnfmt(buf, sizeof(buf), "Все артефакты %s", name);
@@ -237,7 +237,7 @@ static void wiz_create_item_display(struct menu *m, int oid, bool cursor,
 		}
 	} else {
 		// object_base_name(buf, sizeof(buf), oid, true);
-		object_base_name(buf, sizeof(buf), oid, true, 2);
+		object_base_name(buf, sizeof(buf), oid, 1);
 	}
 
 	c_prt(curs_attrs[CURS_KNOWN][0 != cursor], buf, row, col);
@@ -307,7 +307,7 @@ static bool wiz_create_item_action(struct menu *m, const ui_event *e, int oid)
 	menu->selections = all_letters;
 
 	// object_base_name(buf, sizeof(buf), oid, true);
-	object_base_name(buf, sizeof(buf), oid, true, 2);
+	object_base_name(buf, sizeof(buf), oid, 1);
 	if (choose_artifact) {
 		strnfmt(title, sizeof(title), "Which artifact %s? ", buf);
 	} else {

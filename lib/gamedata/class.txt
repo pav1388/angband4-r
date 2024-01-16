@@ -726,10 +726,10 @@ title:Первоиерарх
 
 magic:1:350:5
 
-book:prayer book:town:[Молитвы Послушника]:6:divine
+book:prayer book:town:[Песнопения Послушника]:6:divine
 book-graphics:?:G
 book-properties:25:40:1 to 100
-equip:prayer book:[Молитвы Послушника]:1:1:none
+equip:prayer book:[Песнопения Послушника]:1:1:none
 
 spell:Призыв Света:1:1:10:2
 effect:LIGHT_AREA
@@ -1245,7 +1245,7 @@ equip:light:Wooden Torch:1:3:none
 equip:sword:Main Gauche:1:1:none
 equip:scroll:Защиты от Зла:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
-equip:prayer book:[Молитвы Послушника]:1:1:none
+equip:prayer book:[Песнопения Послушника]:1:1:none
 player-flags:BLESS_WEAPON | SHIELD_BASH
 title:Галант
 title:Хранитель
@@ -1260,7 +1260,7 @@ title:Воин Света
 
 magic:1:400:3
 
-book:prayer book:town:[Молитвы Послушника]:6:divine
+book:prayer book:town:[Песнопения Послушника]:6:divine
 
 spell:Благословение:1:2:20:4
 effect:TIMED_INC:BLESSED
