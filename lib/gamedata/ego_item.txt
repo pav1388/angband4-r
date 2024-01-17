@@ -127,7 +127,8 @@
 name:Теней
 info:1000:10
 alloc:40:10 to 100
-item:light:Lantern
+# item:light:Lantern
+item:light:Фонарь
 values:STEALTH[d2] | RES_LIGHT[1] | LIGHT[-4]
 min-values:STEALTH[0] | LIGHT[-4]
 
@@ -135,8 +136,10 @@ min-values:STEALTH[0] | LIGHT[-4]
 name:Сияния
 info:2000:10
 alloc:50:1 to 30
-item:light:Wooden Torch
-item:light:Lantern
+# item:light:Wooden Torch
+item:light:Деревянный Факел
+# item:light:Lantern
+item:light:Фонарь
 values:LIGHT[1]
 min-values:LIGHT[1]
 
@@ -144,7 +147,8 @@ min-values:LIGHT[1]
 name:(Вечногорящий)
 info:2500:10
 alloc:100:1 to 30
-item:light:Lantern
+# item:light:Lantern
+item:light:Фонарь
 flags:NO_FUEL
 flags-off:TAKES_FUEL
 
@@ -153,7 +157,8 @@ flags-off:TAKES_FUEL
 name:Истинного Зрения
 info:6000:10
 alloc:10:20 to 127
-item:light:Lantern
+# item:light:Lantern
+item:light:Фонарь
 flags:PROT_BLIND | SEE_INVIS
 
 
@@ -337,17 +342,17 @@ info:3500:18
 alloc:100:1 to 30
 type:sword
 type:polearm
-item:hafted:Whip
-item:hafted:Ball-and-Chain
-item:hafted:Morning Star
-item:hafted:Flail
-item:hafted:Two-Handed Great Flail
-item:hafted:Mace
-item:hafted:Lead-Filled Mace
-item:hafted:Quarterstaff
-item:hafted:War Hammer
-item:hafted:Maul
-item:hafted:Great Hammer
+item:hafted:Кнут
+item:hafted:Цепной Шар
+item:hafted:Моргенштерн
+item:hafted:Кистень
+item:hafted:Двуручный Великий Кистень
+item:hafted:Булава
+item:hafted:Тяжёлая Булава
+item:hafted:Боевой Посох
+item:hafted:Боевой Молот
+item:hafted:Молот
+item:hafted:Тяжёлый Молот
 slay:UNDEAD_3
 
 # name:of Slay Demon
@@ -427,17 +432,17 @@ info:8000:24
 alloc:30:10 to 60
 type:sword
 type:polearm
-item:hafted:Whip
-item:hafted:Ball-and-Chain
-item:hafted:Morning Star
-item:hafted:Flail
-item:hafted:Two-Handed Great Flail
-item:hafted:Mace
-item:hafted:Lead-Filled Mace
-item:hafted:Quarterstaff
-item:hafted:War Hammer
-item:hafted:Maul
-item:hafted:Great Hammer
+item:hafted:Кнут
+item:hafted:Цепной Шар
+item:hafted:Моргенштерн
+item:hafted:Кистень
+item:hafted:Двуручный Великий Кистень
+item:hafted:Булава
+item:hafted:Тяжёлая Булава
+item:hafted:Боевой Посох
+item:hafted:Боевой Молот
+item:hafted:Молот
+item:hafted:Тяжёлый Молот
 flags:RAND_RES_POWER
 values:WIS[d2]
 min-values:WIS[0]

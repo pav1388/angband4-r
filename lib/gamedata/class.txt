@@ -149,10 +149,10 @@ hitdie:9
 max-attacks:6
 min-weight:30
 strength-multiplier:5
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
 equip:potion:Силы Берсерка:1:1:none
-equip:sword:Dagger:1:1:none
+equip:sword:Кинжал:1:1:none
 equip:soft armour:Soft Leather Armour:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:BRAVERY_30 | NO_MANA | SHIELD_BASH
@@ -185,9 +185,9 @@ hitdie:0
 max-attacks:4
 min-weight:40
 strength-multiplier:2
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:sword:Rapier:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:sword:Рапира:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:ZERO_FAIL | BEAM | CHOOSE_SPELLS
 title:Новичок
@@ -468,9 +468,9 @@ hitdie:2
 max-attacks:4
 min-weight:35
 strength-multiplier:3
-equip:food:Ration of Food:1:3:none
-equip:hafted:Whip:1:1:none
-equip:light:Wooden Torch:1:3:none
+equip:food:Рацион Питания:1:3:none
+equip:hafted:Кнут:1:1:none
+equip:light:Деревянный Факел:1:3:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:ZERO_FAIL | CHOOSE_SPELLS | CHARM
 title:Странник
@@ -707,9 +707,9 @@ hitdie:2
 max-attacks:4
 min-weight:35
 strength-multiplier:3
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:hafted:Mace:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:hafted:Булава:1:1:none
 equip:potion:Лечения Серьёзных Ран:2:2:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:BLESS_WEAPON | ZERO_FAIL
@@ -980,8 +980,8 @@ hitdie:2
 max-attacks:4
 min-weight:35
 strength-multiplier:3
-equip:food:Ration of Food:1:3:none
-equip:sword:Main Gauche:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:sword:Длинный Кинжал:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 player-flags:ZERO_FAIL | CHOOSE_SPELLS | UNLIGHT | EVIL
 title:Послушник
@@ -1240,9 +1240,9 @@ hitdie:6
 max-attacks:5
 min-weight:30
 strength-multiplier:5
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:sword:Main Gauche:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:sword:Длинный Кинжал:1:1:none
 equip:scroll:Защиты от Зла:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 equip:prayer book:[Песнопения Послушника]:1:1:none
@@ -1402,9 +1402,9 @@ hitdie:4
 max-attacks:5
 min-weight:20
 strength-multiplier:4
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:sword:Dagger:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:sword:Кинжал:1:1:none
 equip:soft armour:Soft Leather Armour:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 # equip:magic book:[First Spells]:1:1:none
@@ -1511,9 +1511,9 @@ hitdie:5
 max-attacks:5
 min-weight:35
 strength-multiplier:4
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:sword:Main Gauche:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:sword:Длинный Кинжал:1:1:none
 equip:bow:Short Bow:1:1:none
 equip:arrow:Arrow:15:20:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
@@ -1623,9 +1623,9 @@ max-attacks:5
 min-weight:100
 strength-multiplier:5
 equip:shadow book:[Объятия Теней]:1:1:none
-equip:food:Ration of Food:1:3:none
-equip:light:Wooden Torch:1:3:none
-equip:sword:Tulwar:1:1:none
+equip:food:Рацион Питания:1:3:none
+equip:light:Деревянный Факел:1:3:none
+equip:sword:Косая Сабля:1:1:none
 equip:shield:Leather Shield:1:1:none
 equip:scroll:Слова Возвращения:1:1:birth_no_recall
 equip:potion:Лечения Лёгких Ран:1:1:none

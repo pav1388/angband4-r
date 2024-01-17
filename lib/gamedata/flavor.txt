@@ -47,7 +47,7 @@ flavor:16:Light Green: Нефритовое
 flavor:17:Umber: с Яшмой
 flavor:18:Blue: с Лазуритом
 flavor:19:Green: с Малахитом
-flavor:20:White: Мраморн?1010
+flavor:20:White: Мраморн=1010
 flavor:21:Light Slate: с Лунным Камнем
 flavor:22:Light Red: с Ониксом
 flavor:23:Light Slate: с Опалом
@@ -60,17 +60,17 @@ flavor:27:Light Red: с Родонитом
 flavor:30:Yellow: с Тигровый Глазом
 flavor:31:Yellow: с Топазом
 flavor:32:Light Blue: с Бирюзой
-flavor:33:Light Umber: Цирконов?1010
-flavor:34:White: Платинов?1010
-flavor:35:Light Umber: Бронзов?1010
-flavor:36:Yellow: Золот?1010
-flavor:37:Light Dark: Обсидианов?1010
-flavor:38:Light Slate: Серебрян?1010
+flavor:33:Light Umber: Цирконов=1010
+flavor:34:White: Платинов=1010
+flavor:35:Light Umber: Бронзов=1010
+flavor:36:Yellow: Золот=1070
+flavor:37:Light Dark: Обсидианов=1010
+flavor:38:Light Slate: Серебрян=1010
 flavor:39:Umber: с Янтарём
 #flavor:40:Light Blue:Mithril
 flavor:41:Light Dark: с Агатом
 flavor:42:Yellow: с Драгоценностями
-flavor:43:Light Green: Адамантинов?1010
+flavor:43:Light Green: Адамантинов=1010
 
 # Agate
 # Black Diamond
@@ -87,43 +87,43 @@ flavor:43:Light Green: Адамантинов?1010
 kind:amulet:"
 
 # The Amulet of Carlammas
-fixed:52:Amulet:Light Umber:Бронзов?1110
+fixed:52:Amulet:Light Umber:Бронзов=1110
 
 # The Amulet of Ingwe 51
 
 # The Necklace of the Dwarves
-fixed:55:Necklace:Yellow:Золот?1115
+fixed:55:Necklace:Yellow:Золот=1170
 
 # New Artifact (14): The Elfstone 'Elessar'
-fixed:44:Elfstone:Green:Зелён?1110
+fixed:44:Elfstone:Green:Зелён=1110
 
 # New Artifact (15): The Jewel 'Evenstar'
-fixed:46:Jewel:White:Бел?1110
+fixed:46:Jewel:White:Бел=1110
 
 #flavor:44:Yellow:Amber
-flavor:45:Light Umber:Деревянн?1110
+flavor:45:Light Umber:Деревянн=1110
 #flavor:46:White:Coral
-flavor:47:Light Slate:Агатов?1110
-flavor:48:White:Слоново-костн?1110
-flavor:49:Light Dark:Обсидианов?1110
-flavor:50:White:Костян?1111
-flavor:51:Light Umber:Латунн?1110
+flavor:47:Light Slate:Агатов=1110
+flavor:48:White:Слоново-костн=1110
+flavor:49:Light Dark:Обсидианов=1110
+flavor:50:White:Костян=1180
+flavor:51:Light Umber:Латунн=1110
 #flavor:52:Light Umber:Bronze
-flavor:53:Slate:Оловянно-медн?1110
-flavor:54:Umber:Черепаш?1112
+flavor:53:Slate:Оловянно-медн=1110
+flavor:54:Umber:Черепахов=1110
 #flavor:55:Yellow:Golden
-flavor:56:Light Blue:Лазурн?1110
-flavor:57:White:Хрустальн?1110
-flavor:58:Light Slate:Серебрян?1110
-flavor:59:Light Umber:Медн?1110
-flavor:60:Umber:Резной Дубов?1110
-flavor:61:Light Slate:Зуб-Дракон?1120
-flavor:62:Red:Рубинов?1110
-flavor:63:Light Blue:Мифрилов?1110
-flavor:64:Light Green:Адамантинов?1110
-flavor:65:Slate:Кремнев?1110
-flavor:66:Light Blue:Морск?1115
-flavor:67:Light Slate:Перламутров?1110
+flavor:56:Light Blue:Лазурн=1110
+flavor:57:White:Хрустальн=1110
+flavor:58:Light Slate:Серебрян=1110
+flavor:59:Light Umber:Медн=1110
+flavor:60:Umber:Резной Дубов=1110
+flavor:61:Light Slate:Зуб-Дракон=1160
+flavor:62:Red:Рубинов=1110
+flavor:63:Light Blue:Мифрилов=1110
+flavor:64:Light Green:Адамантинов=1110
+flavor:65:Slate:Кремнев=1110
+flavor:66:Light Blue:Морск=1180
+flavor:67:Light Slate:Перламутров=1110
 
 # Azure
 # Bead
@@ -152,41 +152,41 @@ flavor:67:Light Slate:Перламутров?1110
 
 kind:staff:_
 
-flavor:68:Light Umber: Осинов?1110
+flavor:68:Light Umber: Осинов=1110
 flavor:69:Light Umber: из Бальзы
 flavor:70:Light Umber: из Баньяна
-flavor:71:Light Umber: Берёзов?1110
-flavor:72:Light Umber: Кедров?1110
+flavor:71:Light Umber: Берёзов=1110
+flavor:72:Light Umber: Кедров=1110
 flavor:73:Light Umber: из Тополя
 flavor:74:Light Umber: из Кипариса
 flavor:75:Light Umber: из Кизила
 flavor:76:Light Umber: из Вяза
-flavor:77:Light Umber: Эвкалиптов?1110
+flavor:77:Light Umber: Эвкалиптов=1110
 flavor:78:Light Umber: из Болиголова
 flavor:79:Light Umber: из Гикори
 flavor:80:Umber: из Железного дерева
 flavor:81:Light Umber: из Акации
 flavor:82:Umber: из Красного дерева
-flavor:83:Umber: Кленов?1110
+flavor:83:Umber: Кленов=1110
 flavor:84:Umber: из Тутовника
-flavor:85:Umber: Дубов?1110
-flavor:86:Umber: Соснов?1110
+flavor:85:Umber: Дубов=1110
+flavor:86:Umber: Соснов=1110
 flavor:87:Red: из Красного дерева
 flavor:88:Red: из Палисандра
-flavor:89:Light Umber: Елов?1110
+flavor:89:Light Umber: Елов=1110
 flavor:90:Light Umber: из Сикомора
-flavor:91:Light Umber: Тиков?1110
-flavor:92:Umber: Орехов?1110
+flavor:91:Light Umber: Тиков=1110
+flavor:92:Umber: Орехов=1110
 flavor:93:Green: из Омелы
 flavor:94:Light Umber: из Боярышника
-flavor:95:Light Umber: Бамбуков?1110
+flavor:95:Light Umber: Бамбуков=1110
 flavor:96:Light Slate: из Берёзы повислой
 flavor:97:Umber: из Орешника
-flavor:98:Yellow: Золот?1115
+flavor:98:Yellow: Золот=1170
 flavor:99:Slate: из Терновника
-flavor:100:Light Umber: Ветвист?1110
+flavor:100:Light Umber: Ветвист=1110
 flavor:101:White: из Слоновой кости
-flavor:102:Light Umber: Ивов?1110
+flavor:102:Light Umber: Ивов=1110
 
 # Alder
 # Applewood
@@ -210,41 +210,41 @@ flavor:102:Light Umber: Ивов?1110
 
 kind:wand:-
 
-flavor:103:Light Blue:Алюминиев?1210
-flavor:104:Light Dark:Чугунн?1210
-flavor:105:White:Хромов?1210
-flavor:106:Light Umber:Медн?1210
-flavor:107:Yellow:Золот?1210
-flavor:108:Slate:Железн?1210
-flavor:109:Light Slate:Магниев?1210
-flavor:110:Light Slate:Молибденов?1210
-flavor:111:Light Umber:Никелев?1210
-flavor:112:Red:Ржав?1210
-flavor:113:Light Slate:Серебрян?1210
-flavor:114:Light Slate:Стальн?1210
-flavor:115:Light Slate:Оловянн?1210
-flavor:116:White:Титанов?1210
-flavor:117:White:Вольфрамов?1210
-flavor:118:Light Slate:Циркониев?1210
-flavor:119:Light Slate:Цинков?1210
-flavor:120:Light Blue:Покрыт?1210 алюминием
-flavor:121:Light Umber:Покрыт?1210 медью
-flavor:122:Yellow:Покрыт?1210 золотом
-flavor:123:Light Umber:Никелированн?1210
-flavor:124:Light Slate:Покрыт?1210 серебром
-flavor:125:Light Slate:Покрыт?1210 сталью
-flavor:126:Light Slate:Покрыт?1210 оловом
-flavor:127:Light Slate:Покрыт?1210 цинком
-flavor:128:Light Blue:Покрыт?1210 мифрилом
-flavor:129:Light Blue:Мифрилов?1210
-flavor:130:Umber:Покрыт?1210 рунами
-flavor:131:Light Umber:Бронзов?1210
-flavor:132:Light Umber:Латунн?1210
-flavor:133:White:Платинов?1210
-flavor:134:Slate:Свинцов?1210
-flavor:135:Slate:Покрыт?1210 свинцом
-flavor:136:White:Слоново-костн?1210
-flavor:137:Slate:Оловянно-медн?1210
+flavor:103:Light Blue:Алюминиев=1210
+flavor:104:Light Dark:Чугунн=1210
+flavor:105:White:Хромов=1210
+flavor:106:Light Umber:Медн=1210
+flavor:107:Yellow:Золот=1270
+flavor:108:Slate:Железн=1210
+flavor:109:Light Slate:Магниев=1210
+flavor:110:Light Slate:Молибденов=1210
+flavor:111:Light Umber:Никелев=1210
+flavor:112:Red:Ржав=1210
+flavor:113:Light Slate:Серебрян=1210
+flavor:114:Light Slate:Стальн=1210
+flavor:115:Light Slate:Оловянн=1210
+flavor:116:White:Титанов=1210
+flavor:117:White:Вольфрамов=1210
+flavor:118:Light Slate:Циркониев=1210
+flavor:119:Light Slate:Цинков=1210
+flavor:120:Light Blue:Покрыт=1210 алюминием
+flavor:121:Light Umber:Покрыт=1210 медью
+flavor:122:Yellow:Покрыт=1210 золотом
+flavor:123:Light Umber:Никелированн=1210
+flavor:124:Light Slate:Покрыт=1210 серебром
+flavor:125:Light Slate:Покрыт=1210 сталью
+flavor:126:Light Slate:Покрыт=1210 оловом
+flavor:127:Light Slate:Покрыт=1210 цинком
+flavor:128:Light Blue:Покрыт=1210 мифрилом
+flavor:129:Light Blue:Мифрилов=1210
+flavor:130:Umber:Покрыт=1210 рунами
+flavor:131:Light Umber:Бронзов=1210
+flavor:132:Light Umber:Латунн=1210
+flavor:133:White:Платинов=1210
+flavor:134:Slate:Свинцов=1210
+flavor:135:Slate:Покрыт=1210 свинцом
+flavor:136:White:Слоново-костн=1210
+flavor:137:Slate:Оловянно-медн=1210
 
 # Adamantium
 # Antimony
@@ -261,41 +261,41 @@ flavor:137:Slate:Оловянно-медн?1210
 
 kind:rod:-
 
-flavor:138:Light Blue:Алюминиев?1110
-flavor:139:Light Dark:Чугунн?1110
-flavor:140:White:Хромов?1110
-flavor:141:Light Umber:Медн?1110
-flavor:142:Yellow:Золот?1115
-flavor:143:Slate:Железн?1110
-flavor:144:Light Slate:Магниев?1110
-flavor:145:Light Slate:Молибденов?1110
-flavor:146:Light Umber:Никелев?1110
-flavor:147:Red:Ржав?1110
-flavor:148:Light Slate:Серебрян?1110
-flavor:149:Light Slate:Стальн?1115
-flavor:150:Light Slate:Оловянн?1110
-flavor:151:White:Титанов?1110
-flavor:152:White:Вольфрамов?1110
-flavor:153:Light Slate:Циркониев?1110
-flavor:154:Light Slate:Цинков?1110
-flavor:155:Light Blue:Покрыт?1110 алюминием
-flavor:156:Light Umber:Покрыт?1110 медью
-flavor:157:Yellow:Покрыт?1110 золотом
-flavor:158:Light Umber:Никелированн?1110
-flavor:159:Light Slate:Покрыт?1110 серебром
-flavor:160:Light Slate:Покрыт?1110 сталью
-flavor:161:Light Slate:Покрыт?1110 оловом
-flavor:162:White:Покрыт?1110 цинком
-flavor:163:Light Blue:Покрыт?1110 мифрилом
-flavor:164:Light Blue:Мифрилов?1110
-flavor:165:Umber:Покрыт?1110 рунами
-flavor:166:Light Umber:Бронзов?1110
-flavor:167:Light Umber:Латунн?1110
-flavor:168:White:Платинов?1110
-flavor:169:Red:Свинцов?1110
-flavor:170:Slate:Покрыт?1110 свинцом
-flavor:171:White:Слоново-костян?1115
-flavor:172:Slate:Оловянно-медн?1110
+flavor:138:Light Blue:Алюминиев=1110
+flavor:139:Light Dark:Чугунн=1110
+flavor:140:White:Хромов=1110
+flavor:141:Light Umber:Медн=1110
+flavor:142:Yellow:Золот=1170
+flavor:143:Slate:Железн=1110
+flavor:144:Light Slate:Магниев=1110
+flavor:145:Light Slate:Молибденов=1110
+flavor:146:Light Umber:Никелев=1110
+flavor:147:Red:Ржав=1110
+flavor:148:Light Slate:Серебрян=1110
+flavor:149:Light Slate:Стальн=1170
+flavor:150:Light Slate:Оловянн=1110
+flavor:151:White:Титанов=1110
+flavor:152:White:Вольфрамов=1110
+flavor:153:Light Slate:Циркониев=1110
+flavor:154:Light Slate:Цинков=1110
+flavor:155:Light Blue:Покрыт=1110 алюминием
+flavor:156:Light Umber:Покрыт=1110 медью
+flavor:157:Yellow:Покрыт=1110 золотом
+flavor:158:Light Umber:Никелированн=1110
+flavor:159:Light Slate:Покрыт=1110 серебром
+flavor:160:Light Slate:Покрыт=1110 сталью
+flavor:161:Light Slate:Покрыт=1110 оловом
+flavor:162:White:Покрыт=1110 цинком
+flavor:163:Light Blue:Покрыт=1110 мифрилом
+flavor:164:Light Blue:Мифрилов=1110
+flavor:165:Umber:Покрыт=1110 рунами
+flavor:166:Light Umber:Бронзов=1110
+flavor:167:Light Umber:Латунн=1110
+flavor:168:White:Платинов=1110
+flavor:169:Red:Свинцов=1110
+flavor:170:Slate:Покрыт=1110 свинцом
+flavor:171:White:Слоново-костян=1170
+flavor:172:Slate:Оловянно-медн=1110
 
 # Wrought Iron
 
@@ -304,26 +304,26 @@ flavor:172:Slate:Оловянно-медн?1110
 
 kind:mushroom:,
 
-flavor:173:Light Purple:Пятнист?1110
-flavor:174:Light Dark:Каучуков?1110
-flavor:175:Mustard:Рассыпчат?1110
-flavor:176:Light Yellow:Плеснев?1110
-flavor:177:Blue:Пёстр?1110
-flavor:178:Green:Тверд?1110
-flavor:179:Mud:Древесн?1110
-flavor:180:Yellow:Морщинист?1110
-flavor:181:Light Slate:Пушист?1110
-flavor:182:Light Red:Хрупк?1120
-flavor:183:Slate:Мраморн?1110
-flavor:184:Light Blue:Желатинов?1110
-flavor:185:Light Green:Пятнист?1110
-flavor:186:Violet:Светящ?1140ся
-flavor:187:Red:Полосат?1110
-flavor:188:Slate:Слизист?1110
-flavor:189:Deep Light Blue:Влажн?1110
-flavor:190:White:Увядш?1120
-flavor:191:White:Восков?1110
-flavor:192:Umber:Вонюч?1120
+flavor:173:Light Purple:Пятнист=1110
+flavor:174:Light Dark:Каучуков=1110
+flavor:175:Mustard:Рассыпчат=1110
+flavor:176:Light Yellow:Плеснев=1110
+flavor:177:Blue:Пёстр=1110
+flavor:178:Green:Твёрд=1110
+flavor:179:Mud:Древесн=1110
+flavor:180:Yellow:Морщинист=1110
+flavor:181:Light Slate:Пушист=1110
+flavor:182:Light Red:Хрупк=1130
+flavor:183:Slate:Мраморн=1110
+flavor:184:Light Blue:Желатинов=1110
+flavor:185:Light Green:Пятнист=1110
+flavor:186:Violet:Светящ=1140ся
+flavor:187:Red:Полосат=1110
+flavor:188:Slate:Слизист=1110
+flavor:189:Deep Light Blue:Влажн=1110
+flavor:190:White:Увядш=1140
+flavor:191:White:Восков=1170
+flavor:192:Umber:Вонюч=1140
 
 # Fleshy
 # Fuzzy
@@ -337,65 +337,65 @@ flavor:192:Umber:Вонюч?1120
 
 kind:potion:!
 
-flavor:193:White:Прозрачн?1010
-flavor:194:Light Umber:Светло-коричнев?1010
-flavor:195:Green:Сочно-зелён?1010
-flavor:196:Light Blue:Лазурн?1010
-flavor:197:Blue:Голуб?1010
-flavor:198:Light Blue:Бледно-голуб?1010
-flavor:199:Light Dark:Черн?1010
-flavor:200:Umber:Коричнев?1010
+flavor:193:White:Прозрачн=1010
+flavor:194:Light Umber:Светло-коричнев=1010
+flavor:195:Green:Сочно-зелён=1010
+flavor:196:Light Blue:Лазурн=1010
+flavor:197:Blue:Голуб=1010
+flavor:198:Light Blue:Бледно-голуб=1010
+flavor:199:Light Dark:Черн=1010
+flavor:200:Umber:Коричнев=1010
 flavor:201:Umber:Окра
-flavor:202:Light Slate:Пузырящ?1040ся
-flavor:203:Light Green:Жёлто-зелён?1010
-flavor:204:White:Облачн?1010
-flavor:205:Light Umber:Медн?1010 с крапинками
-flavor:206:Red:Малинов?1010
-flavor:207:Light Blue:Голуб?1010
-flavor:208:Blue:Ультрамаринов?1010
-flavor:209:Green:Темно-зелен?1010
-flavor:210:Red:Темно-красн?1010
-flavor:211:Light Yellow:Светло-жёлт?1010
-flavor:212:Green:Зелен?1010
-flavor:213:Mud:Мутн?1010
-flavor:214:Slate:Сер?1010
-flavor:215:Slate:Светло-син?1020
-flavor:216:Light Slate:Туманн?1010
+flavor:202:Light Slate:Пузырящ=1040ся
+flavor:203:Light Green:Жёлто-зелён=1010
+flavor:204:White:Облачн=1010
+flavor:205:Light Umber:Медн=1010 с крапинками
+flavor:206:Red:Малинов=1010
+flavor:207:Light Blue:Голуб=1010
+flavor:208:Blue:Ультрамаринов=1010
+flavor:209:Green:Темно-зелен=1010
+flavor:210:Red:Темно-красн=1010
+flavor:211:Light Yellow:Светло-жёлт=1010
+flavor:212:Green:Зелен=1010
+flavor:213:Mud:Мутн=1010
+flavor:214:Slate:Сер=1010
+flavor:215:Slate:Светло-син=1020
+flavor:216:Light Slate:Туманн=1010
 flavor:217:Violet:Индиго
-flavor:218:Light Blue:Светло-голуб?1010
-flavor:219:Light Green:Светло-зелен?1010
-flavor:220:Magenta-Pink:Пурпурн?1010
-flavor:221:Deep Light Blue:Металло-син?1020
-flavor:222:Red:Металло-красн?1010
-flavor:223:Green:Металло-зелён?1010
-flavor:224:Violet:Металло-фиолетов?1010
-flavor:225:Light Slate:Туманн?1010
-flavor:226:Orange:Оранжев?1010
-flavor:227:Orange:Оранжев?1010 с крапинками
-flavor:228:Magenta-Pink:Розов?1010
-flavor:229:Light Teal:Светло-бирюзов?1010
-flavor:230:Light Violet:Светло-фиолетов?1010
-flavor:231:Purple:Фиолетов?1010
-flavor:232:Purple:Фиолетов?1010 с крапинками
-flavor:233:Red:Красн?1010
-flavor:234:Teal:Бирюзов?1010
-flavor:235:Mustard:Горчично-жёлт?1010
-flavor:236:Light Dark:Дымчат?1010
-flavor:237:Orange:Мандаринов?1010
+flavor:218:Light Blue:Светло-голуб=1010
+flavor:219:Light Green:Светло-зелен=1010
+flavor:220:Magenta-Pink:Пурпурн=1010
+flavor:221:Deep Light Blue:Металло-син=1020
+flavor:222:Red:Металло-красн=1010
+flavor:223:Green:Металло-зелён=1010
+flavor:224:Violet:Металло-фиолетов=1010
+flavor:225:Light Slate:Туманн=1010
+flavor:226:Orange:Оранжев=1010
+flavor:227:Orange:Оранжев=1010 с крапинками
+flavor:228:Magenta-Pink:Розов=1010
+flavor:229:Light Teal:Светло-бирюзов=1010
+flavor:230:Light Violet:Светло-фиолетов=1010
+flavor:231:Purple:Фиолетов=1010
+flavor:232:Purple:Фиолетов=1010 с крапинками
+flavor:233:Red:Красн=1010
+flavor:234:Teal:Бирюзов=1010
+flavor:235:Mustard:Горчично-жёлт=1010
+flavor:236:Light Dark:Дымчат=1010
+flavor:237:Orange:Мандаринов=1010
 flavor:238:Violet:Фиолетовый
-flavor:239:Red:Красно-оранжев?1010
-flavor:240:White:Бел?1010
-flavor:241:Yellow:Жёлт?1010
-flavor:242:Light Purple:Светло-фиолетов?1010
-flavor:243:Light Red:Резк?1010
-flavor:244:Light Purple:Лавандов?1010
-flavor:245:Light Red:Вязко-розов?1010
-flavor:246:Yellow:Маслянисто-жёлт?1010
-flavor:247:Green:Липко-зелён?1010
-flavor:248:Violet:Мерцающ?1020
-flavor:249:Red:Густо-багров?1010
-flavor:250:Light Pink:Светло-розов?1010
-flavor:251:Yellow:Золот?1010
+flavor:239:Red:Красно-оранжев=1010
+flavor:240:White:Бел=1010
+flavor:241:Yellow:Жёлт=1010
+flavor:242:Light Purple:Светло-фиолетов=1010
+flavor:243:Light Red:Резк=1010
+flavor:244:Light Purple:Лавандов=1010
+flavor:245:Light Red:Вязко-розов=1010
+flavor:246:Yellow:Маслянисто-жёлт=1010
+flavor:247:Green:Липко-зелён=1010
+flavor:248:Violet:Мерцающ=1020
+flavor:249:Red:Густо-багров=1010
+flavor:250:Light Pink:Светло-розов=1010
+flavor:251:Yellow:Золот=1070
 
 # Swirling
 # Caramel
@@ -416,54 +416,54 @@ flavor:251:Yellow:Золот?1010
 
 kind:scroll:?
 
-flavor:252:Бел?1110
-flavor:253:Бел?1110
-flavor:254:Бел?1110
-flavor:255:Бел?1110
-flavor:256:Бел?1110
-flavor:257:Бел?1110
-flavor:258:Бел?1110
-flavor:259:Бел?1110
-flavor:260:Бел?1110
-flavor:261:Бел?1110
-flavor:262:Бел?1110
-flavor:263:Бел?1110
-flavor:264:Бел?1110
-flavor:265:Бел?1110
-flavor:266:Бел?1110
-flavor:267:Бел?1110
-flavor:268:Бел?1110
-flavor:269:Бел?1110
-flavor:270:Бел?1110
-flavor:271:Бел?1110
-flavor:272:Бел?1110
-flavor:273:Бел?1110
-flavor:274:Бел?1110
-flavor:275:Бел?1110
-flavor:276:Бел?1110
-flavor:277:Бел?1110
-flavor:278:Бел?1110
-flavor:279:Бел?1110
-flavor:280:Бел?1110
-flavor:281:Бел?1110
-flavor:282:Бел?1110
-flavor:283:Бел?1110
-flavor:284:Бел?1110
-flavor:285:Бел?1110
-flavor:286:Бел?1110
-flavor:287:Бел?1110
-flavor:288:Бел?1110
-flavor:289:Бел?1110
-flavor:290:Бел?1110
-flavor:291:Бел?1110
-flavor:292:Бел?1110
-flavor:293:Бел?1110
-flavor:294:Бел?1110
-flavor:295:Бел?1110
-flavor:296:Бел?1110
-flavor:297:Бел?1110
-flavor:298:Бел?1110
-flavor:299:Бел?1110
-flavor:300:Бел?1110
-flavor:301:Бел?1110
-flavor:302:Бел?1110
+flavor:252:Бел=1110
+flavor:253:Бел=1110
+flavor:254:Бел=1110
+flavor:255:Бел=1110
+flavor:256:Бел=1110
+flavor:257:Бел=1110
+flavor:258:Бел=1110
+flavor:259:Бел=1110
+flavor:260:Бел=1110
+flavor:261:Бел=1110
+flavor:262:Бел=1110
+flavor:263:Бел=1110
+flavor:264:Бел=1110
+flavor:265:Бел=1110
+flavor:266:Бел=1110
+flavor:267:Бел=1110
+flavor:268:Бел=1110
+flavor:269:Бел=1110
+flavor:270:Бел=1110
+flavor:271:Бел=1110
+flavor:272:Бел=1110
+flavor:273:Бел=1110
+flavor:274:Бел=1110
+flavor:275:Бел=1110
+flavor:276:Бел=1110
+flavor:277:Бел=1110
+flavor:278:Бел=1110
+flavor:279:Бел=1110
+flavor:280:Бел=1110
+flavor:281:Бел=1110
+flavor:282:Бел=1110
+flavor:283:Бел=1110
+flavor:284:Бел=1110
+flavor:285:Бел=1110
+flavor:286:Бел=1110
+flavor:287:Бел=1110
+flavor:288:Бел=1110
+flavor:289:Бел=1110
+flavor:290:Бел=1110
+flavor:291:Бел=1110
+flavor:292:Бел=1110
+flavor:293:Бел=1110
+flavor:294:Бел=1110
+flavor:295:Бел=1110
+flavor:296:Бел=1110
+flavor:297:Бел=1110
+flavor:298:Бел=1110
+flavor:299:Бел=1110
+flavor:300:Бел=1110
+flavor:301:Бел=1110
+flavor:302:Бел=1110

@@ -26,18 +26,18 @@ owner:30000:Лиар-Эль Прелестный (Эльф)
 slots:0:4
 turnover:2
 always:cloak:Cloak
-always:food:Ration of Food
-always:light:Wooden Torch
-always:flask:Flask of Oil
-always:digger:Shovel
-always:digger:Pick
+always:food:Рацион Питания
+always:light:Деревянный Факел
+always:flask:Фляга с Маслом
+always:digger:Лопата
+always:digger:Кирка
 always:shot:Iron Shot
 always:arrow:Arrow
 always:bolt:Bolt
-normal:food:Pint of Fine Wine
-normal:food:Slime Mold
-normal:food:Flask of Whisky
-normal:food:Hard Biscuit
+normal:food:Бутылка Изысканного Вина
+normal:food:Слизистая Плесень
+normal:food:Фляга с Виски
+normal:food:Твёрдый Бисквит
 normal:mushroom:Каменной Кожи
 normal:mushroom:Очищения
 buy:light
@@ -97,27 +97,27 @@ turnover:9
 normal:shot:Iron Shot
 normal:arrow:Arrow
 normal:bolt:Bolt
-normal:sword:Dagger
-normal:sword:Main Gauche
-normal:sword:Rapier
-normal:sword:Short Sword
-normal:sword:Cutlass
-normal:sword:Tulwar
-normal:sword:Broad Sword
-normal:sword:Long Sword
-normal:sword:Scimitar
-normal:sword:Katana
-normal:sword:Bastard Sword
-normal:polearm:Spear
-normal:polearm:Awl-Pike
-normal:polearm:Trident
-normal:polearm:Pike
-normal:polearm:Beaked Axe
-normal:polearm:Broad Axe
-normal:polearm:Battle Axe
+normal:sword:Кинжал
+normal:sword:Длинный Кинжал
+normal:sword:Рапира
+normal:sword:Короткий Меч
+normal:sword:Абордажная Сабля
+normal:sword:Косая Сабля
+normal:sword:Палаш
+normal:sword:Длинный Меч
+normal:sword:Ятаган
+normal:sword:Катана
+normal:sword:Полутораручный Меч
+normal:polearm:Копьё
+normal:polearm:Короткое Копьё
+normal:polearm:Трезубец
+normal:polearm:Пика
+normal:polearm:Клюворылый Топор
+normal:polearm:Широкий Топор
+normal:polearm:Боевой Топор
 normal:polearm:Lance
 normal:polearm:Lucerne Hammer
-normal:hafted:Whip
+normal:hafted:Кнут
 normal:bow:Sling
 normal:bow:Short Bow
 normal:bow:Long Bow

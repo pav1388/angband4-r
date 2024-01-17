@@ -125,19 +125,21 @@ extern void (*quit_aux)(const char *);
 #define	E_YH	42
 #define	E_b		43
 #define	E_bE	44
-#define	E_bEM	45
-#define	E_bYU	46
-#define	E_bYA	47
-#define	E_bYAM	48
-#define	E_bYAMI	49
-#define	E_bYAH	50
-#define	E_YU	51
-#define	E_YUYU	52
-#define	E_YA	53
-#define	E_YAM	54
-#define	E_YAMI	55
-#define	E_YAH	56
-#define	E_YAYA	57
+#define	E_bYO	45
+#define	E_bEM	46
+#define	E_bYOM	47
+#define	E_bYU	48
+#define	E_bYA	49
+#define	E_bYAM	50
+#define	E_bYAMI	51
+#define	E_bYAH	52
+#define	E_YU	53
+#define	E_YUYU	54
+#define	E_YA	55
+#define	E_YAM	56
+#define	E_YAMI	57
+#define	E_YAH	58
+#define	E_YAYA	59
 
 
 /**
