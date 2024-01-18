@@ -3705,8 +3705,9 @@ static void reset_main_knowledge_menu(void)
 				// (j < 9) ? shortcuts[j] : "") :
 				name) :
 				// format("Display store %d's contents%s",
-				format("Показать ассортимент магазина %d%s",
-				j + 1, (j < 9) ? shortcuts[j] : ""));
+				format("Показать ассортимент%s %d-го магазина ",
+				// j + 1, (j < 9) ? shortcuts[j] : ""));
+				(j < 9) ? shortcuts[j] : "", j + 1));
 		main_knowledge_menu.actions[i].name =
 			main_knowledge_menu.labels[i];
 		main_knowledge_menu.actions[i].action =

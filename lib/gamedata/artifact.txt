@@ -1210,7 +1210,7 @@ desc: Wrath, strikes with icy wrath at the undead, disperses hosts of
 desc: evil at a word, and grants Maia-like powers of body and mind.
 
 name:'Avavir'
-base-object:polearm:Scythe
+base-object:polearm:Коса
 level:40
 weight:180
 cost:18000
@@ -1228,7 +1228,7 @@ desc: white, this shining reaper bears within it a power of going forth and
 desc: returning.
 
 name:of Pain
-base-object:polearm:Glaive
+base-object:polearm:Глефа
 level:30
 weight:300
 cost:50000
@@ -1240,7 +1240,7 @@ desc: fell spells of annihilation swirl and dance as you swing death's myrmidon
 desc: down.
 
 name:of the Eorlingas
-base-object:polearm:Lance
+base-object:polearm:Рыцарское Копьё
 level:20
 weight:360
 cost:55000
@@ -1278,7 +1278,7 @@ desc: physical blows.
 ### Missile Weapons ###
 
 name:of Amrod
-base-object:bow:Short Bow
+base-object:bow:Короткий Лук
 level:25
 weight:30
 cost:9000
@@ -1291,7 +1291,7 @@ desc:One of a pair of hunting bows once belonging to Fëanor's two youngest
 desc: sons.  The bows are like and yet unlike, much as the twin brothers were.
 
 name:of Amras
-base-object:bow:Short Bow
+base-object:bow:Короткий Лук
 level:25
 weight:30
 cost:9000
@@ -1305,7 +1305,7 @@ desc:One of a pair of hunting bows once belonging to Fëanor's two youngest
 desc: sons.  The bows are like and yet unlike, much as the twin brothers were.
 
 name:'Belthronding'
-base-object:bow:Long Bow
+base-object:bow:Длинный Лук
 level:40
 weight:40
 cost:35000
@@ -1318,7 +1318,7 @@ desc:  Its backbone of black yew holds strings of bear sinew, and of old, only
 desc: Beleg himself could draw them.
 
 name:of Bard
-base-object:bow:Long Bow
+base-object:bow:Длинный Лук
 level:30
 weight:40
 cost:20000
@@ -1331,7 +1331,7 @@ desc:The great yew bow of grim-faced Bard, who shot the mightiest arrow that
 desc: songs record.
 
 name:'Cubragol'
-base-object:bow:Light Crossbow
+base-object:bow:Лёгкий Арбалет
 level:50
 weight:110
 cost:50000
@@ -1344,7 +1344,7 @@ desc:A crossbow that grants fiery speed to its finder, and imbues its bolts
 desc: with flame unquenchable.
 
 name:of Umbar
-base-object:bow:Heavy Crossbow
+base-object:bow:Тяжёлый Арбалет
 level:60
 weight:200
 cost:35000
@@ -1380,7 +1380,7 @@ desc:A fine dwarven pick, good for a miner, and suitable as a weapon
 desc: should the wielder ever tunnel through into a foe's stronghold.
 
 name:of Náin
-base-object:digger:Мотыга
+base-object:digger:Кайло
 level:60
 weight:240
 cost:30000
@@ -1403,7 +1403,7 @@ desc: although Náin himself fell before their lord Azog.
 ### Boots ###
 
 name:of Fëanor
-base-object:boots:Pair of Leather Boots
+base-object:boots:Пара Кожаных Ботинок
 level:40
 weight:20
 cost:300000
@@ -1420,7 +1420,7 @@ desc: shall be accounted, and yet shall be well-bought.  For the price could be
 desc: no other."
 
 name:'Dal-i-thalion'
-base-object:boots:Pair of Leather Boots
+base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
 cost:40000
@@ -1436,7 +1436,7 @@ desc:A pair of high-laced shoes, bestowing extraordinary agility and proof
 desc: against the powers of corruption and withering.
 
 name:of Wormtongue
-base-object:boots:Pair of Leather Boots
+base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
 cost:17000
@@ -1452,7 +1452,7 @@ desc: Gálmód, the Wormtongue of Edoras.  They are aptly suited for a
 desc: messenger, a servant, a spy... or a coward.
 
 name:of Radagast
-base-object:boots:Pair of Leather Boots
+base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
 cost:7000
@@ -1465,7 +1465,7 @@ desc:Made of brown leather, covered with scuff marks and dust, still these
 desc: boots possess the magic of Radagast, friend of birds and nature.
 
 name:of Thrór
-base-object:boots:Pair of Steel Shod Boots
+base-object:boots:Пара Сапог со Стальными Башмаками
 level:30
 weight:60
 cost:12000
@@ -1478,7 +1478,7 @@ desc:Sturdy footwear of leather and steel as enduring as the long-suffering
 desc: Dwarven king-in-exile who wore them.
 
 name:'Stormwalker'
-base-object:boots:Pair of Mithril Shod Boots
+base-object:boots:Пара Сапог с Мифриловыми Башмаками
 level:30
 weight:40
 cost:40000
@@ -1499,7 +1499,7 @@ desc: the main host.
 ### Helmets and Crowns ###
 
 name:of Thranduil
-base-object:helm:Hard Leather Cap
+base-object:helm:Жёсткая Кожаная Шапка
 level:50
 weight:15
 cost:50000
@@ -1512,7 +1512,7 @@ desc:The hunting cap of King Thranduil, to whose ears come all the secrets of
 desc: his forest domain.
 
 name:of Thengel
-base-object:helm:Metal Cap
+base-object:helm:Металлический Колпак
 level:10
 weight:20
 cost:22000
@@ -1525,7 +1525,7 @@ desc:A ridged helmet made of steel and embossed with scenes of valor in fine-
 desc:engraved silver.  It grants the wearer nobility and understanding.
 
 name:of Celebrimbor
-base-object:helm:Metal Cap
+base-object:helm:Металлический Колпак
 level:55
 weight:20
 cost:45000
@@ -1539,7 +1539,7 @@ desc: this helm serves equally well in battle or at the forge, and its
 desc: enchantment will never be diminished.
 
 name:of Dor-Lómin
-base-object:helm:Iron Helm
+base-object:helm:Железный Шлем
 level:40
 weight:50
 cost:300000
@@ -1556,7 +1556,7 @@ desc: mere sight of the helm, borne by Túrin Turambar, struck dread into the
 desc: hearts of the servants of Morgoth.
 
 name:'Holhenneth'
-base-object:helm:Iron Helm
+base-object:helm:Железный Шлем
 level:20
 weight:50
 cost:100000
@@ -1571,7 +1571,7 @@ desc:A famous forged iron helm granting extraordinary powers of mind and
 desc: awareness.
 
 name:of Gorlim
-base-object:helm:Iron Helm
+base-object:helm:Железный Шлем
 level:20
 weight:75
 cost:1
@@ -1585,7 +1585,7 @@ desc:A headpiece, gaudy and barbaric, that betrayed a warrior when he most
 desc: needed succor.
 
 name:of Hammerhand
-base-object:helm:Steel Helm
+base-object:helm:Стальной Шлем
 level:20
 weight:60
 cost:45000
@@ -1601,7 +1601,7 @@ desc: strode out time and again among his foes and slew many.  Although they
 desc: knew of his coming, none could stand against him.
 
 name:of Berúthiel
-base-object:crown:Iron Crown
+base-object:crown:Железная Корона
 level:40
 weight:20
 cost:1
@@ -1615,7 +1615,7 @@ desc: grants extraordinary powers of sight and awareness at a terrible physical
 desc: cost.
 
 name:of Gondor
-base-object:crown:Golden Crown
+base-object:crown:Золотая Корона
 level:40
 weight:30
 cost:100000
@@ -1632,7 +1632,7 @@ desc:From dying Númenor, Elendil brought this shining winged circlet, emblem
 desc: of Gondor through an age of the world.
 
 name:of Númenor
-base-object:crown:Jewel Encrusted Crown
+base-object:crown:Инкрустированная Драгоценностями Корона
 level:60
 weight:40
 cost:50000
@@ -1651,7 +1651,7 @@ desc: once worn by the kings of ancient Númenor.
 ### Light Armor ###
 
 name:'Hithlomir'
-base-object:soft armour:Soft Leather Armour
+base-object:soft armour:Мягкая Кожаная Броня
 level:20
 weight:80
 cost:45000
@@ -1664,7 +1664,7 @@ desc:Familiar with the secret ways hidden in darkness, this leather cuirass is
 desc: truly more than it appears.
 
 name:of Himring
-base-object:soft armour:Hard Leather Armour
+base-object:soft armour:Твёрдая Кожаная Броня
 level:50
 weight:100
 cost:35000
@@ -1679,7 +1679,7 @@ desc: unvanquished Himring, defiant fortress surrounded by the legions of
 desc: Morgoth.
 
 name:'Thalkettoth'
-base-object:soft armour:Leather Scale Mail
+base-object:soft armour:Кожаная Чешуйчатая Броня
 level:20
 weight:60
 cost:25000
@@ -1695,7 +1695,7 @@ desc: hardened leather.  Those who wear it move with agility and assurance.
 ### Heavy Armor ###
 
 name:of Arvedui
-base-object:hard armour:Chain Mail
+base-object:hard armour:Кольчуга
 level:20
 weight:220
 cost:32000
@@ -1709,7 +1709,7 @@ desc: with leather.  You feel as strong and tall as Arvedui, last king of
 desc: Arnor, as you put it on.
 
 name:of Caspanion
-base-object:hard armour:Augmented Chain Mail
+base-object:hard armour:Усиленная Кольчуга
 level:25
 weight:270
 cost:40000
@@ -1726,7 +1726,7 @@ desc:  Magics to enhance body and mind lie within, and no door can bar the
 desc: wearer's path.
 
 name:of the Rohirrim
-base-object:hard armour:Metal Brigandine Armour
+base-object:hard armour:Металлическая Бригантина
 level:30
 weight:200
 cost:30000
@@ -1741,7 +1741,7 @@ desc: and cloth bear scenes of hunting and war.  As you don the armour of Eorl
 desc: the Young, matchless in combat, you feel his spirit surround you.
 
 name:of Isildur
-base-object:hard armour:Full Plate Armour
+base-object:hard armour:Полные Латы
 level:30
 weight:300
 cost:50000
@@ -1755,7 +1755,7 @@ desc:A gleaming steel suit covering the wearer from neck to foot, with runes of
 desc: warding and stability deeply engraved into its surface.
 
 name:'Belegennon'
-base-object:hard armour:Mithril Chain Mail
+base-object:hard armour:Мифриловая Кольчуга
 level:40
 weight:150
 cost:105000
@@ -1773,7 +1773,7 @@ desc:  It stands untouched amidst the fury of the elements, and blows seem
 desc: strangely less powerful.
 
 name:of Celeborn
-base-object:hard armour:Mithril Plate Mail
+base-object:hard armour:Мифриловая Пластинчатая Кольчуга
 level:40
 weight:250
 cost:150000
@@ -1789,7 +1789,7 @@ desc: legend.  It gleams with purest white as you gaze upon it, and mighty are
 desc: its powers to protect and banish.
 
 name:'Soulkeeper'
-base-object:hard armour:Adamantite Plate Mail
+base-object:hard armour:Адамантитовая Пластинчатая Кольчуга
 level:75
 weight:420
 cost:300000
@@ -1809,7 +1809,7 @@ desc: nothing else can.
 ### Cloaks ###
 
 name:'Colluin'
-base-object:cloak:Cloak
+base-object:cloak:Плащ
 level:5
 weight:10
 cost:50000
@@ -1823,7 +1823,7 @@ desc:A cape worn by a hero from Valinor, a land utterly beyond the strife
 desc: of Elements.
 
 name:'Holcolleth'
-base-object:cloak:Cloak
+base-object:cloak:Плащ
 level:5
 weight:10
 cost:18000
@@ -1838,7 +1838,7 @@ desc: concealment, and grants the wearer the knowledge and understanding of
 desc: the Sindar.
 
 name:of Thingol
-base-object:cloak:Cloak
+base-object:cloak:Плащ
 level:5
 weight:10
 cost:35000
@@ -1853,7 +1853,7 @@ desc:A translucent cloak of pearly grey with glowing, energized Elven runes
 desc: showing calm and clear as moonlight on still water.
 
 name:of Thorongil
-base-object:cloak:Cloak
+base-object:cloak:Плащ
 level:5
 weight:10
 cost:8000
@@ -1867,7 +1867,7 @@ desc: Aragorn, a keen-eyed captain of Rohan and Gondor, valiant on both land
 desc: and sea.
 
 name:'Colannon'
-base-object:cloak:Cloak
+base-object:cloak:Плащ
 level:5
 weight:10
 cost:20000
@@ -1881,7 +1881,7 @@ desc:A crystal-blue cape of fine silk worn by a silent messenger of the forces
 desc: of Law.  Seldom will its wearer be diverted from his mission.
 
 name:of Lúthien
-base-object:cloak:Elven Cloak
+base-object:cloak:Эльфийский Плащ
 level:40
 weight:5
 cost:45000
@@ -1898,7 +1898,7 @@ desc: restorative magics of Lúthien, the most beautiful being who ever knew
 desc: death.
 
 name:of Tuor
-base-object:cloak:Ethereal Cloak
+base-object:cloak:Эфирный Плащ
 level:40
 weight:0
 cost:35000
@@ -1915,7 +1915,7 @@ desc: walk under my shadow".
 ### Gloves and Gauntlets ###
 
 name:'Cambeleg'
-base-object:gloves:Set of Leather Gloves
+base-object:gloves:Комплект Кожаных Перчаток
 level:10
 weight:5
 cost:36000
@@ -1927,7 +1927,7 @@ values:STR[2] | CON[2]
 desc:A hero's handgear that lends great prowess in battle.
 
 name:'Cammithrim'
-base-object:gloves:Set of Leather Gloves
+base-object:gloves:Комплект Кожаных Перчаток
 level:10
 weight:5
 cost:30000
@@ -1942,7 +1942,7 @@ desc:These gloves glow so brightly as to light the way for the wearer and cast
 desc: magical bolts with great frequency.
 
 name:'Paurhach'
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:1
 weight:25
 cost:15000
@@ -1956,7 +1956,7 @@ time:8+d8
 desc:A set of gauntlets that smoulder with an unnatural heat.
 
 name:'Paurnimmen'
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:20
 weight:25
 cost:13000
@@ -1971,7 +1971,7 @@ time:7+d7
 desc:A set of handgear, freezing with unnatural cold.
 
 name:'Pauraegen'
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:1
 weight:25
 cost:11000
@@ -1984,7 +1984,7 @@ time:6+d6
 desc:A set of handgear with sparks that crackle across its knuckleguards.
 
 name:'Paurnen'
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:1
 weight:25
 cost:12000
@@ -1999,7 +1999,7 @@ desc:A set of gauntlets that give off a foul, acrid odour yet remain
 desc: untarnished.
 
 name:'Camlost'
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:10
 weight:25
 cost:0
@@ -2012,7 +2012,7 @@ desc:A pair of weakening gauntlets, named after Beren, who returned to Thingol
 desc: having lost to Carcharoth the hand that clasped a Silmaril.
 
 name:of Eöl
-base-object:gloves:Set of Gauntlets
+base-object:gloves:Комплект Наручей
 level:55
 weight:25
 cost:40000
@@ -2027,7 +2027,7 @@ desc:The iron-shod gauntlets of the Dark Elven smith Eöl, who imbued them
 desc: with magics he could channel in battle.
 
 name:of Fingolfin
-base-object:gloves:Set of Caestus
+base-object:gloves:Комплект Цестусов
 level:40
 weight:40
 cost:110000
@@ -2046,7 +2046,7 @@ desc: Morgoth seven mighty wounds and pain that will last until the end of Arda.
 ### Shields ###
 
 name:of Elros
-base-object:shield:Wicker Shield
+base-object:shield:Плетёный Щит
 level:40
 weight:30
 cost:60000
@@ -2059,7 +2059,7 @@ desc:The shield of Elros Tar-Minyatur, founder of Númenor.  Granted long
 desc: life by the Valar, even his shield became imbued with power.
 
 name:of Thorin
-base-object:shield:Small Metal Shield
+base-object:shield:Маленький Металлический Щит
 level:40
 weight:65
 cost:60000
@@ -2072,7 +2072,7 @@ desc:Invoking the strength and endurance of Thorin, King under the Mountain,
 desc: this little metal shield is proof against the Element of Earth.
 
 name:of Celegorm
-base-object:shield:Leather Shield
+base-object:shield:Кожаный Щит
 level:30
 weight:60
 cost:12000
@@ -2087,7 +2087,7 @@ desc: once protected Celegorm, Lord of Himlad; around it, a mystic balance lies,
 desc: containing the conflicts of the elements.
 
 name:of the Haradrim
-base-object:shield:Leather Shield
+base-object:shield:Кожаный Щит
 level:35
 weight:90
 cost:25000
@@ -2103,7 +2103,7 @@ desc:  Its wielder will fear nothing and fight with unnatural strength, but
 desc: also draw attention to himself.
 
 name:of Anárion
-base-object:shield:Large Metal Shield
+base-object:shield:Большой Металлический Щит
 level:40
 weight:120
 cost:160000
@@ -2116,7 +2116,7 @@ desc:The great metal-bound shield of Elendil's younger son Anárion, whom
 desc: even Sauron could not corrupt.
 
 name:of Eärendil
-base-object:shield:Knight's Shield
+base-object:shield:Рыцарский Щит
 level:65
 weight:160
 cost:90000
@@ -2133,7 +2133,7 @@ desc: "scored with runes to keep all wounds and harm from him".
 
 # should be Shield of Deflection
 name:of Gil-galad
-base-object:shield:Mithril Shield
+base-object:shield:Мифриловый Щит
 level:70
 weight:80
 cost:65000
@@ -2352,7 +2352,7 @@ desc: return to the Shire.
 ### Dragon Scale Mails ###
 
 name:'Razorback'
-base-object:dragon armour:Multi-Hued Dragon Scale Mail
+base-object:dragon armour:Многоцветная Драконья Чешуйчатая Броня
 level:90
 weight:200
 cost:400000
@@ -2369,7 +2369,7 @@ desc:  It throbs with angry energies, and you feel the raw elemental might of
 desc: untamed Lightning as you put it on.
 
 name:'Mediator'
-base-object:dragon armour:Balance Dragon Scale Mail
+base-object:dragon armour:Уравновещенная Драконья Чешуйчатая Броня
 level:95
 weight:250
 cost:400000
@@ -2384,7 +2384,7 @@ desc:A great suit of dragon hide, set with scales of many hues.  Even the
 desc: mightiest wyrms of Law and Chaos fear the judgement of its wearer.
 
 name:'Bladeturner'
-base-object:dragon armour:Power Dragon Scale Mail
+base-object:dragon armour:Силовая Драконья Чешуйчатая Броня
 level:100
 weight:250
 cost:500000
@@ -2403,8 +2403,8 @@ desc: and ethereal swirl around it in an inextricably intermingled nimbus.
 
 ### Quest artifacts ###
 
-name:'Grond'
-base-object:hafted:Mighty Hammer
+name:'Гронд'
+base-object:hafted:Могучий Молот
 level:100
 weight:1000
 cost:500000
@@ -2422,8 +2422,8 @@ slay:ORC_3
 desc:The mighty Hammer of the Underworld, blackened by doomspells of shattering.
 desc:  Its wielder holds the lives of all Morgoth's servants in his hand.
 
-name:of Morgoth
-base-object:crown:Massive Iron Crown
+name:Моргота
+base-object:crown:Массивная Железная Корона
 level:100
 weight:400
 cost:10000000

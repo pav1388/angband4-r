@@ -25,15 +25,15 @@ owner:20000:Снафу Карлик (Гном)
 owner:30000:Лиар-Эль Прелестный (Эльф)
 slots:0:4
 turnover:2
-always:cloak:Cloak
+always:cloak:Плащ
 always:food:Рацион Питания
 always:light:Деревянный Факел
 always:flask:Фляга с Маслом
 always:digger:Лопата
 always:digger:Кирка
-always:shot:Iron Shot
-always:arrow:Arrow
-always:bolt:Bolt
+always:shot:Железная Дробина
+always:arrow:Стрела
+always:bolt:Болт
 normal:food:Бутылка Изысканного Вина
 normal:food:Слизистая Плесень
 normal:food:Фляга с Виски
@@ -58,24 +58,24 @@ owner:25000:Декадо Красавчик (Дунадан)
 owner:30000:Мауглин Ворчун (Дварф)
 slots:6:18
 turnover:9
-normal:boots:Pair of Leather Sandals
-normal:boots:Pair of Leather Boots
-normal:boots:Pair of Iron Shod Boots
-normal:helm:Hard Leather Cap
-normal:helm:Metal Cap
-normal:helm:Iron Helm
-normal:soft armour:Robe
-normal:soft armour:Soft Leather Armour
-normal:soft armour:Studded Leather Armour
-normal:soft armour:Hard Leather Armour
-normal:soft armour:Leather Scale Mail
-normal:hard armour:Metal Scale Mail
-normal:hard armour:Chain Mail
-normal:gloves:Set of Leather Gloves
-normal:gloves:Set of Gauntlets
-normal:shield:Wicker Shield
-normal:shield:Small Metal Shield
-normal:shield:Leather Shield
+normal:boots:Пара Кожаных Сандалий
+normal:boots:Пара Кожаных Ботинок
+normal:boots:Пара Сапог с Железными Башмаками
+normal:helm:Жёсткая Кожаная Шапка
+normal:helm:Металлический Колпак
+normal:helm:Железный Шлем
+normal:soft armour:Мантия
+normal:soft armour:Мягкая Кожаная Броня
+normal:soft armour:Клёпаная Кожаная Броня
+normal:soft armour:Твёрдая Кожаная Броня
+normal:soft armour:Кожаная Чешуйчатая Броня
+normal:hard armour:Металлическая Чешуйчатая Броня
+normal:hard armour:Кольчуга
+normal:gloves:Комплект Кожаных Перчаток
+normal:gloves:Комплект Наручей
+normal:shield:Плетёный Щит
+normal:shield:Маленький Металлический Щит
+normal:shield:Кожаный Щит
 buy:boots
 buy:gloves
 buy:crown
@@ -94,9 +94,9 @@ owner:25000:Тарл Повелитель-зверей (Хоббит)
 owner:30000:Оглигн Убийца-драконов (Дварф)
 slots:3:14
 turnover:9
-normal:shot:Iron Shot
-normal:arrow:Arrow
-normal:bolt:Bolt
+normal:shot:Железная Дробина
+normal:arrow:Стрела
+normal:bolt:Болт
 normal:sword:Кинжал
 normal:sword:Длинный Кинжал
 normal:sword:Рапира
@@ -115,13 +115,13 @@ normal:polearm:Пика
 normal:polearm:Клюворылый Топор
 normal:polearm:Широкий Топор
 normal:polearm:Боевой Топор
-normal:polearm:Lance
-normal:polearm:Lucerne Hammer
+normal:polearm:Рыцарское Копьё
+normal:polearm:Люцернский Молот
 normal:hafted:Кнут
-normal:bow:Sling
-normal:bow:Short Bow
-normal:bow:Long Bow
-normal:bow:Light Crossbow
+normal:bow:Праща
+normal:bow:Короткий Лук
+normal:bow:Длинный Лук
+normal:bow:Лёгкий Арбалет
 buy:shot
 buy:bolt
 buy:arrow

@@ -309,9 +309,11 @@ static bool wiz_create_item_action(struct menu *m, const ui_event *e, int oid)
 	// object_base_name(buf, sizeof(buf), oid, true);
 	object_base_name(buf, sizeof(buf), oid, 1);
 	if (choose_artifact) {
-		strnfmt(title, sizeof(title), "Which artifact %s? ", buf);
+		// strnfmt(title, sizeof(title), "Which artifact %s? ", buf);
+		strnfmt(title, sizeof(title), "Какой артефакт %s? ", buf);
 	} else {
-		strnfmt(title, sizeof(title), "What kind of %s?", buf);
+		// strnfmt(title, sizeof(title), "What kind of %s?", buf);
+		strnfmt(title, sizeof(title), "Какой предмет из %s?", buf);
 	}
 	menu->title = title;
 
@@ -348,7 +350,8 @@ void wiz_create_item(bool art)
 	choose_artifact = art;
 
 	menu->selections = all_letters;
-	menu->title = art ? "What kind of artifact?" : "What kind of object?";
+	// menu->title = art ? "What kind of artifact?" : "What kind of object?";
+	menu->title = art ? "Какой артефакт?" : "Какой предмет?";
 
 	/* Make a list of all tvals for the filter */
 	for (i = 0, n = 0; i < TV_MAX; i++) {
@@ -395,7 +398,8 @@ void wiz_create_item(bool art)
  */
 void wiz_confirm_quit_no_save(void)
 {
-	if (get_check("Really quit without saving? ")) {
+	// if (get_check("Really quit without saving? ")) {
+	if (get_check("Действительно выйти из игры без сохранения? ")) {
 		cmdq_push(CMD_WIZ_QUIT_NO_SAVE);
 	}
 }
