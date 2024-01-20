@@ -214,25 +214,25 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
 		strnfcat(buf, max, &end, "%u ", number);
 	// } else if (object_is_known_artifact(obj)) {
 		// strnfcat(buf, max, &end, "the ");
-	} else if (*basename == '&') {
-		bool an = false;
-		const char *lookahead = basename + 1;
+	// } else if (*basename == '&') {
+		// bool an = false;
+		// const char *lookahead = basename + 1;
 
-		while (*lookahead == ' ') lookahead++;
+		// while (*lookahead == ' ') lookahead++;
 
-		if (*lookahead == '#') {
-			if (modstr && is_a_vowel(*modstr))
-				an = true;
-		} else if (is_a_vowel(*lookahead)) {
-			an = true;
-		}
+		// if (*lookahead == '#') {
+			// if (modstr && is_a_vowel(*modstr))
+				// an = true;
+		// } else if (is_a_vowel(*lookahead)) {
+			// an = true;
+		// }
 
-		if (!terse) {
-			if (an)
-				strnfcat(buf, max, &end, "an ");
-			else
-				strnfcat(buf, max, &end, "a ");			
-		}
+		// if (!terse) {
+			// if (an)
+				// strnfcat(buf, max, &end, "an ");
+			// else
+				// strnfcat(buf, max, &end, "a ");			
+		// }
 	}
 
 	return end;
@@ -488,7 +488,7 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 			if (index[W_PART] == W_PART_ADJ) {
 				if (index[W_ALTER]) {
 					if (index[W_ALTER] == 5) // только множ.ч.
-					result = ending_adjective[index[W_DECL]][cas][3];
+						result = ending_adjective[index[W_DECL]][cas][3];
 				} else
 					result = ending_adjective[index[W_DECL]][cas][pluralise ? 3 : index[W_GEN]];
 			
@@ -498,7 +498,6 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 					// систематические
 					if (index[W_GEN] == W_GEN_NEUT && index[W_ALTER] == 1 && cas == C_VINIT && plural_noun) // яблоко=0031
 						result = E_I;
-						
 					else if (index[W_GEN] == W_GEN_NEUT && index[W_ALTER] == 4 && (cas == C_IMEN || cas == C_TVORIT) && !plural_noun) // копьё=0064
 						result = ending_noun[index[W_DECL]][cas][index[W_GEN]][plural_noun] + 1; // е -> ё
 					else if (index[W_ALTER] == 5) // только множ.ч. (латы=0215)
@@ -835,12 +834,12 @@ static size_t obj_desc_aware(const struct object *obj, char *buf, size_t max,
 {
 	if (!object_flavor_is_aware(obj)) {
 		// strnfcat(buf, max, &end, " {unseen}");
-		strnfcat(buf, max, &end, " {не осмотрено}");
+		strnfcat(buf, max, &end, " {неизв}");
 	} else if (!object_runes_known(obj)) {
 		strnfcat(buf, max, &end, " {??}");
 	} else if (obj->known->curses) {
 		// strnfcat(buf, max, &end, " {cursed}");
-		strnfcat(buf, max, &end, " {проклято}");
+		strnfcat(buf, max, &end, " {прокл}");
 	}
 
 	return end;

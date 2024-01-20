@@ -105,8 +105,10 @@
 
 ### Light Sources ###
 
-name:of Galadriel
-base-object:light:Phial
+# name:of Galadriel
+name:Галадриэль
+# base-object:light:Phial
+base-object:light:Фиал
 graphics:~:y
 level:5
 weight:10
@@ -118,11 +120,13 @@ flags:NO_FUEL
 values:LIGHT[4]
 act:ILLUMINATION
 time:10+d10
-desc:A small crystal phial containing the light of Eärendil's Star.
-desc:  Its light is imperishable, and near it darkness cannot endure.
+desc:Небольшой хрустальный флакон, содержащий свет Звезды Эарендила.
+desc:  Свет ее нетленен и рядом с ним тьма не может устоять.
 
-name:of Elendil
-base-object:light:Star
+# name:of Elendil
+name:Элендиля
+# base-object:light:Star
+base-object:light:Звезда
 graphics:~:y
 level:30
 weight:5
@@ -134,10 +138,12 @@ flags:SEE_INVIS | NO_FUEL
 values:LIGHT[4]
 act:MAPPING
 time:50+d50
-desc:The shining Star of the North, a treasured heirloom of Elendil's house.
+desc:Сияющая Звезда Севера, драгоценная реликвия дома Элендиль.
 
-name:of Thráin
-base-object:light:Arkenstone
+# name:of Thráin
+name:Трайна
+# base-object:light:Arkenstone
+base-object:light:Завет-камень
 graphics:~:y
 level:50
 weight:5
@@ -149,9 +155,9 @@ flags:SEE_INVIS | HOLD_LIFE | NO_FUEL
 values:LIGHT[4] | RES_LIGHT[1] | RES_DARK[1]
 act:CLAIRVOYANCE
 time:50+d50
-desc:A great globe seemingly filled with moonlight, the famed Heart of the
-desc: Mountain.  It splinters the light that falls upon it into ten thousand
-desc: sparks of white radiance shot with glints of the rainbow.
+desc:Огромный шар, словно наполненный лунным светом, знаменитое Сердце
+desc: Горы.  Он разделяет падающий на него свет на десять тысяч искр
+desc: белого сияния с отблесками радуги.
 
 #name:of Westernesse
 #base-object:light:Palantir
@@ -177,7 +183,8 @@ desc: sparks of white radiance shot with glints of the rainbow.
 
 ### Swords and Daggers ###
 
-name:'Angrist'
+# name:'Angrist'
+name:'Рассекающий Железо'
 base-object:sword:Кинжал
 level:20
 weight:12
@@ -191,11 +198,13 @@ brand:ACID_3
 slay:EVIL_2
 slay:TROLL_3
 slay:ORC_3
-desc:Forged by Telchar, greatest of Dwarven smiths, and used by Beren to gouge
-desc: a Silmaril out of Morgoth's crown, this long chopping dagger slices
-desc: through ordinary metal as easily as its name, "Iron Cleaver", suggests.
+desc:Выкованный Тельчаром, величайшим из дварфийских кузнецов, и
+desc: использованный Береном, чтобы выбить Сильмарилл из короны Моргота
+desc:, этот длинный кинжал рассекает обычный металл так же легко, как
+desc: и предполагает его название.
 
-name:'Narthanc'
+# name:'Narthanc'
+name:'Нартханк'
 base-object:sword:Кинжал
 level:1
 weight:12
@@ -207,9 +216,10 @@ values:RES_FIRE[1]
 brand:FIRE_3
 act:FIRE_BOLT
 time:8+d8
-desc:Instead of a blade, a flame seems to emerge from this dagger's hilt.
+desc:Вместо лезвия из рукояти кинжала вырывается пламя.
 
-name:'Nimthanc'
+# name:'Nimthanc'
+name:'Нимтханк'
 base-object:sword:Кинжал
 level:1
 weight:12
@@ -221,9 +231,10 @@ values:RES_COLD[1]
 brand:COLD_3
 act:COLD_BOLT
 time:7+d8
-desc:From the hilt of this dagger springs not so much a blade as an icicle.
+desc:Из рукояти этого кинжала торчит не столько лезвие, сколько ледяная сосулька.
 
-name:'Dethanc'
+# name:'Dethanc'
+name:'Детханк'
 base-object:sword:Кинжал
 level:1
 weight:12
@@ -235,9 +246,10 @@ values:RES_ELEC[1]
 brand:ELEC_3
 act:ELEC_BOLT
 time:6+d6
-desc:In this dagger is bound the very force of lightning.
+desc:В этом кинжале заключена вся сила молний.
 
-name:of Rilia
+# name:of Rilia
+name:Рилия
 base-object:sword:Кинжал
 level:5
 weight:12
@@ -251,10 +263,11 @@ slay:TROLL_3
 brand:POIS_3
 act:STINKING_CLOUD
 time:4+d4
-desc:A large stiletto dagger that glistens with odorless poison, to which the
-desc: wearer seems oddly immune.
+desc:Большой кинжал-стилет, источающий яд без особого запаха,
+desc: к которому владелец, как ни странно, невосприимчив.
 
-name:'Belangil'
+# name:'Belangil'
+name:'Белангиль'
 base-object:sword:Кинжал
 level:10
 weight:12
@@ -267,10 +280,11 @@ values:DEX[2] | RES_COLD[1]
 brand:COLD_3
 act:COLD_BALL50
 time:5+d5
-desc:A frosty dagger wreathed in a nimbus of ice with a hilt of elk horn and
-desc: an edge to wound the wind.
+desc:Морозный кинжал, окутанный ледяным нимбом, с рукоятью из
+desc: лосиного рога и острием, способным ранить ветер.
 
-name:of Azaghâl
+# name:of Azaghâl
+name:Азагала
 base-object:sword:Длинный Кинжал
 level:18
 weight:30
@@ -281,13 +295,14 @@ armor:0:0
 flags:PROT_FEAR
 values:RES_FIRE[3] | RES_ACID[1]
 slay:DRAGON_5
-desc:Azaghâl, Dwarf-king of Belegost, fell before Glaurung in the Battle
-desc: of Unnumbered Tears.  With his final breath, Azaghâl plunged this
-desc: blade into Glaurung's belly with such a blow that the Father of Dragons
-desc: fled the field with all his kin, and was at first believed to be mortally
-desc: wounded.
+desc:Азагал, король гномов Белегоста, пал перед Глаурунгом в Битве
+desc: Неисчислимых Слез.  На последнем издыхании Азагаль вонзил этот
+desc: клинок в живот Глаурунга с таким ударом, что Отец Драконов бежал
+desc: с поля боя вместе со всеми своими сородичами, и поначалу
+desc: считалось, что он смертельно ранен.
 
-name:of Maedhros
+# name:of Maedhros
+name:Маэдроса
 base-object:sword:Длинный Кинжал
 level:15
 weight:30
@@ -299,11 +314,12 @@ flags:FREE_ACT | SEE_INVIS
 values:INT[3] | DEX[3]
 slay:TROLL_3
 slay:GIANT_3
-desc:A short thrusting blade with a large guard worn by the eldest son of
-desc: Fëanor, Maedhros the Tall, who lost his right hand while escaping
-desc: from Angband.
+desc:Короткий колющий клинок с большой гардой, который носил старший
+desc: сын Феанора, Маэдрос Высокий, потерявший правую руку во время
+desc: побега из Ангбанда.
 
-name:'Forasgil'
+# name:'Forasgil'
+name:'Форасгил'
 base-object:sword:Рапира
 level:1
 weight:40
@@ -314,9 +330,10 @@ armor:0:0
 values:LIGHT[1] | RES_COLD[1] | RES_LIGHT[1]
 brand:COLD_3
 slay:ANIMAL_2
-desc:A slender, tapered needle of ice that coldly grips its impaled prey.
+desc:Тонкая ледяная игла, крепко удерживающая свою жертву.
 
-name:'Careth Asdriag'
+# name:'Careth Asdriag'
+name:'Карет Асдриаг'
 base-object:sword:Рапира
 level:15
 weight:40
@@ -330,10 +347,11 @@ slay:ANIMAL_2
 slay:TROLL_3
 slay:GIANT_3
 slay:ORC_3
-desc:An heirloom of the dauntless Lords of Rhûn far to the east, and a name
-desc: of dismay to creatures natural and unnatural.
+desc:Наследие бесстрашных Лордов Рюна далеко на востоке, и имя,
+desc: вызывающее ужас у существ естественных и неестественных.
 
-name:'Sting'
+# name:'Sting'
+name:'Жало'
 base-object:sword:Короткий Меч
 level:20
 weight:75
@@ -347,12 +365,14 @@ slay:EVIL_2
 slay:UNDEAD_3
 slay:ORC_3
 slay:ANIMAL_2
-desc:"I will give you a name, and I shall call you Sting."  The perfect size
-desc: for Bilbo, and stamped forever by the courage he found in Mirkwood, this
-desc: sturdy little blade grants the wearer combat prowess and survival
-desc: abilities he did not know he had.
+desc:"Я дам тебе имя, и я буду звать тебя Жало".  Идеальный размер для
+desc: Бильбо, навечно отмеченный мужеством, которое он обрел в
+desc: Мирквуде, этот прочный маленький клинок наделяет владельца
+desc: боевым мастерством и способностями к выживанию, о которых он
+desc: и не подозревал.
 
-name:'Dagmor'
+# name:'Dagmor'
+name:'Убийца тени'
 base-object:sword:Короткий Меч
 level:20
 weight:80
@@ -364,10 +384,11 @@ flags:SLOW_DIGEST | REGEN
 values:BLOWS[2]
 brand:POIS_3
 slay:ANIMAL_2
-desc:A stubby blade worn by Beren, whose horn sounded of old in the glades of
-desc: Brethil.
+desc:Это узкий клинок, который носил Берен, чей рог издавна звучал
+desc: на полянах Бретиля.
 
-name:'Gondricam'
+# name:'Gondricam'
+name:'Гондрикам'
 base-object:sword:Абордажная Сабля
 level:20
 weight:110
@@ -378,11 +399,12 @@ armor:0:50
 flags:FEATHER | SEE_INVIS | REGEN | FREE_ACT
 values:DEX[4] | STEALTH[2]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
-desc:Famed sea-defender of Lebennin.  A short, slightly curved chopping blade
-desc: with a perfect edge shining cleanly in the sun, an object of hate to the
-desc: men of Umbar who met it in combat.
+desc:Прославленный морской защитник Лебеннина.  Короткий, слегка изогнутый
+desc: рубящий клинок с идеальной кромкой, чисто сверкающей на солнце,
+desc: - предмет ненависти мужчин Умбара, встретивших его в бою.
 
-name:'Haradekket'
+# name:'Haradekket'
+name:'Серп Ходячих'
 base-object:sword:Ятаган
 level:20
 weight:130
@@ -395,10 +417,12 @@ values:DEX[2] | BLOWS[2]
 slay:ANIMAL_2
 slay:EVIL_2
 slay:UNDEAD_3
-desc:A damascened scimitar that hefts with wondrous ease.  Famed in song
-desc: as the "Sickle of Harad", and a deadly foe to the undead.
+desc:Закаленный дамаском ятаган, которым вы орудуете с удивительной
+desc: легкостью.  Прославленный в песнях как "Серп Ходячих" и
+desc: смертельный враг для нежити.
 
-name:'Ringil'
+# name:'Ringil'
+name:'Рингиль'
 base-object:sword:Длинный Меч
 level:20
 weight:130
@@ -415,12 +439,13 @@ slay:TROLL_3
 slay:DEMON_5
 act:COLD_BALL100
 time:40
-desc:The weapon of Fingolfin, High King of the Noldor; it shines like a column
-desc: of ice lit by light unquenchable.  Morgoth came but unwillingly to meet it
-desc: of old; his lame foot will remind him of its might should he face it
-desc: again.
+desc:Оружие Финголфина, верховного короля нолдор; оно сияет, как ледяная
+desc: колонна, освещенная неугасимым светом.  Когда-то Моргот невольно
+desc: встретился с ним; его хромая нога будет напоминать ему о его силе,
+desc: если он встретится с ним снова.
 
-name:'Andúril'
+# name:'Andúril'
+name:'Пламя Запада'
 base-object:sword:Длинный Меч
 level:20
 weight:130
@@ -437,11 +462,12 @@ slay:ORC_3
 slay:UNDEAD_3
 act:FIRE_BOLT72
 time:40
-desc:The famed "Flame of the West", the Sword that was Broken and is forged
-desc: again.  It glows with the essence of fire, its wearer is mighty in combat,
-desc: and no creature of Sauron can withstand it.
+desc:Знаменитое "Пламя Запада", меч, который был сломан и выкован вновь.
+desc:  Он пылает огненной энергией, его обладатель могуч в бою, и ни
+desc: одно существо Саурона не может противостоять ему.
 
-name:'Anguirel'
+# name:'Anguirel'
+name:'Железо Вечной Звезды'
 base-object:sword:Длинный Меч
 level:20
 weight:130
@@ -455,11 +481,12 @@ values:RES_ELEC[1] | RES_LIGHT[1] | RES_DARK[1]
 brand:POIS_3
 slay:EVIL_2
 slay:DEMON_3
-desc:This black blade was forged of meteoric iron by Eöl the Dark Elf.  It is
-desc: imbued with the malice of its maker; as dangerous to its wielder as it is
-desc: deadly to his foes.
+desc:Этот чёрный клинок был выкован из метеоритного железа тёмным
+desc: эльфом Эолом.  Он пропитан злобой своего создателя; он так же
+desc: опасен для своего владельца, как и смертелен для его врагов.
 
-name:'Elvagil'
+# name:'Elvagil'
+name:'Долина эльфов'
 base-object:sword:Длинный Меч
 level:1
 weight:130
@@ -471,10 +498,11 @@ flags:FEATHER | SEE_INVIS
 values:DEX[2] | STEALTH[2]
 slay:TROLL_3
 slay:ORC_3
-desc:The "Singing Blade", whose wearer can slay Orcs and Trolls in the hidden
-desc: and secret places of the earth.
+desc:Обладатель "Поющего клинока" может убивать орков и троллей в
+desc: скрытых и тайных уголках мира.
 
-name:'Aranrúth'
+# name:'Aranrúth'
+name:'Гнев Короля'
 base-object:sword:Палаш
 level:20
 weight:150
@@ -488,11 +516,13 @@ slay:DEMON_3
 slay:ORC_3
 act:COLD_BOLT2
 time:50
-desc:The beautiful sword of Thingol, justly named "King's Ire".  It glistens
-desc: icy enough to freeze the hearts of demons, and you feel supple and
-desc: lightfooted as you clasp its hilt of gold and silver inlay.
+desc:Прекрасный меч Тингола, по праву названный "Королевским Иром".
+desc:  Он сияет ледяным блеском, способным заморозить сердца демонов,
+desc: и вы чувствуете гибкость и легкость в ногах, когда сжимаете его
+desc: рукоять с золотыми и серебряными вставками.
 
-name:'Glamdring'
+# name:'Glamdring'
+name:'Гламдринг'
 base-object:sword:Палаш
 level:20
 weight:150
@@ -506,10 +536,12 @@ brand:FIRE_3
 slay:ORC_3
 slay:DEMON_3
 slay:EVIL_2
-desc:This fiery, shining blade, mate to Orcrist, earned its sobriquet "Beater"
-desc: from dying orcs who dared to behold hidden Gondolin.
+desc:Этот огненный, сверкающий клинок, помощник Оркриста, получил свое
+desc: прозвище "Побивающий" от умирающих орков, осмелившихся заглянуть
+desc: в сокрытый Гондолин.
 
-name:'Aeglin'
+# name:'Aeglin'
+name:'Аэглин'
 base-object:sword:Палаш
 level:20
 weight:150
@@ -523,11 +555,12 @@ brand:ELEC_3
 slay:ORC_3
 slay:TROLL_3
 slay:GIANT_3
-desc:Companion to Orcrist and Glamdring, and like them long lost, this sword is
-desc: continually covered in tiny arcs of captive lightning that flash and dance
-desc: eerily in the globes of light they create.
+desc:Собрат Оркриста и Гламдринга и, как и они, давно утраченный.
+desc: Этот меч постоянно покрыт крошечными молниями, которые вспыхивают
+desc: и жутко танцуют в создаваемых ими световых шарах.
 
-name:'Orcrist'
+# name:'Orcrist'
+name:'Сокрушитель Гоблинов'
 base-object:sword:Палаш
 level:20
 weight:150
@@ -541,10 +574,11 @@ brand:COLD_3
 slay:EVIL_2
 slay:ORC_3
 slay:DRAGON_3
-desc:This coldly gleaming blade, mate to Glamdring, is called simply "Biter"
-desc: by orcs who came to know its power all too well.
+desc:Этот отливающий холодным блеском клинок, спутник Гламдринга, орки,
+desc: слишком хорошо знакомые с его силой, называют просто "Кусач".
 
-name:'Calris'
+# name:'Calris'
+name:'Калрис'
 base-object:sword:Полутораручный Меч
 level:30
 weight:140
@@ -560,11 +594,11 @@ slay:EVIL_2
 slay:DEMON_3
 slay:TROLL_3
 curse:air swing:30
-desc:This sword has runes of power incused on its ornate hilt, and a single
-desc: blood channel that gleams coldly blue as you grasp this mighty weapon of
-desc: peril.
+desc:На богато украшенной рукояти этого меча начертаны руны силы, а
+desc: единственный кровавый канал холодно сверкает голубым светом,
+desc: когда вы берёте в руки это могучее оружие погибели.
 
-name:of Éowyn
+name:Эовин
 base-object:sword:Полутораручный Меч
 level:30
 weight:140
@@ -578,11 +612,12 @@ slay:EVIL_2
 slay:UNDEAD_5
 slay:GIANT_3
 slay:ANIMAL_2
-desc:The blade of the legendary Shieldmaiden of Rohan, who slew the foul
-desc: steed of the Morgul-lord before striking down the mighty Witch-king
-desc: himself, whom no mortal man could hinder.
+desc:Клинок легендарной Девы Щита Рохана, которая сразила коня Моргула,
+desc: а затем сразила самого могущественного Короля-колдуна, которому
+desc: не смог помешать ни один смертный.
 
-name:'Aglarang'
+# name:'Aglarang'
+name:'Агларанг'
 base-object:sword:Катана
 level:30
 weight:50
@@ -592,11 +627,12 @@ attack:6d6:10:10
 armor:0:0
 flags:SUST_DEX
 values:SPEED[5] | DEX[5] | BLOWS[1]
-desc:An utterly perfect, cleanly chiseled sword, with an edge that effortlessly
-desc: slices rock and bone, and spells to render the wearer lithe and nimble.
-desc:  It is combat incarnate.
+desc:Совершенный, идеально заточенный меч, острие которого без труда
+desc: рассекает камень и кость, а заклинания делают его владельца ловким
+desc: и проворным.   Это воплощение битвы.
 
-name:'Gurthang'
+# name:'Gurthang'
+name:'Железо Смерти'
 base-object:sword:Двуручный Меч
 level:30
 weight:200
@@ -609,11 +645,12 @@ values:STR[2] | RES_FIRE[1] | RES_POIS[1]
 brand:POIS_3
 brand:FIRE_3
 slay:DRAGON_5
-desc:A giant sword once wielded by mighty Túrin, and an even greater
-desc: dragonbane; for what worm could stand against the blade that bathed in
-desc: Glaurung's blood?
+desc:Гигантский меч, которым когда-то владел могущественный Турин, и
+desc: ещё более великий драконобой, ведь какой червь устоит против
+desc: клинка, омытого кровью Глаурунга?
 
-name:'Zarcuthra'
+# name:'Zarcuthra'
+name:'Заркутра'
 base-object:sword:Двуручный Меч
 level:30
 weight:240
@@ -633,11 +670,12 @@ slay:DEMON_3
 slay:TROLL_3
 slay:GIANT_3
 slay:ORC_3
-desc:Runes dark and deadly stand stark against the naked steel of this awesome
-desc: weapon, and you feel a wrathful power of slaying and rending as you
-desc: slowly approach.
+desc:Тёмные и смертоносные руны выделяются на фоне обнажённой стали
+desc: этого потрясающего оружия, и вы ощущаете в себе неистовую силу
+desc: убийства и сокрушения, когда медленно приближаетесь к нему.
 
-name:'Mormegil'
+# name:'Mormegil'
+name:'Мормегиль'
 base-object:sword:Двуручный Меч
 level:30
 weight:250
@@ -651,11 +689,12 @@ values:SPEED[-10]
 brand:POIS_3
 slay:DRAGON_5
 slay:UNDEAD_3
-desc:A foul, twisted sword with blackened spines and knobs, its very name is
-desc: a curse upon the lips of Elves and Men.  It is said that it will drink the
-desc: very lifeblood of its wielder.
+desc:Неистовый, витой меч с почерневшими шипами и рукоятками, само
+desc: его название - проклятие на устах эльфов и людей.  Говорят,
+desc: что он может выпить всю жизненную силу своего владельца.
 
-name:'Crisdurian'
+# name:'Crisdurian'
+name:'Крисдуриан'
 base-object:sword:Меч Палача
 level:40
 weight:260
@@ -670,11 +709,11 @@ slay:UNDEAD_3
 slay:TROLL_3
 slay:GIANT_3
 slay:ORC_3
-desc:A giant's weapon, with a long blade tall and straight thrusting out from a
-desc: massive double-pronged hilt.  On its blade are written doomspells against
-desc: both the living and undead.
+desc:Оружие великана с длинным клинком, выходящим из массивной двузубой
+desc: рукояти.  На его лезвии начертаны заклятия против живых и неживых.
 
-name:'Doomcaller'
+# name:'Doomcaller'
+name:'Призыватель Рока'
 base-object:sword:Клинок Хаоса
 level:70
 weight:180
@@ -691,14 +730,15 @@ slay:DRAGON_5
 slay:EVIL_2
 slay:TROLL_3
 slay:DEMON_3
-desc:This weapon of wrath, wrought by a desperate berserker gang, dives hungrily
-desc: into the yielding flesh of your enemies.  You yourself fall under the
-desc: shadow of death even as you inflict wounds that will not heal.
+desc:Это оружие гнева, созданное отчаянной бандой берсеркеров, с
+desc: жадностью вгрызается в хрупкую плоть ваших врагов.  Вы сами попад
+desc:аете под смертельную тень, даже когда наносите неисцелимые раны.
 
 
 ### Blunt Weapons ###
 
-name:of Gothmog
+# name:of Gothmog
+name:Готмога
 base-object:hafted:Кнут
 level:60
 weight:90
@@ -717,10 +757,11 @@ slay:ANIMAL_2
 slay:DRAGON_5
 slay:TROLL_3
 slay:GIANT_3
-desc:A great crackling Balrog's whip of flame, this weapon could bring
-desc: even Ungoliant to heel.
+desc:Огромная огненная плеть Балрога - это оружие способно повергнуть
+desc: в прах даже Унголианта.
 
-name:of Fundin Bluecloak
+# name:of Fundin Bluecloak
+name:Фундина Синеплащего
 base-object:hafted:Цепной Шар
 level:65
 weight:130
@@ -734,10 +775,11 @@ slay:EVIL_2
 slay:UNDEAD_3
 act:DISPEL_EVIL
 time:100+d100
-desc:The weapon of a mighty dwarven priest, whose shade is rumoured to
-desc: haunt the halls of Angband still.
+desc:Оружие могущественного дварфийского священника, чья тень, по
+desc: слухам, до сих пор преследует коридоры Ангбанда.
 
-name:'Bloodspike'
+# name:'Bloodspike'
+name:'Кровошип'
 base-object:hafted:Моргенштерн
 level:20
 weight:150
@@ -751,10 +793,11 @@ brand:POIS_3
 slay:ANIMAL_2
 slay:TROLL_3
 slay:ORC_3
-desc:You feel strong and firm of foot as you whip its spiked orb around and
-desc: bathe it in the blood of your foes.
+desc:Вы чувствуете себя сильным и уверенным человеком, когда
+desc: размахиваете шипастой сферой и омываете её кровью своих врагов.
 
-name:'Firestar'
+# name:'Firestar'
+name:'Огнезвёзд'
 base-object:hafted:Моргенштерн
 level:20
 weight:150
@@ -766,10 +809,11 @@ values:RES_FIRE[3]
 brand:FIRE_3
 act:FIRE_BOLT72
 time:20
-desc:A famed battle-lord of old with a head as ruddy as embers that can yet rise
-desc: up in wrath.
+desc:Прославленный предводитель древних битв с красноватой, как угли,
+desc: головкой, которая может ещё вспыхнуть в порыве гнева.
 
-name:'Totila'
+# name:'Totila'
+name:'Тотила'
 base-object:hafted:Кистень
 level:20
 weight:150
@@ -783,10 +827,12 @@ time:15
 values:STEALTH[2] | SPEED[2] | RES_FIRE[1]
 brand:FIRE_3
 slay:EVIL_2
-desc:A flail whose head befuddles those who stare as you whirl it round and
-desc: becomes a fiery comet as you bring it down.
+desc:Колотушка, чья насадка сбивает с толку тех, кто смотрит на неё,
+desc: когда вы кружите её, и превращается в огненную комету, когда
+desc: вы обрушиваете её вниз.
 
-name:'Thunderfist'
+# name:'Thunderfist'
+name:'Громовой Кулак'
 base-object:hafted:Двуручный Великий Кистень
 level:45
 weight:300
@@ -801,11 +847,12 @@ brand:FIRE_3
 slay:ANIMAL_2
 slay:TROLL_3
 slay:ORC_3
-desc:The long-lost weapon of Kzurin, Dwarven champion of ancient Belegost
-desc: Runes of strength adorn its handle, and flames and sparks roar and
-desc: crackle around its massive head.
+desc:Давно забытое оружие Кзурина, дварфского чемпиона древнего
+desc: Белегоста. Руны силы украшают его рукоять, а пламя и искры
+desc: вспыхивают и трещат вокруг его массивной башки.
 
-name:'Taratol'
+# name:'Taratol'
+name:'Таратол'
 base-object:hafted:Булава
 level:20
 weight:200
@@ -818,11 +865,12 @@ brand:ELEC_3
 slay:DRAGON_5
 act:HASTE1
 time:100+d100
-desc:A great ridged mace that surrounds you with a nimbus of living lightning.
-desc:  You remain utterly untouched, even as fat sparks crackle around your
-desc: fingers and eyebrows.
+desc:Огромная зубчатая булава окружает вас нимбом живых молний.
+desc:  Вы остаетесь совершенно невредимы, даже когда вокруг ваших
+desc: рук и вспыхивают снопы искр.
 
-name:'Nar-i-vagil'
+# name:'Nar-i-vagil'
+name:'На-и-вагил'
 base-object:hafted:Боевой Посох
 level:20
 weight:150
@@ -833,10 +881,11 @@ armor:0:0
 values:INT[4] | RES_FIRE[1] | RES_POIS[1]
 brand:FIRE_3
 slay:ANIMAL_2
-desc:Named for a fiery star and set with priceless gems bearing mystic
-desc: auras of protection and thought.
+desc:Назван в честь огненной звезды и украшен бесценными драгоценными
+desc: камнями, несущими мистическую ауру защищенности и помыслов.
 
-name:'Eriril'
+# name:'Eriril'
+name:'Эририл'
 base-object:hafted:Боевой Посох
 level:20
 weight:150
@@ -849,10 +898,12 @@ values:INT[4] | WIS[4] | LIGHT[1] | RES_LIGHT[1]
 slay:EVIL_2
 act:DETECT_OBJECTS
 time:50+d50
-desc:The radiant golden staff of an Istar of legend, this wizard's companion
-desc: grants keen sight and clear knowledge of many hidden things.
+desc:Сияющий золотой посох легендарного Истара, этот спутник
+desc: волшебника дарует острое зрение и умение видеть многие
+desc: скрытые вещи.
 
-name:of Olórin
+# name:of Olórin
+name:Олорина
 base-object:hafted:Боевой Посох
 level:30
 weight:150
@@ -869,12 +920,13 @@ slay:TROLL_3
 slay:ORC_3
 act:PROBING
 time:20
-desc:A staff tall and sturdy, borne of old by Gandalf.  Rough-hewn runes that
-desc: invoke the element of Earth stand bold upon its gnarled surface, and no
-desc: creature who lives in the shadow of mountains can withstand the blows it
-desc: deals.
+desc:Высокий и прочный посох, который издревле использовался Гэндальфом.
+desc:  На его шишковатой поверхности красуются грубо вырезанные руны,
+desc: призывающие стихию Земли, и ни одно существо, живущее в тени гор,
+desc: не выдержит его ударов.
 
-name:of Aulë
+# name:of Aulë
+name:Аулэ
 base-object:hafted:Тяжёлый Молот
 level:40
 weight:120
@@ -891,11 +943,13 @@ slay:DRAGON_5
 slay:EVIL_2
 slay:UNDEAD_3
 slay:DEMON_3
-desc:The wondrous hammer of Aulë, creator of the wise Dwarven lords of old.
-desc:  It bears demolishing magics that no serpent or demon can withstand, and
-desc: invokes the strength of mountains to ward off the tumult of the elements.
+desc:Чудесный молот Аулэ, создателя мудрых Владык Древних Дварфов.  Он
+desc: несет в себе разрушительную магию, которой не могут противостоять
+desc: ни змеи, ни демоны, и призывает силу гор, чтобы противостоять
+desc: буйству стихий.
 
-name:'Deathwreaker'
+# name:'Deathwreaker'
+name:'Смертоносец'
 base-object:hafted:Булава Расщепления
 level:80
 weight:400
@@ -912,16 +966,18 @@ slay:DRAGON_3
 slay:ANIMAL_2
 slay:EVIL_2
 slay:UNDEAD_5
-desc:A weapon so massive it seems beyond the strength of mortals, yet you feel
-desc: the might of giants within you as you heft it.  As you grip the handle
-desc: of ebony and steel, coronas of fire blaze, and mighty spells to preserve
-desc: magic surge around you.  You wield the Fear of Dragons and the Despair
-desc: of the Undead!
+desc:Оружие настолько массивное, что кажется непосильным для смертных,
+desc: но, подняв его, вы ощущаете в себе могущество гигантов.   Когда
+desc: вы сжимаете рукоять из чёрного дерева и стали, вокруг вас
+desc: вспыхивают огненные венцы и могущественные заклинания для
+desc: сохранения магии.   Вы овладеваете страхом драконов и отчаянием
+desc: нежити!
 
 
 ### Polearms ###
 
-name:'Aiglos'
+# name:'Aiglos'
+name:'Снежный Шип'
 base-object:polearm:Копьё
 level:15
 weight:50
@@ -938,10 +994,12 @@ slay:ORC_3
 slay:UNDEAD_5
 act:COLD_BALL100
 time:35
-desc:The mighty spear of Gil-galad, famed as "Snow-point" in the songs of Elves.
-desc:  Against it, all the foul corruptions of Sauron dashed in vain.
+desc:Могучее копье Гил-Галада, прославленное в песнях эльфов
+desc: как "Снежное Острие".  Против него тщетно бились все нечестивые
+desc: порождения Саурона.
 
-name:of Oromë
+# name:of Oromë
+name:Оромэ
 base-object:polearm:Копьё
 level:15
 weight:50
@@ -957,10 +1015,10 @@ slay:GIANT_3
 slay:ANIMAL_2
 act:STONE_TO_MUD
 time:5
-desc:The thrusting spear of wise Oromë the Vala, strong against giants of
-desc: frost, and able to pierce rock or flesh with ease.
+desc:Копье мудрого Оромэ Валы, которое способно пронзить камень или плоть.
 
-name:'Nimloth'
+# name:'Nimloth'
+name:'Белый Цветок'
 base-object:polearm:Копьё
 level:15
 weight:50
@@ -972,12 +1030,13 @@ flags:BLESSED | SEE_INVIS
 values:STEALTH[3] | SPEED[3] | RES_COLD[1]
 brand:COLD_3
 slay:UNDEAD_3
-desc:A thin spike of thrice-forged steel caps a straight silvan shaft cut from
-desc: a legendary tree, and spells to break the wills of the undead and strike
-desc: cold into the breasts of your enemies lay upon this perfectly balanced
-desc: spear.
+desc:Тонкий наконечник из трех видов кованой стали оканчивает прямое
+desc: сильванское древко, вырезанное из легендарного дерева, и на это
+desc: идеально сбалансированное копьё наложены заклинания, способные
+desc: сломить волю нежити и поразить холодом сердца ваших врагов.
 
-name:of Melkor
+# name:of Melkor
+name:Мелькора
 base-object:polearm:Копьё
 level:65
 weight:200
@@ -989,11 +1048,12 @@ armor:0:0
 flags:DRAIN_EXP | AGGRAVATE | PROT_BLIND
 values:STEALTH[-4] | WIS[-4] | RES_DARK[1] | RES_LIGHT[1] | RES_NETHER[1]
 brand:POIS_3
-desc:A mighty, heavy black spear, once wielded by the Lord of Darkness
-desc: himself as he came to Valinor in wrath.  Its envenomed bite pierced
-desc: the Two Trees with wounds that would not heal.
+desc:Могучее, тяжёлое чёрное копьё, которым когда-то орудовал сам
+desc: Владыка Тьмы, пришедший в Валинор в порыве гнева.  Его ядовитый
+desc: удар пронзил Два Древа неизлечимыми ранами.
 
-name:of Wrath
+# name:of Wrath
+name:Гнева
 base-object:polearm:Трезубец
 level:15
 weight:70
@@ -1006,11 +1066,12 @@ values:STR[2] | DEX[2] | RES_LIGHT[1] | RES_DARK[1]
 brand:POIS_3
 slay:EVIL_2
 slay:UNDEAD_5
-desc:A massive triple-pronged spear, so great it normally requires two hands
-desc: to wield, evoking the spirit of Osse who with it pierced legions of
-desc: evil and undead.
+desc:Массивное трехгранное копье, настолько огромное, что для его
+desc: владения обычно требуется две руки, вызывающее дух Оссэ,
+desc: который пронзал им легионы зла и нежити.
 
-name:of Ulmo
+# name:of Ulmo
+name:Ульмо
 base-object:polearm:Трезубец
 level:30
 weight:70
@@ -1024,11 +1085,12 @@ slay:DRAGON_3
 slay:ANIMAL_2
 act:TELE_OTHER
 time:50
-desc:The awesome weapon of the Vala Ulmo, Lord of Waters.  Mightiest of all the
-desc: powers of good save Manwë himself, Ulmo laughs to scorn the dread powers
-desc: of the undead, and is utterly in command of the Element of water.
+desc:Удивительное оружие Вала Ульмо, Владыки Вод.  Могущественнейший
+desc: из всех сил добра, кроме самого Манвэ, Ульмо посмеивается над
+desc: грозными силами нежити и безраздельно властвует над стихией воды.
 
-name:'Osondir'
+# name:'Osondir'
+name:'Озондир'
 base-object:polearm:Алебарда
 level:20
 weight:140
@@ -1041,10 +1103,12 @@ values:STR[3] | WIS[3] | RES_FIRE[1] | RES_SOUND[1]
 brand:FIRE_3
 slay:UNDEAD_3
 slay:GIANT_3
-desc:Lordly and tall did Osondir stand against the wrath of giants, and
-desc: clear-eyed in barrows fell, wielding a halberd glowing ruby red.
+desc:Властный и высокий Озондир противостоял гневу великанов, и
+desc: зорко следил за тем, как они падают в курганы, сражаясь с
+desc: алебардой, светящейся рубиново-красным цветом.
 
-name:'Til-i-arc'
+# name:'Til-i-arc'
+name:'Тил-и-арк'
 base-object:polearm:Пика
 level:20
 weight:160
@@ -1059,10 +1123,12 @@ brand:COLD_3
 slay:DEMON_3
 slay:TROLL_3
 slay:GIANT_3
-desc:Within this long two-handed spear dwell the spirits of frost giants and
-desc: fire demons, who war forever, fettered by sorcerous binds.
+desc:В этом длинном двуручном копье обитают духи морозных гигантов
+desc: и огненных демонов, которые вечно воинствуют, скованные
+desc: колдовскими путами.
 
-name:of Théoden
+# name:of Théoden
+name:Теодена
 base-object:polearm:Клюворылый Топор
 level:20
 weight:180
@@ -1075,10 +1141,11 @@ values:WIS[3] | CON[3]
 slay:DRAGON_3
 act:DRAIN_LIFE2
 time:40
-desc:The narrow axe head of this weapon would pierce the armour of a very
-desc: Dragon, and the designs of your enemies stand naked and revealed.
+desc:Узкое острие этого оружия пронзит доспехи даже самого Дракона,
+desc: а планы ваших врагов окажутся открытыми и явными.
 
-name:of Húrin
+# name:of Húrin
+name:Хурина
 base-object:polearm:Клюворылый Топор
 level:20
 weight:180
@@ -1094,14 +1161,15 @@ brand:ACID_3
 slay:DRAGON_3
 slay:TROLL_3
 slay:DEMON_5
-desc:Wielded by Húrin Thalion, last lord of Dor-Lómin at the Battle
-desc: of Tears Unnumbered.  He stood alone, his friends and kinsmen
-desc: dead about him, his axe smoking in the black blood of Gothmog's
-desc: troll-guard.  No less than seventy times, as he slew his foes,
-desc: did he utter his mighty war-cry: "Aurë entuluva!" - "Day shall
-desc: come again!"
+desc:Его держал Хурин Талион, последний владыка Дор-Ломина в Битве
+desc: Слез Без числа.  Он стоял один, вокруг него лежали мертвые
+desc: друзья и сородичи, его топор обагрен чёрной кровью тролльей
+desc: гвардии Готмога.  Не менее семидесяти раз, убивая врагов, он
+desc: произносил свой могучий боевой клич: "Aurë entuluva!" - "День
+desc: придет снова!".
 
-name:'Barukkheled'
+# name:'Barukkheled'
+name:'Барукхелед'
 base-object:polearm:Широкий Топор
 level:20
 weight:160
@@ -1115,10 +1183,11 @@ slay:EVIL_2
 slay:TROLL_3
 slay:GIANT_3
 slay:ORC_3
-desc:A royal heirloom of the southern coast, strong in combat against the evil
-desc: creatures of earth.
+desc:Королевская реликвия южного побережья, способная противостоять
+desc: злым существам земли.
 
-name:of Balli Stonehand
+# name:of Balli Stonehand
+name:Балли Камнерукого
 base-object:polearm:Боевой Топор
 level:30
 weight:170
@@ -1132,10 +1201,12 @@ values:RES_COLD[1]
 slay:DEMON_3
 slay:TROLL_3
 slay:ORC_3
-desc:The twin blades of this weapon were forged in Belegost, and powerful
-desc: forces to resist and endure lie ready for its next owner.
+desc:Сдвоенные клинки этого оружия были выкованы в Белегосте,
+desc: могучие силы сопротивления и выдержки находятся в состоянии
+desc: готовности для своего следующего владельца.
 
-name:'Lotharang'
+# name:'Lotharang'
+name:'Лотхаранг'
 base-object:polearm:Боевой Топор
 level:30
 weight:170
@@ -1148,10 +1219,11 @@ time:3+d3
 values:STR[3] | DEX[3] | BLOWS[1] | RES_DISEN[1]
 slay:TROLL_3
 slay:ORC_3
-desc:A superbly crafted double-bladed axe once borne by Ceruthain, commander
-desc: of the Rangers of Arnor.
+desc:Великолепно сделанный обоюдоострый топор, который когда-то
+desc: носил Церутайн, командир Следопытов Арнора.
 
-name:'Mundwine'
+# name:'Mundwine'
+name:'Мундвайн'
 base-object:polearm:Лохаберский Бердыш
 level:30
 weight:240
@@ -1163,11 +1235,13 @@ values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
 slay:EVIL_2
 slay:ANIMAL_2
 slay:DEMON_3
-desc:A massive axe with twin razor-sharp heads, so large that it usually
-desc: requires two hands to wield, with spells to ward off the elements
-desc: intricately engraved upon its surface in filleted gold.
+desc:Массивный топор с двумя острыми как бритва навершиями,
+desc: настолько большой, что для работы с ним обычно требуется
+desc: две руки, с заклинаниями защиты от стихий, искусно
+desc: выгравированными на его поверхности с помощью филенчатого золота.
 
-name:of Durin
+# name:of Durin
+name:Дурина
 base-object:polearm:Тяжёлый Топор
 level:30
 weight:230
@@ -1184,11 +1258,13 @@ slay:DRAGON_5
 slay:DEMON_3
 slay:TROLL_3
 slay:ORC_3
-desc:The twin massive axe heads of this ancient demon's dread gleam with
-desc: mithril inlay telling sagas of endurance.  The powers of
-desc: Khazad-dûm protect its wielder and slay all evils found underground.
+desc:Сдвоенные массивные головы топоров этого древнего демона ужаса
+desc: сверкают мифриловой инкрустацией, повествуя о его стойкости.
+desc:  Силы Хазад-Дума защищают его владельца и уничтожают любое зло,
+desc: находящееся под землей.
 
-name:of Eönwë
+# name:of Eönwë
+name:Эонве
 base-object:polearm:Тяжёлый Топор
 level:30
 weight:230
@@ -1205,11 +1281,13 @@ slay:DEMON_5
 slay:ORC_3
 act:LOSKILL
 time:1000
-desc:The axe of Eönwë, leader of the Hosts of the West in the War of
-desc: Wrath, strikes with icy wrath at the undead, disperses hosts of
-desc: evil at a word, and grants Maia-like powers of body and mind.
+desc:Топор Эонве, предводителя воинства Запада в Войне Гнева,
+desc: обрушивает ледяной гнев на нежить, одним словом расправляется
+desc: с толпами нечисти и наделяет подобными Майя способностями
+desc: тела и разума. 
 
-name:'Avavir'
+# name:'Avavir'
+name:'Ававир'
 base-object:polearm:Коса
 level:40
 weight:180
@@ -1223,11 +1301,12 @@ time:200
 values:DEX[3] | SPEED[3] | LIGHT[1] | RES_FIRE[1] | RES_COLD[1] | RES_LIGHT[1]
 brand:FIRE_3
 brand:COLD_3
-desc:Holding elemental powers whose struggles turn this weapon red and purest
-desc: white, this shining reaper bears within it a power of going forth and
-desc: returning.
+desc:Владея силами стихий, борьба которых окрашивает это оружие в
+desc: красный и чистейший белый цвета, этот сияющий жнец заключает в
+desc: себе силу идти вперёд и возвращаться.
 
-name:of Pain
+# name:of Pain
+name:Боли
 base-object:polearm:Глефа
 level:30
 weight:300
@@ -1235,11 +1314,12 @@ cost:50000
 alloc:4:30 to 127
 attack:6d9:0:30
 armor:0:0
-desc:The massive cleaver that crowns this glaive glows blood-red and black;
-desc: fell spells of annihilation swirl and dance as you swing death's myrmidon
-desc: down.
+desc:Массивный тесак, который венчает это копьё, светится кроваво-
+desc:красным и чёрным; обрушившиеся заклинания уничтожения разлетаются
+desc: и кружатся в вихре, когда вы замахиваетесь.
 
-name:of the Eorlingas
+# name:of the Eorlingas
+name:Эорлингаса
 base-object:polearm:Рыцарское Копьё
 level:20
 weight:360
@@ -1252,11 +1332,12 @@ values:STR[2] | DEX[2] | SPEED[2]
 slay:EVIL_2
 slay:TROLL_3
 slay:ORC_3
-desc:"Forth Eorlingas!"  To the field of Celebrant, Eorl the Young came beyond
-desc: hope to save beleaguered Gondor, and from his lance fled massive trolls
-desc: and dire wolves.
+desc:"Вперед, Эорлингас!"  На поле Праздника Эорл Молодой пришёл в
+desc: надежде спасти осаждённый Гондор, от его копья бежали грозные
+desc: тролли и лютые волки.
 
-name:'Turmil'
+# name:'Turmil'
+name:'Турмил'
 base-object:hafted:Тяжёлая Булава
 level:20
 weight:120
@@ -1270,14 +1351,15 @@ time:40
 values:WIS[4] | INFRA[4] | LIGHT[1] | RES_COLD[3] | RES_LIGHT[1]
 brand:COLD_3
 slay:ORC_3
-desc:Once wielded by the High Priest of Meneltarma, this great mace gleams
-desc: coldly as though moonlit, and can strike equally mighty spiritual and
-desc: physical blows.
+desc:Когда-то этой булавой владел верховный жрец Менельтармы,
+desc: она мерцает холодным лунным светом и способна наносить одинаково
+desc: мощные как духовные, так и физические удары.
 
 
 ### Missile Weapons ###
 
-name:of Amrod
+# name:of Amrod
+name:Амрода
 base-object:bow:Короткий Лук
 level:25
 weight:30
@@ -1287,10 +1369,12 @@ attack:0d0:12:15
 armor:0:0
 flags:REGEN
 values:STR[2] | CON[2] | MIGHT[2] | RES_FIRE[1] | RES_ELEC[1] | RES_COLD[1]
-desc:One of a pair of hunting bows once belonging to Fëanor's two youngest
-desc: sons.  The bows are like and yet unlike, much as the twin brothers were.
+desc:Один из пары охотничьих луков, некогда принадлежавших двум младшим
+desc: сыновьям Феанора.  Луки похожи и в то же время не похожи, как и
+desc: братья-близнецы.
 
-name:of Amras
+# name:of Amras
+name:Амраса
 base-object:bow:Короткий Лук
 level:25
 weight:30
@@ -1301,10 +1385,12 @@ armor:0:0
 flags:SLOW_DIGEST
 values:INT[2] | WIS[2] | DEX[2] | SHOTS[5] | MIGHT[1] | SPEED[1]
 values:RES_FIRE[1] | RES_ELEC[1] | RES_COLD[1]
-desc:One of a pair of hunting bows once belonging to Fëanor's two youngest
-desc: sons.  The bows are like and yet unlike, much as the twin brothers were.
+desc:Один из пары охотничьих луков, некогда принадлежавших двум младшим
+desc: сыновьям Феанора.  Луки похожи и в то же время не похожи, как и
+desc: братья-близнецы.
 
-name:'Belthronding'
+# name:'Belthronding'
+name:'Бельтрондинг'
 base-object:bow:Длинный Лук
 level:40
 weight:40
@@ -1313,11 +1399,12 @@ alloc:5:40 to 127
 attack:0d0:20:22
 armor:0:0
 values:DEX[3] | SPEED[1] | STEALTH[1] | SHOTS[10] | RES_DISEN[1]
-desc:The great bow of Beleg Cúthalion, the most famous archer of the Elves.
-desc:  Its backbone of black yew holds strings of bear sinew, and of old, only
-desc: Beleg himself could draw them.
+desc:Великий лук Белега Куталиона, самого знаменитого Эльфийского лучника.
+desc:  На его древке из черного тиса натянута тетива из медвежьего
+desc: сухожилия, и с давних времён натянуть её мог только сам Белег.
 
-name:of Bard
+# name:of Bard
+name:Барда
 base-object:bow:Длинный Лук
 level:30
 weight:40
@@ -1327,10 +1414,11 @@ attack:0d0:17:19
 armor:0:0
 flags:FREE_ACT | 
 values:MIGHT[2] | DEX[1] | SPEED[1]
-desc:The great yew bow of grim-faced Bard, who shot the mightiest arrow that
-desc: songs record.
+desc:Большой тисовый лук мрачнолицего Барда, пустившего самую
+desc: могучую стрелу, о которой слагают песни.
 
-name:'Cubragol'
+# name:'Cubragol'
+name:'Кубрагол'
 base-object:bow:Лёгкий Арбалет
 level:50
 weight:110
@@ -1340,10 +1428,11 @@ attack:0d0:10:14
 armor:0:0
 values:SPEED[10] | RES_FIRE[1]
 brand:FIRE_3
-desc:A crossbow that grants fiery speed to its finder, and imbues its bolts
-desc: with flame unquenchable.
+desc:Арбалет, дарующий своему владельцу пламенную скорость и
+desc: наделяющий его болты негасимым пламенем.
 
-name:of Umbar
+# name:of Umbar
+name:Умбара
 base-object:bow:Тяжёлый Арбалет
 level:60
 weight:200
@@ -1355,13 +1444,15 @@ flags:AGGRAVATE | PROT_BLIND
 act:ARROW
 time:20+d20
 values:MIGHT[2] | STR[1] | CON[1] | RES_LIGHT[1] | RES_DARK[1] | RES_ELEC[1]
-desc:A great brazen arbalest with arms of gleaming steel.  It shoots quarrels
-desc: with mighty power for those brave enough to risk betrayal.
+desc:Огромный арбалет с мощными рукоятями из сверкающей стали.
+desc:  Он с огромной силой расправляется с теми, кто достаточно
+desc: храбр, чтобы пойти на предательство.
 
 
 ### Digging Tools ###
 
-name:of Erebor
+# name:of Erebor
+name:Эребора
 base-object:digger:Кирка
 level:55
 weight:180
@@ -1376,10 +1467,12 @@ brand:ACID_3
 slay:ORC_3
 slay:TROLL_3
 slay:DEMON_3
-desc:A fine dwarven pick, good for a miner, and suitable as a weapon
-desc: should the wielder ever tunnel through into a foe's stronghold.
+desc:Прекрасная дварфская кирка, подходящая для добычи и в качестве
+desc: оружия, если ее обладатель когда-нибудь проложит туннель в
+desc: цитадель врага.
 
-name:of Náin
+# name:of Náin
+name:Наина
 base-object:digger:Кайло
 level:60
 weight:240
@@ -1394,15 +1487,17 @@ slay:ORC_3
 slay:TROLL_3
 slay:GIANT_3
 slay:DRAGON_3
-desc:A mighty Dwarven mattock, as good for hewing orc-necks as for hewing
-desc: stone.  Náin, King of the Iron Hills, brought his mattock-wielding
-desc: warriors to the Battle of Azanulbizar, and no Orc could withstand them,
-desc: although Náin himself fell before their lord Azog.
+desc:Могучая Дварфийская мотыга, одинаково хорошо подходящая как
+desc: для рубки оркских шей, так и для раскалывания камня.  Наин,
+desc: король Железных Холмов, привел своих воинов с мотыгами в битву
+desc: при Азанулбизаре, и ни один орк не смог противостоять им, хотя
+desc: сам Наин пал перед их повелителем Азогом.
 
 
 ### Boots ###
 
-name:of Fëanor
+# name:of Fëanor
+name:Феанора
 base-object:boots:Пара Кожаных Ботинок
 level:40
 weight:20
@@ -1413,13 +1508,12 @@ armor:2:20
 values:SPEED[15] | RES_NEXUS[1]
 act:HASTE1
 time:200
-desc:This wondrous pair of leather boots once sped Fëanor, creator of the
-desc: Silmarils and the mightiest of the Eldar, to fulfill his hero's challenge
-desc: and do battle for a Middle-Earth held in thrall.  "Dear-bought those songs
-desc: shall be accounted, and yet shall be well-bought.  For the price could be
-desc: no other."
+desc:В этой чудесной паре кожаных сапог Феанор, создатель Сильмариллов
+desc: и могущественнейший из Эльдар, когда-то отправился выполнять
+desc: вызов своего героя и сражаться за Средиземье, находящееся в плену.
 
-name:'Dal-i-thalion'
+# name:'Dal-i-thalion'
+name:'Дал-и-талион'
 base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
@@ -1432,10 +1526,11 @@ flags:PROT_CONF | SUST_CON
 values:DEX[5] | SPEED[5] | RES_NETHER[1]
 act:REM_FEAR_POIS
 time:5
-desc:A pair of high-laced shoes, bestowing extraordinary agility and proof
-desc: against the powers of corruption and withering.
+desc:Пара ботинок с высокой шнуровкой, дарующая необычайную ловкость
+desc: и защиту от сил разложения и истощения.
 
-name:of Wormtongue
+# name:of Wormtongue
+name:Гнилоуста
 base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
@@ -1447,11 +1542,12 @@ flags:FEATHER | TRAP_IMMUNE
 values:MOVES[1] | INT[2] | DEX[2] | STEALTH[2]
 act:TELE_PHASE
 time:20
-desc:A pair of running shoes once used by the treacherous Gríma son of
-desc: Gálmód, the Wormtongue of Edoras.  They are aptly suited for a
-desc: messenger, a servant, a spy... or a coward.
+desc:Пара кроссовок, которыми когда-то пользовался коварный Грима,
+desc: сын Гальмода, Змеиный Язык из Эдораса.  Они подойдут для гонца,
+desc: слуги, шпиона... или труса.
 
-name:of Radagast
+# name:of Radagast
+name:Радагаста
 base-object:boots:Пара Кожаных Ботинок
 level:10
 weight:20
@@ -1461,10 +1557,11 @@ attack:1d1:0:0
 armor:2:12
 flags:FREE_ACT | FEATHER
 values:INFRA[5] | STEALTH[3] | WIS[1] | RES_COLD[1]
-desc:Made of brown leather, covered with scuff marks and dust, still these
-desc: boots possess the magic of Radagast, friend of birds and nature.
+desc:Сделанные из коричневой кожи, покрытые потертостями и пылью,
+desc: эти сапоги все же обладают магией Радагаста, друга птиц и природы.
 
-name:of Thrór
+# name:of Thrór
+name:Трора
 base-object:boots:Пара Сапог со Стальными Башмаками
 level:30
 weight:60
@@ -1474,10 +1571,11 @@ attack:1d1:0:0
 armor:7:20
 flags:PROT_FEAR
 values:STR[3] | CON[3] | SPEED[3] | STEALTH[-1]
-desc:Sturdy footwear of leather and steel as enduring as the long-suffering
-desc: Dwarven king-in-exile who wore them.
+desc:Прочная обувь из кожи и стали, такая же выносливая, как и
+desc: многострадальный Дварфский король-изгнанник, который в них ходил.
 
-name:'Stormwalker'
+# name:'Stormwalker'
+name:'Штурмовик'
 base-object:boots:Пара Сапог с Мифриловыми Башмаками
 level:30
 weight:40
@@ -1488,17 +1586,18 @@ armor:8:24
 values:SPEED[6] | RES_ELEC[3] | RES_SOUND[1]
 act:BERSERKER
 time:100
-desc:And they hewed off Gelmir's hands and feet, and his head last, within
-desc: sight of the Elves, and left him.  By ill chance there stood Gwindor
-desc: of Nargothrond, the brother of Gelmir.  Now his wrath was kindled to
-desc: madness, and he leapt forth on horseback, and many riders with him;
-desc: and they pursued the heralds and slew them, and drove on deep into
-desc: the main host.
+desc:И отрубили они Гельмиру руки и ноги, а напоследок голову, на
+desc: глазах у Эльфов, и бросили его.  По злому стечению обстоятельств
+desc: там оказался Гвиндор из Нарготронда, брат Гельмира.  Гнев его
+desc: разгорелся до безумия, и он вскочил на коня, и много всадников
+desc: за ним; они преследовали герольдов и убили их, и погнали вглубь
+desc: основного войска.
 
 
 ### Helmets and Crowns ###
 
-name:of Thranduil
+# name:of Thranduil
+name:Трандуила
 base-object:helm:Жёсткая Кожаная Шапка
 level:50
 weight:15
@@ -1508,10 +1607,11 @@ attack:0d0:0:0
 armor:2:10
 flags:PROT_BLIND | TELEPATHY
 values:INT[2] | WIS[2]
-desc:The hunting cap of King Thranduil, to whose ears come all the secrets of
-desc: his forest domain.
+desc:Охотничья шапка короля Трандуила, до чьих ушей доходят все
+desc: тайны его лесных владений.
 
-name:of Thengel
+# name:of Thengel
+name:Тенгеля
 base-object:helm:Металлический Колпак
 level:10
 weight:20
@@ -1521,10 +1621,12 @@ attack:1d1:0:0
 armor:3:12
 flags:PROT_CONF
 values:WIS[3]
-desc:A ridged helmet made of steel and embossed with scenes of valor in fine-
-desc:engraved silver.  It grants the wearer nobility and understanding.
+desc:Гребнеобразный шлем из стали, украшенный сценами доблести из
+desc: тончайшей серебряной гравировки.  Он наделяет владельца
+desc: благородством и благоразумием.
 
-name:of Celebrimbor
+# name:of Celebrimbor
+name:Келебриндора
 base-object:helm:Металлический Колпак
 level:55
 weight:20
@@ -1534,11 +1636,12 @@ attack:1d1:0:0
 armor:3:18
 values:INT[2] | DEX[2] | SEARCH[3]
 values:RES_FIRE[1] | RES_ACID[1] | RES_DISEN[1] | RES_SHARD[1]
-desc:A metal cap forged by the greatest Noldorin smith of the Second Age,
-desc: this helm serves equally well in battle or at the forge, and its
-desc: enchantment will never be diminished.
+desc:Металлический головной убор, выкованный величайшим Нолдоринским
+desc: кузнецом Второй Эпохи, этот шлем одинаково хорошо служит как в
+desc: бою, так и в кузнице, и его чары никогда не ослабнут.
 
-name:of Dor-Lómin
+# name:of Dor-Lómin
+name:Дор-Ломина
 base-object:helm:Железный Шлем
 level:40
 weight:50
@@ -1550,12 +1653,13 @@ flags:PROT_FEAR
 flags:SEE_INVIS | TELEPATHY
 values:STR[4] | CON[4] | DEX[2] | STEALTH[-1]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
-desc:The legendary Dragon-helm, forged by one of the legendary Dwarven smiths
-desc: of the First Age.  The visage of mighty Glaurung forms its crest, and the
-desc: mere sight of the helm, borne by Túrin Turambar, struck dread into the
-desc: hearts of the servants of Morgoth.
+desc:Легендарный Драконий шлем, выкованный одним из легендарных
+desc: Дварфских кузнецов Первой Эпохи.  На его гребне изображен
+desc: могучий Глаурунг, и один только вид этого шлема, который носил
+desc: Турин Турамбар, вселял ужас в сердца слуг Моргота.
 
-name:'Holhenneth'
+# name:'Holhenneth'
+name:'Холхеннет'
 base-object:helm:Железный Шлем
 level:20
 weight:50
@@ -1567,10 +1671,11 @@ flags:PROT_BLIND | PROT_CONF | SEE_INVIS
 values:INT[2] | WIS[2] | SEARCH[2]
 act:DETECT_ALL
 time:55+d55
-desc:A famous forged iron helm granting extraordinary powers of mind and
-desc: awareness.
+desc:Знаменитый шлем из кованого железа, дарующий необычайные
+desc: способности к разуму и восприятию.
 
-name:of Gorlim
+# name:of Gorlim
+name:Горлима
 base-object:helm:Железный Шлем
 level:20
 weight:75
@@ -1581,10 +1686,11 @@ armor:7:10
 flags:PROT_FEAR | 
 flags:SEE_INVIS | FREE_ACT | AGGRAVATE
 values:INT[-3] | WIS[-3] | SEARCH[-5]
-desc:A headpiece, gaudy and barbaric, that betrayed a warrior when he most
-desc: needed succor.
+desc:Головной убор, вульгарный и варварский, предавший воина, когда
+desc: он больше всего нуждался в помощи.
 
-name:of Hammerhand
+# name:of Hammerhand
+name:Молоторукого
 base-object:helm:Стальной Шлем
 level:20
 weight:60
@@ -1595,12 +1701,13 @@ armor:9:20
 flags:FREE_ACT
 values:STR[3] | DEX[3] | CON[3] | STEALTH[-2]
 values:RES_ACID[1] | RES_NEXUS[1] | RES_COLD[1] | RES_DARK[1]
-desc:A great helm, as steady and as distinctive as the hero of the Westdike.
-desc:  Many long months was Helm Hammerhand besieged in the Hornburg, yet he
-desc: strode out time and again among his foes and slew many.  Although they
-desc: knew of his coming, none could stand against him.
+desc:Великий шлем, такой же устойчивый и самобытный, как герой
+desc: Западного Дона.   Долгие месяцы Хельм Молоторукий осаждал Хорнбург,
+desc: но то и дело появлялся среди врагов и убивал всех подряд.  Хотя
+desc: они и знали о его приближении, никто не мог противостоять ему.
 
-name:of Berúthiel
+# name:of Berúthiel
+name:Берутиэль
 base-object:crown:Железная Корона
 level:40
 weight:20
@@ -1610,11 +1717,12 @@ attack:1d1:0:0
 armor:0:20
 flags:FREE_ACT | SEE_INVIS | TELEPATHY
 values:CON[-5] | STR[-3] | DEX[-3]
-desc:The midnight-hued steel circlet of the sorceress-queen Berúthiel.  It
-desc: grants extraordinary powers of sight and awareness at a terrible physical
-desc: cost.
+desc:Стальной обруч цвета полуночи, принадлежащий колдунье-королеве
+desc: Берутиэль.  Он дарует необыкновенные способности к видению и
+desc: восприятию, но за это приходится платить страшной физической потерей.
 
-name:of Gondor
+# name:of Gondor
+name:Гондора
 base-object:crown:Золотая Корона
 level:40
 weight:30
@@ -1628,10 +1736,11 @@ values:STR[3] | CON[3] | WIS[2] | LIGHT[1]
 values:RES_COLD[1] | RES_FIRE[1] | RES_LIGHT[1]
 act:HEAL1
 time:250
-desc:From dying Númenor, Elendil brought this shining winged circlet, emblem
-desc: of Gondor through an age of the world.
+desc:Из гибнущего Нуменора Элендил привез этот сияющий крылатый обруч,
+desc: эмблему Гондора сквозь эпоху мира.
 
-name:of Númenor
+# name:of Númenor
+name:Нуменора
 base-object:crown:Инкрустированная Драгоценностями Корона
 level:60
 weight:40
@@ -1644,13 +1753,14 @@ flags:SEE_INVIS | FREE_ACT | PROT_STUN | PROT_BLIND
 # A:ANALYZE:50
 values:INT[3] | DEX[2] | SEARCH[3] | LIGHT[1]
 values:RES_SHARD[1] | RES_COLD[1] | RES_LIGHT[1] | RES_DARK[1]
-desc:A massive golden crown, set with wondrous jewels of thought and warding,
-desc: once worn by the kings of ancient Númenor.
+desc:Массивная золотая корона, украшенная диковинными драгоценными
+desc: камнями, которые когда-то носили короли древнего Нуменора.
 
 
 ### Light Armor ###
 
-name:'Hithlomir'
+# name:'Hithlomir'
+name:'Хитломир'
 base-object:soft armour:Мягкая Кожаная Броня
 level:20
 weight:80
@@ -1660,10 +1770,11 @@ attack:0d0:0:0
 armor:10:20
 values:STEALTH[3] | RES_DARK[1] | RES_NETHER[1]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
-desc:Familiar with the secret ways hidden in darkness, this leather cuirass is
-desc: truly more than it appears.
+desc:Знакомая с таинственными приемами, скрытыми во тьме, эта кожаная
+desc: кираса действительно больше, чем кажется.
 
-name:of Himring
+# name:of Himring
+name:Химринга
 base-object:soft armour:Твёрдая Кожаная Броня
 level:50
 weight:100
@@ -1674,11 +1785,12 @@ armor:20:15
 values:RES_CHAOS[1] | RES_NETHER[1] | RES_POIS[1]
 act:PROTEVIL
 time:100+d100
-desc:In this studded cuirass of pliable leather lives the memory of
-desc: unvanquished Himring, defiant fortress surrounded by the legions of
-desc: Morgoth.
+desc:В этом шипастом доспехе из эластичной кожи живет память о не
+desc: покорившемся Химринге, несокрушимой крепости, окруженной
+desc: легионами Моргота.
 
-name:'Thalkettoth'
+# name:'Thalkettoth'
+name:'Талкеттот'
 base-object:soft armour:Кожаная Чешуйчатая Броня
 level:20
 weight:60
@@ -1688,13 +1800,15 @@ attack:1d1:-1:0
 armor:20:25
 flags:FREE_ACT
 values:DEX[3] | SPEED[3] | RES_ACID[1] | RES_SHARD[1]
-desc:An amazingly light tunic and skirt sewn with thick, overlapping scales of
-desc: hardened leather.  Those who wear it move with agility and assurance.
+desc:Удивительно лёгкая туника и юбка, сшитые из толстых, наложенных
+desc: друг на друга чешуек выделанной кожи.  Носящие её двигаются
+desc: легко и непринуждённо.
 
 
 ### Heavy Armor ###
 
-name:of Arvedui
+# name:of Arvedui
+name:Арведуя
 base-object:hard armour:Кольчуга
 level:20
 weight:220
@@ -1704,11 +1818,12 @@ attack:1d4:-2:0
 armor:40:15
 values:STR[2] | RES_SHARD[1] | RES_NEXUS[1]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
-desc:A hauberk, leggings, and sleeves of interlocking steel rings, well padded
-desc: with leather.  You feel as strong and tall as Arvedui, last king of
-desc: Arnor, as you put it on.
+desc:Одеяние из переплетенных стальных колец, подбитых кожей, и рукава.
+desc:  Надев его, вы чувствуете себя таким же сильным и высоким, как
+desc: Арведуи, последний король Арнора.
 
-name:of Caspanion
+# name:of Caspanion
+name:Каспаниона
 base-object:hard armour:Усиленная Кольчуга
 level:25
 weight:270
@@ -1720,12 +1835,13 @@ flags:PROT_CONF
 values:INT[2] | WIS[2] | CON[3] | RES_ACID[1] | RES_POIS[1]
 act:DESTROY_DOORS
 time:10
-desc:A hauberk, leggings, and sleeves of interlocking steel rings,
-desc: strategically reinforced at vital locations with a second layer of chain.
-desc:  Magics to enhance body and mind lie within, and no door can bar the
-desc: wearer's path.
+desc:Облачение, леггинсы и рукава из сцепленных стальных колец, усиленных
+desc: в стратегически важных местах вторым слоем кольчуги.  В них
+desc: заключена магия, усиливающая тело и разум, и ни одна дверь не
+desc: преградит путь её владельцу.
 
-name:of the Rohirrim
+# name:of the Rohirrim
+name:Народа Всадников
 base-object:hard armour:Металлическая Бригантина
 level:30
 weight:200
@@ -1736,11 +1852,13 @@ armor:50:15
 flags:PROT_FEAR | PROT_CONF
 values:STR[2] | DEX[2]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1] | RES_SOUND[1]
-desc:Small steel plates cover an inner layer of sturdy canvas, and both metal
-desc: and cloth bear scenes of hunting and war.  As you don the armour of Eorl
-desc: the Young, matchless in combat, you feel his spirit surround you.
+desc:Небольшие стальные пластины покрывают внутренний слой прочного
+desc: холста, а на металле и ткани изображены сцены охоты и сражений.
+desc:  Надев доспехи Эорла Молодого, вы чувствуете, как вас наполняет
+desc: его дух.
 
-name:of Isildur
+# name:of Isildur
+name:Исильдура
 base-object:hard armour:Полные Латы
 level:30
 weight:300
@@ -1751,10 +1869,11 @@ armor:75:25
 flags:PROT_CONF
 values:CON[1] | RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
 values:RES_SOUND[1] | RES_NEXUS[1]
-desc:A gleaming steel suit covering the wearer from neck to foot, with runes of
-desc: warding and stability deeply engraved into its surface.
+desc:Сверкающий стальной доспех, покрывающий владельца от шеи до ног,
+desc: с выгравированными на его поверхности рунами защиты и устойчивости.
 
-name:'Belegennon'
+# name:'Belegennon'
+name:'Белегеннон'
 base-object:hard armour:Мифриловая Кольчуга
 level:40
 weight:150
@@ -1766,13 +1885,14 @@ values:DAM_RED[5]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 act:TELE_PHASE
 time:2
-desc:This wondrous shirt of fine-linked chain shimmers before your eyes like
-desc: light upon a rippling sea, the gems on it glittering like stars, the
-desc: sound of the rings when shaken like the tinkle of rain in a pool.
-desc:  It stands untouched amidst the fury of the elements, and blows seem
-desc: strangely less powerful.
+desc:Эта дивная рубашка из тонкой звенящей нити переливается на глазах,
+desc: как свет на морском просторе, драгоценные камни на ней сверкают,
+desc: как звезды, а звук колец при встряхивании похож на стук дождя над
+desc: гладью воды. Она стоит нетронутой перед гневом стихий, и
+desc: нанесенные удары кажутся до странного незначительными.
 
-name:of Celeborn
+# name:of Celeborn
+name:Келеборна
 base-object:hard armour:Мифриловая Пластинчатая Кольчуга
 level:40
 weight:250
@@ -1784,11 +1904,13 @@ values:STR[3] | RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
 values:RES_DARK[1] | RES_DISEN[1]
 act:BANISHMENT
 time:500
-desc:A shimmering suit of true-silver, forged long ago by dwarven smiths of
-desc: legend.  It gleams with purest white as you gaze upon it, and mighty are
-desc: its powers to protect and banish.
+desc:Мерцающий костюм из чистого серебра, выкованный давным-давно
+desc: легендарными дварфийскими кузнецами.  Он сияет безупречным белым
+desc: светом, когда вы смотрите на него, его могущественная сила
+desc: защищает и изгоняет.
 
-name:'Soulkeeper'
+# name:'Soulkeeper'
+name:'Хранительница Души'
 base-object:hard armour:Адамантитовая Пластинчатая Кольчуга
 level:75
 weight:420
@@ -1801,14 +1923,15 @@ values:CON[2] | RES_ACID[1] | RES_COLD[1] | RES_DARK[1] | RES_NETHER[1]
 values:RES_NEXUS[1] | RES_CHAOS[1]
 act:HEAL2
 time:444
-desc:A suit of imperishable adamant with unconquerable strength to endure evil
-desc: and disruptive magics.  It protects the life force of its wearer as
-desc: nothing else can.
+desc:Костюм из нетленного адаманта с несокрушимой силой, способной
+desc: противостоять злу и губительным магиям.  Она защищает жизненную
+desc: силу своего владельца так, как ничто другое.
 
 
 ### Cloaks ###
 
-name:'Colluin'
+# name:'Colluin'
+name:'Коллуин'
 base-object:cloak:Плащ
 level:5
 weight:10
@@ -1819,10 +1942,11 @@ armor:1:15
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 act:RESIST_ALL
 time:111
-desc:A cape worn by a hero from Valinor, a land utterly beyond the strife
-desc: of Elements.
+desc:Плащ, который носил герой из Валинора, земли, находящейся за
+desc: гранью раздора Элементов.
 
-name:'Holcolleth'
+# name:'Holcolleth'
+name:'Холcоллет'
 base-object:cloak:Плащ
 level:5
 weight:10
@@ -1833,11 +1957,12 @@ armor:1:4
 values:STEALTH[3] | INT[2] | WIS[2] | RES_ACID[1]
 act:SLEEPII
 time:55
-desc:This elven-grey mantle possesses great powers of tranquility and
-desc: concealment, and grants the wearer the knowledge and understanding of
-desc: the Sindar.
+desc:Эта серая эльфийская мантия обладает великой силой спокойствия
+desc: и скрытности, а также наделяет владельца знаниями и умением
+desc: понимать Синдар.
 
-name:of Thingol
+# name:of Thingol
+name:Тингола
 base-object:cloak:Плащ
 level:5
 weight:10
@@ -1849,10 +1974,11 @@ flags:FREE_ACT
 values:DEX[3] | RES_ACID[1] | RES_FIRE[1] | RES_COLD[1]
 act:RECHARGE
 time:70
-desc:A translucent cloak of pearly grey with glowing, energized Elven runes
-desc: showing calm and clear as moonlight on still water.
+desc:Полупрозрачный плащ жемчужно-серого цвета со светящимися эльфийскими
+desc: рунами, безмятежный и ясный, как лунный свет на тихой воде.
 
-name:of Thorongil
+# name:of Thorongil
+name:Торондира
 base-object:cloak:Плащ
 level:5
 weight:10
@@ -1862,11 +1988,12 @@ attack:0d0:0:0
 armor:1:10
 flags:FREE_ACT | PROT_FEAR | SEE_INVIS
 values:RES_ACID[1]
-desc:This shimmering cloak of greens and browns was once worn by the young
-desc: Aragorn, a keen-eyed captain of Rohan and Gondor, valiant on both land
-desc: and sea.
+desc:Этот переливающийся зеленью и коричневым цветом плащ когда-то
+desc: носил молодой Арагорн, зоркий капитан Рохана и Гондора,
+desc: доблестно сражавшийся на суше и в море.
 
-name:'Colannon'
+# name:'Colannon'
+name:'Коланнон'
 base-object:cloak:Плащ
 level:5
 weight:10
@@ -1877,10 +2004,12 @@ armor:1:15
 values:STEALTH[2] | SPEED[2] | RES_NEXUS[1]
 act:TELE_LONG
 time:45
-desc:A crystal-blue cape of fine silk worn by a silent messenger of the forces
-desc: of Law.  Seldom will its wearer be diverted from his mission.
+desc:Кристально-голубой плащ из тончайшего шелка, который носит
+desc: молчаливый посланник сил Закона.  Его обладатель редко
+desc: отклоняется от выполнения своей миссии.
 
-name:of Lúthien
+# name:of Lúthien
+name:Лутиэн
 base-object:cloak:Эльфийский Плащ
 level:40
 weight:5
@@ -1892,12 +2021,13 @@ values:INT[4] | WIS[4] | STEALTH[3] | SPEED[2]
 values:RES_ACID[1] | RES_FIRE[1] | RES_COLD[1]
 act:RESTORE_LIFE
 time:250
-desc:The opaque midnight folds of this cloak, inlaid with a multitude of tiny
-desc: diamonds, swirl around you, and you feel a hint, a fragment of the
-desc: restorative magics of Lúthien, the most beautiful being who ever knew
-desc: death.
+desc:Непрозрачные полуночные складки плаща, инкрустированные множеством
+desc: крошечных бриллиантов, кружат вокруг вас, и вы чувствуете в них
+desc: намёк, частицу восстанавливающей магии Лутиэн, самого прекрасного
+desc: существа, когда-либо познавшего смерть.
 
-name:of Tuor
+# name:of Tuor
+name:Туора
 base-object:cloak:Эфирный Плащ
 level:40
 weight:0
@@ -1907,14 +2037,15 @@ attack:0d0:0:0
 armor:6:12
 flags:FREE_ACT | SEE_INVIS
 values:STEALTH[4] | DEX[4] | RES_ACID[3]
-desc:The great cloak given to Tuor by the Dweller in the Deep.  As you wrap
-desc: yourself from head to foot the words of Ulmo echo: "Thus thou shalt
-desc: walk under my shadow".
+desc:Великий плащ, подаренный Туору Жителем Глубин.  Когда вы закутываетесь
+desc: в него с головы до ног, слова Ульмо звучат эхом: "Так ты будешь
+desc: ходить под моей тенью".
 
 
 ### Gloves and Gauntlets ###
 
-name:'Cambeleg'
+# name:'Cambeleg'
+name:'Камбелег'
 base-object:gloves:Комплект Кожаных Перчаток
 level:10
 weight:5
@@ -1924,9 +2055,10 @@ attack:0d0:8:8
 armor:1:15
 flags:FREE_ACT | 
 values:STR[2] | CON[2]
-desc:A hero's handgear that lends great prowess in battle.
+desc:Орудие героя, придающее ему большую ловкость в бою.
 
-name:'Cammithrim'
+# name:'Cammithrim'
+name:'Каммитрим'
 base-object:gloves:Комплект Кожаных Перчаток
 level:10
 weight:5
@@ -1938,10 +2070,11 @@ flags:FREE_ACT | SUST_CON
 values:LIGHT[1] | RES_LIGHT[1]
 act:MISSILE
 time:2
-desc:These gloves glow so brightly as to light the way for the wearer and cast
-desc: magical bolts with great frequency.
+desc:Эти перчатки светятся так ярко, что освещают владельцу путь, и с
+desc: большой частотой кастуют магические болты.
 
-name:'Paurhach'
+# name:'Paurhach'
+name:'Паурхач'
 base-object:gloves:Комплект Наручей
 level:1
 weight:25
@@ -1953,9 +2086,10 @@ flags:REGEN
 values:RES_FIRE[1]
 act:FIRE_BOLT
 time:8+d8
-desc:A set of gauntlets that smoulder with an unnatural heat.
+desc:Перчатки, пылающие неестественным жаром.
 
-name:'Paurnimmen'
+# name:'Paurnimmen'
+name:'Паурниммен'
 base-object:gloves:Комплект Наручей
 level:20
 weight:25
@@ -1968,9 +2102,10 @@ values:RES_COLD[1]
 brand:COLD_2
 act:COLD_BOLT
 time:7+d7
-desc:A set of handgear, freezing with unnatural cold.
+desc:Набор наручей, пронизывающих тело неестественным холодом.
 
-name:'Pauraegen'
+# name:'Pauraegen'
+name:'Паураген'
 base-object:gloves:Комплект Наручей
 level:1
 weight:25
@@ -1981,9 +2116,10 @@ armor:3:14
 values:LIGHT[1] | RES_ELEC[1] | RES_LIGHT[1]
 act:ELEC_BOLT
 time:6+d6
-desc:A set of handgear with sparks that crackle across its knuckleguards.
+desc:Оружие с трещащими искрами на кастетах.
 
-name:'Paurnen'
+# name:'Paurnen'
+name:'Паурнен'
 base-object:gloves:Комплект Наручей
 level:1
 weight:25
@@ -1995,10 +2131,11 @@ flags:FEATHER
 act:ACID_BOLT
 time:5+d5
 values:RES_ACID[1]
-desc:A set of gauntlets that give off a foul, acrid odour yet remain
-desc: untarnished.
+desc:Перчатки, от которых исходит едкий запах, но при этом они
+desc: остаются чистыми.
 
-name:'Camlost'
+# name:'Camlost'
+name:'Камлост'
 base-object:gloves:Комплект Наручей
 level:10
 weight:25
@@ -2008,10 +2145,11 @@ attack:1d1:-12:-12
 armor:3:0
 flags:FREE_ACT | DRAIN_EXP | AGGRAVATE
 values:STR[-3] | DEX[-3] | RES_FIRE[1] | RES_DISEN[1]
-desc:A pair of weakening gauntlets, named after Beren, who returned to Thingol
-desc: having lost to Carcharoth the hand that clasped a Silmaril.
+desc:Пара ослабляющих перчаток, названных в честь Берена, который
+desc: вернулся к Тинголу, потеряв в Кархароте руку, сжимавшую Сильмарилл.
 
-name:of Eöl
+# name:of Eöl
+name:Эола
 base-object:gloves:Комплект Наручей
 level:55
 weight:25
@@ -2023,10 +2161,12 @@ flags:FREE_ACT | FEATHER | AGGRAVATE
 values:INT[3] | RES_ELEC[1] | RES_DARK[1] | RES_POIS[1] | RES_FIRE[3]
 act:MANA_BOLT
 time:30+d30
-desc:The iron-shod gauntlets of the Dark Elven smith Eöl, who imbued them
-desc: with magics he could channel in battle.
+desc:Окованные железом перчатки Тёмного Эльфа-кузнеца Эола,
+desc: который наделил их магическими свойствами, которые он мог
+desc: использовать в бою.
 
-name:of Fingolfin
+# name:of Fingolfin
+name:Финголфина
 base-object:gloves:Комплект Цестусов
 level:40
 weight:40
@@ -2038,14 +2178,15 @@ flags:FREE_ACT
 values:DEX[4] | RES_ACID[1]
 act:ARROW
 time:30+d30
-msg:Your {kind} grow{s} magical spikes...
-desc:The hand-sheathing of Fingolfin, the Elven warrior-king, who dealt
-desc: Morgoth seven mighty wounds and pain that will last until the end of Arda.
+msg:Ваш {kind} покрывается магическими шипами...
+desc:Рука Финголфина, эльфийского короля-воина, нанесшего Морготу семь
+desc: могучих ран и боль, которая будет длиться до конца Арды.
 
 
 ### Shields ###
 
-name:of Elros
+# name:of Elros
+name:Эльроса
 base-object:shield:Плетёный Щит
 level:40
 weight:30
@@ -2055,10 +2196,11 @@ attack:1d1:0:0
 armor:2:20
 flags:PROT_CONF | HOLD_LIFE
 values:CON[4] | WIS[1] | INT[1] | RES_ELEC[1] | RES_SHARD[1]
-desc:The shield of Elros Tar-Minyatur, founder of Númenor.  Granted long
-desc: life by the Valar, even his shield became imbued with power.
+desc:Щит Эльроса Тар-Миньятура, основателя Нуменора.  Валар даровали
+desc: ему долгую жизнь, и даже его щит стал наделен силой.
 
-name:of Thorin
+# name:of Thorin
+name:Торина
 base-object:shield:Маленький Металлический Щит
 level:40
 weight:65
@@ -2068,10 +2210,11 @@ attack:1d2:0:0
 armor:5:25
 flags:PROT_FEAR | FREE_ACT
 values:CON[4] | STR[3] | STEALTH[-1] | RES_SOUND[1] | RES_ACID[3] | RES_CHAOS[1]
-desc:Invoking the strength and endurance of Thorin, King under the Mountain,
-desc: this little metal shield is proof against the Element of Earth.
+desc:Призывая силу и выносливость Торина, Короля под Горой, этот
+desc: маленький металлический щит защищает от стихии Земли.
 
-name:of Celegorm
+# name:of Celegorm
+name:Келегорма
 base-object:shield:Кожаный Щит
 level:30
 weight:60
@@ -2082,11 +2225,12 @@ armor:8:20
 flags:PROT_BLIND
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
 values:RES_LIGHT[1] | RES_DARK[1]
-desc:This shield emblazoned with a multitude of creatures unseen for ages
-desc: once protected Celegorm, Lord of Himlad; around it, a mystic balance lies,
-desc: containing the conflicts of the elements.
+desc:Этот щит, украшенный множеством невиданных существ, когда-то
+desc: защищал Селегорма, владыку Химлада; вокруг него лежит мистическое
+desc: равновесие, сдерживающее конфликты стихий.
 
-name:of the Haradrim
+# name:of the Haradrim
+name:Харадримов
 base-object:shield:Кожаный Щит
 level:35
 weight:90
@@ -2098,11 +2242,12 @@ flags:SUST_STR | SUST_CON | PROT_FEAR | PROT_BLIND
 values:STR[2] | CON[2] | STEALTH[-2] | RES_POIS[1]
 act:BERSERKER
 time:50
-desc:The painted shield of a chieftain of Far Harad, gaudy and barbaric.
-desc:  Its wielder will fear nothing and fight with unnatural strength, but
-desc: also draw attention to himself.
+desc:Расписной щит вождя Дальнего Харада, вычурный и яркий.  Его
+desc: обладатель ничего не боится и сражается с неестественной силой,
+desc: но при этом привлекает к себе внимание.
 
-name:of Anárion
+# name:of Anárion
+name:Анариона
 base-object:shield:Большой Металлический Щит
 level:40
 weight:120
@@ -2112,10 +2257,11 @@ attack:1d5:0:0
 armor:12:20
 flags:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1]
-desc:The great metal-bound shield of Elendil's younger son Anárion, whom
-desc: even Sauron could not corrupt.
+desc:Большой щит младшего сына Элендила Анариона, скрепленный металлом,
+desc: который не смог испортить даже Саурон.
 
-name:of Eärendil
+# name:of Eärendil
+name:Эарендиля
 base-object:shield:Рыцарский Щит
 level:65
 weight:160
@@ -2127,12 +2273,14 @@ values:RES_DARK[1] | RES_NETHER[1] | RES_ELEC[1] | RES_FIRE[1] | LIGHT[1]
 flags:PROT_BLIND
 act:CURE_TEMP
 time:100
-msg:Your {kind} throbs deep blue...
-desc:A shining shield wrought for Eärendil Half-Elven, son of Tuor and Idril,
-desc: "scored with runes to keep all wounds and harm from him".
+msg:Ваш {kind} пульсирует насыщенным синим цветом...
+desc:Сияющий щит, изготовленный для Эарендила-полуэльфа, сына Туора
+desc: и Идриль, "испещренный рунами, чтобы отвести от него все
+desc: раны и беды".
 
 # should be Shield of Deflection
-name:of Gil-galad
+# name:of Gil-galad
+name:Гиль-галада
 base-object:shield:Мифриловый Щит
 level:70
 weight:80
@@ -2145,14 +2293,15 @@ values:WIS[5] | LIGHT[1] | RES_ELEC[1] | RES_ACID[1] | RES_DISEN[1]
 values:RES_DARK[1]
 act:STARLIGHT2
 time:100
-desc:The legendary shield of Ereinion Gil-galad, who fought his way to the
-desc: gates of the Dark Tower, and with whom came light even to Gorgoroth.
+desc:Легендарный щит Эрейниона Гил-Галада, который пробился к
+desc: воротам Тёмной Башни, и с которым свет дошёл даже до Горгорота.
 
 
 ### Rings ###
 
-name:of Barahir
-base-object:ring:Ring
+# name:of Barahir
+name:Барахира
+base-object:ring:Кольцо
 graphics:=:d
 level:50
 weight:2
@@ -2160,11 +2309,13 @@ cost:65000
 alloc:4:50 to 100
 values:STR[1] | INT[1] | WIS[1] | DEX[1] | CON[1] | STEALTH[1]
 values:RES_POIS[1] | RES_DARK[1]
-desc:Twinned serpents with eyes of emerald meet beneath a crown of flowers to
-desc: form this ring, an ancient treasure of Isildur's house.
+desc:Сдвоенные змеи с изумрудными глазами встречаются под венцом из
+desc: цветов, образуя это кольцо, древнее сокровище дома Исилдура.
 
-name:of Tulkas
-base-object:ring:Band
+# name:of Tulkas
+name:Тулкаса
+# base-object:ring:Band
+base-object:ring:Кольцо
 graphics:=:d
 level:70
 weight:2
@@ -2174,10 +2325,12 @@ flags:PROT_FEAR |
 values:STR[4] | DEX[4] | CON[4]
 act:HASTE2
 time:150+d150
-desc:The treasure of Tulkas, most fleet and wrathful of the Valar.
+desc:Сокровища Тулкаса, самого воинственного и грозного из Валар.
 
-name:'Narya'
-base-object:ring:Ring of Fire
+# name:'Narya'
+name:'Нарья'
+# base-object:ring:Ring of Fire
+base-object:ring:Кольцо Огня
 graphics:=:d
 level:70
 weight:2
@@ -2189,14 +2342,16 @@ flags:FREE_ACT | SEE_INVIS | SLOW_DIGEST | REGEN | TELEPATHY
 flags:SUST_STR | SUST_CON | PROT_FEAR
 act:PROTEVIL
 time:200+4d50
-msg:{name} glows deep red...
+msg:{name} пульсирует насыщенным красным цветом......
 values:STR[1] | INT[1] | WIS[1] | DEX[1] | CON[1] | SPEED[5] | RES_FIRE[3]
 desc:The Ring of Fire, made of gold and set with a ruby that glows like flame.
 desc:  Narya is one of the three Rings of Power created by Celebrimbor and
 desc: hidden by the Elves from Sauron.
 
-name:'Nenya'
-base-object:ring:Ring of Adamant
+# name:'Nenya'
+name:'Ненья'
+# base-object:ring:Ring of Adamant
+base-object:ring:Кольцо Адаманта
 graphics:=:d
 level:80
 weight:2
@@ -2210,14 +2365,16 @@ flags:SUST_INT | SUST_WIS | SUST_CON
 flags:PROT_BLIND | TELEPATHY | 
 act:RESTORE_LIFE
 time:200+2d50
-msg:{name} glows bright white...
+msg:{name} пульсирует ярко белым цветом......
 values:STR[2] | INT[2] | WIS[2] | DEX[2] | CON[2] | SPEED[5] | RES_COLD[3]
-desc:The Ring of Adamant, made of mithril with a pure white stone as
-desc: centerpiece.  Nenya is one of the three Rings of Power created by
-desc: Celebrimbor and hidden by the Elves from Sauron.
+desc:Кольцо Адаманта, изготовленное из мифрила с чистым белым камнем в
+desc: центре.  Ненья - одно из трех Колец Власти, созданных Селебримбором
+desc: и спрятанных эльфами от Саурона.
 
-name:'Vilya'
-base-object:ring:Ring of Firmament
+# name:'Vilya'
+name:'Вилья'
+# base-object:ring:Ring of Firmament
+base-object:ring:Кольцо Твердыни
 graphics:=:d
 level:90
 weight:2
@@ -2230,16 +2387,18 @@ flags:FEATHER | SLOW_DIGEST | REGEN | TELEPATHY
 flags:SUST_DEX | SUST_INT | SUST_CON
 act:HEAL2
 time:200+2d50
-msg:{name} glows deep blue...
+msg:{name} пульсирует насыщенным синим цветом......
 values:STR[3] | INT[3] | WIS[3] | DEX[3] | CON[3] | SPEED[5]
 values:RES_ELEC[3] | RES_POIS[1] | RES_DARK[1]
-desc:The Ring of Sapphire, made of gold with a brilliant blue gem that shines
-desc: like stars.  It glitters untouchable despite all that Morgoth ever
-desc: wrought.  Vilya is one of the three Rings of Power created by Celebrimbor
-desc: and hidden by the Elves from Sauron.
+desc:Кольцо с сапфиром, сделанное из золота с блестящим голубым драгоценным
+desc: камнем, сияющим как звёзды.  Оно выглядит неприступно, несмотря на
+desc: все, что когда-либо творил Моргот.  Вилья - одно из трех Колец Власти,
+desc: созданных Селебримбором и спрятанных Эльфами от Саурона.
 
-name:'The One Ring'
-base-object:ring:Ring of Power
+# name:'The One Ring'
+name:'Кольцо Всевластия'
+# base-object:ring:Ring of Power
+base-object:ring:Кольцо Силы
 graphics:=:y
 level:100
 weight:2
@@ -2255,17 +2414,18 @@ values:RES_FIRE[3] | RES_COLD[3] | RES_ELEC[3] | RES_ACID[3] | RES_DARK[1]
 values:RES_DISEN[1] | RES_POIS[1] | RES_NETHER[1]
 act:BIZARRE
 time:200+9d50
-desc:"One Ring to rule them all, One Ring to find them, One Ring to bring
-desc: them all and in the darkness bind them."  Made of massive gold, and
-desc: inscribed with hidden runes in the foul speech of Mordor, Isildur's Bane
-desc: possesses powers so great that it inevitably twists and masters any mortal
-desc: being who wears it.
+desc:"Одно кольцо, чтобы править ими всеми, одно кольцо, чтобы найти их,
+desc: одно кольцо, чтобы привести их всех и во тьме связать их".
+desc:  Сделанное из чистого золота и испещренное скрытыми рунами на языке
+desc: Мордора, Кольцо Исилдура обладает столь великой силой, что неизбежно
+desc: извращает и овладевает любым смертным, носящим его.
 
 
 ### Amulets ###
 
-name:of Carlammas
-base-object:amulet:Amulet
+# name:of Carlammas
+name:Карламмаса
+base-object:amulet:Амулет
 graphics:":d
 level:50
 weight:3
@@ -2274,10 +2434,12 @@ alloc:10:50 to 100
 act:PROTEVIL
 time:225+d225
 values:CON[3] | STR[1] | RES_FIRE[1]
-desc:A fiery circle of bronze, with mighty spells to ward off and banish evil.
+desc:Огненный круг из бронзы с могущественными оберегами, отгоняющими и
+desc: изгоняющими зло.
 
-name:of Ingwë
-base-object:amulet:Pendant
+# name:of Ingwë
+name:Ингве
+base-object:amulet:Подвеска
 graphics:":d
 level:65
 weight:3
@@ -2287,11 +2449,12 @@ flags:SEE_INVIS | FREE_ACT | PROT_CONF
 values:INT[3] | WIS[3] | INFRA[4] | RES_ACID[1] | RES_COLD[1] | RES_ELEC[1]
 act:DISPEL_EVIL
 time:50+d50
-desc:The ancient heirloom of Ingwë, high lord of the Vanyar, against whom
-desc: nothing of evil could stand.
+desc:Древняя реликвия Ингве, верховного владыки Ваньяра, против
+desc: которого не устоит ни одно зло.
 
-name:of the Dwarves
-base-object:amulet:Necklace
+# name:of the Dwarves
+name:Дварфов
+base-object:amulet:Ожерелье
 graphics:":y
 level:50
 weight:3
@@ -2299,14 +2462,15 @@ cost:75000
 alloc:2:50 to 127
 flags:SEE_INVIS | FREE_ACT | REGEN | PROT_FEAR | 
 values:STR[3] | CON[3] | INFRA[5] | LIGHT[1]
-desc:The Nauglamír, a carcanet of gold set with a multitude of shining
-desc: gems of Valinor.  The radiant Silmaril of Fëanor hangs in its midst
-desc: as its crowning glory.  The sturdy spirits of Dwarvish craftsmen who
-desc: labored long in mountain smithies lie within it still, and as gossamer
-desc: it rests upon the bearer.
+desc:Наугламир - золотой каркан, украшенный множеством сверкающих
+desc: драгоценных камней Валинора.  Посреди него висит сияющий Сильмарилл
+desc: Феанора, венчающий его.  Крепкие духи гномских мастеров, долго
+desc: трудившихся в горных кузницах, до сих пор живут в нем, и, как нить,
+desc: он ложится на носителя.
 
-name:'Elessar'
-base-object:amulet:Elfstone
+# name:'Elessar'
+name:'Элессар'
+base-object:amulet:Эльфийский Камень
 graphics:":g
 level:60
 weight:3
@@ -2318,12 +2482,14 @@ flags:PROT_FEAR
 values:STR[2] | WIS[2] | SPEED[2] | RES_FIRE[1] | RES_POIS[1]
 act:HEAL1
 time:200
-desc:A green stone, imbued with the power of Elvendom and the light of the Sun.
-desc:  Those who gaze through it see the aged and infirm as young again, and
-desc: its wearer brings healing after victory in battle.
+desc:Зелёный камень, пропитанный силой Эльвендома и светом Солнца.
+desc:  Те, кто смотрит сквозь него, видят, как старики и немощные снова
+desc: становятся молодыми, а его обладателю он приносит исцеление после
+desc: победы в битве.
 
-name:'Evenstar'
-base-object:amulet:Jewel
+# name:'Evenstar'
+name:'Свет Вечерней Звезды'
+base-object:amulet:Украшение
 graphics:":w
 level:40
 weight:3
@@ -2333,8 +2499,8 @@ flags:HOLD_LIFE | SUST_CON | SUST_WIS | REGEN
 values:WIS[2] | RES_DARK[1] | RES_COLD[1] | RES_NETHER[1]
 act:RESTORE_LIFE
 time:150
-desc:A plain white jewel, given by Queen Arwen to Frodo Baggins before his
-desc: return to the Shire.
+desc:Простая белая драгоценность, подаренная королевой Арвен Фродо
+desc: Бэггинсу перед его возвращением в Шир.
 
 #name:of Amandil
 #base-object:amulet:55
@@ -2351,7 +2517,8 @@ desc: return to the Shire.
 
 ### Dragon Scale Mails ###
 
-name:'Razorback'
+# name:'Razorback'
+name:'Разрубатель'
 base-object:dragon armour:Многоцветная Драконья Чешуйчатая Броня
 level:90
 weight:200
@@ -2364,11 +2531,12 @@ values:LIGHT[1] | RES_ELEC[3] | RES_DISEN[1] | RES_ACID[1] | RES_FIRE[1]
 values:RES_COLD[1] | RES_POIS[1] | RES_LIGHT[1] | RES_DARK[1]
 act:STAR_BALL
 time:50
-desc:A massive suit of heavy dragon scales deeply saturated with many colors.
-desc:  It throbs with angry energies, and you feel the raw elemental might of
-desc: untamed Lightning as you put it on.
+desc:Массивный костюм из драконьей чешуи, насыщенной множеством цветов.
+desc:  От него исходит энергия гнева и, надев его, вы ощущаете в себе
+desc: стихийную мощь необузданной Молнии.
 
-name:'Mediator'
+# name:'Mediator'
+name:'Посредник'
 base-object:dragon armour:Уравновещенная Драконья Чешуйчатая Броня
 level:95
 weight:250
@@ -2380,10 +2548,11 @@ flags:FREE_ACT | SLOW_DIGEST | REGEN |
 values:RES_CHAOS[1] | RES_DISEN[1] | RES_SHARD[1] | RES_SOUND[1] | RES_NEXUS[1]
 act:STAR_BALL
 time:50
-desc:A great suit of dragon hide, set with scales of many hues.  Even the
-desc: mightiest wyrms of Law and Chaos fear the judgement of its wearer.
+desc:Отличный костюм из драконьей шкуры, украшенный чешуей разных оттенков.
+desc:  Даже самые могущественные вирмы Закона и Хаоса боятся суда его обладателя.
 
-name:'Bladeturner'
+# name:'Bladeturner'
+name:'Разоритель'
 base-object:dragon armour:Силовая Драконья Чешуйчатая Броня
 level:100
 weight:250
@@ -2397,12 +2566,14 @@ values:RES_LIGHT[1] | RES_DARK[1] | RES_SOUND[1] | RES_SHARD[1] | RES_NETHER[1]
 values:RES_NEXUS[1] | RES_CHAOS[1] | RES_DISEN[1]
 act:RAGE_BLESS_RESIST
 time:50
-desc:An adamant suit with scales of every color.  Untrammelled powers elemental
-desc: and ethereal swirl around it in an inextricably intermingled nimbus.
+desc:Адамантовый костюм из чешуи всех цветов.  Непреодолимые силы стихий
+desc: и бесплотных существ клубятся вокруг него в неразрывно
+desc: переплетенном нимбе.
 
 
 ### Quest artifacts ###
 
+# name:'Grond'
 name:'Гронд'
 base-object:hafted:Могучий Молот
 level:100
@@ -2419,8 +2590,8 @@ slay:UNDEAD_5
 slay:DEMON_5
 slay:TROLL_3
 slay:ORC_3
-desc:The mighty Hammer of the Underworld, blackened by doomspells of shattering.
-desc:  Its wielder holds the lives of all Morgoth's servants in his hand.
+desc:Могучий молот подземного мира, почерневший от сокрушительных
+desc: заклинаний.  Его обладатель держит в руке жизни всех слуг Моргота.
 
 name:Моргота
 base-object:crown:Массивная Железная Корона
@@ -2435,6 +2606,6 @@ values:STR[50] | INT[50] | WIS[50] | DEX[50] | CON[50] | INFRA[50]
 values:LIGHT[1]
 values:RES_ACID[1] | RES_ELEC[1] | RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 values:RES_LIGHT[1] | RES_DARK[1] | RES_NEXUS[1] | RES_NETHER[1]
-desc:Containing much of the power of he who once was mightiest among the Ainur,
-desc: this plain iron crown has mounted upon it the two remaining Silmarils,
-desc: greatest treasures of Middle-Earth.
+desc:В этой простой железной короне, хранящей в себе силу того, кто
+desc: когда-то был самым могущественным среди Айнур, закреплены два
+desc: оставшихся Сильмарилла, величайшие сокровища Средиземья.

@@ -15,7 +15,8 @@
 kind:ring:=
 
 # Fixed: the One Ring
-fixed:1:Ring of Power:Yellow: из Чистого Золота
+# fixed:1:Ring of Power:Yellow: из Чистого Золота
+fixed:1:Кольцо Силы:Yellow: из Чистого Золота
 
 # The Ring of Barahir 50
 # The Ring of Tulkas 51
@@ -87,18 +88,21 @@ flavor:43:Light Green: Адамантинов=1010
 kind:amulet:"
 
 # The Amulet of Carlammas
-fixed:52:Amulet:Light Umber:Бронзов=1110
+fixed:52:Амулет:Light Umber:Бронзов=1110
 
 # The Amulet of Ingwe 51
 
 # The Necklace of the Dwarves
-fixed:55:Necklace:Yellow:Золот=1170
+# fixed:55:Necklace:Yellow:Золот=1170
+fixed:55:Ожерелье:Yellow:Золот=1170
 
 # New Artifact (14): The Elfstone 'Elessar'
-fixed:44:Elfstone:Green:Зелён=1110
+# fixed:44:Elfstone:Green:Зелён=1110
+fixed:44:Эльфийский Камень:Green:Зелён=1110
 
 # New Artifact (15): The Jewel 'Evenstar'
-fixed:46:Jewel:White:Бел=1110
+# fixed:46:Jewel:White:Бел=1110
+fixed:46:Украшение:White:Бел=1110
 
 #flavor:44:Yellow:Amber
 flavor:45:Light Umber:Деревянн=1110
