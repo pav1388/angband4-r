@@ -108,7 +108,7 @@ void get_mon_name(char *buf, size_t buflen,
 void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 {
 	assert(mon != NULL);
-	my_strcap(desc);
+
 	/* Can we see it? (forced, or not hidden + visible) */
 	bool seen = (mode & MDESC_SHOW) ||
 		(!(mode & MDESC_HIDE) && monster_is_visible(mon));
@@ -227,7 +227,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 				/* XXX Check plurality for "some" */
 				/* Indefinite monsters need an indefinite article */
 				// my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "an " : "a ", max);
-				my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "" : "", max);
+				my_strcpy(desc, "", max);
 			} else {
 				/* Definite monsters need a definite article */
 				// my_strcpy(desc, "the ", max);
@@ -257,9 +257,9 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 
 		/* Handle the possessive */
 		/* XXX Check for trailing "s" */
-		// if (mode & MDESC_POSS) {
-			// my_strcat(desc, "'s", max);
-		// }
+		if (mode & MDESC_POSS) {
+			my_strcat(desc, "'s", max);
+		}
 
 		/* Mention "offscreen" monsters */
 		if (!panel_contains(mon->grid.y, mon->grid.x)) {

@@ -60,6 +60,11 @@ extern void (*quit_aux)(const char *);
  * Return "s" (or not) depending on whether n is singular.
  */
 #define PLURAL(n)				((n) == 1 ? "" : "s")
+
+
+/**
+ * Для русского языка
+ */
 #define PLURAL_RU(n, a, b, c)	((((n) % 10) == 1) && (((n) % 100) != 11) ? (a) : (((n) % 10) > 1) && (((n) % 10) < 5) && (((n) % 100) != 12) && (((n) % 100) != 13) && (((n) % 100) != 14) ? (b) : (c))
 
 #define CAUSE_OF_DEATH(a)	(streq((a), "starvation") ? "голодания" : streq((a), "poison") ? "отравления" : streq((a), "a fatal wound") ? "смертельного ранения" : streq((a), "Ripe Old Age") ? "Почтенного Возраста" : (a))
@@ -92,54 +97,55 @@ extern void (*quit_aux)(const char *);
 #define	E_EE	9
 #define	E_EJ	10
 #define	E_EM	11
-#define	E_YOM	12
-#define	E_EMU	13
-#define	E_ENEM	14
-#define	E_I		15
-#define	E_IE	16
-#define	E_IEM	17
-#define	E_II	18
-#define	E_IJ	19
-#define	E_IM	20
-#define	E_IMI	21
-#define	E_IH	22
-#define	E_IYU	23
-#define	E_IYA	24
-#define	E_IYAMI	25
-#define	E_IYAH	26
-#define	E_J		27
-#define	E_O		28
-#define	E_OV	29
-#define	E_OGO	30
-#define	E_OE	31
-#define	E_OJ	32
-#define	E_OM	33
-#define	E_OMU	34
-#define	E_U		35
-#define	E_UYU	36
-#define	E_Y		37
-#define	E_YE	38
-#define	E_YJ	39
-#define	E_YM	40
-#define	E_YMI	41
-#define	E_YH	42
-#define	E_b		43
-#define	E_bE	44
-#define	E_bYO	45
-#define	E_bEM	46
-#define	E_bYOM	47
-#define	E_bYU	48
-#define	E_bYA	49
-#define	E_bYAM	50
-#define	E_bYAMI	51
-#define	E_bYAH	52
-#define	E_YU	53
-#define	E_YUYU	54
-#define	E_YA	55
-#define	E_YAM	56
-#define	E_YAMI	57
-#define	E_YAH	58
-#define	E_YAYA	59
+#define	E_YO	12
+#define	E_YOM	13
+#define	E_EMU	14
+#define	E_ENEM	15
+#define	E_I		16
+#define	E_IE	17
+#define	E_IEM	18
+#define	E_II	19
+#define	E_IJ	20
+#define	E_IM	21
+#define	E_IMI	22
+#define	E_IH	23
+#define	E_IYU	24
+#define	E_IYA	25
+#define	E_IYAMI	26
+#define	E_IYAH	27
+#define	E_J		28
+#define	E_O		29
+#define	E_OV	30
+#define	E_OGO	31
+#define	E_OE	32
+#define	E_OJ	33
+#define	E_OM	34
+#define	E_OMU	35
+#define	E_U		36
+#define	E_UYU	37
+#define	E_Y		38
+#define	E_YE	39
+#define	E_YJ	40
+#define	E_YM	41
+#define	E_YMI	42
+#define	E_YH	43
+#define	E_b		44
+#define	E_bE	45
+#define	E_bYO	46
+#define	E_bEM	47
+#define	E_bYOM	48
+#define	E_bYU	49
+#define	E_bYA	50
+#define	E_bYAM	51
+#define	E_bYAMI	52
+#define	E_bYAH	53
+#define	E_YU	54
+#define	E_YUYU	55
+#define	E_YA	56
+#define	E_YAM	57
+#define	E_YAMI	58
+#define	E_YAH	59
+#define	E_YAYA	60
 
 
 /**

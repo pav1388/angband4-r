@@ -253,25 +253,15 @@ static void get_subject(char *buf, size_t buflen,
 		if (rf_has(race->flags, RF_UNIQUE)) {
 			my_strcpy(buf, race->name, buflen);
 		} else if (count == 1) {
+			// strnfmt(buf, buflen, "The %s", race->name);
 			strnfmt(buf, buflen, "%s", race->name);
-			my_strcap(buf);
 		} else {
-			// char rname[80];
-			char rname[160];
 			/* Get the plural of the race name */
 			if (race->plural != NULL) {
-				// strnfmt(buf, buflen, "%d %s", count, race->plural);
-				strnfmt(buf, buflen, "%d ", count);
-				strnfmt(rname, sizeof(rname), "%s", race->plural);
-				my_strcap(rname);
-				strnfmt(buf, buflen, "%s", rname);
+				strnfmt(buf, buflen, "%d %s", count, race->plural);
 			} else {
-				strnfmt(buf, buflen, "%d ", count);
-				strnfmt(rname, sizeof(rname), "%s", race->name);
-				my_strcap(rname);
-				strnfmt(buf, buflen, "%s", race->name);
-				// plural_aux(buf, buflen);
-				strnfmt(buf, buflen, "ы"); // DDDEL
+				strnfmt(buf, buflen, "%d %s", count, race->name);
+				plural_aux(buf, buflen);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {

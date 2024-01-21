@@ -2212,7 +2212,6 @@ static bool describe_effect(textblock *tb, const struct object *obj,
 
 		// textblock_append(tb, " turns to recharge");
 		textblock_append(tb, " ход%s",
-			// min_time != max_time ? PLURAL_RU(max_time, "", "а", "ов") : PLURAL_RU(min_time, "", "а", "ов")); DDDEL
 			PLURAL_RU(min_time != max_time ? max_time : min_time, "", "а", "ов"));
 		if (subjective && player->state.speed != 110)
 			// textblock_append(tb, " at your current speed");

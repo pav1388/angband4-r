@@ -1270,7 +1270,8 @@ char get_char(const char *prompt, const char *options, size_t len, char fallback
 	event_signal(EVENT_MESSAGE_FLUSH);
 
 	/* Hack -- Build a "useful" prompt */
-	strnfmt(buf, 78, "%.70s[%s] ", prompt, options);
+	// strnfmt(buf, 78, "%.70s[%s] ", prompt, options);
+	strnfmt(buf, 78, "%s[%s] ", prompt, options);
 
 	/* Prompt for it */
 	prt(buf, 0, 0);

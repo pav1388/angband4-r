@@ -241,7 +241,7 @@ color:w
 
 #name:filthy street urchin
 name:грязный уличный оборванец
-plural:грязные уличные оборванецы
+plural:грязные уличные оборванцы
 base:townsfolk
 color:D
 speed:110
@@ -257,15 +257,15 @@ blow:TOUCH:EAT_GOLD
 flags:MALE
 flags:RAND_25 | OPEN_DOOR | TAKE_ITEM
 #friends:50:2d1:Scrawny cat
-friends:50:2d1:тощая кошка
+friends:50:2d1:тощ=1240 кош.ек=0230
 #friends:50:2d1:Scruffy little dog
 friends:50:2d1:маленькая облезлая собака
 friends:100:3d4:Same
 desc:Он выглядит убого и совершенно отвратительно.
 
 #name:scrawny cat
-name:тощая кошка
-plural:тощие кошки
+name:тощ=1240 кош.ек=0230
+# plural:тощие кошки
 base:feline
 color:U
 speed:110
