@@ -148,7 +148,7 @@ static const char *random_hint(void)
 static void prt_welcome(const struct owner *proprietor)
 {
 	// char short_name[20];
-	char short_name[50];
+	char short_name[80];
 	const char *owner_name = proprietor->name;
 
 	int j;
@@ -282,7 +282,7 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 	uint32_t desc = ODESC_PREFIX;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	char out_val[160];
 	uint8_t colour;
 
@@ -339,7 +339,7 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 static void store_display_frame(struct store_context *ctx)
 {
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 	struct store *store = ctx->store;
 	struct owner *proprietor = store->owner;
 
@@ -528,7 +528,7 @@ static bool store_sell(struct store_context *ctx)
 	struct object *temp_obj = &object_type_body;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	item_tester tester = NULL;
 
@@ -561,7 +561,7 @@ static bool store_sell(struct store_context *ctx)
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
 		/* Oops */
 		// msg("Hmmm, it seems to be stuck.");
-		msg("Хммм, кажется застрял.");
+		msg("Хммм, кажется что-то застрял.");
 
 		/* Nope */
 		return false;
@@ -617,17 +617,13 @@ static bool store_sell(struct store_context *ctx)
 		screen_load();
 
 		cmdq_push(CMD_SELL);
-		// cmd_set_arg_item(cmdq_peek(), "item", obj);
-		cmd_set_arg_item(cmdq_peek(), "предмет", obj);
-		// cmd_set_arg_number(cmdq_peek(), "quantity", amt);
-		cmd_set_arg_number(cmdq_peek(), "кол-во", amt);
+		cmd_set_arg_item(cmdq_peek(), "item", obj);
+		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
 	} else { /* Player is at home */
 		object_wipe(temp_obj);
 		cmdq_push(CMD_STASH);
-		// cmd_set_arg_item(cmdq_peek(), "item", obj);
-		cmd_set_arg_item(cmdq_peek(), "предмет", obj);
-		// cmd_set_arg_number(cmdq_peek(), "quantity", amt);
-		cmd_set_arg_number(cmdq_peek(), "кол-во", amt);
+		cmd_set_arg_item(cmdq_peek(), "item", obj);
+		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
 	}
 
 	/* Update the display */
@@ -649,7 +645,7 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 	struct object *dummy = NULL;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	int amt, num;
 
@@ -786,7 +782,7 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 
 		cmdq_push(CMD_BUY);
 		cmd_set_arg_item(cmdq_peek(), "item", obj);
-				cmd_set_arg_number(cmdq_peek(), "quantity", amt);
+		cmd_set_arg_number(cmdq_peek(), "quantity", amt);
 	} else {
 		/* Home is much easier */
 		cmdq_push(CMD_RETRIEVE);
@@ -811,7 +807,7 @@ static void store_examine(struct store_context *ctx, int item)
 {
 	struct object *obj;
 	// char header[120];
-	char header[240];
+	char header[256];
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
 	uint32_t odesc_flags = ODESC_PREFIX | ODESC_FULL;
@@ -976,7 +972,7 @@ static int context_menu_store(struct store_context *ctx, const int oid, int mx, 
 	menu_dynamic_add_label(m, "Проверьте инвентарь", 'I', ACT_INSPECT_INVEN, labels);
 	if (!ctx->inspect_only) {
 		// menu_dynamic_add_label(m, home ? "Stash" : "Sell", 'd',
-		menu_dynamic_add_label(m, home ? "Копить" : "Продать", 'd',
+		menu_dynamic_add_label(m, home ? "Оставить" : "Продать", 'd',
 			ACT_SELL, labels);
 	}
 	// menu_dynamic_add_label(m, "Exit", '`', ACT_EXIT, labels);
@@ -1038,7 +1034,7 @@ static bool context_menu_store_item(struct store_context *ctx, const int oid, in
 	int selected;
 	char *labels;
 	// char header[120];
-	char header[240];
+	char header[256];
 
 	object_desc(header, sizeof(header), obj,
 		ODESC_PREFIX | ODESC_FULL | ((home) ? 0 : ODESC_STORE), player);
@@ -1194,7 +1190,7 @@ static bool store_menu_handle(struct menu *m, const ui_event *event, int oid)
 				/* use the old way of examining items */
 				msg_flag = false;
 				// prt("Examine which item? (ESC to cancel, Enter to select)",
-				prt("Какой пердмет узучить? ('ESC' отмена, 'Enter' выбор)",
+				prt("Какой пердмет изучить? ('ESC' отмена, 'Enter' выбор)",
 					0, 0);
 				oid = store_get_stock(m, oid);
 				prt("", 0, 0);

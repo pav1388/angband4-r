@@ -2462,10 +2462,10 @@ static void update_bonuses(struct player *p)
 			/* Message */
 			if (state.cumber_armor)
 				// msg("The weight of your armor encumbers your movement.");
-				msg("Вес доспехов сковывает ваши движения.");
+				msg("Вес вашей брони сковывает движения.");
 			else
 				// msg("You feel able to move more freely.");
-				msg("Вы чувствуете свободу движения.");
+				msg("Вы чувствуете себя более подвижным.");
 		}
 	}
 

@@ -726,7 +726,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* Information about the target of the attack */
 	struct monster *mon = square_monster(cave, grid);
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	bool stop = false;
 
 	/* The weapon used */
@@ -748,8 +748,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	my_strcpy(verb, "колотите", sizeof(verb));
 
 	/* Extract monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
-	my_strcap(m_name);
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
 
 	/* Auto-Recall and track if possible and visible */
 	if (monster_is_visible(mon)) {
@@ -761,7 +760,9 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	if (player_of_has(p, OF_AFRAID)) {
 		equip_learn_flag(p, OF_AFRAID);
 		// msgt(MSG_AFRAID, "You are too afraid to attack %s!", m_name);
-		msgt(MSG_AFRAID, "Вы слишком испуганы для атаки %s!", m_name);
+		// родит. падеж для имени монстра, ед.ч. mon_desc_name_format
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_RODIT);
+		msgt(MSG_AFRAID, "Вы слишком напуганы для атаки %s!", m_name);
 		return false;
 	}
 
@@ -775,6 +776,8 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* If a miss, skip this hit */
 	if (!success) {
 		// msgt(MSG_MISS, "You miss %s.", m_name);
+		// дательн. падеж для имени монстра, ед.ч. mon_desc_name_format
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_DAT);
 		msgt(MSG_MISS, "Вы промахнулись по %s.", m_name);
 
 		/* Small chance of bloodlust side-effects */
@@ -791,11 +794,11 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 		/* Handle normal weapon */
 		weight = obj->weight;
 		// my_strcpy(verb, "hit", sizeof(verb));
-		my_strcpy(verb, "бьёте", sizeof(verb));
+		my_strcpy(verb, "ударили", sizeof(verb));
 	} else {
 		weight = 0;
 	}
-	
+
 	/* Best attack from all slays or brands on all non-launcher equipment */
 	b = 0;
 	s = 0;
@@ -864,7 +867,10 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 
 		if (OPT(p, show_damage))
 			dmg_text = format(" (%d)", dmg);
-
+		
+		// винит. падеж для имени монстра, ед.ч. mon_desc_name_format
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
+		
 		if (melee_hit_types[i].text)
 			// msgt(msg_type, "You %s %s%s. %s", verb, m_name, dmg_text,
 			msgt(msg_type, "Вы %s %s%s. %s", verb, m_name, dmg_text,
@@ -884,7 +890,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* Small chance of bloodlust side-effects */
 	if (p->timed[TMD_BLOODLUST] && one_in_(50)) {
 		// msg("You feel something give way!");
-		msg("Вы чувствуете как что-то отступает!");
+		msg("Вы чувствуете как что-то отдаляется!");
 		player_over_exert(p, PY_EXERT_CON, 20, 0);
 	}
 
@@ -1094,7 +1100,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 		taim = distance(grid, target);
 		if (taim > range) {
 			// char msg[80];
-			char msg[160];
+			char msg[180];
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
 					// taim - range);
@@ -1157,7 +1163,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 
 			if (result.success) {
 				// char o_name[80];
-				char o_name[160];
+				char o_name[180];
 
 				hit_target = true;
 
@@ -1188,7 +1194,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 				} else {
 					for (j = 0; j < num_types; j++) {
 						// char m_name[80];
-						char m_name[160];
+						char m_name[180];
 						const char *dmg_text = "";
 
 						if (msg_type != hit_types[j].msg_type) {
@@ -1201,9 +1207,11 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 
 						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL);
 						
+						// для русского языка // FFFIX
 						uint8_t o_sex;
 						switch (obj->tval) {
 							case TV_ARROW:
+							case TV_SHOT:
 								o_sex = 2; // female
 								break;
 							

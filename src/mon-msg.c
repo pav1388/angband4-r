@@ -249,12 +249,18 @@ static void get_subject(char *buf, size_t buflen,
 			strnfmt(buf, buflen, "%d монстр%s", count, PLURAL_RU(count, "", "а", "ов"));
 		}
 	} else {
+		// для русского языка
 		/* Uniques, multiple monsters, or just one */
 		if (rf_has(race->flags, RF_UNIQUE)) {
 			my_strcpy(buf, race->name, buflen);
+			// именит.падеж для имени монстра, ед.ч.
+			mon_desc_name_format(buf, buflen, 0, buf, 0);
 		} else if (count == 1) {
 			// strnfmt(buf, buflen, "The %s", race->name);
 			strnfmt(buf, buflen, "%s", race->name);
+			// именит.падеж для имени монстра, ед.ч.
+			mon_desc_name_format(buf, buflen, 0, buf, 0);
+			my_strcap(buf);
 		} else {
 			/* Get the plural of the race name */
 			if (race->plural != NULL) {
@@ -262,6 +268,8 @@ static void get_subject(char *buf, size_t buflen,
 			} else {
 				strnfmt(buf, buflen, "%d %s", count, race->name);
 				plural_aux(buf, buflen);
+				// падеж в зависимости от количества
+				mon_desc_name_format(buf, buflen, 0, buf, (PLURAL_RU(count, C_IMEN, C_CUSTOM, C_RODIT) << 1) + 1);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {
@@ -385,9 +393,9 @@ static int get_message_type(int msg_code, const struct monster_race *race)
 static void show_message(struct monster_race_message *msg)
 {
 	// char subject[60] = "";
-	char subject[160] = "";
+	char subject[180] = "";
 	// char body[60];
-	char body[160];
+	char body[180];
 
 	/* Some messages don't require a monster name */
 	if (!skip_subject(msg->msg_code)) {
@@ -404,8 +412,9 @@ static void show_message(struct monster_race_message *msg)
 			msg->msg_code,
 			msg->race,
 			msg->count > 1);
-
-	if (msg->count < 2) {
+	
+	// для русского языка
+	if (msg->count == 1) { // небольшие исправления для list-mon-message.h
 		switch (msg->msg_code) {
 			case MON_MSG_DESTROYED:
 			case MON_MSG_HIT_HARD:

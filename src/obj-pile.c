@@ -826,7 +826,7 @@ struct object *floor_object_for_use(struct player *p, struct object *obj,
 {
 	struct object *usable;
 	// char name[80];
-	char name[160];
+	char name[180];
 
 	/* Bounds check */
 	num = MIN(num, obj->number);
@@ -991,7 +991,7 @@ static void floor_carry_fail(struct chunk *c, struct object *drop, bool broke)
 	/* Delete completely */
 	if (known) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		const char *verb = broke ?
 			// VERB_AGREEMENT(drop->number, "breaks", "break") :
 			VERB_AGREEMENT(drop->number, "разбивается", "разбиваются") :
@@ -1128,7 +1128,7 @@ void drop_near(struct chunk *c, struct object **dropped, int chance,
 			   struct loc grid, bool verbose, bool prefer_pile)
 {
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	struct loc best = grid;
 	bool dont_ignore = verbose && !ignore_item_ok(player, *dropped);
 

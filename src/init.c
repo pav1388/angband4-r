@@ -1066,8 +1066,7 @@ void init_game_constants(void)
 	// event_signal_message(EVENT_INITSTATUS, 0, "Initializing constants");
 	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация констант");
 	if (run_parser(&constants_parser))
-		// quit_fmt("Cannot initialize constants.");
-		quit_fmt("Невозможно инициализировать константы.");
+		quit_fmt("Cannot initialize constants.");
 }
 
 /**
@@ -4408,8 +4407,7 @@ void init_arrays(void)
 		event_signal_message(EVENT_INITSTATUS, 0, msg);
 		string_free(msg);
 		if (run_parser(pl[i].parser))
-			// quit_fmt("Cannot initialize %s.", pl[i].name);
-			quit_fmt("Невозможно инициализировать %s.", pl[i].name);
+			quit_fmt("Cannot initialize %s.", pl[i].name);
 	}
 }
 
@@ -4493,7 +4491,7 @@ bool init_angband(void)
 
 	/* Initialize some other things */
 	// event_signal_message(EVENT_INITSTATUS, 0, "Initializing other stuff...");
-	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация прочих  вещей...");
+	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация прочих вещей...");
 
 	/* List display codes */
 	monster_list_init();

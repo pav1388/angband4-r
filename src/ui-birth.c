@@ -720,7 +720,7 @@ static void finish_with_random_choices(enum birth_stage current)
 	const struct player_race *pr;
 	char name[PLAYER_NAME_LEN];
 	// char history[240];
-	char history[500];
+	char history[512];
 
 	if (current <= BIRTH_RACE_CHOICE) {
 		int n, i;
@@ -1593,7 +1593,7 @@ static enum birth_stage get_history_command(void)
 	enum birth_stage next = 0;
 	struct keypress ke;
 	// char old_history[240];
-	char old_history[500];
+	char old_history[512];
 
 	/* Save the original history */
 	my_strcpy(old_history, player->history, sizeof(old_history));
@@ -1610,7 +1610,7 @@ static enum birth_stage get_history_command(void)
 		next = BIRTH_BACK;
 	} else if (ke.code == 'N' || ke.code == 'n') {
 		// char history[240];
-		char history[500];
+		char history[512];
 		my_strcpy(history, player->history, sizeof(history));
 
 		switch (edit_text(history, sizeof(history))) {

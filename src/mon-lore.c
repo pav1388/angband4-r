@@ -655,8 +655,7 @@ static const char *lore_describe_speed(uint8_t speed)
 	}
 
 	/* Return a weird description, since the value wasn't found in the table */
-	// return "erroneously";
-	return "ошибочно";
+	return "erroneously";
 }
 
 /**
@@ -1978,7 +1977,7 @@ static void write_lore_entries(ang_file *fff)
 			struct monster_drop *drop = lore->drops;
 			struct object_kind *kind = drop->kind;
 			// char name[120] = "";
-			char name[240] = "";
+			char name[256] = "";
 
 			while (drop) {
 				if (kind) {
@@ -2050,7 +2049,7 @@ static void write_lore_entries(ang_file *fff)
 			struct monster_mimic *m = lore->mimic_kinds;
 			struct object_kind *kind = m->kind;
 			// char name[120] = "";
-			char name[240] = "";
+			char name[256] = "";
 
 			while (m) {
 				object_short_name(name, sizeof name, kind->name);

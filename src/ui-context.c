@@ -545,7 +545,7 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		prt("(Enter выбор действия, ESC отмена) Вы видите нечто странное:", 0, 0);
 	} else if (square(c, grid)->mon) {
 		// char m_name[80];
-		char m_name[160];
+		char m_name[180];
 		struct monster *mon = square_monster(c, grid);
 
 		/* Get the monster name ("a kobold") */
@@ -556,7 +556,7 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 				   m_name), 0, 0);
 	} else if (square_obj && !ignore_item_ok(player, square_obj)) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 
 		/* Obtain an object description */
 		object_desc(o_name, sizeof (o_name), square_obj,
@@ -687,7 +687,7 @@ int context_menu_object(struct object *obj)
 	int selected;
 	char *labels;
 	// char header[120];
-	char header[240];
+	char header[256];
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };

@@ -335,8 +335,7 @@ void store_init(void)
 {
 	// event_signal_message(EVENT_INITSTATUS, 0, "Initializing stores...");
 	event_signal_message(EVENT_INITSTATUS, 0, "Инициализация магазинов...");
-	// if (run_parser(&store_parser)) quit("Can't initialize stores");
-	if (run_parser(&store_parser)) quit("Невозможно инициализировать магазины");
+	if (run_parser(&store_parser)) quit("Can't initialize stores");
 }
 
 void store_reset(void) {
@@ -1450,7 +1449,7 @@ static void store_maint(struct store *s)
 void store_update(void)
 {
 	// if (OPT(player, cheat_xtra)) msg("Updating Shops...");
-	if (OPT(player, cheat_xtra)) msg("Обновление магазинов...");
+	if (OPT(player, cheat_xtra)) msg("Обновление Магазинов...");
 	while (daycount--) {
 		int n;
 
@@ -1685,7 +1684,7 @@ void do_cmd_buy(struct command *cmd)
 	struct object *obj, *bought, *known_obj;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	int price;
 
 	struct store *store = store_at(cave, player->grid);
@@ -1905,7 +1904,7 @@ void do_cmd_sell(struct command *cmd)
 	struct store *store = store_at(cave, player->grid);
 	int price, dummy, value;
 	// char o_name[120];
-	char o_name[240];
+	char o_name[256];
 	char label;
 
 	struct object *obj, *sold_item;
@@ -2051,7 +2050,7 @@ void do_cmd_stash(struct command *cmd)
 	struct object dummy;
 	struct store *store = store_at(cave, player->grid);
 	// char o_name[120];
-	char o_name[240];
+	char o_name[256];
 	char label;
 
 	struct object *obj, *dropped;

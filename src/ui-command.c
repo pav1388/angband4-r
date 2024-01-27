@@ -144,7 +144,7 @@ void do_cmd_unknown(void)
 void do_cmd_version(void)
 {
 	// char header_buf[120];
-	char header_buf[240];
+	char header_buf[256];
 
 	textblock *tb = textblock_new();
 	region local_area = { 0, 0, 0, 0 };
@@ -500,7 +500,7 @@ static void do_cmd_save_screen_html(int mode, term *other_term)
 	ang_file *fff;
 	char file_name[1024];
 	// char tmp_val[256];
-	char tmp_val[400];
+	char tmp_val[512];
 
 	typedef void (*dump_func)(ang_file *);
 	dump_func dump_visuals [] = { dump_monsters, dump_features, dump_objects,

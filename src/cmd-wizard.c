@@ -522,7 +522,7 @@ void do_cmd_wiz_change_item_quantity(struct command *cmd)
 	/* Get the new quantity. */
 	if (cmd_get_arg_number(cmd, "quantity", &n) != CMD_OK) {
 		// char prompt[80], s[80];
-		char prompt[160], s[160];
+		char prompt[180], s[180];
 
 		// strnfmt(prompt, sizeof(prompt), "Quantity (1-%d): ", nmax);
 		strnfmt(prompt, sizeof(prompt), "Количество (1-%d): ", nmax);
@@ -741,9 +741,9 @@ void do_cmd_wiz_create_all_artifact_from_tval(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "tval", &tval) != CMD_OK) {
 		// char prompt[80];
-		char prompt[160];
+		char prompt[180];
 		// char s[80] = "";
-		char s[160] = "";
+		char s[180] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			"Create all artifacts of which tval (1-%d)? ",
@@ -801,9 +801,9 @@ void do_cmd_wiz_create_all_obj_from_tval(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "tval", &tval) != CMD_OK) {
 		// char prompt[80];
-		char prompt[160];
+		char prompt[180];
 		// char s[80] = "";
-		char s[160] = "";
+		char s[180] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create all items of which tval (1-%d)? ", TV_MAX - 1);
@@ -843,9 +843,9 @@ void do_cmd_wiz_create_artifact(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "index", &ind) != CMD_OK) {
 		// char prompt[80];
-		char prompt[160];
+		char prompt[180];
 		// char s[80] = "";
-		char s[160] = "";
+		char s[180] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create which artifact (1-%d)? ", z_info->a_max - 1);
@@ -878,9 +878,9 @@ void do_cmd_wiz_create_obj(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "index", &ind) != CMD_OK) {
 		// char prompt[80];
-		char prompt[160];
+		char prompt[180];
 		// char s[80] = "";
-		char s[160] = "";
+		char s[180] = "";
 
 		strnfmt(prompt, sizeof(prompt),
 			// "Create which object (0-%d)? ", z_info->k_max - 1);
@@ -1017,7 +1017,7 @@ void do_cmd_wiz_curse_item(struct command *cmd)
 	struct object *obj;
 	int curse_index, power;
 	// char s[80];
-	char s[160];
+	char s[180];
 	int update;
 
 	if (cmd_get_arg_item(cmd, "item", &obj) != CMD_OK) {
@@ -1174,7 +1174,7 @@ void do_cmd_wiz_dump_level_map(struct command *cmd)
 {
 	char path[1024] = "";
 	// char title[80];
-	char title[160];
+	char title[180];
 	ang_file *fo;
 
 	strnfmt(title, sizeof(title), "Map of level %d", player->depth);
@@ -1311,7 +1311,7 @@ void do_cmd_wiz_edit_player_stat(struct command *cmd)
 {
 	int stat, newv;
 	// char prompt[80], s[80];
-	char prompt[160], s[160];
+	char prompt[180], s[180];
 
 	if (edit_player_state == EDIT_PLAYER_BREAK) return;
 
@@ -1408,7 +1408,7 @@ void do_cmd_wiz_jump_level(struct command *cmd)
 
 	if (cmd_get_arg_number(cmd, "level", &level) != CMD_OK) {
 		// char prompt[80], s[80];
-		char prompt[160], s[160];
+		char prompt[180], s[180];
 
 		// strnfmt(prompt, sizeof(prompt), "Jump to level (0-%d): ",
 		strnfmt(prompt, sizeof(prompt), "Перейти на этаж (0-%d): ",
@@ -1461,7 +1461,7 @@ void do_cmd_wiz_learn_object_kinds(struct command *cmd)
 		char s[80] = "100";
 
 		// if (!get_string("Learn object kinds up to level (0-100)? ",
-		if (!get_string("Изучить объекты с этажа (0-100)? ",
+		if (!get_string("Изучить объекты с какого этажа (0-100)? ",
 			s, sizeof(s))) return;
 		if (!get_int_from_string(s, &level)) return;
 		cmd_set_arg_number(cmd, "level", level);
@@ -1596,9 +1596,9 @@ void do_cmd_wiz_peek_noise_scent(struct command *cmd)
 void do_cmd_wiz_perform_effect(struct command *cmd)
 {
 	// char name[80] = "";
-	char name[160] = "";
+	char name[180] = "";
 	// char dice[80] = "0";
-	char dice[160] = "0";
+	char dice[180] = "0";
 	int index = -1;
 	int p1 = 0, p2 = 0, p3 = 0;
 	int y = 0, x = 0;
@@ -2254,7 +2254,7 @@ void do_cmd_wiz_recall_monster(struct command *cmd)
 		char c;
 
 		// if (!get_com("Full recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
-		if (!get_com("Вспомнить [a]всех монстров или [s]конкретного монстра? ", &c)) return;
+		if (!get_com("Вспомнить [a] всех монстров или [s] конкретного монстра? ", &c)) return;
 		if (c == 'a' || c == 'A') {
 			r_idx = -1;
 		} else if (c == 's' || c == 'S') {
@@ -2331,7 +2331,7 @@ void do_cmd_wiz_rerate(struct command *cmd)
 	player->upkeep->redraw |= PR_HP;
 
 	// msg("Current Life Rating is %d/100.", percent);
-	msg("Текущий Показатель Здоровья составляет %d/100.", percent);
+	msg("Текущий Показатель Здоровья (*Опыта ?) составляет %d/100.", percent);
 }
 
 
@@ -2368,7 +2368,7 @@ void do_cmd_wiz_reroll_item(struct command *cmd)
 	if (cmd_get_arg_choice(cmd, "choice", &roll_choice) != CMD_OK) {
 		char ch;
 
-		if (!get_com("Бросок как [n]нормальный, [g]хороший, or [e]превосходный? ", &ch)) {
+		if (!get_com("Бросок как [n] нормальный, [g] хороший, or [e] превосходный? ", &ch)) {
 			return;
 		}
 		if (ch == 'n' || ch == 'N') {
@@ -2540,7 +2540,7 @@ void do_cmd_wiz_stat_item(struct command *cmd)
 	/* Get the depth to use when generating treasure. */
 	if (cmd_get_arg_number(cmd, "depth", &level) != CMD_OK) {
 		// char prompt[80], s[80];
-		char prompt[160], s[160];
+		char prompt[180], s[180];
 
 		// strnfmt(prompt, sizeof(prompt), "Depth for treasure (0-%d): ",
 		strnfmt(prompt, sizeof(prompt), "Глубина для сокровища (0-%d): ",
@@ -2816,7 +2816,7 @@ void do_cmd_wiz_tweak_item(struct command *cmd)
 	};
 	struct object *obj;
 	// char tmp_val[80];
-	char tmp_val[160];
+	char tmp_val[180];
 	int i, val;
 	int update = 0;
 
@@ -2929,7 +2929,7 @@ void do_cmd_wiz_tweak_item(struct command *cmd)
 	wiz_display_item(obj, true, player);
 
 #define WIZ_TWEAK(attribute, name) do {\
-		char prompt[160];\
+		char prompt[180];\
 		strnfmt(prompt, sizeof(prompt), "Enter new %s setting: ", name);\
 		strnfmt(tmp_val, sizeof(tmp_val), "%d", obj->attribute);\
 		if (!get_string(prompt, tmp_val, sizeof(tmp_val))) {\
@@ -2975,7 +2975,7 @@ void do_cmd_wiz_wipe_recall(struct command *cmd)
 		char c;
 
 		// if (!get_com("Wipe recall for [a]ll monsters or [s]pecific monster? ", &c)) return;
-		if (!get_com("Забыть [a]всех монстров или [s]конкретного монстра? ", &c)) return;
+		if (!get_com("Забыть [a] всех монстров или [s] конкретного монстра? ", &c)) return;
 		if (c == 'a' || c == 'A') {
 			r_idx = -1;
 		} else if (c == 's' || c == 'S') {

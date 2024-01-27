@@ -431,7 +431,8 @@ bool square_reveal_trap(struct chunk *c, struct loc grid, bool always,
 				msg("Вы нашли ловушку.");
 			else
 				// msg("You have found %d traps.", found_trap);
-				msg("Вы нашли %d ловушки.", found_trap);
+				msg("Вы нашли %d ловуш%s.", found_trap, 
+						PLURAL_RU(found_trap, "ку", "ки", "ек"));
 		}
 
 		/* Memorize */

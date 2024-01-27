@@ -577,7 +577,7 @@ static int project_player_handler_TIME(project_player_handler_context_t *context
 		/* Life draining */
 		int drain = 100 + (player->exp / 100) * z_info->life_drain_percent;
 		// msg("You feel your life force draining away!");
-		msg("Вы чувствуете, как из вас утекают жизненные силы!");
+		msg("Вы чувствуете как из вас утекают жизненные силы!");
 		player_exp_lose(player, drain, false);
 	} else if (!one_in_(5)) {
 		/* Drain some stats */
@@ -586,7 +586,7 @@ static int project_player_handler_TIME(project_player_handler_context_t *context
 		/* Drain all stats */
 		int i;
 		// msg("You're not as powerful as you used to be...");
-		msg("Вы не так могущественны, как были раньше...");
+		msg("Вы не так могущественны как были раньше...");
 
 		for (i = 0; i < STAT_MAX; i++)
 			player_stat_dec(player, i, false);
@@ -837,7 +837,7 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 
 	/* Monster or trap name (for damage) */
 	// char killer[80];
-	char killer[160];
+	char killer[180];
 
 	project_player_handler_f player_handler = player_handlers[typ];
 	project_player_handler_context_t context = {

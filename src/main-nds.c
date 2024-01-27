@@ -18,7 +18,7 @@
  *    and not for profit purposes provided that this copyright and statement
  *    are included in all such copies.  Other copyrights may also apply.
  */
- 
+
 #ifdef __3DS__
 /* We can't include 3ds.h because utf32_to_utf8 conflicts */
 #include <3ds/types.h>
@@ -494,6 +494,7 @@ static errr Term_text_nds(int x, int y, int n, int a, const wchar_t *s)
 
 	for (int i = 0; i < n; i++) {
 		// nds_draw_char(x + i, y, s[i], fg, bg);
+		// для русского языка
 		nds_draw_char(x + i, y, (s[i] & 0xff00) ? ((s[i] & 0xff) | 0x80) : s[i], fg, bg);
 	}
 

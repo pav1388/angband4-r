@@ -43,7 +43,7 @@ void history_display(void)
 	size_t max_item = history_get_list(player, &history_list_local);
 	int row, wid, hgt, page_size;
 	// char buf[120];
-	char buf[240];
+	char buf[256];
 	static size_t first_item = 0;
 	size_t i;
 	bool active = true;
@@ -135,7 +135,7 @@ void dump_history(ang_file *file)
 	size_t max_item = history_get_list(player, &history_list_local);
 	size_t i;
 	// char buf[120];
-	char buf[240];
+	char buf[256];
 
 	file_putf(file, "[Player history]\n");
 	file_putf(file, "      Turn   Depth  Note\n");

@@ -112,7 +112,7 @@ normal:polearm:Копьё
 normal:polearm:Короткое Копьё
 normal:polearm:Трезубец
 normal:polearm:Пика
-normal:polearm:Клюворылый Топор
+normal:polearm:Секира
 normal:polearm:Широкий Топор
 normal:polearm:Боевой Топор
 normal:polearm:Рыцарское Копьё

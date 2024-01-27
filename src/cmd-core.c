@@ -773,7 +773,7 @@ int cmd_get_string(struct command *cmd, const char *arg, const char **str,
 				   const char *initial, const char *title, const char *prompt)
 {
 	// char tmp[80] = "";
-	char tmp[160] = "";
+	char tmp[180] = "";
 
 	if (cmd_get_arg_string(cmd, arg, str) == CMD_OK)
 		return CMD_OK;

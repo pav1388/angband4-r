@@ -69,9 +69,9 @@ static void spell_menu_display(struct menu *m, int oid, bool cursor,
 	const struct class_spell *spell = spell_by_index(player, spell_index);
 
 	// char help[30];
-	char help[60];
+	char help[70];
 	// char out[80];
-	char out[160];
+	char out[180];
 
 	int attr;
 	const char *illegible = NULL;
@@ -288,7 +288,7 @@ static int spell_menu_select(struct menu *m, const char *noun, const char *verb)
 {
 	struct spell_menu_data *d = menu_priv(m);
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 
 	screen_save();
 	region_erase_bordered(&m->active);
@@ -343,7 +343,7 @@ void textui_book_browse(const struct object *obj)
 		spell_menu_destroy(m);
 	} else {
 		// msg("You cannot browse that.");
-		msg("Вы не можете просмотреть это.");
+		msg("Вы не можете просмотреть эту.");
 	}
 }
 

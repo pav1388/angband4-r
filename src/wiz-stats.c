@@ -2888,8 +2888,7 @@ void disconnect_stats(int nsim, bool stop_on_disconnect)
 
 		if (has_bad_start || has_dsc || has_dsc_from_stairs) {
 			if (disfile) {
-				// char label[100] = "Level with";
-				char label[200] = "Level with";
+				char label[100] = "Level with";
 
 				if (has_bad_start) {
 					(void) my_strcat(label,

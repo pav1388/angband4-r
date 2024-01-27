@@ -585,7 +585,7 @@ static bool try_load(ang_file *f, const struct blockinfo *local_loaders)
 
 /* XXX this isn't nice but it'll have to do */
 // static char savefile_desc[120];
-static char savefile_desc[240];
+static char savefile_desc[256];
 
 static int get_desc(void) {
 	rd_string(savefile_desc, sizeof savefile_desc);

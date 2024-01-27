@@ -721,7 +721,8 @@ static void display_group_member(struct menu *menu, int oid,
 static const char *recall_prompt(int oid)
 {
 	(void)oid;
-	return ", 'r' to recall";
+	// return ", 'r' to recall";
+	return ", 'r' вспомнить";
 }
 
 #define swap(a, b) (swapspace = (void*)(a)), ((a) = (b)), ((b) = swapspace)
@@ -1140,7 +1141,11 @@ static void display_monster(int col, int row, bool cursor, int oid)
 		a = COLOUR_VIOLET;
 
 	/* Display the name */
-	c_prt(attr, race->name, row, col);
+	// c_prt(attr, race->name, row, col);
+	// для русского языка
+	char mon_name[180];
+	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0);
+	c_prt(attr, mon_name, row, col);
 
 	/* Display symbol */
 	big_pad(66, row, a, c);
@@ -1270,7 +1275,7 @@ static void mon_summary(int gid, const int *item_list, int n, int top,
 			tkills += l_list[i].pkills;
 
 		// c_prt(COLOUR_L_BLUE, format("Creatures slain: %d/%d (in group/in total)", kills, tkills), row, col);
-		c_prt(COLOUR_L_BLUE, format("Убитые существа: %d/%d (в группе/в целом)", kills, tkills), row, col);
+		c_prt(COLOUR_L_BLUE, format("Существ убито: %d/%d (в группе/в целом)", kills, tkills), row, col);
 	}
 }
 
@@ -1501,7 +1506,7 @@ static void display_artifact(int col, int row, bool cursor, int oid)
 {
 	uint8_t attr = curs_attrs[CURS_KNOWN][(int)cursor];
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	get_artifact_display_name(o_name, sizeof o_name, oid);
 
@@ -1591,7 +1596,7 @@ static void desc_art_fake(int a_idx)
 	bool fake = false;
 
 	// char header[120];
-	char header[240];
+	char header[256];
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
@@ -1725,7 +1730,7 @@ static void do_cmd_knowledge_artifacts(const char *name, int row)
 	int *artifacts;
 	int a_count = 0;
 	// char title[40];
-	char title[80];
+	char title[100];
 
 	artifacts = mem_zalloc(z_info->a_max * sizeof(int));
 
@@ -1856,7 +1861,7 @@ static void do_cmd_knowledge_ego_items(const char *name, int row)
 	}
 
 	// display_knowledge("ego items", egoitems, e_count, obj_f, ego_f, NULL);
-	display_knowledge("эго предметы", egoitems, e_count, obj_f, ego_f, NULL);
+	display_knowledge("эго-предметы", egoitems, e_count, obj_f, ego_f, NULL);
 
 	mem_free(default_join);
 	mem_free(egoitems);
@@ -1876,7 +1881,7 @@ static void display_object(int col, int row, bool cursor, int oid)
 	const char *inscrip = get_autoinscription(kind, kind->aware);
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	/* Choose a color */
 	bool aware = (!kind->flavor || kind->aware);
@@ -1892,7 +1897,8 @@ static void display_object(int col, int row, bool cursor, int oid)
 
 	/* If the type is "tried", display that */
 	if (kind->tried && !aware)
-		my_strcat(o_name, " {tried}", sizeof(o_name));
+		// my_strcat(o_name, " {tried}", sizeof(o_name));
+		my_strcat(o_name, " {опроб}", sizeof(o_name));
 
 	/* Display the name */
 	c_prt(attr, o_name, row, col);
@@ -1924,7 +1930,7 @@ static void desc_obj_fake(int k_idx)
 	struct object *obj = object_new(), *known_obj = object_new();
 
 	// char header[120];
-	char header[240];
+	char header[256];
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
@@ -2039,8 +2045,10 @@ static const char *o_xtra_prompt(int oid)
 {
 	struct object_kind *kind = objkind_byid(oid);
 
-	const char *no_insc = ", 's' to toggle ignore, 'r'ecall, '{'";
-	const char *with_insc = ", 's' to toggle ignore, 'r'ecall, '{', '}'";
+	// const char *no_insc = ", 's' to toggle ignore, 'r'ecall, '{'";
+	const char *no_insc = ", 's' игнорирование, 'r' вспомнить, '{'";
+	// const char *with_insc = ", 's' to toggle ignore, 'r'ecall, '{', '}'";
+	const char *with_insc = ", 's' игнорирование, 'r' вспомнить, '{', '}'";
 
 	if (!kind) return NULL;
 
@@ -2082,14 +2090,14 @@ static void o_xtra_act(struct keypress ch, int oid)
 	} else if (ch.code == '{') {
 		/* Inscribe */
 		// char text[80] = "";
-		char text[160] = "";
+		char text[180] = "";
 
 		/* Avoid the prompt getting in the way */
 		screen_save();
 
 		/* Prompt */
 		// prt("Inscribe with: ", 0, 0);
-		prt("Подписано с: ", 0, 0);
+		prt("Подписано: ", 0, 0);
 
 		/* Default note */
 		if (k->note_aware || k->note_unaware)
@@ -2226,8 +2234,10 @@ static void rune_lore(int oid)
  */
 static const char *rune_xtra_prompt(int oid)
 {
-	const char *no_insc = ", 'r'ecall, '{'";
-	const char *with_insc = ", 'r'ecall, '{', '}'";
+	// const char *no_insc = ", 'r'ecall, '{'";
+	const char *no_insc = ", 'r' вспомнить, '{'";
+	// const char *with_insc = ", 'r'ecall, '{', '}'";
+	const char *with_insc = ", 'r' вспомнить, '{', '}'";
 
 	/* Appropriate prompt */
 	return rune_note(oid) ? with_insc : no_insc;
@@ -2244,14 +2254,14 @@ static void rune_xtra_act(struct keypress ch, int oid)
 	} else if (ch.code == '{') {
 		/* Inscribe */
 		// char note_text[80] = "";
-		char note_text[160] = "";
+		char note_text[180] = "";
 
 		/* Avoid the prompt getting in the way */
 		screen_save();
 
 		/* Prompt */
 		// prt("Inscribe with: ", 0, 0);
-		prt("Подписано с: ", 0, 0);
+		prt("Подписано: ", 0, 0);
 
 		/* Default note */
 		if (rune_note(oid))
@@ -2295,7 +2305,7 @@ static void do_cmd_knowledge_runes(const char *name, int row)
 	int count = 0;
 	int i;
 	// char buf[30];
-	char buf[60];
+	char buf[80];
 
 	runes = mem_zalloc(rune_max * sizeof(int));
 
@@ -2308,7 +2318,7 @@ static void do_cmd_knowledge_runes(const char *name, int row)
 	}
 
 	// strnfmt(buf, sizeof(buf), "runes (%d unknown)", rune_max - count);
-	strnfmt(buf, sizeof(buf), "руны (%d не знаю)", rune_max - count);
+	strnfmt(buf, sizeof(buf), "руны (%d неизвестно)", rune_max - count);
 
 	// display_knowledge(buf, runes, count, rune_var_f, rune_f, "Inscribed");
 	display_knowledge(buf, runes, count, rune_var_f, rune_f, "Подписано");
@@ -2621,7 +2631,8 @@ static void trap_lore(int oid)
 static const char *trap_prompt(int oid)
 {
 	(void)oid;
-	return ", 't' to cycle lighting";
+	// return ", 't' to cycle lighting";
+	return ", 't' переключ. освещение";
 }
 
 /**
@@ -3736,7 +3747,7 @@ static void reset_main_knowledge_menu(void)
 	 * 4 and 6 to go to the previous or next menu.
 	 */
 	if (scount > 0) {
-		// const char digits[] = "123456789";
+		// const char digits[] = "123456789"; // откл. шорткаты цифр в меню знаний
 		const char digits[] = "";
 		int kcount = 1 + ((scount > 9) ? 9 : scount);
 
@@ -3889,7 +3900,7 @@ void do_cmd_messages(void)
 	int wid, hgt;
 
 	// char shower[80] = "";
-	char shower[160] = "";
+	char shower[180] = "";
 
 	/* Total messages */
 	n = messages_num();
@@ -3949,7 +3960,8 @@ void do_cmd_messages(void)
 		/* Display header */
 		// prt(format("Message recall (%d-%d of %d), offset %d",
 		prt(format("Воспоминания (%d-%d из %d), сдвиг %d симв",
-				   i, i + j - 1, n, q), 0, 0);
+				   // i, i + j - 1, n, q), 0, 0);
+				   i, i + j - 1, n, q / 2), 0, 0);
 
 		/* Display prompt (not very informative) */
 		if (utf8_strlen(shower))
@@ -4001,13 +4013,15 @@ void do_cmd_messages(void)
 				case ARROW_LEFT:
 				case '4':
 				case 'h':
-					q = (q >= wid / 2) ? (q - wid / 2) : 0;
+					// q = (q >= wid / 2) ? (q - wid / 2) : 0;
+					q = (q >= wid) ? (q - wid) : 0;
 					break;
 
 				case ARROW_RIGHT:
 				case '6':
 				case 'l':
-					q = q + wid / 2;
+					// q = q + wid / 2;
+					q = q + wid;
 					break;
 
 				case ARROW_UP:
@@ -4073,7 +4087,7 @@ void do_cmd_inven(void)
 
 	if (player->upkeep->inven[0] == NULL) {
 		// msg("You have nothing in your inventory.");
-		msg("У вас нет ничего в инвентаре.");
+		msg("У вас ничего нет в инвентаре.");
 		return;
 	}
 
@@ -4254,9 +4268,9 @@ void do_cmd_locate(void)
 	/* Show panels until done */
 	while (1) {
 		// char tmp_val[80];
-		char tmp_val[160];
+		char tmp_val[180];
 		// char out_val[160];
-		char out_val[320];
+		char out_val[350];
 
 		/* Assume no direction */
 		int dir = 0;
@@ -4418,9 +4432,11 @@ static void lookup_symbol(char sym, char *buf, size_t max)
 
 	/* No matches */
         if (isprint(sym)) {
-			strnfmt(buf, max, "%c - Unknown Symbol.", sym);
+			// strnfmt(buf, max, "%c - Unknown Symbol.", sym);
+			strnfmt(buf, max, "%c - Неизвестный Символ.", sym);
         } else {
-			strnfmt(buf, max, "? - Unknown Symbol.");
+			// strnfmt(buf, max, "? - Unknown Symbol.");
+			strnfmt(buf, max, "? - Неизвестный Символ.");
         }
 	
 	return;
@@ -4511,7 +4527,7 @@ void do_cmd_query_symbol(void)
 
 	/* Prompt */
 	// put_str("Recall details? (y/k/n): ", 0, 40);
-	put_str("Вспомнить детали? (y/k/n): ", 0, 40);
+	put_str("Вспомнить детали? (enter, y/k/n): ", 0, 40);
 
 	/* Query */
 	query = inkey();
@@ -4523,7 +4539,7 @@ void do_cmd_query_symbol(void)
 	if (query.code == 'k') {
 		/* Sort by kills (and level) */
 		sort(who, num, sizeof(*who), cmp_pkill);
-	} else if (query.code == 'y' || query.code == 'p'|| query.code == KC_ENTER) { // y=enter
+	} else if (query.code == 'y' || query.code == 'p' || query.code == KC_ENTER) { // y=enter
 		/* Sort by level; accept 'p' as legacy */
 		sort(who, num, sizeof(*who), cmp_level);
 	} else {

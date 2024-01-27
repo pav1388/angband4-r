@@ -988,6 +988,7 @@ static size_t prt_state(int row, int col)
 
 	char text[16] = "";
 
+
 	/* Displayed states are resting and repeating */
 	if (player_is_resting(player)) {
 		int i;
@@ -2690,7 +2691,7 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 		/* Get the object */
 		struct object *obj = floor_list[0];
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 
 		if (!can_pickup)
 			// p = "have no room for";

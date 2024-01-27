@@ -188,7 +188,7 @@ void do_cmd_inscribe(struct command *cmd)
 
 	char prompt[1024];
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	if (!player_get_resume_normal_shape(player, cmd)) {
 		return;
@@ -279,7 +279,7 @@ void do_cmd_wield(struct command *cmd)
 {
 	struct object *equip_obj;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	const char *act;
 
 	unsigned n;
@@ -403,7 +403,7 @@ void do_cmd_drop(struct command *cmd)
 	/* Cannot remove stickied items */
 	if (object_is_equipped(player->body, obj) && !obj_can_takeoff(obj)) {
 		// msg("Hmmm, it seems to be stuck.");
-		msg("Хммм, кажется он застрял.");
+		msg("Хммм, кажется что-то застряло.");
 		return;
 	}
 
@@ -707,7 +707,7 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 			 * identified items of all kinds.
 			 */
 			// char name[80];
-			char name[160];
+			char name[180];
 
 			object_desc(name, sizeof(name), work_obj,
 				ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
@@ -872,7 +872,7 @@ void do_cmd_zap_rod(struct command *cmd)
 
 	if (!obj_can_zap(obj)) {
 		// msg("That rod is still charging.");
-		msg("Жезл все ещё заряжается.");
+		msg("Жезл всё ещё заряжается.");
 		return;
 	}
 

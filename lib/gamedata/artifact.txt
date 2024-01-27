@@ -1129,7 +1129,7 @@ desc: колдовскими путами.
 
 # name:of Théoden
 name:Теодена
-base-object:polearm:Клюворылый Топор
+base-object:polearm:Секира
 level:20
 weight:180
 cost:40000
@@ -1146,7 +1146,7 @@ desc: а планы ваших врагов окажутся открытыми 
 
 # name:of Húrin
 name:Хурина
-base-object:polearm:Клюворылый Топор
+base-object:polearm:Секира
 level:20
 weight:180
 cost:90000

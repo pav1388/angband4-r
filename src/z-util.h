@@ -54,37 +54,42 @@ extern void (*quit_aux)(const char *);
  * ------------------------------------------------------------------------
  * Available Functions
  * ------------------------------------------------------------------------ */
-
-
-/**
- * Return "s" (or not) depending on whether n is singular.
- */
-#define PLURAL(n)				((n) == 1 ? "" : "s")
-
-
+ 
 /**
  * Для русского языка
  */
+
+//форматирование имени монстра используя функцию форматирования имени предмета
+#define mon_desc_name_format(buf, max, end, fmt, pluralise)		obj_desc_name_format((buf), (max), (end), (fmt), 0, (pluralise))
+
+// выбор окончания слова в зависимости от числительного
 #define PLURAL_RU(n, a, b, c)	((((n) % 10) == 1) && (((n) % 100) != 11) ? (a) : (((n) % 10) > 1) && (((n) % 10) < 5) && (((n) % 100) != 12) && (((n) % 100) != 13) && (((n) % 100) != 14) ? (b) : (c))
 
+// перевод нестандартных причин смерти, чтобы не ломалась логика игры
 #define CAUSE_OF_DEATH(a)	(streq((a), "starvation") ? "голодания" : streq((a), "poison") ? "отравления" : streq((a), "a fatal wound") ? "смертельного ранения" : streq((a), "Ripe Old Age") ? "Почтенного Возраста" : (a))
 
+// падежы, части речи, рода и т.д.
 #define C_IMEN		0
 #define C_RODIT		1
 #define C_DAT		2
 #define C_VINIT		3
 #define C_TVORIT	4
 #define C_PREDL		5
-#define W_PART		0
-#define W_GEN		1
-#define W_DECL		2
-#define W_ALTER		3
-#define W_PART_NOUN	0
-#define W_PART_ADJ	1
-#define W_GEN_NEUT	0
-#define W_GEN_MALE	1
-#define W_GEN_FEM	2
+#define C_CUSTOM	6
+#define PART		0
+#define GENDER		1
+#define DECL		2
+#define ALTERN		3
+#define NOUN_INA	1
+#define NOUN_ANI	2
+#define ADJ_INA		3
+#define ADJ_ANI		4
+#define NEUTER		0
+#define MALE		1
+#define FEMALE		2
 
+// возможные окончания
+// строгий порядок как в obj-desc.c ending_chars[]
 #define	E_		0
 #define	E_A		1
 #define	E_AM	2
@@ -146,6 +151,13 @@ extern void (*quit_aux)(const char *);
 #define	E_YAMI	58
 #define	E_YAH	59
 #define	E_YAYA	60
+#define	E_TOTAL	61
+
+
+/**
+ * Return "s" (or not) depending on whether n is singular.
+ */
+#define PLURAL(n)				((n) == 1 ? "" : "s")
 
 
 /**

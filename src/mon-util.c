@@ -723,7 +723,7 @@ void become_aware(struct chunk *c, struct monster *mon)
 		if (mon->mimicked_obj) {
 			struct object *obj = mon->mimicked_obj;
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
 
 			/* Print a message */
@@ -1016,11 +1016,14 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 	int32_t div, new_exp, new_exp_frac;
 	struct monster_lore *lore = get_lore(mon->race);
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	// char buf[80];
-	char buf[160];
-	int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0);
-
+	char buf[180];
+	// int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0);
+	
+	// винит. падеж для имени монстра, ед.ч. mon_desc_name_format
+	int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0) | MDESC_VINIT;
+	
 	/* Assume normal death sound */
 	int soundfx = MSG_KILL;
 
@@ -1042,7 +1045,6 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 			soundfx = MSG_KILL_UNIQUE;
 	}
 
-	my_strcap(m_name);
 	/* Death message */
 	if (note) {
 		if (utf8_strlen(note) <= 1) {
@@ -1052,6 +1054,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 			notice_stuff(p);
 
 			/* Death by Missile attack */
+			my_strcap(m_name);
 			msgt(soundfx, "%s%s", m_name, note);
 		}
 	} else {
@@ -1069,7 +1072,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 		else
 			/* Death by Physical attack -- living monster */
 			// msgt(soundfx, "You have slain %s.", m_name);
-			msgt(soundfx, "Вы убили %s.", m_name);
+			msgt(soundfx, "Вы сразили %s.", m_name);
 	}
 
 	/* Player level */
@@ -1093,7 +1096,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 	/* When the player kills a Unique, it stays dead */
 	if (monster_is_unique(mon)) {
 		// char unique_name[80];
-		char unique_name[160];
+		char unique_name[180];
 		assert(mon->original_race == NULL);
 		mon->race->max_num = 0;
 
@@ -1106,7 +1109,7 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 
 		/* Log the slaying of a unique */
 		// strnfmt(buf, sizeof(buf), "Killed %s", unique_name);
-		strnfmt(buf, sizeof(buf), "Убит %s", unique_name);
+		strnfmt(buf, sizeof(buf), "Вы убили %s", unique_name);
 		history_add(p, buf, HIST_SLAY_UNIQUE);
 	}
 
@@ -1435,7 +1438,7 @@ void steal_monster_item(struct monster *mon, int midx)
 	struct monster_lore *lore = get_lore(mon->race);
 	struct monster *thief = NULL;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 
 	/* Get the target monster name (or "it") */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
@@ -1495,7 +1498,7 @@ void steal_monster_item(struct monster *mon, int midx)
 				   or if inventory already full to prevent pack overflow */
 				if (ignore_item_ok(player, obj) || !inven_carry_okay(obj)) {
 					// char o_name[80];
-					char o_name[160];
+					char o_name[180];
 					object_desc(o_name, sizeof(o_name), obj,
 						ODESC_PREFIX | ODESC_FULL,
 						player);
@@ -1515,7 +1518,7 @@ void steal_monster_item(struct monster *mon, int midx)
 		} else if (monster_reaction / 2 < steal_skill) {
 			/* Decent attempt, at least */
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 
 			object_see(player, obj);
 			if (tval_is_money(obj)) {
@@ -1551,7 +1554,7 @@ void steal_monster_item(struct monster *mon, int midx)
 	} else {
 		/* Get the thief details */
 		// char t_name[80];
-		char t_name[160];
+		char t_name[180];
 		thief = cave_monster(cave, midx);
 		assert(thief);
 		monster_desc(t_name, sizeof(t_name), thief, MDESC_STANDARD);
@@ -1668,7 +1671,7 @@ bool monster_change_shape(struct monster *mon)
 	/* Print a message immediately, update visuals */
 	if (monster_is_obvious(mon)) {
 		// char m_name[80];
-		char m_name[160];
+		char m_name[180];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 		// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 		msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
@@ -1704,7 +1707,7 @@ bool monster_revert_shape(struct monster *mon)
 	if (mon->original_race) {
 		if (monster_is_obvious(mon)) {
 			// char m_name[80];
-			char m_name[160];
+			char m_name[180];
 			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 			// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 			msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");

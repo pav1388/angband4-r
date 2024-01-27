@@ -1404,7 +1404,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 	obj = square_object(cave, new);
 	while (obj) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		bool safe = obj->artifact ? true : false;
 		struct object *next = obj->next;
 
@@ -1522,7 +1522,7 @@ static void monster_turn(struct monster *mon)
 	enum monster_stagger stagger;
 	bool tracking = false;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 
 	/* Get the monster name */
 	monster_desc(m_name, sizeof(m_name), mon,
@@ -1740,7 +1740,7 @@ static void monster_reduce_sleep(struct monster *mon)
 	/* Aggravation */
 	if (player_of_has(player, OF_AGGRAVATE)) {
 		// char m_name[80];
-		char m_name[160];
+		char m_name[180];
 
 		/* Wake the monster, make it aware */
 		monster_wake(mon, false, 100);

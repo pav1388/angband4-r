@@ -319,8 +319,7 @@ const char *chest_trap_name(const struct object *obj)
 		}
 	}
 
-	// return "empty";
-	return "пусто";
+	return "empty";
 }
 
 /**

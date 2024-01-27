@@ -93,6 +93,7 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 							  prefix,
 							  list->total_monsters[section],
 							  others,
+							  // PLURAL(list->total_monsters[section]),
 							  PLURAL_RU(list->total_monsters[section], "а", "ов", "ов"),
 							  punctuation);
 
@@ -135,7 +136,7 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 
 		if (asleep_in_section > 0 && count_in_section > 1)
 			// strnfmt(asleep, sizeof(asleep), " (%d asleep)", asleep_in_section);
-			strnfmt(asleep, sizeof(asleep), " (%d спит)", asleep_in_section);
+			strnfmt(asleep, sizeof(asleep), " (%d спят)", asleep_in_section);
 		else if (asleep_in_section == 1 && count_in_section == 1)
 			// strnfmt(asleep, sizeof(asleep), " (asleep)");
 			strnfmt(asleep, sizeof(asleep), " (спит)");
@@ -220,7 +221,7 @@ static bool monster_list_format_special(const monster_list_t *list, textblock *t
 	if (player->timed[TMD_IMAGE] > 0) {
 		/* Hack - message needs newline to calculate width properly. */
 		// const char *message = "Your hallucinations are too wild to see things clearly.\n";
-		const char *message = "Ваши галлюцинации слишком дикие, чтобы видеть всё ясно.\n";
+		const char *message = "Ваши галлюцинации слишком дикие, чтобы смотреть ясно.\n";
 
 		if (max_height_result != NULL)
 			*max_height_result = 1;
@@ -444,7 +445,7 @@ void monster_list_show_interactive(int height, int width)
 		region_erase_bordered(&r);
 
 		// char buf[300];
-		char buf[450];
+		char buf[650];
 
 		if (sort_exp) {
 			// my_strcpy(buf, "Press 'x' to turn OFF 'sort by exp'", sizeof(buf));

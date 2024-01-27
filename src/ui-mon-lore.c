@@ -59,9 +59,14 @@ void lore_title(textblock *tb, const struct monster_race *race)
 			optional_attr = COLOUR_VIOLET;
 		}
 	}
-	// ADDD Capitalise the first letter of race->name
+	
 	/* Dump the name and then append standard attr/char info */
-	textblock_append(tb, "%s", race->name);
+	// textblock_append(tb, "%s", race->name);
+	// для русского языка
+	char mon_name[180];
+	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0);
+	my_strcap(mon_name);
+	textblock_append(tb, "%s", mon_name);
 
 	textblock_append(tb, " ('");
 	textblock_append_pict(tb, standard_attr, standard_char);

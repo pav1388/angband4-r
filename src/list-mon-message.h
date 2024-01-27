@@ -64,7 +64,7 @@ MON_MSG(MORE_CONFUSED,		MSG_GENERIC,	false,	"выгляд[ит|ят] сильн�
 // MON_MSG(CONFUSED,			MSG_GENERIC,	false,	"look[s] confused.")
 MON_MSG(CONFUSED,			MSG_GENERIC,	false,	"выгляд[ит|ят] растерянн[о|ыми].")			// -2-"" "" ""
 // MON_MSG(NOT_CONFUSED,		MSG_GENERIC,	false,	"[is|are] no longer confused.")
-MON_MSG(NOT_CONFUSED,		MSG_GENERIC,	false,	"больше не растерян[|ы].")					// +1-"" "а" "о"
+MON_MSG(NOT_CONFUSED,		MSG_GENERIC,	false,	"больше не растерян[|ы.]")					// +1-"" "а" "о"
 // MON_MSG(MORE_SLOWED,		MSG_GENERIC,	false,	"look[s] more slowed.")
 MON_MSG(MORE_SLOWED,		MSG_GENERIC,	false,	"выгляд[ит|ят] сильно медлительн[о|ыми].")	// -2-"" "" ""
 // MON_MSG(SLOWED,				MSG_GENERIC,	false,	"look[s] slowed.")
@@ -114,7 +114,7 @@ MON_MSG(UNHARMED,			MSG_GENERIC,	false,	"невредимым[|ы.]")							// +
 // MON_MSG(APPEAR,			MSG_GENERIC,	false,	"appear[s]!")
 MON_MSG(APPEAR,			MSG_GENERIC,	false,	"появля[ется|ются]!")
 // MON_MSG(HIT_AND_RUN,		MSG_GENERIC,	true,	"There is a puff of smoke!")
-MON_MSG(HIT_AND_RUN,		MSG_GENERIC,	true,	"Растворяется в облаке дыма!")
+MON_MSG(HIT_AND_RUN,		MSG_GENERIC,	true,	"Воришка растворяется в облаке дыма!")
 /* Dummy messages for monster pain - we use edit file info instead. */
 MON_MSG(95,					MSG_GENERIC,	false,	"")
 MON_MSG(75,					MSG_GENERIC,	false,	"")

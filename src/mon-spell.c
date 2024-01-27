@@ -186,7 +186,7 @@ static void spell_message(struct monster *mon,
 			switch (spell_tag_lookup(tag)) {
 				case SPELL_TAG_NAME: {
 					// char m_name[80];
-					char m_name[160];
+					char m_name[180];
 					int mdesc_mode = (MDESC_IND_HID |
 						MDESC_PRO_HID);
 
@@ -206,7 +206,7 @@ static void spell_message(struct monster *mon,
 
 				case SPELL_TAG_PRONOUN: {
 					// char m_poss[80];
-					char m_poss[160];
+					char m_poss[180];
 
 					/* Get the monster possessive ("his"/"her"/"its") */
 					monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
@@ -218,7 +218,7 @@ static void spell_message(struct monster *mon,
 
 				case SPELL_TAG_TARGET: {
 					// char m_name[80];
-					char m_name[160];
+					char m_name[180];
 					if (mon->target.midx > 0) {
 						int mdesc_mode = MDESC_TARG;
 

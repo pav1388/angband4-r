@@ -182,7 +182,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 	if (get_curse(&index, obj, dice_string)) {
 		struct curse_data curse = obj->curses[index];
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 
 		if (curse.power >= 100) {
 			/* Curse is permanent */
@@ -222,7 +222,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 		} else {
 			/* Non-destructive failure */
 			//msg("The removal fails.");
-			msg("Не критичные повреждение.");
+			msg("Не критичные повреждения.");
 		}
 	} else {
 		return false;
@@ -369,7 +369,7 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 	struct object *obj;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	const char *q, *s;
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
@@ -379,7 +379,7 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 /* 	q = "Enchant which item? ";
 	s = "You have nothing to enchant."; */
 	q = "Какой предмет зачаровать? ";
-	s = "Вам нечего зачаровывать.";
+	s = "Вам нечего зачаровать.";
 	if (cmd) {
 		if (cmd_get_item(cmd, "tgtitem", &obj, q, s, filter,
 				itemmode)) {
@@ -397,7 +397,7 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 		// (object_is_carried(player, obj) ? "Your" : "The"), o_name,
 		(object_is_carried(player, obj) ? "Ваши" : "Ваш"), o_name,
 				// ((obj->number > 1) ? "" : "s"));
-			   ((obj->number > 1) ? "ит" : "ятся"));
+			   ((obj->number > 1) ? "ятся" : "ит"));
 
 	/* Enchant */
 	if (num_dam && enchant(obj, num_hit, ENCH_TOBOTH)) okay = true;
@@ -432,7 +432,7 @@ static void brand_object(struct object *obj, const char *name)
 	/* You can never modify artifacts, ego items or worthless items */
 	if (obj && obj->kind->cost && !obj->artifact && !obj->ego) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		// char brand[20];
 		char brand[60];
 
@@ -443,7 +443,7 @@ static void brand_object(struct object *obj, const char *name)
 		/* Describe */
 		//msg("The %s %s surrounded with an aura of %s.", o_name,
 		msg("%s окружён%s аурой %s.", o_name,
-			(obj->number > 1) ? "" : "ы", name);
+			(obj->number > 1) ? "ы" : "", name);
 
 		/* Get the right ego type for the object */
 		for (i = 0; i < z_info->e_max; i++) {
@@ -968,7 +968,7 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 	int drain = effect_calculate_value(context, false);
 	bool monster = context->origin.what != SRC_TRAP;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	struct monster *mon = NULL;
 	struct monster *t_mon = monster_target_monster(context);
 	struct loc decoy = cave_find_decoy(cave);
@@ -1155,7 +1155,7 @@ bool effect_handler_RECALL(effect_handler_context_t *context)
 		if (player->depth > 0) {
 			if (player->depth != player->max_depth) {
 				//if (get_check("Set recall depth to current depth? ")) {
-				if (get_check("Установить текущий этаж для перемещения? ")) {
+				if (get_check("Установить текущий этаж как этаж для перемещения? ")) {
 					player->recall_depth = player->max_depth = player->depth;
 				}
 			} else {
@@ -1714,7 +1714,7 @@ static bool detect_stuff(effect_handler_context_t *context,
 			square_know_pile(cave, grid, pred);
 		}
 	}
-	
+
 	return have_stuff;
 }
 
@@ -1890,7 +1890,7 @@ bool effect_handler_DETECT_LIVING_MONSTERS(effect_handler_context_t *context)
 	else if (context->aware)
 		//msg("You sense no life.");
 		msg("Вы не чувствуете жизнь!");
-		
+
 	context->ident = true;
 	return true;
 }
@@ -2072,7 +2072,7 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 	int i, count = 0;
 	struct object *obj;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	/* Count slots */
 	for (i = 0; i < player->body.count; i++) {
@@ -2399,7 +2399,7 @@ bool effect_handler_SUMMON(effect_handler_context_t *context)
 		// msgt(message_type, "You hear %s appear nearby.",
 		msgt(message_type, "Вы слышите, как %s появляется рядом.",
 			 // (count > 1 ? "many things" : "something"));
-			 (count > 1 ? "много всего" : "что-то"));
+			 (count > 1 ? "много чего-то" : "что-то"));
 
 	return true;
 }
@@ -2541,7 +2541,7 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 		/* Probe visible monsters */
 		if (monster_is_visible(mon)) {
 			// char m_name[80];
-			char m_name[160];
+			char m_name[180];
 
 			/* Start the message */
 			//if (!probe) msg("Probing...");
@@ -2713,7 +2713,7 @@ bool effect_handler_TELEPORT(effect_handler_context_t *context)
 	/* Report failure (very unlikely) */
 	if (!num_spots) {
 		if (is_player) {
-			//msg("Failed to find teleport destination!");
+			// msg("Failed to find teleport destination!");
 			msg("Место назначения для телепортации не найдено!");
 		} else {
 			/*
@@ -2817,7 +2817,7 @@ bool effect_handler_TELEPORT_TO(effect_handler_context_t *context)
 
 		/* Check for a no teleport grid */
 		if (square_isno_teleport(cave, start)) {
-			//msg("Teleportation forbidden!");
+			// msg("Teleportation forbidden!");
 			msg("Телепортация запрещена!");
 			return true;
 		}
@@ -2825,7 +2825,7 @@ bool effect_handler_TELEPORT_TO(effect_handler_context_t *context)
 		/* Check for a no teleport curse */
 		if (player_of_has(player, OF_NO_TELEPORT)) {
 			equip_learn_flag(player, OF_NO_TELEPORT);
-			//msg("Teleportation forbidden!");
+			// msg("Teleportation forbidden!");
 			msg("Телепортация запрещена!");
 			return true;
 		}
@@ -2935,7 +2935,7 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 
 	/* Check for a no teleport grid */
 	if (square_isno_teleport(cave, player->grid)) {
-		//msg("Teleportation forbidden!");
+		// msg("Teleportation forbidden!");
 		msg("Телепортация запрещена!");
 		return true;
 	}
@@ -2943,7 +2943,7 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 	/* Check for a no teleport curse */
 	if (player_of_has(player, OF_NO_TELEPORT)) {
 		equip_learn_flag(player, OF_NO_TELEPORT);
-		//msg("Teleportation forbidden!");
+		// msg("Teleportation forbidden!");
 		msg("Телепортация запрещена!");
 		return true;
 	}
@@ -2951,7 +2951,7 @@ bool effect_handler_TELEPORT_LEVEL(effect_handler_context_t *context)
 	/* Resist hostile teleport */
 	if (context->origin.what == SRC_MONSTER &&
 			player_resists(player, ELEM_NEXUS)) {
-		//msg("You resist the effect!");
+		// msg("You resist the effect!");
 		msg("Вы сопротивляетесь эффекту!");
 		return true;
 	}
@@ -3084,7 +3084,7 @@ bool effect_handler_LIGHT_LEVEL(effect_handler_context_t *context)
 {
 	bool full = context->value.base ? true : false;
 	if (full)
-		//msg("An image of your surroundings forms in your mind...");
+		// msg("An image of your surroundings forms in your mind...");
 		msg("В вашем сознании формируется образ окружения...");
 	wiz_light(cave, player, full);
 	context->ident = true;
@@ -3095,7 +3095,7 @@ bool effect_handler_DARKEN_LEVEL(effect_handler_context_t *context)
 {
 	bool full = context->value.base ? true : false;
 	if (full)
-		//msg("A great blackness rolls through the dungeon...");
+		// msg("A great blackness rolls through the dungeon...");
 		msg("В подземелье воцаряется кромешная тьма...");
 	wiz_dark(cave, player, full);
 	context->ident = true;
@@ -3140,7 +3140,7 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 	/* Check for monster targeting another monster */
 	if (t_mon) {
 		// char m_name[80];
-		char m_name[160];
+		char m_name[180];
 		target = t_mon->grid;
 		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG);
 		if (message) {
@@ -3192,7 +3192,7 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 	struct object *obj;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	/* Curse the body armor */
 	obj = equipped_item_by_slot_name(player, "body");
@@ -3254,7 +3254,7 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 	struct object *obj;
 
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	/* Curse the weapon */
 	obj = equipped_item_by_slot_name(player, "weapon");
@@ -3341,7 +3341,7 @@ bool effect_handler_BRAND_AMMO(effect_handler_context_t *context)
 
 	/* Select the brand */
 	const char *brand = one_in_(3) ? "Flame" : (one_in_(2) ? "Frost" : "Venom");
-	
+
 	context->ident = true;
 
 	/* Get an item */
@@ -3593,7 +3593,7 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 	/* Explicit saving throw */
 	if (randint1(player->lev) < randint1(mon->race->level)) {
 		// char m_name[80];
-		char m_name[160];
+		char m_name[180];
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
 		//msg("%s resists your command!", m_name);
 		msg("%s сопротивляется вашим приказам!", m_name);

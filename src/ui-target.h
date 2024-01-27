@@ -44,8 +44,8 @@
 /**
  * Size of the array that is used for object names during targeting.
  */
-// #define TARGET_OUT_VAL_SIZE 256
-#define TARGET_OUT_VAL_SIZE 400
+#define TARGET_OUT_VAL_SIZE 256 // FFFIX
+// #define TARGET_OUT_VAL_SIZE 400
 
 int target_dir(struct keypress ch);
 int target_dir_allow(struct keypress ch, bool allow_5);

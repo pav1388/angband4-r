@@ -44,7 +44,7 @@ int inven_damage(struct player *p, int type, int cperc)
 	int j, k, amt;
 	struct object *obj = p->gear;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	bool damage;
 
 	/* No chance means no damage */
@@ -561,7 +561,7 @@ bool project_o(struct source origin, int r, struct loc grid, int dam, int typ,
 		/* Attempt to destroy the object */
 		if (do_kill) {
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 
 			/* Effect observed */
 			if (obj->known && !ignore_item_ok(player, obj) &&

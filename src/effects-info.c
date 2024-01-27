@@ -54,7 +54,7 @@ static void format_dice_string(const random_value *v, int multiplier,
 	if (v->dice && v->base) {
 		if (multiplier == 1) {
 			strnfmt(dice_string, len, "%d+%dd%d", v->base, v->dice,
-			// strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice,
+			// strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice, // FFFIX
 				v->sides);
 		} else {
 			strnfmt(dice_string, len, "%d+%d*(%dd%d)",
@@ -210,8 +210,8 @@ static textblock *create_nested_effect_description(const struct effect *e,
 	if (same_ind && base_descs[first_ind].efinfo_flag == EFINFO_BREATH &&
 		same_dice && same_other) {
 		/* Concatenate the list of possible elements. */
-		// char breaths[120], dice_string[20], desc[200];
-		char breaths[350], dice_string[20], desc[500];
+		char breaths[120], dice_string[20], desc[200]; // FFFIX
+		// char breaths[350], dice_string[20], desc[500];
 		int ivalid;
 
 		strnfmt(breaths, sizeof(breaths), "%s",
@@ -326,8 +326,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 {
 	textblock *tb = NULL;
 	int nadded = 0;
-	// char desc[250];
-	char desc[1024];
+	char desc[250]; //FFFIX
+	// char desc[1024];
 	random_value value = { 0, 0, 0, 0 };
 	bool value_set = false;
 
@@ -396,8 +396,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 		case EFINFO_HEAL:
 			/* Healing sometimes has a minimum percentage. */
 			{
-				// char min_string[50];
-				char min_string[100];
+				char min_string[50]; //FFFIX
+				// char min_string[100];
 
 				if (value.m_bonus) {
 					strnfmt(min_string, sizeof(min_string),
@@ -468,8 +468,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 			 * monsters.
 			 */
 			{
-				// char dist[32];
-				char dist[80];
+				char dist[32]; //FFFIX
+				// char dist[80];
 
 				if (value.m_bonus) {
 					strnfmt(dist, sizeof(dist),

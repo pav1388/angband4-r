@@ -594,7 +594,7 @@ void clear_from(int row)
 bool askfor_aux_keypress(char *buf, size_t buflen, size_t *curs, size_t *len,
 						 struct keypress keypress, bool firsttime)
 {
-	size_t ulen = strlen(buf);
+	size_t ulen = utf8_strlen(buf); // FFFIX strlen ? 
 
 	switch (keypress.code)
 	{
@@ -986,8 +986,7 @@ static bool get_name_keypress(char *buf, size_t buflen, size_t *curs,
 		case '*':
 		{
 			*len = player_random_name(buf, buflen);
-			// *curs = 0;
-			*curs = *len;
+			*curs = 0;
 			result = false;
 			break;
 		}
@@ -1076,8 +1075,7 @@ static int handle_name_mouse(char *buf, size_t buflen, size_t *curs,
 
 	case ACT_CTX_NAME_RANDOM:
 		*len = player_random_name(buf, buflen);
-		// *curs = 0;
-		*curs = *len;
+		*curs = 0;
 		break;
 
 	case ACT_CTX_NAME_CLEAR:
@@ -1109,8 +1107,7 @@ bool get_character_name(char *buf, size_t buflen)
 	prt("Введите имя для вашего персонажа (* случайное имя): ", 0, 0);
 
 	/* Save the player name */
-	// my_strcpy(buf, player->full_name, buflen);
-	player_random_name(buf, buflen);
+	my_strcpy(buf, player->full_name, buflen);
 
 	/* Ask the user for a string */
 	res = askfor_aux_ext(buf, buflen, get_name_keypress, handle_name_mouse);
@@ -1167,9 +1164,9 @@ static int textui_get_quantity(const char *prompt, int max)
 	/* Prompt if needed */
 	if (max != 1) {
 		// char tmp[80];
-		char tmp[160];
+		char tmp[180];
 		// char buf[80];
-		char buf[160];
+		char buf[180];
 
 		/* Build a prompt if needed */
 		if (!prompt) {
@@ -1217,7 +1214,7 @@ static bool textui_get_check(const char *prompt)
 	ui_event ke;
 
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 
 	/*
 	 * Hack -- Build a "useful" prompt; do this first so prompts built by
@@ -1264,7 +1261,7 @@ char get_char(const char *prompt, const char *options, size_t len, char fallback
 {
 	struct keypress key;
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 
 	/* Paranoia */
 	event_signal(EVENT_MESSAGE_FLUSH);

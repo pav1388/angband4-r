@@ -76,11 +76,10 @@ static void display_exit_screen(void)
 	path_build(buf, sizeof(buf), ANGBAND_DIR_SCREENS,
 		(retired) ? "retire.txt" : "dead.txt");
 	fp = file_open(buf, MODE_READ, FTYPE_TEXT);
-	
+
 	if (fp) {
 		text_out_indent = (Term->wid - 80) / 2;
 		Term_gotoxy(0, (Term->hgt - 23) / 5);
-		
 		while (file_getl(fp, buf, sizeof(buf))) {
 			// put_str(buf, line++, 0);
 			text_out_e("%s", buf);
@@ -184,8 +183,8 @@ static void display_exit_screen(void)
 		case 11:
 			my_strcat(buf, "декабря", sizeof(buf));
 			break;
-		default:
-			my_strcat(buf, "дня месяца", sizeof(buf));
+		// default:
+			// my_strcat(buf, "дня месяца", sizeof(buf));
 	}
 		
 	put_str_centred(line, 8, 8+31, "%s", buf);
@@ -246,7 +245,7 @@ static void death_file(const char *title, int row)
 	// char buf[1024];
 	char buf[2048];
 	// char ftmp[80];
-	char ftmp[160];
+	char ftmp[180];
 
 	/* Get the filesystem-safe name and append .txt */
 	player_safe_name(ftmp, sizeof(ftmp), player->full_name, false);
@@ -288,7 +287,6 @@ static void death_info(const char *title, int row)
 	/* Prompt for inventory */
 	// prt("Hit any key to see more information: ", 0, 0);
 	prt("Нажмите любую клавишу для дополнительной информации: ", 0, 0);
-	c_prt(COLOUR_L_BLUE, "-ещё-", 0, 53);
 	
 	/* Allow abort at this point */
 	(void)anykey();
@@ -301,8 +299,7 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_equip(OLIST_WEIGHT | OLIST_SEMPTY | OLIST_DEATH, NULL);
 		// prt("You are using: -more-", 0, 0);
-		prt("Вы использовали: ", 0, 0);
-		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 17);
+		prt("Вы использовали: -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -311,8 +308,7 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_inven(OLIST_WEIGHT | OLIST_DEATH, NULL);
 		// prt("You are carrying: -more-", 0, 0);
-		prt("У вас с собой было: ", 0, 0);
-		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 20);
+		prt("У вас с собой было: -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -321,8 +317,7 @@ static void death_info(const char *title, int row)
 		Term_clear();
 		show_quiver(OLIST_WEIGHT | OLIST_DEATH, NULL);
 		// prt("Your quiver holds: -more-", 0, 0);
-		prt("В вашем колчане было: ", 0, 0);
-		c_prt(COLOUR_L_BLUE, "-ещё-", 0, 22);
+		prt("В вашем колчане было: -ещё-", 0, 0);
 		(void)anykey();
 	}
 
@@ -343,9 +338,9 @@ static void death_info(const char *title, int row)
 				uint8_t attr;
 
 				// char o_name[80];
-				char o_name[160];
+				char o_name[180];
 				// char tmp_val[80];
-				char tmp_val[160];
+				char tmp_val[180];
 
 				/* Print header, clear line */
 				strnfmt(tmp_val, sizeof(tmp_val), "%c) ", I2A(line));
@@ -364,8 +359,7 @@ static void death_info(const char *title, int row)
 
 			/* Caption */
 			// prt(format("Your home contains (page %d): -more-", page), 0, 0);
-			prt(format("В вашем доме было (стр. %d): ", page), 0, 0);
-			c_prt(COLOUR_L_BLUE, "-ещё-", 0, 29);
+			prt(format("В вашем доме было (стр. %d): -ещё-", page), 0, 0);
 
 			/* Wait for it */
 			(void)anykey();
@@ -411,7 +405,7 @@ static void death_examine(const char *title, int row)
 
 	while (get_item(&obj, q, s, 0, NULL, (USE_INVEN | USE_QUIVER | USE_EQUIP | IS_HARMLESS))) {
 		// char header[120];
-		char header[240];
+		char header[256];
 
 		textblock *tb;
 		region area = { 1, 0, 0, 0 };

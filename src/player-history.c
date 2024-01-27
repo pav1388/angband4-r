@@ -227,9 +227,9 @@ void history_find_artifact(struct player *p, const struct artifact *artifact)
 	/* Try revealing any existing artifact, otherwise log it */
 	if (!history_mark_artifact_known(&p->hist, artifact)) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		// char text[80];
-		char text[160];
+		char text[180];
 
 		get_artifact_name(o_name, sizeof(o_name), artifact);
 		// strnfmt(text, sizeof(text), "Found %s", o_name);
@@ -254,9 +254,9 @@ void history_lose_artifact(struct player *p, const struct artifact *artifact)
 	if (!history_mark_artifact_lost(&p->hist, artifact)) {
 		/* Otherwise add a new entry */
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		// char text[80];
-		char text[160];
+		char text[180];
 
 		get_artifact_name(o_name, sizeof(o_name), artifact);
 		// strnfmt(text, sizeof(text), "Missed %s", o_name);

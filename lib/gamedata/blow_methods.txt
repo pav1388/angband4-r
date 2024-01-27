@@ -192,7 +192,7 @@ act:оскорбляет {target}!
 #act:insults {oftarget} mother!
 act:оскорбляет {oftarget} мать!
 #act:gives {target} the finger!
-act:показывает на {target} палецем!
+act:показывает на {target} пальцем!
 #act:humiliates {target}!
 act:унижает {target}!
 #act:defiles {target}!
@@ -212,7 +212,6 @@ miss:0
 phys:0
 msg:MON_MOAN
 act:хочет вернуть свои грибы
-#act:говорит, чтобы {target} убирались с его земли
 act:говорит, чтобы вы убирались с его земли
 act:ищет своих собак
 act:спрашивает: 'Это ты убил моего Фэнга?'

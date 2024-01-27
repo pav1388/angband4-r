@@ -62,12 +62,12 @@
  */
 struct object_menu_data {
 	// char label[80];
-	char label[160];
+	char label[180];
 	// char equip_label[80];
-	char equip_label[160];
+	char equip_label[180];
 	struct object *object;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	char key;
 };
 
@@ -146,7 +146,7 @@ static void show_obj(int obj_num, int row, int col, bool cursor,
 	int label_attr = cursor ? COLOUR_L_BLUE : COLOUR_WHITE;
 	int ex_offset_ctr;
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 	struct object *obj = items[obj_num].object;
 	bool show_label = mode & (OLIST_WINDOW | OLIST_DEATH) ? true : false;
 	int label_size = show_label ? utf8_strlen(items[obj_num].label) : 0;
@@ -294,7 +294,7 @@ static void build_obj_list(int last, struct object **list, item_tester tester,
 	/* Build the object list */
 	for (i = 0; i <= last; i++) {
 		// char buf[80];
-		char buf[160];
+		char buf[180];
 		struct object *obj = equip ? slot_object(player, i) : list[i];
 
 		/* Acceptable items get a label */
@@ -396,7 +396,7 @@ static void show_obj_list(olist_detail_t mode)
 {
 	int i, row = 0, col = 0;
 	// char tmp_val[80];
-	char tmp_val[160];
+	char tmp_val[180];
 
 	bool in_term = (mode & OLIST_WINDOW) ? true : false;
 	bool terse = false;
@@ -630,7 +630,7 @@ static region area = { 20, 1, -1, -2 };
 static struct object *selection;
 static const char *prompt;
 // static char header[80];
-static char header[160];
+static char header[180];
 static int i1, i2;
 static int e1, e2;
 static int q1, q2;
@@ -789,9 +789,9 @@ static bool get_tag(struct object **tagged_obj, char tag, cmd_code cmd,
 static void menu_header(void)
 {
 	// char tmp_val[75];
-	char tmp_val[150];
+	char tmp_val[180];
 	// char out_val[75];
-	char out_val[150];
+	char out_val[180];
 
 	bool use_inven = ((item_mode & USE_INVEN) ? true : false);
 	bool use_equip = ((item_mode & USE_EQUIP) ? true : false);
@@ -1055,7 +1055,7 @@ static bool get_item_action(struct menu *menu, const ui_event *event, int oid)
 static void item_menu_browser(int oid, void *data, const region *local_area)
 {
 	// char tmp_val[80];
-	char tmp_val[160];
+	char tmp_val[180];
 	int count, j, i = num_obj;
 	int quiver_slots = (player->upkeep->quiver_cnt + z_info->quiver_slot_size - 1)
 		/ z_info->quiver_slot_size;
@@ -1584,7 +1584,7 @@ bool textui_get_item(struct object **choice, const char *pmt, const char *str,
 void display_object_recall(struct object *obj)
 {
 	// char header_buf[120];
-	char header_buf[240];
+	char header_buf[256];
 
 	textblock *tb = object_info(obj, OINFO_NONE);
 	object_desc(header_buf, sizeof(header_buf), obj,
@@ -1619,7 +1619,7 @@ void display_object_kind_recall(struct object_kind *kind)
 void display_object_recall_interactive(struct object *obj)
 {
 	// char header_buf[120];
-	char header_buf[240];
+	char header_buf[256];
 	textblock *tb;
 
 	event_signal(EVENT_MESSAGE_FLUSH);
@@ -1637,7 +1637,7 @@ void display_object_recall_interactive(struct object *obj)
 void textui_obj_examine(void)
 {
 	// char header_buf[120];
-	char header_buf[240];
+	char header_buf[256];
 
 	textblock *tb;
 	region local_area = { 0, 0, 0, 0 };
@@ -1681,7 +1681,7 @@ enum {
 void textui_cmd_ignore_menu(struct object *obj)
 {
 	// char out_val[160];
-	char out_val[320];
+	char out_val[350];
 
 	struct menu *m;
 	region r;
@@ -1711,7 +1711,7 @@ void textui_cmd_ignore_menu(struct object *obj)
 				kind_is_ignored_unaware(obj->kind);
 
 		// char tmp[70];
-		char tmp[160];
+		char tmp[180];
 		object_desc(tmp, sizeof(tmp), obj,
 			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
 		if (!ignored) {
@@ -1732,7 +1732,7 @@ void textui_cmd_ignore_menu(struct object *obj)
 		struct ego_desc choice;
 		struct ego_item *ego = obj->ego;
 		// char tmp[80] = "";
-		char tmp[160] = "";
+		char tmp[180] = "";
 
 		choice.e_idx = ego->eidx;
 		choice.itype = type;

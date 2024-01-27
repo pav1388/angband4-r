@@ -643,24 +643,21 @@ static void run_template_parser(void) {
 						 // "Initializing arrays... (dungeon profiles)");
 						 "Инициализация массивов... (профили подземелий)");
 	if (run_parser(&profile_parser))
-		// quit("Cannot initialize dungeon profiles");
-		quit("Невозможно инициализировать профили подземелий");
+		quit("Cannot initialize dungeon profiles");
 
 	/* Initialize room info */
 	event_signal_message(EVENT_INITSTATUS, 0,
 						 // "Initializing arrays... (room templates)");
 						 "Инициализация массивов... (шаблоны комнат)");
 	if (run_parser(&room_parser))
-		// quit("Cannot initialize room templates");
-		quit("Невозможно инициализировать шаблоны комнат");
+		quit("Cannot initialize room templates");
 
 	/* Initialize vault info */
 	event_signal_message(EVENT_INITSTATUS, 0,
 						 // "Initializing arrays... (vaults)");
 						 "Инициализация массивов... (хранилища)");
 	if (run_parser(&vault_parser))
-		// quit("Cannot initialize vaults");
-		quit("Невозможно инициализировать хранилища");
+		quit("Cannot initialize vaults");
 }
 
 

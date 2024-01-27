@@ -147,7 +147,7 @@ int turn_energy(int speed)
 static void recharged_notice(const struct object *obj, bool all)
 {
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	const char *s;
 

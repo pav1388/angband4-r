@@ -41,7 +41,7 @@ static struct menu *effect_menu_new(struct effect *effect, int count,
 	int ms_count = 0;
 	char **ms;
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 
 	m->selections = all_letters_nohjkl;
 

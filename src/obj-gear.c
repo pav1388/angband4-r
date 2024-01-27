@@ -412,7 +412,7 @@ bool minus_ac(struct player *p)
 	/* If we can still damage the item */
 	if (obj && (obj->ac + obj->to_a > 0)) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
 
 		/* Object resists */
@@ -529,7 +529,7 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 	struct object *usable;
 	struct object *first_remainder = NULL;
 	// char name[80];
-	char name[160];
+	char name[180];
 	char label = gear_to_label(p, obj);
 	bool artifact = (obj->known->artifact != NULL);
 
@@ -810,8 +810,7 @@ void inven_item_charges(struct object *obj)
 		msg("У вас остал%s %d заряд%s.", PLURAL_RU(obj->pval, "ся", "ось", "ось"),
 				obj->pval,
 				// PLURAL(obj->pval));
-				PLURAL_RU(obj->pval, "", "а", "ов"));
-				
+				PLURAL_RU(obj->pval, "", "а", "ов"));		
 	}
 }
 
@@ -907,7 +906,7 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 
 	if (message) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		struct object *first;
 		uint16_t total;
 		char label;
@@ -958,7 +957,7 @@ void inven_wield(struct object *obj, int slot)
 
 	const char *fmt;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	bool dummy = false;
 
 	/* Increase equipment counter if empty slot */
@@ -1064,7 +1063,7 @@ void inven_takeoff(struct object *obj)
 	int slot = equipped_item_slot(player->body, obj);
 	const char *act;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	/* Paranoia */
 	if (slot == player->body.count) return;
@@ -1117,7 +1116,7 @@ void inven_drop(struct object *obj, int amt)
 	bool quiver;
 
 	// char name[80];
-	char name[160];
+	char name[180];
 	char label;
 
 	/* Error check */
@@ -1396,7 +1395,7 @@ void pack_overflow(struct object *obj)
 {
 	int i;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	if (!pack_is_overfull()) return;
 

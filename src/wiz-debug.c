@@ -69,7 +69,7 @@ void wiz_cheat_death(void)
 	{
 		/* Message */
 		// msg("The air around you stops swirling...");
-		msg("Воздух вокруг вас перестает завихряться...");
+		msg("Воздух вокруг вас перестаёт завихряться...");
 		event_signal(EVENT_MESSAGE_FLUSH);
 
 		/* Hack -- Prevent recall */

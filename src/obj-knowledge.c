@@ -69,7 +69,7 @@ static const char *c_rune[] = {
 	// "enchantment to hit",
 	"зачарование на попадание",
 	// "enchantment to damage"
-	"зачарование для урона"
+	"зачарование на урон"
 };
 
 /**
@@ -1190,7 +1190,7 @@ void player_know_object(struct player *p, struct object *obj)
 	/* Report on new stuff */
 	if (!seen) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 
 		/* Describe the object if it's available */
 		if (object_is_carried(p, obj)) {
@@ -1622,7 +1622,7 @@ static bool object_curses_find_flags(struct player *p, struct object *obj,
 							  bitflag *test_flags)
 {
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	bool new = false;
 
 	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
@@ -1711,7 +1711,7 @@ static void object_curses_find_modifiers(struct player *p, struct object *obj)
 static bool object_curses_find_element(struct player *p, struct object *obj, int elem)
 {
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 	bool new = false;
 
 	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
@@ -1803,7 +1803,7 @@ void object_learn_on_wield(struct player *p, struct object *obj)
 	bitflag f[OF_SIZE], obvious_mask[OF_SIZE];
 	int i, flag;
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	assert(obj->known);
 	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
@@ -2140,7 +2140,7 @@ void equip_learn_flag(struct player *p, int flag)
 		if (of_has(obj->flags, flag)) {
 			if (!of_has(p->obj_k->flags, flag)) {
 				// char o_name[80];
-				char o_name[160];
+				char o_name[180];
 				object_desc(o_name, sizeof(o_name), obj,
 					ODESC_BASE, p);
 				flag_message(flag, o_name);
@@ -2180,7 +2180,7 @@ void equip_learn_element(struct player *p, int element)
 		/* Does the object affect the player's resistance to the element? */
 		if (obj->el_info[element].res_level != 0) {
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
 
 			/* Message */
@@ -2222,7 +2222,7 @@ void equip_learn_after_time(struct player *p)
 	/* All wielded items eligible */
 	for (i = 0; i < p->body.count; i++) {
 		// char o_name[80];
-		char o_name[160];
+		char o_name[180];
 		struct object *obj = slot_object(p, i);
 
 		if (!obj) continue;

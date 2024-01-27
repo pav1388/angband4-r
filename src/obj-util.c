@@ -190,8 +190,8 @@ void flavor_init(void)
 
 	/* Scrolls (random titles, always white) */
 	for (i = 0; i < MAX_TITLES; i++) {
-		// char buf[26];
-		char buf[80];
+		char buf[26]; // FFFIX
+		// char buf[80];
 		char *end = buf + 1;
 		int titlelen = 0;
 		int wordlen;
@@ -525,7 +525,7 @@ void object_short_name(char *buf, size_t max, const char *name)
 {
 	size_t j, k;
 	/* Copy across the name, stripping modifiers & and ~) */
-	size_t len = strlen(name);
+	size_t len = strlen(name); //FFFIX ?
 	for (j = 0, k = 0; j < len && k < max - 1; j++) {
 		if (j == 0 && name[0] == '&' && name[1] == ' ')
 			j += 2;
@@ -972,7 +972,7 @@ bool verify_object(const char *prompt, const struct object *obj,
 		const struct player *p)
 {
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	// char out_val[160];
 	char out_val[320];

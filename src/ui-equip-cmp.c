@@ -1490,7 +1490,7 @@ static void display_object_comparison(const struct equippable_summary *s,
 		const struct player *p)
 {
 	// char hbuf[120];
-	char hbuf[240];
+	char hbuf[256];
 	textblock *tb0;
 	region local_area = { 0, 0, 0, 0 };
 
@@ -1652,7 +1652,7 @@ static char *set_short_name(const struct object *obj, size_t length,
 		const struct player *p)
 {
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 	const char *nmsrc;
 	size_t nmlen;
 	bool tail;

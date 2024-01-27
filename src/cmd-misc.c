@@ -79,7 +79,7 @@ void do_cmd_retire(struct command *cmd)
 {
 	/* Treat retired character as dead to satisfy end of game logic. */
 	player->is_dead = true;
-	my_strcpy(player->died_from, "Retiring", sizeof(player->died_from)); // не переводить
+	my_strcpy(player->died_from, "Retiring", sizeof(player->died_from));
 }
 
 /**
@@ -94,9 +94,9 @@ void do_cmd_note(void)
 {
 	/* Allocate/Initialize strings to get and format user input. */
 	// char tmp[70];
-	char tmp[140];
+	char tmp[180];
 	// char note[90];
-	char note[180];
+	char note[256];
 	my_strcpy(tmp, "", sizeof(tmp));
 	my_strcpy(note, "", sizeof(note));
 

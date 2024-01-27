@@ -249,7 +249,7 @@ static void adjust_level(struct player *p, bool verbose)
 
 			/* Message */
 			// msgt(MSG_LEVEL, "Welcome to level %d.",	p->lev);
-			msgt(MSG_LEVEL, "Вы получили %d-й уровень.",	p->lev);
+			msgt(MSG_LEVEL, "Вы получили %d-й уровень.", p->lev);
 		}
 
 		effect_simple(EF_RESTORE_STAT, source_none(), "0", STAT_STR, 0, 0, 0, 0, NULL);

@@ -397,7 +397,7 @@ bool make_ranged_attack(struct monster *mon)
 	int thrown_spell, failrate;
 	bitflag f[RSF_SIZE];
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	bool seen = (player->timed[TMD_BLIND] == 0) && monster_is_visible(mon);
 	bool innate = false;
 
@@ -553,9 +553,9 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 	int rlev = ((mon->race->level >= 1) ? mon->race->level : 1);
 	int ap_cnt;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	// char ddesc[80];
-	char ddesc[160];
+	char ddesc[180];
 	bool blinked = false;
 
 	/* Not allowed to attack */
@@ -610,7 +610,7 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 				    randint0(100) + p->lev > 50) {
 					/* Message */
 					// msg("%s is repelled.", m_name);
-					msg("%s отражен.", m_name);
+					msg("%s отбивается.", m_name);
 
 					/* Hack -- Next attack */
 					continue;
@@ -796,9 +796,9 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 	int rlev = ((mon->race->level >= 1) ? mon->race->level : 1);
 	int ap_cnt;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	// char t_name[80];
-	char t_name[160];
+	char t_name[180];
 	bool blinked = false;
 
 	/* Not allowed to attack */

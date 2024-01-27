@@ -981,7 +981,7 @@ void write_character_dump(ang_file *fff)
 	struct object **home_list = mem_zalloc(sizeof(struct object *) *
 										   z_info->store_inven_max);
 	// char o_name[80];
-	char o_name[160];
+	char o_name[180];
 
 	int n;
 	char *buf, *p;

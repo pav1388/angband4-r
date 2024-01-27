@@ -193,8 +193,7 @@ bool is_a_vowel(int ch)
 int main(int argc, char *argv[])
 {
 	int i;
-	// char name[256];
-	char name[400];
+	char name[256];
 
 	Rand_value = time(NULL);
 

@@ -188,7 +188,7 @@ static int artifact_power(int a_idx, const char *reason, bool verbose)
 	struct object *obj = object_new();
 	struct object *known_obj = object_new();
 	// char buf[256];
-	char buf[1024];
+	char buf[768];
 	int32_t power;
 
 	file_putf(log_file, "********** Evaluating %s ********\n", reason);
@@ -1351,7 +1351,7 @@ static struct object_kind *get_base_item(struct artifact_set_data *data,
 {
 	struct object_kind *kind = NULL;
 	// char name[120] = "";
-	char name[240] = "";
+	char name[256] = "";
 	int start = 1;
 
 	/* Restrict to appropriate kinds if jewellery */
@@ -2711,7 +2711,7 @@ static void describe_artifact(int aidx, int power)
 {
 	struct artifact *art = &a_info[aidx];
 	// char desc[128] = "Random ";
-	char desc[250] = "Random ";
+	char desc[256] = "Random ";
 	my_strcat(desc, tval_find_name(art->tval), sizeof(desc));
 	my_strcat(desc, format(" of power %d", power), sizeof(desc));
 	string_free(art->text);
@@ -3014,7 +3014,7 @@ static void artifact_set_data_free(struct artifact_set_data *data)
 static void write_randart_entry(ang_file *fff, const struct artifact *art)
 {
 	// char name[120] = "";
-	char name[240] = "";
+	char name[256] = "";
 	struct object_kind *kind = lookup_kind(art->tval, art->sval);
 	int j;
 

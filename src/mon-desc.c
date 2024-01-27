@@ -28,11 +28,14 @@ void plural_aux(char *name, size_t max)
 {
 	size_t name_len = strlen(name);
 	assert(name_len != 0);
-
-	if (name[name_len - 1] == 's')
-		my_strcat(name, "es", max);
-	else
-		my_strcat(name, "s", max);
+	
+	// для русского языка
+	if (isalpha((unsigned char) name[name_len - 1])) {
+		if (name[name_len - 1] == 's')
+			my_strcat(name, "es", max);
+		else
+			my_strcat(name, "s", max);
+	}
 }
 
 
@@ -46,18 +49,26 @@ void get_mon_name(char *buf, size_t buflen,
 {
 	assert(race != NULL);
 
+	// для русского языка
+	char *mon_name = string_make(race->name);
+	
     /* Unique names don't have a number */
 	if (rf_has(race->flags, RF_UNIQUE)) {
-		strnfmt(buf, buflen, "[U] %s", race->name);
+		// strnfmt(buf, buflen, "[U] %s", race->name);
+		strnfmt(buf, buflen, "[U] ");
+		mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0);
     } else {
 	    strnfmt(buf, buflen, "%3d ", num);
 
 	    if (num == 1) {
-	        my_strcat(buf, race->name, buflen);
+	        // my_strcat(buf, race->name, buflen);
+	        mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0);
 	    } else if (race->plural != NULL) {
 	        my_strcat(buf, race->plural, buflen);
 	    } else {
-	        my_strcat(buf, race->name, buflen);
+	        // my_strcat(buf, race->name, buflen);
+			mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 
+					(PLURAL_RU(num, C_IMEN, C_CUSTOM, C_RODIT) << 1) + 1);
 	        plural_aux(buf, buflen);
 	    }
     }
@@ -226,8 +237,11 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 			if (mode & MDESC_IND_VIS) {
 				/* XXX Check plurality for "some" */
 				/* Indefinite monsters need an indefinite article */
-				// my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "an " : "a ", max);
-				my_strcpy(desc, "", max);
+				// для русского языка
+				if (isalpha((unsigned char) mon->race->name[0]))
+					my_strcpy(desc, is_a_vowel(mon->race->name[0]) ? "an " : "a ", max);
+				else
+					my_strcpy(desc, "", max);
 			} else {
 				/* Definite monsters need a definite article */
 				// my_strcpy(desc, "the ", max);
@@ -271,4 +285,9 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 	if (mode & MDESC_CAPITAL) {
 		my_strcap(desc);
 	}
+	
+	// для русского языка
+	// форматирование имени монстра
+	char *mon_name = string_make(desc);
+	mon_desc_name_format(desc, max, 0, mon_name, mode >> 10);
 }

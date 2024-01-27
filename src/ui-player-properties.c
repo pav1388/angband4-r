@@ -40,7 +40,7 @@ static void view_ability_display(struct menu *menu, int oid, bool cursor,
 	int row, int col, int width)
 {
 	// char buf[80];
-	char buf[160];
+	char buf[180];
 	uint8_t color;
 	struct player_ability *choices = menu->menu_data;
 

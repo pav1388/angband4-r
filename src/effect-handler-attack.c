@@ -264,7 +264,7 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 
 	int amount = effect_calculate_value(context, false);
 	// char m_name[80], m_poss[80];
-	char m_name[160], m_poss[160];
+	char m_name[180], m_poss[180];
 	bool seen;
 
 	if (!mon) return true;
@@ -473,7 +473,7 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 {
 	int dam = effect_calculate_value(context, false);
 	// char killer[80];
-	char killer[160];
+	char killer[180];
 
 	/* Always ID */
 	context->ident = true;
@@ -509,8 +509,7 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 		case SRC_TRAP: {
 			struct trap *trap = context->origin.which.trap;
 			// const char *article = is_a_vowel(trap->kind->desc[0]) ? "an " : "a ";
-			const char *article = is_a_vowel(trap->kind->desc[0]) ? "" : "";
-			strnfmt(killer, sizeof(killer), "%s%s", article, trap->kind->desc);
+			// strnfmt(killer, sizeof(killer), "%s%s", article, trap->kind->desc);
 			strnfmt(killer, sizeof(killer), "%s", trap->kind->desc);
 			break;
 		}
@@ -753,7 +752,7 @@ bool effect_handler_BREATH(effect_handler_context_t *context)
 		}
 	} else if (context->origin.what == SRC_PLAYER) {
 		// msgt(projections[type].msgt, "You breathe %s.", projections[type].desc);
-		msgt(projections[type].msgt, "Вы дышите %s.", projections[type].desc);
+		msgt(projections[type].msgt, "Вы пышите %s.", projections[type].desc);
 
 		/* Ask for a target if no direction given */
 		if (context->dir == DIR_TARGET && target_okay()) {
@@ -1434,7 +1433,7 @@ bool effect_handler_EARTHQUAKE(effect_handler_context_t *context)
 				msg("Вас завалило камнями!");
 				break;
 			}
-		} 
+		}
 
 		/* Hurt the player a lot */
 		if (!safe_grids) {
@@ -1493,7 +1492,7 @@ bool effect_handler_EARTHQUAKE(effect_handler_context_t *context)
 				if (!flags_test(mon->race->flags, RF_SIZE, RF_KILL_WALL,
 								RF_PASS_WALL, FLAG_END)) {
 					// char m_name[80];
-					char m_name[160];
+					char m_name[180];
 					int m_dam;
 
 					/* Assume not safe */
@@ -1620,7 +1619,7 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 	struct loc target;
 	struct monster *mon = NULL;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
@@ -1704,7 +1703,7 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	int d, first_d = randint0(8);
 	struct monster *mon = NULL;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
@@ -1870,7 +1869,7 @@ bool effect_handler_SINGLE_COMBAT(effect_handler_context_t *context)
 		/* Monsters with high spell power can resist */
 		if (randint0(mon->race->spell_power) > player->lev) {
 			// char m_name[80];
-			char m_name[160];
+			char m_name[180];
 			monster_desc(m_name, sizeof(m_name), mon,
 				MDESC_CAPITAL | MDESC_COMMA);
 			//msg("%s resists!", m_name);

@@ -464,7 +464,6 @@ struct command_list cmds_all[] =
 	 * This is nested below "Hidden"->"Debug mode commands" and only
 	 * contains categories.
 	 */
-	// { "Debug", cmd_debug, N_ELEMENTS(cmd_debug), 1, -1 },
 	{ "Debug", cmd_debug, N_ELEMENTS(cmd_debug), 1, -1 },
 	/* These are nested in "Debug"; names have to match with cmd_debug. */
 	{ "DbgObj", cmd_debug_obj, N_ELEMENTS(cmd_debug_obj), 2, 1 },
@@ -970,8 +969,7 @@ static void select_savefile(bool retry, bool *new_game)
 	if (failed) {
 		cleanup_savefile_selection_strings(names, count);
 		cleanup_savefile_selection_strings(entries, count);
-		// quit("Cannot open the savefile directory");
-		quit("Невозможно открыть папку с файлами сохранений");
+		quit("Cannot open the savefile directory");
 	}
 
 	m = menu_new(MN_SKIN_SCROLL, menu_find_iter(MN_ITER_STRINGS));
@@ -1026,7 +1024,6 @@ void play_game(enum game_mode_type mode)
 		case GAME_NEW:
 			if (!start_game(mode == GAME_NEW)) {
 				quit("Broken savefile");
-				// quit("Файл сохранения повреждён");
 			}
 			break;
 

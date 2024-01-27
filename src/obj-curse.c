@@ -96,7 +96,7 @@ static bool curses_conflict(int first, int second)
 {
 	struct curse *c = &curses[first];
 	// char buf[80] = "|";
-	char buf[160] = "|";
+	char buf[180] = "|";
 
 	/* First curse has no conflicts */
 	if (!c->conflict) {

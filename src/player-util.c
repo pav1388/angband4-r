@@ -1012,7 +1012,7 @@ void player_resume_normal_shape(struct player *p)
 {
 	p->shape = lookup_player_shape("normal");
 	// msg("You resume your usual shape.");
-	msg("Вы возвращаетесь к своему обычному облику.");
+	msg("Вы возвращаетесь к своему привычному облику.");
 
 	/* Kill vampire attack */
 	(void) player_clear_timed(p, TMD_ATT_VAMP, true, false);

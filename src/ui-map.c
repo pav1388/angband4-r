@@ -129,7 +129,8 @@ static void grid_get_attr(struct grid_data *g, int *a)
 		*a = a0 | *a;
 	}
 	/* Hybrid or block walls */
-	if (use_graphics == GRAPHICS_NONE && (feat_is_wall(g->f_idx) || feat_is_fiery(g->f_idx))) {
+	if (use_graphics == GRAPHICS_NONE && feat_is_wall(g->f_idx)) {
+	//if (use_graphics == GRAPHICS_NONE && (feat_is_wall(g->f_idx) || feat_is_fiery(g->f_idx))) { // lava = solid wall
 		if (OPT(player, hybrid_walls))
 			*a = *a + (MULT_BG * BG_DARK);
 		else if (OPT(player, solid_walls))

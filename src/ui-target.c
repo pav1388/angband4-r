@@ -53,7 +53,7 @@
  */
 struct target_aux_state {
 	// char coord_desc[20];
-	char coord_desc[40];
+	char coord_desc[50];
 	const char *phrase1;
 	const char *phrase2;
 	struct loc grid;
@@ -317,7 +317,7 @@ static ui_event target_recall_loop_object(struct object *obj, int y, int x,
 			press = inkey_m();
 		} else {
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 
 			/* Obtain an object description */
 			object_desc(o_name, sizeof(o_name),
@@ -327,8 +327,7 @@ static ui_event target_recall_loop_object(struct object *obj, int y, int x,
 			/* Describe the object */
 			if (p->wizard) {
 				strnfmt(out_val, TARGET_OUT_VAL_SIZE,
-						// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).", s1, s2, s3,
-						"%s%s%s%s, %s (%d:%d, шум=%d, запах=%d).", s1, s2, s3,
+						"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).", s1, s2, s3,
 						o_name, coords, y, x, (int)cave->noise.grids[y][x],
 						(int)cave->scent.grids[y][x]);
 			} else {
@@ -417,8 +416,7 @@ static bool aux_hallucinate(struct chunk *c, struct player *p,
 	/* Display a message */
 	if (p->wizard) {
 		strnfmt(out_val, sizeof(out_val),
-			// "%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
-			"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
+			"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
 			auxst->phrase1,
 			auxst->phrase2,
 			name_strange,
@@ -455,7 +453,7 @@ static bool aux_monster(struct chunk *c, struct player *p,
 	struct monster *mon;
 	const struct monster_lore *lore;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	char out_val[TARGET_OUT_VAL_SIZE];
 	bool recall;
 
@@ -487,7 +485,7 @@ static bool aux_monster(struct chunk *c, struct player *p,
 			auxst->press = inkey_m();
 		} else {
 			// char buf[80];
-			char buf[160];
+			char buf[180];
 
 			/* Describe the monster */
 			look_mon_desc(buf, sizeof(buf),
@@ -582,15 +580,14 @@ static bool aux_monster(struct chunk *c, struct player *p,
 		/* Scan all objects being carried */
 		for (obj = mon->held_obj; obj; obj = obj->next) {
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 
 			/* Obtain an object description */
 			object_desc(o_name, sizeof(o_name), obj,
 				ODESC_PREFIX | ODESC_FULL, p);
 
 			strnfmt(out_val, sizeof(out_val),
-				// "%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
-				"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
+				"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
 				lphrase1,
 				lphrase2,
 				o_name,
@@ -663,8 +660,7 @@ static bool aux_trap(struct chunk *c, struct player *p,
 		/* Describe, and prompt for recall */
 		if (p->wizard) {
 			strnfmt(out_val, sizeof(out_val),
-				// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
-				"%s%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
+				"%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
 				auxst->phrase1,
 				auxst->phrase2,
 				lphrase3,
@@ -737,11 +733,9 @@ static bool aux_object(struct chunk *c, struct player *p,
 			/* Describe the pile */
 			if (p->wizard) {
 				strnfmt(out_val, sizeof(out_val),
-					// "%s%sa pile of %d objects, %s (%d:%d, noise=%d, scent=%d).",
-					"%s%sкуч%s из %d предметов, %s (%d:%d, шум=%d, запах=%d).",
+					"%s%sa pile of %d objects, %s (%d:%d, noise=%d, scent=%d).",
 					auxst->phrase1,
 					auxst->phrase2,
-					(*auxst->phrase2) ? "е" : "а",
 					floor_num,
 					auxst->coord_desc,
 					auxst->grid.y,
@@ -871,7 +865,7 @@ static bool aux_terrain(struct chunk *c, struct player *p,
 	if (p->wizard) {
 		strnfmt(out_val, sizeof(out_val),
 			// "%s%s%s%s, %s (%d:%d, noise=%d, scent=%d).",
-			"%s%s%s, %s (%d:%d, шум=%d, запах=%d).",
+			"%s%s%s%s, (%d:%d, noise=%d, scent=%d).",
 			auxst->phrase1,
 			lphrase2,
 			lphrase3,

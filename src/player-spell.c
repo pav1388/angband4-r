@@ -478,7 +478,7 @@ void spell_learn(int spell_index)
 
 	/* One less spell available */
 	player->upkeep->new_spells--;
-	
+
 	/* Message if needed */
 	if (player->upkeep->new_spells) {
 		// msg("You can learn %d more %s%s.", player->upkeep->new_spells,

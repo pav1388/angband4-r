@@ -510,7 +510,7 @@ bool target_set_closest(int mode, monster_predicate pred)
 {
 	struct monster *mon;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 	struct point_set *targets;
 
 	/* Cancel old target */

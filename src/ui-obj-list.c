@@ -60,8 +60,7 @@ static void object_list_format_section(const object_list_t *list,
 	int line_count = 0;
 	int entry_index;
 	int total;
-	// char line_buffer[200];
-	char line_buffer[400];
+	char line_buffer[200];
 	const char *punctuation = (lines_to_display == 0) ? "." : ":";
 	// const char *others = (show_others) ? "other " : "";
 	const char *others = (show_others) ? "других " : "";

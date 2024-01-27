@@ -41,9 +41,9 @@ static void display_score_page(const struct high_score scores[], int start,
 		struct player_class *c;
 		struct player_race *r;
 		// char out_val[160];
-		char out_val[320];
+		char out_val[350];
 		// char tmp_val[160];
-		char tmp_val[320];
+		char tmp_val[350];
 
 		/* Hack -- indicate death in yellow */
 		attr = (start == highlight) ? COLOUR_L_GREEN : COLOUR_WHITE;
