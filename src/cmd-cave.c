@@ -1229,12 +1229,12 @@ static bool do_cmd_walk_test(struct loc grid)
 		if (player_of_has(player, OF_AFRAID)) {
 			/* Extract monster name (or "it") */
 			// char m_name[80];
-			char m_name[160];
-			monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
+			char m_name[180];
+			monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT | MDESC_RODIT);
 
 			/* Message */
 			// msgt(MSG_AFRAID, "You are too afraid to attack %s!", m_name);
-			msgt(MSG_AFRAID, "Вы слишком испуганы для атаки %s!", m_name);
+			msgt(MSG_AFRAID, "Вы слишком напуганы для атаки %s!", m_name);
 			equip_learn_flag(player, OF_AFRAID);
 
 			/* Nope */
@@ -1669,14 +1669,14 @@ void do_cmd_mon_command(struct command *cmd)
 	struct monster *mon = get_commanded_monster();
 	struct monster_lore *lore = NULL;
 	// char m_name[80];
-	char m_name[160];
+	char m_name[180];
 
 	assert(mon);
 	lore = get_lore(mon->race);
 
 	/* Get the monster name */
 	monster_desc(m_name, sizeof(m_name), mon,
-		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN
 
 	switch (cmd->code) {
 		case CMD_READ_SCROLL: {
@@ -1735,7 +1735,7 @@ void do_cmd_mon_command(struct command *cmd)
 		}
 		case CMD_DROP: {
 			// char o_name[80];
-			char o_name[160];
+			char o_name[180];
 			struct object *obj = get_random_monster_object(mon);
 			if (!obj) break;
 			obj->held_m_idx = 0;

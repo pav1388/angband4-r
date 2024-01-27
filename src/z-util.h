@@ -71,7 +71,7 @@ extern void (*quit_aux)(const char *);
 // падежы, части речи, рода и т.д.
 #define C_IMEN		0
 #define C_RODIT		1
-#define C_DAT		2
+#define C_DATEL		2
 #define C_VINIT		3
 #define C_TVORIT	4
 #define C_PREDL		5
@@ -89,7 +89,7 @@ extern void (*quit_aux)(const char *);
 #define FEMALE		2
 
 // возможные окончания
-// строгий порядок как в obj-desc.c ending_chars[]
+// строгий порядок как в obj-desc.c *ending_chars[]
 #define	E_		0
 #define	E_A		1
 #define	E_AM	2
@@ -151,7 +151,7 @@ extern void (*quit_aux)(const char *);
 #define	E_YAMI	58
 #define	E_YAH	59
 #define	E_YAYA	60
-#define	E_TOTAL	61
+// #define	E_TOTAL	61
 
 
 /**

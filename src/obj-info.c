@@ -1814,7 +1814,7 @@ static bool describe_combat(textblock *tb, const struct object *obj)
 		textblock_append(tb, "При выстреле поражает цели до ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", range);
 		// textblock_append(tb, " feet away.\n");
-		textblock_append(tb, " метр%s.\n", PLURAL_RU(range, "а", "ов", "ов"));
+		textblock_append(tb, " шаг%s.\n", PLURAL_RU(range, "а", "ов", "ов"));
 	}
 
 	if (weapon || ammo) {
@@ -2011,7 +2011,7 @@ static bool describe_light(textblock *tb, const struct object *obj,
 		textblock_append(tb, "\nИнтенсивность света ");
 		textblock_append_c(tb, COLOUR_L_GREEN, "%d", intensity);
 		// textblock_append(tb, " light.");
-		textblock_append(tb, " метр%s.", PLURAL_RU(intensity, "", "а", "ов"));
+		textblock_append(tb, " шаг%s.", PLURAL_RU(intensity, "", "а", "ов"));
 
 		if (!obj->artifact && !uses_fuel)
 			// textblock_append(tb, "  No fuel required.");

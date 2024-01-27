@@ -1345,8 +1345,9 @@ static bool monster_turn_try_push(struct monster *mon, const char *m_name,
 
 	if (kill_ok || move_ok) {
 		/* Get the names of the monsters involved */
-		char n_name[80];
-		monster_desc(n_name, sizeof(n_name), mon1, MDESC_IND_HID);
+		// char n_name[80];
+		char n_name[180];
+		monster_desc(n_name, sizeof(n_name), mon1, MDESC_IND_HID | MDESC_VINIT);
 
 		/* Learn about pushing and shoving */
 		if (monster_is_visible(mon)) {
@@ -1526,7 +1527,7 @@ static void monster_turn(struct monster *mon)
 
 	/* Get the monster name */
 	monster_desc(m_name, sizeof(m_name), mon,
-		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN ?
 
 	/* If we're in a web, deal with that */
 	if (square_iswebbed(cave, mon->grid)) {
@@ -1747,7 +1748,7 @@ static void monster_reduce_sleep(struct monster *mon)
 
 		/* Get the monster name */
 		monster_desc(m_name, sizeof(m_name), mon,
-			MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+			MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN
 
 		/* Notify the player if aware */
 		if (monster_is_obvious(mon)) {

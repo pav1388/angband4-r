@@ -1578,7 +1578,7 @@ void lore_append_awareness(textblock *tb, const struct monster_race *race,
 						 // lore_pronoun_nominative(msex, false)
 		textblock_append_c(tb, COLOUR_L_BLUE, "%d", 10 * race->hearing);
 		// textblock_append(tb, " feet.  ");
-		textblock_append(tb, " метрах.  ");
+		textblock_append(tb, " шагах.  ");
 	}
 }
 

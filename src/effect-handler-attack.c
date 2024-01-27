@@ -270,7 +270,7 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 	if (!mon) return true;
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 
 	/* Get the monster possessive ("his"/"her"/"its") */
 	monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
@@ -328,7 +328,7 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 
 	int amount = effect_calculate_value(context, false);
 	// char m_name[80], m_poss[80];
-	char m_name[160], m_poss[160];
+	char m_name[180], m_poss[180];
 	bool seen;
 
 	/* Find a nearby monster */
@@ -336,7 +336,7 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 	if (!mon) return true;
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 
 	/* Get the monster possessive ("his"/"her"/"its") */
 	monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
@@ -1541,7 +1541,7 @@ bool effect_handler_EARTHQUAKE(effect_handler_context_t *context)
 					/* If the quake finished the monster off, show message */
 					if (mon->hp < m_dam && mon->hp >= 0)
 						//msg("%s is embedded in the rock!", m_name);
-						msg("%s погребён под каменем!", m_name);
+						msg("%s погребён под камнями!", m_name);
 
 					/* Apply damage directly */
 					mon->hp -= m_dam;
@@ -1634,7 +1634,7 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 	mon = target_get_monster();
 
 	/* Hurt the monster */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_RODIT);
 	//msg("You draw power from the %s.", m_name);
 	msg("Вы черпаете энергию из %s.", m_name);
 	drain = MIN(mon->hp, amount) / 4;
@@ -1716,7 +1716,7 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	}
 	target_get(&victim);
 	mon = target_get_monster();
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_TVORIT);
 
 	/* Look next to the monster */
 	for (d = first_d; d < first_d + 8; d++) {
@@ -1729,7 +1729,7 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	/* Needed to be adjacent */
 	if (d == first_d + 8) {
 		//msg("Not enough room next to %s!", m_name);
-		msg("Недостаточно места рядом с %s!", m_name);
+		msg("Мало места рядом с %s!", m_name);
 		return false;
 	}
 
@@ -1745,9 +1745,11 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	assert(drain > 0);
 	if (OPT(player, show_damage)) {
 		//msg("You bite %s. (%d)", m_name, drain);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
 		msg("Вы укусили %s. (%d)", m_name, drain);
 	} else {
 		//msg("You bite %s.", m_name);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
 		msg("Вы укусили %s.", m_name);
 	}
 	//dead = mon_take_hit(mon, player, amount, &fear, " is drained dry!");

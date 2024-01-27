@@ -549,7 +549,7 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		struct monster *mon = square_monster(c, grid);
 
 		/* Get the monster name ("a kobold") */
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS | MDESC_VINIT);
 
 		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
 		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s:",

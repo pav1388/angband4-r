@@ -1441,7 +1441,7 @@ void steal_monster_item(struct monster *mon, int midx)
 	char m_name[180];
 
 	/* Get the target monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_RODIT);
 
 	if (midx < 0) {
 		/* Base monster protection and player stealing skill */
@@ -1534,7 +1534,7 @@ void steal_monster_item(struct monster *mon, int midx)
 		} else {
 			/* Bungled it */
 			monster_wake(mon, true, 100);
-			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 			// msg("%s cries out in anger!", m_name);
 			msg("%s кричит в гневе!", m_name);
 			effect_simple(EF_WAKE, source_monster(mon->midx), "", 0, 0, 0, 0, 0,
@@ -1557,7 +1557,7 @@ void steal_monster_item(struct monster *mon, int midx)
 		char t_name[180];
 		thief = cave_monster(cave, midx);
 		assert(thief);
-		monster_desc(t_name, sizeof(t_name), thief, MDESC_STANDARD);
+		monster_desc(t_name, sizeof(t_name), thief, MDESC_STANDARD); // MDESC_IMEN
 
 		/* Try to steal */
 		if (!obj || react_to_slay(obj, thief)) {
@@ -1672,7 +1672,7 @@ bool monster_change_shape(struct monster *mon)
 	if (monster_is_obvious(mon)) {
 		// char m_name[80];
 		char m_name[180];
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 		// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 		msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
 		if (player->upkeep->health_who == mon)
@@ -1708,7 +1708,7 @@ bool monster_revert_shape(struct monster *mon)
 		if (monster_is_obvious(mon)) {
 			// char m_name[80];
 			char m_name[180];
-			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 			// msgt(MSG_GENERIC, "%s %s", m_name, "shimmers and changes!");
 			msgt(MSG_GENERIC, "%s %s", m_name, "мерцает и меняется!");
 			if (player->upkeep->health_who == mon)

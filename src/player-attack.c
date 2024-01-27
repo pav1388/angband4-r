@@ -777,7 +777,7 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	if (!success) {
 		// msgt(MSG_MISS, "You miss %s.", m_name);
 		// дательн. падеж для имени монстра, ед.ч. mon_desc_name_format
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_DAT);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_DATEL);
 		msgt(MSG_MISS, "Вы промахнулись по %s.", m_name);
 
 		/* Small chance of bloodlust side-effects */
@@ -1205,7 +1205,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 							dmg_text = format(" (%d)", dmg);
 						}
 
-						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL);
+						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL | MDESC_DATEL);
 						
 						// для русского языка // FFFIX
 						uint8_t o_sex;

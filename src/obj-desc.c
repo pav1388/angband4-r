@@ -400,7 +400,7 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 				// склонение 1 (word=3/4*1*)
 				{{E_OE, E_YJ, E_AYA, E_YE},	// имен.п.  C_IMEN		0
 				{E_OGO, E_OGO, E_OJ, E_YH}, // родит.п. C_RODIT		1
-				{E_OMU, E_OMU, E_OJ, E_YM}, // дат.п.   C_DAT		2
+				{E_OMU, E_OMU, E_OJ, E_YM}, // дат.п.   C_DATEL		2
 				{E_OE, E_YJ, E_UYU, E_YE}, 	// вин.п.   C_VINIT		3
 				{E_YM, E_YM, E_OJ, E_YMI}, 	// твор.п.  C_TVORIT	4
 				{E_OM, E_OM, E_OJ, E_YH}},	// пред.п.  C_PREDL		5
@@ -460,7 +460,7 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 				{ // склонение 1 (word=1/2*1*)
 				{{E_O,E_A},{E_,E_Y},{E_A,E_Y}},				// имен.п.  C_IMEN		0
 				{{E_A,E_},{E_A,E_OV},{E_Y,E_}}, 			// родит.п. C_RODIT		1
-				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}}, 		// дат.п.   C_DAT		2
+				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}}, 		// дат.п.   C_DATEL		2
 				{{E_O,E_A},{E_,E_Y},{E_U,E_Y}}, 			// вин.п.   C_VINIT		3
 				{{E_OM,E_AMI},{E_OM,E_AMI},{E_OJ,E_AMI}}, 	// твор.п.  C_TVORIT	4
 				{{E_E,E_AH},{E_E,E_AH},{E_E,E_AH}}			// пред.п.  C_PREDL		5

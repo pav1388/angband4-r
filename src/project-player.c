@@ -879,7 +879,7 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 				seen = false;
 
 			/* Get the monster's real name */
-			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM);
+			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM | MDESC_RODIT);
 
 			/* Monster sees what is going on */
 			update_smart_learn(mon, player, 0, 0, typ);
@@ -923,7 +923,7 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 	/* Let player know what is going on */
 	if (!seen) {
 		// msg("You are hit by %s!", projections[typ].blind_desc);
-		msg("Вы ударило %s!", projections[typ].blind_desc);
+		msg("Вы ударили %s!", projections[typ].blind_desc);
 	}
 
 	/* Adjust damage for resistance, immunity or vulnerability, and apply it */

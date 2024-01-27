@@ -539,7 +539,7 @@ bool target_set_closest(int mode, monster_predicate pred)
 	}
 
 	/* Target the monster */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA); // MDESC_IMEN
 	if (!(mode & TARGET_QUIET))
 		// msg("%s is targeted.", m_name);
 		msg("%s выбран целью.", m_name);

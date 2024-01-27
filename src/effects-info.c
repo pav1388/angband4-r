@@ -210,8 +210,8 @@ static textblock *create_nested_effect_description(const struct effect *e,
 	if (same_ind && base_descs[first_ind].efinfo_flag == EFINFO_BREATH &&
 		same_dice && same_other) {
 		/* Concatenate the list of possible elements. */
-		char breaths[120], dice_string[20], desc[200]; // FFFIX
-		// char breaths[350], dice_string[20], desc[500];
+		// char breaths[120], dice_string[20], desc[200];
+		char breaths[256], dice_string[20], desc[512];
 		int ivalid;
 
 		strnfmt(breaths, sizeof(breaths), "%s",
@@ -326,8 +326,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 {
 	textblock *tb = NULL;
 	int nadded = 0;
-	char desc[250]; //FFFIX
-	// char desc[1024];
+	// char desc[250];
+	char desc[512];
 	random_value value = { 0, 0, 0, 0 };
 	bool value_set = false;
 

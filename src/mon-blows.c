@@ -135,7 +135,7 @@ char *monster_blow_method_action(struct blow_method *method, int midx)
 				}
 				case BLOW_TAG_OF_TARGET: {
 					// char m_name[80];
-					char m_name[160];
+					char m_name[180];
 					if (midx > 0) {
 						monster_desc(m_name,
 							sizeof(m_name), t_mon,
@@ -228,7 +228,7 @@ static void steal_player_item(melee_effect_handler_context_t *context)
 			char m_name[180];
 
 			/* Get the monster names (or "it") */
-			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD);
+			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD); // MDESC_IMEN
 
 			/* Fail to steal */
 			// msg("%s tries to steal %s %s, but fails.", m_name,

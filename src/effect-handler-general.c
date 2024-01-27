@@ -981,7 +981,7 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 		mon = cave_monster(cave, context->origin.which.monster);
 
 		/* Get the monster name (or "it") */
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 	}
 
 	/* Target is another monster - disenchant it */
@@ -2549,7 +2549,7 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 
 			/* Get "the monster" or "something" */
 			monster_desc(m_name, sizeof(m_name), mon,
-				MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA);
+				MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA); // MDESC_IMEN
 
 			/* Describe the monster */
 			//msg("%s has %d hit point%s.", m_name, mon->hp, (mon->hp == 1) ? "" : "s");
@@ -3142,7 +3142,7 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 		// char m_name[80];
 		char m_name[180];
 		target = t_mon->grid;
-		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG);
+		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG | MDESC_VINIT);
 		if (message) {
 			//msg("Darkness surrounds %s.", m_name);
 			msg("Тьма окружает %s.", m_name);
@@ -3594,7 +3594,7 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 	if (randint1(player->lev) < randint1(mon->race->level)) {
 		// char m_name[80];
 		char m_name[180];
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 		//msg("%s resists your command!", m_name);
 		msg("%s сопротивляется вашим приказам!", m_name);
 		return false;

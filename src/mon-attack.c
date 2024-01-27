@@ -449,7 +449,7 @@ bool make_ranged_attack(struct monster *mon)
 	if (!thrown_spell) return false;
 
 	/* There will be at least an attempt now, so get the monster's name */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 
 	/* If we see a hidden monster try to cast a spell, become aware of it */
 	if (monster_is_camouflaged(mon))
@@ -562,10 +562,10 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 	if (rf_has(mon->race->flags, RF_NEVER_BLOW)) return (false);
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
 
 	/* Get the "died from" information (i.e. "a kobold") */
-	monster_desc(ddesc, sizeof(ddesc), mon, MDESC_SHOW | MDESC_IND_VIS);
+	monster_desc(ddesc, sizeof(ddesc), mon, MDESC_SHOW | MDESC_IND_VIS | MDESC_RODIT);
 
 	/* Scan through all blows */
 	for (ap_cnt = 0; ap_cnt < z_info->mon_blows_max; ap_cnt++) {
@@ -805,8 +805,8 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 	if (rf_has(mon->race->flags, RF_NEVER_BLOW)) return (false);
 
 	/* Get the monster names (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
-	monster_desc(t_name, sizeof(t_name), t_mon, MDESC_TARG);
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+	monster_desc(t_name, sizeof(t_name), t_mon, MDESC_TARG | MDESC_DATEL);
 
 	/* Scan through all blows */
 	for (ap_cnt = 0; ap_cnt < z_info->mon_blows_max; ap_cnt++) {
@@ -913,7 +913,7 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 			/* Visible monster missed monster, so notify if appropriate. */
 			if (monster_is_visible(mon) && method->miss) {
 				// msg("%s misses %s.", m_name, t_name);
-				msg("%s промахивается %s.", m_name, t_name);
+				msg("%s промахивается по %s.", m_name, t_name);
 			}
 		}
 

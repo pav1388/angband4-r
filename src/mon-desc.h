@@ -49,8 +49,9 @@
 
 // для русского языка
 #define MDESC_PLURAL	0x400
+// #define MDESC_IMEN
 #define MDESC_RODIT		0x800
-#define MDESC_DAT		0x1000
+#define MDESC_DATEL		0x1000
 #define MDESC_VINIT		0x1800
 #define MDESC_TVORIT	0x2000
 #define MDESC_PREDL		0x2800

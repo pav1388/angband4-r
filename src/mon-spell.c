@@ -188,7 +188,7 @@ static void spell_message(struct monster *mon,
 					// char m_name[80];
 					char m_name[180];
 					int mdesc_mode = (MDESC_IND_HID |
-						MDESC_PRO_HID);
+						MDESC_PRO_HID); // MDESC_IMEN ?
 
 					if (is_leading) {
 						mdesc_mode |= MDESC_CAPITAL;

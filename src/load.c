@@ -666,7 +666,7 @@ int rd_player(void)
 
 	rd_string(player->full_name, sizeof(player->full_name));
 	// rd_string(player->died_from, 80);
-	rd_string(player->died_from, 120);
+	rd_string(player->died_from, 180);
 	// player->history = mem_zalloc(250);
 	player->history = mem_zalloc(512);
 	// rd_string(player->history, 250);
