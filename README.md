@@ -6,7 +6,7 @@
 
 В процессе...
 
-**Если кто-то захочет помочь с переводом файла lib\gamedata\monster.txt - пишите**
+**Если кто-то захочет помочь с переводом файла lib\gamedata\monster.txt - пишите здесь или pav13@mail.ru**
 
 <p align="center">
 <img src="screenshots/title.png" width="425"/>
