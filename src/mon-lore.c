@@ -1892,7 +1892,7 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	}
 	textblock_append_c(tb, COLOUR_L_GREEN, " %d", total_centidamage/100);
 	// textblock_append(tb, " damage on each of %s turns.  ",
-	textblock_append(tb, " урона за каждый из%s%s ходов.  ",
+	textblock_append(tb, " урона за каждый%s%s ход.  ",
 					 // lore_pronoun_possessive(msex, false));
 					 msex ? " " : "",
 					 msex ? lore_pronoun_possessive(msex, false) : "");

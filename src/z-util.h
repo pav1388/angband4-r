@@ -60,7 +60,7 @@ extern void (*quit_aux)(const char *);
  */
 
 //форматирование имени монстра используя функцию форматирования имени предмета
-#define mon_desc_name_format(buf, max, end, fmt, pluralise)		obj_desc_name_format((buf), (max), (end), (fmt), 0, (pluralise))
+#define mon_desc_name_format(buf, max, end, fmt, index)		obj_desc_name_format((buf), (max), (end), (fmt), 0, (index))
 
 // выбор окончания слова в зависимости от числительного
 #define PLURAL_RU(n, a, b, c)	((((n) % 10) == 1) && (((n) % 100) != 11) ? (a) : (((n) % 10) > 1) && (((n) % 10) < 5) && (((n) % 100) != 12) && (((n) % 100) != 13) && (((n) % 100) != 14) ? (b) : (c))
@@ -87,6 +87,16 @@ extern void (*quit_aux)(const char *);
 #define NEUTER		0
 #define MALE		1
 #define FEMALE		2
+#define DECL1		0
+#define DECL1B		6
+#define DECL2		1
+#define DECL3		2
+#define DECL3B		7
+#define DECL4		3
+#define DECL5		4
+#define DECL6		5
+#define DECL7		6
+#define DECL8		7
 
 // возможные окончания
 // строгий порядок как в obj-desc.c *ending_chars[]

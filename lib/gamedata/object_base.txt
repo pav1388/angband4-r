@@ -17,20 +17,20 @@ default:break-chance:10
 default:max-stack:40
 
 # name:chest:Chest~
-name:chest:Сундук=1130
+name:chest:Сундук=1230
 graphics:slate
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 
 # name:shot:Shot~
-name:shot:Дробин=1210
+name:shot:Дробин=1310
 graphics:light umber
 break:0
 # max-stack:40
 flags:SHOW_DICE
 
 # name:arrow:Arrow~
-name:arrow:Стрел=1210
+name:arrow:Стрел=1310
 graphics:light umber
 break:35
 # max-stack:40
@@ -38,7 +38,7 @@ flags:HATES_ACID | HATES_FIRE
 flags:SHOW_DICE
 
 # name:bolt:Bolt~
-name:bolt:Болт=1110
+name:bolt:Болт=1210
 graphics:light umber
 break:20
 # max-stack:40
@@ -46,136 +46,136 @@ flags:HATES_ACID
 flags:SHOW_DICE
 
 # name:bow:Bow~
-name:bow:Лук=1130
+name:bow:Лук=1230
 graphics:umber
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 flags:SHOW_MULT
 
 # name:digger:Digger~
-name:digger:Копател=1120
+name:digger:Копател=1220
 graphics:slate
 # max-stack:1
 flags:SHOW_DICE
 
 # name:hafted:Hafted weapon~
-name:hafted:Оруж=1070 на Древке
+name:hafted:Оруж=1170 на Древке
 graphics:white
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 flags:SHOW_DICE
 
 # name:polearm:Polearm~
-name:polearm:Древков=3010 Оруж=1070
+name:polearm:Древков=3110 Оруж=1170
 graphics:white
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 flags:SHOW_DICE
 
 # name:sword:Bladed weapon~
-name:sword:Оруж=1070 с Клинком
+name:sword:Оруж=1170 с Клинком
 graphics:white
 # max-stack:1
 flags:HATES_ACID
 flags:SHOW_DICE
 
 # name:boots:Boot~
-name:boots:Ботин.ок=1130
+name:boots:Ботин.ок=1230
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 
 # name:gloves:Glove~
-name:gloves:Перчат.ок=1230
+name:gloves:Перчат.ок=1330
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 
 # name:helm:Helm~
-name:helm:Шлем=1110
+name:helm:Шлем=1210
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID
 
 # name:crown:Crown~
-name:crown:Корон=1210
+name:crown:Корон=1310
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID
 
 # name:shield:Shield~
-name:shield:Щит=1110
+name:shield:Щит=1210
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID
 
 # name:cloak:Cloak~
-name:cloak:Плащ=1140
+name:cloak:Плащ=1240
 graphics:light umber
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 
 # name:soft armor:Soft Armor~
-name:soft armor:Лёгк=3130 Доспех=1130
+name:soft armor:Лёгк=3230 Доспех=1230
 graphics:slate
 # max-stack:1
 flags:HATES_ACID | HATES_FIRE
 
 # name:hard armor:Hard Armor~
-name:hard armor:Тяжёл=3110 Доспех=1130
+name:hard armor:Тяжёл=3210 Доспех=1230
 graphics:slate
 # max-stack:1
 flags:HATES_ACID
 
 # name:dragon armor:Dragon Armor~
-name:dragon armor:Дракон.ь=3160 Доспех=1130
+name:dragon armor:Дракон.ь=3260 Доспех=1230
 graphics:slate
 # max-stack:1
 
 # name:light:Light~
-name:light:Освещен=1070
+name:light:Освещен=1170
 graphics:yellow
 break:50
 # max-stack:10
 flags:HATES_FIRE
 
 # name:amulet:Amulet~
-name:amulet:Амулет=1110
+name:amulet:Амулет=1210
 graphics:orange
 # max-stack:2
 
 # name:ring:Ring~
-name:ring:Кол=1059
+name:ring:Кол=1159
 graphics:red
 # max-stack:5
 flags:HATES_ELEC
 
 # name:staff:Staff~
-name:staff:Посох=1130
+name:staff:Посох=1230
 graphics:light umber
 # max-stack:5
 flags:HATES_ACID | HATES_FIRE | EASY_KNOW
 
 # name:wand:Wand~
-name:wand:Палоч.ек=1230
+name:wand:Палоч.ек=1330
 graphics:green
 # max-stack:5
 flags:HATES_ELEC | EASY_KNOW
 
 # name:rod:Rod~
-name:rod:Жезл=1110
+name:rod:Жезл=1210
 graphics:light purple
 # max-stack:5
 flags:HATES_ELEC | EASY_KNOW
 
 # name:scroll:Scroll~
-name:scroll:Свит.ок=1130
+name:scroll:Свит.ок=1230
 graphics:white
 # max-stack:20
 flags:HATES_ACID | HATES_FIRE | EASY_KNOW
 
 # name:potion:Potion~
-name:potion:Зел=1060
+name:potion:Зел=1160
 graphics:light blue
 break:100
 # max-stack:20
@@ -183,7 +183,7 @@ flags:HATES_COLD | HATES_SOUND | HATES_SHARD | HATES_ICE | HATES_FORCE
 flags:EASY_KNOW
 
 # name:flask:Flask~
-name:flask:Фляг=1230
+name:flask:Фляг=1330
 graphics:yellow
 break:100
 # max-stack:20
@@ -198,32 +198,32 @@ break:100
 flags:EASY_KNOW
 
 # name:mushroom:Mushroom~
-name:mushroom:Гриб=1110
+name:mushroom:Гриб=1210
 graphics:light umber
 break:100
 # max-stack:10
 flags:EASY_KNOW
 
 # name:magic book:Magic Book~
-name:magic book:Книг=1230 Магических Заклинаний
+name:magic book:Книг=1330 Магических Заклинаний
 graphics:light red
 # max-stack:5
 flags:HATES_FIRE | EASY_KNOW
 
 # name:prayer book:Prayer Book~
-name:prayer book:Свят=3210 Книг=1230 Молитв
+name:prayer book:Свят=3310 Книг=1330 Молитв
 graphics:light green
 # max-stack:5
 flags:HATES_FIRE | EASY_KNOW
 
 # name:nature book:Nature Book~
-name:nature book:Книг=1230 Магии Природы
+name:nature book:Книг=1330 Магии Природы
 graphics:yellow
 # max-stack:5
 flags:HATES_FIRE | EASY_KNOW
 
 # name:shadow book:Shadow Book~
-name:shadow book:Некромантическ=3130 Том=1110
+name:shadow book:Некромантическ=3230 Том=1210
 graphics:light purple
 # max-stack:5
 flags:HATES_FIRE | EASY_KNOW

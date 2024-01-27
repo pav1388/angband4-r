@@ -67,9 +67,10 @@ void get_mon_name(char *buf, size_t buflen,
 	        my_strcat(buf, race->plural, buflen);
 	    } else {
 	        // my_strcat(buf, race->name, buflen);
-			mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 
-					(PLURAL_RU(num, C_IMEN, C_CUSTOM, C_RODIT) << 1) + 1);
-	        plural_aux(buf, buflen);
+			// падеж в зависимости от количества
+			uint8_t index = PLURAL_RU(num, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
+			mon_desc_name_format(buf, buflen, sizeof buf, mon_name, &index);
+	        // plural_aux(buf, buflen);
 	    }
     }
 }
@@ -288,6 +289,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 	
 	// для русского языка
 	// форматирование имени монстра
+	uint8_t index = mode >> 10;
 	char *mon_name = string_make(desc);
-	mon_desc_name_format(desc, max, 0, mon_name, mode >> 10);
+	mon_desc_name_format(desc, max, 0, mon_name, &index);
 }

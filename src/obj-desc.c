@@ -29,13 +29,13 @@
  * Puts the object base kind's name into buf.
  */
 // void object_base_name(char *buf, size_t max, int tval, bool plural)
-void object_base_name(char *buf, size_t max, int tval, uint8_t plural)
+void object_base_name(char *buf, size_t max, int tval, uint8_t *index)
 {
 	struct object_base *kb = &kb_info[tval];
 	size_t end = 0;
 
 	if (kb->name && kb->name[0]) 
-		(void) obj_desc_name_format(buf, max, end, kb->name, NULL, plural);
+		(void) obj_desc_name_format(buf, max, end, kb->name, NULL, index);
 }
 
 
@@ -124,75 +124,75 @@ static const char *obj_desc_get_basename(const struct object *obj, bool aware,
 
 		case TV_AMULET:
 			// return (show_flavor ? "& # Amulet~" : "& Amulet~");
-			return (show_flavor ? "# Амулет=1110" : "Амулет=1110");
+			return (show_flavor ? "# Амулет=1210" : "Амулет=1210");
 
 		case TV_RING:
 			// return (show_flavor ? "& # Ring~" : "& Ring~");
-			return (show_flavor ? "Кол=1059#" : "Кол=1059");
+			return (show_flavor ? "Кол=1159#" : "Кол=1159");
 
 		case TV_STAFF:
 			// return (show_flavor ? "& # Sta|ff|ves|" : "& Sta|ff|ves|");
-			return (show_flavor ? "Посох=1130#" : "Посох=1130");
+			return (show_flavor ? "Посох=1230#" : "Посох=1230");
 
 		case TV_WAND:
 			// return (show_flavor ? "& # Wand~" : "& Wand~");
-			return (show_flavor ? "# Палоч.ек=1230" : "Палоч.ек=1230");
+			return (show_flavor ? "# Палоч.ек=1330" : "Палоч.ек=1330");
 
 		case TV_ROD:
 			// return (show_flavor ? "& # Rod~" : "& Rod~");
-			return (show_flavor ? "# Жезл=1110" : "Жезл=1110");
+			return (show_flavor ? "# Жезл=1210" : "Жезл=1210");
 
 		case TV_POTION:
 			// return (show_flavor ? "& # Potion~" : "& Potion~");
-			return (show_flavor ? "# Зел=1060" : "Зел=1060");
+			return (show_flavor ? "# Зел=1160" : "Зел=1160");
 
 		case TV_SCROLL:
 			// return (show_flavor ? "& Scroll~ titled #" : "& Scroll~");
-			return (show_flavor ? "Свит.ок=1130 с надписью #" : "Свит.ок=1130");
+			return (show_flavor ? "Свит.ок=1230 с надписью #" : "Свит.ок=1230");
 
 		case TV_MAGIC_BOOK:
 			if (terse)
 				// return "& Book~ #";
-				return "Книг=1230 #";
+				return "Книг=1330 #";
 			else
 				// return "& Book~ of Magic Spells #";
-				return "Книг=1230 Магических Заклинаний #";
+				return "Книг=1330 Магических Заклинаний #";
 
 		case TV_PRAYER_BOOK:
 			if (terse)
 				// return "& Book~ #";
-				return "Книг=1230 #";
+				return "Книг=1330 #";
 			else
 				// return "& Holy Book~ of Prayers #";
-				return "Свят=3210 Книг=1230 Молитв #";
+				return "Свят=3310 Книг=1330 Молитв #";
 
 		case TV_NATURE_BOOK:
 			if (terse)
 				// return "& Book~ #";
-				return "Книг=1230 #";
+				return "Книг=1330 #";
 			else
 				// return "& Book~ of Nature Magics #";
-				return "Книг=1230 Магии Природы #";
+				return "Книг=1330 Магии Природы #";
 
 		case TV_SHADOW_BOOK:
 			if (terse)
 				// return "& Tome~ #";
-				return "Том=1110 #";
+				return "Том=1210 #";
 			else
 				// return "& Necromantic Tome~ #";
-				return "Некромантическ=3130 Том=1110 #";
+				return "Некромантическ=3230 Том=1210 #";
 
 		case TV_OTHER_BOOK:
 			if (terse)
 				// return "& Book~ #";
-				return "Книг=1230 #";
+				return "Книг=1330 #";
 			else
 				// return "& Book of Mysteries~ #";
-				return "Книг=1230 Таинств #";
+				return "Книг=1330 Таинств #";
 
 		case TV_MUSHROOM:
 			// return (show_flavor ? "& # Mushroom~" : "& Mushroom~");
-			return (show_flavor ? "# Гриб=1110" : "Гриб=1110");
+			return (show_flavor ? "# Гриб=1210" : "Гриб=1210");
 	}
 
 	// return "(nothing)";
@@ -253,13 +253,13 @@ static size_t obj_desc_name_prefix(char *buf, size_t max, size_t end,
  */
 size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 		// const char *fmt, const char *modstr, bool pluralise)
-		const char *fmt, const char *modstr, uint8_t pluralise)
+		const char *fmt, const char *modstr, uint8_t *index)
 {
-	uint8_t index[4] = {0, 0, 0, 0};
-	uint8_t cas = pluralise >> 1;
-	uint8_t cas_for_modstr = cas;
-	pluralise &= 1;
+	uint8_t w_opt[4] = {0, 0, 0, 0}; // {PART, GENDER, DECL, ALTERN}
+	uint8_t w_case = (uint8_t)*index >> 1;
+	bool pluralise = (uint8_t)*index & 1;
 	bool plural_noun = pluralise;
+	bool w_opt_error = false;
 	
 	/* Copy the string */
 	while (*fmt) {
@@ -294,97 +294,96 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 						if (!(isdigit((unsigned char) *init_fmt)))
 							break;
 						
-						index[i] = *init_fmt - '0';
+						w_opt[i] = *init_fmt - '0';
 					}
-					index[DECL]--;
+					if (w_opt[GENDER])
+						w_opt[GENDER]--;
+					
+					if (w_opt[DECL])
+						w_opt[DECL]--;
+					
 					break;
 				}
 				init_fmt++;
 			}
-			// fmt = init_fmt;
 			
-			if (cas == C_CUSTOM && pluralise) {
-				cas = C_RODIT;
+			if (w_case == C_CUSTOM && pluralise) {
+				w_case = C_RODIT;
 				plural_noun = false;
 			}
-			// прилагательное неодуш., м.р. 6 склонение (дракон.ь=3160)
-			if (index[PART] == ADJ_INA && index[GENDER] == MALE && index[DECL] == 5) {
-				if ((cas == C_IMEN || cas == C_VINIT) && !pluralise)
+			
+			// прилагательное неодуш., м.р. 6 склонение (дракон.ь=3260)
+			if (w_opt[PART] == ADJ_INA && w_opt[GENDER] == MALE && w_opt[DECL] == DECL6) {
+				if ((w_case == C_IMEN || w_case == C_VINIT) && !pluralise)
 					fmt+=2;
 			}
-			// прилагательное одуш., м.р. 6 склонение (дракон.ь=4160)
-			if (index[PART] == ADJ_ANI && index[GENDER] == MALE && index[DECL] == 5) {
-				if ((cas == C_IMEN) && !pluralise)
+			// прилагательное одуш., м.р. 6 склонение (дракон.ь=4260)
+			if (w_opt[PART] == ADJ_ANI && w_opt[GENDER] == MALE && w_opt[DECL] == DECL6) {
+				if ((w_case == C_IMEN) && !pluralise)
 					fmt+=2;
 			}
 			
-			// существительное, м.р. 1-8 склонение,  ж.р. 8 склонение
-			// if ((index[PART] == NOUN_INA || index[PART] == NOUN_ANI) &&
-						// (index[GENDER] == MALE || (index[GENDER] == FEMALE && index[DECL] == 7))) {
-				// if ((cas != C_IMEN && cas != C_VINIT) || plural_noun)
-					// fmt+=2;
-			// }
-			// существительное, с.р. 1-5 склонение, родит.падеж , множ.число
-			// if ((index[PART] == NOUN_INA || index[PART] == NOUN_ANI) &&
-						// index[GENDER] == NEUTER && index[DECL] < 5 && cas == C_RODIT && plural_noun)
-				// fmt+=2;
-				
-			// существительное, ж.р. 1-7 склонение
-			// стопка,бутылка,палочка,сабля,кошка,перчатка,кирка и т.д.
-			// if ((index[PART] == NOUN_INA || index[PART] == NOUN_ANI) &&
-						// index[GENDER] == FEMALE && index[DECL] < 7) {
-				// if (!(cas == C_RODIT && plural_noun))
-					// fmt+=2;
-			// }
-			
-			// существительное
-			if (index[PART] == NOUN_INA || index[PART] == NOUN_ANI) {
+			// существительное (одуш. или неодуш.)
+			if (w_opt[PART] == NOUN_INA || w_opt[PART] == NOUN_ANI) {
 				// муж.р. 1-8 склонение,  ж.р. 8 склонение
-				if (index[GENDER] == MALE || (index[GENDER] == FEMALE && index[DECL] == 7)) {
-					if ((cas != C_IMEN && cas != C_VINIT) || plural_noun)
+				if (w_opt[GENDER] == MALE || (w_opt[GENDER] == FEMALE && w_opt[DECL] == DECL8)) {
+					if ((w_case != C_IMEN && w_case != C_VINIT) || plural_noun)
 						fmt+=2;
 					// оборванец=2150
-					if (!(cas == C_IMEN && !plural_noun)) // FFFIX
-						fmt+=2;
+					// if (!(w_case == C_IMEN && !plural_noun)) // FFFIX ?
+						// fmt+=2;
 				}
 				// сред.р. 1-5 склонение, родит.падеж , множ.число
-				else if (index[GENDER] == NEUTER && index[DECL] < 5 && cas == C_RODIT && plural_noun)
+				else if (w_opt[GENDER] == NEUTER && w_opt[DECL] < DECL6 && w_case == C_RODIT && plural_noun)
 					fmt+=2;
 				// жен.р. 1-7 склонение
 				// стопка,бутылка,палочка,сабля,кошка,перчатка,кирка и т.д.
-				else if (index[GENDER] == FEMALE && index[DECL] < 7) {
-					if (!(cas == C_RODIT && plural_noun))
+				else if (w_opt[GENDER] == FEMALE && w_opt[DECL] < DECL8) {
+					if (!(w_case == C_RODIT && plural_noun))
 						fmt+=2;
 				}
 			}
 			
-
+			w_opt[GENDER]++;
+			
 		} else if (*fmt == '=') { // Метка конца основы слова
+			w_opt_error = false;
+			
 			for (uint8_t i = 0; i != 4; i++) {
 				fmt++;
 				if (!(isdigit((unsigned char) *fmt))) {
-					strnfcat(buf, max, &end, " <-ОШИБКА ");
+					w_opt_error = true;
 					break;
 				}
-				index[i] = *fmt - '0';
-				if ((!index[PART] || index[PART] > 4) || index[GENDER] > 2 || index[DECL] > 8) {
-					strnfcat(buf, max, &end, " <-ОШИБКА ");
-					break;
-				}
+				w_opt[i] = *fmt - '0';
 			}
-			index[DECL]--;
 			
-			// index[0] = [PART] = часть речи 
-				// сущ неодуш = 1 = NOUN_INA; сущ одуш = 2 = NOUN_ANI;
-				// прил неодуш = 3 = ADJ_INA; прил одуш = 4 = ADJ_ANI;
-				
-			// index[1] = [GENDER] = род 
-				// сред = NEUTER = 0, муж = MALE = 1, жен = FEMALE = 2)
-				
-			// index[2] = [DECL] = тип склонения по А. А. Зализняку (1-8)
+			if (!w_opt[PART] || w_opt[PART] > 4)
+				w_opt_error = true;
 			
-			// index[3] = [ALTERN] = чередование 
-				// нет = 0, систематическое = 1~5, уникальное = 6~9
+			if (!w_opt[GENDER] || w_opt[GENDER] > 3)
+				w_opt_error = true;
+			else
+				w_opt[GENDER]--;
+			
+			if (!w_opt[DECL] || w_opt[DECL] > 8)
+				w_opt_error = true;
+			else
+				w_opt[DECL]--;
+			
+			// w_opt[PART] = часть речи 
+				// сущ неодуш = 1 = NOUN_INA / сущ одуш = 2 = NOUN_ANI
+				// прил неодуш = 3 = ADJ_INA / прил одуш = 4 = ADJ_ANI
+				
+			// w_opt[GENDER] = род 
+				// сред = 1 = NEUTER / муж = 2 = MALE / жен = 3 = FEMALE
+				
+			// w_opt[DECL] = тип склонения по А. А. Зализняку
+				// существительное = 1~8 = DECL1~DECL8
+				// прилагательное = 1~6 = DECL1~DECL6 / 1b = 7 = DECL1B / 3b = 8 = DECL3B
+			
+			// w_opt[ALTERN] = чередование 
+				// нет = 0 / систематическое = 1~5 / уникальное = 6~9
 			
 			// возможные окончания существительных и прилагательных (61 шт.)
 			// строгий порядок как в z-util.h #define E_xxx
@@ -397,56 +396,56 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 			// окончания прилагательных [склонение][падеж][род ед.ч./множ.ч.]
 			uint8_t ending_adjective[8][6][4] = {
 				// {{с.р., м.р., ж.р., мн.ч.}}
-				// склонение 1 (word=3/4*1*)
+				// склонение 1 (word=3/4*1*) DECL1
 				{{E_OE, E_YJ, E_AYA, E_YE},	// имен.п.  C_IMEN		0
 				{E_OGO, E_OGO, E_OJ, E_YH}, // родит.п. C_RODIT		1
 				{E_OMU, E_OMU, E_OJ, E_YM}, // дат.п.   C_DATEL		2
 				{E_OE, E_YJ, E_UYU, E_YE}, 	// вин.п.   C_VINIT		3
 				{E_YM, E_YM, E_OJ, E_YMI}, 	// твор.п.  C_TVORIT	4
 				{E_OM, E_OM, E_OJ, E_YH}},	// пред.п.  C_PREDL		5
-				// склонение 2 (word=3/4*2*)
+				// склонение 2 (word=3/4*2*) DECL2
 				{{E_EE, E_IJ, E_YAYA, E_IE},
 				{E_EGO, E_EGO, E_EJ, E_IH},
 				{E_EMU, E_EMU, E_EJ, E_IM},
 				{E_EE, E_IJ, E_YUYU, E_IE},
 				{E_IM, E_IM, E_EJ, E_IMI},
 				{E_EM, E_EM, E_EJ, E_IH}},
-				// склонение 3 (word=3/4*3*)
+				// склонение 3 (word=3/4*3*) DECL3
 				{{E_OE, E_IJ, E_AYA, E_IE},
 				{E_OGO, E_OGO, E_OJ, E_IH},
 				{E_OMU, E_OMU, E_OJ, E_IM},
 				{E_OE, E_IJ, E_UYU, E_IE},
 				{E_IM, E_IM, E_OJ, E_IMI},
 				{E_OM, E_OM, E_OJ, E_IH}},
-				// склонение 4 (word=3/4*4*)
+				// склонение 4 (word=3/4*4*) DECL4
 				{{E_EE, E_IJ, E_AYA, E_IE},
 				{E_EGO, E_EGO, E_EJ, E_IH},
 				{E_EMU, E_EMU, E_EJ, E_IM},
 				{E_EE, E_IJ, E_UYU, E_IE},
 				{E_IM, E_IM, E_EJ, E_IMI},
 				{E_EM, E_EM, E_EJ, E_IH}},
-				// склонение 5 (word=3/4*5*)
+				// склонение 5 (word=3/4*5*) DECL5
 				{{E_EE, E_YJ, E_AYA, E_YE},
 				{E_EGO, E_EGO, E_EJ, E_YH},
 				{E_EMU, E_EMU, E_EJ, E_YM},
 				{E_EE, E_YJ, E_UYU, E_YE},
 				{E_YM, E_YM, E_EJ, E_YMI},
 				{E_EM, E_EM, E_EJ, E_YH}},
-				// склонение 6 (word=3/4*6*)
+				// склонение 6 (word=3/4*6*) DECL6
 				{{E_E, E_IJ, E_YA, E_I},
 				{E_EGO, E_EGO, E_EJ, E_IH},
 				{E_EMU, E_EMU, E_EJ, E_IM},
 				{E_E, E_IJ, E_YU, E_IE},
 				{E_IM, E_IM, E_EJ, E_IMI},
 				{E_EM, E_EM, E_EJ, E_IH}}, 
-				// склонение 1b (word=3/4*7*)
+				// склонение 1b (word=3/4*7*) DECL1B
 				{{E_OE, E_OJ, E_AYA, E_YE},
 				{E_OGO, E_OGO, E_OJ, E_YH},
 				{E_OMU, E_OMU, E_OJ, E_YM},
 				{E_OE, E_OJ, E_UYU, E_YE},
 				{E_YM, E_YM, E_OJ, E_YMI},
 				{E_OM, E_OM, E_OJ, E_YH}}, 
-				// склонение 3b (word=3/4*8*)
+				// склонение 3b (word=3/4*8*) DECL3B
 				{{E_OE, E_OJ, E_AYA, E_IE},
 				{E_OGO, E_OGO, E_OJ, E_IH},
 				{E_OMU, E_OMU, E_OJ, E_IM},
@@ -457,56 +456,56 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 			// окончания существительных [склонение][падеж][род][число]
 			uint8_t ending_noun[8][6][3][2] = {
 				// {{с.р. ед.ч., ср.р. мн.ч.},{м.р. ед.ч., м.р. мн.ч.},{ж.р. ед.ч., ж.р. мн.ч.}}
-				{ // склонение 1 (word=1/2*1*)
+				{ // склонение 1 (word=1/2*1*) DECL1
 				{{E_O,E_A},{E_,E_Y},{E_A,E_Y}},				// имен.п.  C_IMEN		0
 				{{E_A,E_},{E_A,E_OV},{E_Y,E_}}, 			// родит.п. C_RODIT		1
 				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}}, 		// дат.п.   C_DATEL		2
 				{{E_O,E_A},{E_,E_Y},{E_U,E_Y}}, 			// вин.п.   C_VINIT		3
 				{{E_OM,E_AMI},{E_OM,E_AMI},{E_OJ,E_AMI}}, 	// твор.п.  C_TVORIT	4
 				{{E_E,E_AH},{E_E,E_AH},{E_E,E_AH}}			// пред.п.  C_PREDL		5
-				}, { // склонение 2 (word=1/2*2*)
+				}, { // склонение 2 (word=1/2*2*) DECL2
 				{{E_E,E_YA},{E_b,E_I},{E_YA,E_I}},
 				{{E_YA,E_b},{E_YA,E_EJ},{E_I,E_b}},
 				{{E_YU,E_YAM},{E_YU,E_YAM},{E_E,E_YAM}},
 				{{E_E,E_YA},{E_b,E_I},{E_YU,E_I}},
 				{{E_EM,E_YAMI},{E_EM,E_YAMI},{E_EJ,E_YAMI}},
 				{{E_E,E_YAH},{E_E,E_YAH},{E_E,E_YAH}}
-				}, { // склонение 3 (word=1/2*3*)
+				}, { // склонение 3 (word=1/2*3*) DECL3
 				{{E_O,E_A},{E_,E_I},{E_A,E_I}},
 				{{E_A,E_},{E_A,E_OV},{E_I,E_}},
 				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}},
 				{{E_O,E_A},{E_,E_I},{E_U,E_I}},
 				{{E_OM,E_AMI},{E_OM,E_AMI},{E_OJ,E_AMI}},
 				{{E_E,E_AH},{E_E,E_AH},{E_E,E_AH}}
-				}, { // склонение 4 (word=1/2*4*)
+				}, { // склонение 4 (word=1/2*4*) DECL4
 				{{E_E,E_A},{E_,E_I},{E_A,E_I}},
 				{{E_A,E_},{E_A,E_EJ},{E_I,E_}},
 				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}},
 				{{E_E,E_A},{E_,E_I},{E_U,E_I}},
 				{{E_EM,E_AMI},{E_EM,E_AMI},{E_EJ,E_AMI}},
 				{{E_E,E_AH},{E_E,E_AH},{E_E,E_AH}}
-				}, { // склонение 5 (word=1/2*5*)
+				}, { // склонение 5 (word=1/2*5*) DECL5
 				{{E_E,E_A},{E_,E_Y},{E_A,E_Y}},
 				{{E_A,E_},{E_A,E_EV},{E_Y,E_}},
 				{{E_U,E_AM},{E_U,E_AM},{E_E,E_AM}},
 				{{E_E,E_A},{E_,E_Y},{E_U,E_Y}},
 				{{E_EM,E_AMI},{E_EM,E_AMI},{E_EJ,E_AMI}},
 				{{E_E,E_AH},{E_E,E_AH},{E_E,E_AH}}
-				}, { // склонение 6 (word=1/2*6*)
+				}, { // склонение 6 (word=1/2*6*) DECL6
 				{{E_bE,E_bYA},{E_J,E_I},{E_YA,E_I}},
 				{{E_bYA,E_IJ},{E_YA,E_EV},{E_I,E_J}},
 				{{E_bYU,E_bYAM},{E_YU,E_YAM},{E_E,E_YAM}},
 				{{E_bE,E_bYA},{E_J,E_I},{E_YU,E_I}},
 				{{E_bEM,E_bYAMI},{E_EM,E_YAMI},{E_EJ,E_YAMI}},
 				{{E_bE,E_bYAH},{E_E,E_YAH},{E_E,E_YAH}}
-				}, { // склонение 7 (word=1/2*7*)
+				}, { // склонение 7 (word=1/2*7*) DECL7
 				{{E_IE,E_IYA},{E_J,E_I},{E_YA,E_I}},
 				{{E_IYA,E_IJ},{E_YA,E_EV},{E_I,E_J}},
 				{{E_IYU,E_IYAMI},{E_YU,E_YAM},{E_I,E_YAM}},
 				{{E_IE,E_IYA},{E_J,E_I},{E_YU,E_I}},
 				{{E_IEM,E_IYAMI},{E_EM,E_YAMI},{E_EJ,E_YAMI}},
 				{{E_II,E_IYAH},{E_I,E_YAH},{E_I,E_YAH}}
-				}, { // склонение 8 (word=1/2*8*)
+				}, { // склонение 8 (word=1/2*8*) DECL8
 				{{E_YA,0},{E_b,E_J},{E_b,E_I}},
 				{{0,0},{E_J,E_EJ},{E_I,E_EJ}},
 				{{0,0},{E_J,E_YAM},{E_I,E_YAM}},
@@ -515,86 +514,87 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 				{{0,0},{E_J,E_YAH},{E_I,E_YAH}}
 				}};
 
-			if (cas == C_CUSTOM && pluralise) {
-				cas = C_RODIT;
+			if (w_case == C_CUSTOM && pluralise) {
+				w_case = C_RODIT;
 				plural_noun = false;
 			}
 			
 			uint8_t result = 0;
 			
 			// выбор окончания для прилигательных одушевлённых
-			if (index[PART] == ADJ_ANI) {
-				if (index[ALTERN]) {
-					if (index[ALTERN] == 5) // только множ.ч., прилог. для лат
-						result = ending_adjective[index[DECL]][(cas == C_VINIT && 
-							(index[GENDER] == MALE || pluralise)) ? C_RODIT : cas][3];
+			if (w_opt[PART] == ADJ_ANI) {
+				if (w_opt[ALTERN]) {
+					if (w_opt[ALTERN] == 5) // только множ.ч., прилогат. для лат
+						result = ending_adjective[w_opt[DECL]][(w_case == C_VINIT && 
+							(w_opt[GENDER] == MALE || pluralise)) ? C_RODIT : w_case][3];
 				} else
-					result = ending_adjective[index[DECL]][(cas == C_VINIT && 
-							(index[GENDER] == MALE || pluralise)) ? C_RODIT : cas][pluralise ? 3 : index[GENDER]];
+					result = ending_adjective[w_opt[DECL]][(w_case == C_VINIT && 
+							(w_opt[GENDER] == MALE || pluralise)) ? C_RODIT : w_case][pluralise ? 3 : w_opt[GENDER]];
 			}
 			
 			// выбор окончания для прилигательных НЕодушевлённых
-			if (index[PART] == ADJ_INA) {
-				if (index[ALTERN]) {
-					if (index[ALTERN] == 5) // только множ.ч., прилог. для лат
-						result = ending_adjective[index[DECL]][cas][3];
+			if (w_opt[PART] == ADJ_INA) {
+				if (w_opt[ALTERN]) {
+					if (w_opt[ALTERN] == 5) // только множ.ч., прилогат. для лат
+						result = ending_adjective[w_opt[DECL]][w_case][3];
 				} else
-					result = ending_adjective[index[DECL]][cas][pluralise ? 3 : index[GENDER]];
+					result = ending_adjective[w_opt[DECL]][w_case][pluralise ? 3 : w_opt[GENDER]];
 			}
 			
 			// выбор окончания для существительных одушевлённых
-			if (index[PART] == NOUN_ANI) {
-				if (index[DECL] == 1 && index[GENDER] == NEUTER)
-					result = ((cas == C_IMEN || cas == C_VINIT) && !plural_noun) ? E_YO : 
-								((cas == C_RODIT || cas == C_VINIT) && plural_noun) ? E_EJ : 
-								(cas == C_TVORIT && !plural_noun) ? E_YOM : 
-								ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
-				else if (index[DECL] == 5 && index[GENDER] == NEUTER)
-					result = (cas == C_RODIT && plural_noun) ? E_EJ : 
-								(cas == C_VINIT && !plural_noun) ? E_bYO : 
-								(cas == C_TVORIT && !plural_noun) ? E_bYOM : 
-								ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
-				else if ((index[DECL] == 0 || index[DECL] == 2 || index[DECL] == 3 ||
-							index[DECL] == 6) && cas == C_VINIT && index[GENDER] != MALE && plural_noun)
-					result = ending_noun[index[DECL]][C_RODIT][index[GENDER]][plural_noun];
-				else if (index[DECL] < 7 && cas == C_VINIT && index[GENDER] == MALE)
-					result = ending_noun[index[DECL]][C_RODIT][index[GENDER]][plural_noun];
-				else if ((index[DECL] == 1 || index[DECL] == 4 || index[DECL] == 5 ||
-							index[DECL] == 7) && cas == C_VINIT && index[GENDER] == FEMALE && plural_noun)
-					result = ending_noun[index[DECL]][C_RODIT][index[GENDER]][plural_noun];
+			if (w_opt[PART] == NOUN_ANI) {
+				if (w_opt[DECL] == DECL2 && w_opt[GENDER] == NEUTER)
+					result = ((w_case == C_IMEN || w_case == C_VINIT) && !plural_noun) ? E_YO : 
+								((w_case == C_RODIT || w_case == C_VINIT) && plural_noun) ? E_EJ : 
+								(w_case == C_TVORIT && !plural_noun) ? E_YOM : 
+								ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
+				else if (w_opt[DECL] == DECL6 && w_opt[GENDER] == NEUTER)
+					result = (w_case == C_RODIT && plural_noun) ? E_EJ : 
+								(w_case == C_VINIT && !plural_noun) ? E_bYO : 
+								(w_case == C_TVORIT && !plural_noun) ? E_bYOM : 
+								ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
+				else if ((w_opt[DECL] == DECL1 || w_opt[DECL] == DECL3 || w_opt[DECL] == DECL4 ||
+							w_opt[DECL] == DECL7) && w_case == C_VINIT && w_opt[GENDER] != MALE && plural_noun)
+					result = ending_noun[w_opt[DECL]][C_RODIT][w_opt[GENDER]][plural_noun];
+				else if (w_opt[DECL] < DECL8 && w_case == C_VINIT && w_opt[GENDER] == MALE)
+					result = ending_noun[w_opt[DECL]][C_RODIT][w_opt[GENDER]][plural_noun];
+				else if ((w_opt[DECL] == DECL2 || w_opt[DECL] == DECL5 || w_opt[DECL] == DECL6 ||
+							w_opt[DECL] == DECL8) && w_case == C_VINIT && w_opt[GENDER] == FEMALE && plural_noun)
+					result = ending_noun[w_opt[DECL]][C_RODIT][w_opt[GENDER]][plural_noun];
 				else
-					result = ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
+					result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
 			}
 			
 			// выбор окончания для существительных НЕодушевлённых
-			if (index[PART] == NOUN_INA) {
-				if (index[ALTERN]) {
+			if (w_opt[PART] == NOUN_INA) {
+				if (w_opt[ALTERN]) {
 					// систематические чередования
-					// яблоко=1031
-					if (index[GENDER] == NEUTER && index[ALTERN] == 1 && cas == C_VINIT && plural_noun)
+					// яблоко=1131
+					if (w_opt[GENDER] == NEUTER && w_opt[ALTERN] == 1 && w_case == C_VINIT && plural_noun)
 						result = E_I;
-					// копьё=1064
-					else if (index[GENDER] == NEUTER && index[ALTERN] == 4 && (cas == C_IMEN || cas == C_TVORIT) && !plural_noun)
-						result = ending_noun[index[DECL]][cas][index[GENDER]][plural_noun] + 1; // е -> ё
-					// латы=1215 (только множ.ч.)
-					else if (index[ALTERN] == 5)
-						result = ending_noun[index[DECL]][cas][index[GENDER]][1];
+					// копьё=1164
+					else if (w_opt[GENDER] == NEUTER && w_opt[ALTERN] == 4 && (w_case == C_IMEN || w_case == C_TVORIT) && !plural_noun)
+						result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun] + 1; // е -> ё
+					// латы=1315 (только множ.ч.)
+					else if (w_opt[ALTERN] == 5)
+						result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][1];
 					
 					// уникальные чередования
-					// кольцо=1059
-					else if (index[GENDER] == NEUTER && index[ALTERN] == 9) {
-						strnfcat(buf, max, &end, "%s", (cas == C_RODIT && plural_noun) ? "ец" : "ьц");
-						if ((cas == C_IMEN || cas == C_VINIT) && !plural_noun)
+					// кольцо=1159
+					else if (w_opt[GENDER] == NEUTER && w_opt[ALTERN] == 9) {
+						strnfcat(buf, max, &end, "%s", (w_case == C_RODIT && plural_noun) ? "ец" : "ьц");
+						if ((w_case == C_IMEN || w_case == C_VINIT) && !plural_noun)
 							result = E_O;
 						else 
-							result = ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
+							result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
 					} else
-						result = ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
+						result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
 				
 				} else
-					result = ending_noun[index[DECL]][cas][index[GENDER]][plural_noun];
+					result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
 			}
-			strnfcat(buf, max, &end, "%s", ending_chars[result]);
+			strnfcat(buf, max, &end, "%s", w_opt_error ? " <-ОШИБКА " : ending_chars[result]);
+			w_opt[GENDER]++;
 			
 		} else if (*fmt == '|') {
 			/* Special plurals 
@@ -622,9 +622,7 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 			fmt = endmark;
 		} else if (*fmt == '#') {
 			/* Add modstr, with pluralisation if relevant */
-			pluralise = ((cas_for_modstr == C_CUSTOM ? cas_for_modstr : cas) << 1) + pluralise;
-			end = obj_desc_name_format(buf, max, end, modstr, NULL,	pluralise);
-			pluralise &= 1;
+			end = obj_desc_name_format(buf, max, end, modstr, NULL,	index);
 		}
 
 		else
@@ -634,6 +632,8 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 	}
 
 	buf[end] = 0;
+
+	*index = w_opt[GENDER];
 
 	return end;
 }
@@ -670,8 +670,8 @@ static size_t obj_desc_name(char *buf, size_t max, size_t end,
 			modstr, terse, number);
 
 	/* Base name */
-	plural = (PLURAL_RU(number, C_IMEN, C_CUSTOM, C_RODIT) << 1) + plural;
-	end = obj_desc_name_format(buf, max, end, basename, modstr, plural);
+	plural = PLURAL_RU(number, C_IMEN << 1, (C_CUSTOM << 1) + plural, (C_RODIT << 1) + plural);
+	end = obj_desc_name_format(buf, max, end, basename, modstr, &plural);
 
 	/* Append extra names of various kinds */
 	if (object_is_known_artifact(obj))

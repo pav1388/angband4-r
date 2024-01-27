@@ -26,6 +26,6 @@ void lore_show_interactive(const struct monster_race *race,
 						   const struct monster_lore *lore);
 void lore_show_subwindow(const struct monster_race *race,
 						 const struct monster_lore *lore);
-extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t pluralise);
+extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t *index);
 
 #endif /* UI_MONSTER_LORE_H */

@@ -139,8 +139,8 @@ static void option_toggle_display(struct menu *m, int oid, bool cursor,
 		c_prt(attr, desc_copy, row, col);
 		string_free(desc_copy);
 	}
-	c_prt(attr, format(": %s  (%s)", options[oid] ? "yes" : "no ",
-	// c_prt(attr, format(": %s  (%s)", options[oid] ? " да" : "нет",
+	// c_prt(attr, format(": %s  (%s)", options[oid] ? "yes" : "no ",
+	c_prt(attr, format(": %s  (%s)", options[oid] ? " да" : "нет",
 		option_name(oid)), row, col + 45);
 }
 

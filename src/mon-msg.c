@@ -267,9 +267,10 @@ static void get_subject(char *buf, size_t buflen,
 				strnfmt(buf, buflen, "%d %s", count, race->plural);
 			} else {
 				strnfmt(buf, buflen, "%d %s", count, race->name);
-				plural_aux(buf, buflen);
+				// plural_aux(buf, buflen);
 				// падеж в зависимости от количества
-				mon_desc_name_format(buf, buflen, 0, buf, (PLURAL_RU(count, C_IMEN, C_CUSTOM, C_RODIT) << 1) + 1);
+				uint8_t index = PLURAL_RU(count, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
+				mon_desc_name_format(buf, buflen, 0, buf, &index);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {

@@ -61,6 +61,6 @@ void plural_aux(char *name, size_t max);
 void get_mon_name(char *buf, size_t buflen,
 				  const struct monster_race *race, int num);
 void monster_desc(char *desc, size_t max, const struct monster *mon, int mode);
-extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t pluralise);
+extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t *index);
 
 #endif /* MONSTER_DESC_H */
