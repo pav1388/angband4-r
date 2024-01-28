@@ -175,7 +175,6 @@ static bool do_cmd_open_test(struct loc grid)
  */
 static bool do_cmd_open_aux(struct loc grid)
 {
-	int i, j;
 	bool more = false;
 
 	/* Verify legality */
@@ -183,25 +182,10 @@ static bool do_cmd_open_aux(struct loc grid)
 
 	/* Locked door */
 	if (square_islockeddoor(cave, grid)) {
-		/* Disarm factor */
-		i = player->state.skills[SKILL_DISARM_PHYS];
+		int chance = calc_unlocking_chance(player,
+			square_door_power(cave, grid), no_light(player));
 
-		/* Penalize some conditions */
-		if (player->timed[TMD_BLIND] || no_light(player))
-			i = i / 10;
-		if (player->timed[TMD_CONFUSED] || player->timed[TMD_IMAGE])
-			i = i / 10;
-
-		/* Extract the lock power */
-		j = square_door_power(cave, grid);
-
-		/* Extract the difficulty XXX XXX XXX */
-		j = i - (j * 4);
-
-		/* Always have a small chance of success */
-		if (j < 2) j = 2;
-
-		if (randint0(100) < j) {
+		if (randint0(100) < chance) {
 			/* Message */
 			// msgt(MSG_LOCKPICK, "You have picked the lock.");
 			msgt(MSG_LOCKPICK, "Вы взломали замок.");
@@ -542,6 +526,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	bool okay = false;
 	bool gold = square_hasgoldvein(cave, grid);
 	bool rubble = square_isrubble(cave, grid);
+	bool digger_swapped = false;
 	int weapon_slot = slot_by_name(player, "weapon");
 	struct object *current_weapon = slot_object(player, weapon_slot);
 	struct object *best_digger = NULL;
@@ -558,6 +543,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	best_digger = player_best_digger(player, false);
 	if (best_digger != current_weapon &&
 			(!current_weapon || obj_can_takeoff(current_weapon))) {
+		digger_swapped = true;
 		// with_clause = "with your swap digger";
 		with_clause = "своим копателем";
 		/* Use only one without the overhead of gear_obj_for_use(). */
@@ -585,7 +571,7 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 	okay = (chance > randint0(1600));
 
 	/* Swap back */
-	if (best_digger != current_weapon) {
+	if (digger_swapped) {
 		if (best_digger) {
 			best_digger->number = oldn;
 		}
@@ -851,8 +837,9 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		player_exp_gain(player, 1 + power);
 
 		/* Trap is gone */
-		square_forget(cave, grid);
-		square_destroy_trap(cave, grid);
+		if (!square_remove_trap(cave, grid, trap, true)) {
+			assert(0);
+		}
 	} else if (randint0(100) < chance) {
 		event_signal(EVENT_INPUT_FLUSH);
 		//msg("You failed to disarm the %s.", trap->kind->name);
@@ -1291,9 +1278,12 @@ void do_cmd_walk(struct command *cmd)
 	/* If we're in a web, deal with that */
 	if (square_iswebbed(cave, player->grid)) {
 		/* Clear the web, finish turn */
-		//msg("You clear the web.");
+		struct trap_kind *web = lookup_trap("web");
+
+		// msg("You clear the web.");
 		msg("Вы очистили паутину.");
-		square_destroy_trap(cave, player->grid);
+		assert(web);
+		square_remove_all_traps_of_type(cave, player->grid, web->tidx);
 		player->upkeep->energy_use = z_info->move_energy;
 		return;
 	}
@@ -1330,9 +1320,12 @@ void do_cmd_jump(struct command *cmd)
 	/* If we're in a web, deal with that */
 	if (square_iswebbed(cave, player->grid)) {
 		/* Clear the web, finish turn */
-		//msg("You clear the web.");
+		struct trap_kind *web = lookup_trap("web");
+
+		// msg("You clear the web.");
 		msg("Вы очистили паутину.");
-		square_destroy_trap(cave, player->grid);
+		assert(web);
+		square_remove_all_traps_of_type(cave, player->grid, web->tidx);
 		player->upkeep->energy_use = z_info->move_energy;
 		return;
 	}
@@ -1369,9 +1362,12 @@ void do_cmd_run(struct command *cmd)
 	/* If we're in a web, deal with that */
 	if (square_iswebbed(cave, player->grid)) {
 		/* Clear the web, finish turn */
-		//msg("You clear the web.");
+		struct trap_kind *web = lookup_trap("web");
+
+		// msg("You clear the web.");
 		msg("Вы очистили паутину.");
-		square_destroy_trap(cave, player->grid);
+		assert(web);
+		square_remove_all_traps_of_type(cave, player->grid, web->tidx);
 		player->upkeep->energy_use = z_info->move_energy;
 		return;
 	}

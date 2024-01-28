@@ -31,7 +31,10 @@ enum mon_messages {
 };
 
 void message_pain(struct monster *m, int dam);
+void message_pain_show_damage(struct monster *m, int dam);
 bool add_monster_message(struct monster *m, int msg_code, bool delay);
+bool add_monster_message_show_damage(struct monster *m, int msg_code,
+		bool delay, int damage);
 void show_monster_messages(void);
 extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t *index);
 

@@ -38,6 +38,7 @@
 #include "obj-make.h"
 #include "obj-pile.h"
 #include "obj-tval.h"
+#include "obj-util.h"
 #include "player-calcs.h"
 #include "player-history.h"
 #include "player-quest.h"
@@ -178,6 +179,8 @@ static bool item_tester_uncursable(const struct object *obj)
 static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 {
 	int index = 0;
+	int old_weight = obj->number * object_weight_one(obj);
+	int new_weight = old_weight;
 
 	if (get_curse(&index, obj, dice_string)) {
 		struct curse_data curse = obj->curses[index];
@@ -191,6 +194,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			/* Successfully removed this curse */
 			remove_object_curse(obj->known, index, false);
 			remove_object_curse(obj, index, true);
+			new_weight = obj->number * object_weight_one(obj);
 		} else if (!of_has(obj->flags, OF_FRAGILE)) {
 			/* Failure to remove, object is now fragile */
 			object_desc(o_name, sizeof(o_name), obj, ODESC_FULL,
@@ -203,9 +207,16 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			/* Failure - unlucky fragile object is destroyed */
 			struct object *destroyed;
 			bool none_left = false;
-			//msg("There is a bang and a flash!");
-			msg("Раздался взрыв и вспышка!");
-			
+			int dam = damroll(5, 5);
+			char dam_text[16] = "";
+
+			dam = player_apply_damage_reduction(player, dam);
+			if (dam > 0 && OPT(player, show_damage)) {
+				strnfmt(dam_text, sizeof(dam_text), " (%d)",
+					dam);
+			}
+			// msg("%s%s", "There is a bang and a flash!", dam_text);
+			msg("%s%s", "Раздался взрыв и вспышка!", dam_text);
 			if (object_is_carried(player, obj)) {
 				destroyed = gear_object_for_use(player, obj,
 					1, false, &none_left);
@@ -218,7 +229,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			} else {
 				square_delete_object(cave, obj->grid, obj, true, true);
 			}
-			take_hit(player, damroll(5, 5), "Failed uncursing");
+			take_hit(player, dam, "Failed uncursing");
 		} else {
 			/* Non-destructive failure */
 			//msg("The removal fails.");
@@ -227,6 +238,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 	} else {
 		return false;
 	}
+	player->upkeep->total_weight += new_weight - old_weight;
 	player->upkeep->notice |= (PN_COMBINE);
 	player->upkeep->update |= (PU_BONUS);
 	player->upkeep->redraw |= (PR_EQUIP | PR_INVEN);
@@ -836,15 +848,21 @@ bool effect_handler_DRAIN_STAT(effect_handler_context_t *context)
 	/* Attempt to reduce the stat */
 	if (player_stat_dec(player, stat, false)){
 		int dam = effect_calculate_value(context, false);
+		char dam_text[32] = "";
+
+		dam = player_apply_damage_reduction(player, dam);
 
 		/* Notice effect */
 		equip_learn_flag(player, flag);
 
 		/* Message */
-		// msgt(MSG_DRAIN_STAT, "You feel very %s.", desc_stat(stat, false));
-		msgt(MSG_DRAIN_STAT, "Вы чувствуете себя весьма %s.", desc_stat(stat, false));
-		if (dam)
-			take_hit(player, dam, "stat drain");
+		if (dam > 0 && OPT(player, show_damage)) {
+			strnfmt(dam_text, sizeof(dam_text), " (%d)", dam);
+		}
+		// msgt(MSG_DRAIN_STAT, "You feel very %s.%s",
+		msgt(MSG_DRAIN_STAT, "Вы чувствуете себя весьма %s.%s",
+			desc_stat(stat, false), dam_text);
+		take_hit(player, dam, "stat drain");
 	}
 
 	return (true);
@@ -2460,8 +2478,13 @@ bool effect_handler_BANISH(effect_handler_context_t *context)
 	}
 
 	/* Hurt the player */
-	//take_hit(player, dam, "the strain of casting Banishment");
-	take_hit(player, dam, "напряжения от наложения Изгнания");
+	dam = player_apply_damage_reduction(player, dam);
+	if (dam > 0 && OPT(player, show_damage)) {
+		// msg("You take %d damage.\n", dam);
+		msg("Вы получили %d урона.\n", dam);
+	}
+	// take_hit(player, dam, "the strain of casting Banishment");
+	take_hit(player, dam, "наложения Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;
@@ -2510,8 +2533,13 @@ bool effect_handler_MASS_BANISH(effect_handler_context_t *context)
 	}
 
 	/* Hurt the player */
-	//	take_hit(player, dam, "the strain of casting Mass Banishment");
-	take_hit(player, dam, "напряжения от наложения Массового Изгнания");
+	dam = player_apply_damage_reduction(player, dam);
+	if (dam > 0 && OPT(player, show_damage)) {
+		// msg("You take %d damage.\n", dam);
+		msg("Вы получили %d урона.\n", dam);
+	}
+	// take_hit(player, dam, "the strain of casting Mass Banishment");
+	take_hit(player, dam, "наложения Массового Изгнания");
 
 	/* Update monster list window */
 	player->upkeep->redraw |= PR_MONLIST;
@@ -3212,7 +3240,9 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
-		//msg("A terrible black aura blasts your %s!", o_name);
+		int old_weight = obj->number * object_weight_one(obj);
+
+		// msg("A terrible black aura blasts your %s!", o_name);
 		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
 
 		/* Take down bonus a wee bit */
@@ -3229,6 +3259,10 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 			append_object_curse(obj, pick, power);
 			num--;
 		}
+
+		/* Account for a weight change, if any */
+		player->upkeep->total_weight +=
+			(obj->number * object_weight_one(obj)) - old_weight;
 
 		/* Recalculate bonuses */
 		player->upkeep->update |= (PU_BONUS);
@@ -3274,7 +3308,9 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
-		//msg("A terrible black aura blasts your %s!", o_name);
+		int old_weight = obj->number * object_weight_one(obj);
+
+		// msg("A terrible black aura blasts your %s!", o_name);
 		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
 
 		/* Hurt it a bit */
@@ -3292,6 +3328,10 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 			append_object_curse(obj, pick, power);
 			num--;
 		}
+
+		/* Account for a weight change, if any */
+		player->upkeep->total_weight +=
+			(obj->number * object_weight_one(obj)) - old_weight;
 
 		/* Recalculate bonuses */
 		player->upkeep->update |= (PU_BONUS);

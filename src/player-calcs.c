@@ -1544,7 +1544,7 @@ static void calc_mana(struct player *p, struct player_state *state, bool update)
 
 		/* Add weight */
 		if (obj_local)
-			cur_wgt += obj_local->weight;
+			cur_wgt += object_weight_one(obj_local);
 	}
 
 	/* Determine the weight allowance */
@@ -1692,6 +1692,31 @@ void calc_digging_chances(struct player_state *state, int chances[DIGGING_MAX])
 		chances[i] = MAX(0, chances[i]);
 }
 
+/*
+ * Return the chance, out of 100, for unlocking a locked door with the given
+ * lock power.
+ *
+ * \param p is the player trying to unlock the door.
+ * \param lock_power is the power of the lock.
+ * \param lock_unseen, if true, assumes the player does not have sufficient
+ * light to work with the lock.
+ */
+int calc_unlocking_chance(const struct player *p, int lock_power,
+		bool lock_unseen)
+{
+	int skill = p->state.skills[SKILL_DISARM_PHYS];
+
+	if (lock_unseen || p->timed[TMD_BLIND]) {
+		skill /= 10;
+	}
+	if (p->timed[TMD_CONFUSED] || p->timed[TMD_IMAGE]) {
+		skill /= 10;
+	}
+
+	/* Always allow some chance of unlocking. */
+	return MAX(2, skill - 4 * lock_power);
+}
+
 /**
  * Calculate the blows a player would get.
  *
@@ -1710,7 +1735,7 @@ int calc_blows(struct player *p, const struct object *obj,
 	int div;
 	int blow_energy;
 
-	int weight = (obj == NULL) ? 0 : obj->weight;
+	int weight = (obj == NULL) ? 0 : object_weight_one(obj);
 	int min_weight = p->class->min_weight;
 
 	/* Enforce a minimum "weight" (tenth pounds) */
@@ -2264,8 +2289,10 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	/* Analyze launcher */
 	state->heavy_shoot = false;
 	if (launcher) {
-		if (hold < launcher->weight / 10) {
-			state->to_h += 2 * (hold - launcher->weight / 10);
+		int16_t launcher_weight = object_weight_one(launcher);
+
+		if (hold < launcher_weight / 10) {
+			state->to_h += 2 * (hold - launcher_weight / 10);
 			state->heavy_shoot = true;
 		}
 
@@ -2300,16 +2327,18 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	state->heavy_wield = false;
 	state->bless_wield = false;
 	if (weapon) {
+		int16_t weapon_weight = object_weight_one(weapon);
+
 		/* It is hard to hold a heavy weapon */
-		if (hold < weapon->weight / 10) {
-			state->to_h += 2 * (hold - weapon->weight / 10);
+		if (hold < weapon_weight / 10) {
+			state->to_h += 2 * (hold - weapon_weight / 10);
 			state->heavy_wield = true;
 		}
 
 		/* Normal weapons */
 		if (!state->heavy_wield) {
 			state->num_blows = calc_blows(p, weapon, state, extra_blows);
-			state->skills[SKILL_DIGGING] += (weapon->weight / 10);
+			state->skills[SKILL_DIGGING] += weapon_weight / 10;
 		}
 
 		/* Divine weapon bonus for blessed weapons */

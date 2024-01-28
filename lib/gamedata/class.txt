@@ -220,7 +220,7 @@ desc:  Шанс получить луч увеличивается с уровн
 
 spell:Комната Cвета:1:2:26:4
 effect:LIGHT_AREA
-effect:SPOT:LIGHT_WEAK:2
+effect:SPHERE:LIGHT_WEAK:2
 dice:1
 desc:Освещает всё в пределах 2 метров от игрока и ранит всех 
 desc: светочувствительных монстров.  Если вы находитесь в 
@@ -733,7 +733,7 @@ equip:prayer book:[Песнопения Послушника]:1:1:none
 
 spell:Призыв Света:1:1:10:2
 effect:LIGHT_AREA
-effect:SPOT:LIGHT_WEAK:1:10
+effect:SPHERE:LIGHT_WEAK:1:10
 dice:2d$S
 expr:S:PLAYER_LEVEL:/ 2
 desc:Освещает все квадраты в области, зависящей от уровня, и ранит
@@ -1015,7 +1015,7 @@ desc:Позволяет видеть невидимых монстров на 24
 
 spell:Создать Тьму:3:3:10:4
 effect:DARKEN_AREA
-effect:SPOT:DARK_WEAK:1:10
+effect:SPHERE:DARK_WEAK:1:10
 dice:1
 desc:Затемняет все квадраты в области, зависящей от уровня.  Если
 desc: вы находитесь в комнате, вся комната также будет затемнена.
@@ -1278,7 +1278,7 @@ desc: только на один ход.
 
 spell:Призыв Света:5:3:10:2
 effect:LIGHT_AREA
-effect:SPOT:LIGHT_WEAK:1:10
+effect:SPHERE:LIGHT_WEAK:1:10
 dice:2d$S
 expr:S:PLAYER_LEVEL:/ 2
 desc:Освещает все квадраты в области, зависящей от уровня, и ранит

@@ -1089,7 +1089,7 @@ void square_delete_object(struct chunk *c, struct loc grid, struct object *obj, 
 }
 
 /**
- * Helper for square_sense_pile() and square_sense_pile():  remove known
+ * Helper for square_sense_pile() and square_know_pile():  remove known
  * location for the requested items that are not on this grid.
  */
 static void forget_remembered_objects(struct chunk *c, struct chunk *knownc,
@@ -1340,18 +1340,27 @@ void square_add_door(struct chunk *c, struct loc grid, bool closed) {
 
 void square_open_door(struct chunk *c, struct loc grid)
 {
-	square_remove_all_traps(c, grid);
+	struct trap_kind *lock = lookup_trap("door lock");
+
+	assert(square_iscloseddoor(c, grid));
+	assert(lock);
+	square_remove_all_traps_of_type(c, grid, lock->tidx);
 	square_set_feat(c, grid, FEAT_OPEN);
 }
 
 void square_close_door(struct chunk *c, struct loc grid)
 {
+	assert(square_isopendoor(c, grid));
 	square_set_feat(c, grid, FEAT_CLOSED);
 }
 
 void square_smash_door(struct chunk *c, struct loc grid)
 {
-	square_remove_all_traps(c, grid);
+	struct trap_kind *lock = lookup_trap("door lock");
+
+	assert(square_isdoor(c, grid));
+	assert(lock);
+	square_remove_all_traps_of_type(c, grid, lock->tidx);
 	square_set_feat(c, grid, FEAT_BROKEN);
 }
 
@@ -1361,8 +1370,11 @@ void square_unlock_door(struct chunk *c, struct loc grid) {
 }
 
 void square_destroy_door(struct chunk *c, struct loc grid) {
+	struct trap_kind *lock = lookup_trap("door lock");
+
 	assert(square_isdoor(c, grid));
-	square_remove_all_traps(c, grid);
+	assert(lock);
+	square_remove_all_traps_of_type(c, grid, lock->tidx);
 	square_set_feat(c, grid, FEAT_FLOOR);
 }
 
@@ -1379,7 +1391,10 @@ void square_disable_trap(struct chunk *c, struct loc grid)
 
 void square_destroy_decoy(struct chunk *c, struct loc grid)
 {
-	square_remove_all_traps(c, grid);
+	struct trap_kind *decoy_kind = lookup_trap("decoy");
+
+	assert(decoy_kind);
+	square_remove_all_traps_of_type(c, grid, decoy_kind->tidx);
 	c->decoy = loc(0, 0);
 	if (los(c, player->grid, grid) && !player->timed[TMD_BLIND]){
 		// msg("The decoy is destroyed!");
