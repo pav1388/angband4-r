@@ -145,7 +145,7 @@ graphics:orange
 # max-stack:2
 
 # name:ring:Ring~
-name:ring:Кол=1159
+name:ring:Кол=1158
 graphics:red
 # max-stack:5
 flags:HATES_ELEC

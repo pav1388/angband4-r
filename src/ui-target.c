@@ -469,7 +469,7 @@ static bool aux_monster(struct chunk *c, struct player *p,
 	auxst->boring = false;
 
 	/* Get the monster name ("a kobold") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS | MDESC_RODIT); // MDESC_IMEN ?
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS); // MDESC_IMEN
 
 	/* Track this monster's race and health */
 	monster_race_track(p->upkeep, mon->race);

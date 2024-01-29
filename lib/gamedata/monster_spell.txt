@@ -580,7 +580,7 @@ hit:100
 effect:BALL:MANA:2
 dice:$B+10d10
 expr:B:SPELL_POWER:* 5
-lore:invoke mana storms
+lore:вызвать бурю маны
 lore-color-base:Light Red
 message-vis:{name} вызывает бурю чистой магии.
 message-invis:Кто-то громко кричит.

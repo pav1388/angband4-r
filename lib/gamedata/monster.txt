@@ -427,7 +427,7 @@ desc:Выносливый, уличный мошенник, который зн�
 desc: поймать, когда его видно.
 
 #name:singing, happy drunk
-name:поющ=4240 счастлив=4210 пьяниц=2350
+name:поющ=4340 счастлив=4310 пьяниц=2350
 base:townsfolk
 color:y
 speed:110
@@ -440,10 +440,10 @@ depth:0
 rarity:1
 experience:0
 blow:BEG
-flags:MALE
+flags:FEMALE
 flags:DROP_40 | ONLY_GOLD
 flags:RAND_50 | OPEN_DOOR | BASH_DOOR | TAKE_ITEM
-desc:Он заставляет вас радоваться тому, что вы трезвы.
+desc:Она заставляет вас радоваться тому, что вы трезвы.
 
 #name:aimless-looking merchant
 name:бесцельн=4210 торгов.ец=2250
@@ -14579,7 +14579,8 @@ desc: immune to magic.  Fear its anger, for its devastation is unmatched!
 
 ### Dungeon level 87 ###
 
-name:Meássë, the Bloody
+# name:Meássë, the Bloody
+name:Меассе=2319, Кровав=4310
 base:ainu
 color:r
 speed:120
@@ -14609,10 +14610,10 @@ friends:50:1d4:Maia of Aulë:servant
 friends:50:1d3:Lesser titan:servant
 friends:50:1d2:Greater titan:servant
 friends:100:1d1:Makar, the Warrior
-desc:Sister of Makar the Warrior, she would shout encouragement to the
-desc: warriors of their hall and heal their wounds so they could battle on,
-desc: until her arms were reddened to the elbow.  Meássë is delighted by
-desc: all violence, and recruits any beings of like abilities to her service.
+desc:Сестра Макара Воителя, она подбадривала воинов их зала и залечивала
+desc: их раны, чтобы они могли сражаться дальше, пока её руки не покраснели
+desc: до локтя.  Меассе радуется любому насилию и вербует к себе на службу
+desc: всех существ, обладающих подобными качествами.
 
 
 ### Dungeon level 88 ###

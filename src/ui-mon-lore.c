@@ -153,7 +153,7 @@ void lore_description(textblock *tb, const struct monster_race *race,
 	/* Notice "Quest" monsters */
 	if (rf_has(race->flags, RF_QUESTOR))
 		// textblock_append(tb, "You feel an intense desire to kill this monster...  ");
-		textblock_append(tb, "Вы испытываете острое желание убить этого монстра...  ");
+		textblock_append(tb, "  Вы испытываете острое желание убить этого монстра...  ");
 
 	textblock_append(tb, "\n");
 }

@@ -335,25 +335,23 @@ static void get_subject(char *buf, size_t buflen,
 		// для русского языка
 		/* Uniques, multiple monsters, or just one */
 		if (rf_has(race->flags, RF_UNIQUE)) {
-			my_strcpy(buf, race->name, buflen);
-			// именит.падеж для имени монстра, ед.ч.
-			mon_desc_name_format(buf, buflen, 0, buf, 0);
+			// my_strcpy(buf, race->name, buflen);
+			mon_desc_name_format(buf, buflen, 0, race->name, 0); // MDESC_IMEN
 		} else if (count == 1) {
 			// strnfmt(buf, buflen, "The %s", race->name);
-			strnfmt(buf, buflen, "%s", race->name);
-			// именит.падеж для имени монстра, ед.ч.
-			mon_desc_name_format(buf, buflen, 0, buf, 0);
+			mon_desc_name_format(buf, buflen, 0, race->name, 0); // MDESC_IMEN
 			my_strcap(buf);
 		} else {
 			/* Get the plural of the race name */
 			if (race->plural != NULL) {
 				strnfmt(buf, buflen, "%d %s", count, race->plural);
 			} else {
-				strnfmt(buf, buflen, "%d %s", count, race->name);
+				// strnfmt(buf, buflen, "%d %s", count, race->name);
+				strnfmt(buf, buflen, "%d ", count);
 				// plural_aux(buf, buflen);
 				// падеж в зависимости от количества
 				uint8_t index = PLURAL_RU(count, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
-				mon_desc_name_format(buf, buflen, 0, buf, &index);
+				mon_desc_name_format(buf, buflen, sizeof buf, race->name, &index);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {

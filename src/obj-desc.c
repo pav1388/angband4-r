@@ -128,7 +128,7 @@ static const char *obj_desc_get_basename(const struct object *obj, bool aware,
 
 		case TV_RING:
 			// return (show_flavor ? "& # Ring~" : "& Ring~");
-			return (show_flavor ? "Кол=1159#" : "Кол=1159");
+			return (show_flavor ? "Кол=1158#" : "Кол=1158");
 
 		case TV_STAFF:
 			// return (show_flavor ? "& # Sta|ff|ves|" : "& Sta|ff|ves|");
@@ -580,8 +580,8 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 						result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][1];
 					
 					// уникальные чередования
-					// кольцо=1159
-					else if (w_opt[GENDER] == NEUTER && w_opt[ALTERN] == 9) {
+					// кольцо=1158
+					else if (w_opt[GENDER] == NEUTER && w_opt[ALTERN] == 8) {
 						strnfcat(buf, max, &end, "%s", (w_case == C_RODIT && plural_noun) ? "ец" : "ьц");
 						if ((w_case == C_IMEN || w_case == C_VINIT) && !plural_noun)
 							result = E_O;
@@ -593,7 +593,7 @@ size_t obj_desc_name_format(char *buf, size_t max, size_t end,
 				} else
 					result = ending_noun[w_opt[DECL]][w_case][w_opt[GENDER]][plural_noun];
 			}
-			strnfcat(buf, max, &end, "%s", w_opt_error ? " <-ОШИБКА " : ending_chars[result]);
+			strnfcat(buf, max, &end, "%s", w_opt_error ? " <-ОШИБКА " : ending_chars[w_opt[ALTERN] == 9 ? 0 : result]);
 			w_opt[GENDER]++;
 			
 		} else if (*fmt == '|') {

@@ -53,22 +53,22 @@ static void format_dice_string(const random_value *v, int multiplier,
 {
 	if (v->dice && v->base) {
 		if (multiplier == 1) {
-			strnfmt(dice_string, len, "%d+%dd%d", v->base, v->dice,
-			// strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice, // FFFIX
+			// strnfmt(dice_string, len, "%d+%dd%d", v->base, v->dice,
+			strnfmt(dice_string, len, "%d+%dк%d", v->base, v->dice,
 				v->sides);
 		} else {
-			strnfmt(dice_string, len, "%d+%d*(%dd%d)",
-			// strnfmt(dice_string, len, "%d+%d*(%dк%d)",
+			// strnfmt(dice_string, len, "%d+%d*(%dd%d)",
+			strnfmt(dice_string, len, "%d+%d*(%dк%d)",
 				multiplier * v->base, multiplier, v->dice,
 				v->sides);
 		}
 	} else if (v->dice) {
 		if (multiplier == 1) {
-			strnfmt(dice_string, len, "%dd%d", v->dice, v->sides);
-			// strnfmt(dice_string, len, "%dк%d", v->dice, v->sides);
+			// strnfmt(dice_string, len, "%dd%d", v->dice, v->sides);
+			strnfmt(dice_string, len, "%dк%d", v->dice, v->sides);
 		} else {
-			strnfmt(dice_string, len, "%d*(%dd%d)", multiplier,
-			// strnfmt(dice_string, len, "%d*(%dк%d)", multiplier,
+			// strnfmt(dice_string, len, "%d*(%dd%d)", multiplier,
+			strnfmt(dice_string, len, "%d*(%dк%d)", multiplier,
 				v->dice, v->sides);
 		}
 	} else {
@@ -86,14 +86,16 @@ static void append_damage(char *buffer, size_t buffer_size, random_value value,
 	int dev_skill_boost)
 {
 	if (dev_skill_boost != 0) {
-		my_strcat(buffer, format(", which your device skill increases by %d%%",
+		// my_strcat(buffer, format(", which your device skill increases by %d%%",
+		my_strcat(buffer, format(", в результате ваш навык механизмов увеличивается на %d%%",
 			dev_skill_boost), buffer_size);
 	}
 
 	if (randcalc_varies(value) || dev_skill_boost > 0) {
 		// Ten times the average damage, for 1 digit of precision
 		int dam = (100 + dev_skill_boost) * randcalc(value, 0, AVERAGE) / 10;
-		my_strcat(buffer, format(" for an average of %d.%d damage", dam / 10,
+		// my_strcat(buffer, format(" for an average of %d.%d damage", dam / 10,
+		my_strcat(buffer, format(" в среднем %d.%d урона", dam / 10,
 			dam % 10), buffer_size);
 	}
 }
@@ -101,14 +103,24 @@ static void append_damage(char *buffer, size_t buffer_size, random_value value,
 
 static void copy_to_textblock_with_coloring(textblock *tb, const char *s)
 {
+	// для русского языка
+	char desc[512];
+	int i = 0;
+	
 	while (*s) {
 		if (isdigit((unsigned char) *s)) {
+			textblock_append(tb, "%s", desc);
 			textblock_append_c(tb, COLOUR_L_GREEN, "%c", *s);
+			memset(desc, 0, i);
+			i = 0;
 		} else {
-			textblock_append(tb, "%c", *s);
+			// textblock_append(tb, "%c", *s);
+			desc[i++] = *s;
+			desc[i] = 0;
 		}
 		++s;
 	}
+	textblock_append(tb, "%s", desc);
 }
 
 
@@ -226,7 +238,8 @@ static textblock *create_nested_effect_description(const struct effect *e,
 			}
 			if (ivalid == nvalid - 1) {
 				my_strcat(breaths,
-					(nvalid > 2) ? ", or " : " or ",
+					// (nvalid > 2) ? ", or " : " or ",
+					(nvalid > 2) ? ", или " : " или ",
 					sizeof(breaths));
 			} else {
 				my_strcat(breaths, ", ", sizeof(breaths));
@@ -296,7 +309,8 @@ static textblock *create_nested_effect_description(const struct effect *e,
 				if (ivalid > 0) {
 					textblock_append(res,
 						(ivalid == nvalid - 1) ?
-						" or " : ", ");
+						// " or " : ", ");
+						" или " : ", ");
 				}
 				textblock_append_textblock(res, tb);
 				textblock_free(tb);
@@ -362,14 +376,16 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 			const struct effect *nexte;
 			textblock *tbe = create_nested_effect_description(
 				e->next, roll, (nadded == 0) ? prefix : NULL,
-				(e->index == EF_RANDOM) ? "randomly " : NULL,
+				// (e->index == EF_RANDOM) ? "randomly " : NULL,
+				(e->index == EF_RANDOM) ? "случайно " : NULL,
 				dev_skill_boost, &nexte);
 
 			e = (only_first) ? NULL : nexte;
 			if (tbe) {
 				if (tb) {
 					textblock_append(tb,
-						e ? ", " : " and ");
+						// e ? ", " : " and ");
+						e ? ", " : " и ");
 					textblock_append_textblock(tb, tbe);
 					textblock_free(tbe);
 				} else {
@@ -396,12 +412,13 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 		case EFINFO_HEAL:
 			/* Healing sometimes has a minimum percentage. */
 			{
-				char min_string[50]; //FFFIX
-				// char min_string[100];
+				// char min_string[50];
+				char min_string[100];
 
 				if (value.m_bonus) {
 					strnfmt(min_string, sizeof(min_string),
-						" (or %d%%, whichever is greater)",
+						// " (or %d%%, whichever is greater)",
+						" (или %d%%, в зависимости чего больше)",
 						value.m_bonus);
 				} else {
 					strnfmt(min_string, sizeof(min_string),
@@ -419,8 +436,10 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 		case EFINFO_FOOD:
 			{
 				const char *fed = e->subtype ?
-					(e->subtype == 1 ? "uses enough food value" : 
-					 "leaves you nourished") : "feeds you";
+					// (e->subtype == 1 ? "uses enough food value" : 
+					(e->subtype == 1 ? "расходует достаточное количество пищи" : 
+					 // "leaves you nourished") : "feeds you";
+					 "делает вас сытым") : "питает вас";
 				char turn_dice_string[20];
 
 				format_dice_string(&value, z_info->food_value,
@@ -468,18 +487,21 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 			 * monsters.
 			 */
 			{
-				char dist[32]; //FFFIX
-				// char dist[80];
+				// char dist[32];
+				char dist[80];
 
 				if (value.m_bonus) {
 					strnfmt(dist, sizeof(dist),
-						"a level-dependent distance");
+						// "a level-dependent distance");
+						"уровнезависимое расстояние");
 				} else {
 					strnfmt(dist, sizeof(dist),
-						"%d grids", value.base);
+						// "%d grids", value.base);
+						"%d шагов", value.base);
 				}
 				strnfmt(desc, sizeof(desc), edesc,
-					(e->subtype) ? "a monster" : "you",
+					// (e->subtype) ? "a monster" : "you",
+					(e->subtype) ? "монстра" : "вас",
 					dist);
 			}
 			break;
@@ -562,7 +584,8 @@ textblock *effect_describe(const struct effect *e, const char *prefix,
 				if (e) {
 					textblock_append(tb, ", ");
 				} else {
-					textblock_append(tb, " and ");
+					// textblock_append(tb, " and ");
+					textblock_append(tb, " и ");
 				}
 			} else {
 				tb = textblock_new();
@@ -684,7 +707,8 @@ size_t effect_get_menu_name(char *buf, size_t max, const struct effect *e)
 	case EFINFO_TELE:
 		{
 			random_value value = { 0, 0, 0, 0 };
-			char dist[32];
+			// char dist[32];
+			char dist[80];
 			int avg = 0;
 
 			if (e->dice) {
@@ -692,12 +716,15 @@ size_t effect_get_menu_name(char *buf, size_t max, const struct effect *e)
 					&value);
 			}
 			if (value.m_bonus) {
-				strnfmt(dist, sizeof(dist), "some distance");
+				// strnfmt(dist, sizeof(dist), "some distance");
+				strnfmt(dist, sizeof(dist), "некоторое расстояние");
 			} else {
-				strnfmt(dist, sizeof(dist), "%d grids", avg);
+				// strnfmt(dist, sizeof(dist), "%d grids", avg);
+				strnfmt(dist, sizeof(dist), "%d шагов", avg);
 			}
 			len = strnfmt(buf, max, fmt,
-				(e->subtype) ? "other" : "you", dist);
+				// (e->subtype) ? "other" : "you", dist);
+				(e->subtype) ? "других" : "вас", dist);
 		}
 		break;
 

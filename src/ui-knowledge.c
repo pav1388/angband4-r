@@ -1156,7 +1156,9 @@ static void display_monster(int col, int row, bool cursor, int oid)
 		put_str(format("%s", "облик"), row, 70);
 	} else if (rf_has(race->flags, RF_UNIQUE)) {
 		// put_str(format("%s", (race->max_num == 0)?  " dead" : "alive"),
-		put_str(format("%s", (race->max_num == 0)?  "мёртв" : "живой"),
+		put_str(format("%s", (race->max_num == 0) ? 
+				(rf_has(race->flags, RF_FEMALE) ? "мертва" : rf_has(race->flags, RF_MALE) ? "мёртв" : "мертво") : 
+				(rf_has(race->flags, RF_FEMALE) ? "жива" : rf_has(race->flags, RF_MALE) ? "жив" : "живое")),
 				row, 70);
 	} else {
 		put_str(format("%5d", lore->pkills), row, 70);

@@ -69,7 +69,7 @@ normal:soft armour:Мягкая Кожаная Броня
 normal:soft armour:Клёпаная Кожаная Броня
 normal:soft armour:Твёрдая Кожаная Броня
 normal:soft armour:Кожаная Чешуйчатая Броня
-normal:hard armour:Металлическая Чешуйчатая Броня
+normal:hard armour:Стальная Чешуйчатая Броня
 normal:hard armour:Кольчуга
 normal:gloves:Комплект Кожаных Перчаток
 normal:gloves:Комплект Наручей

@@ -88,8 +88,11 @@ static void object_list_format_section(const object_list_t *list,
 
 	max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
 							  // "%s %d %sobject%s%s\n", prefix,
-							  "%s %d %sпредмет%s%s\n", prefix,
-							  list->total_entries[section], others,
+							  "%s %d %sпредмет%s%s\n",
+							  prefix,
+							  list->total_entries[section],
+							  others,
+							  // PLURAL(list->total_entries[section]),
 							  PLURAL_RU(list->total_entries[section], "", "а", "ов"),
 							  punctuation);
 

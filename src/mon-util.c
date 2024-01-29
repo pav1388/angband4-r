@@ -1020,8 +1020,6 @@ static void player_kill_monster(struct monster *mon, struct player *p,
 	// char buf[80];
 	char buf[180];
 	// int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0);
-	
-	// винит. падеж для имени монстра, ед.ч. mon_desc_name_format
 	int desc_mode = MDESC_DEFAULT | ((note) ? MDESC_COMMA : 0) | MDESC_VINIT;
 	
 	/* Assume normal death sound */
@@ -1323,7 +1321,10 @@ void kill_arena_monster(struct monster *mon)
 	assert(old_mon);
 	update_mon(old_mon, cave, true);
 	old_mon->hp = -1;
-	player_kill_monster(old_mon, player, " is defeated!");
+	// player_kill_monster(old_mon, player, " is defeated!");
+	player_kill_monster(old_mon, player,
+			(rf_has(mon->race->flags, RF_FEMALE)) ? "побеждена!" : 
+			(rf_has(mon->race->flags, RF_MALE)) ? " побеждён!" : " побеждено!");
 }
 
 /**

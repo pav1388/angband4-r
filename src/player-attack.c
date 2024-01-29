@@ -760,7 +760,6 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	if (player_of_has(p, OF_AFRAID)) {
 		equip_learn_flag(p, OF_AFRAID);
 		// msgt(MSG_AFRAID, "You are too afraid to attack %s!", m_name);
-		// родит. падеж для имени монстра, ед.ч. mon_desc_name_format
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_RODIT);
 		msgt(MSG_AFRAID, "Вы слишком напуганы для атаки %s!", m_name);
 		return false;
@@ -776,7 +775,6 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* If a miss, skip this hit */
 	if (!success) {
 		// msgt(MSG_MISS, "You miss %s.", m_name);
-		// дательн. падеж для имени монстра, ед.ч. mon_desc_name_format
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_DATEL);
 		msgt(MSG_MISS, "Вы промахнулись по %s.", m_name);
 
@@ -868,7 +866,6 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 		if (OPT(p, show_damage))
 			dmg_text = format(" (%d)", dmg);
 		
-		// винит. падеж для имени монстра, ед.ч. mon_desc_name_format
 		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
 		
 		if (melee_hit_types[i].text)

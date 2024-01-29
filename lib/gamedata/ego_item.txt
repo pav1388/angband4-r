@@ -932,7 +932,7 @@ info:1000:16
 alloc:100:1 to 30
 min-combat:255:0:0
 type:soft armor
-item:hard armor:Металлическая Чешуйчатая Броня
+item:hard armor:Стальная Чешуйчатая Броня
 item:hard armor:Кольчуга
 item:hard armor:Усиленная Кольчуга
 item:hard armor:Усиленная Пластинами Кольчуга
@@ -947,7 +947,7 @@ info:400:10
 alloc:100:1 to 30
 min-combat:255:0:0
 type:soft armor
-item:hard armor:Металлическая Чешуйчатая Броня
+item:hard armor:Стальная Чешуйчатая Броня
 item:hard armor:Кольчуга
 item:hard armor:Усиленная Кольчуга
 item:hard armor:Усиленная Пластинами Кольчуга
@@ -962,7 +962,7 @@ info:800:14
 alloc:100:1 to 30
 min-combat:255:0:0
 type:soft armor
-item:hard armor:Металлическая Чешуйчатая Броня
+item:hard armor:Стальная Чешуйчатая Броня
 item:hard armor:Кольчуга
 item:hard armor:Усиленная Кольчуга
 item:hard armor:Усиленная Пластинами Кольчуга
@@ -977,7 +977,7 @@ info:600:12
 alloc:100:1 to 30
 min-combat:255:0:0
 type:soft armor
-item:hard armor:Металлическая Чешуйчатая Броня
+item:hard armor:Стальная Чешуйчатая Броня
 item:hard armor:Кольчуга
 item:hard armor:Усиленная Кольчуга
 item:hard armor:Усиленная Пластинами Кольчуга

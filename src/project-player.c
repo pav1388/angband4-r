@@ -923,7 +923,7 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 	/* Let player know what is going on */
 	if (!seen) {
 		// msg("You are hit by %s!", projections[typ].blind_desc);
-		msg("Вы ударили %s!", projections[typ].blind_desc);
+		msg("Вас ударило %s!", projections[typ].blind_desc);
 	}
 
 	/* Adjust damage for resistance, immunity or vulnerability, and apply it */
@@ -947,7 +947,8 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 		 */
 		reduced = player_apply_damage_reduction(player, context.dam);
 		if (reduced > 0 && OPT(player, show_damage)) {
-			msg("You take %d damage.", reduced);
+			// msg("You take %d damage.", reduced);
+			msg("Вы получили %d урона.", reduced);
 		}
 		take_hit(player, reduced, killer);
 	}
@@ -958,7 +959,8 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 
 		xtra = player_apply_damage_reduction(player, xtra);
 		if (xtra > 0 && OPT(player, show_damage)) {
-			msg("You take an extra %d damage.", xtra);
+			// msg("You take an extra %d damage.", xtra);
+			msg("Вы получили дополнительно %d урона.", xtra);
 		}
 		take_hit(player, xtra, killer);
 	}

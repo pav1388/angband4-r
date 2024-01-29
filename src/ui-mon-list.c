@@ -89,9 +89,10 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 
 	max_line_length = strnfmt(line_buffer, sizeof(line_buffer),
 							  // "%s %d %smonster%s%s\n",
-							  "%s %d %sмонстр%s%s\n",
+							  "%s %d%s %sмонстр%s%s\n",
 							  prefix,
 							  list->total_monsters[section],
+							  PLURAL_RU(list->total_monsters[section], "-го", "-х", "-ь"),
 							  others,
 							  // PLURAL(list->total_monsters[section]),
 							  PLURAL_RU(list->total_monsters[section], "а", "ов", "ов"),
