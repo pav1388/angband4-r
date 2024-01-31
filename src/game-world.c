@@ -148,6 +148,7 @@ static void recharged_notice(const struct object *obj, bool all)
 {
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	const char *s;
 
@@ -175,7 +176,7 @@ static void recharged_notice(const struct object *obj, bool all)
 	if (!notify) return;
 
 	/* Describe (briefly) */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
 
 	/* Disturb the player */
 	disturb(player);
@@ -183,15 +184,35 @@ static void recharged_notice(const struct object *obj, bool all)
 	/* Notify the player */
 	if (obj->number > 1) {
 		// if (all) msg("Your %s have recharged.", o_name);
-		if (all) msg("Ваш %s перезарядился.", o_name);
+		if (all) {
+			fmt_index_o = ((C_IMEN << 1) + 1) | FORCED_INDEX;
+			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
+			fmt_index_o = 0;
+			msg("Ваши %s перезарядились.", o_name);
+		}
 		// else msg("One of your %s has recharged.", o_name);
-		else msg("Один из ваших %s перезарядился.", o_name);
-	} else if (obj->artifact)
+		else {
+			fmt_index_o = ((C_RODIT << 1) + 1) | FORCED_INDEX;
+			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
+			msg("Од%s из ваших %s перезарядил%s.", OBJ_GENDER("но", "ин", "на"), 
+				o_name, OBJ_GENDER("ось", "ся", "ась"));
+			fmt_index_o = 0;
+		}
+	} else if (obj->artifact) {
 		// msg("The %s has recharged.", o_name);
-		msg("%s перезарядился.", o_name);
-	else
+		fmt_index_o = (C_IMEN << 1) | FORCED_INDEX;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
+		msg("%s перезарядил%s.", o_name, OBJ_GENDER("ось", "ся", "ась"));
+		fmt_index_o = 0;
+	}
+	else {
 		// msg("Your %s has recharged.", o_name);
-		msg("Ваш %s перезарядился.", o_name);
+		fmt_index_o = (C_IMEN << 1) | FORCED_INDEX;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
+		msg("Ваш%s %s перезарядил%s.", OBJ_GENDER("е", "", "а"), o_name, 
+				OBJ_GENDER("ось", "ся", "ась"));
+		fmt_index_o = 0;
+	}
 }
 
 

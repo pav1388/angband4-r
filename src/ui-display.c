@@ -2692,6 +2692,7 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 		struct object *obj = floor_list[0];
 		// char o_name[80];
 		char o_name[180];
+		uint8_t fmt_index_o;
 
 		if (!can_pickup)
 			// p = "have no room for";
@@ -2702,11 +2703,17 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 
 		/* Describe the object.  Less detail if blind. */
 		if (blind) {
+			fmt_index_o = C_IMEN;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_BASE, player);
+				// ODESC_PREFIX | ODESC_BASE, player);
+				ODESC_PREFIX | ODESC_BASE, player, &fmt_index_o);
+			fmt_index_o = 0;
 		} else {
+			fmt_index_o = C_IMEN;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, player);
+				// ODESC_PREFIX | ODESC_FULL, player);
+				ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+			fmt_index_o = 0;
 		}
 
 		/* Message */

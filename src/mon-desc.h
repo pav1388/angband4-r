@@ -47,20 +47,12 @@
  /* Reveal the full, indefinite name of a monster */
 #define MDESC_DIED_FROM (MDESC_SHOW | MDESC_IND_VIS)
 
-// для русского языка
-#define MDESC_PLURAL	0x400
-// #define MDESC_IMEN
-#define MDESC_RODIT		0x800
-#define MDESC_DATEL		0x1000
-#define MDESC_VINIT		0x1800
-#define MDESC_TVORIT	0x2000
-#define MDESC_PREDL		0x2800
-
 
 void plural_aux(char *name, size_t max);
 void get_mon_name(char *buf, size_t buflen,
 				  const struct monster_race *race, int num);
-void monster_desc(char *desc, size_t max, const struct monster *mon, int mode);
-extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t *index);
+// void monster_desc(char *desc, size_t max, const struct monster *mon, int mode);
+void monster_desc(char *desc, size_t max, const struct monster *mon, int mode, uint8_t *fmt_index_m);
+extern size_t obj_desc_name_format(char *buf, size_t max, size_t end, const char *fmt, const char *modstr, uint8_t *fmt_index);
 
 #endif /* MONSTER_DESC_H */

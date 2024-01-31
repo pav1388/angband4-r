@@ -1193,19 +1193,24 @@ void player_know_object(struct player *p, struct object *obj)
 	if (!seen) {
 		// char o_name[80];
 		char o_name[180];
+		uint8_t fmt_index_o;
 
 		/* Describe the object if it's available */
+		fmt_index_o = C_IMEN;
 		if (object_is_carried(p, obj)) {
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, p);
+				// ODESC_PREFIX | ODESC_FULL, p);
+				ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
 			// msg("You have %s (%c).", o_name, gear_to_label(p, obj));
 			msg("У вас есть %s (%c).", o_name, gear_to_label(p, obj));
 		} else if (cave && square_holds_object(cave, p->grid, obj)) {
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, p);
+				// ODESC_PREFIX | ODESC_FULL, p);
+				ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
 			// msg("On the ground: %s.", o_name);
 			msg("На полу: %s.", o_name);
 		}
+		fmt_index_o = 0;
 	}
 
 	/* Fully known objects have their known element and flag info set to 
@@ -1626,8 +1631,12 @@ static bool object_curses_find_flags(struct player *p, struct object *obj,
 	// char o_name[80];
 	char o_name[180];
 	bool new = false;
+	uint8_t fmt_index_o;
 
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	fmt_index_o = C_IMEN;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
+	fmt_index_o = 0;
 	if (obj->curses) {
 		int i;
 		int index;
@@ -1715,8 +1724,11 @@ static bool object_curses_find_element(struct player *p, struct object *obj, int
 	// char o_name[80];
 	char o_name[180];
 	bool new = false;
+	uint8_t fmt_index_o;
 
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	fmt_index_o = C_IMEN;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
 	if (obj->curses) {
 		int i;
 
@@ -1730,7 +1742,8 @@ static bool object_curses_find_element(struct player *p, struct object *obj, int
 			if (curses[i].obj->el_info[elem].res_level != 0) {
 				/* Learn the element properties if we don't know yet */
 				if (!p->obj_k->el_info[elem].res_level) {
-					msg("Your %s glows.", o_name);
+					// msg("Your %s glows.", o_name);
+					msg("Ваш%s %s светится.", OBJ_GENDER("е", "", "а"), o_name);
 
 					player_learn_rune(p, rune_index(RUNE_VAR_RESIST, elem),
 									  true);
@@ -1743,6 +1756,7 @@ static bool object_curses_find_element(struct player *p, struct object *obj, int
 				new = true;
 			}
 		}
+		fmt_index_o = 0;
 	}
 	return new;
 }
@@ -1806,9 +1820,13 @@ void object_learn_on_wield(struct player *p, struct object *obj)
 	int i, flag;
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	assert(obj->known);
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+	fmt_index_o = C_IMEN;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Check the worn flag */
 	if (obj->known->notice & OBJ_NOTICE_WORN) {
@@ -2143,8 +2161,13 @@ void equip_learn_flag(struct player *p, int flag)
 			if (!of_has(p->obj_k->flags, flag)) {
 				// char o_name[80];
 				char o_name[180];
+				uint8_t fmt_index_o;
+				
+				fmt_index_o = C_IMEN;
 				object_desc(o_name, sizeof(o_name), obj,
-					ODESC_BASE, p);
+					// ODESC_BASE, p);
+					ODESC_BASE, p, &fmt_index_o);
+				fmt_index_o = 0;
 				flag_message(flag, o_name);
 				player_learn_rune(p, rune_index(RUNE_VAR_FLAG, flag), true);
 			}
@@ -2183,11 +2206,17 @@ void equip_learn_element(struct player *p, int element)
 		if (obj->el_info[element].res_level != 0) {
 			// char o_name[80];
 			char o_name[180];
-			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+			uint8_t fmt_index_o;
+			
+			// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+			fmt_index_o = C_IMEN;
+			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
 
 			/* Message */
-			msg("Your %s glows.", o_name);
-
+			// msg("Your %s glows.", o_name);
+			msg("Ваш%s %s светится.", OBJ_GENDER("е", "", "а"), o_name);
+			fmt_index_o = 0;
+			
 			/* Learn the element properties */
 			player_learn_rune(p, rune_index(RUNE_VAR_RESIST, element), true);
 		} else if (!object_fully_known(obj)) {
@@ -2226,10 +2255,14 @@ void equip_learn_after_time(struct player *p)
 		// char o_name[80];
 		char o_name[180];
 		struct object *obj = slot_object(p, i);
+		uint8_t fmt_index_o;
 
 		if (!obj) continue;
 		assert(obj->known);
-		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+		// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+		fmt_index_o = C_IMEN;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
+		fmt_index_o = 0;
 
 		/* Get the unknown timed flags for this object */
 		object_flags(obj, f);

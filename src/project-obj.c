@@ -131,24 +131,29 @@ int inven_damage(struct player *p, int type, int cperc)
 			if (amt) {
 				struct object *destroyed;
 				bool none_left = false;
+				uint8_t fmt_index_o;
 
 				/* Get a description */
+				fmt_index_o = (obj->number > 1) ? ((amt == obj->number) ? (C_IMEN << 1) + 1 : (C_RODIT << 1) + 1) : C_IMEN << 1;
+				fmt_index_o |= FORCED_INDEX;
 				object_desc(o_name, sizeof(o_name), obj,
-					ODESC_BASE, p);
+					// ODESC_BASE, p);
+					ODESC_BASE, p, &fmt_index_o);
 
 				/* Message */
 				// msgt(MSG_DESTROY, "%sour %s (%c) %s %s!",
-				msgt(MSG_DESTROY, "%s %s (%c) %s %s!",
-				           ((obj->number > 1) ?
+				           // ((obj->number > 1) ?
 				            // ((amt == obj->number) ? "All of y" :
-				            ((amt == obj->number) ? "Все из ваших" :
 				             // (amt > 1 ? "Some of y" : "One of y")) : "Y"),
-				             (amt > 1 ? "Некоторые из ваших" : "Один из ваших")) : "Ваш"),
-				           o_name, gear_to_label(p, obj),
+				           // o_name, gear_to_label(p, obj),
 				           // ((amt > 1) ? "were" : "was"),
-				           ((amt > 1) ? "были" : "был"),
 					   // (damage ? "damaged" : "destroyed"));
-					   (damage ? ((amt > 1) ? "повреждены" : "поврежден") : ((amt > 1) ? "уничтожены" : "уничтожен")));
+				msgt(MSG_DESTROY, "%s %s (%c) %s %s!", 
+					((obj->number > 1) ? ((amt == obj->number) ? "Все ваши" : (amt > 1 ? "Некоторые из ваших" : OBJ_GENDER("Одно из ваших", "Один из ваших", "Одна из ваших"))) : OBJ_GENDER("Ваше", "Ваш", "Ваша")), 
+					o_name, gear_to_label(p, obj), 
+					((amt > 1) ? "были" : OBJ_GENDER("было", "был", "была")), 
+					(damage ? ((amt > 1) ? "повреждены" : OBJ_GENDER("повреждено", "повреждён", "повреждена")) : ((amt > 1) ? "уничтожены" : OBJ_GENDER("уничтожено", "уничтожен", "уничтожена"))));
+				fmt_index_o = 0;
 
 				/* Damage already done? */
 				if (damage)
@@ -562,13 +567,16 @@ bool project_o(struct source origin, int r, struct loc grid, int dam, int typ,
 		if (do_kill) {
 			// char o_name[80];
 			char o_name[180];
+			uint8_t fmt_index_o;
 
 			/* Effect observed */
 			if (obj->known && !ignore_item_ok(player, obj) &&
 				square_isseen(cave, grid)) {
 				obvious = true;
+				fmt_index_o = C_IMEN;
 				object_desc(o_name, sizeof(o_name), obj,
-					ODESC_BASE, player);
+					// ODESC_BASE, player);
+					ODESC_BASE, player, &fmt_index_o);
 			}
 
 			/* Artifacts, and other objects, get to resist */
@@ -579,8 +587,10 @@ bool project_o(struct source origin, int r, struct loc grid, int dam, int typ,
 					// msg("The %s %s unaffected!", o_name,
 					msg("%s не пострадал%s!", o_name,
 						// VERB_AGREEMENT(obj->number, "is", "are"));
-						VERB_AGREEMENT(obj->number, "", "и"));
+						VERB_AGREEMENT(obj->number, OBJ_GENDER("о", "", "а"), "и"));
 				}
+				fmt_index_o = 0;
+				
 			} else if (obj->mimicking_m_idx) {
 				/* Reveal mimics */
 				if (obvious)

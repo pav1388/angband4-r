@@ -186,6 +186,7 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 		struct curse_data curse = obj->curses[index];
 		// char o_name[80];
 		char o_name[180];
+		uint8_t fmt_index_o;
 
 		if (curse.power >= 100) {
 			/* Curse is permanent */
@@ -197,10 +198,14 @@ static bool uncurse_object(struct object *obj, int strength, char *dice_string)
 			new_weight = obj->number * object_weight_one(obj);
 		} else if (!of_has(obj->flags, OF_FRAGILE)) {
 			/* Failure to remove, object is now fragile */
+			fmt_index_o = C_IMEN;
 			object_desc(o_name, sizeof(o_name), obj, ODESC_FULL,
-				player);
+				// player);
+				player, &fmt_index_o);
 			// msgt(MSG_CURSED, "The spell fails; your %s is now fragile.", o_name);
-			msgt(MSG_CURSED, "Заклинание провалилось; ваш %s теперь хрупкий.", o_name);
+			msgt(MSG_CURSED, "Заклинание провалилось; ваш%s %s теперь хрупк%s.", 
+					OBJ_GENDER("е", "", "а"), o_name, OBJ_GENDER("ое", "ий", "ая"));
+			fmt_index_o = 0;
 			of_on(obj->flags, OF_FRAGILE);
 			player_learn_flag(player, OF_FRAGILE);
 		} else if (one_in_(4)) {
@@ -382,6 +387,7 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	const char *q, *s;
 	int itemmode = (USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR);
@@ -401,15 +407,21 @@ static bool enchant_spell(int num_hit, int num_dam, int num_ac, struct command *
 		return false;
 
 	/* Description */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+	fmt_index_o = obj->number > 1 ? (C_IMEN << 1) + 1 : C_IMEN << 1;
+	fmt_index_o |= FORCED_INDEX;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
 
 	/* Describe */
 	// msg("%s %s glow%s brightly!",
-	msg("%s %s свет%s ярко!",
 		// (object_is_carried(player, obj) ? "Your" : "The"), o_name,
-		(object_is_carried(player, obj) ? "Ваши" : "Ваш"), o_name,
-				// ((obj->number > 1) ? "" : "s"));
-			   ((obj->number > 1) ? "ятся" : "ит"));
+			// ((obj->number > 1) ? "" : "s"));
+	msg("%s%s ярко свет%s!",
+			(object_is_carried(player, obj) ? ((obj->number > 1) ? "Ваши " : 
+					OBJ_GENDER("Ваше ", "Ваш ", "Ваша ")) : ""), 
+			o_name,
+			((obj->number > 1) ? "ятся" : "ится"));
+	fmt_index_o = 0;
 
 	/* Enchant */
 	if (num_dam && enchant(obj, num_hit, ENCH_TOBOTH)) okay = true;
@@ -447,15 +459,20 @@ static void brand_object(struct object *obj, const char *name)
 		char o_name[180];
 		// char brand[20];
 		char brand[60];
+		uint8_t fmt_index_o;
 
-		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+		// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+		fmt_index_o = obj->number > 1 ? (C_IMEN << 1) + 1 : C_IMEN << 1;
+		fmt_index_o |= FORCED_INDEX;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
 		// strnfmt(brand, sizeof(brand), "of %s", name);
 		strnfmt(brand, sizeof(brand), "%s", name);
 
 		/* Describe */
 		//msg("The %s %s surrounded with an aura of %s.", o_name,
-		msg("%s окружён%s аурой %s.", o_name,
-			(obj->number > 1) ? "ы" : "", name);
+		msg("%s окруж%s аурой %s.", o_name,
+			(obj->number > 1) ? "ены" : OBJ_GENDER("ено", "ён", "ена"), name);
+		fmt_index_o = 0;
 
 		/* Get the right ego type for the object */
 		for (i = 0; i < z_info->e_max; i++) {
@@ -463,7 +480,7 @@ static void brand_object(struct object *obj, const char *name)
 
 			/* Match the name */
 			if (!ego->name) continue;
-			if (streq(ego->name, brand)) {
+			if (streq(ego->name, brand)) { // FFFIX ?
 				struct poss_item *poss;
 				for (poss = ego->poss_items; poss; poss = poss->next)
 					if (poss->kidx == obj->kind->kidx)
@@ -990,6 +1007,7 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 	struct monster *mon = NULL;
 	struct monster *t_mon = monster_target_monster(context);
 	struct loc decoy = cave_find_decoy(cave);
+	uint8_t fmt_index_m;
 
 	context->ident = true;
 
@@ -999,7 +1017,9 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 		mon = cave_monster(cave, context->origin.which.monster);
 
 		/* Get the monster name (or "it") */
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+		// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+		fmt_index_m = C_IMEN;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
 	}
 
 	/* Target is another monster - disenchant it */
@@ -1047,9 +1067,10 @@ bool effect_handler_DRAIN_MANA(effect_handler_context_t *context)
 			/* Special message */
 			if (monster_is_visible(mon))
 				//msg("%s appears healthier.", m_name);
-				msg("%s кажется здоровее.", m_name);
+				msg("%s кажется более здоров%s.", m_name, MON_GENDER("ым", "ым", "ой"));
 		}
 	}
+	fmt_index_m = 0;
 
 	/* Redraw mana */
 	player->upkeep->redraw |= PR_MANA;
@@ -2091,6 +2112,7 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 	struct object *obj;
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	/* Count slots */
 	for (i = 0; i < player->body.count; i++) {
@@ -2127,14 +2149,19 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 		return true;
 
 	/* Describe the object */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player);
+	fmt_index_o = obj->number != 1 ? (C_IMEN << 1) + 1 : C_IMEN << 1;
+	fmt_index_o |= FORCED_INDEX;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, player, &fmt_index_o);
 
 	/* Artifacts have a 60% chance to resist */
 	if (obj->artifact && (randint0(100) < 60)) {
 		/* Message */
 		//msg("Your %s (%c) resist%s disenchantment!", o_name,
-		msg("Ваш%s %s (%c) противосто%s развоплощению!", ((obj->number != 1) ? "и" : ""), o_name,
-			gear_to_label(player, obj), ((obj->number != 1) ? "ят" : "ит"));
+		msg("Ваш%s %s (%c) противосто%s развоплощению!", 
+			((obj->number != 1) ? "и" : OBJ_GENDER("е", "", "а")), 
+			o_name,	gear_to_label(player, obj), 
+			((obj->number != 1) ? "ят" : "ит"));
 
 		return true;
 	}
@@ -2160,10 +2187,11 @@ bool effect_handler_DISENCHANT(effect_handler_context_t *context)
 
 	/* Message */
 	//msg("Your %s (%c) %s disenchanted!", o_name,
-	msg("Ваш%s %s (%c) развоплощ%s!", ((obj->number != 1) ? "и" : ""), o_name,
-		gear_to_label(player, obj),
+		// gear_to_label(player, obj),
 		// ((obj->number != 1) ? "were" : "was"));
-		((obj->number != 1) ? "ены" : "ён"));
+	msg("Ваш%s %s (%c) развоплощ%s!", ((obj->number != 1) ? "и" : OBJ_GENDER("е", "", "а")), 
+			o_name, gear_to_label(player, obj), 
+			((obj->number != 1) ? "ены" : OBJ_GENDER("ено", "ён", "ена")));
 
 	/* Recalculate bonuses */
 	player->upkeep->update |= (PU_BONUS);
@@ -2570,18 +2598,21 @@ bool effect_handler_PROBE(effect_handler_context_t *context)
 		if (monster_is_visible(mon)) {
 			// char m_name[80];
 			char m_name[180];
+			uint8_t fmt_index_m;
 
 			/* Start the message */
 			//if (!probe) msg("Probing...");
 			if (!probe) msg("Исследование...");
 
 			/* Get "the monster" or "something" */
+			fmt_index_m = C_IMEN;
 			monster_desc(m_name, sizeof(m_name), mon,
-				MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA); // MDESC_IMEN
+				// MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA);
+				MDESC_IND_HID | MDESC_CAPITAL | MDESC_COMMA, &fmt_index_m);
 
 			/* Describe the monster */
 			//msg("%s has %d hit point%s.", m_name, mon->hp, (mon->hp == 1) ? "" : "s");
-			msg("%s имеет %d очк%s здоровья.", m_name, mon->hp, PLURAL_RU(mon->hp, "о", "а", "ов"));
+			msg("%s имеет %d ОЗ.", m_name, mon->hp);
 
 			/* Learn all of the non-spell, non-treasure flags */
 			lore_do_probe(mon);
@@ -3169,8 +3200,11 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 	if (t_mon) {
 		// char m_name[80];
 		char m_name[180];
+		uint8_t fmt_index_m;
 		target = t_mon->grid;
-		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG | MDESC_VINIT);
+		// monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG);
+		fmt_index_m = C_VINIT;
+		monster_desc(m_name, sizeof(m_name), t_mon, MDESC_TARG, &fmt_index_m);
 		if (message) {
 			//msg("Darkness surrounds %s.", m_name);
 			msg("Тьма окружает %s.", m_name);
@@ -3221,6 +3255,7 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	/* Curse the body armor */
 	obj = equipped_item_by_slot_name(player, "body");
@@ -3229,21 +3264,26 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 	if (!obj) return (true);
 
 	/* Describe */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
 
 	/* Attempt a saving throw for artifacts */
 	if (obj->artifact && (randint0(100) < 50)) {
 		/* msg("A %s tries to %s, but your %s resists the effects!",
 				   "terrible black aura", "surround your armor", o_name); */
-		msg("%s пытается %s, но ваш %s сопротивляется её воздействию!",
-				   "Ужасная чёрная аура", "окружить вашу броню", o_name);
+		fmt_index_o = C_IMEN;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		msg("%s пытается %s, но ваш%s %s сопротивляется её воздействию!",
+				   "Ужасная чёрная аура", "окружить вашу броню", 
+				   OBJ_GENDER("е", "", "а"), o_name);
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
 		int old_weight = obj->number * object_weight_one(obj);
 
 		// msg("A terrible black aura blasts your %s!", o_name);
-		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
+		fmt_index_o = C_VINIT;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		msg("Ужасная чёрная аура взрывает ваш% %s!", OBJ_GENDER("е", "", "у"), o_name);
 
 		/* Take down bonus a wee bit */
 		obj->to_a -= randint1(3);
@@ -3273,6 +3313,7 @@ bool effect_handler_CURSE_ARMOR(effect_handler_context_t *context)
 		/* Window stuff */
 		player->upkeep->redraw |= (PR_INVEN | PR_EQUIP);
 	}
+	fmt_index_o = 0;
 
 	context->ident = true;
 
@@ -3289,6 +3330,7 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	/* Curse the weapon */
 	obj = equipped_item_by_slot_name(player, "weapon");
@@ -3297,21 +3339,26 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 	if (!obj) return (true);
 
 	/* Describe */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
 
 	/* Attempt a saving throw */
 	if (obj->artifact && (randint0(100) < 50)) {
-		/* msg("A %s tries to %s, but your %s resists the effects!",
-				   "terrible black aura", "surround your weapon", o_name); */
-		msg("%s пытается %s, но ваше %s сопротивляется ее воздействию!",
-				   "Ужасная чёрная аура", "окружить ваше оружие", o_name);
+		// msg("A %s tries to %s, but your %s resists the effects!",
+				   // "terrible black aura", "surround your weapon", o_name);
+		fmt_index_o = C_IMEN;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		msg("%s пытается %s, но ваш%s %s сопротивляется её воздействию!",
+				   "Ужасная чёрная аура", "окружить ваше оружие", 
+				   OBJ_GENDER("е", "", "а"), o_name);
 	} else {
 		int num = randint1(3);
 		int max_tries = 20;
 		int old_weight = obj->number * object_weight_one(obj);
 
 		// msg("A terrible black aura blasts your %s!", o_name);
-		msg("Ужасная чёрная аура взрывает ваш %s!", o_name);
+		fmt_index_o = C_VINIT;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		msg("Ужасная чёрная аура взрывает ваш% %s!", OBJ_GENDER("е", "", "у"), o_name);
 
 		/* Hurt it a bit */
 		obj->to_h = 0 - randint1(3);
@@ -3342,6 +3389,7 @@ bool effect_handler_CURSE_WEAPON(effect_handler_context_t *context)
 		/* Window stuff */
 		player->upkeep->redraw |= (PR_INVEN | PR_EQUIP);
 	}
+	fmt_index_o = 0;
 
 	context->ident = true;
 
@@ -3634,7 +3682,10 @@ bool effect_handler_COMMAND(effect_handler_context_t *context)
 	if (randint1(player->lev) < randint1(mon->race->level)) {
 		// char m_name[80];
 		char m_name[180];
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+		uint8_t fmt_index_m;
+		// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+		fmt_index_m = C_IMEN;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
 		//msg("%s resists your command!", m_name);
 		msg("%s сопротивляется вашим приказам!", m_name);
 		return false;

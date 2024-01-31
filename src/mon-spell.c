@@ -105,6 +105,7 @@ static void spell_message(struct monster *mon,
 	struct monster_spell_level *level = spell->level;
 	struct monster *t_mon = NULL;
 	bool is_leading;
+	uint8_t fmt_index_m;
 
 	/* Get the right level of message */
 	while (level->next && mon->race->spell_power >= level->next->power) {
@@ -175,7 +176,7 @@ static void spell_message(struct monster *mon,
 			in_cursor);
 
 		s = next + 1;
-		while (*s && isalpha((unsigned char) *s)) s++;
+		while (*s && isalpha((unsigned char) *s)) s++; // FFFIX ?
 
 		/* Valid tag */
 		if (*s == '}') {
@@ -188,7 +189,7 @@ static void spell_message(struct monster *mon,
 					// char m_name[80];
 					char m_name[180];
 					int mdesc_mode = (MDESC_IND_HID |
-						MDESC_PRO_HID); // MDESC_IMEN ?
+						MDESC_PRO_HID);
 
 					if (is_leading) {
 						mdesc_mode |= MDESC_CAPITAL;
@@ -196,8 +197,11 @@ static void spell_message(struct monster *mon,
 					if (!strchr(punct, *in_cursor)) {
 						mdesc_mode |= MDESC_COMMA;
 					}
+					
+					fmt_index_m = C_IMEN;
 					monster_desc(m_name, sizeof(m_name),
-						mon, mdesc_mode);
+						// mon, mdesc_mode);
+						mon, mdesc_mode, &fmt_index_m);
 
 					strnfcat(buf, sizeof(buf), &end, "%s",
 						m_name);
@@ -209,7 +213,9 @@ static void spell_message(struct monster *mon,
 					char m_poss[180];
 
 					/* Get the monster possessive ("his"/"her"/"its") */
-					monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
+					// monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
+					fmt_index_m = C_IMEN;
+					monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS, &fmt_index_m);
 
 					strnfcat(buf, sizeof(buf), &end, "%s",
 						m_poss);
@@ -225,9 +231,11 @@ static void spell_message(struct monster *mon,
 						if (!strchr(punct, *in_cursor)) {
 							mdesc_mode |= MDESC_COMMA;
 						}
+						fmt_index_m = C_IMEN;
 						monster_desc(m_name,
 							sizeof(m_name), t_mon,
-							mdesc_mode);
+							// mdesc_mode);
+							mdesc_mode, &fmt_index_m);
 						strnfcat(buf, sizeof(buf), &end,
 							"%s", m_name);
 					} else {

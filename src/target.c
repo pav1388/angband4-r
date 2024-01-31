@@ -512,6 +512,7 @@ bool target_set_closest(int mode, monster_predicate pred)
 	// char m_name[80];
 	char m_name[180];
 	struct point_set *targets;
+	uint8_t fmt_index_m;
 
 	/* Cancel old target */
 	target_set_monster(NULL);
@@ -539,7 +540,10 @@ bool target_set_closest(int mode, monster_predicate pred)
 	}
 
 	/* Target the monster */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_CAPITAL | MDESC_COMMA, &fmt_index_m);
+	fmt_index_m = 0;
 	if (!(mode & TARGET_QUIET))
 		// msg("%s is targeted.", m_name);
 		msg("%s выбран целью.", m_name);

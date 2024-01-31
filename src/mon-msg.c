@@ -350,8 +350,8 @@ static void get_subject(char *buf, size_t buflen,
 				strnfmt(buf, buflen, "%d ", count);
 				// plural_aux(buf, buflen);
 				// падеж в зависимости от количества
-				uint8_t index = PLURAL_RU(count, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
-				mon_desc_name_format(buf, buflen, sizeof buf, race->name, &index);
+				uint8_t fmt_index_m = PLURAL_RU(count, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
+				mon_desc_name_format(buf, buflen, sizeof buf, race->name, &fmt_index_m);
 			}
 		}
 		if (rf_has(race->flags, RF_NAME_COMMA)) {

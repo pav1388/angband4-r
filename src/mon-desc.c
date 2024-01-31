@@ -56,20 +56,20 @@ void get_mon_name(char *buf, size_t buflen,
 	if (rf_has(race->flags, RF_UNIQUE)) {
 		// strnfmt(buf, buflen, "[U] %s", race->name);
 		strnfmt(buf, buflen, "[U] ");
-		mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0);
+		mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0); // C_IMEN
     } else {
 	    strnfmt(buf, buflen, "%3d ", num);
 
 	    if (num == 1) {
 	        // my_strcat(buf, race->name, buflen);
-	        mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0);
+	        mon_desc_name_format(buf, buflen, sizeof buf, mon_name, 0); // C_IMEN
 	    } else if (race->plural != NULL) {
 	        my_strcat(buf, race->plural, buflen);
 	    } else {
 	        // my_strcat(buf, race->name, buflen);
 			// падеж в зависимости от количества
-			uint8_t index = PLURAL_RU(num, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
-			mon_desc_name_format(buf, buflen, sizeof buf, mon_name, &index);
+			uint8_t fmt_index_m = PLURAL_RU(num, C_IMEN << 1, (C_CUSTOM << 1) + 1, (C_RODIT << 1) + 1);
+			mon_desc_name_format(buf, buflen, sizeof buf, mon_name, &fmt_index_m);
 	        // plural_aux(buf, buflen);
 	    }
     }
@@ -117,7 +117,8 @@ void get_mon_name(char *buf, size_t buflen,
  *   0x22 --> Possessive, genderized if visable ("his") or "its"
  *   0x23 --> Reflexive, genderized if visable ("himself") or "itself"
  */
-void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
+// void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
+void monster_desc(char *desc, size_t max, const struct monster *mon, int mode, uint8_t *fmt_index_m)
 {
 	assert(mon != NULL);
 
@@ -289,7 +290,7 @@ void monster_desc(char *desc, size_t max, const struct monster *mon, int mode)
 	
 	// для русского языка
 	// форматирование имени монстра
-	uint8_t index = mode >> 10;
 	char *mon_name = string_make(desc);
-	mon_desc_name_format(desc, max, 0, mon_name, &index);
+	*fmt_index_m = (*fmt_index_m & FORCED_INDEX) ? (*fmt_index_m ^ FORCED_INDEX) : (*fmt_index_m << 1);
+	mon_desc_name_format(desc, max, 0, mon_name, fmt_index_m);
 }

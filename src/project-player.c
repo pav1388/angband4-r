@@ -867,19 +867,23 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 			if (!self) return false;
 			/* Use the same message as the DAMAGE handler. */
 			// my_strcpy(killer, "yourself", sizeof(killer));
-			my_strcpy(killer, "сами себя", sizeof(killer));
+			my_strcpy(killer, "самого себя", sizeof(killer));
 			break;
 		}
 
 		case SRC_MONSTER: {
 			struct monster *mon = cave_monster(cave, origin.which.monster);
+			uint8_t fmt_index_m;
 
 			/* Check it is visible */
 			if (!monster_is_visible(mon))
 				seen = false;
 
 			/* Get the monster's real name */
-			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM | MDESC_RODIT);
+			// monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM);
+			fmt_index_m = C_RODIT;
+			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM, &fmt_index_m);
+			fmt_index_m = 0;
 
 			/* Monster sees what is going on */
 			update_smart_learn(mon, player, 0, 0, typ);
@@ -899,8 +903,13 @@ bool project_p(struct source origin, int r, struct loc grid, int dam, int typ,
 
 		case SRC_OBJECT: {
 			struct object *obj = origin.which.object;
+			uint8_t fmt_index_o;
+			
+			fmt_index_o = C_RODIT;
 			object_desc(killer, sizeof(killer), obj,
-				ODESC_PREFIX | ODESC_BASE, player);
+				// ODESC_PREFIX | ODESC_BASE, player);
+				ODESC_PREFIX | ODESC_BASE, player, &fmt_index_o);
+			fmt_index_o = 0;
 			break;
 		}
 

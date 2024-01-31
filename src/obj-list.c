@@ -375,6 +375,7 @@ void object_list_format_name(const object_list_entry_t *entry,
 	struct object *base_obj;
 	struct loc grid;
 	bool object_is_recognized_artifact;
+	uint8_t fmt_index_o;
 
 	if (entry == NULL || entry->object == NULL || entry->object->kind == NULL)
 		return;
@@ -417,8 +418,11 @@ void object_list_format_name(const object_list_entry_t *entry,
 	 * Pass the accumulated number via object_desc()'s ODESC_ALTNUM
 	 * mechanism:  it's in the high 16 bits of the mode.
 	 */
+	fmt_index_o = C_IMEN;
 	object_desc(name, sizeof(name), base_obj, ODESC_PREFIX | ODESC_FULL |
-		ODESC_ALTNUM | (entry->count[field] << 16), player);
+		// ODESC_ALTNUM | (entry->count[field] << 16), player);
+		ODESC_ALTNUM | (entry->count[field] << 16), player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* The source string for strtok() needs to be set properly, depending on
 	 * when we use it. */

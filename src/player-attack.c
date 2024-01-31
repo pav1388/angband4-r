@@ -749,18 +749,20 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 
 	/* Extract monster name (or "it") */
 	// monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	uint8_t fmt_index_m;
 
 	/* Auto-Recall and track if possible and visible */
 	if (monster_is_visible(mon)) {
 		monster_race_track(p->upkeep, mon->race);
 		health_track(p->upkeep, mon);
 	}
-
+	
 	/* Handle player fear (only for invisible monsters) */
 	if (player_of_has(p, OF_AFRAID)) {
 		equip_learn_flag(p, OF_AFRAID);
 		// msgt(MSG_AFRAID, "You are too afraid to attack %s!", m_name);
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_RODIT);
+		fmt_index_m = C_RODIT;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 		msgt(MSG_AFRAID, "Вы слишком напуганы для атаки %s!", m_name);
 		return false;
 	}
@@ -775,7 +777,8 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 	/* If a miss, skip this hit */
 	if (!success) {
 		// msgt(MSG_MISS, "You miss %s.", m_name);
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_DATEL);
+		fmt_index_m = C_DATEL;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 		msgt(MSG_MISS, "Вы промахнулись по %s.", m_name);
 
 		/* Small chance of bloodlust side-effects */
@@ -866,7 +869,9 @@ bool py_attack_real(struct player *p, struct loc grid, bool *fear)
 		if (OPT(p, show_damage))
 			dmg_text = format(" (%d)", dmg);
 		
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
+		// monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+		fmt_index_m = C_VINIT;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 		
 		if (melee_hit_types[i].text)
 			// msgt(msg_type, "You %s %s%s. %s", verb, m_name, dmg_text,
@@ -1101,7 +1106,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			strnfmt(msg, sizeof(msg),
 					// "Target out of range by %d squares. Fire anyway? ",
 					// taim - range);
-					"Цель дальше досягаемости на %d ход%s. Всё равно стрелять ? ",
+					"Цель дальше досягаемости на %d шаг%s. Всё равно стрелять? ",
 					taim - range, PLURAL_RU(taim - range, "", "а", "ов"));
 			if (!get_check(msg)) return;
 		}
@@ -1146,9 +1151,8 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			int visible = monster_is_obvious(mon);
 
 			bool fear = false;
-			const char *note_dies = monster_is_destroyed(mon) ? 
+			// const char *note_dies = monster_is_destroyed(mon) ? 
 				// " is destroyed." : " dies.";
-				" уничтожен." : " умирает.";
 
 			struct attack_result result = attack(p, obj, grid);
 			int dmg = result.dmg;
@@ -1161,6 +1165,8 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			if (result.success) {
 				// char o_name[80];
 				char o_name[180];
+				uint8_t fmt_index_o;
+				uint8_t fmt_index_m;
 
 				hit_target = true;
 
@@ -1173,8 +1179,10 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 				 * Describe the object (have most up-to-date
 				 * knowledge now).
 				 */
+				fmt_index_o = C_IMEN;
 				object_desc(o_name, sizeof(o_name), obj,
-					ODESC_FULL | ODESC_SINGULAR, p);
+					// ODESC_FULL | ODESC_SINGULAR, p);
+					ODESC_FULL | ODESC_SINGULAR, p, &fmt_index_o);
 
 				/* No negative damage; change verb if no damage done */
 				if (dmg <= 0) {
@@ -1187,6 +1195,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 				if (!visible) {
 					/* Invisible monster */
 					// msgt(MSG_SHOOT_HIT, "The %s finds a mark.", o_name);
+					my_strcap(o_name);
 					msgt(MSG_SHOOT_HIT, "%s находит цель.", o_name);
 				} else {
 					for (j = 0; j < num_types; j++) {
@@ -1201,37 +1210,23 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 						if (OPT(p, show_damage)) {
 							dmg_text = format(" (%d)", dmg);
 						}
-
-						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL | MDESC_DATEL);
 						
-						// для русского языка // FFFIX
-						uint8_t o_sex;
-						switch (obj->tval) {
-							case TV_ARROW:
-							case TV_SHOT:
-								o_sex = 2; // female
-								break;
-							
-							// case TV_:
-								// o_sex = 0; // neutral
-								// break;
-							
-							default:
-								o_sex = 1; // male
-								break;
-						}
+						// monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL);
+						fmt_index_m = C_DATEL;
+						monster_desc(m_name, sizeof(m_name), mon, MDESC_OBJE | MDESC_CAPITAL, &fmt_index_m);
 						
 						if (hit_types[j].text) {
 							// msgt(msg_type, "Your %s %s %s%s. %s", o_name, 
-							msgt(msg_type, "Ваш%s %s %s по %s%s. %s", o_sex == 1 ? "" : o_sex == 2 ? "а" : "е", o_name, 
+							msgt(msg_type, "Ваш%s %s %s по %s%s. %s", OBJ_GENDER("е", "", "а"), o_name, 
 								 hit_verb, m_name, dmg_text, hit_types[j].text);
 						} else {
 							// msgt(msg_type, "Your %s %s %s%s.", o_name, hit_verb,
-							msgt(msg_type, "Ваш%s %s %s по %s%s.", o_sex == 1 ? "" : o_sex == 2 ? "а" : "е", o_name, hit_verb,
+							msgt(msg_type, "Ваш%s %s %s по %s%s.", OBJ_GENDER("е", "", "а"), o_name, hit_verb,
 								 m_name, dmg_text);
 						}
 					}
-
+					fmt_index_o = 0;
+					
 					/* Track this monster */
 					if (monster_is_obvious(mon)) {
 						monster_race_track(p->upkeep, mon->race);
@@ -1239,6 +1234,9 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 					}
 				}
 
+				const char *note_dies = monster_is_destroyed(mon) ? 
+						MON_GENDER(" уничтожено.", " уничтожен.", " уничтожена.") : " умирает.";
+				fmt_index_m = 0;
 				/* Hit the monster, check for death */
 				if (!mon_take_hit(mon, p, dmg, &fear, note_dies)) {
 					message_pain(mon, dmg);

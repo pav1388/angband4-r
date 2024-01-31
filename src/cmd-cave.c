@@ -1217,7 +1217,12 @@ static bool do_cmd_walk_test(struct loc grid)
 			/* Extract monster name (or "it") */
 			// char m_name[80];
 			char m_name[180];
-			monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT | MDESC_RODIT);
+			uint8_t fmt_index_m;
+			
+			// monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
+			fmt_index_m = C_RODIT;
+			monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT, &fmt_index_m);
+			fmt_index_m = 0;
 
 			/* Message */
 			// msgt(MSG_AFRAID, "You are too afraid to attack %s!", m_name);
@@ -1666,13 +1671,17 @@ void do_cmd_mon_command(struct command *cmd)
 	struct monster_lore *lore = NULL;
 	// char m_name[80];
 	char m_name[180];
+	uint8_t fmt_index_m;
 
 	assert(mon);
 	lore = get_lore(mon->race);
 
 	/* Get the monster name */
+	fmt_index_m = C_IMEN;
 	monster_desc(m_name, sizeof(m_name), mon,
-		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN
+		// MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA, &fmt_index_m);
+	fmt_index_m = 0;
 
 	switch (cmd->code) {
 		case CMD_READ_SCROLL: {
@@ -1733,12 +1742,17 @@ void do_cmd_mon_command(struct command *cmd)
 			// char o_name[80];
 			char o_name[180];
 			struct object *obj = get_random_monster_object(mon);
+			uint8_t fmt_index_o;
+
 			if (!obj) break;
 			obj->held_m_idx = 0;
 			pile_excise(&mon->held_obj, obj);
 			drop_near(cave, &obj, 0, mon->grid, true, false);
+			fmt_index_o = C_VINIT;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, player);
+				// ODESC_PREFIX | ODESC_FULL, player);
+				ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+			fmt_index_o = 0;
 			if (!ignore_item_ok(player, obj)) {
 				//msg("%s drops %s.", m_name, o_name);
 				msg("%s роняет %s.", m_name, o_name);

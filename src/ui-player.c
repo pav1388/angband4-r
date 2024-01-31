@@ -982,7 +982,9 @@ void write_character_dump(ang_file *fff)
 										   z_info->store_inven_max);
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
+	
 	int n;
 	char *buf, *p;
 
@@ -1140,8 +1142,11 @@ void write_character_dump(ang_file *fff)
 		struct object *obj = slot_object(player, i);
 		if (!obj) continue;
 
+		fmt_index_o = C_IMEN;
 		object_desc(o_name, sizeof(o_name), obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 		file_putf(fff, "%c) %s\n", gear_to_label(player, obj), o_name);
 		object_info_chardump(fff, obj, 5, 72);
 	}
@@ -1154,8 +1159,11 @@ void write_character_dump(ang_file *fff)
 		struct object *obj = player->upkeep->inven[i];
 		if (!obj) break;
 
+		fmt_index_o = C_IMEN;
 		object_desc(o_name, sizeof(o_name), obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 		file_putf(fff, "%c) %s\n", gear_to_label(player, obj), o_name);
 		object_info_chardump(fff, obj, 5, 72);
 	}
@@ -1167,8 +1175,11 @@ void write_character_dump(ang_file *fff)
 		struct object *obj = player->upkeep->quiver[i];
 		if (!obj) continue;
 
+		fmt_index_o = C_IMEN;
 		object_desc(o_name, sizeof(o_name), obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 		file_putf(fff, "%c) %s\n", gear_to_label(player, obj), o_name);
 		object_info_chardump(fff, obj, 5, 72);
 	}
@@ -1185,8 +1196,11 @@ void write_character_dump(ang_file *fff)
 		for (i = 0; i < z_info->store_inven_max; i++) {
 			struct object *obj = home_list[i];
 			if (!obj) break;
+			fmt_index_o = C_IMEN;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, player);
+				// ODESC_PREFIX | ODESC_FULL, player);
+				ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+			fmt_index_o = 0;
 			file_putf(fff, "%c) %s\n", I2A(i), o_name);
 
 			object_info_chardump(fff, obj, 5, 72);

@@ -1686,6 +1686,7 @@ void do_cmd_buy(struct command *cmd)
 	// char o_name[80];
 	char o_name[180];
 	int price;
+	uint8_t fmt_index_o;
 
 	struct store *store = store_at(cave, player->grid);
 
@@ -1722,8 +1723,11 @@ void do_cmd_buy(struct command *cmd)
 	}
 
 	/* Describe the object (fully) */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), bought, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Extract the price for the entire stack */
 	price = price_item(store, bought, false, bought->number);
@@ -1745,8 +1749,11 @@ void do_cmd_buy(struct command *cmd)
 	player->upkeep->notice |= (PN_COMBINE | PN_IGNORE);
 
 	/* Describe the object (fully) again for the message */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), bought, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Message */
 	if (one_in_(3)) msgt(MSG_STORE5, "%s", ONE_OF(comment_accept));
@@ -1906,6 +1913,7 @@ void do_cmd_sell(struct command *cmd)
 	// char o_name[120];
 	char o_name[256];
 	char label;
+	uint8_t fmt_index_o;
 
 	struct object *obj, *sold_item;
 	bool none_left = false;
@@ -1995,8 +2003,11 @@ void do_cmd_sell(struct command *cmd)
 	value = object_value_real(sold_item, amt);
 
 	/* Get the description all over again */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), sold_item,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Describe the result (in message buffer) */
 	if (OPT(player, birth_no_selling)) {
@@ -2052,6 +2063,7 @@ void do_cmd_stash(struct command *cmd)
 	// char o_name[120];
 	char o_name[256];
 	char label;
+	uint8_t fmt_index_o;
 
 	struct object *obj, *dropped;
 	bool none_left = false;
@@ -2099,12 +2111,15 @@ void do_cmd_stash(struct command *cmd)
 	dropped = gear_object_for_use(player, obj, amt, false, &none_left);
 
 	/* Describe */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), dropped,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Message */
 	// msg("You drop %s (%c).", o_name, label);
-	msg("Вы роняете %s (%c).", o_name, label);
+	msg("Вы выложили %s (%c).", o_name, label);
 
 	/* Handle stuff */
 	handle_stuff(player);

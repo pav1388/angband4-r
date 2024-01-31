@@ -354,7 +354,8 @@ static void set_obj_names(bool terse, const struct player *p)
 {
 	int i;
 	struct object *obj;
-
+	uint8_t fmt_index_o;
+	
 	/* Calculate name offset and max name length */
 	for (i = 0; i < num_obj; i++) {
 		obj = items[i].object;
@@ -369,14 +370,20 @@ static void set_obj_names(bool terse, const struct player *p)
 				strnfmt(items[i].o_name, sizeof(items[i].o_name), "(ничего)");
 		} else {
 			if (terse) {
+				fmt_index_o = C_IMEN;
 				object_desc(items[i].o_name,
 					sizeof(items[i].o_name), obj,
 					ODESC_PREFIX | ODESC_FULL | ODESC_TERSE,
-					p);
+					// p);
+					p, &fmt_index_o);
+				fmt_index_o = 0;
 			} else {
+				fmt_index_o = C_IMEN;
 				object_desc(items[i].o_name,
 					sizeof(items[i].o_name), obj,
-					ODESC_PREFIX | ODESC_FULL, p);
+					// ODESC_PREFIX | ODESC_FULL, p);
+					ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+				fmt_index_o = 0;
 			}
 		}
 
@@ -1585,10 +1592,14 @@ void display_object_recall(struct object *obj)
 {
 	// char header_buf[120];
 	char header_buf[256];
+	uint8_t fmt_index_o;
 
 	textblock *tb = object_info(obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(header_buf, sizeof(header_buf), obj,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	clear_from(0);
 	textui_textblock_place(tb, SCREEN_REGION, header_buf);
@@ -1621,12 +1632,16 @@ void display_object_recall_interactive(struct object *obj)
 	// char header_buf[120];
 	char header_buf[256];
 	textblock *tb;
+	uint8_t fmt_index_o;
 
 	event_signal(EVENT_MESSAGE_FLUSH);
 
 	tb = object_info(obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(header_buf, sizeof(header_buf), obj,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 	textui_textblock_show(tb, SCREEN_REGION, header_buf);
 	textblock_free(tb);
 }
@@ -1638,6 +1653,7 @@ void textui_obj_examine(void)
 {
 	// char header_buf[120];
 	char header_buf[256];
+	uint8_t fmt_index_o;
 
 	textblock *tb;
 	region local_area = { 0, 0, 0, 0 };
@@ -1655,8 +1671,11 @@ void textui_obj_examine(void)
 
 	/* Display info */
 	tb = object_info(obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(header_buf, sizeof(header_buf), obj,
-		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+		// ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	textui_textblock_show(tb, local_area, header_buf);
 	textblock_free(tb);
@@ -1682,6 +1701,7 @@ void textui_cmd_ignore_menu(struct object *obj)
 {
 	// char out_val[160];
 	char out_val[350];
+	uint8_t fmt_index_o;
 
 	struct menu *m;
 	region r;
@@ -1712,8 +1732,11 @@ void textui_cmd_ignore_menu(struct object *obj)
 
 		// char tmp[70];
 		char tmp[180];
+		fmt_index_o = C_IMEN;
 		object_desc(tmp, sizeof(tmp), obj,
-			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
+			// ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player);
+			ODESC_NOEGO | ODESC_BASE | ODESC_PLURAL, player, &fmt_index_o);
+		fmt_index_o = 0;
 		if (!ignored) {
 			// strnfmt(out_val, sizeof out_val, "All %s", tmp);
 			strnfmt(out_val, sizeof out_val, "Все %s", tmp);

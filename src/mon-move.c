@@ -1347,7 +1347,12 @@ static bool monster_turn_try_push(struct monster *mon, const char *m_name,
 		/* Get the names of the monsters involved */
 		// char n_name[80];
 		char n_name[180];
-		monster_desc(n_name, sizeof(n_name), mon1, MDESC_IND_HID | MDESC_VINIT);
+		uint8_t fmt_index_m;
+		
+		// monster_desc(n_name, sizeof(n_name), mon1, MDESC_IND_HID);
+		fmt_index_m = C_VINIT;
+		monster_desc(n_name, sizeof(n_name), mon1, MDESC_IND_HID, &fmt_index_m);
+		fmt_index_m = 0;
 
 		/* Learn about pushing and shoving */
 		if (monster_is_visible(mon)) {
@@ -1408,6 +1413,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 		char o_name[180];
 		bool safe = obj->artifact ? true : false;
 		struct object *next = obj->next;
+		uint8_t fmt_index_o;
 
 		/* Skip gold */
 		if (tval_is_money(obj)) {
@@ -1422,8 +1428,11 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 		}
 
 		/* Get the object name */
+		fmt_index_o = C_VINIT;
 		object_desc(o_name, sizeof(o_name), obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 
 		/* React to objects that hurt the monster */
 		if (react_to_slay(obj, mon))
@@ -1438,7 +1447,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 					&& !ignore_item_ok(player, obj)) {
 				/* Dump a message */
 				// msg("%s tries to pick up %s, but fails.", m_name, o_name);
-				msg("%s пытается поднять %s, но не удаётся.", m_name, o_name);
+				msg("%s пытается поднять %s, но не получается.", m_name, o_name);
 			}
 		} else if (rf_has(mon->race->flags, RF_TAKE_ITEM)) {
 			/*
@@ -1477,7 +1486,7 @@ static void monster_turn_grab_objects(struct monster *mon, const char *m_name,
 			/* Describe observable situations */
 			if (square_isseen(cave, new) && !ignore_item_ok(player, obj)) {
 				// msgt(MSG_DESTROY, "%s crushes %s.", m_name, o_name);
-				msgt(MSG_DESTROY, "%s разрушает %s.", m_name, o_name);
+				msgt(MSG_DESTROY, "%s ломает %s.", m_name, o_name);
 			}
 
 			/* Delete the object */
@@ -1524,10 +1533,14 @@ static void monster_turn(struct monster *mon)
 	bool tracking = false;
 	// char m_name[80];
 	char m_name[180];
+	uint8_t fmt_index_m;
 
 	/* Get the monster name */
+	fmt_index_m = C_IMEN;
 	monster_desc(m_name, sizeof(m_name), mon,
-		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN ?
+		// MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+		MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA, &fmt_index_m);
+	fmt_index_m = 0;
 
 	/* If we're in a web, deal with that */
 	if (square_iswebbed(cave, mon->grid)) {
@@ -1750,20 +1763,24 @@ static void monster_reduce_sleep(struct monster *mon)
 	if (player_of_has(player, OF_AGGRAVATE)) {
 		// char m_name[80];
 		char m_name[180];
+		uint8_t fmt_index_m;
 
 		/* Wake the monster, make it aware */
 		monster_wake(mon, false, 100);
 
 		/* Get the monster name */
+		fmt_index_m = C_IMEN;
 		monster_desc(m_name, sizeof(m_name), mon,
-			MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA); // MDESC_IMEN
+			// MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA);
+			MDESC_CAPITAL | MDESC_IND_HID | MDESC_COMMA, &fmt_index_m);
 
 		/* Notify the player if aware */
 		if (monster_is_obvious(mon)) {
 			// msg("%s wakes up.", m_name);
-			msg("%s проснулся.", m_name);
+			msg("%s проснул%s.", m_name, MON_GENDER("ось", "ся", "ась"));
 			equip_learn_flag(player, OF_AGGRAVATE);
 		}
+		fmt_index_m = 0;
 	} else if ((notice * notice * notice) <= player_noise) {
 		int sleep_reduction = 1;
 		int local_noise = cave->noise.grids[mon->grid.y][mon->grid.x];

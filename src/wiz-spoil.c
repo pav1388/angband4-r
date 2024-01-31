@@ -144,6 +144,7 @@ static void kind_info(char *buf, size_t buf_len, char *dam, size_t dam_len,
 	struct object_kind *kind = &k_info[k];
 	struct object *obj = object_new(), *known_obj = object_new();
 	int i;
+	uint8_t fmt_index_o;
 
 	/* Prepare a fake item */
 	object_prep(obj, kind, 0, MAXIMISE);
@@ -167,7 +168,10 @@ static void kind_info(char *buf, size_t buf_len, char *dam, size_t dam_len,
 
 	/* Description (too brief) */
 	if (buf) {
-		object_desc(buf, buf_len, obj, ODESC_BASE | ODESC_SPOIL, NULL);
+		// object_desc(buf, buf_len, obj, ODESC_BASE | ODESC_SPOIL, NULL);
+		fmt_index_o = C_IMEN;
+		object_desc(buf, buf_len, obj, ODESC_BASE | ODESC_SPOIL, NULL, &fmt_index_o);
+		fmt_index_o = 0;
 	}
 
 	/* Weight */
@@ -421,6 +425,7 @@ void spoil_artifact(const char *fname)
 			char buf2[180];
 			struct object *obj, *known_obj;
 			int16_t art_weight;
+			uint8_t fmt_index_o;
 
 			/* We only want objects in the current group */
 			if (art->tval != group_artifact[i].tval) continue;
@@ -447,8 +452,11 @@ void spoil_artifact(const char *fname)
 			/* Grab artifact name */
 			object_copy(known_obj, obj);
 			obj->known = known_obj;
+			fmt_index_o = C_IMEN;
 			object_desc(buf2, sizeof(buf2), obj, ODESC_PREFIX |
-				ODESC_COMBAT | ODESC_EXTRA | ODESC_SPOIL, NULL);
+				// ODESC_COMBAT | ODESC_EXTRA | ODESC_SPOIL, NULL);
+				ODESC_COMBAT | ODESC_EXTRA | ODESC_SPOIL, NULL, &fmt_index_o);
+			fmt_index_o = 0;
 
 			/* Print name and underline */
 			spoiler_underline(buf2, '-');

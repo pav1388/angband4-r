@@ -107,6 +107,7 @@ static void get_art_name(char *buf, int max, int a_idx)
 	struct object *obj, *known_obj;
 	struct object_kind *kind;
 	const struct artifact *art = &a_info[a_idx];
+	uint8_t fmt_index_o;
 
 	/* Get object */
 	obj = object_new();
@@ -130,7 +131,10 @@ static void get_art_name(char *buf, int max, int a_idx)
 	known_obj->notice |= OBJ_NOTICE_IMAGINED;
 
 	/* Create the artifact description */
-	object_desc(buf, max, obj, ODESC_SINGULAR | ODESC_SPOIL, NULL);
+	// object_desc(buf, max, obj, ODESC_SINGULAR | ODESC_SPOIL, NULL);
+	fmt_index_o = C_IMEN;
+	object_desc(buf, max, obj, ODESC_SINGULAR | ODESC_SPOIL, NULL, &fmt_index_o);
+	fmt_index_o = 0;
 
 	object_delete(NULL, NULL, &known_obj);
 	obj->known = NULL;
@@ -157,10 +161,12 @@ static void wiz_create_item_subdisplay(struct menu *m, int oid, bool cursor,
 		int current_tval = choices[oid + 1];
 		// char name[70];
 		char name[180];
+		uint8_t fmt_index_o;
 
 		// object_base_name(name, sizeof(name), current_tval, true);
-		uint8_t index = 1;
-		object_base_name(name, sizeof(name), current_tval, &index); // имен.падеж множ.ч.
+		fmt_index_o = (C_IMEN << 1) + 1;
+		object_base_name(name, sizeof(name), current_tval, &fmt_index_o);
+		fmt_index_o = 0;
 		if (choose_artifact) {
 			// strnfmt(buf, sizeof(buf), "All artifact %s", name);
 			strnfmt(buf, sizeof(buf), "Все артефакты %s", name);
@@ -227,6 +233,7 @@ static void wiz_create_item_display(struct menu *m, int oid, bool cursor,
 {
 	// char buf[80];
 	char buf[180];
+	uint8_t fmt_index_o;
 
 	if (oid == WIZ_CREATE_ALL_MENU_ITEM) {
 		if (choose_artifact) {
@@ -238,8 +245,9 @@ static void wiz_create_item_display(struct menu *m, int oid, bool cursor,
 		}
 	} else {
 		// object_base_name(buf, sizeof(buf), oid, true);
-		uint8_t index = 1;
-		object_base_name(buf, sizeof(buf), oid, &index); // имен.падеж множ.ч.
+		fmt_index_o = (C_IMEN << 1) + 1;
+		object_base_name(buf, sizeof(buf), oid, &fmt_index_o);
+		fmt_index_o = 0;
 	}
 
 	c_prt(curs_attrs[CURS_KNOWN][0 != cursor], buf, row, col);
@@ -255,6 +263,7 @@ static bool wiz_create_item_action(struct menu *m, const ui_event *e, int oid)
 	char buf[180];
 	// char title[80];
 	char title[180];
+	uint8_t fmt_index_o;
 
 	// int choice[70];
 	int choice[180];
@@ -309,8 +318,10 @@ static bool wiz_create_item_action(struct menu *m, const ui_event *e, int oid)
 	menu->selections = all_letters;
 
 	// object_base_name(buf, sizeof(buf), oid, true);
-	uint8_t index = 3;
-	object_base_name(buf, sizeof(buf), oid, &index); // род.падеж мн.ч.
+	fmt_index_o = (C_RODIT << 1) + 1;
+	object_base_name(buf, sizeof(buf), oid, &fmt_index_o);
+	fmt_index_o = 0;
+	
 	if (choose_artifact) {
 		// strnfmt(title, sizeof(title), "Which artifact %s? ", buf);
 		strnfmt(title, sizeof(title), "Какой артефакт из %s? ", buf);

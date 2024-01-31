@@ -827,6 +827,7 @@ struct object *floor_object_for_use(struct player *p, struct object *obj,
 	struct object *usable;
 	// char name[80];
 	char name[180];
+	uint8_t fmt_index_o;
 
 	/* Bounds check */
 	num = MIN(num, obj->number);
@@ -860,8 +861,11 @@ struct object *floor_object_for_use(struct player *p, struct object *obj,
 			obj->number = 0;
 
 		/* Get a description */
+		fmt_index_o = C_VINIT;
 		object_desc(name, sizeof(name), obj,
-			ODESC_PREFIX | ODESC_FULL, p);
+			// ODESC_PREFIX | ODESC_FULL, p);
+			ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+		fmt_index_o = 0;
 
 		if (usable == obj)
 			obj->number = num;
@@ -997,7 +1001,12 @@ static void floor_carry_fail(struct chunk *c, struct object *drop, bool broke)
 			VERB_AGREEMENT(drop->number, "разбивается", "разбиваются") :
 			// VERB_AGREEMENT(drop->number, "disappears", "disappear");
 			VERB_AGREEMENT(drop->number, "исчезает", "исчезают");
-		object_desc(o_name, sizeof(o_name), drop, ODESC_BASE, player);
+		uint8_t fmt_index_o;
+		
+		// object_desc(o_name, sizeof(o_name), drop, ODESC_BASE, player);
+		fmt_index_o = C_IMEN;
+		object_desc(o_name, sizeof(o_name), drop, ODESC_BASE, player, &fmt_index_o);
+		fmt_index_o = 0;
 		// msg("The %s %s.", o_name, verb);
 		msg("%s %s.", o_name, verb);
 		if (!loc_is_zero(known->grid))
@@ -1131,12 +1140,16 @@ void drop_near(struct chunk *c, struct object **dropped, int chance,
 	char o_name[180];
 	struct loc best = grid;
 	bool dont_ignore = verbose && !ignore_item_ok(player, *dropped);
+	uint8_t fmt_index_o;
 
 	/* Only called in the current level */
 	assert(c == cave);
 
 	/* Describe object */
-	object_desc(o_name, sizeof(o_name), *dropped, ODESC_BASE, player);
+	// object_desc(o_name, sizeof(o_name), *dropped, ODESC_BASE, player);
+	fmt_index_o = C_IMEN;
+	object_desc(o_name, sizeof(o_name), *dropped, ODESC_BASE, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Handle normal breakage */
 	if (!((*dropped)->artifact) && (randint0(100) < chance)) {

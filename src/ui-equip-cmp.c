@@ -1493,11 +1493,15 @@ static void display_object_comparison(const struct equippable_summary *s,
 	char hbuf[256];
 	textblock *tb0;
 	region local_area = { 0, 0, 0, 0 };
+	uint8_t fmt_index_o;
 
 	assert(s->isel0 >= 0 && s->isel0 < s->nitems);
 	tb0 = object_info(s->items[s->isel0].obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(hbuf, sizeof(hbuf), s->items[s->isel0].obj,
-		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p);
+		// ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p);
+		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p, &fmt_index_o);
+	fmt_index_o = 0;
 	if (s->isel1 != -1 && s->isel1 != s->isel0) {
 		textblock *tb1 = textblock_new();
 		textblock *tb2;
@@ -1505,8 +1509,11 @@ static void display_object_comparison(const struct equippable_summary *s,
 		assert(s->isel1 >= 0 && s->isel1 < s->nitems);
 		textblock_append(tb1, "%s\n", hbuf);
 		textblock_append_textblock(tb1, tb0);
+		fmt_index_o = C_IMEN;
 		object_desc(hbuf, sizeof(hbuf), s->items[s->isel1].obj,
-			ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p);
+			// ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p);
+			ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, p, &fmt_index_o);
+		fmt_index_o = 0;
 		textblock_append(tb1, "\n%s\n", hbuf);
 		tb2 = object_info(s->items[s->isel1].obj, OINFO_NONE);
 		textblock_append_textblock(tb1, tb2);
@@ -1657,6 +1664,7 @@ static char *set_short_name(const struct object *obj, size_t length,
 	size_t nmlen;
 	bool tail;
 	char *result;
+	uint8_t fmt_index_o;
 
 	if (obj->known && obj->known->artifact) {
 		nmsrc = obj->known->artifact->name;
@@ -1665,8 +1673,11 @@ static char *set_short_name(const struct object *obj, size_t length,
 		nmsrc = obj->known->ego->name;
 		tail = true;
 	} else {
+		fmt_index_o = C_IMEN;
 		object_desc(buf, N_ELEMENTS(buf), obj, ODESC_COMBAT |
-			ODESC_SINGULAR | ODESC_TERSE, p);
+			// ODESC_SINGULAR | ODESC_TERSE, p);
+			ODESC_SINGULAR | ODESC_TERSE, p, &fmt_index_o);
+		fmt_index_o = 0;
 		nmsrc = buf;
 		tail = false;
 	}

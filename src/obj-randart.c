@@ -188,8 +188,9 @@ static int artifact_power(int a_idx, const char *reason, bool verbose)
 	struct object *obj = object_new();
 	struct object *known_obj = object_new();
 	// char buf[256];
-	char buf[768];
+	char buf[512];
 	int32_t power;
+	uint8_t fmt_index_o;
 
 	file_putf(log_file, "********** Evaluating %s ********\n", reason);
 	file_putf(log_file, "Artifact index is %d\n", a_idx);
@@ -202,8 +203,12 @@ static int artifact_power(int a_idx, const char *reason, bool verbose)
 
 	object_copy(known_obj, obj);
 	obj->known = known_obj;
-	object_desc(buf, 256 * sizeof(char), obj,
-		ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, NULL);
+	// object_desc(buf, 256 * sizeof(char), obj,
+		// ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, NULL);
+	fmt_index_o = C_IMEN;
+	object_desc(buf, sizeof buf, obj,
+		ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, NULL, &fmt_index_o);
+	fmt_index_o = 0;
 	file_putf(log_file, "%s\n", buf);
 
 	power = object_power(obj, verbose, log_file);

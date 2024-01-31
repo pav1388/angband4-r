@@ -81,6 +81,7 @@ char *monster_blow_method_action(const struct blow_method *method, int midx)
 	const char *in_cursor;
 	size_t end = 0;
 	struct monster *t_mon = NULL;
+	uint8_t fmt_index_m;
 
 	int choice = randint0(method->num_messages);
 	const struct blow_message *msg = method->messages;
@@ -122,9 +123,11 @@ char *monster_blow_method_action(const struct blow_method *method, int midx)
 						if (!strchr(punct, *in_cursor)) {
 							mdesc_mode |= MDESC_COMMA;
 						}
+						fmt_index_m = C_IMEN;
 						monster_desc(m_name,
 							sizeof(m_name), t_mon,
-							mdesc_mode);
+							// mdesc_mode);
+							mdesc_mode, &fmt_index_m);
 						strnfcat(buf, sizeof(buf),
 							&end, "%s", m_name);
 					} else {
@@ -137,13 +140,15 @@ char *monster_blow_method_action(const struct blow_method *method, int midx)
 					// char m_name[80];
 					char m_name[180];
 					if (midx > 0) {
+						fmt_index_m = C_IMEN;
 						monster_desc(m_name,
 							sizeof(m_name), t_mon,
-							MDESC_TARG | MDESC_POSS);
+							// MDESC_TARG | MDESC_POSS);
+							MDESC_TARG | MDESC_POSS, &fmt_index_m);
 						strnfcat(buf, sizeof(buf), &end, "%s", m_name);
 					} else {
 						// strnfcat(buf, sizeof(buf), &end, "your");
-						strnfcat(buf, sizeof(buf), &end, "вашу");
+						strnfcat(buf, sizeof(buf), &end, "ваш");
 					}
 					break;
 				}
@@ -256,6 +261,8 @@ static void steal_player_item(melee_effect_handler_context_t *context)
 		char o_name[180];
 		bool split = false;
 		bool none_left = false;
+		uint8_t fmt_index_o;
+		uint8_t fmt_index_m;
 
         /* Pick an item */
 		int index = randint0(z_info->pack_size);
@@ -270,7 +277,9 @@ static void steal_player_item(melee_effect_handler_context_t *context)
         if (obj->artifact) continue;
 
         /* Get a description */
-        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, context->p);
+        // object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, context->p);
+		fmt_index_o = C_VINIT;
+        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, context->p, &fmt_index_o);
 
 		/* Is it one of a stack being stolen? */
 		if (obj->number > 1)
@@ -283,26 +292,35 @@ static void steal_player_item(melee_effect_handler_context_t *context)
 			char m_name[180];
 
 			/* Get the monster names (or "it") */
-			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD); // MDESC_IMEN
+			// monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD);
+			fmt_index_m = C_IMEN;
+			monster_desc(m_name, sizeof(m_name), context->mon, MDESC_STANDARD, &fmt_index_m);
 
 			/* Fail to steal */
 			// msg("%s tries to steal %s %s, but fails.", m_name,
-			msg("%s пытается украсть %s %s, но терпит неудачу.", m_name,
 				// (split ? "one of your" : "your"), o_name);
-				(split ? "один из ваших" : "ваш"), o_name);
+			msg("%s пытается украсть %s %s, но терпит неудачу.", m_name,
+				(split ? OBJ_GENDER("одно из ваших", "один из ваших", "одну из ваших") : 
+				OBJ_GENDER("ваше", "ваш", "вашу")), o_name);
 		} else {
 			/* Message */
 			// msg("%s %s (%c) was stolen!",
-			msg("%s %s (%c) был украден!",
 				// (split ? "One of your" : "Your"), o_name,
-				(split ? "Один из ваших" : "Ваш"), o_name,
-				gear_to_label(context->p, obj));
+				// gear_to_label(context->p, obj));
+			fmt_index_o = split ? C_VINIT : C_IMEN;
+			object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, context->p, &fmt_index_o);
+			msg("%s %s (%c) был%s украден%s!",
+				(split ? OBJ_GENDER("Одно из ваших", "Один из ваших", "Одна из ваших") : 
+				OBJ_GENDER("Ваше", "Ваш", "Ваша")), 
+				o_name, gear_to_label(context->p, obj),
+				OBJ_GENDER("о", "", "а"), OBJ_GENDER("о", "", "а"));
 
 			/* Steal and carry */
 			stolen = gear_object_for_use(context->p, obj, 1,
 				false, &none_left);
 			(void)monster_carry(cave, context->mon, stolen);
 		}
+		fmt_index_o = 0;
 
         /* Obvious */
         context->obvious = true;
@@ -921,6 +939,7 @@ static void melee_effect_handler_EAT_FOOD(melee_effect_handler_context_t *contex
 		// char o_name[80];
 		char o_name[180];
 		bool none_left = false;
+		uint8_t fmt_index_o;
 
 		/* Get the item */
 		obj = context->p->upkeep->inven[index];
@@ -932,17 +951,27 @@ static void melee_effect_handler_EAT_FOOD(melee_effect_handler_context_t *contex
 		if (!tval_is_edible(obj)) continue;
 
 		if (obj->number == 1) {
+			fmt_index_o = C_IMEN;
 			object_desc(o_name, sizeof(o_name), obj, ODESC_BASE,
-				context->p);
+				// context->p);
+				context->p, &fmt_index_o);
 			// msg("Your %s (%c) was eaten!", o_name,
-			msg("Ваш %s (%c) был съеден!", o_name,
-				gear_to_label(context->p, obj));
+				// gear_to_label(context->p, obj));
+			msg("Ваш%s %s (%c) был%s съеден%s!", OBJ_GENDER("е", "", "а"), 
+				o_name, gear_to_label(context->p, obj), OBJ_GENDER("о", "", "а"),
+				OBJ_GENDER("о", "", "а"));
+			fmt_index_o = 0;
 		} else {
+			fmt_index_o = (C_RODIT << 1) + 1;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_BASE, context->p);
+				// ODESC_PREFIX | ODESC_BASE, context->p);
+				ODESC_PREFIX | ODESC_BASE, context->p, &fmt_index_o);
 			// msg("One of your %s (%c) was eaten!", o_name,
-			msg("Один из ваших %s (%c) был съеден!", o_name,
-				gear_to_label(context->p, obj));
+				// gear_to_label(context->p, obj));
+			msg("Од%s из ваших %s (%c) был%s съеден%s!", OBJ_GENDER("но", "ин", "на"),
+				o_name, gear_to_label(context->p, obj), OBJ_GENDER("о", "", "а"),
+				OBJ_GENDER("о", "", "а"));
+			fmt_index_o = 0;
 		}
 
 		/* Steal and eat */

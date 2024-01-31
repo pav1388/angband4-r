@@ -64,7 +64,7 @@ void lore_title(textblock *tb, const struct monster_race *race)
 	// textblock_append(tb, "%s", race->name);
 	// для русского языка
 	char mon_name[180];
-	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0);
+	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0); // MDESC_IMEN
 	my_strcap(mon_name);
 	textblock_append(tb, "%s", mon_name);
 

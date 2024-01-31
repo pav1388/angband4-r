@@ -413,15 +413,19 @@ bool minus_ac(struct player *p)
 	if (obj && (obj->ac + obj->to_a > 0)) {
 		// char o_name[80];
 		char o_name[180];
-		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+		uint8_t fmt_index_o;
+		
+		// object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p);
+		fmt_index_o = C_IMEN;
+		object_desc(o_name, sizeof(o_name), obj, ODESC_BASE, p, &fmt_index_o);
 
 		/* Object resists */
 		if (obj->el_info[ELEM_ACID].flags & EL_INFO_IGNORE) {
 			// msg("Your %s is unaffected!", o_name);
-			msg("Ваш %s не пострадал!", o_name);
+			msg("Ваш%s %s не пострадал%s!", OBJ_GENDER("е", "", "а"), o_name, OBJ_GENDER("о", "", "а"));
 		} else {
 			// msg("Your %s is damaged!", o_name);
-			msg("Ваш %s поврежден!", o_name);
+			msg("Ваш%s %s поврежд%s!", OBJ_GENDER("е", "", "а"), o_name, OBJ_GENDER("ено", "ён", "ена"));
 
 			/* Damage the item */
 			obj->to_a--;
@@ -431,7 +435,8 @@ bool minus_ac(struct player *p)
 			p->upkeep->update |= (PU_BONUS);
 			p->upkeep->redraw |= (PR_EQUIP);
 		}
-
+		fmt_index_o = 0;
+		
 		/* There was an effect */
 		return true;
 	} else {
@@ -532,6 +537,7 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 	char name[180];
 	char label = gear_to_label(p, obj);
 	bool artifact = (obj->known->artifact != NULL);
+	uint8_t fmt_index_o;
 
 	/* Bounds check */
 	num = MIN(num, obj->number);
@@ -566,15 +572,19 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 					first_remainder = NULL;
 				}
 			}
+			fmt_index_o = obj->number == 1 ? C_RODIT : C_IMEN;
 			object_desc(name, sizeof(name), obj,
 				ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
-				(total << 16), p);
+				// (total << 16), p);
+				(total << 16), p, &fmt_index_o);
 		}
 	} else {
 		if (message) {
 			if (artifact) {
+				fmt_index_o = C_RODIT;
 				object_desc(name, sizeof(name), obj,
-					ODESC_FULL | ODESC_SINGULAR, p);
+					// ODESC_FULL | ODESC_SINGULAR, p);
+					ODESC_FULL | ODESC_SINGULAR, p, &fmt_index_o);
 			} else {
 				uint16_t total;
 
@@ -597,9 +607,11 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 				if (!total || total <= first_remainder->number) {
 					first_remainder = NULL;
 				}
+				fmt_index_o = obj->number == 1 ? C_RODIT : C_IMEN;
 				object_desc(name, sizeof(name), obj,
-					ODESC_PREFIX | ODESC_FULL |
-					ODESC_ALTNUM | (total << 16), p);
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					// (total << 16), p);
+					(total << 16), p, &fmt_index_o);
 			}
 		}
 
@@ -629,18 +641,23 @@ struct object *gear_object_for_use(struct player *p, struct object *obj,
 		} else if (first_remainder) {
 			label = gear_to_label(p, first_remainder);
 			// msg("You have %s (1st %c).", name, label);
-			if (obj->number == 1)
-				msg("У вас %s (1-ый %c).", name, label);
-			else
-				msg("У вас есть %s (1-ый %c).", name, label);
+			if (obj->number == 1) {
+				msg("У вас %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label); // ...больше нет...
+			}
+			else {
+				msg("У вас есть %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label);
+			}
 		} else {
 			// msg("You have %s (%c).", name, label);
-			if (obj->number == 1)
-				msg("У вас %s (%c).", name, label);
-			else
+			if (obj->number == 1) {
+				msg("У вас %s (%c).", name, label); // ...больше нет...
+			}
+			else {
 				msg("У вас есть %s (%c).", name, label);
+			}
 		}
 	}
+	fmt_index_o = 0;
 
 	return usable;
 }
@@ -836,6 +853,8 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 				 bool message)
 {
 	bool combining = false;
+	uint8_t fmt_index_o;
+
 
 	/* Check for combining, if appropriate */
 	if (absorb) {
@@ -924,25 +943,46 @@ void inven_carry(struct player *p, struct object *obj, bool absorb,
 			total = object_pack_total(p, obj, false, &first);
 		}
 		assert(first && total >= first->number);
-		object_desc(o_name, sizeof(o_name), obj,
-			ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
-			(total << 16), p);
+		// object_desc(o_name, sizeof(o_name), obj,
+			// ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+			// (total << 16), p);
 		label = gear_to_label(p, first);
 		if (total > first->number) {
 			// msg("You have %s (1st %c).", o_name, label);
-			if (total == 0)
-				msg("У вас %s (1-ый %c).", o_name, label);
-			else
-				msg("У вас есть %s (1-ый %c).", o_name, label);
+			if (total == 0) {
+				fmt_index_o = C_RODIT;
+				object_desc(o_name, sizeof(o_name), obj,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), p, &fmt_index_o);
+				msg("У вас %s (1-%s %c).", o_name, OBJ_GENDER("ое", "ый", "ая"), label); // ...больше нет...
+			}
+			else {
+				fmt_index_o = C_IMEN;
+				object_desc(o_name, sizeof(o_name), obj,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), p, &fmt_index_o);
+				msg("У вас есть %s (1-%s %c).", o_name, OBJ_GENDER("ое", "ый", "ая"), label);
+			}
 		} else {
 			assert(first == obj);
 			// msg("You have %s (%c).", o_name, label);
-			if (total == 0)
-				msg("У вас %s (%c).", o_name, label);
-			else
+			if (total == 0) {
+				fmt_index_o = C_RODIT;
+				object_desc(o_name, sizeof(o_name), obj,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), p, &fmt_index_o);
+				msg("У вас %s (%c).", o_name, label); // ...больше нет...
+			}
+			else {
+				fmt_index_o = C_IMEN;
+				object_desc(o_name, sizeof(o_name), obj,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), p, &fmt_index_o);
 				msg("У вас есть %s (%c).", o_name, label);
+			}
 		}
 	}
+	fmt_index_o = 0;
 
 	if (object_is_in_quiver(p, obj))
 		sound(MSG_QUIVER);
@@ -960,6 +1000,7 @@ void inven_wield(struct object *obj, int slot)
 	// char o_name[80];
 	char o_name[180];
 	bool dummy = false;
+	uint8_t fmt_index_o;
 
 	/* Increase equipment counter if empty slot */
 	if (old == NULL)
@@ -1008,22 +1049,32 @@ void inven_wield(struct object *obj, int slot)
 	object_learn_on_wield(player, wielded);
 
 	/* Where is the item now */
-	if (tval_is_melee_weapon(wielded))
+	if (tval_is_melee_weapon(wielded)) {
 		// fmt = "You are wielding %s (%c).";
+		fmt_index_o = C_TVORIT;
 		fmt = "Вы вооружились %s (%c).";
-	else if (wielded->tval == TV_BOW)
+	}
+	else if (wielded->tval == TV_BOW) {
 		// fmt = "You are shooting with %s (%c).";
+		fmt_index_o = C_TVORIT;
 		fmt = "Вы вооружились %s (%c).";
-	else if (tval_is_light(wielded))
+	}
+	else if (tval_is_light(wielded)) {
 		// fmt = "Your light source is %s (%c).";
+		fmt_index_o = C_IMEN;
 		fmt = "Ваш источник света %s (%c).";
-	else
+	}
+	else {
 		// fmt = "You are wearing %s (%c).";
+		fmt_index_o = C_VINIT;
 		fmt = "Вы экипировали %s (%c).";
+	}
 
 	/* Describe the result */
 	object_desc(o_name, sizeof(o_name), wielded,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Message */
 	msgt(MSG_WIELD, fmt, o_name, gear_to_label(player, wielded));
@@ -1066,13 +1117,16 @@ void inven_takeoff(struct object *obj)
 	const char *act;
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	/* Paranoia */
 	if (slot == player->body.count) return;
 
 	/* Describe the object */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
 
 	/* Describe removal by slot */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
@@ -1120,6 +1174,7 @@ void inven_drop(struct object *obj, int amt)
 	// char name[80];
 	char name[180];
 	char label;
+	uint8_t fmt_index_o;
 
 	/* Error check */
 	if (amt <= 0)
@@ -1150,8 +1205,11 @@ void inven_drop(struct object *obj, int amt)
 	dropped = gear_object_for_use(player, obj, amt, false, &none_left);
 
 	/* Describe the dropped object */
+	fmt_index_o = C_VINIT;
 	object_desc(name, sizeof(name), dropped, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Message */
 	// msg("You drop %s (%c).", name, label);
@@ -1159,8 +1217,11 @@ void inven_drop(struct object *obj, int amt)
 
 	/* Describe what's left */
 	if (dropped->artifact) {
+		fmt_index_o = C_RODIT;
 		object_desc(name, sizeof(name), dropped,
-			ODESC_FULL | ODESC_SINGULAR, player);
+			// ODESC_FULL | ODESC_SINGULAR, player);
+			ODESC_FULL | ODESC_SINGULAR, player, &fmt_index_o);
+		fmt_index_o = 0;
 		// msg("You no longer have the %s (%c).", name, label);
 		msg("У вас больше нет %s (%c).", name, label);
 	} else {
@@ -1188,31 +1249,62 @@ void inven_drop(struct object *obj, int amt)
 			desc_target = (total) ? obj : dropped;
 		}
 
-		object_desc(name, sizeof(name), desc_target,
-			ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
-			(total << 16), player);
+		// object_desc(name, sizeof(name), desc_target,
+			// ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+			// (total << 16), player);
 		if (!first) {
 			// msg("You have %s (%c).", name, label);
-			if (total == 0)
-				msg("У вас %s (%c).", name, label);
-			else
+			if (total == 0) {
+				fmt_index_o = C_RODIT;
+				object_desc(name, sizeof(name), desc_target,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), player, &fmt_index_o);
+				msg("У вас %s (%c).", name, label); // ...больше нет...
+			}
+			else {
+				fmt_index_o = C_IMEN;
+				object_desc(name, sizeof(name), desc_target,
+					ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), player, &fmt_index_o);
 				msg("У вас есть %s (%c).", name, label);
+			}
 		} else {
 			label = gear_to_label(player, first);
 			if (total > first->number) {
 				// msg("You have %s (1st %c).", name, label);
-				if (total == 0)
-					msg("У вас %s (1-ый %c).", name, label);
-				else
-					msg("У вас есть %s (1-ый %c).", name, label);
+				if (total == 0) {
+					fmt_index_o = C_RODIT;
+					object_desc(name, sizeof(name), desc_target,
+						ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+						(total << 16), player, &fmt_index_o);
+					msg("У вас %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label); // ...больше нет...
+				}
+				else {
+					fmt_index_o = C_IMEN;
+					object_desc(name, sizeof(name), desc_target,
+						ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), player, &fmt_index_o);
+					msg("У вас есть %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label);
+				}
 			} else {
 				// msg("You have %s (%c).", name, label);
-				if (total == 0)
-					msg("У вас %s (%c).", name, label);
-				else
+				if (total == 0) {
+					fmt_index_o = C_RODIT;
+					object_desc(name, sizeof(name), desc_target,
+						ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+						(total << 16), player, &fmt_index_o);
+					msg("У вас %s (%c).", name, label); // ...больше нет...
+				}
+				else {
+					fmt_index_o = C_IMEN;
+					object_desc(name, sizeof(name), desc_target,
+						ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+					(total << 16), player, &fmt_index_o);
 					msg("У вас есть %s (%c).", name, label);
+				}
 			}
 		}
+		fmt_index_o = 0;
 	}
 
 	/* Drop it near the player */
@@ -1398,6 +1490,7 @@ void pack_overflow(struct object *obj)
 	int i;
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	if (!pack_is_overfull()) return;
 
@@ -1422,8 +1515,11 @@ void pack_overflow(struct object *obj)
 	assert(obj != NULL);
 
 	/* Describe */
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
+		// player);
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
-		player);
+		player, &fmt_index_o);
 
 	/* Message */
 	// msg("You drop %s.", o_name);
@@ -1435,6 +1531,9 @@ void pack_overflow(struct object *obj)
 
 	/* Describe */
 	// msg("You no longer have %s.", o_name);
+	fmt_index_o = C_RODIT;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
+		player, &fmt_index_o);
 	msg("У вас больше нет %s.", o_name);
 
 	/* Notice, update, redraw */

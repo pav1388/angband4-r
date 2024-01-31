@@ -286,6 +286,7 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 	char out_val[160];
 	uint8_t colour;
 	int16_t obj_weight;
+	uint8_t fmt_index_o;
 
 	struct store_context *ctx = menu_priv(menu);
 	struct store *store = ctx->store;
@@ -300,8 +301,11 @@ static void store_display_entry(struct menu *menu, int oid, bool cursor, int row
 	} else {
 		desc |= ODESC_FULL | ODESC_STORE;
 	}
-	object_desc(o_name, sizeof(o_name), obj, desc, player);
-
+	// object_desc(o_name, sizeof(o_name), obj, desc, player);
+	fmt_index_o = C_IMEN;
+	object_desc(o_name, sizeof(o_name), obj, desc, player, &fmt_index_o);
+	fmt_index_o = 0;
+	
 	/* Display the object */
 	c_put_str(obj->kind->base->attr, o_name, row, col);
 
@@ -531,6 +535,7 @@ static bool store_sell(struct store_context *ctx)
 
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	item_tester tester = NULL;
 
@@ -591,8 +596,11 @@ static bool store_sell(struct store_context *ctx)
 	}
 
 	/* Get a full description */
+	fmt_index_o = C_IMEN;
 	object_desc(o_name, sizeof(o_name), temp_obj,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Real store */
 	if (store->feat != FEAT_HOME) {
@@ -754,11 +762,15 @@ static bool store_purchase(struct store_context *ctx, int item, bool single)
 
 		bool obj_is_book = tval_is_book_k(obj->kind);
 		bool obj_can_use = !obj_is_book || obj_can_browse(obj);
+		uint8_t fmt_index_o;
 
 		/* Describe the object (fully) */
+		fmt_index_o = C_IMEN;
 		object_desc(o_name, sizeof(o_name), dummy,
-			ODESC_PREFIX | ODESC_FULL | ODESC_STORE, player);
-
+			// ODESC_PREFIX | ODESC_FULL | ODESC_STORE, player);
+			ODESC_PREFIX | ODESC_FULL | ODESC_STORE, player, &fmt_index_o);
+		fmt_index_o = 0;
+		
 		/* Extract the price for the entire stack */
 		price = price_item(store, dummy, false, dummy->number);
 
@@ -813,6 +825,7 @@ static void store_examine(struct store_context *ctx, int item)
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
 	uint32_t odesc_flags = ODESC_PREFIX | ODESC_FULL;
+	uint8_t fmt_index_o;
 
 	if (item < 0) return;
 
@@ -831,7 +844,10 @@ static void store_examine(struct store_context *ctx, int item)
 
 	/* Show full info in most stores, but normal info in player home */
 	tb = object_info(obj, OINFO_NONE);
-	object_desc(header, sizeof(header), obj, odesc_flags, player);
+	// object_desc(header, sizeof(header), obj, odesc_flags, player);
+	fmt_index_o = C_IMEN;
+	object_desc(header, sizeof(header), obj, odesc_flags, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	textui_textblock_show(tb, area, header);
 	textblock_free(tb);
@@ -1037,10 +1053,14 @@ static bool context_menu_store_item(struct store_context *ctx, const int oid, in
 	char *labels;
 	// char header[120];
 	char header[256];
+	uint8_t fmt_index_o;
 
+	fmt_index_o = C_IMEN;
 	object_desc(header, sizeof(header), obj,
-		ODESC_PREFIX | ODESC_FULL | ((home) ? 0 : ODESC_STORE), player);
-
+		// ODESC_PREFIX | ODESC_FULL | ((home) ? 0 : ODESC_STORE), player);
+		ODESC_PREFIX | ODESC_FULL | ((home) ? 0 : ODESC_STORE), player, &fmt_index_o);
+	fmt_index_o = 0;
+	
 	labels = string_make(lower_case);
 	m->selections = labels;
 

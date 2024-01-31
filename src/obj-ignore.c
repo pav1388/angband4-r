@@ -270,6 +270,7 @@ int apply_autoinscription(struct player *p, struct object *obj)
 	char o_name[180];
 	bool aware = obj->kind->aware;
 	const char *note = obj ? get_autoinscription(obj->kind, aware) : NULL;
+	uint8_t fmt_index_o;
 
 	/* Remove unaware inscription if aware */
 	if (aware && quark_str(obj->note) && quark_str(obj->kind->note_unaware) &&
@@ -296,7 +297,10 @@ int apply_autoinscription(struct player *p, struct object *obj)
 		return 0;
 
 	/* Get an object description */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);
+	fmt_index_o = C_VINIT;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+	fmt_index_o = 0;
 
 	if (note[0] != 0)
 		obj->note = quark_add(note);

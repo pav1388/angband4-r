@@ -547,9 +547,13 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 		// char m_name[80];
 		char m_name[180];
 		struct monster *mon = square_monster(c, grid);
+		uint8_t fmt_index_m;
 
 		/* Get the monster name ("a kobold") */
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS | MDESC_VINIT);
+		// monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS);
+		fmt_index_m = C_VINIT;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS, &fmt_index_m);
+		fmt_index_m = 0;
 
 		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
 		prt(format("(Enter выбор действия, ESC отмена) Вы видете %s:",
@@ -557,10 +561,14 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 	} else if (square_obj && !ignore_item_ok(player, square_obj)) {
 		// char o_name[80];
 		char o_name[180];
+		uint8_t fmt_index_o;
 
 		/* Obtain an object description */
+		fmt_index_o = C_IMEN;
 		object_desc(o_name, sizeof (o_name), square_obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 
 		// prt(format("(Enter to select command, ESC to cancel) You see %s:",
 		prt(format("(Enter выбор, ESC отмена) Вы видете %s:",
@@ -688,6 +696,7 @@ int context_menu_object(struct object *obj)
 	char *labels;
 	// char header[120];
 	char header[256];
+	uint8_t fmt_index_o;
 
 	textblock *tb;
 	region area = { 0, 0, 0, 0 };
@@ -700,8 +709,11 @@ int context_menu_object(struct object *obj)
 	if (!m || !obj)
 		return 0;
 
+	fmt_index_o = C_IMEN;
 	object_desc(header, sizeof(header), obj, ODESC_PREFIX | ODESC_BASE,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	labels = string_make(lower_case);
 	m->selections = labels;
@@ -841,8 +853,11 @@ int context_menu_object(struct object *obj)
 
 	/* Display info */
 	tb = object_info(obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(header, sizeof(header), obj, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	textui_textblock_place(tb, area, format("%s", header));
 	textblock_free(tb);
@@ -870,8 +885,11 @@ int context_menu_object(struct object *obj)
 			/* copied from textui_obj_examine */
 			/* Display info */
 			tb = object_info(obj, OINFO_NONE);
+			fmt_index_o = C_IMEN;
 			object_desc(header, sizeof(header), obj,
-				ODESC_PREFIX | ODESC_FULL, player);
+				// ODESC_PREFIX | ODESC_FULL, player);
+				ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+			fmt_index_o = 0;
 
 			textui_textblock_show(tb, area, format("%s", header));
 			textblock_free(tb);

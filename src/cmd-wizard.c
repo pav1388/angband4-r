@@ -200,6 +200,7 @@ static void wiz_display_item(const struct object *obj, bool all,
 	bitflag f[OF_SIZE];
 	char buf[256];
 	bool *labelsDone;
+	uint8_t fmt_index_o;
 
 	/* Extract the flags. */
 	if (all) {
@@ -212,8 +213,11 @@ static void wiz_display_item(const struct object *obj, bool all,
 	Term_clear();
 
 	/* Describe fully */
+	fmt_index_o = C_IMEN;
 	object_desc(buf, sizeof(buf), obj,
-		ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, p);
+		// ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, p);
+		ODESC_PREFIX | ODESC_FULL | ODESC_SPOIL, p, &fmt_index_o);
+	fmt_index_o = 0;
 
 	prt(buf, 2, j);
 

@@ -341,14 +341,18 @@ static void death_info(const char *title, int row)
 				char o_name[180];
 				// char tmp_val[80];
 				char tmp_val[180];
+				uint8_t fmt_index_o;
 
 				/* Print header, clear line */
 				strnfmt(tmp_val, sizeof(tmp_val), "%c) ", I2A(line));
 				prt(tmp_val, line + 2, 4);
 
 				/* Get the object description */
+				fmt_index_o = C_IMEN;
 				object_desc(o_name, sizeof(o_name), obj,
-					ODESC_PREFIX | ODESC_FULL, player);
+					// ODESC_PREFIX | ODESC_FULL, player);
+					ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
+				fmt_index_o = 0;
 
 				/* Get the inventory color */
 				attr = obj->kind->base->attr;
@@ -406,13 +410,17 @@ static void death_examine(const char *title, int row)
 	while (get_item(&obj, q, s, 0, NULL, (USE_INVEN | USE_QUIVER | USE_EQUIP | IS_HARMLESS))) {
 		// char header[120];
 		char header[256];
+		uint8_t fmt_index_o;
 
 		textblock *tb;
 		region area = { 1, 0, 0, 0 };
 
 		tb = object_info(obj, OINFO_NONE);
+		fmt_index_o = C_IMEN;
 		object_desc(header, sizeof(header), obj,
-			ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+			// ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+			ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player, &fmt_index_o);
+		fmt_index_o = 0;
 
 		textui_textblock_show(tb, area, header);
 		textblock_free(tb);

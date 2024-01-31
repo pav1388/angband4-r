@@ -400,6 +400,7 @@ bool make_ranged_attack(struct monster *mon)
 	char m_name[180];
 	bool seen = (player->timed[TMD_BLIND] == 0) && monster_is_visible(mon);
 	bool innate = false;
+	uint8_t fmt_index_m;
 
 	/* Check for cast this turn, non-innate and then innate */
 	if (!monster_can_cast(mon, false)) {
@@ -449,7 +450,10 @@ bool make_ranged_attack(struct monster *mon)
 	if (!thrown_spell) return false;
 
 	/* There will be at least an attempt now, so get the monster's name */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
+	fmt_index_m = 0;
 
 	/* If we see a hidden monster try to cast a spell, become aware of it */
 	if (monster_is_camouflaged(mon))
@@ -557,15 +561,21 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 	// char ddesc[80];
 	char ddesc[180];
 	bool blinked = false;
+	uint8_t fmt_index_m;
 
 	/* Not allowed to attack */
 	if (rf_has(mon->race->flags, RF_NEVER_BLOW)) return (false);
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
 
 	/* Get the "died from" information (i.e. "a kobold") */
-	monster_desc(ddesc, sizeof(ddesc), mon, MDESC_SHOW | MDESC_IND_VIS | MDESC_RODIT);
+	// monster_desc(ddesc, sizeof(ddesc), mon, MDESC_SHOW | MDESC_IND_VIS);
+	fmt_index_m = C_RODIT;
+	monster_desc(ddesc, sizeof(ddesc), mon, MDESC_SHOW | MDESC_IND_VIS, &fmt_index_m);
+	fmt_index_m = 0;
 
 	/* Scan through all blows */
 	for (ap_cnt = 0; ap_cnt < z_info->mon_blows_max; ap_cnt++) {
@@ -778,13 +788,19 @@ bool monster_attack_monster(struct monster *mon, struct monster *t_mon)
 	// char t_name[80];
 	char t_name[180];
 	bool blinked = false;
+	uint8_t fmt_index_m;
 
 	/* Not allowed to attack */
 	if (rf_has(mon->race->flags, RF_NEVER_BLOW)) return (false);
 
 	/* Get the monster names (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
-	monster_desc(t_name, sizeof(t_name), t_mon, MDESC_TARG | MDESC_DATEL);
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
+	// monster_desc(t_name, sizeof(t_name), t_mon, MDESC_TARG);
+	fmt_index_m = C_DATEL;
+	monster_desc(t_name, sizeof(t_name), t_mon, MDESC_TARG, &fmt_index_m);
+	fmt_index_m = 0;
 
 	/* Scan through all blows */
 	for (ap_cnt = 0; ap_cnt < z_info->mon_blows_max; ap_cnt++) {

@@ -318,11 +318,15 @@ static ui_event target_recall_loop_object(struct object *obj, int y, int x,
 		} else {
 			// char o_name[80];
 			char o_name[180];
+			uint8_t fmt_index_o;
 
 			/* Obtain an object description */
+			fmt_index_o = C_VINIT;
 			object_desc(o_name, sizeof(o_name),
 				cave->objects[obj->oidx],
-				ODESC_PREFIX | ODESC_FULL, p);
+				// ODESC_PREFIX | ODESC_FULL, p);
+				ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+			fmt_index_o = 0;
 
 			/* Describe the object */
 			if (p->wizard) {
@@ -456,6 +460,7 @@ static bool aux_monster(struct chunk *c, struct player *p,
 	char m_name[180];
 	char out_val[TARGET_OUT_VAL_SIZE];
 	bool recall;
+	uint8_t fmt_index_m;
 
 	if (square(c, auxst->grid)->mon <= 0) return false;
 
@@ -469,7 +474,10 @@ static bool aux_monster(struct chunk *c, struct player *p,
 	auxst->boring = false;
 
 	/* Get the monster name ("a kobold") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_IND_VIS, &fmt_index_m);
+	fmt_index_m = 0;
 
 	/* Track this monster's race and health */
 	monster_race_track(p->upkeep, mon->race);
@@ -581,10 +589,14 @@ static bool aux_monster(struct chunk *c, struct player *p,
 		for (obj = mon->held_obj; obj; obj = obj->next) {
 			// char o_name[80];
 			char o_name[180];
+			uint8_t fmt_index_o;
 
 			/* Obtain an object description */
+			fmt_index_o = C_VINIT;
 			object_desc(o_name, sizeof(o_name), obj,
-				ODESC_PREFIX | ODESC_FULL, p);
+				// ODESC_PREFIX | ODESC_FULL, p);
+				ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+			fmt_index_o = 0;
 
 			strnfmt(out_val, sizeof(out_val),
 				"%s%s%s, %s (%d:%d, noise=%d, scent=%d).",

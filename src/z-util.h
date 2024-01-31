@@ -60,10 +60,16 @@ extern void (*quit_aux)(const char *);
  */
 
 //форматирование имени монстра используя функцию форматирования имени предмета
-#define mon_desc_name_format(buf, max, end, fmt, index)		obj_desc_name_format((buf), (max), (end), (fmt), 0, (index))
+#define mon_desc_name_format(buf, max, end, fmt, fmt_index)		obj_desc_name_format((buf), (max), (end), (fmt), 0, (fmt_index))
 
 // выбор окончания слова в зависимости от числительного
 #define PLURAL_RU(n, a, b, c)	((((n) % 10) == 1) && (((n) % 100) != 11) ? (a) : (((n) % 10) > 1) && (((n) % 10) < 5) && (((n) % 100) != 12) && (((n) % 100) != 13) && (((n) % 100) != 14) ? (b) : (c))
+
+// выбор окончания слова в зависимости от рода предмета
+#define OBJ_GENDER(a, b, c)	(((fmt_index_o) == 3) ? (c) : ((fmt_index_o) == 1) ? (a) : (b))
+
+// выбор окончания слова в зависимости от рода монстра
+#define MON_GENDER(a, b, c)	(((fmt_index_m) == 3) ? (c) : ((fmt_index_m) == 1) ? (a) : (b))
 
 // перевод нестандартных причин смерти, чтобы не ломалась логика игры
 #define CAUSE_OF_DEATH(a)	(streq((a), "starvation") ? "голодания" : streq((a), "poison") ? "отравления" : streq((a), "a fatal wound") ? "смертельного ранения" : streq((a), "Ripe Old Age") ? "Почтенного Возраста" : (a))
@@ -76,6 +82,7 @@ extern void (*quit_aux)(const char *);
 #define C_TVORIT	4
 #define C_PREDL		5
 #define C_CUSTOM	6
+#define FORCED_INDEX	128
 #define PART		0
 #define GENDER		1
 #define DECL		2

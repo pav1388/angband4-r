@@ -19,4 +19,4 @@
 {light slate}                         Вебсайт: http://rephial.org/{/}
 {light slate}                     Форумы: http://angband.oook.cz/forum/{/}
 
-                         Для помощи нажмите '?' в игре
+                         Для справки нажмите '?' в игре

@@ -165,7 +165,7 @@ void do_cmd_uninscribe(struct command *cmd)
 			// /* Prompt */ "Uninscribe which item?",
 			/* Prompt */ "С какого предмета стереть надпись?",
 			// /* Error  */ "You have nothing you can uninscribe.",
-			/* Error  */ "У вас нет предметов с надписями.",
+			/* Error  */ "У вас нет предмета с надписями.",
 			/* Filter */ obj_has_inscrip,
 			/* Choice */ USE_EQUIP | USE_INVEN | USE_QUIVER | USE_FLOOR) != CMD_OK)
 		return;
@@ -189,6 +189,7 @@ void do_cmd_inscribe(struct command *cmd)
 	char prompt[1024];
 	// char o_name[80];
 	char o_name[180];
+	uint8_t fmt_index_o;
 
 	if (!player_get_resume_normal_shape(player, cmd)) {
 		return;
@@ -205,8 +206,11 @@ void do_cmd_inscribe(struct command *cmd)
 		return;
 
 	/* Form prompt */
+	fmt_index_o = C_PREDL;
 	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL,
-		player);
+		// player);
+		player, &fmt_index_o);
+	fmt_index_o = 0;
 	// strnfmt(prompt, sizeof prompt, "Inscribing %s.", o_name);
 	strnfmt(prompt, sizeof prompt, "Написать на %s.", o_name);
 
@@ -281,12 +285,13 @@ void do_cmd_wield(struct command *cmd)
 	// char o_name[80];
 	char o_name[180];
 	const char *act;
+	uint8_t fmt_index_o;
 
 	unsigned n;
 
 	int slot;
 	struct object *obj;
-
+	
 	if (!player_get_resume_normal_shape(player, cmd)) {
 		return;
 	}
@@ -330,11 +335,13 @@ void do_cmd_wield(struct command *cmd)
 
 	/* Prevent wielding into a stickied slot */
 	if (!obj_can_takeoff(equip_obj)) {
+		fmt_index_o = C_VINIT;
 		object_desc(o_name, sizeof(o_name), equip_obj, ODESC_BASE,
-			player);
+			// player);
+			player, &fmt_index_o);
 		// msg("You cannot remove the %s you are %s.", o_name,
 		msg("Вы не можете снять %s из вашего %s.", o_name,
-			equip_describe(player, slot));
+			equip_describe(player, slot)); // FFFIX
 		return;
 	}
 
@@ -342,8 +349,10 @@ void do_cmd_wield(struct command *cmd)
 	n = check_for_inscrip(equip_obj, "!t");
 	while (n--) {
 		/* Prompt */
+		fmt_index_o = C_VINIT;
 		object_desc(o_name, sizeof(o_name), equip_obj,
-			ODESC_PREFIX | ODESC_FULL, player);
+			// ODESC_PREFIX | ODESC_FULL, player);
+			ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
 		
 		/* Forget it */
 		// if (!get_check(format("Really take off %s? ", o_name))) return;
@@ -351,8 +360,10 @@ void do_cmd_wield(struct command *cmd)
 	}
 
 	/* Describe the object */
+	fmt_index_o = C_VINIT;
 	object_desc(o_name, sizeof(o_name), equip_obj,
-		ODESC_PREFIX | ODESC_FULL, player);
+		// ODESC_PREFIX | ODESC_FULL, player);
+		ODESC_PREFIX | ODESC_FULL, player, &fmt_index_o);
 
 	/* Took off weapon */
 	if (slot_type_is(player, slot, EQUIP_WEAPON))
@@ -708,29 +719,60 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 			 */
 			// char name[80];
 			char name[180];
+			uint8_t fmt_index_o;
 
-			object_desc(name, sizeof(name), work_obj,
-				ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
-				((number + ((used && use == USE_SINGLE) ?
-				-1 : 0)) << 16), player);
+			// object_desc(name, sizeof(name), work_obj,
+				// ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+				// ((number + ((used && use == USE_SINGLE) ?
+				// -1 : 0)) << 16), player);
 			if (from_floor) {
 				/* Print a message */
 				//msg("You see %s.", name);
+				fmt_index_o = C_VINIT;
+				object_desc(name, sizeof(name), work_obj,
+						ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+						((number + ((used && use == USE_SINGLE) ?
+						-1 : 0)) << 16), player, &fmt_index_o);
 				msg("Вы видите %s.", name);
 			} else if (first_remainder) {
 				label = gear_to_label(player, first_remainder);
 				//msg("You have %s (1st %c).", name, label);
-				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0)
-					msg("У вас %s (1-ый %c).", name, label);
-				else
-					msg("У вас есть %s (1-ый %c).", name, label);
+				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0) {
+					fmt_index_o = C_RODIT;
+					object_desc(name, sizeof(name), work_obj,
+							ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+							((number + ((used && use == USE_SINGLE) ?
+							-1 : 0)) << 16), player, &fmt_index_o);
+					msg("У вас %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label); // ...больше нет...
+				}
+				else {
+					fmt_index_o = C_IMEN;
+					object_desc(name, sizeof(name), work_obj,
+							ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+							((number + ((used && use == USE_SINGLE) ?
+							-1 : 0)) << 16), player, &fmt_index_o);
+					msg("У вас есть %s (1-%s %c).", name, OBJ_GENDER("ое", "ый", "ая"), label);
+				}
 			} else {
 				// msg("You have %s (%c).", name, label);
-				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0)
-					msg("У вас %s (%c).", name, label);
-				else
+				if ((number + ((used && use == USE_SINGLE) ? -1 : 0)) == 0) {
+					fmt_index_o = C_RODIT;
+					object_desc(name, sizeof(name), work_obj,
+							ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+							((number + ((used && use == USE_SINGLE) ?
+							-1 : 0)) << 16), player, &fmt_index_o);
+					msg("У вас %s (%c).", name, label); // ...больше нет...
+				}
+				else {
+					fmt_index_o = C_IMEN;
+					object_desc(name, sizeof(name), work_obj,
+							ODESC_PREFIX | ODESC_FULL | ODESC_ALTNUM |
+							((number + ((used && use == USE_SINGLE) ?
+							-1 : 0)) << 16), player, &fmt_index_o);
 					msg("У вас есть %s (%c).", name, label);
+				}
 			}
+			fmt_index_o = 0;
 		} else if (used && use == USE_CHARGE) {
 			/* Describe charges */
 			if (from_floor)

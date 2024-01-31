@@ -1000,10 +1000,14 @@ bool verify_object(const char *prompt, const struct object *obj,
 	char o_name[180];
 
 	// char out_val[160];
-	char out_val[320];
+	char out_val[350];
+	uint8_t fmt_index_o;
 
 	/* Describe */
-	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);
+	// object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);
+	fmt_index_o = C_VINIT;
+	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p, &fmt_index_o);
+	fmt_index_o = 0;
 
 	/* Prompt */
 	strnfmt(out_val, sizeof(out_val), "%s %s? ", prompt, o_name);
@@ -1047,6 +1051,7 @@ void print_custom_message(const struct object *obj, const char *string,
 	const char *s;
 	const char *tag;
 	size_t end = 0;
+	uint8_t fmt_index_o;
 
 	/* Not always a string */
 	if (!string) return;
@@ -1069,8 +1074,11 @@ void print_custom_message(const struct object *obj, const char *string,
 			switch(msg_tag_lookup(tag)) {
 			case MSG_TAG_NAME:
 				if (obj) {
+					fmt_index_o = C_IMEN; // FFFIX ?
 					end += object_desc(buf, 1024, obj,
-						ODESC_PREFIX | ODESC_BASE, p);
+						// ODESC_PREFIX | ODESC_BASE, p);
+						ODESC_PREFIX | ODESC_BASE, p, &fmt_index_o);
+					fmt_index_o = 0;
 				} else {
 					strnfcat(buf, 1024, &end, "hands");
 				}

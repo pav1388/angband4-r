@@ -201,14 +201,18 @@ static void get_artifact_name(char *buf, size_t len, const struct artifact *arti
 
 	struct object *fake = &body;
 	struct object *known_obj = &known_body;
+	uint8_t fmt_index_o;
 
 	/* Make fake artifact for description purposes */
 	make_fake_artifact(fake, artifact);
 
 	fake->known = known_obj;
 	object_copy(known_obj, fake);
+	fmt_index_o = C_IMEN;
 	object_desc(buf, len, fake, ODESC_PREFIX | ODESC_BASE | ODESC_SPOIL,
-		NULL);
+		// NULL);
+		NULL, &fmt_index_o);
+	fmt_index_o = 0;
 
 	object_wipe(known_obj);
 	object_wipe(fake);

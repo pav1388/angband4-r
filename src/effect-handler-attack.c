@@ -264,16 +264,19 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 
 	int amount = effect_calculate_value(context, false);
 	// char m_name[80], m_poss[80];
-	char m_name[180], m_poss[180];
+	char m_name[180];
 	bool seen;
+	uint8_t fmt_index_m;
 
 	if (!mon) return true;
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
 
 	/* Get the monster possessive ("his"/"her"/"its") */
-	monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
+	// monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
 
 	seen = (!player->timed[TMD_BLIND] && monster_is_visible(mon));
 
@@ -286,17 +289,18 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 
 	if (seen)
 			// msg("%s looks REALLY healthy!", m_name);
-			msg("%s выглядит ДЕЙСТВИТЕЛЬНО здоровым!", m_name);
+			msg("%s выглядит ДЕЙСТВИТЕЛЬНО здоров%s!", m_name, MON_GENDER("ым", "ым", "ой"));
 		else
 			// msg("%s sounds REALLY healthy!", m_name);
-			msg("%s звучит ДЕЙСТВИТЕЛЬНО здоровым!", m_name);
+			msg("%s звучит ДЕЙСТВИТЕЛЬНО здоров%s!", m_name, MON_GENDER("ым", "ым", "ой"));
 	} else if (seen) { /* Partially healed */
 		// msg("%s looks healthier.", m_name);
-		msg("%s выглядит здоровее.", m_name);
+		msg("%s выглядит более здоров%s.", m_name, MON_GENDER("ым", "ым", "ой"));
 	} else {
 		// msg("%s sounds healthier.", m_name);
-		msg("%s звучит здоровее.", m_name);
+		msg("%s звучит более здоров%s.", m_name, MON_GENDER("ым", "ым", "ой"));
 	}
+	fmt_index_m = 0;
 	
 	/* Redraw (later) if needed */
 	if (player->upkeep->health_who == mon)
@@ -306,7 +310,7 @@ bool effect_handler_MON_HEAL_HP(effect_handler_context_t *context)
 	if (mon->m_timed[MON_TMD_FEAR]) {
 		mon_clear_timed(mon, MON_TMD_FEAR, MON_TMD_FLG_NOMESSAGE);
 		//msg("%s recovers %s courage.", m_name, m_poss);
-		msg("%s восстанавливает %s мужество.", m_name, m_poss);
+		msg("%s восстанавливает своё мужество.", m_name);
 	}
 
 	/* ID */
@@ -328,18 +332,21 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 
 	int amount = effect_calculate_value(context, false);
 	// char m_name[80], m_poss[80];
-	char m_name[180], m_poss[180];
+	char m_name[180];
 	bool seen;
+	uint8_t fmt_index_m;
 
 	/* Find a nearby monster */
 	mon = choose_nearby_injured_kin(cave, mon);
 	if (!mon) return true;
 
 	/* Get the monster name (or "it") */
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD); // MDESC_IMEN
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+	fmt_index_m = C_IMEN;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD, &fmt_index_m);
 
 	/* Get the monster possessive ("his"/"her"/"its") */
-	monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
+	// monster_desc(m_poss, sizeof(m_poss), mon, MDESC_PRO_VIS | MDESC_POSS);
 
 	seen = (!player->timed[TMD_BLIND] && monster_is_visible(mon));
 
@@ -349,12 +356,13 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 	if (seen) {
 		if (mon->hp == mon->maxhp) {
 			// msg("%s looks REALLY healthy!", m_name);
-			msg("%s выглядит ДЕЙСТВИТЕЛЬНО здоровым!", m_name);
+			msg("%s выглядит ДЕЙСТВИТЕЛЬНО здоров%s!", m_name, MON_GENDER("ым", "ым", "ой"));
 		} else if (seen) { /* Partially healed */
 			// msg("%s looks healthier.", m_name);
-			msg("%s выглядит здоровее.", m_name);
+			msg("%s выглядит более здоров%s.", m_name, MON_GENDER("ым", "ым", "ой"));
 		}
 	}
+	fmt_index_m = 0;
 
 	/* Redraw (later) if needed */
 	if (player->upkeep->health_who == mon)
@@ -364,7 +372,7 @@ bool effect_handler_MON_HEAL_KIN(effect_handler_context_t *context)
 	if (mon->m_timed[MON_TMD_FEAR]) {
 		mon_clear_timed(mon, MON_TMD_FEAR, MON_TMD_FLG_NOMESSAGE);
 		// msg("%s recovers %s courage.", m_name, m_poss);
-		msg("%s восстанавливает %s мужество.", m_name, m_poss);
+		msg("%s восстанавливает своё мужество.", m_name);
 	}
 
 	/* ID */
@@ -474,6 +482,7 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 	int dam = effect_calculate_value(context, false);
 	// char killer[80];
 	char killer[180];
+	uint8_t fmt_index_m;
 
 	/* Always ID */
 	context->ident = true;
@@ -502,7 +511,10 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 				return true;
 			}
 
-			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM);
+			// monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM);
+			fmt_index_m = C_IMEN;
+			monster_desc(killer, sizeof(killer), mon, MDESC_DIED_FROM, &fmt_index_m);
+			fmt_index_m = 0;
 			break;
 		}
 
@@ -510,15 +522,20 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 			struct trap *trap = context->origin.which.trap;
 			// const char *article = is_a_vowel(trap->kind->desc[0]) ? "an " : "a ";
 			// strnfmt(killer, sizeof(killer), "%s%s", article, trap->kind->desc);
-			strnfmt(killer, sizeof(killer), "%s", trap->kind->desc);
+			strnfmt(killer, sizeof(killer), "%s", trap->kind->desc); // FFFIX
 			break;
 		}
 
 		case SRC_OBJECT: {
 			/* Must be a cursed weapon */
 			struct object *obj = context->origin.which.object;
+			uint8_t fmt_index_o;
+			
+			fmt_index_o = C_RODIT;
 			object_desc(killer, sizeof(killer), obj,
-				ODESC_PREFIX | ODESC_BASE, player);
+				// ODESC_PREFIX | ODESC_BASE, player);
+				ODESC_PREFIX | ODESC_BASE, player, &fmt_index_o);
+			fmt_index_o = 0;
 			break;
 		}
 
@@ -547,7 +564,8 @@ bool effect_handler_DAMAGE(effect_handler_context_t *context)
 	/* Hit the player */
 	dam = player_apply_damage_reduction(player, dam);
 	if (dam && OPT(player, show_damage)) {
-		msg("You take %d damage.", dam);
+		// msg("You take %d damage.", dam);
+		msg("Вы получили %d урона.", dam);
 	}
 	take_hit(player, dam, killer);
 
@@ -1656,6 +1674,7 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
+	uint8_t fmt_index_m;
 
 	context->ident = true;
 
@@ -1668,7 +1687,9 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 
 	/* Hurt the monster */
 	drain = MIN(mon->hp, amount) / 4;
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	fmt_index_m = C_RODIT;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 	if (OPT(player, show_damage)) {
 		// msg("You draw power from the %s. (%d)", m_name, drain);
 		msg("Вы черпаете энергию из %s. (%d)", m_name, drain);
@@ -1677,7 +1698,8 @@ bool effect_handler_TAP_UNLIFE(effect_handler_context_t *context)
 		msg("Вы черпаете энергию из %s.", m_name);
 	}
 	// dead = mon_take_hit(mon, player, amount, &fear, " is destroyed!");
-	dead = mon_take_hit(mon, player, amount, &fear, " уничтожен!");
+	dead = mon_take_hit(mon, player, amount, &fear, MON_GENDER(" уничтожено!", " уничтожен!", " уничтожена!"));
+	fmt_index_m = 0;
 
 	/* Gain mana */
 	effect_simple(EF_RESTORE_MANA, context->origin, format("%d", drain), 0, 0,
@@ -1759,6 +1781,7 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	int drain = 0;
 	bool fear = false;
 	bool dead = false;
+	uint8_t fmt_index_m;
 
 	context->ident = true;
 
@@ -1768,7 +1791,9 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	}
 	target_get(&victim);
 	mon = target_get_monster();
-	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_TVORIT);
+	// monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
+	fmt_index_m = C_TVORIT;
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 
 	/* Look next to the monster */
 	for (d = first_d; d < first_d + 8; d++) {
@@ -1797,16 +1822,19 @@ bool effect_handler_JUMP_AND_BITE(effect_handler_context_t *context)
 	assert(drain > 0);
 	if (OPT(player, show_damage)) {
 		//msg("You bite %s. (%d)", m_name, drain);
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
+		fmt_index_m = C_VINIT;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 		msg("Вы укусили %s. (%d)", m_name, drain);
 	} else {
 		//msg("You bite %s.", m_name);
-		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG | MDESC_VINIT);
+		fmt_index_m = C_VINIT;
+		monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG, &fmt_index_m);
 		msg("Вы укусили %s.", m_name);
 	}
 	//dead = mon_take_hit(mon, player, amount, &fear, " is drained dry!");
-	dead = mon_take_hit(mon, player, amount, &fear, " истощён до суха!");
-
+	dead = mon_take_hit(mon, player, amount, &fear, 
+			MON_GENDER(" истощено до суха!", " истощён до суха!", " истощена до суха!"));
+	fmt_index_m = 0;
 	/* Heal and nourish */
 	effect_simple(EF_HEAL_HP, context->origin, format("%d", drain), 0, 0, 0,
 				  0, 0, NULL);
@@ -1924,8 +1952,13 @@ bool effect_handler_SINGLE_COMBAT(effect_handler_context_t *context)
 		if (randint0(mon->race->spell_power) > player->lev) {
 			// char m_name[80];
 			char m_name[180];
+			uint8_t fmt_index_m;
+			
+			fmt_index_m = C_IMEN;
 			monster_desc(m_name, sizeof(m_name), mon,
-				MDESC_CAPITAL | MDESC_COMMA);
+				// MDESC_CAPITAL | MDESC_COMMA);
+				MDESC_CAPITAL | MDESC_COMMA, &fmt_index_m);
+			fmt_index_m = 0;
 			//msg("%s resists!", m_name);
 			msg("%s сопротивляется!", m_name);
 			return true;

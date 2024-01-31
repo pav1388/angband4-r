@@ -1144,7 +1144,7 @@ static void display_monster(int col, int row, bool cursor, int oid)
 	// c_prt(attr, race->name, row, col);
 	// для русского языка
 	char mon_name[180];
-	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0);
+	mon_desc_name_format(mon_name, sizeof mon_name, 0, race->name, 0); // MDESC_IMEN
 	c_prt(attr, mon_name, row, col);
 
 	/* Display symbol */
@@ -1490,13 +1490,17 @@ static void get_artifact_display_name(char *o_name, size_t namelen, int a_idx)
 {
 	struct object body = OBJECT_NULL, known_body = OBJECT_NULL;
 	struct object *obj = &body, *known_obj = &known_body;
+	uint8_t fmt_index_o;
 
 	make_fake_artifact(obj, &a_info[a_idx]);
 	object_wipe(known_obj);
 	object_copy(known_obj, obj);
 	obj->known = known_obj;
+	fmt_index_o = C_IMEN;
 	object_desc(o_name, namelen, obj,
-		ODESC_PREFIX | ODESC_BASE | ODESC_SPOIL, NULL);
+		// ODESC_PREFIX | ODESC_BASE | ODESC_SPOIL, NULL);
+		ODESC_PREFIX | ODESC_BASE | ODESC_SPOIL, NULL, &fmt_index_o);
+	fmt_index_o = 0;
 	object_wipe(known_obj);
 	object_wipe(obj);
 }
@@ -1596,6 +1600,7 @@ static void desc_art_fake(int a_idx)
 	struct object *obj, *known_obj = NULL;
 	struct object object_body = OBJECT_NULL, known_object_body = OBJECT_NULL;
 	bool fake = false;
+	uint8_t fmt_index_o;
 
 	// char header[120];
 	char header[256];
@@ -1627,8 +1632,11 @@ static void desc_art_fake(int a_idx)
 	handle_stuff(player);
 
 	tb = object_info(obj, OINFO_NONE);
+	fmt_index_o = C_IMEN;
 	object_desc(header, sizeof(header), obj,
-		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+		// ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player);
+		ODESC_PREFIX | ODESC_FULL | ODESC_CAPITAL, player, &fmt_index_o);
+	fmt_index_o = 0;
 	if (fake) {
 		object_wipe(known_obj);
 		object_wipe(obj);
@@ -1930,6 +1938,7 @@ static void desc_obj_fake(int k_idx)
 	struct object_kind *old_kind = player->upkeep->object_kind;
 	struct object *old_obj = player->upkeep->object;
 	struct object *obj = object_new(), *known_obj = object_new();
+	uint8_t fmt_index_o;
 
 	// char header[120];
 	char header[256];
@@ -1953,8 +1962,11 @@ static void desc_obj_fake(int k_idx)
 	handle_stuff(player);
 
 	tb = object_info(obj, OINFO_FAKE);
+	fmt_index_o = C_IMEN;
 	object_desc(header, sizeof(header), obj,
-		ODESC_PREFIX | ODESC_CAPITAL, player);
+		// ODESC_PREFIX | ODESC_CAPITAL, player);
+		ODESC_PREFIX | ODESC_CAPITAL, player, &fmt_index_o);
+	fmt_index_o = 0;
 
 	textui_textblock_show(tb, area, header);
 	object_delete(NULL, NULL, &known_obj);
