@@ -152,10 +152,15 @@ void borg_cheat_store(void)
             o_ptr             = list[slot];
             borg_item *b_item = &borg_shops[store_num].ware[slot];
             char       buf[120];
+			uint8_t fmt_index_o;
 
             /* Describe the item */
-            object_desc(
-                buf, sizeof(buf), o_ptr, ODESC_FULL | ODESC_STORE, player);
+            // object_desc(
+                // buf, sizeof(buf), o_ptr, ODESC_FULL | ODESC_STORE, player);
+			fmt_index_o = C_IMEN;
+			object_desc(
+                buf, sizeof(buf), o_ptr, ODESC_FULL | ODESC_STORE, player, &fmt_index_o);
+			fmt_index_o = 0;
             if (streq(buf, "(nothing)"))
                 break;
 

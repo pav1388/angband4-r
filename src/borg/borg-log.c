@@ -151,6 +151,7 @@ void borg_write_map(bool ask)
     struct store *st_ptr = &stores[7];
 
     char o_name[80];
+	uint8_t fmt_index_o;
 
     /* Process the player name */
     for (i = 0; player->full_name[i]; i++) {
@@ -292,13 +293,19 @@ void borg_write_map(bool ask)
     file_putf(borg_map_file, "\n\n  [Character Equipment]\n\n");
     for (i = 0; i < player->body.count; i++) {
         struct object *obj = player->body.slots[i].obj;
-        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+        // object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+		fmt_index_o = C_IMEN;
+        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
         file_putf(borg_map_file, "%c) %s\n", borg_index_to_label(i), o_name);
     }
     file_putf(borg_map_file, "\n\n  [Character Quiver]\n\n");
     for (i = 0; i < z_info->quiver_size; i++) {
         struct object *obj = player->upkeep->quiver[i];
-        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+        // object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+		fmt_index_o = C_IMEN;
+        object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
         file_putf(borg_map_file, "%c) %s\n", borg_index_to_label(i), o_name);
     }
 
@@ -320,7 +327,10 @@ void borg_write_map(bool ask)
         = mem_zalloc(sizeof(struct object *) * z_info->store_inven_max);
     store_stock_list(st_ptr, list, z_info->store_inven_max);
     for (i = 0; i < z_info->store_inven_max / 2; i++) {
-        object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player);
+        // object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player);
+		fmt_index_o = C_IMEN;
+        object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
         file_putf(
             borg_map_file, "%c) %s\n", all_letters_nohjkl[i % 12], o_name);
     }
@@ -329,7 +339,10 @@ void borg_write_map(bool ask)
     /* Dump the Home (page 2) */
     file_putf(borg_map_file, "  [Home Inventory (page 2)]\n\n");
     for (i = z_info->store_inven_max / 2; i < z_info->store_inven_max; i++) {
-        object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player);
+        // object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player);
+		fmt_index_o = C_IMEN;
+        object_desc(o_name, sizeof(o_name), list[i], ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
         file_putf(
             borg_map_file, "%c) %s\n", all_letters_nohjkl[i % 12], o_name);
     }

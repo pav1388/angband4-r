@@ -132,6 +132,7 @@ int borg_slot(int tval, int sval)
 static void borg_cheat_quiver(void)
 {
     char buf[256];
+	uint8_t fmt_index_o;
 
     /* Extract the quiver */
     for (int j = 0, i = QUIVER_START; j < z_info->quiver_size; i++, j++) {
@@ -152,7 +153,10 @@ static void borg_cheat_quiver(void)
             /* Describe a real item */
             if (obj->kind) {
                 /* Describe it */
-                object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+                // object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+				fmt_index_o = C_IMEN;
+                object_desc(buf, sizeof(buf), obj, ODESC_FULL, player, &fmt_index_o);
+				fmt_index_o = 0;
 
                 /* Analyze the item (no price) */
                 borg_item_analyze(&borg_items[i], obj, buf, false);
@@ -171,6 +175,7 @@ static void borg_cheat_quiver(void)
 void borg_cheat_equip(void)
 {
     char buf[256];
+	uint8_t fmt_index_o;
 
     /* Extract the equipment */
     int count = player->body.count + z_info->pack_size;
@@ -192,7 +197,10 @@ void borg_cheat_equip(void)
             /* Describe a real item */
             if (obj->kind) {
                 /* Describe it */
-                object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+                // object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+				fmt_index_o = C_IMEN;
+                object_desc(buf, sizeof(buf), obj, ODESC_FULL, player, &fmt_index_o);
+				fmt_index_o = 0;
 
                 /* Analyze the item (no price) */
                 borg_item_analyze(&borg_items[i], obj, buf, false);
@@ -214,6 +222,7 @@ void borg_cheat_inven(void)
     int i;
 
     char buf[256];
+	uint8_t fmt_index_o;
 
     /* Extract the inventory */
     for (i = 0; i < z_info->pack_size; i++) {
@@ -228,7 +237,10 @@ void borg_cheat_inven(void)
         buf[0] = '\0';
 
         /* Describe it */
-        object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+        // object_desc(buf, sizeof(buf), obj, ODESC_FULL, player);
+		fmt_index_o = C_IMEN;
+        object_desc(buf, sizeof(buf), obj, ODESC_FULL, player, &fmt_index_o);
+		fmt_index_o = 0;
 
         /* Skip Empty slots */
         if (streq(buf, "(nothing)"))
