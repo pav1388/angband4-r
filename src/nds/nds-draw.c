@@ -106,9 +106,9 @@ void nds_draw_str_px(uint16_t x, uint16_t y, const char *str, nds_pixel clr_fg, 
 	}
 }
 
-void nds_draw_char(uint8_t x, uint8_t y, char c, nds_pixel clr_fg, nds_pixel clr_bg)
+void nds_draw_char(uint8_t x, uint8_t y, wchar_t c, nds_pixel clr_fg, nds_pixel clr_bg)
 {
-	nds_draw_char_px(x * nds_font->width, y * nds_font->height, c, clr_fg, clr_bg);
+	nds_draw_char_px(x * nds_font->width, y * nds_font->height, (c > 0x400 && c < 0x452 ? ((c & 0xFF) | 0x80) : c & 0xFF), clr_fg, clr_bg);
 }
 
 void nds_draw_str(uint8_t x, uint8_t y, const char *str, nds_pixel clr_fg, nds_pixel clr_bg)
